@@ -1,0 +1,224 @@
+{
+    "name": "Xero",
+    "description": "Xero is the QuickBooks alternative. Use Xero accounting software to manage invoicing, bank reconciliation, bookkeeping & more. Start a free trial today!",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/279-xero.jpg",
+    "tags": [
+        "accounting",
+        "financial",
+        "have api",
+        "have swagger",
+        "invoices",
+        "relative data",
+        "service api",
+        "webhook implementations"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/xero\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Xero oAuth 1a",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/279-xero.jpg",
+            "humanURL": "http:\/\/xero.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/xero-oauth-1a.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/xero-oauth-1a-postman-collection.json"
+                }
+            ]
+        },
+        {
+            "name": "Accounting",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/279-xero.jpg",
+            "humanURL": "http:\/\/xero.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/accounting.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/accounting-postman-collection.json"
+                }
+            ]
+        },
+        {
+            "name": "Accounting API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/279-xero.jpg",
+            "humanURL": "http:\/\/xero.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/accounting-api.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/accounting-api-postman-collection.json"
+                }
+            ]
+        },
+        {
+            "name": "Payroll - AU",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/279-xero.jpg",
+            "humanURL": "http:\/\/xero.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/payroll--au.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/payroll--au-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Base",
+            "url": "https:\/\/api.xero.com"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.xero.com"
+        },
+        {
+            "type": "Blog",
+            "url": "https:\/\/devblog.xero.com\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "https:\/\/devblog.xero.com\/feed"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/feeds.feedburner.com\/xerolive"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/xero"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/xero"
+        },
+        {
+            "type": "Developers",
+            "url": "http:\/\/developer.xero.com\/"
+        },
+        {
+            "type": "Email",
+            "url": "support@xero.com"
+        },
+        {
+            "type": "Email",
+            "url": "sales@xero.com"
+        },
+        {
+            "type": "Email",
+            "url": "careers@xero.com"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@xero.com"
+        },
+        {
+            "type": "Email",
+            "url": "phishing@xero.com"
+        },
+        {
+            "type": "Email",
+            "url": "press@xero.com"
+        },
+        {
+            "type": "Email",
+            "url": "AUpress@xero.com"
+        },
+        {
+            "type": "Email",
+            "url": "UKpress@xero.com"
+        },
+        {
+            "type": "Email",
+            "url": "USpress@xero.com"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/XeroAPI"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/279-2019-09-03-22-17-57.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/279-2019-09-03-22-18-13.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/279-2019-09-03-22-19-42.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/279-2019-09-03-22-19-49.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/279-2019-09-03-22-19-56.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/279-2019-09-03-22-22-51.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/279-2019-09-03-08-40-53.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/279-2019-09-04-02-54-50.json"
+        },
+        {
+            "type": "Partners",
+            "url": "http:\/\/developer.xero.com\/partner\/"
+        },
+        {
+            "type": "Pricing",
+            "url": "https:\/\/www.xero.com\/us\/pricing\/"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/xero"
+        },
+        {
+            "type": "Webhooks",
+            "url": "https:\/\/developer.xero.com\/documentation\/webhooks\/overview"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.xero.com\/"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/xero.com"
+        }
+    ]
+}
