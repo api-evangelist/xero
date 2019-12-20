@@ -1,0 +1,1285 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0",
+        "title": "Payroll - AU",
+        "description": "",
+        "termsOfService": "http:\/\/exmple.com\/license\/"
+    },
+    "servers": [
+        "http:\/\/api.xero.com\/payroll.xro"
+    ],
+    "paths": {
+        "\/Employees": {
+            "x-related-model": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "Allows you to retrieve, add and update payroll employees in a Xero organisation",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "A successful response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Employee": {
+                "type": "object",
+                "properties": {
+                    "FirstName": {
+                        "description": "First name of employee\u00a0(max length = 35)",
+                        "type": "string"
+                    },
+                    "LastName": {
+                        "description": "Last name of employee\u00a0(max length = 35)",
+                        "type": "string"
+                    },
+                    "DateOfBirth": {
+                        "description": "Date of birth of the employee (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "HomeAddress": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "StartDate": {
+                        "description": "If you aren\u2019t sure of the exact start date for an employee, you can just enter the start of the current financial year (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "Title": {
+                        "description": "Title of the employee\u00a0(max length = 10)",
+                        "type": "string"
+                    },
+                    "MiddleNames": {
+                        "description": "Middle name(s) of the employee\u00a0(max length = 35)",
+                        "type": "string"
+                    },
+                    "Email": {
+                        "description": "The email address for the employee\u00a0(max length = 100)",
+                        "type": "string"
+                    },
+                    "Gender": {
+                        "description": "The employee\u2019s gender (M or F)",
+                        "type": "string"
+                    },
+                    "Mobile": {
+                        "description": "Employee mobile number\u00a0(max length = 50)",
+                        "type": "string"
+                    },
+                    "TwitterUserName": {
+                        "description": "Employee\u2019s twitter name, entered as @twittername\u00a0(max length = 50)",
+                        "type": "string"
+                    },
+                    "IsAuthorisedToApproveLeave": {
+                        "description": "Boolean (true \/ false) \u2013 set this to true if the employee is authorised to approve other employees\u2019 leave requests",
+                        "type": "boolean"
+                    },
+                    "IsAuthorisedToApproveTimesheets": {
+                        "description": "Booelan \u2013 set this to true if the employee is authorised to approve timesheets",
+                        "type": "boolean"
+                    },
+                    "JobTitle": {
+                        "description": "JobTitle of the employee\u00a0(max length = 50)",
+                        "type": "string"
+                    },
+                    "Classification": {
+                        "description": "Employees under an award scheme will be covered by a modern award classification. If you record a classification, it will be included on your payslips\u00a0(max length = 100)",
+                        "type": "string"
+                    },
+                    "OrdinaryEarningsRateID": {
+                        "description": "Xero unique identifier for earnings rate",
+                        "type": "string"
+                    },
+                    "PayrollCalendarID": {
+                        "description": "Xero unique identifier for payroll calendar for the employee",
+                        "type": "string"
+                    },
+                    "EmployeeGroupName": {
+                        "description": "The Employee Group allows you to report on payroll expenses and liabilities for each group of employees",
+                        "type": "string"
+                    },
+                    "BankAccounts": {
+                        "description": "See BankAccount",
+                        "type": "array"
+                    },
+                    "PayTemplate": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "OpeningBalances": {
+                        "description": "See OpeningBalances",
+                        "type": "array"
+                    },
+                    "LeaveBalances": {
+                        "description": "See LeaveBalances",
+                        "type": "array"
+                    },
+                    "SuperMemberships": {
+                        "description": "See SuperMemberships",
+                        "type": "array"
+                    },
+                    "TerminationDate": {
+                        "description": "Employee Termination Date (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "EmployeeID": {
+                        "description": "Xero unique identifier for an Employee",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "See Employee Status Types",
+                        "type": "string"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified timestamp",
+                        "type": "string"
+                    }
+                }
+            },
+            "BankAccounts": {
+                "type": "array"
+            },
+            "OpeningBalances": {
+                "type": "array"
+            },
+            "LeaveBalances": {
+                "type": "array"
+            },
+            "SuperMemberships": {
+                "type": "array"
+            },
+            "HomeAddress": {
+                "type": "object",
+                "properties": {
+                    "AddressLine1": {
+                        "description": "Address line 1 for employee home address\u00a0(max length = 50)",
+                        "type": "string"
+                    },
+                    "AddressLine2": {
+                        "description": "Address line 2 for employee home address\u00a0(max length = 50)",
+                        "type": "string"
+                    },
+                    "City": {
+                        "description": "Suburb for employee home address\u00a0(max length = 50)",
+                        "type": "string"
+                    },
+                    "Region": {
+                        "description": "State abbreviation for employee home address",
+                        "type": "string"
+                    },
+                    "PostalCode": {
+                        "description": "PostCode for employee home address\u00a0(max length = 4)",
+                        "type": "string"
+                    },
+                    "Country": {
+                        "description": "Country of HomeAddress",
+                        "type": "string"
+                    }
+                }
+            },
+            "TaxDeclaration": {
+                "type": "object",
+                "properties": {
+                    "EmployeeID": {
+                        "description": "Xero unique identifier for an Employee",
+                        "type": "string"
+                    },
+                    "EmploymentBasis": {
+                        "description": "See Employment Basis Types",
+                        "type": "string"
+                    },
+                    "TFNExemptionType": {
+                        "description": "See TFN Exemption Types",
+                        "type": "string"
+                    },
+                    "TaxFileNumber": {
+                        "description": "The tax file number e.g 123123123",
+                        "type": "string"
+                    },
+                    "AustralianResidentForTaxPurposes": {
+                        "description": "If the employee is Australian resident for tax purposes. e.g true or false",
+                        "type": "string"
+                    },
+                    "TaxFreeThresholdClaimed": {
+                        "description": "If tax free threshold claimed. e.g true or false",
+                        "type": "string"
+                    },
+                    "TaxOffsetEstimatedAmount": {
+                        "description": "If has tax offset estimated then the tax offset estimated amount. e.g 100",
+                        "type": "number"
+                    },
+                    "HasHELPDebt": {
+                        "description": "If employee has HECS or HELP dept. e.g true or false",
+                        "type": "boolean"
+                    },
+                    "HasSFSSDebt": {
+                        "description": "If employee has financial supplement dept. e.g true or false",
+                        "type": "boolean"
+                    },
+                    "HasTradeSupportLoanDebt": {
+                        "description": "If employee has trade support loan. e.g true or false",
+                        "type": "boolean"
+                    },
+                    "UpwardVariationTaxWithholdingAmount": {
+                        "description": "If the employee has requested that additional tax be withheld each pay run. e.g 50",
+                        "type": "string"
+                    },
+                    "EligibleToReceiveLeaveLoading": {
+                        "description": "If the employee is eligible to receive an additional percentage on top of ordinary earnings when they take leave (typically 17.5%). e.g true or false",
+                        "type": "string"
+                    },
+                    "ApprovedWithholdingVariationPercentage": {
+                        "description": "If the employee has approved withholding variation. e.g (0 \u2013 100)",
+                        "type": "string"
+                    }
+                }
+            },
+            "BankAccount": {
+                "type": "object",
+                "properties": {
+                    "StatementText": {
+                        "description": "The text that will appear on your employee\u2019s bank statement when they receive payment\u00a0(max length = 18)",
+                        "type": "string"
+                    },
+                    "AccountName": {
+                        "description": "The name of the account\u00a0(max length = 32)",
+                        "type": "string"
+                    },
+                    "BSB": {
+                        "description": "The BSB number of the account\u00a0(length = 6)",
+                        "type": "string"
+                    },
+                    "AccountNumber": {
+                        "description": "The account number\u00a0(max length = 9)",
+                        "type": "string"
+                    },
+                    "Remainder": {
+                        "description": "If this account is the Remaining bank account",
+                        "type": "string"
+                    },
+                    "Amount": {
+                        "description": "Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)",
+                        "type": "number"
+                    }
+                }
+            },
+            "PayTemplate": {
+                "type": "object",
+                "properties": {
+                    "EarningsLines": {
+                        "description": "The earnings rate lines",
+                        "type": "number"
+                    },
+                    "DeductionLines": {
+                        "description": "The deduction type lines",
+                        "type": "array"
+                    },
+                    "SuperLines": {
+                        "description": "The superannuation fund lines",
+                        "type": "string"
+                    },
+                    "ReimbursementLines": {
+                        "description": "The reimbursement type lines",
+                        "type": "array"
+                    },
+                    "LeaveLines": {
+                        "description": "The leave type lines",
+                        "type": "string"
+                    },
+                    "EarningsRateID": {
+                        "description": "Xero earnings rate identifier",
+                        "type": "string"
+                    },
+                    "CalculationType": {
+                        "description": "See Leave Type Calculation Types",
+                        "type": "string"
+                    },
+                    "NumberOfUnitsPerWeek": {
+                        "description": "Hours per week for the EarningsLine. Applicable for ANNUALSALARY CalculationType",
+                        "type": "string"
+                    },
+                    "AnnualSalary": {
+                        "description": "Annual Salary of employee",
+                        "type": "string"
+                    },
+                    "RatePerUnit": {
+                        "description": "Rate per unit of the EarningsLine.",
+                        "type": "number"
+                    },
+                    "NormalNumberOfUnits": {
+                        "description": "Normal number of units for EarningsLine.  Applicable when RateType is \u201cMULTIPLE\u201d",
+                        "type": "string"
+                    },
+                    "DeductionTypeID": {
+                        "description": "Xero deduction type identifier",
+                        "type": "string"
+                    },
+                    "Percentage": {
+                        "description": "The percentage of the SuperLine. Applies on Percentage of Earnings\u00a0CalculationType.",
+                        "type": "string"
+                    },
+                    "Amount": {
+                        "description": "Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)",
+                        "type": "number"
+                    },
+                    "SuperMembershipID": {
+                        "description": "Xero superannuation fund membership identifier",
+                        "type": "string"
+                    },
+                    "ContributionType": {
+                        "description": "See Superannuation Contribution Type",
+                        "type": "string"
+                    },
+                    "ExpenseAccountCode": {
+                        "description": "\u00a0Account code for the Expense Account. i.e 478",
+                        "type": "string"
+                    },
+                    "LiabilityAccountCode": {
+                        "description": "\u00a0Account code for the Liability Account. i.e 826",
+                        "type": "string"
+                    },
+                    "MinimumMonthlyEarnings": {
+                        "description": "Minimum monthly earnings. Applies for Percentage of Earnings calculation type only",
+                        "type": "string"
+                    },
+                    "ReimbursementTypeID": {
+                        "description": "Xero reimbursement type identifier",
+                        "type": "string"
+                    },
+                    "Description": {
+                        "description": "The description of the reimbursement type",
+                        "type": "string"
+                    },
+                    "LeaveTypeID": {
+                        "description": "Xero leave type identifier.",
+                        "type": "string"
+                    },
+                    "AnnualNumberOfUnits": {
+                        "description": "Hours of leave accrued each year",
+                        "type": "string"
+                    },
+                    "FullTimeNumberOfUnitsPerPeriod": {
+                        "description": "Normal ordinary earnings number of units for leave line.",
+                        "type": "string"
+                    },
+                    "NumberOfUnits": {
+                        "description": "Number of units for leave line.",
+                        "type": "string"
+                    },
+                    "EntitlementFinalPayPayoutType": {
+                        "description": "See Final Pay Payout Types If you do not provide any value then by Default it will be NOTPAIDOUT.",
+                        "type": "string"
+                    }
+                }
+            },
+            "DeductionLines": {
+                "type": "array"
+            },
+            "ReimbursementLines": {
+                "type": "array"
+            },
+            "OpeningBalance": {
+                "type": "object",
+                "properties": {
+                    "OpeningBalanceDate": {
+                        "description": "Opening Balance Date. (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "Tax": {
+                        "description": "Opening Balance tax",
+                        "type": "string"
+                    },
+                    "EarningsLines": {
+                        "description": "The EarningsLines of the OpeningBalance.",
+                        "type": "array"
+                    },
+                    "DeductionLines": {
+                        "description": "The deduction type lines",
+                        "type": "array"
+                    },
+                    "SuperLines": {
+                        "description": "The superannuation fund lines",
+                        "type": "string"
+                    },
+                    "ReimbursementLines": {
+                        "description": "The reimbursement type lines",
+                        "type": "array"
+                    },
+                    "LeaveLines": {
+                        "description": "The leave type lines",
+                        "type": "string"
+                    },
+                    "EarningsRateID": {
+                        "description": "Xero earnings rate identifier",
+                        "type": "string"
+                    },
+                    "Amount": {
+                        "description": "Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)",
+                        "type": "number"
+                    },
+                    "DeductionTypeID": {
+                        "description": "Xero deduction type identifier",
+                        "type": "string"
+                    },
+                    "SuperMembershipID": {
+                        "description": "Xero superannuation fund membership identifier",
+                        "type": "string"
+                    },
+                    "CalculationType": {
+                        "description": "See Leave Type Calculation Types",
+                        "type": "string"
+                    },
+                    "ReimbursementTypeID": {
+                        "description": "Xero reimbursement type identifier",
+                        "type": "string"
+                    },
+                    "LeaveTypeID": {
+                        "description": "Xero leave type identifier.",
+                        "type": "string"
+                    },
+                    "NumberOfUnits": {
+                        "description": "Number of units for leave line.",
+                        "type": "string"
+                    }
+                }
+            },
+            "EarningsLines": {
+                "type": "array"
+            },
+            "LeaveBalance": {
+                "type": "object",
+                "properties": {
+                    "LeaveName": {
+                        "description": "The name of the leave type",
+                        "type": "string"
+                    },
+                    "LeaveTypeID": {
+                        "description": "Xero leave type identifier.",
+                        "type": "string"
+                    },
+                    "NumberOfUnits": {
+                        "description": "Number of units for leave line.",
+                        "type": "string"
+                    },
+                    "TypeOfUnits": {
+                        "description": "The type of units as specified by the LeaveType\u00a0(see PayItems)",
+                        "type": "array"
+                    }
+                }
+            },
+            "TypeOfUnits": {
+                "type": "array"
+            },
+            "SuperMembership": {
+                "type": "object",
+                "properties": {
+                    "SuperFundID": {
+                        "description": "Xero identifier for super fund",
+                        "type": "string"
+                    },
+                    "EmployeeNumber": {
+                        "description": "The memberhsip number assigned to the employee by the super fund.",
+                        "type": "string"
+                    },
+                    "SuperMembershipID": {
+                        "description": "Xero superannuation fund membership identifier",
+                        "type": "string"
+                    },
+                    "EmployeeID": {
+                        "description": "Xero unique identifier for an Employee",
+                        "type": "string"
+                    }
+                }
+            },
+            "LeaveApplication": {
+                "type": "object",
+                "properties": {
+                    "EmployeeID": {
+                        "description": "Xero unique identifier for an Employee",
+                        "type": "string"
+                    },
+                    "LeaveTypeID": {
+                        "description": "Xero leave type identifier.",
+                        "type": "string"
+                    },
+                    "Title": {
+                        "description": "Title of the employee\u00a0(max length = 10)",
+                        "type": "string"
+                    },
+                    "StartDate": {
+                        "description": "If you aren\u2019t sure of the exact start date for an employee, you can just enter the start of the current financial year (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "EndDate": {
+                        "description": "End date of the leave (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "Description": {
+                        "description": "The description of the reimbursement type",
+                        "type": "string"
+                    },
+                    "LeavePeriods": {
+                        "description": "The leave period information",
+                        "type": "array"
+                    }
+                }
+            },
+            "LeavePeriods": {
+                "type": "array"
+            },
+            "LeavePeriod": {
+                "type": "object",
+                "properties": {
+                    "NumberOfUnits": {
+                        "description": "Number of units for leave line.",
+                        "type": "string"
+                    },
+                    "PayPeriodEndDate": {
+                        "description": "The Pay Period End Date (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "PayPeriodStartDate": {
+                        "description": "The Pay Period Start Date (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "LeavePeriodStatus": {
+                        "description": "See LeavePeriodStatus",
+                        "type": "string"
+                    }
+                }
+            },
+            "PayItem": {
+                "type": "object",
+                "properties": {
+                    "EarningsRates": {
+                        "description": "See EarningsRates",
+                        "type": "array"
+                    },
+                    "DeductionTypes": {
+                        "description": "See DeductionTypes",
+                        "type": "array"
+                    },
+                    "LeaveTypes": {
+                        "description": "See LeaveTypes",
+                        "type": "array"
+                    },
+                    "ReimbursementTypes": {
+                        "description": "See ReimbursementTypes",
+                        "type": "array"
+                    }
+                }
+            },
+            "EarningsRates": {
+                "type": "array"
+            },
+            "DeductionTypes": {
+                "type": "array"
+            },
+            "LeaveTypes": {
+                "type": "array"
+            },
+            "ReimbursementTypes": {
+                "type": "array"
+            },
+            "EarningsRate": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "description": "Name of the earnings rate (max length = 100)",
+                        "type": "string"
+                    },
+                    "AccountCode": {
+                        "description": "See Accounts",
+                        "type": "string"
+                    },
+                    "TypeOfUnits": {
+                        "description": "Type of units used to record earnings (max length = 50). Only When RateType is RATEPERUNIT",
+                        "type": "string"
+                    },
+                    "IsExemptFromTax": {
+                        "description": "Most payments are subject to tax, so you should only set this value if you are sure that a payment is exempt from PAYG withholding",
+                        "type": "string"
+                    },
+                    "IsExemptFromSuper": {
+                        "description": "See the ATO website for details of which payments are exempt from SGC",
+                        "type": "string"
+                    },
+                    "EarningsType": {
+                        "description": "See EarningsTypes",
+                        "type": "string"
+                    },
+                    "EarningsRateID": {
+                        "description": "Xero earnings rate identifier",
+                        "type": "string"
+                    },
+                    "RateType": {
+                        "description": "See RateTypes",
+                        "type": "string"
+                    },
+                    "RatePerUnit": {
+                        "description": "Rate per unit of the EarningsLine.",
+                        "type": "number"
+                    },
+                    "Multiplier": {
+                        "description": "This is the multiplier used to calculate the rate per unit, based on the employee\u2019s ordinary earnings rate. For example, for time and a half enter 1.5. Only applicable if RateType is MULTIPLE",
+                        "type": "number"
+                    },
+                    "AccrueLeave": {
+                        "description": "Indicates that this earnings rate should accrue leave. Only applicable if RateType is MULTIPLE",
+                        "type": "number"
+                    },
+                    "Amount": {
+                        "description": "Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)",
+                        "type": "number"
+                    }
+                }
+            },
+            "DeductionType": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "description": "Name of the earnings rate (max length = 100)",
+                        "type": "string"
+                    },
+                    "AccountCode": {
+                        "description": "See Accounts",
+                        "type": "string"
+                    },
+                    "ReducesTax": {
+                        "description": "Indicates that this is a pre-tax deduction that will reduce the amount of tax you withhold from an employee.",
+                        "type": "number"
+                    },
+                    "ReducesSuper": {
+                        "description": "Most deductions don\u2019t reduce your superannuation guarantee contribution liability, so typically you will not set any value for this.",
+                        "type": "string"
+                    },
+                    "DeductionTypeID": {
+                        "description": "Xero deduction type identifier",
+                        "type": "string"
+                    }
+                }
+            },
+            "LeaveType": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "description": "Name of the earnings rate (max length = 100)",
+                        "type": "string"
+                    },
+                    "TypeOfUnits": {
+                        "description": "The type of units by which leave entitlements are normally tracked. These are typically the same as the type of units used for the employee\u2019s ordinary earnings rate",
+                        "type": "number"
+                    },
+                    "IsPaidLeave": {
+                        "description": "Set this to indicate that an employee will be paid when taking this type of leave",
+                        "type": "string"
+                    },
+                    "ShowOnPayslip": {
+                        "description": "Set this if you want a balance for this leave type to be shown on your employee\u2019s payslips",
+                        "type": "string"
+                    },
+                    "LeaveTypeID": {
+                        "description": "Xero leave type identifier.",
+                        "type": "string"
+                    },
+                    "NormalEntitlement": {
+                        "description": "The number of units the employee is entitled to each year",
+                        "type": "string"
+                    },
+                    "LeaveLoadingRate": {
+                        "description": "Enter an amount here if your organisation pays an additional percentage on top of ordinary earnings when your employees take leave (typically 17.5%)",
+                        "type": "number"
+                    }
+                }
+            },
+            "ReimbursementType": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "description": "Name of the earnings rate (max length = 100)",
+                        "type": "string"
+                    },
+                    "AccountCode": {
+                        "description": "See Accounts",
+                        "type": "string"
+                    },
+                    "ReimbursementTypeID": {
+                        "description": "Xero reimbursement type identifier",
+                        "type": "string"
+                    }
+                }
+            },
+            "PayrollCalendar": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "description": "Name of the earnings rate (max length = 100)",
+                        "type": "string"
+                    },
+                    "CalendarType": {
+                        "description": "See Payroll Calendar types",
+                        "type": "string"
+                    },
+                    "StartDate": {
+                        "description": "If you aren\u2019t sure of the exact start date for an employee, you can just enter the start of the current financial year (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "PaymentDate": {
+                        "description": "The date on which employees will be paid for the upcoming pay period (YYYY-MM-DD), more details.",
+                        "type": "string"
+                    },
+                    "EmployeeID": {
+                        "description": "Xero unique identifier for an Employee",
+                        "type": "string"
+                    }
+                }
+            },
+            "PayRun": {
+                "type": "object",
+                "properties": {
+                    "PayrollCalendarID": {
+                        "description": "Xero unique identifier for payroll calendar for the employee",
+                        "type": "string"
+                    },
+                    "PayRunID": {
+                        "description": "The Xero identifier for a Pay run e.g. 297c2dc5-cc47-4afd-0000-74990b8761e9",
+                        "type": "string"
+                    },
+                    "PayRunPeriodStartDate": {
+                        "description": "Period Start Date for the PayRun (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "PayRunPeriodEndDate": {
+                        "description": "Period End Date for the PayRun (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "PayRunStatus": {
+                        "description": "See PayRun Status types",
+                        "type": "string"
+                    },
+                    "PaymentDate": {
+                        "description": "The date on which employees will be paid for the upcoming pay period (YYYY-MM-DD), more details.",
+                        "type": "string"
+                    },
+                    "PayslipMessage": {
+                        "description": "Payslip message for the PayRun",
+                        "type": "string"
+                    },
+                    "Payslips": {
+                        "description": "See Payslip",
+                        "type": "array"
+                    },
+                    "Wages": {
+                        "description": "Total Wages for the PayRun",
+                        "type": "string"
+                    },
+                    "Deductions": {
+                        "description": "Total Deduction for the PayRun",
+                        "type": "string"
+                    },
+                    "Tax": {
+                        "description": "Total Tax for the PayRun",
+                        "type": "number"
+                    },
+                    "Super": {
+                        "description": "Total Super for the PayRun",
+                        "type": "string"
+                    },
+                    "Reimbursement": {
+                        "description": "Total Reimbursement for the PayRun",
+                        "type": "string"
+                    },
+                    "NetPay": {
+                        "description": "Total NetPay for the PayRun",
+                        "type": "string"
+                    }
+                }
+            },
+            "Payslips": {
+                "type": "array"
+            },
+            "Payslip": {
+                "type": "object",
+                "properties": {
+                    "EmployeeID": {
+                        "description": "Xero unique identifier for an Employee",
+                        "type": "string"
+                    },
+                    "PayslipID": {
+                        "description": "Xero identifier for payroll payslip",
+                        "type": "string"
+                    },
+                    "EarningsLines": {
+                        "description": "The EarningsLines of the OpeningBalance.",
+                        "type": "array"
+                    },
+                    "TimesheetEarningsLines": {
+                        "description": "See TimesheetEarningsLine",
+                        "type": "array"
+                    },
+                    "DeductionLines": {
+                        "description": "The deduction type lines",
+                        "type": "array"
+                    },
+                    "LeaveAccrualLines": {
+                        "description": "See LeaveAccrualLine",
+                        "type": "array"
+                    },
+                    "ReimbursementLines": {
+                        "description": "The reimbursement type lines",
+                        "type": "array"
+                    },
+                    "SuperannuationLines": {
+                        "description": "See SuperannuationLine",
+                        "type": "array"
+                    },
+                    "TaxLines": {
+                        "description": "See TaxLine",
+                        "type": "array"
+                    },
+                    "FirstName": {
+                        "description": "First name of employee\u00a0(max length = 35)",
+                        "type": "string"
+                    },
+                    "LastName": {
+                        "description": "Last name of employee\u00a0(max length = 35)",
+                        "type": "string"
+                    },
+                    "EmployeeGroup": {
+                        "description": "Employee Group name",
+                        "type": "string"
+                    },
+                    "LastEdited": {
+                        "description": "Last edited",
+                        "type": "string"
+                    },
+                    "Wages": {
+                        "description": "The Total Wages for the PayRun",
+                        "type": "number"
+                    },
+                    "Deductions": {
+                        "description": "The Total Deductions for the PayRun",
+                        "type": "number"
+                    },
+                    "NetPay": {
+                        "description": "The Total NetPay for the PayRun",
+                        "type": "number"
+                    },
+                    "Tax": {
+                        "description": "Total Tax for the PayRun",
+                        "type": "number"
+                    },
+                    "Super": {
+                        "description": "The Total Super for the PayRun",
+                        "type": "number"
+                    },
+                    "Reimbursements": {
+                        "description": "The Total Reimbursement for the PayRun",
+                        "type": "number"
+                    },
+                    "LeaveEarningsLines": {
+                        "description": "See LeaveEarningsLine",
+                        "type": "array"
+                    }
+                }
+            },
+            "TimesheetEarningsLines": {
+                "type": "array"
+            },
+            "LeaveAccrualLines": {
+                "type": "array"
+            },
+            "SuperannuationLines": {
+                "type": "array"
+            },
+            "TaxLines": {
+                "type": "array"
+            },
+            "LeaveEarningsLines": {
+                "type": "array"
+            },
+            "EarningsLine": {
+                "type": "object",
+                "properties": {
+                    "EarningsRateID": {
+                        "description": "Xero earnings rate identifier",
+                        "type": "string"
+                    },
+                    "RatePerUnit": {
+                        "description": "Rate per unit of the EarningsLine.",
+                        "type": "number"
+                    },
+                    "NumberOfUnits": {
+                        "description": "Earnings rate number of units.",
+                        "type": "number"
+                    },
+                    "FixedAmount": {
+                        "description": "Earnings rate amount.  Only applicable if the EarningsRate RateType is Fixed",
+                        "type": "number"
+                    }
+                }
+            },
+            "LeaveEarningsLine": {
+                "type": "object",
+                "properties": {
+                    "EarningsRateID": {
+                        "description": "Xero earnings rate identifier",
+                        "type": "string"
+                    },
+                    "RatePerUnit": {
+                        "description": "Rate per unit of the EarningsLine.",
+                        "type": "number"
+                    },
+                    "NumberOfUnits": {
+                        "description": "Earnings rate number of units.",
+                        "type": "number"
+                    }
+                }
+            },
+            "TimesheetEarningsLine": {
+                "type": "object",
+                "properties": {
+                    "EarningsRateID": {
+                        "description": "Xero earnings rate identifier",
+                        "type": "string"
+                    },
+                    "RatePerUnit": {
+                        "description": "Rate per unit of the EarningsLine.",
+                        "type": "number"
+                    },
+                    "Amount": {
+                        "description": "Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)",
+                        "type": "number"
+                    }
+                }
+            },
+            "DeductionLine": {
+                "type": "object",
+                "properties": {
+                    "DeductionTypeID": {
+                        "description": "Xero deduction type identifier",
+                        "type": "string"
+                    },
+                    "CalculationType": {
+                        "description": "Rate per unit for earnings rate.",
+                        "type": "number"
+                    },
+                    "Percentage": {
+                        "description": "The percentage of the SuperLine. Applies on Percentage of Earnings\u00a0CalculationType.",
+                        "type": "string"
+                    },
+                    "NumberOfUnits": {
+                        "description": "Earnings rate number of units.",
+                        "type": "number"
+                    }
+                }
+            },
+            "LeaveAccrualLine": {
+                "type": "object",
+                "properties": {
+                    "LeaveTypeID": {
+                        "description": "Xero leave type identifier.",
+                        "type": "string"
+                    },
+                    "NumberOfUnits": {
+                        "description": "Number of units for leave line.",
+                        "type": "string"
+                    },
+                    "AutoCalculate": {
+                        "description": "If you want to auto calculate leave.",
+                        "type": "string"
+                    }
+                }
+            },
+            "ReimbursementLine": {
+                "type": "object",
+                "properties": {
+                    "ReimbursementTypeID": {
+                        "description": "Xero reimbursement type identifier",
+                        "type": "string"
+                    },
+                    "Description": {
+                        "description": "The description of the reimbursement type",
+                        "type": "string"
+                    },
+                    "ExpenseAccount": {
+                        "description": "Reimbursement expense account. For posted pay run you should be able to see expense account code",
+                        "type": "string"
+                    },
+                    "Amount": {
+                        "description": "Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)",
+                        "type": "number"
+                    }
+                }
+            },
+            "SuperannuationLine": {
+                "type": "object",
+                "properties": {
+                    "SuperMembershipID": {
+                        "description": "Xero superannuation fund membership identifier",
+                        "type": "string"
+                    },
+                    "ContributionType": {
+                        "description": "See Superannuation Contribution Type",
+                        "type": "string"
+                    },
+                    "CalculationType": {
+                        "description": "See Leave Type Calculation Types",
+                        "type": "string"
+                    },
+                    "MinimumMonthlyEarnings": {
+                        "description": "Minimum monthly earnings. Applies for Percentage of Earnings calculation type only",
+                        "type": "string"
+                    },
+                    "ExpenseAccountCode": {
+                        "description": "\u00a0Account code for the Expense Account. i.e 478",
+                        "type": "string"
+                    },
+                    "LiabilityAccountCode": {
+                        "description": "\u00a0Account code for the Liability Account. i.e 826",
+                        "type": "string"
+                    },
+                    "PaymentDateForThisPeriod": {
+                        "description": "Superannuation payment date for the current period (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "Percentage": {
+                        "description": "The percentage of the SuperLine. Applies on Percentage of Earnings\u00a0CalculationType.",
+                        "type": "string"
+                    },
+                    "Amount": {
+                        "description": "Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)",
+                        "type": "number"
+                    }
+                }
+            },
+            "TaxLine": {
+                "type": "object",
+                "properties": {
+                    "TaxTypeName": {
+                        "description": "Name of the tax type",
+                        "type": "string"
+                    },
+                    "Description": {
+                        "description": "The description of the reimbursement type",
+                        "type": "string"
+                    },
+                    "Amount": {
+                        "description": "Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)",
+                        "type": "number"
+                    },
+                    "LiabilityAccount": {
+                        "description": "The tax line liability account code. For posted pay run you should be able to see liability account code",
+                        "type": "string"
+                    },
+                    "PayslipID": {
+                        "description": "Xero identifier for payroll payslip",
+                        "type": "string"
+                    }
+                }
+            },
+            "Setting": {
+                "type": "object",
+                "properties": {
+                    "Accounts": {
+                        "description": "Payroll Account details for SuperExpense, SuperLiabilty, WagesExpense, PAYGLiability & WagesPayable.  See Accounts",
+                        "type": "array"
+                    },
+                    "TrackingCategories": {
+                        "description": "Tracking categories for Employee\u2019s and Timesheet\u2019s.  See Tracking Categories",
+                        "type": "array"
+                    },
+                    "DaysInPayrollYear": {
+                        "description": "Number of days in the Payroll year",
+                        "type": "string"
+                    }
+                }
+            },
+            "Accounts": {
+                "type": "array"
+            },
+            "TrackingCategories": {
+                "type": "array"
+            },
+            "Account": {
+                "type": "object",
+                "properties": {
+                    "AccountID": {
+                        "description": "Xero account identifier. e.g c56b19ef-75bf-45e8-98a4-e699a96609f7",
+                        "type": "string"
+                    },
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    },
+                    "Code": {
+                        "description": "Customer defined account code eg. 200",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of the earnings rate (max length = 100)",
+                        "type": "string"
+                    }
+                }
+            },
+            "TrackingCategory": {
+                "type": "object",
+                "properties": {
+                    "TrackingCategoryID": {
+                        "description": "Xero tracking category identifier. e.g c56b19ef-75bf-45e8-98a4-e699a96609f7",
+                        "type": "string"
+                    },
+                    "TrackingCategoryName": {
+                        "description": "Name of tracking category",
+                        "type": "string"
+                    }
+                }
+            },
+            "SuperFund": {
+                "type": "object",
+                "properties": {
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    },
+                    "ABN": {
+                        "description": "ABN of the self managed super fund. (max length = 11) e.g 839182848805",
+                        "type": "string"
+                    },
+                    "USI": {
+                        "description": "The USI of the Regulated SuperFund",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of the earnings rate (max length = 100)",
+                        "type": "string"
+                    },
+                    "BSB": {
+                        "description": "The BSB number of the account\u00a0(length = 6)",
+                        "type": "string"
+                    },
+                    "AccountNumber": {
+                        "description": "The account number\u00a0(max length = 9)",
+                        "type": "string"
+                    },
+                    "AccountName": {
+                        "description": "The name of the account\u00a0(max length = 32)",
+                        "type": "string"
+                    },
+                    "ElectronicServiceAddress": {
+                        "description": "The electronic service address for the self managed super fund (max length = 16)",
+                        "type": "string"
+                    },
+                    "SuperFundID": {
+                        "description": "Xero identifier for super fund",
+                        "type": "string"
+                    },
+                    "EmployerNumber": {
+                        "description": "Some funds assign a unique number to each employer (max length = 20)",
+                        "type": "string"
+                    },
+                    "SPIN": {
+                        "description": "The SPIN of the Regulated SuperFund. This field has been deprecated.  It will only be present for legacy superfunds.  New superfunds will not have a SPIN value.  The USI field should be used instead of SPIN",
+                        "type": "string"
+                    }
+                }
+            },
+            "SuperFundProduct": {
+                "type": "object",
+                "properties": {
+                    "ABN": {
+                        "description": "ABN of the self managed super fund. (max length = 11) e.g 839182848805",
+                        "type": "string"
+                    },
+                    "USI": {
+                        "description": "The USI of the Regulated SuperFund",
+                        "type": "string"
+                    },
+                    "SPIN": {
+                        "description": "The SPIN of the Regulated SuperFund. This field has been deprecated.  It will only be present for legacy superfunds.  New superfunds will not have a SPIN value.  The USI field should be used instead of SPIN",
+                        "type": "string"
+                    },
+                    "ProductName": {
+                        "description": "The name of the Regulated SuperFund",
+                        "type": "string"
+                    }
+                }
+            },
+            "Timesheet": {
+                "type": "object",
+                "properties": {
+                    "EmployeeID": {
+                        "description": "Xero unique identifier for an Employee",
+                        "type": "string"
+                    },
+                    "StartDate": {
+                        "description": "If you aren\u2019t sure of the exact start date for an employee, you can just enter the start of the current financial year (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "EndDate": {
+                        "description": "End date of the leave (YYYY-MM-DD)",
+                        "type": "string"
+                    },
+                    "TimesheetLines": {
+                        "description": "See TimesheetLines",
+                        "type": "array"
+                    },
+                    "Status": {
+                        "description": "See Employee Status Types",
+                        "type": "string"
+                    },
+                    "Hours": {
+                        "description": "Timesheet total hours",
+                        "type": "string"
+                    },
+                    "TimesheetID": {
+                        "description": "The Xero identifier for a Payroll Timesheet",
+                        "type": "string"
+                    }
+                }
+            },
+            "TimesheetLines": {
+                "type": "array"
+            },
+            "TimesheetLine": {
+                "type": "object",
+                "properties": {
+                    "EarningsRateID": {
+                        "description": "Xero earnings rate identifier",
+                        "type": "string"
+                    },
+                    "TrackingItemID": {
+                        "description": "The Xero identifier for a Tracking Category <TrackingOptionID>. The <TrackingOptionID> must belong to the TrackingCategory selected as <TimesheetCategories> under Payroll Settings.",
+                        "type": "string"
+                    },
+                    "NumberOfUnits": {
+                        "description": "Number of units for leave line.",
+                        "type": "string"
+                    },
+                    "TimesheetID": {
+                        "description": "The Xero identifier for a Payroll Timesheet",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
