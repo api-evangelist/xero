@@ -1,0 +1,56 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Xero oAuth 1a",
+        "description": "A collection to authenticate to the Xero API using OAuth1.0a",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsapi.xero.com\/"
+    ],
+    "paths": {
+        "\/oauth\/RequestToken": {
+            "get": {
+                "summary": "Request Token",
+                "description": "TODO: Add Description",
+                "operationId": "OauthRequestTokenGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/oauth\/AccessToken": {
+            "get": {
+                "summary": "Access Token",
+                "description": "TODO: Add Description",
+                "operationId": "OauthAccessTokenGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "oauth_verifier",
+                        "in": "query",
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api.xro\/2.0\/Organisation": {
+            "get": {
+                "summary": "Organisation",
+                "description": "TODO: Add Description",
+                "operationId": "ApiXro20OrganisationGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "accept",
+                        "in": "header",
+                        "description": ""
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
