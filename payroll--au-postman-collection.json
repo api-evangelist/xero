@@ -1,0 +1,82 @@
+{
+    "id": "7cf712bd6b405011b5d81975fca52c59",
+    "name": "Payroll - AU",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "f827556fbb584effdca94f3786189364",
+            "name": "",
+            "url": "http:\/\/api.xero.com\/payroll.xro\/Employees",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "x-related-model",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "7cf712bd6b405011b5d81975fca52c59",
+            "rawModeData": ""
+        },
+        {
+            "id": "901c5033c048394c34cdad9fc89b7e5e",
+            "name": "Allows you to retrieve, add and update payroll employees in a Xero organisation",
+            "url": "http:\/\/api.xero.com\/payroll.xro\/Employees",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "7cf712bd6b405011b5d81975fca52c59",
+            "rawModeData": ""
+        },
+        {
+            "id": "16eecdba16e55b0db7b2a06e8b24b1f8",
+            "name": "",
+            "url": "http:\/\/api.xero.com\/payroll.xro\/Employees",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "7cf712bd6b405011b5d81975fca52c59",
+            "rawModeData": ""
+        }
+    ]
+}
