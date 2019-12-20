@@ -1,0 +1,98 @@
+{
+    "id": "4374a21872ed0c6a97c87599f55a9f32",
+    "name": "Xero oAuth 1a",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "f06fe3cac23eb77f62e16f5c051b6d6c",
+            "name": "Request Token",
+            "url": "httpsapi.xero.com\/\/oauth\/RequestToken",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "4374a21872ed0c6a97c87599f55a9f32",
+            "rawModeData": ""
+        },
+        {
+            "id": "1a64d429a39584858b1c5976823f05eb",
+            "name": "Access Token",
+            "url": "httpsapi.xero.com\/\/oauth\/AccessToken",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "oauth_verifier",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "4374a21872ed0c6a97c87599f55a9f32",
+            "rawModeData": ""
+        },
+        {
+            "id": "9e34a331fe73392f3b298517d92ec7db",
+            "name": "Organisation",
+            "url": "httpsapi.xero.com\/\/api.xro\/2.0\/Organisation",
+            "description": "TODO: Add Description",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "accept",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "4374a21872ed0c6a97c87599f55a9f32",
+            "rawModeData": ""
+        }
+    ]
+}
