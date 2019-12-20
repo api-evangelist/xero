@@ -1,0 +1,2500 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "2.0",
+        "title": "Accounting API",
+        "description": "",
+        "termsOfService": "http:\/\/exmple.com\/license\/"
+    },
+    "servers": [
+        "http:\/\/api.xero.com\/api.xro",
+        "http:\/\/api.xero.com\/api.xro\/2.0"
+    ],
+    "paths": {
+        "\/Accounts": {
+            "x-related-model": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "Allows you to retrieve the full chart of accounts",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "where",
+                        "in": "query",
+                        "description": "Filter by an any element"
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Order by an any element"
+                    },
+                    {
+                        "name": "No Name",
+                        "in": "query",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response"
+                    }
+                }
+            },
+            "put": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Address": {
+                "type": "object",
+                "properties": {
+                    "AddressLine1": {
+                        "description": "max length = 500",
+                        "type": "string"
+                    },
+                    "AddressLine2": {
+                        "description": "max length = 500",
+                        "type": "string"
+                    },
+                    "AddressLine3": {
+                        "description": "max length = 500",
+                        "type": "string"
+                    },
+                    "AddressLine4": {
+                        "description": "max length = 500",
+                        "type": "string"
+                    },
+                    "City": {
+                        "description": "max length = 255",
+                        "type": "string"
+                    },
+                    "Region": {
+                        "description": "max length = 255",
+                        "type": "string"
+                    },
+                    "PostalCode": {
+                        "description": "max length = 50",
+                        "type": "string"
+                    },
+                    "Country": {
+                        "description": "max length = 50, [A-Z], [a-z] only",
+                        "type": "string"
+                    },
+                    "AttentionTo": {
+                        "description": "max length = 255",
+                        "type": "string"
+                    },
+                    "AddressType": {
+                        "description": "The address type",
+                        "type": "string"
+                    }
+                }
+            },
+            "Phone": {
+                "type": "object",
+                "properties": {
+                    "PhoneNumber": {
+                        "description": "max length = 50",
+                        "type": "string"
+                    },
+                    "PhoneAreaCode": {
+                        "description": "max length = 10",
+                        "type": "string"
+                    },
+                    "PhoneCountryCode": {
+                        "description": "max length = 20",
+                        "type": "string"
+                    },
+                    "PhoneType": {
+                        "description": "The phone type",
+                        "type": "string"
+                    }
+                }
+            },
+            "Account": {
+                "type": "object",
+                "properties": {
+                    "Code": {
+                        "description": "Customer defined alpha numeric account code e.g 200 or SALES (max length = 10)",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    },
+                    "BankAccountNumber": {
+                        "description": "For bank accounts only (Account Type BANK)",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "Description": {
+                        "description": "Description of the Account. Valid for all types of accounts except bank accounts (max length = 4000)",
+                        "type": "string"
+                    },
+                    "BankAccountType": {
+                        "description": "For bank accounts only. See Bank Account types",
+                        "type": "string"
+                    },
+                    "CurrencyCode": {
+                        "description": "For bank accounts only",
+                        "type": "string"
+                    },
+                    "TaxType": {
+                        "description": "See Tax Types",
+                        "type": "string"
+                    },
+                    "EnablePaymentsToAccount": {
+                        "description": "Boolean \u2013 describes whether account can have payments applied to it",
+                        "type": "boolean"
+                    },
+                    "ShowInExpenseClaims": {
+                        "description": "Boolean \u2013 describes whether account code is available for use with expense claims",
+                        "type": "boolean"
+                    },
+                    "AccountID": {
+                        "description": "The Xero identifier for an account \u2013 specified as a string following the endpoint name\ne.g. \/297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Class": {
+                        "description": "See Account Class Types",
+                        "type": "string"
+                    },
+                    "SystemAccount": {
+                        "description": "If this is a system account then this element is returned. See System Account types. Note that non-system accounts may have this element set as either \u201c\u201d or null.",
+                        "type": "string"
+                    },
+                    "ReportingCode": {
+                        "description": "Shown if set",
+                        "type": "string"
+                    },
+                    "ReportingCodeName": {
+                        "description": "Shown if set",
+                        "type": "string"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    }
+                }
+            },
+            "BankTransaction": {
+                "type": "object",
+                "properties": {
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    },
+                    "Contact": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "Lineitems": {
+                        "description": "See LineItems",
+                        "type": "array"
+                    },
+                    "BankAccount": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "IsReconciled": {
+                        "description": "Boolean to show if transaction is reconciled",
+                        "type": "boolean"
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "Reference": {
+                        "description": "Reference for the transaction. Only supported for SPEND and RECEIVE transactions.",
+                        "type": "string"
+                    },
+                    "CurrencyCode": {
+                        "description": "For bank accounts only",
+                        "type": "string"
+                    },
+                    "CurrencyRate": {
+                        "description": "Exchange rate to base currency when money is spent or received. e.g. 0.7500 Only used for bank transactions in non base currency. If this isn\u2019t specified for non base currency accounts then either the user-defined rate (preference) or the XE.com day rate will be used. Setting currency is only supported on overpayments.",
+                        "type": "number"
+                    },
+                    "Url": {
+                        "description": "URL link to a source document \u2013 shown as \u201cGo to App Name\u201d",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "LineAmountTypes": {
+                        "description": "Line amounts are exclusive of tax by default if you don\u2019t specify this element. See Line Amount Types",
+                        "type": "string"
+                    },
+                    "SubTotal": {
+                        "description": "Total of bank transaction excluding taxes",
+                        "type": "number"
+                    },
+                    "TotalTax": {
+                        "description": "Total tax on bank transaction",
+                        "type": "number"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "BankTransactionID": {
+                        "description": "Xero generated unique identifier for bank transaction",
+                        "type": "string"
+                    },
+                    "PrepaymentID": {
+                        "description": "Xero generated unique identifier for a Prepayment. This will be returned on BankTransactions with a Type of SPEND-PREPAYMENT or RECEIVE-PREPAYMENT",
+                        "type": "string"
+                    },
+                    "OverpaymentID": {
+                        "description": "Xero generated unique identifier for an Overpayment. This will be returned on BankTransactions with a Type of SPEND-OVERPAYMENT or RECEIVE-OVERPAYMENT",
+                        "type": "string"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "LineItems": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Attachments": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "Lineitems": {
+                "type": "array"
+            },
+            "LineItem": {
+                "type": "object",
+                "properties": {
+                    "Description": {
+                        "description": "Description of the Account. Valid for all types of accounts except bank accounts (max length = 4000)",
+                        "type": "string"
+                    },
+                    "Quantity": {
+                        "description": "LineItem Quantity",
+                        "type": "number"
+                    },
+                    "UnitAmount": {
+                        "description": "LineItem Unit Amount",
+                        "type": "number"
+                    },
+                    "ItemCode": {
+                        "description": "See Items",
+                        "type": "string"
+                    },
+                    "AccountCode": {
+                        "description": "See Accounts",
+                        "type": "string"
+                    },
+                    "TaxType": {
+                        "description": "See Tax Types",
+                        "type": "string"
+                    },
+                    "TaxAmount": {
+                        "description": "The tax amount is auto calculated as a percentage of the line amount (see below) based on the tax rate. This value can be overriden if the calculated <TaxAmount> is not correct.",
+                        "type": "number"
+                    },
+                    "LineAmount": {
+                        "description": "If you wish to omit either of the <Quantity> or <UnitAmount> you can provide a LineAmount and Xero will calculate the missing amount for you. The line amount reflects the discounted price if a DiscountRate has been used . i.e LineAmount = Quantity * Unit Amount * ((100 \u2013 DiscountRate)\/100)",
+                        "type": "number"
+                    },
+                    "Tracking": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "DiscountRate": {
+                        "description": "Percentage discount being applied to a line item (only supported on ACCREC invoices \u2013 ACC PAY invoices and credit notes in Xero do not support discounts",
+                        "type": "number"
+                    },
+                    "RepeatingInvoiceID": {
+                        "description": "The Xero identifier for a Repeating Invoicee.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "LineItemID": {
+                        "description": "The Xero generated identifier for a LineItem. If LineItemIDs are not included with line items in an update request then the line items are deleted and recreated.",
+                        "type": "string"
+                    }
+                }
+            },
+            "Tracking": {
+                "type": "object",
+                "properties": {
+                    "TrackingCategory": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "BankAccount": {
+                "type": "object",
+                "properties": {
+                    "Code": {
+                        "description": "Customer defined alpha numeric account code e.g 200 or SALES (max length = 10)",
+                        "type": "string"
+                    },
+                    "AccountID": {
+                        "description": "The Xero identifier for an account \u2013 specified as a string following the endpoint name\ne.g. \/297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    }
+                }
+            },
+            "BankTransfer": {
+                "type": "object",
+                "properties": {
+                    "FromBankAccount": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "ToBankAccount": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "Amount": {
+                        "description": "The amount of the payment. Must be less than or equal to the outstanding amount owing on the invoice e.g. 200.00",
+                        "type": "number"
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "BankTransferID": {
+                        "description": "The identifier of the Bank Transfer",
+                        "type": "string"
+                    },
+                    "CurrencyRate": {
+                        "description": "Exchange rate to base currency when money is spent or received. e.g. 0.7500 Only used for bank transactions in non base currency. If this isn\u2019t specified for non base currency accounts then either the user-defined rate (preference) or the XE.com day rate will be used. Setting currency is only supported on overpayments.",
+                        "type": "number"
+                    },
+                    "FromBankTransactionID": {
+                        "description": "The Bank Transaction ID for the source account",
+                        "type": "string"
+                    },
+                    "ToBankTransactionID": {
+                        "description": "The Bank Transaction ID for the destination account",
+                        "type": "string"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "CreatedDateUTC": {
+                        "description": "UTC timestamp of creation date of bank transfer",
+                        "type": "string"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "Attachments": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "BrandingTheme": {
+                "type": "object",
+                "properties": {
+                    "BrandingThemeID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "SortOrder": {
+                        "description": "Integer \u2013 ranked order of branding theme. The default branding theme has a value of 0",
+                        "type": "integer"
+                    },
+                    "CreatedDateUTC": {
+                        "description": "UTC timestamp of creation date of bank transfer",
+                        "type": "string"
+                    }
+                }
+            },
+            "Contact": {
+                "type": "object",
+                "properties": {
+                    "ContactID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    },
+                    "ContactNumber": {
+                        "description": "This can be updated via the API only i.e. This field is read only on the Xero contact screen, used to identify contacts in external systems (max length = 50). If the Contact Number is used, this is displayed as Contact Code in the Contacts UI in Xero.",
+                        "type": "string"
+                    },
+                    "AccountNumber": {
+                        "description": "A user defined account number. This can be updated via the API and the Xero UI (max length = 50)",
+                        "type": "string"
+                    },
+                    "ContactStatus": {
+                        "description": "Current status of a contact \u2013 see contact status types",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "FirstName": {
+                        "description": "First name of contact person (max length = 255)",
+                        "type": "string"
+                    },
+                    "LastName": {
+                        "description": "Last name of contact person (max length = 255)",
+                        "type": "string"
+                    },
+                    "EmailAddress": {
+                        "description": "Email address of contact person (umlauts not supported) (max length = 255)",
+                        "type": "string"
+                    },
+                    "SkypeUserName": {
+                        "description": "Skype user name of contact",
+                        "type": "string"
+                    },
+                    "ContactPersons": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "BankAccountDetails": {
+                        "description": "Bank account number of contact",
+                        "type": "string"
+                    },
+                    "TaxNumber": {
+                        "description": "Tax number of contact \u2013 this is also known as the ABN (Australia), GST Number (New Zealand), VAT Number (UK) or Tax ID Number (US and global) in the Xero UI depending on which regionalized version of Xero you are using (max length = 50)",
+                        "type": "string"
+                    },
+                    "AccountsReceivableTaxType": {
+                        "description": "Default tax type used for contact on AR invoices",
+                        "type": "string"
+                    },
+                    "AccountsPayableTaxType": {
+                        "description": "Default tax type used for contact on AP invoices",
+                        "type": "string"
+                    },
+                    "Addresses": {
+                        "description": "Store certain address types for a contact \u2013 see address types",
+                        "type": "array"
+                    },
+                    "Phones": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "IsSupplier": {
+                        "description": "true or false \u2013 Boolean that describes if a contact that has any AP invoices entered against them. Cannot be set via PUT or POST \u2013 it is automatically set when an accounts payable invoice is generated against this contact.",
+                        "type": "boolean"
+                    },
+                    "IsCustomer": {
+                        "description": "true or false \u2013 Boolean that describes if a contact has any AR invoices entered against them. Cannot be set via PUT or POST \u2013 it is automatically set when an accounts receivable invoice is generated against this contact.",
+                        "type": "boolean"
+                    },
+                    "DefaultCurrency": {
+                        "description": "Default currency for raising invoices against contact",
+                        "type": "string"
+                    },
+                    "XeroNetworkKey": {
+                        "description": "Store XeroNetworkKey for contacts.",
+                        "type": "string"
+                    },
+                    "SalesDefaultAccountCode": {
+                        "description": "The default sales account code for contacts",
+                        "type": "string"
+                    },
+                    "PurchasesDefaultAccountCode": {
+                        "description": "The default purchases account code for contacts",
+                        "type": "string"
+                    },
+                    "SalesTrackingCategories": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "PurchasesTrackingCategories": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "TrackingCategoryName": {
+                        "description": "The name of the Tracking Category assigned to the contact under SalesTrackingCategories and PurchasesTrackingCategories",
+                        "type": "string"
+                    },
+                    "TrackingCategoryOption": {
+                        "description": "The name of the Tracking Option assigned to the contact under SalesTrackingCategories and PurchasesTrackingCategories",
+                        "type": "string"
+                    },
+                    "PaymentTerms": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "ContactGroups": {
+                        "description": "Displays which contact groups a contact is included in",
+                        "type": "array"
+                    },
+                    "Website": {
+                        "description": "Website address for contact (read only)",
+                        "type": "string"
+                    },
+                    "BrandingTheme": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "BatchPayments": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Discount": {
+                        "description": "The default discount rate for the contact (read only)",
+                        "type": "number"
+                    },
+                    "Balances": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ContactPersons": {
+                "type": "object"
+            },
+            "Addresses": {
+                "type": "array"
+            },
+            "Phones": {
+                "type": "object"
+            },
+            "SalesTrackingCategories": {
+                "type": "object"
+            },
+            "PurchasesTrackingCategories": {
+                "type": "object"
+            },
+            "ContactGroups": {
+                "type": "array"
+            },
+            "ContactPerson": {
+                "type": "object",
+                "properties": {
+                    "FirstName": {
+                        "description": "First name of contact person (max length = 255)",
+                        "type": "string"
+                    },
+                    "LastName": {
+                        "description": "Last name of contact person (max length = 255)",
+                        "type": "string"
+                    },
+                    "EmailAddress": {
+                        "description": "Email address of contact person (umlauts not supported) (max length = 255)",
+                        "type": "string"
+                    },
+                    "IncludeInEmails": {
+                        "description": "boolean to indicate whether contact should be included on emails with invoices etc.",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ContactGroup": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "ContactGroupID": {
+                        "description": "The Xero identifier for an contact group \u2013 specified as a string following the endpoint name.\ne.g. \/297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Contacts": {
+                        "description": "The ContactID and Name of Contacts in a contact group. Returned on GETs when the ContactGroupID is supplied in the URL.",
+                        "type": "array"
+                    }
+                }
+            },
+            "Contacts": {
+                "type": "array"
+            },
+            "CreditNote": {
+                "type": "object",
+                "properties": {
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    },
+                    "Contact": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "LineAmountTypes": {
+                        "description": "Line amounts are exclusive of tax by default if you don\u2019t specify this element. See Line Amount Types",
+                        "type": "string"
+                    },
+                    "Lineitems": {
+                        "description": "See LineItems",
+                        "type": "array"
+                    },
+                    "SubTotal": {
+                        "description": "Total of bank transaction excluding taxes",
+                        "type": "number"
+                    },
+                    "TotalTax": {
+                        "description": "Total tax on bank transaction",
+                        "type": "number"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "CurrencyCode": {
+                        "description": "For bank accounts only",
+                        "type": "string"
+                    },
+                    "FullyPaidOnDate": {
+                        "description": "Date when credit note was fully paid(UTC format)",
+                        "type": "string"
+                    },
+                    "CreditNoteID": {
+                        "description": "Xero generated unique identifier",
+                        "type": "string"
+                    },
+                    "CreditNoteNumber": {
+                        "description": "ACCRECCREDIT \u2013 Unique alpha numeric code identifying credit note (when missing will auto-generate from your Organisation Invoice Settings)",
+                        "type": "string"
+                    },
+                    "Reference": {
+                        "description": "Reference for the transaction. Only supported for SPEND and RECEIVE transactions.",
+                        "type": "string"
+                    },
+                    "SentToContact": {
+                        "description": "boolean to indicate if a credit note has been sent to a contact via the Xero app (currently read only)",
+                        "type": "boolean"
+                    },
+                    "CurrencyRate": {
+                        "description": "Exchange rate to base currency when money is spent or received. e.g. 0.7500 Only used for bank transactions in non base currency. If this isn\u2019t specified for non base currency accounts then either the user-defined rate (preference) or the XE.com day rate will be used. Setting currency is only supported on overpayments.",
+                        "type": "number"
+                    },
+                    "RemainingCredit": {
+                        "description": "The remaining credit balance on the Credit Note",
+                        "type": "number"
+                    },
+                    "Allocations": {
+                        "description": "See Allocations",
+                        "type": "array"
+                    },
+                    "BrandingThemeID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "ContactSummary": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "Allocations": {
+                "type": "array"
+            },
+            "Allocation": {
+                "type": "object",
+                "properties": {
+                    "Invoice": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "AppliedAmount": {
+                        "description": "the amount being applied to the invoice",
+                        "type": "number"
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    }
+                }
+            },
+            "Currency": {
+                "type": "object",
+                "properties": {
+                    "Code": {
+                        "description": "Customer defined alpha numeric account code e.g 200 or SALES (max length = 10)",
+                        "type": "string"
+                    },
+                    "Description": {
+                        "description": "Description of the Account. Valid for all types of accounts except bank accounts (max length = 4000)",
+                        "type": "string"
+                    }
+                }
+            },
+            "Employee": {
+                "type": "object",
+                "properties": {
+                    "EmployeeID": {
+                        "description": "The Xero identifier for an employee\ne.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "FirstName": {
+                        "description": "First name of contact person (max length = 255)",
+                        "type": "string"
+                    },
+                    "LastName": {
+                        "description": "Last name of contact person (max length = 255)",
+                        "type": "string"
+                    },
+                    "ExternalLink": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "ExpenseClaim": {
+                "type": "object",
+                "properties": {
+                    "User": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "Receipts": {
+                        "description": "See Receipts",
+                        "type": "array"
+                    },
+                    "ExpenseClaimID": {
+                        "description": "Xero generated unique identifier for an expense claim",
+                        "type": "string"
+                    },
+                    "Payments": {
+                        "description": "See Payments",
+                        "type": "array"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "AmountDue": {
+                        "description": "The amount due to be paid for an expense claim",
+                        "type": "number"
+                    },
+                    "AmountPaid": {
+                        "description": "The amount still to pay for an expense claim",
+                        "type": "number"
+                    },
+                    "PaymentDueDate": {
+                        "description": "The date when the expense claim is due to be paid YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "ReportingDate": {
+                        "description": "The date the expense claim will be reported in Xero YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "ReceiptID": {
+                        "description": "The Xero identifier for the Receipt e.g. e59a2c7f-1306-4078-a0f3-73537afcbba9",
+                        "type": "string"
+                    }
+                }
+            },
+            "Receipts": {
+                "type": "array"
+            },
+            "Payments": {
+                "type": "array"
+            },
+            "Invoice": {
+                "type": "object",
+                "properties": {
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    },
+                    "Contact": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Lineitems": {
+                        "description": "See LineItems",
+                        "type": "array"
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "DueDate": {
+                        "description": "Date invoice is due \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "LineAmountTypes": {
+                        "description": "Line amounts are exclusive of tax by default if you don\u2019t specify this element. See Line Amount Types",
+                        "type": "string"
+                    },
+                    "InvoiceNumber": {
+                        "description": "ACCREC \u2013 Unique alpha numeric code identifying invoice (when missing will auto-generate from your Organisation Invoice Settings) (max length = 255)",
+                        "type": "string"
+                    },
+                    "Reference": {
+                        "description": "Reference for the transaction. Only supported for SPEND and RECEIVE transactions.",
+                        "type": "string"
+                    },
+                    "BrandingThemeID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    },
+                    "Url": {
+                        "description": "URL link to a source document \u2013 shown as \u201cGo to App Name\u201d",
+                        "type": "string"
+                    },
+                    "CurrencyCode": {
+                        "description": "For bank accounts only",
+                        "type": "string"
+                    },
+                    "CurrencyRate": {
+                        "description": "Exchange rate to base currency when money is spent or received. e.g. 0.7500 Only used for bank transactions in non base currency. If this isn\u2019t specified for non base currency accounts then either the user-defined rate (preference) or the XE.com day rate will be used. Setting currency is only supported on overpayments.",
+                        "type": "number"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "SentToContact": {
+                        "description": "boolean to indicate if a credit note has been sent to a contact via the Xero app (currently read only)",
+                        "type": "boolean"
+                    },
+                    "ExpectedPaymentDate": {
+                        "description": "Shown on sales invoices (Accounts Receivable) when this has been set",
+                        "type": "string"
+                    },
+                    "PlannedPaymentDate": {
+                        "description": "Shown on bills (Accounts Payable) when this has been set",
+                        "type": "string"
+                    },
+                    "SubTotal": {
+                        "description": "Total of bank transaction excluding taxes",
+                        "type": "number"
+                    },
+                    "TotalTax": {
+                        "description": "Total tax on bank transaction",
+                        "type": "number"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "TotalDiscount": {
+                        "description": "Total of discounts applied on the invoice line items",
+                        "type": "number"
+                    },
+                    "InvoiceID": {
+                        "description": "Xero generated unique identifier for invoice",
+                        "type": "string"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "Payments": {
+                        "description": "See Payments",
+                        "type": "array"
+                    },
+                    "Prepayments": {
+                        "description": "See Prepayments",
+                        "type": "array"
+                    },
+                    "Overpayments": {
+                        "description": "See Overpayments",
+                        "type": "array"
+                    },
+                    "AmountDue": {
+                        "description": "The amount due to be paid for an expense claim",
+                        "type": "number"
+                    },
+                    "AmountPaid": {
+                        "description": "The amount still to pay for an expense claim",
+                        "type": "number"
+                    },
+                    "FullyPaidOnDate": {
+                        "description": "Date when credit note was fully paid(UTC format)",
+                        "type": "string"
+                    },
+                    "AmountCredited": {
+                        "description": "Sum of all credit notes, over-payments and pre-payments applied to invoice",
+                        "type": "number"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "CreditNotes": {
+                        "description": "Details of credit notes that have been applied to an invoice",
+                        "type": "array"
+                    },
+                    "ContactSummary": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "LineItems": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Attachments": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "Prepayments": {
+                "type": "array"
+            },
+            "Overpayments": {
+                "type": "array"
+            },
+            "CreditNotes": {
+                "type": "array"
+            },
+            "Item": {
+                "type": "object",
+                "properties": {
+                    "Code": {
+                        "description": "Customer defined alpha numeric account code e.g 200 or SALES (max length = 10)",
+                        "type": "string"
+                    },
+                    "InventoryAssetAccountCode": {
+                        "description": "The inventory asset account for the item. The account must be of type INVENTORY. The  COGSAccountCode in PurchaseDetails is also required to create a tracked item",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "IsSold": {
+                        "description": "Boolean value, defaults to true. When IsSold is true the item will be available on sales transactions in the Xero UI. If IsSold is updated to false then Description and SalesDetails values will be nulled.",
+                        "type": "boolean"
+                    },
+                    "IsPurchased": {
+                        "description": "Boolean value, defaults to true. When IsPurchased is true the item is available for purchase transactions in the Xero UI. If IsPurchased is updated to false then PurchaseDescription and PurchaseDetails values will be nulled.",
+                        "type": "boolean"
+                    },
+                    "Description": {
+                        "description": "Description of the Account. Valid for all types of accounts except bank accounts (max length = 4000)",
+                        "type": "string"
+                    },
+                    "PurchaseDescription": {
+                        "description": "The purchase description of the item (max length = 4000)",
+                        "type": "string"
+                    },
+                    "PurchaseDetails": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "SalesDetails": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "IsTrackedAsInventory": {
+                        "description": "True for items that are tracked as inventory. An item will be tracked as inventory if the InventoryAssetAccountCode and COGSAccountCode are set.",
+                        "type": "boolean"
+                    },
+                    "TotalCostPool": {
+                        "description": "The value of the item on hand. Calculated using average cost accounting.",
+                        "type": "number"
+                    },
+                    "QuantityOnHand": {
+                        "description": "The quantity of the item on hand",
+                        "type": "number"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "ItemID": {
+                        "description": "The Xero identifier for an Item",
+                        "type": "string"
+                    }
+                }
+            },
+            "PurchaseDetails": {
+                "type": "object",
+                "properties": {
+                    "UnitPrice": {
+                        "description": "Unit Price of the item. By default UnitPrice is rounded to two decimal places. You can use 4 decimal places by adding the unitdp=4 querystring parameter to your request.",
+                        "type": "number"
+                    },
+                    "AccountCode": {
+                        "description": "See Accounts",
+                        "type": "string"
+                    },
+                    "COGSAccountCode": {
+                        "description": "Cost of goods sold account. Only applicable to the purchase details of tracked items.",
+                        "type": "string"
+                    },
+                    "TaxType": {
+                        "description": "See Tax Types",
+                        "type": "string"
+                    }
+                }
+            },
+            "Purchase": {
+                "type": "object",
+                "properties": {
+                    "UnitPrice": {
+                        "description": "Unit Price of the item. By default UnitPrice is rounded to two decimal places. You can use 4 decimal places by adding the unitdp=4 querystring parameter to your request.",
+                        "type": "number"
+                    },
+                    "AccountCode": {
+                        "description": "See Accounts",
+                        "type": "string"
+                    },
+                    "COGSAccountCode": {
+                        "description": "Cost of goods sold account. Only applicable to the purchase details of tracked items.",
+                        "type": "string"
+                    },
+                    "TaxType": {
+                        "description": "See Tax Types",
+                        "type": "string"
+                    }
+                }
+            },
+            "Journal": {
+                "type": "object",
+                "properties": {
+                    "JournalID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    },
+                    "JournalDate": {
+                        "description": "Date the journal was posted",
+                        "type": "string"
+                    },
+                    "JournalNumber": {
+                        "description": "Xero generated journal number",
+                        "type": "string"
+                    },
+                    "CreatedDateUTC": {
+                        "description": "UTC timestamp of creation date of bank transfer",
+                        "type": "string"
+                    },
+                    "Reference": {
+                        "description": "Reference for the transaction. Only supported for SPEND and RECEIVE transactions.",
+                        "type": "string"
+                    },
+                    "SourceID": {
+                        "description": "The identifier for the source transaction (e.g. InvoiceID)",
+                        "type": "string"
+                    },
+                    "SourceType": {
+                        "description": "The journal source type. The type of transaction that created the journal",
+                        "type": ""
+                    },
+                    "JournalLines": {
+                        "description": "See JournalLines",
+                        "type": "array"
+                    }
+                }
+            },
+            "JournalLines": {
+                "type": "array"
+            },
+            "JournalLine": {
+                "type": "object",
+                "properties": {
+                    "LineAmount": {
+                        "description": "If you wish to omit either of the <Quantity> or <UnitAmount> you can provide a LineAmount and Xero will calculate the missing amount for you. The line amount reflects the discounted price if a DiscountRate has been used . i.e LineAmount = Quantity * Unit Amount * ((100 \u2013 DiscountRate)\/100)",
+                        "type": "number"
+                    },
+                    "AccountCode": {
+                        "description": "See Accounts",
+                        "type": "string"
+                    },
+                    "Description": {
+                        "description": "Description of the Account. Valid for all types of accounts except bank accounts (max length = 4000)",
+                        "type": "string"
+                    },
+                    "TaxType": {
+                        "description": "See Tax Types",
+                        "type": "string"
+                    },
+                    "Tracking": {
+                        "description": "Optional Tracking Category \u2013 see Tracking.  Any LineItem can have a maximum of 2 <TrackingCategory> elements.",
+                        "type": "array"
+                    },
+                    "TaxAmount": {
+                        "description": "The tax amount is auto calculated as a percentage of the line amount (see below) based on the tax rate. This value can be overriden if the calculated <TaxAmount> is not correct.",
+                        "type": "number"
+                    }
+                }
+            },
+            "LinkedTransaction": {
+                "type": "object",
+                "properties": {
+                    "SourceTransactionID": {
+                        "description": "Filter by the SourceTransactionID. Get all the linked transactions created from a particular ACCPAY invoice",
+                        "type": "string"
+                    },
+                    "SourceLineItemID": {
+                        "description": "The line item identifier from the source transaction.",
+                        "type": "string"
+                    },
+                    "ContactID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    },
+                    "TargetTransactionID": {
+                        "description": "Filter by the TargetTransactionID. Get all the linked transactions allocated to a particular ACCREC invoice",
+                        "type": "string"
+                    },
+                    "TargetLineItemID": {
+                        "description": "The line item identifier from the target transaction. It is possible to link multiple billable expenses to the same TargetLineItemID.",
+                        "type": "string"
+                    },
+                    "LinkedTransactionID": {
+                        "description": "The Xero identifier for an Linked Transaction e.g. \/LinkedTransactions\/297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Filter by the combination of ContactID and Status. Get all the linked transactions that have been assigned to a particular customer and have a particular status e.g. GET \/LinkedTransactions?ContactID=4bb34b03-3378-4bb2-a0ed-6345abf3224e&Status=APPROVED.",
+                        "type": ""
+                    },
+                    "Type": {
+                        "description": "This will always be BILLABLEEXPENSE. More types may be added in future.",
+                        "type": ""
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "SourceTransactionTypeCode": {
+                        "description": "The Type of the source tranasction. This will be ACCPAY if the linked transaction was created from an invoice and SPEND if it was created from a bank transaction.",
+                        "type": "string"
+                    }
+                }
+            },
+            "ManualJournal": {
+                "type": "object",
+                "properties": {
+                    "Narration": {
+                        "description": "Description of journal being posted",
+                        "type": "string"
+                    },
+                    "JournalLines": {
+                        "description": "See JournalLines",
+                        "type": "array"
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "LineAmountTypes": {
+                        "description": "Line amounts are exclusive of tax by default if you don\u2019t specify this element. See Line Amount Types",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "Url": {
+                        "description": "URL link to a source document \u2013 shown as \u201cGo to App Name\u201d",
+                        "type": "string"
+                    },
+                    "ShowOnCashBasisReports": {
+                        "description": "Boolean \u2013 default is true if not specified",
+                        "type": "boolean"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "JournalID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    }
+                }
+            },
+            "Organisation": {
+                "type": "object",
+                "properties": {
+                    "APIKey": {
+                        "description": "Display a unique key used for Xero-to-Xero transactions",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "LegalName": {
+                        "description": "Organisation name shown on Reports",
+                        "type": "string"
+                    },
+                    "PaysTax": {
+                        "description": "Boolean to describe if organisation is registered with a local tax authority i.e. true, false",
+                        "type": "boolean"
+                    },
+                    "Version": {
+                        "description": "See Version Types",
+                        "type": "string"
+                    },
+                    "OrganisationType": {
+                        "description": "Organisation Type",
+                        "type": "string"
+                    },
+                    "BaseCurrency": {
+                        "description": "Default currency for organisation. See ISO 4217 Currency Codes",
+                        "type": "string"
+                    },
+                    "CountryCode": {
+                        "description": "Country code for organisation. See ISO 3166-2 Country Codes",
+                        "type": "string"
+                    },
+                    "IsDemoCompany": {
+                        "description": "Boolean to describe if organisation is a demo company.",
+                        "type": "boolean"
+                    },
+                    "OrganisationStatus": {
+                        "description": "Will be set to ACTIVE if you can connect to organisation via the Xero API",
+                        "type": "string"
+                    },
+                    "RegistrationNumber": {
+                        "description": "Shows for New Zealand, Australian and UK organisations",
+                        "type": "string"
+                    },
+                    "TaxNumber": {
+                        "description": "Tax number of contact \u2013 this is also known as the ABN (Australia), GST Number (New Zealand), VAT Number (UK) or Tax ID Number (US and global) in the Xero UI depending on which regionalized version of Xero you are using (max length = 50)",
+                        "type": "string"
+                    },
+                    "FinancialYearEndDay": {
+                        "description": "Calendar day e.g. 0-31",
+                        "type": "string"
+                    },
+                    "FinancialYearEndMonth": {
+                        "description": "Calendar Month e.g. 1-12",
+                        "type": "string"
+                    },
+                    "SalesTaxBasis": {
+                        "description": "The accounting basis used for tax returns. See Sales Tax Basis",
+                        "type": "string"
+                    },
+                    "SalesTaxPeriod": {
+                        "description": "The frequency with which tax returns are processed. See Sales Tax Period",
+                        "type": "string"
+                    },
+                    "DefaultSalesTax": {
+                        "description": "The default for LineAmountTypes on sales transactions",
+                        "type": "string"
+                    },
+                    "DefaultPurchasesTax": {
+                        "description": "The default for LineAmountTypes on purchase transactions",
+                        "type": "string"
+                    },
+                    "PeriodLockDate": {
+                        "description": "Shown if set. See lock dates",
+                        "type": "string"
+                    },
+                    "EndOfYearLockDate": {
+                        "description": "Shown if set. See lock dates",
+                        "type": "string"
+                    },
+                    "CreatedDateUTC": {
+                        "description": "UTC timestamp of creation date of bank transfer",
+                        "type": "string"
+                    },
+                    "Timezone": {
+                        "description": "Timezone specifications",
+                        "type": "string"
+                    },
+                    "OrganisationEntityType": {
+                        "description": "Organisation Type",
+                        "type": "string"
+                    },
+                    "ShortCode": {
+                        "description": "A unique identifier for the organisation. Potential uses.",
+                        "type": "string"
+                    },
+                    "LineOfBusiness": {
+                        "description": "Description of business type as defined in Organisation settings",
+                        "type": "string"
+                    },
+                    "Addresses": {
+                        "description": "Store certain address types for a contact \u2013 see address types",
+                        "type": "array"
+                    },
+                    "Phones": {
+                        "description": "Store certain phone types for a contact \u2013 see phone types",
+                        "type": "array"
+                    },
+                    "ExternalLinks": {
+                        "description": "Organisation profile links for popular services such as Facebook, Twitter, GooglePlus and LinkedIn. You can also add link to your website here. Shown if Organisation settings  is updated in Xero. See ExternalLinks below",
+                        "type": "array"
+                    },
+                    "PaymentTerms": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "ExternalLinks": {
+                "type": "array"
+            },
+            "PaymentTerm": {
+                "type": "object",
+                "properties": {
+                    "Bills": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Sales": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "ExternalLink": {
+                "type": "object",
+                "properties": {
+                    "LinkType": {
+                        "description": "See External link types",
+                        "type": "string"
+                    },
+                    "Url": {
+                        "description": "URL link to a source document \u2013 shown as \u201cGo to App Name\u201d",
+                        "type": "string"
+                    }
+                }
+            },
+            "Bill": {
+                "type": "object",
+                "properties": {
+                    "Day": {
+                        "description": "Day of Month (0-31)",
+                        "type": "string"
+                    },
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    }
+                }
+            },
+            "Overpayment": {
+                "type": "object",
+                "properties": {
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    },
+                    "Contact": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "LineAmountTypes": {
+                        "description": "Line amounts are exclusive of tax by default if you don\u2019t specify this element. See Line Amount Types",
+                        "type": "string"
+                    },
+                    "Lineitems": {
+                        "description": "See LineItems",
+                        "type": "array"
+                    },
+                    "SubTotal": {
+                        "description": "Total of bank transaction excluding taxes",
+                        "type": "number"
+                    },
+                    "TotalTax": {
+                        "description": "Total tax on bank transaction",
+                        "type": "number"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "CurrencyCode": {
+                        "description": "For bank accounts only",
+                        "type": "string"
+                    },
+                    "OverpaymentID": {
+                        "description": "Xero generated unique identifier for an Overpayment. This will be returned on BankTransactions with a Type of SPEND-OVERPAYMENT or RECEIVE-OVERPAYMENT",
+                        "type": "string"
+                    },
+                    "CurrencyRate": {
+                        "description": "Exchange rate to base currency when money is spent or received. e.g. 0.7500 Only used for bank transactions in non base currency. If this isn\u2019t specified for non base currency accounts then either the user-defined rate (preference) or the XE.com day rate will be used. Setting currency is only supported on overpayments.",
+                        "type": "number"
+                    },
+                    "RemainingCredit": {
+                        "description": "The remaining credit balance on the Credit Note",
+                        "type": "number"
+                    },
+                    "Allocations": {
+                        "description": "See Allocations",
+                        "type": "array"
+                    },
+                    "Payments": {
+                        "description": "See Payments",
+                        "type": "array"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "ContactSummary": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "Payment": {
+                "type": "object",
+                "properties": {
+                    "Invoice": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "CreditNote": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Prepayment": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "Overpayment": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "InvoiceNumber": {
+                        "description": "ACCREC \u2013 Unique alpha numeric code identifying invoice (when missing will auto-generate from your Organisation Invoice Settings) (max length = 255)",
+                        "type": "string"
+                    },
+                    "CreditNoteNumber": {
+                        "description": "ACCRECCREDIT \u2013 Unique alpha numeric code identifying credit note (when missing will auto-generate from your Organisation Invoice Settings)",
+                        "type": "string"
+                    },
+                    "Account": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "Code": {
+                        "description": "Customer defined alpha numeric account code e.g 200 or SALES (max length = 10)",
+                        "type": "string"
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "CurrencyRate": {
+                        "description": "Exchange rate to base currency when money is spent or received. e.g. 0.7500 Only used for bank transactions in non base currency. If this isn\u2019t specified for non base currency accounts then either the user-defined rate (preference) or the XE.com day rate will be used. Setting currency is only supported on overpayments.",
+                        "type": "number"
+                    },
+                    "Amount": {
+                        "description": "The amount of the payment. Must be less than or equal to the outstanding amount owing on the invoice e.g. 200.00",
+                        "type": "number"
+                    },
+                    "Reference": {
+                        "description": "Reference for the transaction. Only supported for SPEND and RECEIVE transactions.",
+                        "type": "string"
+                    },
+                    "IsReconciled": {
+                        "description": "Boolean to show if transaction is reconciled",
+                        "type": "boolean"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "PaymentType": {
+                        "description": "See Payment Types.",
+                        "type": "string"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "PaymentID": {
+                        "description": "The Xero identifier for an Payment e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "InvoiceSummary": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "CreditNoteSummary": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "OverpaymentSummary": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "Prepayment": {
+                "type": "object",
+                "properties": {
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    },
+                    "Contact": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "LineAmountTypes": {
+                        "description": "Line amounts are exclusive of tax by default if you don\u2019t specify this element. See Line Amount Types",
+                        "type": "string"
+                    },
+                    "Lineitems": {
+                        "description": "See LineItems",
+                        "type": "array"
+                    },
+                    "SubTotal": {
+                        "description": "Total of bank transaction excluding taxes",
+                        "type": "number"
+                    },
+                    "TotalTax": {
+                        "description": "Total tax on bank transaction",
+                        "type": "number"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "CurrencyCode": {
+                        "description": "For bank accounts only",
+                        "type": "string"
+                    },
+                    "PrepaymentID": {
+                        "description": "Xero generated unique identifier for a Prepayment. This will be returned on BankTransactions with a Type of SPEND-PREPAYMENT or RECEIVE-PREPAYMENT",
+                        "type": "string"
+                    },
+                    "CurrencyRate": {
+                        "description": "Exchange rate to base currency when money is spent or received. e.g. 0.7500 Only used for bank transactions in non base currency. If this isn\u2019t specified for non base currency accounts then either the user-defined rate (preference) or the XE.com day rate will be used. Setting currency is only supported on overpayments.",
+                        "type": "number"
+                    },
+                    "RemainingCredit": {
+                        "description": "The remaining credit balance on the Credit Note",
+                        "type": "number"
+                    },
+                    "Allocations": {
+                        "description": "See Allocations",
+                        "type": "array"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "ContactSummary": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "PurchaseOrder": {
+                "type": "object",
+                "properties": {
+                    "Contact": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Lineitems": {
+                        "description": "See LineItems",
+                        "type": "array"
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "DeliveryDate": {
+                        "description": "Date the goods are to be delivered \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "LineAmountTypes": {
+                        "description": "Line amounts are exclusive of tax by default if you don\u2019t specify this element. See Line Amount Types",
+                        "type": "string"
+                    },
+                    "PurchaseOrderNumber": {
+                        "description": "Unique alpha numeric code identifying purchase order (when missing will auto-generate from your Organisation Invoice Settings)",
+                        "type": "string"
+                    },
+                    "Reference": {
+                        "description": "Reference for the transaction. Only supported for SPEND and RECEIVE transactions.",
+                        "type": "string"
+                    },
+                    "BrandingThemeID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    },
+                    "CurrencyCode": {
+                        "description": "For bank accounts only",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "SentToContact": {
+                        "description": "boolean to indicate if a credit note has been sent to a contact via the Xero app (currently read only)",
+                        "type": "boolean"
+                    },
+                    "DeliveryAddress": {
+                        "description": "The address the goods are to be delivered to",
+                        "type": "string"
+                    },
+                    "AttentionTo": {
+                        "description": "max length = 255",
+                        "type": "string"
+                    },
+                    "Telephone": {
+                        "description": "The phone number for the person accepting the delivery",
+                        "type": "string"
+                    },
+                    "DeliveryInstructions": {
+                        "description": "A free text feild for instructions (500 characters max)",
+                        "type": "string"
+                    },
+                    "ExpectedArrivalDate": {
+                        "description": "The date the goods are expected to arrive.",
+                        "type": "string"
+                    },
+                    "PurchaseOrderID": {
+                        "description": "Xero generated unique identifier for purchase order",
+                        "type": "string"
+                    },
+                    "CurrencyRate": {
+                        "description": "Exchange rate to base currency when money is spent or received. e.g. 0.7500 Only used for bank transactions in non base currency. If this isn\u2019t specified for non base currency accounts then either the user-defined rate (preference) or the XE.com day rate will be used. Setting currency is only supported on overpayments.",
+                        "type": "number"
+                    },
+                    "SubTotal": {
+                        "description": "Total of bank transaction excluding taxes",
+                        "type": "number"
+                    },
+                    "TotalTax": {
+                        "description": "Total tax on bank transaction",
+                        "type": "number"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "TotalDiscount": {
+                        "description": "Total of discounts applied on the invoice line items",
+                        "type": "number"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "ContactSummary": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "Receipt": {
+                "type": "object",
+                "properties": {
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "Contact": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Lineitems": {
+                        "description": "See LineItems",
+                        "type": "array"
+                    },
+                    "User": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "Reference": {
+                        "description": "Reference for the transaction. Only supported for SPEND and RECEIVE transactions.",
+                        "type": "string"
+                    },
+                    "LineAmountTypes": {
+                        "description": "Line amounts are exclusive of tax by default if you don\u2019t specify this element. See Line Amount Types",
+                        "type": "string"
+                    },
+                    "SubTotal": {
+                        "description": "Total of bank transaction excluding taxes",
+                        "type": "number"
+                    },
+                    "TotalTax": {
+                        "description": "Total tax on bank transaction",
+                        "type": "number"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "ReceiptID": {
+                        "description": "The Xero identifier for the Receipt e.g. e59a2c7f-1306-4078-a0f3-73537afcbba9",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "ReceiptNumber": {
+                        "description": "Xero generated sequence number for receipt in current claim for a given user",
+                        "type": "string"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "Url": {
+                        "description": "URL link to a source document \u2013 shown as \u201cGo to App Name\u201d",
+                        "type": "string"
+                    },
+                    "ContactSummary": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "RepeatingInvoice": {
+                "type": "object",
+                "properties": {
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    },
+                    "Contact": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Schedule": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "Lineitems": {
+                        "description": "See LineItems",
+                        "type": "array"
+                    },
+                    "LineAmountTypes": {
+                        "description": "Line amounts are exclusive of tax by default if you don\u2019t specify this element. See Line Amount Types",
+                        "type": "string"
+                    },
+                    "Reference": {
+                        "description": "Reference for the transaction. Only supported for SPEND and RECEIVE transactions.",
+                        "type": "string"
+                    },
+                    "BrandingThemeID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    },
+                    "CurrencyCode": {
+                        "description": "For bank accounts only",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "SubTotal": {
+                        "description": "Total of bank transaction excluding taxes",
+                        "type": "number"
+                    },
+                    "TotalTax": {
+                        "description": "Total tax on bank transaction",
+                        "type": "number"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "RepeatingInvoiceID": {
+                        "description": "The Xero identifier for a Repeating Invoicee.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "HasAttachments": {
+                        "description": "boolean to indicate if an account has an attachment (read only)",
+                        "type": "boolean"
+                    },
+                    "ContactSummary": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "Schedule": {
+                "type": "object",
+                "properties": {
+                    "Period": {
+                        "description": "Integer used with the unit e.g. 1 (every 1 week), 2 (every 2 months)",
+                        "type": "integer"
+                    },
+                    "Unit": {
+                        "description": "One of the following : WEEKLY or MONTHLY",
+                        "type": "string"
+                    },
+                    "DueDate": {
+                        "description": "Integer used with due date type e.g 20 (of following month), 31 (of current month)",
+                        "type": "integer"
+                    },
+                    "DueDateType": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "StartDate": {
+                        "description": "Date the first invoice of the current version of the repeating schedule was generated (changes when repeating invoice is edited)",
+                        "type": "string"
+                    },
+                    "NextScheduledDate": {
+                        "description": "The calendar date of the next invoice in the schedule to be generated",
+                        "type": "string"
+                    },
+                    "EndDate": {
+                        "description": "Invoice end date \u2013 only returned if the template has an end date set",
+                        "type": "string"
+                    }
+                }
+            },
+            "TaxRate": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "TaxType": {
+                        "description": "See Tax Types",
+                        "type": "string"
+                    },
+                    "TaxComponents": {
+                        "description": "See TaxComponents",
+                        "type": "array"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "ReportTaxType": {
+                        "description": "See ReportTaxTypes",
+                        "type": "string"
+                    },
+                    "CanApplyToAssets": {
+                        "description": "Boolean to describe if tax rate can be used for asset accounts ",
+                        "type": "boolean"
+                    },
+                    "CanApplyToEquity": {
+                        "description": "Boolean to describe if tax rate can be used for equity accounts ",
+                        "type": "boolean"
+                    },
+                    "CanApplyToExpenses": {
+                        "description": "Boolean to describe if tax rate can be used for expense accounts ",
+                        "type": "boolean"
+                    },
+                    "CanApplyToLiabilities": {
+                        "description": "Boolean to describe if tax rate can be used for liability accounts",
+                        "type": "boolean"
+                    },
+                    "CanApplyToRevenue": {
+                        "description": "Boolean to describe if tax rate can be used for revenue accounts",
+                        "type": "boolean"
+                    },
+                    "DisplayTaxRate": {
+                        "description": "Tax Rate (decimal to 4dp) e.g 12.5000",
+                        "type": "number"
+                    },
+                    "EffectiveRate": {
+                        "description": "Effective Tax Rate (decimal to 4dp) e.g 12.5000",
+                        "type": "number"
+                    }
+                }
+            },
+            "TaxComponents": {
+                "type": "array"
+            },
+            "TaxComponent": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "Rate": {
+                        "description": "Tax Rate (up to 4dp)",
+                        "type": "number"
+                    },
+                    "IsCompound": {
+                        "description": "Boolean to describe if Tax rate is compounded.Learn more",
+                        "type": "boolean"
+                    },
+                    "TaxType": {
+                        "description": "See Tax Types",
+                        "type": "string"
+                    },
+                    "IsNonRecoverable": {
+                        "description": "Determines if this tax component can be recovered",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "TrackingCategory": {
+                "type": "array",
+                "properties": {
+                    "TrackingCategoryID": {
+                        "description": "The Xero identifier for a tracking categorye.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "Options": {
+                        "description": "See Tracking Options",
+                        "type": "array"
+                    }
+                }
+            },
+            "Options": {
+                "type": "array"
+            },
+            "TrackingOption": {
+                "type": "object",
+                "properties": {
+                    "TrackingOptionID": {
+                        "description": "The Xero identifier for a tracking optione.g. ae777a87-5ef3-4fa0-a4f0-d10e1f13073a",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See Account Status Codes",
+                        "type": "string"
+                    },
+                    "TrackingCategoryID": {
+                        "description": "The Xero identifier for a tracking categorye.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "UserID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    },
+                    "EmailAddress": {
+                        "description": "Email address of contact person (umlauts not supported) (max length = 255)",
+                        "type": "string"
+                    },
+                    "FirstName": {
+                        "description": "First name of contact person (max length = 255)",
+                        "type": "string"
+                    },
+                    "LastName": {
+                        "description": "Last name of contact person (max length = 255)",
+                        "type": "string"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "IsSubscriber": {
+                        "description": "Boolean to indicate if user is the subscriber",
+                        "type": "boolean"
+                    },
+                    "OrganisationRole": {
+                        "description": "User role (see Types)",
+                        "type": "string"
+                    }
+                }
+            },
+            "Attachment": {
+                "type": "object",
+                "properties": {
+                    "AttachmentId": {
+                        "description": "Xero generated unique identifier for attachment",
+                        "type": "string"
+                    },
+                    "Filename": {
+                        "description": "The filename of the attachemnt",
+                        "type": "string"
+                    },
+                    "Url": {
+                        "description": "URL link to a source document \u2013 shown as \u201cGo to App Name\u201d",
+                        "type": "string"
+                    },
+                    "MimeType": {
+                        "description": "The mimetype of the attachemnt",
+                        "type": "string"
+                    },
+                    "ContentLegth": {
+                        "description": "The content length in bytes",
+                        "type": "integer"
+                    },
+                    "IncludeOnline": {
+                        "description": "Determines whether the attachment is included with the online invoice",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "Balances": {
+                "type": "object"
+            },
+            "FromBankAccount": {
+                "type": "object",
+                "properties": {
+                    "Code": {
+                        "description": "Customer defined alpha numeric account code e.g 200 or SALES (max length = 10)",
+                        "type": "string"
+                    },
+                    "AccountID": {
+                        "description": "The Xero identifier for an account \u2013 specified as a string following the endpoint name\ne.g. \/297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    }
+                }
+            },
+            "ToBankAccount": {
+                "type": "object",
+                "properties": {
+                    "Code": {
+                        "description": "Customer defined alpha numeric account code e.g 200 or SALES (max length = 10)",
+                        "type": "string"
+                    },
+                    "AccountID": {
+                        "description": "The Xero identifier for an account \u2013 specified as a string following the endpoint name\ne.g. \/297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    }
+                }
+            },
+            "LineItems": {
+                "type": "object"
+            },
+            "Attachments": {
+                "type": "array"
+            },
+            "BatchPayments": {
+                "type": "object",
+                "properties": {
+                    "BankAccountNumber": {
+                        "description": "For bank accounts only (Account Type BANK)",
+                        "type": "string"
+                    },
+                    "BankAccountName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "Details": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "PaymentTerms": {
+                "type": "array"
+            },
+            "ContactSummary": {
+                "type": "object",
+                "properties": {
+                    "ContactID": {
+                        "description": "Xero identifier",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    }
+                }
+            },
+            "CreditNoteSummary": {
+                "type": "object",
+                "properties": {
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "AppliedAmount": {
+                        "description": "the amount being applied to the invoice",
+                        "type": "number"
+                    },
+                    "CreditNoteID": {
+                        "description": "Xero generated unique identifier",
+                        "type": "string"
+                    },
+                    "CreditNoteNumber": {
+                        "description": "ACCRECCREDIT \u2013 Unique alpha numeric code identifying credit note (when missing will auto-generate from your Organisation Invoice Settings)",
+                        "type": "string"
+                    }
+                }
+            },
+            "Content": {
+                "type": "object",
+                "properties": {
+                    "Content": {
+                        "description": "The raw file content",
+                        "type": "string"
+                    }
+                }
+            },
+            "InvoiceSummary": {
+                "type": "object",
+                "properties": {
+                    "ContactSummary": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "Contact": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Type": {
+                        "description": "See Account Types",
+                        "type": "string"
+                    },
+                    "InvoiceID": {
+                        "description": "Xero generated unique identifier for invoice",
+                        "type": "string"
+                    },
+                    "InvoiceNumber": {
+                        "description": "ACCREC \u2013 Unique alpha numeric code identifying invoice (when missing will auto-generate from your Organisation Invoice Settings) (max length = 255)",
+                        "type": "string"
+                    }
+                }
+            },
+            "SalesDetails": {
+                "type": "object",
+                "properties": {
+                    "UnitPrice": {
+                        "description": "Unit Price of the item. By default UnitPrice is rounded to two decimal places. You can use 4 decimal places by adding the unitdp=4 querystring parameter to your request.",
+                        "type": "number"
+                    },
+                    "AccountCode": {
+                        "description": "See Accounts",
+                        "type": "string"
+                    },
+                    "TaxType": {
+                        "description": "See Tax Types",
+                        "type": "string"
+                    }
+                }
+            },
+            "OnlineInvoice": {
+                "type": "object",
+                "properties": {
+                    "OnlineInvoiceUrl": {
+                        "description": "The URL to view the online invoice",
+                        "type": "string"
+                    }
+                }
+            },
+            "OverpaymentSummary": {
+                "type": "object",
+                "properties": {
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "AppliedAmount": {
+                        "description": "the amount being applied to the invoice",
+                        "type": "number"
+                    },
+                    "OverpaymentID": {
+                        "description": "Xero generated unique identifier for an Overpayment. This will be returned on BankTransactions with a Type of SPEND-OVERPAYMENT or RECEIVE-OVERPAYMENT",
+                        "type": "string"
+                    }
+                }
+            },
+            "PaymentSummary": {
+                "type": "object",
+                "properties": {
+                    "PaymentID": {
+                        "description": "The Xero identifier for an Payment e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "Amount": {
+                        "description": "The amount of the payment. Must be less than or equal to the outstanding amount owing on the invoice e.g. 200.00",
+                        "type": "number"
+                    }
+                }
+            },
+            "PrepaymentSummary": {
+                "type": "object",
+                "properties": {
+                    "Date": {
+                        "description": "Date of transaction \u2013 YYYY-MM-DD",
+                        "type": "string"
+                    },
+                    "Total": {
+                        "description": "Total of bank transaction tax inclusive",
+                        "type": "number"
+                    },
+                    "AppliedAmount": {
+                        "description": "the amount being applied to the invoice",
+                        "type": "number"
+                    },
+                    "PrepaymentID": {
+                        "description": "Xero generated unique identifier for a Prepayment. This will be returned on BankTransactions with a Type of SPEND-PREPAYMENT or RECEIVE-PREPAYMENT",
+                        "type": "string"
+                    }
+                }
+            },
+            "Report": {
+                "type": "object",
+                "properties": {
+                    "ReportID": {
+                        "description": "Identifier of the report",
+                        "type": "string"
+                    },
+                    "ReportName": {
+                        "description": "Name of the report",
+                        "type": "string"
+                    },
+                    "ReportType": {
+                        "description": "Type of report",
+                        "type": "string"
+                    },
+                    "ReportTitles": {
+                        "description": "The titles of the report",
+                        "type": "array"
+                    },
+                    "ReportDate": {
+                        "description": "The date of the report",
+                        "type": "string"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "Rows": {
+                        "description": "The rows of the report that contain the data (including header rows)",
+                        "type": "array"
+                    }
+                }
+            },
+            "ReportTitles": {
+                "type": "array"
+            },
+            "Rows": {
+                "type": "array"
+            },
+            "ReportSummary": {
+                "type": "object",
+                "properties": {
+                    "ReportID": {
+                        "description": "Identifier of the report",
+                        "type": "string"
+                    },
+                    "ReportName": {
+                        "description": "Name of the report",
+                        "type": "string"
+                    },
+                    "ReportType": {
+                        "description": "Type of report",
+                        "type": "string"
+                    },
+                    "ReportDate": {
+                        "description": "The date of the report",
+                        "type": "string"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    }
+                }
+            },
+            "TaxReport": {
+                "type": "object",
+                "properties": {
+                    "ReportID": {
+                        "description": "Identifier of the report",
+                        "type": "string"
+                    },
+                    "ReportName": {
+                        "description": "Name of the report",
+                        "type": "string"
+                    },
+                    "ReportType": {
+                        "description": "Type of report",
+                        "type": "string"
+                    },
+                    "ReportDate": {
+                        "description": "The date of the report",
+                        "type": "string"
+                    },
+                    "UpdatedDateUTC": {
+                        "description": "Last modified date UTC format",
+                        "type": "string"
+                    },
+                    "Attributes": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "Fields": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "Attributes": {
+                "type": "object"
+            },
+            "Fields": {
+                "type": "object"
+            },
+            "PurchasesTrackingCategory": {
+                "type": "object",
+                "properties": {
+                    "TrackingCategoryID": {
+                        "description": "The Xero identifier for a tracking categorye.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "Option": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "SalesTrackingCategory": {
+                "type": "object",
+                "properties": {
+                    "TrackingCategoryID": {
+                        "description": "The Xero identifier for a tracking categorye.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of account (max length = 150)",
+                        "type": "string"
+                    },
+                    "Option": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
