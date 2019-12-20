@@ -1,0 +1,104 @@
+{
+    "id": "7721acfd8b49d4c71a5198004aba3a75",
+    "name": "Accounting API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "d3cbcaaa58d9e7b9eefffb9884c93b95",
+            "name": "",
+            "url": "http:\/\/api.xero.com\/api.xro\/2.0\/Accounts",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "x-related-model",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "7721acfd8b49d4c71a5198004aba3a75",
+            "rawModeData": ""
+        },
+        {
+            "id": "ddacda00092d743c68e4584747d04f75",
+            "name": "Allows you to retrieve the full chart of accounts",
+            "url": "http:\/\/api.xero.com\/api.xro\/2.0\/Accounts",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "where",
+                    "description": "Filter by an any element",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "order",
+                    "description": "Order by an any element",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "No Name",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "7721acfd8b49d4c71a5198004aba3a75",
+            "rawModeData": ""
+        },
+        {
+            "id": "9f7cddb4382010a6a2ae4923380e2f4f",
+            "name": "",
+            "url": "http:\/\/api.xero.com\/api.xro\/2.0\/Accounts",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "put",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "7721acfd8b49d4c71a5198004aba3a75",
+            "rawModeData": ""
+        }
+    ]
+}
