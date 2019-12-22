@@ -1,5 +1,5 @@
 {
-    "id": "7721acfd8b49d4c71a5198004aba3a75",
+    "id": "ab9dfa40e1397b8a850618bd40220ba9",
     "name": "Accounting API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "d3cbcaaa58d9e7b9eefffb9884c93b95",
+            "id": "94a7f21c0b79a0a933b9c8237ec9690b",
             "name": "",
             "url": "http:\/\/api.xero.com\/api.xro\/2.0\/Accounts",
             "description": "",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "7721acfd8b49d4c71a5198004aba3a75",
+            "collectionId": "ab9dfa40e1397b8a850618bd40220ba9",
             "rawModeData": ""
         },
         {
-            "id": "ddacda00092d743c68e4584747d04f75",
+            "id": "c3453103e77310aee29db3b1d6a8811e",
             "name": "Allows you to retrieve the full chart of accounts",
             "url": "http:\/\/api.xero.com\/api.xro\/2.0\/Accounts",
             "description": "",
@@ -74,11 +74,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "7721acfd8b49d4c71a5198004aba3a75",
+            "collectionId": "ab9dfa40e1397b8a850618bd40220ba9",
             "rawModeData": ""
         },
         {
-            "id": "9f7cddb4382010a6a2ae4923380e2f4f",
+            "id": "5f50adeb28ce2e4ccabe1f0711eff1a0",
             "name": "",
             "url": "http:\/\/api.xero.com\/api.xro\/2.0\/Accounts",
             "description": "",
@@ -97,7 +97,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "7721acfd8b49d4c71a5198004aba3a75",
+            "collectionId": "ab9dfa40e1397b8a850618bd40220ba9",
             "rawModeData": ""
         }
     ]
