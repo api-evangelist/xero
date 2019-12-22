@@ -1,5 +1,5 @@
 {
-    "id": "4374a21872ed0c6a97c87599f55a9f32",
+    "id": "bc48e622063ef8e2f21e0aeaa2f9c92a",
     "name": "Xero oAuth 1a",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "f06fe3cac23eb77f62e16f5c051b6d6c",
+            "id": "748f00c3b62e9111a34022e24fb6e742",
             "name": "Request Token",
             "url": "httpsapi.xero.com\/\/oauth\/RequestToken",
             "description": "TODO: Add Description",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4374a21872ed0c6a97c87599f55a9f32",
+            "collectionId": "bc48e622063ef8e2f21e0aeaa2f9c92a",
             "rawModeData": ""
         },
         {
-            "id": "1a64d429a39584858b1c5976823f05eb",
+            "id": "a222d6722729373837c7d43a190dd927",
             "name": "Access Token",
             "url": "httpsapi.xero.com\/\/oauth\/AccessToken",
             "description": "TODO: Add Description",
@@ -60,11 +60,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4374a21872ed0c6a97c87599f55a9f32",
+            "collectionId": "bc48e622063ef8e2f21e0aeaa2f9c92a",
             "rawModeData": ""
         },
         {
-            "id": "9e34a331fe73392f3b298517d92ec7db",
+            "id": "2c33fd0289347a39b8c87e07a4c16bf1",
             "name": "Organisation",
             "url": "httpsapi.xero.com\/\/api.xro\/2.0\/Organisation",
             "description": "TODO: Add Description",
@@ -91,7 +91,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4374a21872ed0c6a97c87599f55a9f32",
+            "collectionId": "bc48e622063ef8e2f21e0aeaa2f9c92a",
             "rawModeData": ""
         }
     ]
