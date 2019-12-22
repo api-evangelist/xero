@@ -12,8 +12,8 @@
         "service api",
         "webhook implementations"
     ],
-    "created": "2019-12-19",
-    "modified": "2019-12-19",
+    "created": "2019-12-21",
+    "modified": "2019-12-21",
     "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/xero\/master\/apis.json",
     "specificationVersion": "0.14",
     "apis": [
@@ -30,8 +30,12 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/xero-oauth-1a.json"
                 },
                 {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/xero\/master\/xero-oauth-1a-openapi.json"
+                },
+                {
                     "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/xero-oauth-1a-postman-collection.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/xero\/master\/xero-oauth-1a-postman-collection.json"
                 }
             ]
         },
@@ -48,8 +52,12 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/accounting.json"
                 },
                 {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/xero\/master\/accounting-openapi.json"
+                },
+                {
                     "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/accounting-postman-collection.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/xero\/master\/accounting-postman-collection.json"
                 }
             ]
         },
@@ -66,8 +74,12 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/accounting-api.json"
                 },
                 {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/xero\/master\/accounting-api-openapi.json"
+                },
+                {
                     "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/accounting-api-postman-collection.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/xero\/master\/accounting-api-postman-collection.json"
                 }
             ]
         },
@@ -84,14 +96,22 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/payroll--au.json"
                 },
                 {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/xero\/master\/payroll--au-openapi.json"
+                },
+                {
                     "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/payroll--au-postman-collection.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/xero\/master\/payroll--au-postman-collection.json"
                 }
             ]
         }
     ],
     "include": [],
     "x-common": [
+        {
+            "type": "APIs.json",
+            "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis.json"
+        },
         {
             "type": "Base",
             "url": "https:\/\/api.xero.com"
