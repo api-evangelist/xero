@@ -87,7 +87,7 @@ apis:
     properties:
       - url: https://developer.xero.com/
         type: Documentation
-      - url: openapi/xero_accounting-openapi.yml
+      - url: openapi/xero-accounting-openapi.yml
         type: OpenAPI
     description: >-
       Build custom apps and integrations that solve unique problems for small
@@ -100,7 +100,7 @@ apis:
     properties:
       - url: https://developer.xero.com/
         type: Documentation
-      - url: openapi/xero_assets-openapi.yml
+      - url: openapi/xero-assets-openapi.yml
         type: OpenAPI
     description: >-
       Build custom apps and integrations that solve unique problems for small
@@ -113,7 +113,7 @@ apis:
     properties:
       - url: https://developer.xero.com/
         type: Documentation
-      - url: openapi/xero_bankfeeds-openapi.yml
+      - url: openapi/xero-bankfeeds-openapi.yml
         type: OpenAPI
     description: >-
       Build custom apps and integrations that solve unique problems for small
@@ -126,7 +126,7 @@ apis:
     properties:
       - url: https://developer.xero.com/
         type: Documentation
-      - url: openapi/xero_files-openapi.yml
+      - url: openapi/xero-files-openapi.yml
         type: OpenAPI
     description: >-
       Build custom apps and integrations that solve unique problems for small
