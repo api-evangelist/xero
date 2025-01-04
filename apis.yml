@@ -1,28 +1,160 @@
 aid: xero
-name: Xero
-description: >-
-  Build custom apps and integrations that solve unique problems for small
-  businesses using Xero
-type: Index
-image: htps://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
-created: 2024-11-07T00:00:00.000Z
-modified: 2024-11-07T00:00:00.000Z
 url: https://raw.githubusercontent.com/api-search/xero/refs/heads/main/apis.yml
-specificationVersion: '0.19'
 apis:
-  - aid: xero:xero
-    name: Xero
+  - aid: xero:xero-finance-api
+    name: Xero Finance API
+    tags:
+      - API
+    humanURL: https://developer.xero.com/
+    properties:
+      - url: https://developer.xero.com/
+        type: Documentation
+      - url: openapi/xero-finance-openapi.yml
+        type: OpenAPI
     description: >-
       Build custom apps and integrations that solve unique problems for small
       businesses using Xero
-    humanURL: https://developer.xero.com/
+  - aid: xero:xero-identity-api
+    name: Xero Identity API
     tags:
       - API
+    humanURL: https://developer.xero.com/
     properties:
-      - type: Documentation
-        url: https://developer.xero.com/
+      - url: https://developer.xero.com/
+        type: Documentation
+      - url: openapi/xero-identity-openapi.yml
+        type: OpenAPI
+    description: >-
+      Build custom apps and integrations that solve unique problems for small
+      businesses using Xero
+  - aid: xero:xero-payroll-australia-api
+    name: Xero Payroll Australia API
+    tags:
+      - API
+    humanURL: https://developer.xero.com/
+    properties:
+      - url: https://developer.xero.com/
+        type: Documentation
+      - url: openapi/xero-payroll-au-openapi.yml
+        type: OpenAPI
+    description: >-
+      Build custom apps and integrations that solve unique problems for small
+      businesses using Xero
+  - aid: xero:xero-payroll-new-zealand-api
+    name: Xero Payroll New Zealand API
+    tags:
+      - API
+    humanURL: https://developer.xero.com/
+    properties:
+      - url: https://developer.xero.com/
+        type: Documentation
+      - url: openapi/xero-payroll-nz-openapi.yml
+        type: OpenAPI
+    description: >-
+      Build custom apps and integrations that solve unique problems for small
+      businesses using Xero
+  - aid: xero:xero-payroll-united-kingdom-api
+    name: Xero Payroll United Kingdom API
+    tags:
+      - API
+    humanURL: https://developer.xero.com/
+    properties:
+      - url: https://developer.xero.com/
+        type: Documentation
+      - url: openapi/xero-payroll-uk-openapi.yml
+        type: OpenAPI
+    description: >-
+      Build custom apps and integrations that solve unique problems for small
+      businesses using Xero
+  - aid: xero:xero-projects-api
+    name: Xero Projects API
+    tags:
+      - API
+    humanURL: https://developer.xero.com/
+    properties:
+      - url: https://developer.xero.com/
+        type: Documentation
+      - url: openapi/xero-projects-openapi.yml
+        type: OpenAPI
+    description: >-
+      Build custom apps and integrations that solve unique problems for small
+      businesses using Xero
+  - aid: xero:xero-accounting-api
+    name: Xero Accounting API
+    tags:
+      - API
+    humanURL: https://developer.xero.com/
+    properties:
+      - url: https://developer.xero.com/
+        type: Documentation
+      - url: openapi/xero_accounting-openapi.yml
+        type: OpenAPI
+    description: >-
+      Build custom apps and integrations that solve unique problems for small
+      businesses using Xero
+  - aid: xero:xero-assets-api
+    name: Xero Assets API
+    tags:
+      - API
+    humanURL: https://developer.xero.com/
+    properties:
+      - url: https://developer.xero.com/
+        type: Documentation
+      - url: openapi/xero_assets-openapi.yml
+        type: OpenAPI
+    description: >-
+      Build custom apps and integrations that solve unique problems for small
+      businesses using Xero  
+  - aid: xero:xero-bank-feeds-api
+    name: Xero Bank Feeds API
+    tags:
+      - API
+    humanURL: https://developer.xero.com/
+    properties:
+      - url: https://developer.xero.com/
+        type: Documentation
+      - url: openapi/xero_bankfeeds-openapi.yml
+        type: OpenAPI
+    description: >-
+      Build custom apps and integrations that solve unique problems for small
+      businesses using Xero            
+  - aid: xero:xero-files-api
+    name: Xero Files API
+    tags:
+      - API
+    humanURL: https://developer.xero.com/
+    properties:
+      - url: https://developer.xero.com/
+        type: Documentation
+      - url: openapi/xero_files-openapi.yml
+        type: OpenAPI
+    description: >-
+      Build custom apps and integrations that solve unique problems for small
+      businesses using Xero 
+name: Xero
+tags:
+  - Accounting
+type: Contract
+image: htps://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+created: '2024-11-07T00:00:00.000Z'
+modified: '2025-01-04'
+description: >-
+  Xero is a cloud-based accounting software that helps small businesses manage
+  their finances more efficiently. With Xero, users can easily track income and
+  expenses, create and send invoices, reconcile bank transactions, and generate
+  various financial reports. The software's user-friendly interface and
+  automation features make it easy for business owners to stay on top of their
+  finances and make informed decisions. Xero also integrates with a variety of
+  other business tools, allowing users to streamline their workflow and save
+  valuable time. Overall, Xero simplifies the accounting process for small
+  businesses, providing them with the tools they need to succeed.
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
+specificationVersion: '0.19'
+position: Consuming
+access: 3rd-Party
+common:
+  - name: GitHub Organization
+    url: https://github.com/XeroAPI
+    type: GitHubOrganization
