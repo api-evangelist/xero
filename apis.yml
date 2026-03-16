@@ -150,7 +150,7 @@ description: >-
   businesses, providing them with the tools they need to succeed.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
 position: Consuming
 access: 3rd-Party
