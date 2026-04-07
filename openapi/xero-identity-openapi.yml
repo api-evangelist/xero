@@ -20,7 +20,7 @@ paths:
       security:
         - OAuth2: []
       tags:
-        - identity
+        - Identity
       description: Override the base server url that include version
       operationId: getConnections
       summary: Xero Retrieves the connections for this user
@@ -49,7 +49,7 @@ paths:
       security:
         - OAuth2: []
       tags:
-        - identity
+        - Identity
       description: Override the base server url that include version
       operationId: deleteConnection
       summary: Xero Deletes a connection for this user (i.e. disconnect a tenant)
@@ -156,3 +156,5 @@ components:
             email: Grant read-only access to your email
             openid: Grant read-only access to your open id
             profile: your profile information
+tags:
+  - name: Identity

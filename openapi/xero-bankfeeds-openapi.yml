@@ -1185,3 +1185,5 @@ components:
         - ZA
         - ZM
         - ZW
+tags:
+  - name: BankFeeds

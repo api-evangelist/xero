@@ -1983,3 +1983,5 @@ components:
             $ref: "#/components/schemas/StatementLineResponse"
           description: List of statement lines
       additionalProperties: false
+tags:
+  - name: Finance

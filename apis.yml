@@ -3,8 +3,7 @@ url: https://raw.githubusercontent.com/api-search/xero/refs/heads/main/apis.yml
 apis:
   - aid: xero:xero-finance-api
     name: Xero Finance API
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.xero.com/
     properties:
       - url: https://developer.xero.com/
@@ -16,8 +15,7 @@ apis:
       businesses using Xero
   - aid: xero:xero-identity-api
     name: Xero Identity API
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.xero.com/
     properties:
       - url: https://developer.xero.com/
@@ -29,8 +27,7 @@ apis:
       businesses using Xero
   - aid: xero:xero-payroll-australia-api
     name: Xero Payroll Australia API
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.xero.com/
     properties:
       - url: https://developer.xero.com/
@@ -42,8 +39,7 @@ apis:
       businesses using Xero
   - aid: xero:xero-payroll-new-zealand-api
     name: Xero Payroll New Zealand API
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.xero.com/
     properties:
       - url: https://developer.xero.com/
@@ -55,8 +51,7 @@ apis:
       businesses using Xero
   - aid: xero:xero-payroll-united-kingdom-api
     name: Xero Payroll United Kingdom API
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.xero.com/
     properties:
       - url: https://developer.xero.com/
@@ -68,8 +63,7 @@ apis:
       businesses using Xero
   - aid: xero:xero-projects-api
     name: Xero Projects API
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.xero.com/
     properties:
       - url: https://developer.xero.com/
@@ -81,8 +75,7 @@ apis:
       businesses using Xero
   - aid: xero:xero-accounting-api
     name: Xero Accounting API
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.xero.com/
     properties:
       - url: https://developer.xero.com/
@@ -94,8 +87,7 @@ apis:
       businesses using Xero
   - aid: xero:xero-assets-api
     name: Xero Assets API
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.xero.com/
     properties:
       - url: https://developer.xero.com/
@@ -107,8 +99,7 @@ apis:
       businesses using Xero  
   - aid: xero:xero-bank-feeds-api
     name: Xero Bank Feeds API
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.xero.com/
     properties:
       - url: https://developer.xero.com/
@@ -120,8 +111,7 @@ apis:
       businesses using Xero            
   - aid: xero:xero-files-api
     name: Xero Files API
-    tags:
-      - API
+    tags: []
     humanURL: https://developer.xero.com/
     properties:
       - url: https://developer.xero.com/

@@ -992,3 +992,5 @@ components:
           description: Detail of the field validation error
           type: string
       type: object
+tags:
+  - name: Asset

@@ -25466,3 +25466,5 @@ components:
           description: Name identifying the region within the country
           type: string
       type: object
+tags:
+  - name: Accounting
