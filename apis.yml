@@ -162,32 +162,32 @@ common:
     description: 'null'
     url: https://developer.xero.com/
     type: Portal
-  - name: Getting started guide  Xero Developer
+  - name: Getting started guide  Xero Developer
     description: 'null'
     url: https://developer.xero.com/documentation/getting-started-guide/
     type: GettingStarted
-  - name: SDKs  Xero Developer
+  - name: SDKs  Xero Developer
     description: 'null'
     url: >-
       https://developer.xero.com/documentation/sdks-and-tools/libraries/overview/
     type: SDKs
-  - name: Looking for Tools  Xero Developer
+  - name: Looking for Tools  Xero Developer
     description: 'null'
     url: https://developer.xero.com/documentation/sdks-and-tools/tools/overview
     type: Tools
-  - name: Xero API webhooks  Xero Developer
+  - name: Xero API webhooks  Xero Developer
     description: 'null'
     url: https://developer.xero.com/documentation/guides/webhooks/overview/
     type: Webhooks
-  - name: Xero Developer  Xero Developer
+  - name: Xero Developer  Xero Developer
     description: 'null'
     url: https://developer.xero.com/changelog
     type: ChangeLog
-  - name: OAuth 2.0  Xero Developer
+  - name: OAuth 2.0  Xero Developer
     description: 'null'
     url: https://developer.xero.com/documentation/guides/oauth2/overview/
     type: OAuth20
-  - name: Integration best practices  Xero Developer
+  - name: Integration best practices  Xero Developer
     description: 'null'
     url: >-
       https://developer.xero.com/documentation/guides/how-to-guides/integration-best-practices/
@@ -196,11 +196,11 @@ common:
     description: 'null'
     url: https://devblog.xero.com/
     type: Blog
-  - name: Frequently asked questions  Xero Developer
+  - name: Frequently asked questions  Xero Developer
     description: 'null'
     url: https://developer.xero.com/faq
     type: FAQ
-  - name: Xero Developer  Xero Developer
+  - name: Xero Developer  Xero Developer
     description: 'null'
     url: https://developer.xero.com/xero-developer-platform-terms-conditions/
     type: TermsOfService

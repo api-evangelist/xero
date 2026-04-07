@@ -24,7 +24,7 @@ paths:
             - bankfeeds
       tags:
         - BankFeeds
-      summary: Searches for feed connections
+      summary: Xero Searches for feed connections
       operationId: getFeedConnections
       description: By passing in the appropriate options, you can search for available feed connections in the system.
       parameters:
@@ -78,7 +78,7 @@ paths:
             - bankfeeds
       tags:
         - BankFeeds
-      summary: Create one or more new feed connection
+      summary: Xero Create one or more new feed connection
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       operationId: createFeedConnections
@@ -134,7 +134,7 @@ paths:
             - bankfeeds
       tags:
         - BankFeeds
-      summary: Retrieve single feed connection based on a unique id provided
+      summary: Xero Retrieve single feed connection based on a unique id provided
       operationId: getFeedConnection
       description: By passing in a FeedConnection Id options, you can search for matching feed connections
       parameters:
@@ -172,7 +172,7 @@ paths:
             - bankfeeds
       tags:
         - BankFeeds
-      summary: Delete an existing feed connection
+      summary: Xero Delete an existing feed connection
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       operationId: deleteFeedConnections
@@ -215,7 +215,7 @@ paths:
             - bankfeeds
       tags:
         - BankFeeds
-      summary: Retrieve all statements
+      summary: Xero Retrieve all statements
       operationId: getStatements
       description: By passing in parameters, you can search for matching statements
       parameters:
@@ -305,7 +305,7 @@ paths:
             - bankfeeds
       tags:
         - BankFeeds
-      summary: Creates one or more new statements
+      summary: Xero Creates one or more new statements
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       operationId: createStatements
@@ -452,7 +452,7 @@ paths:
             - bankfeeds
       tags:
         - BankFeeds
-      summary: Retrieve single statement based on unique id provided
+      summary: Xero Retrieve single statement based on unique id provided
       operationId: getStatement
       description: By passing in a statement id, you can search for matching statements
       parameters:

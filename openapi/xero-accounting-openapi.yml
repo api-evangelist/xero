@@ -23,7 +23,7 @@ paths:
       tags:
         - Accounting
       operationId: getAccounts
-      summary: Retrieves the full chart of accounts
+      summary: Xero Retrieves the full chart of accounts
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -74,7 +74,7 @@ paths:
       tags:
         - Accounting
       operationId: createAccount
-      summary: Creates a new chart of accounts
+      summary: Xero Creates a new chart of accounts
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-hasAccountingValidationError: true
@@ -178,7 +178,7 @@ paths:
       tags:
         - Accounting
       operationId: getAccount
-      summary: Retrieves a single chart of accounts by using a unique account Id
+      summary: Xero Retrieves a single chart of accounts by using a unique account Id
       parameters:
         - $ref: "#/components/parameters/AccountID"
       responses:
@@ -214,7 +214,7 @@ paths:
       tags:
         - Accounting
       operationId: updateAccount
-      summary: Updates a chart of accounts
+      summary: Xero Updates a chart of accounts
       x-hasAccountingValidationError: true
       x-example:
         - account:
@@ -343,7 +343,7 @@ paths:
         - Accounting
       operationId: deleteAccount
       x-hasAccountingValidationError: true
-      summary: Deletes a chart of accounts
+      summary: Xero Deletes a chart of accounts
       parameters:
         - $ref: "#/components/parameters/AccountID"
       responses:
@@ -401,7 +401,7 @@ paths:
       tags:
         - Accounting
       operationId: getAccountAttachments
-      summary: Retrieves attachments for a specific accounts by using a unique account Id
+      summary: Xero Retrieves attachments for a specific accounts by using a unique account Id
       parameters:
         - $ref: "#/components/parameters/AccountID"
       responses:
@@ -434,7 +434,7 @@ paths:
       tags:
         - Accounting
       operationId: getAccountAttachmentById
-      summary: Retrieves a specific attachment from a specific account using a unique attachment Id
+      summary: Xero Retrieves a specific attachment from a specific account using a unique attachment Id
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -458,7 +458,7 @@ paths:
       tags:
         - Accounting
       operationId: getAccountAttachmentByFileName
-      summary: Retrieves an attachment for a specific account by filename
+      summary: Xero Retrieves an attachment for a specific account by filename
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/FileName"
@@ -479,7 +479,7 @@ paths:
         - Accounting
       operationId: updateAccountAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Updates attachment on a specific account by filename
+      summary: Xero Updates attachment on a specific account by filename
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/FileName"
@@ -525,7 +525,7 @@ paths:
         - Accounting
       operationId: createAccountAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Creates an attachment on a specific account
+      summary: Xero Creates an attachment on a specific account
       parameters:
         - $ref: "#/components/parameters/AccountID"
         - $ref: "#/components/parameters/FileName"
@@ -571,7 +571,7 @@ paths:
       tags:
         - Accounting
       operationId: getBatchPayments
-      summary: Retrieves either one or many batch payments for invoices
+      summary: Xero Retrieves either one or many batch payments for invoices
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -688,7 +688,7 @@ paths:
       tags:
         - Accounting
       operationId: createBatchPayment
-      summary: Creates one or many batch payments for invoices
+      summary: Xero Creates one or many batch payments for invoices
       x-hasAccountingValidationError: true
       x-example:
         - currDate:
@@ -940,7 +940,7 @@ paths:
       tags:
         - Accounting
       operationId: deleteBatchPayment
-      summary: Updates a specific batch payment for invoices and credit notes
+      summary: Xero Updates a specific batch payment for invoices and credit notes
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-hasAccountingValidationError: true
@@ -1010,7 +1010,7 @@ paths:
       tags:
         - Accounting
       operationId: getBatchPayment
-      summary: Retrieves a specific batch payment using a unique batch payment Id
+      summary: Xero Retrieves a specific batch payment using a unique batch payment Id
       parameters:
         - $ref: "#/components/parameters/BatchPaymentID"
       responses:
@@ -1086,7 +1086,7 @@ paths:
       tags:
         - Accounting
       operationId: deleteBatchPaymentByUrlParam
-      summary: Updates a specific batch payment for invoices and credit notes
+      summary: Xero Updates a specific batch payment for invoices and credit notes
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/BatchPaymentID"
@@ -1136,7 +1136,7 @@ paths:
       tags:
         - Accounting
       operationId: getBatchPaymentHistory
-      summary: Retrieves history from a specific batch payment
+      summary: Xero Retrieves history from a specific batch payment
       parameters:
         - $ref: "#/components/parameters/BatchPaymentID"
       responses:
@@ -1164,7 +1164,7 @@ paths:
       tags:
         - Accounting
       operationId: createBatchPaymentHistoryRecord
-      summary: Creates a history record for a specific batch payment
+      summary: Xero Creates a history record for a specific batch payment
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -1228,7 +1228,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransactions
-      summary: Retrieves any spent or received money transactions
+      summary: Xero Retrieves any spent or received money transactions
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -1371,7 +1371,7 @@ paths:
       tags:
         - Accounting
       operationId: createBankTransactions
-      summary: Creates one or more spent or received money transaction
+      summary: Xero Creates one or more spent or received money transaction
       x-hasAccountingValidationError: true
       x-example:
         - contact:
@@ -1628,7 +1628,7 @@ paths:
       tags:
         - Accounting
       operationId: updateOrCreateBankTransactions
-      summary: Updates or creates one or more spent or received money transaction
+      summary: Xero Updates or creates one or more spent or received money transaction
       x-hasAccountingValidationError: true
       x-example:
         - contact:
@@ -1888,7 +1888,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransaction
-      summary: Retrieves a single spent or received money transaction by using a unique bank transaction Id
+      summary: Xero Retrieves a single spent or received money transaction by using a unique bank transaction Id
       parameters:
         - $ref: "#/components/parameters/BankTransactionID"
         - $ref: "#/components/parameters/unitdp"
@@ -1998,7 +1998,7 @@ paths:
       tags:
         - Accounting
       operationId: updateBankTransaction
-      summary: Updates a single spent or received money transaction
+      summary: Xero Updates a single spent or received money transaction
       x-hasAccountingValidationError: true
       x-example:
         - contact:
@@ -2311,7 +2311,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransactionAttachments
-      summary: Retrieves any attachments from a specific bank transactions
+      summary: Xero Retrieves any attachments from a specific bank transactions
       parameters:
         - $ref: "#/components/parameters/BankTransactionID"
       responses:
@@ -2349,7 +2349,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransactionAttachmentById
-      summary: Retrieves specific attachments from a specific BankTransaction using a unique attachment Id
+      summary: Xero Retrieves specific attachments from a specific BankTransaction using a unique attachment Id
       parameters:
         - $ref: "#/components/parameters/BankTransactionID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -2373,7 +2373,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransactionAttachmentByFileName
-      summary: Retrieves a specific attachment from a specific bank transaction by filename
+      summary: Xero Retrieves a specific attachment from a specific bank transaction by filename
       parameters:
         - $ref: "#/components/parameters/BankTransactionID"
         - $ref: "#/components/parameters/FileName"
@@ -2394,7 +2394,7 @@ paths:
         - Accounting
       operationId: updateBankTransactionAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Updates a specific attachment from a specific bank transaction by filename
+      summary: Xero Updates a specific attachment from a specific bank transaction by filename
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/BankTransactionID"
@@ -2436,7 +2436,7 @@ paths:
         - Accounting
       operationId: createBankTransactionAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Creates an attachment for a specific bank transaction by filename
+      summary: Xero Creates an attachment for a specific bank transaction by filename
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/BankTransactionID"
@@ -2481,7 +2481,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransactionsHistory
-      summary: Retrieves history from a specific bank transaction using a unique bank transaction Id
+      summary: Xero Retrieves history from a specific bank transaction using a unique bank transaction Id
       parameters:
         - $ref: "#/components/parameters/BankTransactionID"
       responses:
@@ -2494,7 +2494,7 @@ paths:
       tags:
         - Accounting
       operationId: createBankTransactionHistoryRecord
-      summary: Creates a history record for a specific bank transactions
+      summary: Xero Creates a history record for a specific bank transactions
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -2544,7 +2544,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransfers
-      summary: Retrieves all bank transfers
+      summary: Xero Retrieves all bank transfers
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -2615,7 +2615,7 @@ paths:
       tags:
         - Accounting
       operationId: createBankTransfer
-      summary: Creates a bank transfer
+      summary: Xero Creates a bank transfer
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-hasAccountingValidationError: true
@@ -2780,7 +2780,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransfer
-      summary: Retrieves specific bank transfers by using a unique bank transfer Id
+      summary: Xero Retrieves specific bank transfers by using a unique bank transfer Id
       parameters:
         - $ref: "#/components/parameters/BankTransferID"
       responses:
@@ -2834,7 +2834,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransferAttachments
-      summary: Retrieves attachments from a specific bank transfer
+      summary: Xero Retrieves attachments from a specific bank transfer
       parameters:
         - $ref: "#/components/parameters/BankTransferID"
       responses:
@@ -2867,7 +2867,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransferAttachmentById
-      summary: Retrieves a specific attachment from a specific bank transfer using a unique attachment ID
+      summary: Xero Retrieves a specific attachment from a specific bank transfer using a unique attachment ID
       parameters:
         - $ref: "#/components/parameters/BankTransferID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -2891,7 +2891,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransferAttachmentByFileName
-      summary: Retrieves a specific attachment on a specific bank transfer by file name
+      summary: Xero Retrieves a specific attachment on a specific bank transfer by file name
       parameters:
         - $ref: "#/components/parameters/BankTransferID"
         - $ref: "#/components/parameters/FileName"
@@ -2997,7 +2997,7 @@ paths:
       tags:
         - Accounting
       operationId: getBankTransferHistory
-      summary: Retrieves history from a specific bank transfer using a unique bank transfer Id
+      summary: Xero Retrieves history from a specific bank transfer using a unique bank transfer Id
       parameters:
         - $ref: "#/components/parameters/BankTransferID"
       responses:
@@ -3010,7 +3010,7 @@ paths:
       tags:
         - Accounting
       operationId: createBankTransferHistoryRecord
-      summary: Creates a history record for a specific bank transfer
+      summary: Xero Creates a history record for a specific bank transfer
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -3060,7 +3060,7 @@ paths:
       tags:
         - Accounting
       operationId: getBrandingThemes
-      summary: Retrieves all the branding themes
+      summary: Xero Retrieves all the branding themes
       responses:
         "200":
           description: Success - return response of type BrandingThemes
@@ -3089,7 +3089,7 @@ paths:
       tags:
         - Accounting
       operationId: getBrandingTheme
-      summary: Retrieves a specific branding theme using a unique branding theme Id
+      summary: Xero Retrieves a specific branding theme using a unique branding theme Id
       parameters:
         - $ref: "#/components/parameters/BrandingThemeID"
       responses:
@@ -3119,7 +3119,7 @@ paths:
       tags:
         - Accounting
       operationId: getBrandingThemePaymentServices
-      summary: Retrieves the payment services for a specific branding theme
+      summary: Xero Retrieves the payment services for a specific branding theme
       x-excludeFromPreview: true
       parameters:
         - $ref: "#/components/parameters/BrandingThemeID"
@@ -3151,7 +3151,7 @@ paths:
       tags:
         - Accounting
       operationId: createBrandingThemePaymentServices
-      summary: Creates a new custom payment service for a specific branding theme
+      summary: Xero Creates a new custom payment service for a specific branding theme
       x-excludeFromPreview: true
       x-hasAccountingValidationError: true
       x-example:
@@ -3245,7 +3245,7 @@ paths:
       tags:
         - Accounting
       operationId: getBudgets
-      summary: Retrieve a list of budgets
+      summary: Xero Retrieve a list of budgets
       parameters:
         - in: query
           name: IDs
@@ -3315,7 +3315,7 @@ paths:
       tags:
         - Accounting
       operationId: getBudget
-      summary: Retrieves a specific budget, which includes budget lines
+      summary: Xero Retrieves a specific budget, which includes budget lines
       parameters:
         - $ref: "#/components/parameters/BudgetID"
         - in: query
@@ -3350,7 +3350,7 @@ paths:
                   BudgetID: c1d195d4-92aa-4abd-867a-7ac2f9d60500
                   Type: TRACKING
                   Description: Daniels Northern Budget
-                  UpdatedDateUTC: 2017-08-14T01:18:26.74
+                  UpdatedDateUTC: 2017-08-14T01:18:26.740000
                   Tracking:
                     - TrackingCategoryID: e94ba240-3edf-4ef3-8317-10147b968f94
                       Name: Region
@@ -4445,7 +4445,7 @@ paths:
       tags:
         - Accounting
       operationId: getContactAttachmentById
-      summary: Retrieves a specific attachment from a specific contact using a unique attachment Id
+      summary: Xero Retrieves a specific attachment from a specific contact using a unique attachment Id
       parameters:
         - $ref: "#/components/parameters/ContactID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -4469,7 +4469,7 @@ paths:
       tags:
         - Accounting
       operationId: getContactAttachmentByFileName
-      summary: Retrieves a specific attachment from a specific contact by file name
+      summary: Xero Retrieves a specific attachment from a specific contact by file name
       parameters:
         - $ref: "#/components/parameters/ContactID"
         - $ref: "#/components/parameters/FileName"
@@ -4601,7 +4601,7 @@ paths:
       tags:
         - Accounting
       operationId: getContactHistory
-      summary: Retrieves history records for a specific contact
+      summary: Xero Retrieves history records for a specific contact
       parameters:
         - $ref: "#/components/parameters/ContactID"
       responses:
@@ -4614,7 +4614,7 @@ paths:
       tags:
         - Accounting
       operationId: createContactHistory
-      summary: Creates a new history record for a specific contact
+      summary: Xero Creates a new history record for a specific contact
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -4664,7 +4664,7 @@ paths:
       tags:
         - Accounting
       operationId: getContactGroups
-      summary: Retrieves the contact Id and name of each contact group
+      summary: Xero Retrieves the contact Id and name of each contact group
       parameters:
         - in: query
           name: where
@@ -4712,7 +4712,7 @@ paths:
       tags:
         - Accounting
       operationId: createContactGroup
-      summary: Creates a contact group
+      summary: Xero Creates a contact group
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-hasAccountingValidationError: true
@@ -4799,7 +4799,7 @@ paths:
       tags:
         - Accounting
       operationId: getContactGroup
-      summary: Retrieves a specific contact group by using a unique contact group Id
+      summary: Xero Retrieves a specific contact group by using a unique contact group Id
       parameters:
         - $ref: "#/components/parameters/ContactGroupID"
       responses:
@@ -4841,7 +4841,7 @@ paths:
       tags:
         - Accounting
       operationId: updateContactGroup
-      summary: Updates a specific contact group
+      summary: Xero Updates a specific contact group
       x-hasAccountingValidationError: true
       x-example:
         - contact:
@@ -4913,7 +4913,7 @@ paths:
       tags:
         - Accounting
       operationId: createContactGroupContacts
-      summary: Creates contacts to a specific contact group
+      summary: Xero Creates contacts to a specific contact group
       x-hasAccountingValidationError: true
       x-example:
         - contact:
@@ -4990,7 +4990,7 @@ paths:
       tags:
         - Accounting
       operationId: deleteContactGroupContacts
-      summary: Deletes all contacts from a specific contact group
+      summary: Xero Deletes all contacts from a specific contact group
       parameters:
         - $ref: "#/components/parameters/ContactGroupID"
       responses:
@@ -5007,7 +5007,7 @@ paths:
       tags:
         - Accounting
       operationId: deleteContactGroupContact
-      summary: Deletes a specific contact from a contact group using a unique contact Id
+      summary: Xero Deletes a specific contact from a contact group using a unique contact Id
       parameters:
         - $ref: "#/components/parameters/ContactGroupID"
         - $ref: "#/components/parameters/ContactID"
@@ -5028,7 +5028,7 @@ paths:
       tags:
         - Accounting
       operationId: getCreditNotes
-      summary: Retrieves any credit notes
+      summary: Xero Retrieves any credit notes
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -5143,7 +5143,7 @@ paths:
       tags:
         - Accounting
       operationId: createCreditNotes
-      summary: Creates a new credit note
+      summary: Xero Creates a new credit note
       x-hasAccountingValidationError: true
       x-example:
         - currDate:
@@ -5397,7 +5397,7 @@ paths:
       tags:
         - Accounting
       operationId: updateOrCreateCreditNotes
-      summary: Updates or creates one or more credit notes
+      summary: Xero Updates or creates one or more credit notes
       x-hasAccountingValidationError: true
       x-example:
         - currDate:
@@ -5658,7 +5658,7 @@ paths:
       tags:
         - Accounting
       operationId: getCreditNote
-      summary: Retrieves a specific credit note using a unique credit note Id
+      summary: Xero Retrieves a specific credit note using a unique credit note Id
       parameters:
         - $ref: "#/components/parameters/CreditNoteID"
         - $ref: "#/components/parameters/unitdp"
@@ -5766,7 +5766,7 @@ paths:
       tags:
         - Accounting
       operationId: updateCreditNote
-      summary: Updates a specific credit note
+      summary: Xero Updates a specific credit note
       x-hasAccountingValidationError: true
       x-example:
         - currDate:
@@ -6041,7 +6041,7 @@ paths:
       tags:
         - Accounting
       operationId: getCreditNoteAttachments
-      summary: Retrieves attachments for a specific credit notes
+      summary: Xero Retrieves attachments for a specific credit notes
       parameters:
         - $ref: "#/components/parameters/CreditNoteID"
       responses:
@@ -6074,7 +6074,7 @@ paths:
       tags:
         - Accounting
       operationId: getCreditNoteAttachmentById
-      summary: Retrieves a specific attachment from a specific credit note using a unique attachment Id
+      summary: Xero Retrieves a specific attachment from a specific credit note using a unique attachment Id
       parameters:
         - $ref: "#/components/parameters/CreditNoteID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -6098,7 +6098,7 @@ paths:
       tags:
         - Accounting
       operationId: getCreditNoteAttachmentByFileName
-      summary: Retrieves a specific attachment on a specific credit note by file name
+      summary: Xero Retrieves a specific attachment on a specific credit note by file name
       parameters:
         - $ref: "#/components/parameters/CreditNoteID"
         - $ref: "#/components/parameters/FileName"
@@ -6119,7 +6119,7 @@ paths:
         - Accounting
       operationId: updateCreditNoteAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Updates attachments on a specific credit note by file name
+      summary: Xero Updates attachments on a specific credit note by file name
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/CreditNoteID"
@@ -6161,7 +6161,7 @@ paths:
         - Accounting
       operationId: createCreditNoteAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Creates an attachment for a specific credit note
+      summary: Xero Creates an attachment for a specific credit note
       parameters:
         - $ref: "#/components/parameters/CreditNoteID"
         - $ref: "#/components/parameters/FileName"
@@ -6208,7 +6208,7 @@ paths:
         - Accounting
       operationId: getCreditNoteAsPdf
       x-path: /CreditNotes/{CreditNoteID}
-      summary: Retrieves credit notes as PDF files
+      summary: Xero Retrieves credit notes as PDF files
       parameters:
         - $ref: "#/components/parameters/CreditNoteID"
       responses:
@@ -6229,7 +6229,7 @@ paths:
       tags:
         - Accounting
       operationId: createCreditNoteAllocation
-      summary: Creates allocation for a specific credit note
+      summary: Xero Creates allocation for a specific credit note
       x-hasAccountingValidationError: true
       x-example:
         - currDate:
@@ -6357,7 +6357,7 @@ paths:
       tags:
         - Accounting
       operationId: deleteCreditNoteAllocations
-      summary: Deletes an Allocation from a Credit Note
+      summary: Xero Deletes an Allocation from a Credit Note
       parameters:
         - $ref: "#/components/parameters/CreditNoteID"
         - $ref: "#/components/parameters/AllocationID"
@@ -6385,7 +6385,7 @@ paths:
       tags:
         - Accounting
       operationId: getCreditNoteHistory
-      summary: Retrieves history records of a specific credit note
+      summary: Xero Retrieves history records of a specific credit note
       parameters:
         - $ref: "#/components/parameters/CreditNoteID"
       responses:
@@ -6398,7 +6398,7 @@ paths:
       tags:
         - Accounting
       operationId: createCreditNoteHistory
-      summary: Retrieves history records of a specific credit note
+      summary: Xero Retrieves history records of a specific credit note
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -6812,7 +6812,7 @@ paths:
       tags:
         - Accounting
       operationId: getExpenseClaims
-      summary: Retrieves expense claims
+      summary: Xero Retrieves expense claims
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -6868,7 +6868,7 @@ paths:
       tags:
         - Accounting
       operationId: createExpenseClaims
-      summary: Creates expense claims
+      summary: Xero Creates expense claims
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-hasAccountingValidationError: true
@@ -7070,7 +7070,7 @@ paths:
       tags:
         - Accounting
       operationId: getExpenseClaim
-      summary: Retrieves a specific expense claim using a unique expense claim Id
+      summary: Xero Retrieves a specific expense claim using a unique expense claim Id
       parameters:
         - $ref: "#/components/parameters/ExpenseClaimID"
       responses:
@@ -7147,7 +7147,7 @@ paths:
       tags:
         - Accounting
       operationId: updateExpenseClaim
-      summary: Updates a specific expense claims
+      summary: Xero Updates a specific expense claims
       x-hasAccountingValidationError: true
       x-example:
         - currDate:
@@ -7350,7 +7350,7 @@ paths:
       tags:
         - Accounting
       operationId: getExpenseClaimHistory
-      summary: Retrieves history records of a specific expense claim
+      summary: Xero Retrieves history records of a specific expense claim
       parameters:
         - $ref: "#/components/parameters/ExpenseClaimID"
       responses:
@@ -7363,7 +7363,7 @@ paths:
       tags:
         - Accounting
       operationId: createExpenseClaimHistory
-      summary: Creates a history record for a specific expense claim
+      summary: Xero Creates a history record for a specific expense claim
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -7411,7 +7411,7 @@ paths:
       tags:
         - Accounting
       operationId: getInvoices
-      summary: Retrieves sales invoices or purchase bills
+      summary: Xero Retrieves sales invoices or purchase bills
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -7653,7 +7653,7 @@ paths:
       tags:
         - Accounting
       operationId: createInvoices
-      summary: Creates one or more sales invoices or purchase bills
+      summary: Xero Creates one or more sales invoices or purchase bills
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -8006,7 +8006,7 @@ paths:
       tags:
         - Accounting
       operationId: updateOrCreateInvoices
-      summary: Updates or creates one or more sales invoices or purchase bills
+      summary: Xero Updates or creates one or more sales invoices or purchase bills
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -8321,7 +8321,7 @@ paths:
       tags:
         - Accounting
       operationId: getInvoice
-      summary: Retrieves a specific sales invoice or purchase bill using a unique invoice Id
+      summary: Xero Retrieves a specific sales invoice or purchase bill using a unique invoice Id
       parameters:
         - $ref: "#/components/parameters/InvoiceID"
         - $ref: "#/components/parameters/unitdp"
@@ -8454,7 +8454,7 @@ paths:
       tags:
         - Accounting
       operationId: updateInvoice
-      summary: Updates a specific sales invoices or purchase bills
+      summary: Xero Updates a specific sales invoices or purchase bills
       x-hasAccountingValidationError: true
       x-example:
         - invoice:
@@ -8600,7 +8600,7 @@ paths:
         - Accounting
       operationId: getInvoiceAsPdf
       x-path: /Invoices/{InvoiceID}
-      summary: Retrieves invoices or purchase bills as PDF files
+      summary: Xero Retrieves invoices or purchase bills as PDF files
       parameters:
         - $ref: "#/components/parameters/InvoiceID"
       responses:
@@ -8622,7 +8622,7 @@ paths:
       tags:
         - Accounting
       operationId: getInvoiceAttachments
-      summary: Retrieves attachments for a specific invoice or purchase bill
+      summary: Xero Retrieves attachments for a specific invoice or purchase bill
       parameters:
         - $ref: "#/components/parameters/InvoiceID"
       responses:
@@ -8660,7 +8660,7 @@ paths:
       tags:
         - Accounting
       operationId: getInvoiceAttachmentById
-      summary: Retrieves a specific attachment from a specific invoices or purchase bills by using a unique attachment Id
+      summary: Xero Retrieves a specific attachment from a specific invoices or purchase bills by using a unique attachment Id
       parameters:
         - $ref: "#/components/parameters/InvoiceID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -8684,7 +8684,7 @@ paths:
       tags:
         - Accounting
       operationId: getInvoiceAttachmentByFileName
-      summary: Retrieves an attachment from a specific invoice or purchase bill by filename
+      summary: Xero Retrieves an attachment from a specific invoice or purchase bill by filename
       parameters:
         - $ref: "#/components/parameters/InvoiceID"
         - $ref: "#/components/parameters/FileName"
@@ -8705,7 +8705,7 @@ paths:
         - Accounting
       operationId: updateInvoiceAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Updates an attachment from a specific invoices or purchase bill by filename
+      summary: Xero Updates an attachment from a specific invoices or purchase bill by filename
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/InvoiceID"
@@ -8747,7 +8747,7 @@ paths:
         - Accounting
       operationId: createInvoiceAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Creates an attachment for a specific invoice or purchase bill by filename
+      summary: Xero Creates an attachment for a specific invoice or purchase bill by filename
       parameters:
         - $ref: "#/components/parameters/InvoiceID"
         - $ref: "#/components/parameters/FileName"
@@ -8793,7 +8793,7 @@ paths:
       tags:
         - Accounting
       operationId: getOnlineInvoice
-      summary: Retrieves a URL to an online invoice
+      summary: Xero Retrieves a URL to an online invoice
       parameters:
         - $ref: "#/components/parameters/InvoiceID"
       responses:
@@ -8820,7 +8820,7 @@ paths:
       tags:
         - Accounting
       operationId: emailInvoice
-      summary: Sends a copy of a specific invoice to related contact via email
+      summary: Xero Sends a copy of a specific invoice to related contact via email
       x-hasAccountingValidationError: true
       x-example:
         - requestEmpty:
@@ -8855,7 +8855,7 @@ paths:
       tags:
         - Accounting
       operationId: getInvoiceHistory
-      summary: Retrieves history records for a specific invoice
+      summary: Xero Retrieves history records for a specific invoice
       parameters:
         - $ref: "#/components/parameters/InvoiceID"
       responses:
@@ -8868,7 +8868,7 @@ paths:
       tags:
         - Accounting
       operationId: createInvoiceHistory
-      summary: Creates a history record for a specific invoice
+      summary: Xero Creates a history record for a specific invoice
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -8918,7 +8918,7 @@ paths:
       tags:
         - Accounting
       operationId: getInvoiceReminders
-      summary: Retrieves invoice reminder settings
+      summary: Xero Retrieves invoice reminder settings
       responses:
         "200":
           description: Success - return response of Invoice Reminders
@@ -8944,7 +8944,7 @@ paths:
       tags:
         - Accounting
       operationId: getItems
-      summary: Retrieves items
+      summary: Xero Retrieves items
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -9003,7 +9003,7 @@ paths:
       tags:
         - Accounting
       operationId: createItems
-      summary: Creates one or more items
+      summary: Xero Creates one or more items
       x-hasAccountingValidationError: true
       x-example:
         - purchaseDetails:
@@ -9120,7 +9120,7 @@ paths:
       tags:
         - Accounting
       operationId: updateOrCreateItems
-      summary: Updates or creates one or more items
+      summary: Xero Updates or creates one or more items
       x-hasAccountingValidationError: true
       x-example:
         - item:
@@ -9208,7 +9208,7 @@ paths:
       tags:
         - Accounting
       operationId: getItem
-      summary: Retrieves a specific item using a unique item Id
+      summary: Xero Retrieves a specific item using a unique item Id
       parameters:
         - $ref: "#/components/parameters/ItemID"
         - $ref: "#/components/parameters/unitdp"
@@ -9253,7 +9253,7 @@ paths:
       tags:
         - Accounting
       operationId: updateItem
-      summary: Updates a specific item
+      summary: Xero Updates a specific item
       x-hasAccountingValidationError: true
       x-example:
         - item:
@@ -9330,7 +9330,7 @@ paths:
       tags:
         - Accounting
       operationId: deleteItem
-      summary: Deletes a specific item
+      summary: Xero Deletes a specific item
       parameters:
         - $ref: "#/components/parameters/ItemID"
       responses:
@@ -9350,7 +9350,7 @@ paths:
       tags:
         - Accounting
       operationId: getItemHistory
-      summary: Retrieves history for a specific item
+      summary: Xero Retrieves history for a specific item
       parameters:
         - $ref: "#/components/parameters/ItemID"
       responses:
@@ -9363,7 +9363,7 @@ paths:
       tags:
         - Accounting
       operationId: createItemHistory
-      summary: Creates a history record for a specific item
+      summary: Xero Creates a history record for a specific item
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -9410,7 +9410,7 @@ paths:
       tags:
         - Accounting
       operationId: getJournals
-      summary: Retrieves journals
+      summary: Xero Retrieves journals
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -9577,7 +9577,7 @@ paths:
       tags:
         - Accounting
       operationId: getJournal
-      summary: Retrieves a specific journal using a unique journal Id.
+      summary: Xero Retrieves a specific journal using a unique journal Id.
       parameters:
         - $ref: "#/components/parameters/JournalID"
       responses:
@@ -9633,7 +9633,7 @@ paths:
       tags:
         - Accounting
       operationId: getJournalByNumber
-      summary: Retrieves a specific journal using a unique journal number.
+      summary: Xero Retrieves a specific journal using a unique journal number.
       parameters:
         - $ref: "#/components/parameters/JournalNumber"
       responses:
@@ -9690,7 +9690,7 @@ paths:
       tags:
         - Accounting
       operationId: getLinkedTransactions
-      summary: Retrieves linked transactions (billable expenses)
+      summary: Xero Retrieves linked transactions (billable expenses)
       parameters:
         - in: query
           name: page
@@ -9767,7 +9767,7 @@ paths:
       tags:
         - Accounting
       operationId: createLinkedTransaction
-      summary: Creates linked transactions (billable expenses)
+      summary: Xero Creates linked transactions (billable expenses)
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-hasAccountingValidationError: true
@@ -9838,7 +9838,7 @@ paths:
       tags:
         - Accounting
       operationId: getLinkedTransaction
-      summary: Retrieves a specific linked transaction (billable expenses) using a unique linked transaction Id
+      summary: Xero Retrieves a specific linked transaction (billable expenses) using a unique linked transaction Id
       parameters:
         - $ref: "#/components/parameters/LinkedTransactionID"
       responses:
@@ -9871,7 +9871,7 @@ paths:
       tags:
         - Accounting
       operationId: updateLinkedTransaction
-      summary: Updates a specific linked transactions (billable expenses)
+      summary: Xero Updates a specific linked transactions (billable expenses)
       x-hasAccountingValidationError: true
       x-example:
         - linkedTransaction:
@@ -9972,7 +9972,7 @@ paths:
       tags:
         - Accounting
       operationId: deleteLinkedTransaction
-      summary: Deletes a specific linked transactions (billable expenses)
+      summary: Xero Deletes a specific linked transactions (billable expenses)
       parameters:
         - $ref: "#/components/parameters/LinkedTransactionID"
       responses:
@@ -9992,7 +9992,7 @@ paths:
       tags:
         - Accounting
       operationId: getManualJournals
-      summary: Retrieves manual journals
+      summary: Xero Retrieves manual journals
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -10070,7 +10070,7 @@ paths:
       tags:
         - Accounting
       operationId: createManualJournals
-      summary: Creates one or more manual journals
+      summary: Xero Creates one or more manual journals
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -10275,7 +10275,7 @@ paths:
       tags:
         - Accounting
       operationId: updateOrCreateManualJournals
-      summary: Updates or creates a single manual journal
+      summary: Xero Updates or creates a single manual journal
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -10484,7 +10484,7 @@ paths:
       tags:
         - Accounting
       operationId: getManualJournal
-      summary: Retrieves a specific manual journal
+      summary: Xero Retrieves a specific manual journal
       parameters:
         - $ref: "#/components/parameters/ManualJournalID"
       responses:
@@ -10543,7 +10543,7 @@ paths:
       tags:
         - Accounting
       operationId: updateManualJournal
-      summary: Updates a specific manual journal
+      summary: Xero Updates a specific manual journal
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -10738,7 +10738,7 @@ paths:
       tags:
         - Accounting
       operationId: getManualJournalAttachments
-      summary: Retrieves attachment for a specific manual journal
+      summary: Xero Retrieves attachment for a specific manual journal
       parameters:
         - $ref: "#/components/parameters/ManualJournalID"
       responses:
@@ -10776,7 +10776,7 @@ paths:
       tags:
         - Accounting
       operationId: getManualJournalAttachmentById
-      summary: Allows you to retrieve a specific attachment from a specific manual journal using a unique attachment Id
+      summary: Xero Allows you to retrieve a specific attachment from a specific manual journal using a unique attachment Id
       parameters:
         - $ref: "#/components/parameters/ManualJournalID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -10800,7 +10800,7 @@ paths:
       tags:
         - Accounting
       operationId: getManualJournalAttachmentByFileName
-      summary: Retrieves a specific attachment from a specific manual journal by file name
+      summary: Xero Retrieves a specific attachment from a specific manual journal by file name
       parameters:
         - $ref: "#/components/parameters/ManualJournalID"
         - $ref: "#/components/parameters/FileName"
@@ -10821,7 +10821,7 @@ paths:
         - Accounting
       operationId: updateManualJournalAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Updates a specific attachment from a specific manual journal by file name
+      summary: Xero Updates a specific attachment from a specific manual journal by file name
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/ManualJournalID"
@@ -10863,7 +10863,7 @@ paths:
         - Accounting
       operationId: createManualJournalAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Creates a specific attachment for a specific manual journal by file name
+      summary: Xero Creates a specific attachment for a specific manual journal by file name
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/ManualJournalID"
@@ -10908,7 +10908,7 @@ paths:
       tags:
         - Accounting
       operationId: getManualJournalsHistory
-      summary: Retrieves history for a specific manual journal
+      summary: Xero Retrieves history for a specific manual journal
       parameters:
         - $ref: "#/components/parameters/ManualJournalID"
       responses:
@@ -10921,7 +10921,7 @@ paths:
       tags:
         - Accounting
       operationId: createManualJournalHistoryRecord
-      summary: Creates a history record for a specific manual journal
+      summary: Xero Creates a history record for a specific manual journal
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -11102,7 +11102,7 @@ paths:
       tags:
         - Accounting
       operationId: getOverpayments
-      summary: Retrieves overpayments
+      summary: Xero Retrieves overpayments
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -11302,7 +11302,7 @@ paths:
       tags:
         - Accounting
       operationId: getOverpayment
-      summary: Retrieves a specific overpayment using a unique overpayment Id
+      summary: Xero Retrieves a specific overpayment using a unique overpayment Id
       parameters:
         - $ref: "#/components/parameters/OverpaymentID"
       responses:
@@ -11417,7 +11417,7 @@ paths:
       tags:
         - Accounting
       operationId: createOverpaymentAllocations
-      summary: Creates a single allocation for a specific overpayment
+      summary: Xero Creates a single allocation for a specific overpayment
       x-hasAccountingValidationError: true
       x-example:
         - currDate:
@@ -11547,7 +11547,7 @@ paths:
       tags:
         - Accounting
       operationId: deleteOverpaymentAllocations
-      summary: Deletes an Allocation from an overpayment
+      summary: Xero Deletes an Allocation from an overpayment
       parameters:
         - $ref: "#/components/parameters/OverpaymentID"
         - $ref: "#/components/parameters/AllocationID"
@@ -11575,7 +11575,7 @@ paths:
       tags:
         - Accounting
       operationId: getOverpaymentHistory
-      summary: Retrieves history records of a specific overpayment
+      summary: Xero Retrieves history records of a specific overpayment
       parameters:
         - $ref: "#/components/parameters/OverpaymentID"
       responses:
@@ -11588,7 +11588,7 @@ paths:
       tags:
         - Accounting
       operationId: createOverpaymentHistory
-      summary: Creates a history record for a specific overpayment
+      summary: Xero Creates a history record for a specific overpayment
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -11652,7 +11652,7 @@ paths:
       tags:
         - Accounting
       operationId: getPayments
-      summary: Retrieves payments for invoices and credit notes
+      summary: Xero Retrieves payments for invoices and credit notes
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -11786,7 +11786,7 @@ paths:
       tags:
         - Accounting
       operationId: createPayments
-      summary: Creates multiple payments for invoices or credit notes
+      summary: Xero Creates multiple payments for invoices or credit notes
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -11971,7 +11971,7 @@ paths:
       tags:
         - Accounting
       operationId: createPayment
-      summary: Creates a single payment for invoice or credit notes
+      summary: Xero Creates a single payment for invoice or credit notes
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-hasAccountingValidationError: true
@@ -12159,7 +12159,7 @@ paths:
       tags:
         - Accounting
       operationId: getPayment
-      summary: Retrieves a specific payment for invoices and credit notes using a unique payment Id
+      summary: Xero Retrieves a specific payment for invoices and credit notes using a unique payment Id
       parameters:
         - $ref: "#/components/parameters/PaymentID"
       responses:
@@ -12256,7 +12256,7 @@ paths:
       tags:
         - Accounting
       operationId: deletePayment
-      summary: Updates a specific payment for invoices and credit notes
+      summary: Xero Updates a specific payment for invoices and credit notes
       x-hasAccountingValidationError: true
       x-example:
         - paymentDelete:
@@ -12360,7 +12360,7 @@ paths:
       tags:
         - Accounting
       operationId: getPaymentHistory
-      summary: Retrieves history records of a specific payment
+      summary: Xero Retrieves history records of a specific payment
       parameters:
         - $ref: "#/components/parameters/PaymentID"
       responses:
@@ -12373,7 +12373,7 @@ paths:
       tags:
         - Accounting
       operationId: createPaymentHistory
-      summary: Creates a history record for a specific payment
+      summary: Xero Creates a history record for a specific payment
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -12436,7 +12436,7 @@ paths:
       tags:
         - Accounting
       operationId: getPaymentServices
-      summary: Retrieves payment services
+      summary: Xero Retrieves payment services
       x-excludeFromPreview: true
       responses:
         "200":
@@ -12463,7 +12463,7 @@ paths:
       tags:
         - Accounting
       operationId: createPaymentService
-      summary: Creates a payment service
+      summary: Xero Creates a payment service
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-excludeFromPreview: true
@@ -12550,7 +12550,7 @@ paths:
       tags:
         - Accounting
       operationId: getPrepayments
-      summary: Retrieves prepayments
+      summary: Xero Retrieves prepayments
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -12647,7 +12647,7 @@ paths:
       tags:
         - Accounting
       operationId: getPrepayment
-      summary: Allows you to retrieve a specified prepayments
+      summary: Xero Allows you to retrieve a specified prepayments
       parameters:
         - $ref: "#/components/parameters/PrepaymentID"
       responses:
@@ -12760,7 +12760,7 @@ paths:
       tags:
         - Accounting
       operationId: createPrepaymentAllocations
-      summary: Allows you to create an Allocation for prepayments
+      summary: Xero Allows you to create an Allocation for prepayments
       x-hasAccountingValidationError: true
       x-example:
         - currDate:
@@ -12888,7 +12888,7 @@ paths:
       tags:
         - Accounting
       operationId: deletePrepaymentAllocations
-      summary: Deletes an Allocation from a Prepayment
+      summary: Xero Deletes an Allocation from a Prepayment
       parameters:
         - $ref: "#/components/parameters/PrepaymentID"
         - $ref: "#/components/parameters/AllocationID"
@@ -12916,7 +12916,7 @@ paths:
       tags:
         - Accounting
       operationId: getPrepaymentHistory
-      summary: Retrieves history record for a specific prepayment
+      summary: Xero Retrieves history record for a specific prepayment
       parameters:
         - $ref: "#/components/parameters/PrepaymentID"
       responses:
@@ -12929,7 +12929,7 @@ paths:
       tags:
         - Accounting
       operationId: createPrepaymentHistory
-      summary: Creates a history record for a specific prepayment
+      summary: Xero Creates a history record for a specific prepayment
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -12984,7 +12984,7 @@ paths:
       tags:
         - Accounting
       operationId: getPurchaseOrders
-      summary: Retrieves purchase orders
+      summary: Xero Retrieves purchase orders
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -13162,7 +13162,7 @@ paths:
       tags:
         - Accounting
       operationId: createPurchaseOrders
-      summary: Creates one or more purchase orders
+      summary: Xero Creates one or more purchase orders
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -13323,7 +13323,7 @@ paths:
                       EmailAddress: liam@rockstar.com
                       BankAccountDetails: ""
                       Addresses:
-                        - null
+                        - 
                         - AddressType: POBOX
                           City: Anytown
                           Region: NY
@@ -13335,7 +13335,7 @@ paths:
                           PhoneNumber: 222-2222
                           PhoneAreaCode: "212"
                           PhoneCountryCode: ""
-                        - null
+                        - 
                         - PhoneType: FAX
                           PhoneNumber: 333-2233
                           PhoneAreaCode: "212"
@@ -13404,7 +13404,7 @@ paths:
       tags:
         - Accounting
       operationId: updateOrCreatePurchaseOrders
-      summary: Updates or creates one or more purchase orders
+      summary: Xero Updates or creates one or more purchase orders
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -13565,7 +13565,7 @@ paths:
                       EmailAddress: liam@rockstar.com
                       BankAccountDetails: ""
                       Addresses:
-                        - null
+                        - 
                         - AddressType: POBOX
                           City: Anytown
                           Region: NY
@@ -13577,7 +13577,7 @@ paths:
                           PhoneNumber: 222-2222
                           PhoneAreaCode: "212"
                           PhoneCountryCode: ""
-                        - null
+                        - 
                         - PhoneType: FAX
                           PhoneNumber: 333-2233
                           PhoneAreaCode: "212"
@@ -13650,7 +13650,7 @@ paths:
         - Accounting
       operationId: getPurchaseOrderAsPdf
       x-path: /PurchaseOrders/{PurchaseOrderID}
-      summary: Retrieves specific purchase order as PDF files using a unique purchase order Id
+      summary: Xero Retrieves specific purchase order as PDF files using a unique purchase order Id
       parameters:
         - $ref: "#/components/parameters/PurchaseOrderID"
       responses:
@@ -13672,7 +13672,7 @@ paths:
       tags:
         - Accounting
       operationId: getPurchaseOrder
-      summary: Retrieves a specific purchase order using a unique purchase order Id
+      summary: Xero Retrieves a specific purchase order using a unique purchase order Id
       parameters:
         - $ref: "#/components/parameters/PurchaseOrderID"
       responses:
@@ -13720,7 +13720,7 @@ paths:
                       EmailAddress: liam@rockstar.com
                       BankAccountDetails: ""
                       Addresses:
-                        - null
+                        - 
                         - AddressType: POBOX
                           City: Anytown
                           Region: NY
@@ -13732,7 +13732,7 @@ paths:
                           PhoneNumber: 222-2222
                           PhoneAreaCode: "212"
                           PhoneCountryCode: ""
-                        - null
+                        - 
                         - PhoneType: FAX
                           PhoneNumber: 333-2233
                           PhoneAreaCode: "212"
@@ -13792,7 +13792,7 @@ paths:
       tags:
         - Accounting
       operationId: updatePurchaseOrder
-      summary: Updates a specific purchase order
+      summary: Xero Updates a specific purchase order
       x-hasAccountingValidationError: true
       x-example:
         - purchaseOrder:
@@ -13858,7 +13858,7 @@ paths:
                       EmailAddress: liam@rockstar.com
                       BankAccountDetails: ""
                       Addresses:
-                        - null
+                        - 
                         - AddressType: POBOX
                           City: Anytown
                           Region: NY
@@ -13870,7 +13870,7 @@ paths:
                           PhoneNumber: 222-2222
                           PhoneAreaCode: "212"
                           PhoneCountryCode: ""
-                        - null
+                        - 
                         - PhoneType: FAX
                           PhoneNumber: 333-2233
                           PhoneAreaCode: "212"
@@ -13932,7 +13932,7 @@ paths:
       tags:
         - Accounting
       operationId: getPurchaseOrderByNumber
-      summary: Retrieves a specific purchase order using purchase order number
+      summary: Xero Retrieves a specific purchase order using purchase order number
       parameters:
         - required: true
           in: path
@@ -13987,7 +13987,7 @@ paths:
                       EmailAddress: liam@rockstar.com
                       BankAccountDetails: ""
                       Addresses:
-                        - null
+                        - 
                         - AddressType: POBOX
                           City: Anytown
                           Region: NY
@@ -13999,7 +13999,7 @@ paths:
                           PhoneNumber: 222-2222
                           PhoneAreaCode: "212"
                           PhoneCountryCode: ""
-                        - null
+                        - 
                         - PhoneType: FAX
                           PhoneNumber: 333-2233
                           PhoneAreaCode: "212"
@@ -14063,7 +14063,7 @@ paths:
       tags:
         - Accounting
       operationId: getPurchaseOrderHistory
-      summary: Retrieves history for a specific purchase order
+      summary: Xero Retrieves history for a specific purchase order
       parameters:
         - $ref: "#/components/parameters/PurchaseOrderID"
       responses:
@@ -14076,7 +14076,7 @@ paths:
       tags:
         - Accounting
       operationId: createPurchaseOrderHistory
-      summary: Creates a history record for a specific purchase orders
+      summary: Xero Creates a history record for a specific purchase orders
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -14126,7 +14126,7 @@ paths:
       tags:
         - Accounting
       operationId: getPurchaseOrderAttachments
-      summary: Retrieves attachments for a specific purchase order
+      summary: Xero Retrieves attachments for a specific purchase order
       parameters:
         - $ref: "#/components/parameters/PurchaseOrderID"
       responses:
@@ -14169,7 +14169,7 @@ paths:
       tags:
         - Accounting
       operationId: getPurchaseOrderAttachmentById
-      summary: Retrieves specific attachment for a specific purchase order using a unique attachment Id
+      summary: Xero Retrieves specific attachment for a specific purchase order using a unique attachment Id
       parameters:
         - $ref: "#/components/parameters/PurchaseOrderID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -14193,7 +14193,7 @@ paths:
       tags:
         - Accounting
       operationId: getPurchaseOrderAttachmentByFileName
-      summary: Retrieves a specific attachment for a specific purchase order by filename
+      summary: Xero Retrieves a specific attachment for a specific purchase order by filename
       parameters:
         - $ref: "#/components/parameters/PurchaseOrderID"
         - $ref: "#/components/parameters/FileName"
@@ -14214,7 +14214,7 @@ paths:
         - Accounting
       operationId: updatePurchaseOrderAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Updates a specific attachment for a specific purchase order by filename
+      summary: Xero Updates a specific attachment for a specific purchase order by filename
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/PurchaseOrderID"
@@ -14260,7 +14260,7 @@ paths:
         - Accounting
       operationId: createPurchaseOrderAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Creates attachment for a specific purchase order
+      summary: Xero Creates attachment for a specific purchase order
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/PurchaseOrderID"
@@ -14305,7 +14305,7 @@ paths:
       tags:
         - Accounting
       operationId: getQuotes
-      summary: Retrieves sales quotes
+      summary: Xero Retrieves sales quotes
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -14433,7 +14433,7 @@ paths:
       tags:
         - Accounting
       operationId: createQuotes
-      summary: Create one or more quotes
+      summary: Xero Create one or more quotes
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -14625,7 +14625,7 @@ paths:
       tags:
         - Accounting
       operationId: updateOrCreateQuotes
-      summary: Updates or creates one or more quotes
+      summary: Xero Updates or creates one or more quotes
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -14820,7 +14820,7 @@ paths:
       tags:
         - Accounting
       operationId: getQuote
-      summary: Retrieves a specific quote using a unique quote Id
+      summary: Xero Retrieves a specific quote using a unique quote Id
       parameters:
         - $ref: "#/components/parameters/QuoteID"
       responses:
@@ -14885,7 +14885,7 @@ paths:
       tags:
         - Accounting
       operationId: updateQuote
-      summary: Updates a specific quote
+      summary: Xero Updates a specific quote
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -15021,7 +15021,7 @@ paths:
       tags:
         - Accounting
       operationId: getQuoteHistory
-      summary: Retrieves history records of a specific quote
+      summary: Xero Retrieves history records of a specific quote
       parameters:
         - $ref: "#/components/parameters/QuoteID"
       responses:
@@ -15034,7 +15034,7 @@ paths:
       tags:
         - Accounting
       operationId: createQuoteHistory
-      summary: Creates a history record for a specific quote
+      summary: Xero Creates a history record for a specific quote
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -15085,7 +15085,7 @@ paths:
         - Accounting
       operationId: getQuoteAsPdf
       x-path: /Quotes/{QuoteID}
-      summary: Retrieves a specific quote as a PDF file using a unique quote Id
+      summary: Xero Retrieves a specific quote as a PDF file using a unique quote Id
       parameters:
         - $ref: "#/components/parameters/QuoteID"
       responses:
@@ -15107,7 +15107,7 @@ paths:
       tags:
         - Accounting
       operationId: getQuoteAttachments
-      summary: Retrieves attachments for a specific quote
+      summary: Xero Retrieves attachments for a specific quote
       parameters:
         - $ref: "#/components/parameters/QuoteID"
       responses:
@@ -15140,7 +15140,7 @@ paths:
       tags:
         - Accounting
       operationId: getQuoteAttachmentById
-      summary: Retrieves a specific attachment from a specific quote using a unique attachment Id
+      summary: Xero Retrieves a specific attachment from a specific quote using a unique attachment Id
       parameters:
         - $ref: "#/components/parameters/QuoteID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -15164,7 +15164,7 @@ paths:
       tags:
         - Accounting
       operationId: getQuoteAttachmentByFileName
-      summary: Retrieves a specific attachment from a specific quote by filename
+      summary: Xero Retrieves a specific attachment from a specific quote by filename
       parameters:
         - $ref: "#/components/parameters/QuoteID"
         - $ref: "#/components/parameters/FileName"
@@ -15185,7 +15185,7 @@ paths:
         - Accounting
       operationId: updateQuoteAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Updates a specific attachment from a specific quote by filename
+      summary: Xero Updates a specific attachment from a specific quote by filename
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/QuoteID"
@@ -15231,7 +15231,7 @@ paths:
         - Accounting
       operationId: createQuoteAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Creates attachment for a specific quote
+      summary: Xero Creates attachment for a specific quote
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/QuoteID"
@@ -15276,7 +15276,7 @@ paths:
       tags:
         - Accounting
       operationId: getReceipts
-      summary: Retrieves draft expense claim receipts for any user
+      summary: Xero Retrieves draft expense claim receipts for any user
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -15351,7 +15351,7 @@ paths:
       tags:
         - Accounting
       operationId: createReceipt
-      summary: Creates draft expense claim receipts for any user
+      summary: Xero Creates draft expense claim receipts for any user
       x-hasAccountingValidationError: true
       x-example:
         - contact:
@@ -15618,7 +15618,7 @@ paths:
       tags:
         - Accounting
       operationId: getReceipt
-      summary: Retrieves a specific draft expense claim receipt by using a unique receipt Id
+      summary: Xero Retrieves a specific draft expense claim receipt by using a unique receipt Id
       parameters:
         - $ref: "#/components/parameters/ReceiptID"
         - $ref: "#/components/parameters/unitdp"
@@ -15726,7 +15726,7 @@ paths:
       tags:
         - Accounting
       operationId: updateReceipt
-      summary: Updates a specific draft expense claim receipts
+      summary: Xero Updates a specific draft expense claim receipts
       x-hasAccountingValidationError: true
       x-example:
         - dateValue:
@@ -15903,7 +15903,7 @@ paths:
       tags:
         - Accounting
       operationId: getReceiptAttachments
-      summary: Retrieves attachments for a specific expense claim receipt
+      summary: Xero Retrieves attachments for a specific expense claim receipt
       parameters:
         - $ref: "#/components/parameters/ReceiptID"
       responses:
@@ -15936,7 +15936,7 @@ paths:
       tags:
         - Accounting
       operationId: getReceiptAttachmentById
-      summary: Retrieves a specific attachments from a specific expense claim receipts by using a unique attachment Id
+      summary: Xero Retrieves a specific attachments from a specific expense claim receipts by using a unique attachment Id
       parameters:
         - $ref: "#/components/parameters/ReceiptID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -15960,7 +15960,7 @@ paths:
       tags:
         - Accounting
       operationId: getReceiptAttachmentByFileName
-      summary: Retrieves a specific attachment from a specific expense claim receipts by file name
+      summary: Xero Retrieves a specific attachment from a specific expense claim receipts by file name
       parameters:
         - $ref: "#/components/parameters/ReceiptID"
         - $ref: "#/components/parameters/FileName"
@@ -15981,7 +15981,7 @@ paths:
         - Accounting
       operationId: updateReceiptAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Updates a specific attachment on a specific expense claim receipts by file name
+      summary: Xero Updates a specific attachment on a specific expense claim receipts by file name
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/ReceiptID"
@@ -16023,7 +16023,7 @@ paths:
         - Accounting
       operationId: createReceiptAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Creates an attachment on a specific expense claim receipts by file name
+      summary: Xero Creates an attachment on a specific expense claim receipts by file name
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/ReceiptID"
@@ -16068,7 +16068,7 @@ paths:
       tags:
         - Accounting
       operationId: getReceiptHistory
-      summary: Retrieves a history record for a specific receipt
+      summary: Xero Retrieves a history record for a specific receipt
       parameters:
         - $ref: "#/components/parameters/ReceiptID"
       responses:
@@ -16081,7 +16081,7 @@ paths:
       tags:
         - Accounting
       operationId: createReceiptHistory
-      summary: Creates a history record for a specific receipt
+      summary: Xero Creates a history record for a specific receipt
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -16145,7 +16145,7 @@ paths:
       tags:
         - Accounting
       operationId: getRepeatingInvoices
-      summary: Retrieves repeating invoices
+      summary: Xero Retrieves repeating invoices
       parameters:
         - in: query
           name: where
@@ -16225,7 +16225,7 @@ paths:
       tags:
         - Accounting
       operationId: createRepeatingInvoices
-      summary: Creates one or more repeating invoice templates
+      summary: Xero Creates one or more repeating invoice templates
       x-hasAccountingValidationError: true
       parameters:
         - $ref: "#/components/parameters/summarizeErrors"
@@ -16332,7 +16332,7 @@ paths:
       tags:
         - Accounting
       operationId: updateOrCreateRepeatingInvoices
-      summary: Creates or deletes one or more repeating invoice templates
+      summary: Xero Creates or deletes one or more repeating invoice templates
       x-hasAccountingValidationError: true
       parameters:
         - $ref: "#/components/parameters/summarizeErrors"
@@ -16443,7 +16443,7 @@ paths:
       tags:
         - Accounting
       operationId: getRepeatingInvoice
-      summary: Retrieves a specific repeating invoice by using a unique repeating invoice Id
+      summary: Xero Retrieves a specific repeating invoice by using a unique repeating invoice Id
       parameters:
         - $ref: "#/components/parameters/RepeatingInvoiceID"
       responses:
@@ -16520,7 +16520,7 @@ paths:
       tags:
         - Accounting
       operationId: updateRepeatingInvoice
-      summary: Deletes a specific repeating invoice template
+      summary: Xero Deletes a specific repeating invoice template
       x-hasAccountingValidationError: true
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
@@ -16642,7 +16642,7 @@ paths:
       tags:
         - Accounting
       operationId: getRepeatingInvoiceAttachments
-      summary: Retrieves attachments from a specific repeating invoice
+      summary: Xero Retrieves attachments from a specific repeating invoice
       parameters:
         - $ref: "#/components/parameters/RepeatingInvoiceID"
       responses:
@@ -16685,7 +16685,7 @@ paths:
       tags:
         - Accounting
       operationId: getRepeatingInvoiceAttachmentById
-      summary: Retrieves a specific attachment from a specific repeating invoice
+      summary: Xero Retrieves a specific attachment from a specific repeating invoice
       parameters:
         - $ref: "#/components/parameters/RepeatingInvoiceID"
         - $ref: "#/components/parameters/AttachmentID"
@@ -16709,7 +16709,7 @@ paths:
       tags:
         - Accounting
       operationId: getRepeatingInvoiceAttachmentByFileName
-      summary: Retrieves a specific attachment from a specific repeating invoices by file name
+      summary: Xero Retrieves a specific attachment from a specific repeating invoices by file name
       parameters:
         - $ref: "#/components/parameters/RepeatingInvoiceID"
         - $ref: "#/components/parameters/FileName"
@@ -16730,7 +16730,7 @@ paths:
         - Accounting
       operationId: updateRepeatingInvoiceAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Updates a specific attachment from a specific repeating invoices by file name
+      summary: Xero Updates a specific attachment from a specific repeating invoices by file name
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/RepeatingInvoiceID"
@@ -16772,7 +16772,7 @@ paths:
         - Accounting
       operationId: createRepeatingInvoiceAttachmentByFileName
       x-hasAccountingValidationError: true
-      summary: Creates an attachment from a specific repeating invoices by file name
+      summary: Xero Creates an attachment from a specific repeating invoices by file name
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
         - $ref: "#/components/parameters/RepeatingInvoiceID"
@@ -16817,7 +16817,7 @@ paths:
       tags:
         - Accounting
       operationId: getRepeatingInvoiceHistory
-      summary: Retrieves history record for a specific repeating invoice
+      summary: Xero Retrieves history record for a specific repeating invoice
       parameters:
         - $ref: "#/components/parameters/RepeatingInvoiceID"
       responses:
@@ -16830,7 +16830,7 @@ paths:
       tags:
         - Accounting
       operationId: createRepeatingInvoiceHistory
-      summary: Creates a  history record for a specific repeating invoice
+      summary: Xero Creates a  history record for a specific repeating invoice
       x-hasAccountingValidationError: true
       x-example:
         - historyRecord:
@@ -16880,7 +16880,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportTenNinetyNine
-      summary: Retrieve reports for 1099
+      summary: Xero Retrieve reports for 1099
       parameters:
         - in: query
           name: reportYear
@@ -17007,7 +17007,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportAgedPayablesByContact
-      summary: Retrieves report for aged payables by contact
+      summary: Xero Retrieves report for aged payables by contact
       parameters:
         - in: query
           required: true
@@ -17144,7 +17144,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportAgedReceivablesByContact
-      summary: Retrieves report for aged receivables by contact
+      summary: Xero Retrieves report for aged receivables by contact
       parameters:
         - in: query
           required: true
@@ -17315,7 +17315,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportBalanceSheet
-      summary: Retrieves report for balancesheet
+      summary: Xero Retrieves report for balancesheet
       parameters:
         - in: query
           name: date
@@ -17709,7 +17709,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportBankSummary
-      summary: Retrieves report for bank summary
+      summary: Xero Retrieves report for bank summary
       parameters:
         - $ref: "#/components/parameters/FromDate"
         - $ref: "#/components/parameters/ToDate"
@@ -17779,7 +17779,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportFromId
-      summary: Retrieves a specific report using a unique ReportID
+      summary: Xero Retrieves a specific report using a unique ReportID
       parameters:
         - in: path
           required: true
@@ -17806,7 +17806,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportBudgetSummary
-      summary: Retrieves report for budget summary
+      summary: Xero Retrieves report for budget summary
       parameters:
         - in: query
           name: date
@@ -17930,7 +17930,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportExecutiveSummary
-      summary: Retrieves report for executive summary
+      summary: Xero Retrieves report for executive summary
       parameters:
         - in: query
           name: date
@@ -18134,7 +18134,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportsList
-      summary: Retrieves a list of the organistaions unique reports that require a uuid to fetch
+      summary: Xero Retrieves a list of the organistaions unique reports that require a uuid to fetch
       responses:
         "200":
           description: Success - return response of type ReportWithRows
@@ -18152,7 +18152,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportProfitAndLoss
-      summary: Retrieves report for profit and loss
+      summary: Xero Retrieves report for profit and loss
       parameters:
         - $ref: "#/components/parameters/FromDate"
         - $ref: "#/components/parameters/ToDate"
@@ -18233,7 +18233,7 @@ paths:
       tags:
         - Accounting
       operationId: getReportTrialBalance
-      summary: Retrieves report for trial balance
+      summary: Xero Retrieves report for trial balance
       parameters:
         - in: query
           name: date
@@ -18749,7 +18749,7 @@ paths:
       tags:
         - Accounting
       operationId: postSetup
-      summary: Sets the chart of accounts, the conversion date and conversion balances
+      summary: Xero Sets the chart of accounts, the conversion date and conversion balances
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-example:
@@ -18910,7 +18910,7 @@ paths:
       tags:
         - Accounting
       operationId: getTaxRates
-      summary: Retrieves tax rates
+      summary: Xero Retrieves tax rates
       parameters:
         - in: query
           name: where
@@ -19028,7 +19028,7 @@ paths:
       tags:
         - Accounting
       operationId: createTaxRates
-      summary: Creates one or more tax rates
+      summary: Xero Creates one or more tax rates
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-hasAccountingValidationError: true
@@ -19150,7 +19150,7 @@ paths:
       tags:
         - Accounting
       operationId: updateTaxRate
-      summary: Updates tax rates
+      summary: Xero Updates tax rates
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-hasAccountingValidationError: true
@@ -19277,7 +19277,7 @@ paths:
       tags:
         - Accounting
       operationId: getTaxRateByTaxType
-      summary: Retrieves a specific tax rate according to given TaxType code
+      summary: Xero Retrieves a specific tax rate according to given TaxType code
       parameters:
         - $ref: "#/components/parameters/TaxType"
       responses:
@@ -19320,7 +19320,7 @@ paths:
       tags:
         - Accounting
       operationId: getTrackingCategories
-      summary: Retrieves tracking categories and options
+      summary: Xero Retrieves tracking categories and options
       parameters:
         - in: query
           name: where
@@ -19374,7 +19374,7 @@ paths:
       tags:
         - Accounting
       operationId: createTrackingCategory
-      summary: Create tracking categories
+      summary: Xero Create tracking categories
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       x-hasAccountingValidationError: true
@@ -19428,7 +19428,7 @@ paths:
       tags:
         - Accounting
       operationId: getTrackingCategory
-      summary: Retrieves specific tracking categories and options using a unique tracking category Id
+      summary: Xero Retrieves specific tracking categories and options using a unique tracking category Id
       parameters:
         - $ref: "#/components/parameters/TrackingCategoryID"
       responses:
@@ -19455,7 +19455,7 @@ paths:
       tags:
         - Accounting
       operationId: updateTrackingCategory
-      summary: Updates a specific tracking category
+      summary: Xero Updates a specific tracking category
       x-hasAccountingValidationError: true
       x-example:
         - trackingCategory:
@@ -19505,7 +19505,7 @@ paths:
       tags:
         - Accounting
       operationId: deleteTrackingCategory
-      summary: Deletes a specific tracking category
+      summary: Xero Deletes a specific tracking category
       parameters:
         - $ref: "#/components/parameters/TrackingCategoryID"
       responses:
@@ -19537,7 +19537,7 @@ paths:
       tags:
         - Accounting
       operationId: createTrackingOptions
-      summary: Creates options for a specific tracking category
+      summary: Xero Creates options for a specific tracking category
       x-hasAccountingValidationError: true
       x-example:
         - trackingOption:
@@ -19594,7 +19594,7 @@ paths:
       tags:
         - Accounting
       operationId: updateTrackingOptions
-      summary: Updates a specific option for a specific tracking category
+      summary: Xero Updates a specific option for a specific tracking category
       x-hasAccountingValidationError: true
       x-example:
         - trackingOption:
@@ -19648,7 +19648,7 @@ paths:
       tags:
         - Accounting
       operationId: deleteTrackingOptions
-      summary: Deletes a specific option for a specific tracking category
+      summary: Xero Deletes a specific option for a specific tracking category
       parameters:
         - $ref: "#/components/parameters/TrackingCategoryID"
         - $ref: "#/components/parameters/TrackingOptionID"
@@ -19685,7 +19685,7 @@ paths:
       tags:
         - Accounting
       operationId: getUsers
-      summary: Retrieves users
+      summary: Xero Retrieves users
       parameters:
         - $ref: "#/components/parameters/ifModifiedSince"
         - in: query
@@ -19738,7 +19738,7 @@ paths:
       tags:
         - Accounting
       operationId: getUser
-      summary: Retrieves a specific user
+      summary: Xero Retrieves a specific user
       parameters:
         - $ref: "#/components/parameters/UserID"
       responses:

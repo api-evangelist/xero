@@ -23,7 +23,7 @@ paths:
         - identity
       description: Override the base server url that include version
       operationId: getConnections
-      summary: Retrieves the connections for this user
+      summary: Xero Retrieves the connections for this user
       parameters:
         - in: query
           required: false
@@ -52,7 +52,7 @@ paths:
         - identity
       description: Override the base server url that include version
       operationId: deleteConnection
-      summary: Deletes a connection for this user (i.e. disconnect a tenant)
+      summary: Xero Deletes a connection for this user (i.e. disconnect a tenant)
       x-basepath: https://api.xero.com
       parameters:
         - required: true

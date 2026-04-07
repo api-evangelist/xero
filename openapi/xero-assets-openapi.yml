@@ -25,7 +25,7 @@ paths:
             - assets.read
       tags:
         - Asset
-      summary: searches fixed asset
+      summary: Xero searches fixed asset
       operationId: getAssets
       description: By passing in the appropriate options, you can search for available fixed asset in the system
       parameters:
@@ -165,7 +165,7 @@ paths:
             - assets
       tags:
         - Asset
-      summary: adds a fixed asset
+      summary: Xero adds a fixed asset
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       operationId: createAsset
@@ -291,7 +291,7 @@ paths:
             - assets.read
       tags:
         - Asset
-      summary: Retrieves fixed asset by id
+      summary: Xero Retrieves fixed asset by id
       operationId: getAssetById
       description: |
         By passing in the appropriate asset id, you can search for
@@ -356,7 +356,7 @@ paths:
             - assets.read
       tags:
         - Asset
-      summary: searches fixed asset types
+      summary: Xero searches fixed asset types
       operationId: getAssetTypes
       description: By passing in the appropriate options, you can search for available fixed asset types in the system
       responses:
@@ -409,7 +409,7 @@ paths:
             - assets
       tags:
         - Asset
-      summary: adds a fixed asset type
+      summary: Xero adds a fixed asset type
       parameters:
         - $ref: "#/components/parameters/idempotencyKey"
       operationId: createAssetType
@@ -564,7 +564,7 @@ paths:
             - assets.read
       tags:
         - Asset
-      summary: searches fixed asset settings
+      summary: Xero searches fixed asset settings
       operationId: getAssetSettings
       description: By passing in the appropriate options, you can search for available fixed asset types in the system
       responses:

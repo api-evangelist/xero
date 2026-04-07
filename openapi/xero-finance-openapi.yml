@@ -24,7 +24,7 @@ paths:
             - finance.cashvalidation.read
       tags:
         - Finance
-      summary: Get cash validation
+      summary: Xero Get cash validation
       operationId: getCashValidation
       description: Summarizes the total cash position for each account for an org
       parameters:
@@ -129,7 +129,7 @@ paths:
       tags:
         - Finance
       operationId: getFinancialStatementBalanceSheet
-      summary: Get Balance Sheet report
+      summary: Xero Get Balance Sheet report
       description: The balance sheet report is a standard financial report which describes the financial position of an organisation at a point in time.
       parameters:
         - name: balanceDate
@@ -236,7 +236,7 @@ paths:
       tags:
         - Finance
       operationId: getFinancialStatementCashflow
-      summary: Get Cash flow report
+      summary: Xero Get Cash flow report
       description: The statement of cash flows - direct method, provides the year to date changes in operating, financing and investing cash flow activities for an organisation. Cashflow statement is not available in US region at this stage.
       parameters:
         - name: startDate
@@ -390,7 +390,7 @@ paths:
       tags:
         - Finance
       operationId: getFinancialStatementProfitAndLoss
-      summary: Get Profit & Loss report
+      summary: Xero Get Profit & Loss report
       description: The profit and loss statement is a standard financial report providing detailed year to date income and expense detail for an organisation.
       parameters:
         - name: startDate
@@ -481,7 +481,7 @@ paths:
       tags:
         - Finance
       operationId: getFinancialStatementTrialBalance
-      summary: Get Trial Balance report
+      summary: Xero Get Trial Balance report
       description: The trial balance provides a detailed list of all accounts of an organisation at a point in time, with revenue and expense items being year to date.
       parameters:
         - name: endDate
@@ -541,7 +541,7 @@ paths:
       tags:
         - Finance
       operationId: getFinancialStatementContactsRevenue
-      summary: Get revenue by contacts report
+      summary: Xero Get revenue by contacts report
       description: The revenue by contact report provides a year to date profit and loss for customers and suppliers for a given organisation, including detailed contact information.
       parameters:
         - name: contactIds
@@ -651,7 +651,7 @@ paths:
       tags:
         - Finance
       operationId: getFinancialStatementContactsExpense
-      summary: Get expense by contacts report
+      summary: Xero Get expense by contacts report
       description: The expense by contact report provides a year to date profit and loss for customers and suppliers for a given organisation, including detailed contact information.
       parameters:
         - name: contactIds
@@ -761,7 +761,7 @@ paths:
       tags:
         - Finance
       operationId: getBankStatementAccounting
-      summary: Get Bank Statement Accounting
+      summary: Xero Get Bank Statement Accounting
       description: "For lenders that prefer using bank statement data as the source of truth.  We provide a data point that will allow access to customer bank statements, plus for reconciled bank transactions the matching accounting, invoice and billing data as well.  As customers reconcile bank statements to invoices and bills, this transaction detail will provide valuable insight for lender's assessment measures. "
       parameters:
         - name: BankAccountID
