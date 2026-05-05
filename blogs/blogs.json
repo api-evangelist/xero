@@ -1,0 +1,13 @@
+{
+  "repo": "xero",
+  "feeds": [
+    {
+      "source": "https://devblog.xero.com/",
+      "feed_url": "https://devblog.xero.com/feed",
+      "saved": 10,
+      "title": "Xero Developer - Medium"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:38:25Z"
+}
