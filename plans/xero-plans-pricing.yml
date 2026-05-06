@@ -4,210 +4,45 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Xero
 providerId: xero
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Accounting
-  - Bank Feeds
   - Finance
-  - Financial Services
-  - Invoicing
-  - Payroll
   - Small Business
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Payroll
+  - Invoicing
+description: Xero is a tiered SMB accounting SaaS sold as monthly subscriptions per organisation
+  (region-specific tiers in US, UK, AU, NZ, etc.). API access is included with the underlying
+  organisation subscription rather than priced separately. Pricing pages are public but were
+  unreachable from this reconciliation environment (timeouts / 503), so plan tier names and
+  per-month prices have not been refreshed in this artifact.
+sources:
+  - https://www.xero.com/us/pricing-plans/
+  - https://developer.xero.com/
+notes: WebFetch attempts against xero.com pricing pages timed out / returned 503 during
+  reconciliation. Trimmed to a single Contact / See Pricing Page plan rather than copy invented
+  tier prices. Refresh once xero.com pages are reachable.
 plans:
-  - id: xero-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Xero API surface. Intended for evaluation, prototyping, and low-volume
-      integrations. Real limits and pricing must be reconciled with the provider's published plan documentation.
+  - id: xero-see-pricing-page
+    name: See Xero Pricing Page
+    type: subscription
+    description: Xero is sold as monthly per-organisation subscriptions in tiers that vary by
+      region (e.g. US Early / Growing / Established; AU Starter / Standard / Premium / Ultimate;
+      analogous tiers in UK, NZ, CA, etc.). API access is bundled with the organisation
+      subscription. Refer to xero.com/{region}/pricing-plans/ for current monthly prices.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.xero.com/api.xro/2.0
-          - https://api.xero.com/assets.xro/1.0
-          - https://api.xero.com/bankfeeds.xro/1.0
-          - https://api.xero.com/finance.xro/1.0
-          - https://identity.xero.com
-          - https://api.xero.com/payroll.xro/1.0
-          - https://api.xero.com/projects.xro/2.0
-          - https://api.xero.com/files.xro/1.0
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.xero.com/api.xro/2.0
-          - https://api.xero.com/assets.xro/1.0
-          - https://api.xero.com/bankfeeds.xro/1.0
-          - https://api.xero.com/finance.xro/1.0
-          - https://identity.xero.com
-          - https://api.xero.com/payroll.xro/1.0
-          - https://api.xero.com/projects.xro/2.0
-          - https://api.xero.com/files.xro/1.0
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Xero Accounting API
-      - name: Xero Assets API
-      - name: Xero Bank Feeds API
-      - name: Xero Finance API
-      - name: Xero Identity API
-      - name: Xero Payroll Australia API
-      - name: Xero Payroll New Zealand API
-      - name: Xero Payroll United Kingdom API
-  - id: xero-pro
-    name: Professional
-    type: paid
-    description: Production tier for Xero. Provides higher quotas, priority support, and access to the
-      broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.xero.com/api.xro/2.0
-          - https://api.xero.com/assets.xro/1.0
-          - https://api.xero.com/bankfeeds.xro/1.0
-          - https://api.xero.com/finance.xro/1.0
-          - https://identity.xero.com
-          - https://api.xero.com/payroll.xro/1.0
-          - https://api.xero.com/projects.xro/2.0
-          - https://api.xero.com/files.xro/1.0
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.xero.com/api.xro/2.0
-          - https://api.xero.com/assets.xro/1.0
-          - https://api.xero.com/bankfeeds.xro/1.0
-          - https://api.xero.com/finance.xro/1.0
-          - https://identity.xero.com
-          - https://api.xero.com/payroll.xro/1.0
-          - https://api.xero.com/projects.xro/2.0
-          - https://api.xero.com/files.xro/1.0
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
+      - label: Per organisation / month
+        name: per_org_month
+        type: subscription
+        metric: organisation
         limit: -1
         timeFrame: month
-        geo: global
-        domains:
-          - https://api.xero.com/api.xro/2.0
-          - https://api.xero.com/assets.xro/1.0
-          - https://api.xero.com/bankfeeds.xro/1.0
-          - https://api.xero.com/finance.xro/1.0
-          - https://identity.xero.com
-          - https://api.xero.com/payroll.xro/1.0
-          - https://api.xero.com/projects.xro/2.0
-          - https://api.xero.com/files.xro/1.0
-        unit: 1000
-        price: TBD
+        geo: regional
+        unit: 1
+        price: see https://www.xero.com/us/pricing-plans/
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Xero Accounting API
-      - name: Xero Assets API
-      - name: Xero Bank Feeds API
-      - name: Xero Finance API
-      - name: Xero Identity API
-      - name: Xero Payroll Australia API
-      - name: Xero Payroll New Zealand API
-      - name: Xero Payroll United Kingdom API
-      - name: Xero Projects API
-      - name: Xero Files API
-  - id: xero-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Xero. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.xero.com/api.xro/2.0
-          - https://api.xero.com/assets.xro/1.0
-          - https://api.xero.com/bankfeeds.xro/1.0
-          - https://api.xero.com/finance.xro/1.0
-          - https://identity.xero.com
-          - https://api.xero.com/payroll.xro/1.0
-          - https://api.xero.com/projects.xro/2.0
-          - https://api.xero.com/files.xro/1.0
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.xero.com/api.xro/2.0
-          - https://api.xero.com/assets.xro/1.0
-          - https://api.xero.com/bankfeeds.xro/1.0
-          - https://api.xero.com/finance.xro/1.0
-          - https://identity.xero.com
-          - https://api.xero.com/payroll.xro/1.0
-          - https://api.xero.com/projects.xro/2.0
-          - https://api.xero.com/files.xro/1.0
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
       - name: Xero Accounting API
       - name: Xero Assets API
       - name: Xero Bank Feeds API
@@ -221,3 +56,4 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+    url: https://apievangelist.com

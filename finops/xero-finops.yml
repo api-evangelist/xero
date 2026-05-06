@@ -1,203 +1,77 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Xero
+providerId: xero
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - FinOps
+  - FOCUS
+  - Accounting
+  - Finance
+  - SaaS
+description: 'FOCUS-aligned FinOps for Xero: per-organisation tiered SaaS subscription with no
+  per-API meter; spend is driven by organisation count and plan tier per region.'
+sources:
+  - https://www.xero.com/us/pricing-plans/
+  - https://developer.xero.com/
+notes: Pricing pages were unreachable (503/timeout) during reconciliation; tier names and
+  prices have not been refreshed. Meters reflect the per-organisation subscription billing
+  surface rather than per-API usage.
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: Xero
-providerId: xero
-publisherName: Xero
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Accounting
-  - Bank Feeds
-  - Finance
-  - Financial Services
-  - Invoicing
-  - Payroll
-  - Small Business
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the Xero API surface. Provides a FOCUS-aligned mapping for
-  cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: Xero Limited
+serviceCategory: Accounting / SMB SaaS
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Tiered Subscription
   billingFrequency: Monthly
-  billingCurrency: USD
+  billingCurrency: USD/EUR/GBP/AUD/NZD/CAD (region-specific)
   chargeCategories:
-    - Usage
     - Purchase
-    - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
   ServiceName: Xero
-  ServiceCategory: Developer Tools / API
+  ServiceCategory: Accounting / SMB SaaS
   ProviderName: Xero
-  PublisherName: Xero
-  InvoiceIssuerName: Xero
-  PricingCategory: Usage-Based
-  PricingUnit: request
-  BillingCurrency: USD
-  ChargeCategory: Usage
+  PublisherName: Xero Limited
+  InvoiceIssuerName: Xero Limited
+  BillingCurrency: USD/EUR/GBP/AUD/NZD/CAD
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: organisation_subscription
+    unit: month
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
       - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
+      - plan
+      - organisation
+  - name: payroll_employees
+    unit: employee
+    aggregation: max
     dimensions:
-      - api
       - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Xero Accounting API
-    baseURL: https://api.xero.com/api.xro/2.0
-    tags:
-      - Accounting
-      - Finance
-      - Invoicing
-    serviceName: Xero Accounting API
-    serviceCategory: API
-  - name: Xero Assets API
-    baseURL: https://api.xero.com/assets.xro/1.0
-    tags:
-      - Assets
-      - Depreciation
-      - Finance
-    serviceName: Xero Assets API
-    serviceCategory: API
-  - name: Xero Bank Feeds API
-    baseURL: https://api.xero.com/bankfeeds.xro/1.0
-    tags:
-      - Bank Feeds
-      - Banking
-      - Reconciliation
-    serviceName: Xero Bank Feeds API
-    serviceCategory: API
-  - name: Xero Finance API
-    baseURL: https://api.xero.com/finance.xro/1.0
-    tags:
-      - Finance
-      - Financial Reporting
-      - Reports
-    serviceName: Xero Finance API
-    serviceCategory: API
-  - name: Xero Identity API
-    baseURL: https://identity.xero.com
-    tags:
-      - Authentication
-      - Identity
-      - OAuth 2.0
-    serviceName: Xero Identity API
-    serviceCategory: API
-  - name: Xero Payroll Australia API
-    baseURL: https://api.xero.com/payroll.xro/1.0
-    tags:
-      - Australia
-      - Payroll
-      - Superannuation
-    serviceName: Xero Payroll Australia API
-    serviceCategory: API
-  - name: Xero Payroll New Zealand API
-    baseURL: https://api.xero.com/payroll.xro/1.0
-    tags:
-      - New Zealand
-      - Payroll
-    serviceName: Xero Payroll New Zealand API
-    serviceCategory: API
-  - name: Xero Payroll United Kingdom API
-    baseURL: https://api.xero.com/payroll.xro/1.0
-    tags:
-      - Payroll
-      - United Kingdom
-    serviceName: Xero Payroll United Kingdom API
-    serviceCategory: API
-  - name: Xero Projects API
-    baseURL: https://api.xero.com/projects.xro/2.0
-    tags:
-      - Projects
-      - Time Tracking
-    serviceName: Xero Projects API
-    serviceCategory: API
-  - name: Xero Files API
-    baseURL: https://api.xero.com/files.xro/1.0
-    tags:
-      - Documents
-      - Files
-      - Storage
-    serviceName: Xero Files API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - organisation
+principles:
+  - name: Visibility
+    description: Spend is visible per organisation in the Xero account billing area; API
+      consumption itself is not metered or billed, so no separate FOCUS export exists for API
+      usage.
+  - name: Allocation
+    description: Allocate by organisation and region; integration partners reselling Xero seats
+      typically allocate via their partner billing rather than direct Xero invoices.
+  - name: Optimization
+    description: Levers are right-sizing the organisation tier (e.g. dropping from Established
+      to Growing if features go unused), pruning inactive organisations, and consolidating
+      payroll subscriptions per region.
+  - name: Accountability
+    description: Finance owns the Xero subscription; integration teams own the OAuth app and
+      tenant authorisations that consume the API at no separate cost.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+    url: https://apievangelist.com
