@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://devblog.xero.com/",
-      "feed_url": "https://devblog.xero.com/feed",
-      "saved": 10,
-      "title": "Xero Developer - Medium"
+      "feed_url": "https://devblog.xero.com/feed/",
+      "title": "Xero Developer - Medium",
+      "saved": 2
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-05-03T23:38:25Z"
+  "post_count": 12,
+  "fetched": "2026-05-09T20:17:51Z"
 }
