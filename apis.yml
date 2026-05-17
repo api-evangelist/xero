@@ -8,7 +8,7 @@ description: >-
   third-party integrations to build custom accounting apps, automations, and
   business tools. Xero supports SDKs for .NET, Java, Node.js, PHP, Ruby,
   Python, and provides an MCP server for AI-assisted accounting workflows.
-type: Contract
+kind: contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Accounting
@@ -224,7 +224,7 @@ common:
     url: https://developer.xero.com/documentation/sdks-and-tools/libraries/overview/
   - type: Webhooks
     url: https://developer.xero.com/documentation/guides/webhooks/overview/
-  - type: Changelog
+  - type: ChangeLog
     url: https://developer.xero.com/changelog
   - type: Blog
     url: https://devblog.xero.com/
@@ -234,7 +234,7 @@ common:
     url: https://developer.xero.com/xero-developer-platform-terms-conditions/
   - type: PrivacyPolicy
     url: https://www.xero.com/us/legal/privacy/
-  - type: Status
+  - type: StatusPage
     url: https://status.xero.com/
   - type: SignUp
     url: https://www.xero.com/us/signup/developers/
