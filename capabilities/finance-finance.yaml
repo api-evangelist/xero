@@ -1,0 +1,447 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Xero Finance API — Finance
+  description: 'Xero Finance API — Finance. 8 operations. Lead operation: Xero Get Bank Statement Accounting. Self-contained
+    Naftiko capability covering one Xero business surface.'
+  tags:
+  - Xero
+  - Finance
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    XERO_API_KEY: XERO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: finance-finance
+    baseUri: https://api.xero.com/finance.xro/1.0
+    description: Xero Finance API — Finance business capability. Self-contained, no shared references.
+    resources:
+    - name: BankStatementsPlus-statements
+      path: /BankStatementsPlus/statements
+      operations:
+      - name: getbankstatementaccounting
+        method: GET
+        description: Xero Get Bank Statement Accounting
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: BankAccountID
+          in: query
+          type: string
+          description: "string, GUID\r"
+          required: true
+        - name: FromDate
+          in: query
+          type: string
+          description: "date, yyyy-MM-dd \r"
+          required: true
+        - name: ToDate
+          in: query
+          type: string
+          description: "date, yyyy-MM-dd \r"
+          required: true
+        - name: SummaryOnly
+          in: query
+          type: boolean
+          description: "boolean, true/false\r"
+    - name: CashValidation
+      path: /CashValidation
+      operations:
+      - name: getcashvalidation
+        method: GET
+        description: Xero Get cash validation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: balanceDate
+          in: query
+          type: string
+          description: "date, yyyy-MM-dd \r"
+        - name: asAtSystemDate
+          in: query
+          type: string
+          description: "date, yyyy-MM-dd \r"
+        - name: beginDate
+          in: query
+          type: string
+          description: "date, yyyy-MM-dd \r"
+    - name: FinancialStatements-BalanceSheet
+      path: /FinancialStatements/BalanceSheet
+      operations:
+      - name: getfinancialstatementbalancesheet
+        method: GET
+        description: Xero Get Balance Sheet report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: balanceDate
+          in: query
+          type: string
+          description: "Specifies the date for balance sheet report.\r"
+    - name: FinancialStatements-Cashflow
+      path: /FinancialStatements/Cashflow
+      operations:
+      - name: getfinancialstatementcashflow
+        method: GET
+        description: Xero Get Cash flow report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+          description: "Date e.g. yyyy-MM-dd\r"
+        - name: endDate
+          in: query
+          type: string
+          description: "Date e.g. yyyy-MM-dd\r"
+    - name: FinancialStatements-ProfitAndLoss
+      path: /FinancialStatements/ProfitAndLoss
+      operations:
+      - name: getfinancialstatementprofitandloss
+        method: GET
+        description: Xero Get Profit & Loss report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+          description: "Date e.g. yyyy-MM-dd\r"
+        - name: endDate
+          in: query
+          type: string
+          description: "Date e.g. yyyy-MM-dd\r"
+    - name: FinancialStatements-TrialBalance
+      path: /FinancialStatements/TrialBalance
+      operations:
+      - name: getfinancialstatementtrialbalance
+        method: GET
+        description: Xero Get Trial Balance report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: endDate
+          in: query
+          type: string
+          description: "Date e.g. yyyy-MM-dd \r"
+    - name: FinancialStatements-contacts-expense
+      path: /FinancialStatements/contacts/expense
+      operations:
+      - name: getfinancialstatementcontactsexpense
+        method: GET
+        description: Xero Get expense by contacts report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contactIds
+          in: query
+          type: array
+          description: "Specifies the customer contacts to be included in the report.\r"
+        - name: includeManualJournals
+          in: query
+          type: boolean
+          description: "Specifies whether to include the manual journals in the report.\r"
+        - name: startDate
+          in: query
+          type: string
+          description: "Date yyyy-MM-dd\r"
+        - name: endDate
+          in: query
+          type: string
+          description: "Date yyyy-MM-dd\r"
+    - name: FinancialStatements-contacts-revenue
+      path: /FinancialStatements/contacts/revenue
+      operations:
+      - name: getfinancialstatementcontactsrevenue
+        method: GET
+        description: Xero Get revenue by contacts report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contactIds
+          in: query
+          type: array
+          description: "Specifies the customer contacts to be included in the report.\r"
+        - name: includeManualJournals
+          in: query
+          type: boolean
+          description: "Specifies whether to include the manual journals in the report.\r"
+        - name: startDate
+          in: query
+          type: string
+          description: "Date yyyy-MM-dd\r"
+        - name: endDate
+          in: query
+          type: string
+          description: "Date yyyy-MM-dd\r"
+    authentication:
+      type: bearer
+      token: '{{env.XERO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: finance-finance-rest
+    port: 8080
+    description: REST adapter for Xero Finance API — Finance. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/bankstatementsplus/statements
+      name: bankstatementsplus-statements
+      description: REST surface for BankStatementsPlus-statements.
+      operations:
+      - method: GET
+        name: getbankstatementaccounting
+        description: Xero Get Bank Statement Accounting
+        call: finance-finance.getbankstatementaccounting
+        with:
+          BankAccountID: rest.BankAccountID
+          FromDate: rest.FromDate
+          ToDate: rest.ToDate
+          SummaryOnly: rest.SummaryOnly
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cashvalidation
+      name: cashvalidation
+      description: REST surface for CashValidation.
+      operations:
+      - method: GET
+        name: getcashvalidation
+        description: Xero Get cash validation
+        call: finance-finance.getcashvalidation
+        with:
+          balanceDate: rest.balanceDate
+          asAtSystemDate: rest.asAtSystemDate
+          beginDate: rest.beginDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/financialstatements/balancesheet
+      name: financialstatements-balancesheet
+      description: REST surface for FinancialStatements-BalanceSheet.
+      operations:
+      - method: GET
+        name: getfinancialstatementbalancesheet
+        description: Xero Get Balance Sheet report
+        call: finance-finance.getfinancialstatementbalancesheet
+        with:
+          balanceDate: rest.balanceDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/financialstatements/cashflow
+      name: financialstatements-cashflow
+      description: REST surface for FinancialStatements-Cashflow.
+      operations:
+      - method: GET
+        name: getfinancialstatementcashflow
+        description: Xero Get Cash flow report
+        call: finance-finance.getfinancialstatementcashflow
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/financialstatements/profitandloss
+      name: financialstatements-profitandloss
+      description: REST surface for FinancialStatements-ProfitAndLoss.
+      operations:
+      - method: GET
+        name: getfinancialstatementprofitandloss
+        description: Xero Get Profit & Loss report
+        call: finance-finance.getfinancialstatementprofitandloss
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/financialstatements/trialbalance
+      name: financialstatements-trialbalance
+      description: REST surface for FinancialStatements-TrialBalance.
+      operations:
+      - method: GET
+        name: getfinancialstatementtrialbalance
+        description: Xero Get Trial Balance report
+        call: finance-finance.getfinancialstatementtrialbalance
+        with:
+          endDate: rest.endDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/financialstatements/contacts/expense
+      name: financialstatements-contacts-expense
+      description: REST surface for FinancialStatements-contacts-expense.
+      operations:
+      - method: GET
+        name: getfinancialstatementcontactsexpense
+        description: Xero Get expense by contacts report
+        call: finance-finance.getfinancialstatementcontactsexpense
+        with:
+          contactIds: rest.contactIds
+          includeManualJournals: rest.includeManualJournals
+          startDate: rest.startDate
+          endDate: rest.endDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/financialstatements/contacts/revenue
+      name: financialstatements-contacts-revenue
+      description: REST surface for FinancialStatements-contacts-revenue.
+      operations:
+      - method: GET
+        name: getfinancialstatementcontactsrevenue
+        description: Xero Get revenue by contacts report
+        call: finance-finance.getfinancialstatementcontactsrevenue
+        with:
+          contactIds: rest.contactIds
+          includeManualJournals: rest.includeManualJournals
+          startDate: rest.startDate
+          endDate: rest.endDate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: finance-finance-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Xero Finance API — Finance. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: xero-get-bank-statement-accounting
+      description: Xero Get Bank Statement Accounting
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: finance-finance.getbankstatementaccounting
+      with:
+        BankAccountID: tools.BankAccountID
+        FromDate: tools.FromDate
+        ToDate: tools.ToDate
+        SummaryOnly: tools.SummaryOnly
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-get-cash-validation
+      description: Xero Get cash validation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: finance-finance.getcashvalidation
+      with:
+        balanceDate: tools.balanceDate
+        asAtSystemDate: tools.asAtSystemDate
+        beginDate: tools.beginDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-get-balance-sheet-report
+      description: Xero Get Balance Sheet report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: finance-finance.getfinancialstatementbalancesheet
+      with:
+        balanceDate: tools.balanceDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-get-cash-flow-report
+      description: Xero Get Cash flow report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: finance-finance.getfinancialstatementcashflow
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-get-profit-loss-report
+      description: Xero Get Profit & Loss report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: finance-finance.getfinancialstatementprofitandloss
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-get-trial-balance-report
+      description: Xero Get Trial Balance report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: finance-finance.getfinancialstatementtrialbalance
+      with:
+        endDate: tools.endDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-get-expense-contacts-report
+      description: Xero Get expense by contacts report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: finance-finance.getfinancialstatementcontactsexpense
+      with:
+        contactIds: tools.contactIds
+        includeManualJournals: tools.includeManualJournals
+        startDate: tools.startDate
+        endDate: tools.endDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-get-revenue-contacts-report
+      description: Xero Get revenue by contacts report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: finance-finance.getfinancialstatementcontactsrevenue
+      with:
+        contactIds: tools.contactIds
+        includeManualJournals: tools.includeManualJournals
+        startDate: tools.startDate
+        endDate: tools.endDate
+      outputParameters:
+      - type: object
+        mapping: $.

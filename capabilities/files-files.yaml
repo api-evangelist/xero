@@ -1,0 +1,810 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Xero Files API — Files
+  description: 'Xero Files API — Files. 18 operations. Lead operation: Retrieves a count of associations for a list of objects..
+    Self-contained Naftiko capability covering one Xero business surface.'
+  tags:
+  - Xero
+  - Files
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    XERO_API_KEY: XERO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: files-files
+    baseUri: https://api.xero.com/files.xro/1.0
+    description: Xero Files API — Files business capability. Self-contained, no shared references.
+    resources:
+    - name: Associations-Count
+      path: /Associations/Count
+      operations:
+      - name: getassociationscount
+        method: GET
+        description: Retrieves a count of associations for a list of objects.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ObjectIds
+          in: query
+          type: array
+          description: A comma-separated list of object ids
+          required: true
+    - name: Associations-ObjectId
+      path: /Associations/{ObjectId}
+      operations:
+      - name: getassociationsbyobject
+        method: GET
+        description: Retrieves an association object using a unique object ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ObjectId
+          in: path
+          type: string
+          description: Object id for single object
+          required: true
+        - name: pagesize
+          in: query
+          type: integer
+          description: pass an optional page size value
+        - name: page
+          in: query
+          type: integer
+          description: number of records to skip for pagination
+        - name: sort
+          in: query
+          type: string
+          description: values to sort by
+        - name: direction
+          in: query
+          type: string
+          description: direction to sort by
+    - name: Files
+      path: /Files
+      operations:
+      - name: getfiles
+        method: GET
+        description: Retrieves files
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: pagesize
+          in: query
+          type: integer
+          description: pass an optional page size value
+        - name: page
+          in: query
+          type: integer
+          description: number of records to skip for pagination
+        - name: sort
+          in: query
+          type: string
+          description: values to sort by
+        - name: direction
+          in: query
+          type: string
+          description: sort direction
+      - name: uploadfile
+        method: POST
+        description: Uploads a File to the inbox
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Files-FileId
+      path: /Files/{FileId}
+      operations:
+      - name: getfile
+        method: GET
+        description: Retrieves a file by a unique file ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FileId
+          in: path
+          type: string
+          description: File id for single object
+          required: true
+      - name: updatefile
+        method: PUT
+        description: Update a file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FileId
+          in: path
+          type: string
+          description: File id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletefile
+        method: DELETE
+        description: Deletes a specific file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FileId
+          in: path
+          type: string
+          description: File id for single object
+          required: true
+    - name: Files-FileId-Associations
+      path: /Files/{FileId}/Associations
+      operations:
+      - name: getfileassociations
+        method: GET
+        description: Retrieves a specific file associations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FileId
+          in: path
+          type: string
+          description: File id for single object
+          required: true
+      - name: createfileassociation
+        method: POST
+        description: Creates a new file association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FileId
+          in: path
+          type: string
+          description: File id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Files-FileId-Associations-ObjectId
+      path: /Files/{FileId}/Associations/{ObjectId}
+      operations:
+      - name: deletefileassociation
+        method: DELETE
+        description: Deletes an existing file association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FileId
+          in: path
+          type: string
+          description: File id for single object
+          required: true
+        - name: ObjectId
+          in: path
+          type: string
+          description: Object id for single object
+          required: true
+    - name: Files-FileId-Content
+      path: /Files/{FileId}/Content
+      operations:
+      - name: getfilecontent
+        method: GET
+        description: Retrieves the content of a specific file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FileId
+          in: path
+          type: string
+          description: File id for single object
+          required: true
+    - name: Files-FolderId
+      path: /Files/{FolderId}
+      operations:
+      - name: uploadfiletofolder
+        method: POST
+        description: Uploads a File to a specific folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FolderId
+          in: path
+          type: string
+          description: pass required folder id to save file to specific folder
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Folders
+      path: /Folders
+      operations:
+      - name: getfolders
+        method: GET
+        description: Retrieves folders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sort
+          in: query
+          type: string
+          description: values to sort by
+      - name: createfolder
+        method: POST
+        description: Creates a new folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Folders-FolderId
+      path: /Folders/{FolderId}
+      operations:
+      - name: getfolder
+        method: GET
+        description: Retrieves specific folder by using a unique folder ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FolderId
+          in: path
+          type: string
+          description: Folder id for single object
+          required: true
+      - name: updatefolder
+        method: PUT
+        description: Updates an existing folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FolderId
+          in: path
+          type: string
+          description: Folder id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletefolder
+        method: DELETE
+        description: Deletes a folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FolderId
+          in: path
+          type: string
+          description: Folder id for single object
+          required: true
+    - name: Inbox
+      path: /Inbox
+      operations:
+      - name: getinbox
+        method: GET
+        description: Retrieves inbox folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.XERO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: files-files-rest
+    port: 8080
+    description: REST adapter for Xero Files API — Files. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/associations/count
+      name: associations-count
+      description: REST surface for Associations-Count.
+      operations:
+      - method: GET
+        name: getassociationscount
+        description: Retrieves a count of associations for a list of objects.
+        call: files-files.getassociationscount
+        with:
+          ObjectIds: rest.ObjectIds
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/associations/{objectid}
+      name: associations-objectid
+      description: REST surface for Associations-ObjectId.
+      operations:
+      - method: GET
+        name: getassociationsbyobject
+        description: Retrieves an association object using a unique object ID
+        call: files-files.getassociationsbyobject
+        with:
+          ObjectId: rest.ObjectId
+          pagesize: rest.pagesize
+          page: rest.page
+          sort: rest.sort
+          direction: rest.direction
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files
+      name: files
+      description: REST surface for Files.
+      operations:
+      - method: GET
+        name: getfiles
+        description: Retrieves files
+        call: files-files.getfiles
+        with:
+          pagesize: rest.pagesize
+          page: rest.page
+          sort: rest.sort
+          direction: rest.direction
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: uploadfile
+        description: Uploads a File to the inbox
+        call: files-files.uploadfile
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{fileid}
+      name: files-fileid
+      description: REST surface for Files-FileId.
+      operations:
+      - method: GET
+        name: getfile
+        description: Retrieves a file by a unique file ID
+        call: files-files.getfile
+        with:
+          FileId: rest.FileId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatefile
+        description: Update a file
+        call: files-files.updatefile
+        with:
+          FileId: rest.FileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefile
+        description: Deletes a specific file
+        call: files-files.deletefile
+        with:
+          FileId: rest.FileId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{fileid}/associations
+      name: files-fileid-associations
+      description: REST surface for Files-FileId-Associations.
+      operations:
+      - method: GET
+        name: getfileassociations
+        description: Retrieves a specific file associations
+        call: files-files.getfileassociations
+        with:
+          FileId: rest.FileId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createfileassociation
+        description: Creates a new file association
+        call: files-files.createfileassociation
+        with:
+          FileId: rest.FileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{fileid}/associations/{objectid}
+      name: files-fileid-associations-objectid
+      description: REST surface for Files-FileId-Associations-ObjectId.
+      operations:
+      - method: DELETE
+        name: deletefileassociation
+        description: Deletes an existing file association
+        call: files-files.deletefileassociation
+        with:
+          FileId: rest.FileId
+          ObjectId: rest.ObjectId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{fileid}/content
+      name: files-fileid-content
+      description: REST surface for Files-FileId-Content.
+      operations:
+      - method: GET
+        name: getfilecontent
+        description: Retrieves the content of a specific file
+        call: files-files.getfilecontent
+        with:
+          FileId: rest.FileId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/files/{folderid}
+      name: files-folderid
+      description: REST surface for Files-FolderId.
+      operations:
+      - method: POST
+        name: uploadfiletofolder
+        description: Uploads a File to a specific folder
+        call: files-files.uploadfiletofolder
+        with:
+          FolderId: rest.FolderId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/folders
+      name: folders
+      description: REST surface for Folders.
+      operations:
+      - method: GET
+        name: getfolders
+        description: Retrieves folders
+        call: files-files.getfolders
+        with:
+          sort: rest.sort
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createfolder
+        description: Creates a new folder
+        call: files-files.createfolder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/folders/{folderid}
+      name: folders-folderid
+      description: REST surface for Folders-FolderId.
+      operations:
+      - method: GET
+        name: getfolder
+        description: Retrieves specific folder by using a unique folder ID
+        call: files-files.getfolder
+        with:
+          FolderId: rest.FolderId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatefolder
+        description: Updates an existing folder
+        call: files-files.updatefolder
+        with:
+          FolderId: rest.FolderId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefolder
+        description: Deletes a folder
+        call: files-files.deletefolder
+        with:
+          FolderId: rest.FolderId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/inbox
+      name: inbox
+      description: REST surface for Inbox.
+      operations:
+      - method: GET
+        name: getinbox
+        description: Retrieves inbox folder
+        call: files-files.getinbox
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: files-files-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Xero Files API — Files. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: retrieves-count-associations-list-objects
+      description: Retrieves a count of associations for a list of objects.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: files-files.getassociationscount
+      with:
+        ObjectIds: tools.ObjectIds
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-association-object-using-unique
+      description: Retrieves an association object using a unique object ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: files-files.getassociationsbyobject
+      with:
+        ObjectId: tools.ObjectId
+        pagesize: tools.pagesize
+        page: tools.page
+        sort: tools.sort
+        direction: tools.direction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-files
+      description: Retrieves files
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: files-files.getfiles
+      with:
+        pagesize: tools.pagesize
+        page: tools.page
+        sort: tools.sort
+        direction: tools.direction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: uploads-file-inbox
+      description: Uploads a File to the inbox
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: files-files.uploadfile
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-file-unique-file-id
+      description: Retrieves a file by a unique file ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: files-files.getfile
+      with:
+        FileId: tools.FileId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-file
+      description: Update a file
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: files-files.updatefile
+      with:
+        FileId: tools.FileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-specific-file
+      description: Deletes a specific file
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: files-files.deletefile
+      with:
+        FileId: tools.FileId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-file-associations
+      description: Retrieves a specific file associations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: files-files.getfileassociations
+      with:
+        FileId: tools.FileId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-new-file-association
+      description: Creates a new file association
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: files-files.createfileassociation
+      with:
+        FileId: tools.FileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-existing-file-association
+      description: Deletes an existing file association
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: files-files.deletefileassociation
+      with:
+        FileId: tools.FileId
+        ObjectId: tools.ObjectId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-content-specific-file
+      description: Retrieves the content of a specific file
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: files-files.getfilecontent
+      with:
+        FileId: tools.FileId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: uploads-file-specific-folder
+      description: Uploads a File to a specific folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: files-files.uploadfiletofolder
+      with:
+        FolderId: tools.FolderId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-folders
+      description: Retrieves folders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: files-files.getfolders
+      with:
+        sort: tools.sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-new-folder
+      description: Creates a new folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: files-files.createfolder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-folder-using-unique
+      description: Retrieves specific folder by using a unique folder ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: files-files.getfolder
+      with:
+        FolderId: tools.FolderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-folder
+      description: Updates an existing folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: files-files.updatefolder
+      with:
+        FolderId: tools.FolderId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-folder
+      description: Deletes a folder
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: files-files.deletefolder
+      with:
+        FolderId: tools.FolderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-inbox-folder
+      description: Retrieves inbox folder
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: files-files.getinbox
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,3108 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Xero Payroll NZ — PayrollNz
+  description: 'Xero Payroll NZ — PayrollNz. 71 operations. Lead operation: Retrieves deductions for a specific employee.
+    Self-contained Naftiko capability covering one Xero business surface.'
+  tags:
+  - Xero
+  - PayrollNz
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    XERO_API_KEY: XERO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: payroll-nz-payrollnz
+    baseUri: https://api.xero.com/payroll.xro/2.0
+    description: Xero Payroll NZ — PayrollNz business capability. Self-contained, no shared references.
+    resources:
+    - name: Deductions
+      path: /Deductions
+      operations:
+      - name: getdeductions
+        method: GET
+        description: Retrieves deductions for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+      - name: creatededuction
+        method: POST
+        description: Creates a new deduction for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Deductions-deductionId
+      path: /Deductions/{deductionId}
+      operations:
+      - name: getdeduction
+        method: GET
+        description: Retrieves a single deduction by using a unique deduction ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deductionId
+          in: path
+          type: string
+          description: Identifier for the deduction
+          required: true
+    - name: EarningsRates
+      path: /EarningsRates
+      operations:
+      - name: getearningsrates
+        method: GET
+        description: Retrieves earnings rates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+      - name: createearningsrate
+        method: POST
+        description: Creates a new earnings rate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: EarningsRates-EarningsRateID
+      path: /EarningsRates/{EarningsRateID}
+      operations:
+      - name: getearningsrate
+        method: GET
+        description: Retrieves a specific earnings rates by using a unique earnings rate id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EarningsRateID
+          in: path
+          type: string
+          description: Identifier for the earnings rate
+          required: true
+    - name: Employees
+      path: /Employees
+      operations:
+      - name: getemployees
+        method: GET
+        description: Retrieves employees
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter
+          in: query
+          type: string
+          description: Filter by first name and/or lastname
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+      - name: createemployee
+        method: POST
+        description: Creates an employees
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID
+      path: /Employees/{EmployeeID}
+      operations:
+      - name: getemployee
+        method: GET
+        description: Retrieves an employees using a unique employee ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+      - name: updateemployee
+        method: PUT
+        description: Updates an existing employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-Employment
+      path: /Employees/{EmployeeID}/Employment
+      operations:
+      - name: createemployment
+        method: POST
+        description: Creates an employment detail for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-Leave
+      path: /Employees/{EmployeeID}/Leave
+      operations:
+      - name: getemployeeleaves
+        method: GET
+        description: Retrieves leave records for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+      - name: createemployeeleave
+        method: POST
+        description: Creates leave records for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-Leave-LeaveID
+      path: /Employees/{EmployeeID}/Leave/{LeaveID}
+      operations:
+      - name: updateemployeeleave
+        method: PUT
+        description: Updates leave records for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: LeaveID
+          in: path
+          type: string
+          description: Leave id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteemployeeleave
+        method: DELETE
+        description: Deletes a leave record for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: LeaveID
+          in: path
+          type: string
+          description: Leave id for single object
+          required: true
+    - name: Employees-EmployeeID-LeaveBalances
+      path: /Employees/{EmployeeID}/LeaveBalances
+      operations:
+      - name: getemployeeleavebalances
+        method: GET
+        description: Retrieves leave balances for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+    - name: Employees-EmployeeID-LeavePeriods
+      path: /Employees/{EmployeeID}/LeavePeriods
+      operations:
+      - name: getemployeeleaveperiods
+        method: GET
+        description: Retrieves leave periods for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: startDate
+          in: query
+          type: string
+          description: Filter by start date
+        - name: endDate
+          in: query
+          type: string
+          description: Filter by end date
+    - name: Employees-EmployeeID-LeaveSetup
+      path: /Employees/{EmployeeID}/LeaveSetup
+      operations:
+      - name: createemployeeleavesetup
+        method: POST
+        description: Creates a leave set-up for a specific employee. This is required before viewing, configuring and requesting
+          leave for an employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-LeaveTypes
+      path: /Employees/{EmployeeID}/LeaveTypes
+      operations:
+      - name: getemployeeleavetypes
+        method: GET
+        description: Retrieves leave types for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+      - name: createemployeeleavetype
+        method: POST
+        description: Creates leave type records for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-OpeningBalances
+      path: /Employees/{EmployeeID}/OpeningBalances
+      operations:
+      - name: getemployeeopeningbalances
+        method: GET
+        description: Retrieves the opening balance for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+      - name: createemployeeopeningbalances
+        method: POST
+        description: Creates opening balances for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-PayTemplateEarnings
+      path: /Employees/{EmployeeID}/PayTemplateEarnings
+      operations:
+      - name: createmultipleemployeeearningstemplate
+        method: POST
+        description: Creates multiple employee earnings template records for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-PayTemplates
+      path: /Employees/{EmployeeID}/PayTemplates
+      operations:
+      - name: getemployeepaytemplates
+        method: GET
+        description: Retrieves pay templates for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+    - name: Employees-EmployeeID-PayTemplates-Earnings
+      path: /Employees/{EmployeeID}/PayTemplates/Earnings
+      operations:
+      - name: createemployeeearningstemplate
+        method: POST
+        description: Creates earnings template records for an employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-PayTemplates-Earnings-PayTemplateEarningID
+      path: /Employees/{EmployeeID}/PayTemplates/Earnings/{PayTemplateEarningID}
+      operations:
+      - name: updateemployeeearningstemplate
+        method: PUT
+        description: Updates an earnings template records for an employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: PayTemplateEarningID
+          in: path
+          type: string
+          description: Id for single pay template earnings object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteemployeeearningstemplate
+        method: DELETE
+        description: Deletes an employee's earnings template record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: PayTemplateEarningID
+          in: path
+          type: string
+          description: Id for single pay template earnings object
+          required: true
+    - name: Employees-EmployeeID-PaymentMethods
+      path: /Employees/{EmployeeID}/PaymentMethods
+      operations:
+      - name: getemployeepaymentmethod
+        method: GET
+        description: Retrieves available payment methods for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+      - name: createemployeepaymentmethod
+        method: POST
+        description: Creates a payment method for an employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-SalaryAndWages
+      path: /Employees/{EmployeeID}/SalaryAndWages
+      operations:
+      - name: getemployeesalaryandwages
+        method: GET
+        description: Retrieves an employee's salary and wages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+      - name: createemployeesalaryandwage
+        method: POST
+        description: Creates an employee salary and wage record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-SalaryAndWages-SalaryAndWagesID
+      path: /Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}
+      operations:
+      - name: getemployeesalaryandwage
+        method: GET
+        description: Retrieves an employee's salary and wages record by using a unique salary and wage ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: SalaryAndWagesID
+          in: path
+          type: string
+          description: Id for single pay template earnings object
+          required: true
+      - name: updateemployeesalaryandwage
+        method: PUT
+        description: Updates an employee's salary and wages record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: SalaryAndWagesID
+          in: path
+          type: string
+          description: Id for single pay template earnings object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteemployeesalaryandwage
+        method: DELETE
+        description: Deletes an employee's salary and wages record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: SalaryAndWagesID
+          in: path
+          type: string
+          description: Id for single salary and wages object
+          required: true
+    - name: Employees-EmployeeID-Tax
+      path: /Employees/{EmployeeID}/Tax
+      operations:
+      - name: getemployeetax
+        method: GET
+        description: Retrieves tax records for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+      - name: updateemployeetax
+        method: POST
+        description: Updates the tax records for a specific employee
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-Working-Patterns
+      path: /Employees/{EmployeeID}/Working-Patterns
+      operations:
+      - name: getemployeeworkingpatterns
+        method: GET
+        description: Retrieves employee's working patterns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+      - name: createemployeeworkingpattern
+        method: POST
+        description: Creates an employee working pattern
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Employees-EmployeeID-Working-Patterns-EmployeeWorkingPatternID
+      path: /Employees/{EmployeeID}/Working-Patterns/{EmployeeWorkingPatternID}
+      operations:
+      - name: getemployeeworkingpattern
+        method: GET
+        description: Retrieves employee's working patterns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: EmployeeWorkingPatternID
+          in: path
+          type: string
+          description: Employee working pattern id for single object
+          required: true
+      - name: deleteemployeeworkingpattern
+        method: DELETE
+        description: deletes employee's working patterns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: EmployeeID
+          in: path
+          type: string
+          description: Employee id for single object
+          required: true
+        - name: EmployeeWorkingPatternID
+          in: path
+          type: string
+          description: Employee working pattern id for single object
+          required: true
+    - name: LeaveTypes
+      path: /LeaveTypes
+      operations:
+      - name: getleavetypes
+        method: GET
+        description: Retrieves leave types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+        - name: ActiveOnly
+          in: query
+          type: boolean
+          description: Filters leave types by active status. By default the API returns all leave types.
+      - name: createleavetype
+        method: POST
+        description: Creates a new leave type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: LeaveTypes-LeaveTypeID
+      path: /LeaveTypes/{LeaveTypeID}
+      operations:
+      - name: getleavetype
+        method: GET
+        description: Retrieves a specific leave type by using a unique leave type ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: LeaveTypeID
+          in: path
+          type: string
+          description: Identifier for the leave type
+          required: true
+    - name: PayRunCalendars
+      path: /PayRunCalendars
+      operations:
+      - name: getpayruncalendars
+        method: GET
+        description: Retrieves payrun calendars
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+      - name: createpayruncalendar
+        method: POST
+        description: Creates a new payrun calendar
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: PayRunCalendars-PayrollCalendarID
+      path: /PayRunCalendars/{PayrollCalendarID}
+      operations:
+      - name: getpayruncalendar
+        method: GET
+        description: Retrieves a specific payrun calendar by using a unique payroll calendar ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PayrollCalendarID
+          in: path
+          type: string
+          description: Identifier for the payrun calendars
+          required: true
+    - name: PayRuns
+      path: /PayRuns
+      operations:
+      - name: getpayruns
+        method: GET
+        description: Retrieves pay runs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+        - name: status
+          in: query
+          type: string
+          description: By default get payruns will return all the payruns for an organization. You can add GET https://api.xero.com/payroll.xro/2.0/payRuns?statu={PayRunStatus}
+            to fil
+      - name: createpayrun
+        method: POST
+        description: Creates a pay run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: PayRuns-PayRunID
+      path: /PayRuns/{PayRunID}
+      operations:
+      - name: getpayrun
+        method: GET
+        description: Retrieves a specific pay run by using a unique pay run ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PayRunID
+          in: path
+          type: string
+          description: Identifier for the pay run
+          required: true
+    - name: PaySlips
+      path: /PaySlips
+      operations:
+      - name: getpayslips
+        method: GET
+        description: Retrieves payslips
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+        - name: PayRunID
+          in: query
+          type: string
+          description: PayrunID which specifies the containing payrun of payslips to retrieve. By default, the API does not
+            group payslips by payrun.
+          required: true
+    - name: PaySlips-PaySlipID
+      path: /PaySlips/{PaySlipID}
+      operations:
+      - name: getpayslip
+        method: GET
+        description: Retrieves a specific payslip by a unique pay slip ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PaySlipID
+          in: path
+          type: string
+          description: Identifier for the payslip
+          required: true
+      - name: updatepaysliplineitems
+        method: PUT
+        description: Creates an employee pay slip
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PaySlipID
+          in: path
+          type: string
+          description: Identifier for the payslip
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Reimbursements
+      path: /Reimbursements
+      operations:
+      - name: getreimbursements
+        method: GET
+        description: Retrieves reimbursements
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+      - name: createreimbursement
+        method: POST
+        description: Creates a new reimbursement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Reimbursements-ReimbursementID
+      path: /Reimbursements/{ReimbursementID}
+      operations:
+      - name: getreimbursement
+        method: GET
+        description: Retrieves a specific reimbursement by using a unique reimbursement ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ReimbursementID
+          in: path
+          type: string
+          description: Identifier for the reimbursement
+          required: true
+    - name: Settings
+      path: /Settings
+      operations:
+      - name: getsettings
+        method: GET
+        description: Retrieves settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Settings-TrackingCategories
+      path: /Settings/TrackingCategories
+      operations:
+      - name: gettrackingcategories
+        method: GET
+        description: Retrieves tracking categories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: StatutoryDeductions
+      path: /StatutoryDeductions
+      operations:
+      - name: getstatutorydeductions
+        method: GET
+        description: Retrieves statutory deductions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+    - name: StatutoryDeductions-id
+      path: /StatutoryDeductions/{id}
+      operations:
+      - name: getstatutorydeduction
+        method: GET
+        description: Retrieves a specific statutory deduction by using a unique statutory deductions id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Identifier for the statutory deduction
+          required: true
+    - name: Superannuations
+      path: /Superannuations
+      operations:
+      - name: getsuperannuations
+        method: GET
+        description: Retrieves superannuations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+      - name: createsuperannuation
+        method: POST
+        description: Creates a new superannuation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Superannuations-SuperannuationID
+      path: /Superannuations/{SuperannuationID}
+      operations:
+      - name: getsuperannuation
+        method: GET
+        description: Retrieves a specific superannuation using a unique superannuation ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: SuperannuationID
+          in: path
+          type: string
+          description: Identifier for the superannuation
+          required: true
+    - name: Timesheets
+      path: /Timesheets
+      operations:
+      - name: gettimesheets
+        method: GET
+        description: Retrieves timesheets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 100.
+        - name: filter
+          in: query
+          type: string
+          description: Filter by employeeId and/or payrollCalendarId
+        - name: status
+          in: query
+          type: string
+          description: filter results by any timesheets with a matching timesheet status
+        - name: startDate
+          in: query
+          type: string
+          description: filter results by any timesheets with a startDate on or after the provided date
+        - name: endDate
+          in: query
+          type: string
+          description: filter results by any timesheets with a endDate on or before the provided date
+        - name: sort
+          in: query
+          type: string
+          description: sort the order of timesheets returned. The default is based on the timesheets createdDate, sorted oldest
+            to newest. Currently, the only other option is to rever
+      - name: createtimesheet
+        method: POST
+        description: Creates a new timesheet
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Timesheets-TimesheetID
+      path: /Timesheets/{TimesheetID}
+      operations:
+      - name: gettimesheet
+        method: GET
+        description: Retrieves a specific timesheet by using a unique timesheet ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: TimesheetID
+          in: path
+          type: string
+          description: Identifier for the timesheet
+          required: true
+      - name: deletetimesheet
+        method: DELETE
+        description: Deletes a timesheet
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: TimesheetID
+          in: path
+          type: string
+          description: Identifier for the timesheet
+          required: true
+    - name: Timesheets-TimesheetID-Approve
+      path: /Timesheets/{TimesheetID}/Approve
+      operations:
+      - name: approvetimesheet
+        method: POST
+        description: Approves a timesheet
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: TimesheetID
+          in: path
+          type: string
+          description: Identifier for the timesheet
+          required: true
+    - name: Timesheets-TimesheetID-Lines
+      path: /Timesheets/{TimesheetID}/Lines
+      operations:
+      - name: createtimesheetline
+        method: POST
+        description: Create a new timesheet line for a specific time sheet
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: TimesheetID
+          in: path
+          type: string
+          description: Identifier for the timesheet
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Timesheets-TimesheetID-Lines-TimesheetLineID
+      path: /Timesheets/{TimesheetID}/Lines/{TimesheetLineID}
+      operations:
+      - name: updatetimesheetline
+        method: PUT
+        description: Updates a timesheet line for a specific timesheet
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: TimesheetID
+          in: path
+          type: string
+          description: Identifier for the timesheet
+          required: true
+        - name: TimesheetLineID
+          in: path
+          type: string
+          description: Identifier for the timesheet line
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetimesheetline
+        method: DELETE
+        description: Deletes a timesheet line for a specific timesheet
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: TimesheetID
+          in: path
+          type: string
+          description: Identifier for the timesheet
+          required: true
+        - name: TimesheetLineID
+          in: path
+          type: string
+          description: Identifier for the timesheet line
+          required: true
+    - name: Timesheets-TimesheetID-RevertToDraft
+      path: /Timesheets/{TimesheetID}/RevertToDraft
+      operations:
+      - name: reverttimesheet
+        method: POST
+        description: Reverts a timesheet to draft
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: TimesheetID
+          in: path
+          type: string
+          description: Identifier for the timesheet
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.XERO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: payroll-nz-payrollnz-rest
+    port: 8080
+    description: REST adapter for Xero Payroll NZ — PayrollNz. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/deductions
+      name: deductions
+      description: REST surface for Deductions.
+      operations:
+      - method: GET
+        name: getdeductions
+        description: Retrieves deductions for a specific employee
+        call: payroll-nz-payrollnz.getdeductions
+        with:
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: creatededuction
+        description: Creates a new deduction for a specific employee
+        call: payroll-nz-payrollnz.creatededuction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deductions/{deductionid}
+      name: deductions-deductionid
+      description: REST surface for Deductions-deductionId.
+      operations:
+      - method: GET
+        name: getdeduction
+        description: Retrieves a single deduction by using a unique deduction ID
+        call: payroll-nz-payrollnz.getdeduction
+        with:
+          deductionId: rest.deductionId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/earningsrates
+      name: earningsrates
+      description: REST surface for EarningsRates.
+      operations:
+      - method: GET
+        name: getearningsrates
+        description: Retrieves earnings rates
+        call: payroll-nz-payrollnz.getearningsrates
+        with:
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createearningsrate
+        description: Creates a new earnings rate
+        call: payroll-nz-payrollnz.createearningsrate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/earningsrates/{earningsrateid}
+      name: earningsrates-earningsrateid
+      description: REST surface for EarningsRates-EarningsRateID.
+      operations:
+      - method: GET
+        name: getearningsrate
+        description: Retrieves a specific earnings rates by using a unique earnings rate id
+        call: payroll-nz-payrollnz.getearningsrate
+        with:
+          EarningsRateID: rest.EarningsRateID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees
+      name: employees
+      description: REST surface for Employees.
+      operations:
+      - method: GET
+        name: getemployees
+        description: Retrieves employees
+        call: payroll-nz-payrollnz.getemployees
+        with:
+          filter: rest.filter
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createemployee
+        description: Creates an employees
+        call: payroll-nz-payrollnz.createemployee
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}
+      name: employees-employeeid
+      description: REST surface for Employees-EmployeeID.
+      operations:
+      - method: GET
+        name: getemployee
+        description: Retrieves an employees using a unique employee ID
+        call: payroll-nz-payrollnz.getemployee
+        with:
+          EmployeeID: rest.EmployeeID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateemployee
+        description: Updates an existing employee
+        call: payroll-nz-payrollnz.updateemployee
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/employment
+      name: employees-employeeid-employment
+      description: REST surface for Employees-EmployeeID-Employment.
+      operations:
+      - method: POST
+        name: createemployment
+        description: Creates an employment detail for a specific employee
+        call: payroll-nz-payrollnz.createemployment
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/leave
+      name: employees-employeeid-leave
+      description: REST surface for Employees-EmployeeID-Leave.
+      operations:
+      - method: GET
+        name: getemployeeleaves
+        description: Retrieves leave records for a specific employee
+        call: payroll-nz-payrollnz.getemployeeleaves
+        with:
+          EmployeeID: rest.EmployeeID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createemployeeleave
+        description: Creates leave records for a specific employee
+        call: payroll-nz-payrollnz.createemployeeleave
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/leave/{leaveid}
+      name: employees-employeeid-leave-leaveid
+      description: REST surface for Employees-EmployeeID-Leave-LeaveID.
+      operations:
+      - method: PUT
+        name: updateemployeeleave
+        description: Updates leave records for a specific employee
+        call: payroll-nz-payrollnz.updateemployeeleave
+        with:
+          EmployeeID: rest.EmployeeID
+          LeaveID: rest.LeaveID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteemployeeleave
+        description: Deletes a leave record for a specific employee
+        call: payroll-nz-payrollnz.deleteemployeeleave
+        with:
+          EmployeeID: rest.EmployeeID
+          LeaveID: rest.LeaveID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/leavebalances
+      name: employees-employeeid-leavebalances
+      description: REST surface for Employees-EmployeeID-LeaveBalances.
+      operations:
+      - method: GET
+        name: getemployeeleavebalances
+        description: Retrieves leave balances for a specific employee
+        call: payroll-nz-payrollnz.getemployeeleavebalances
+        with:
+          EmployeeID: rest.EmployeeID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/leaveperiods
+      name: employees-employeeid-leaveperiods
+      description: REST surface for Employees-EmployeeID-LeavePeriods.
+      operations:
+      - method: GET
+        name: getemployeeleaveperiods
+        description: Retrieves leave periods for a specific employee
+        call: payroll-nz-payrollnz.getemployeeleaveperiods
+        with:
+          EmployeeID: rest.EmployeeID
+          startDate: rest.startDate
+          endDate: rest.endDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/leavesetup
+      name: employees-employeeid-leavesetup
+      description: REST surface for Employees-EmployeeID-LeaveSetup.
+      operations:
+      - method: POST
+        name: createemployeeleavesetup
+        description: Creates a leave set-up for a specific employee. This is required before viewing, configuring and requesting
+          leave for an employee
+        call: payroll-nz-payrollnz.createemployeeleavesetup
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/leavetypes
+      name: employees-employeeid-leavetypes
+      description: REST surface for Employees-EmployeeID-LeaveTypes.
+      operations:
+      - method: GET
+        name: getemployeeleavetypes
+        description: Retrieves leave types for a specific employee
+        call: payroll-nz-payrollnz.getemployeeleavetypes
+        with:
+          EmployeeID: rest.EmployeeID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createemployeeleavetype
+        description: Creates leave type records for a specific employee
+        call: payroll-nz-payrollnz.createemployeeleavetype
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/openingbalances
+      name: employees-employeeid-openingbalances
+      description: REST surface for Employees-EmployeeID-OpeningBalances.
+      operations:
+      - method: GET
+        name: getemployeeopeningbalances
+        description: Retrieves the opening balance for a specific employee
+        call: payroll-nz-payrollnz.getemployeeopeningbalances
+        with:
+          EmployeeID: rest.EmployeeID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createemployeeopeningbalances
+        description: Creates opening balances for a specific employee
+        call: payroll-nz-payrollnz.createemployeeopeningbalances
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/paytemplateearnings
+      name: employees-employeeid-paytemplateearnings
+      description: REST surface for Employees-EmployeeID-PayTemplateEarnings.
+      operations:
+      - method: POST
+        name: createmultipleemployeeearningstemplate
+        description: Creates multiple employee earnings template records for a specific employee
+        call: payroll-nz-payrollnz.createmultipleemployeeearningstemplate
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/paytemplates
+      name: employees-employeeid-paytemplates
+      description: REST surface for Employees-EmployeeID-PayTemplates.
+      operations:
+      - method: GET
+        name: getemployeepaytemplates
+        description: Retrieves pay templates for a specific employee
+        call: payroll-nz-payrollnz.getemployeepaytemplates
+        with:
+          EmployeeID: rest.EmployeeID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/paytemplates/earnings
+      name: employees-employeeid-paytemplates-earnings
+      description: REST surface for Employees-EmployeeID-PayTemplates-Earnings.
+      operations:
+      - method: POST
+        name: createemployeeearningstemplate
+        description: Creates earnings template records for an employee
+        call: payroll-nz-payrollnz.createemployeeearningstemplate
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/paytemplates/earnings/{paytemplateearningid}
+      name: employees-employeeid-paytemplates-earnings-paytemplateearningid
+      description: REST surface for Employees-EmployeeID-PayTemplates-Earnings-PayTemplateEarningID.
+      operations:
+      - method: PUT
+        name: updateemployeeearningstemplate
+        description: Updates an earnings template records for an employee
+        call: payroll-nz-payrollnz.updateemployeeearningstemplate
+        with:
+          EmployeeID: rest.EmployeeID
+          PayTemplateEarningID: rest.PayTemplateEarningID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteemployeeearningstemplate
+        description: Deletes an employee's earnings template record
+        call: payroll-nz-payrollnz.deleteemployeeearningstemplate
+        with:
+          EmployeeID: rest.EmployeeID
+          PayTemplateEarningID: rest.PayTemplateEarningID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/paymentmethods
+      name: employees-employeeid-paymentmethods
+      description: REST surface for Employees-EmployeeID-PaymentMethods.
+      operations:
+      - method: GET
+        name: getemployeepaymentmethod
+        description: Retrieves available payment methods for a specific employee
+        call: payroll-nz-payrollnz.getemployeepaymentmethod
+        with:
+          EmployeeID: rest.EmployeeID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createemployeepaymentmethod
+        description: Creates a payment method for an employee
+        call: payroll-nz-payrollnz.createemployeepaymentmethod
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/salaryandwages
+      name: employees-employeeid-salaryandwages
+      description: REST surface for Employees-EmployeeID-SalaryAndWages.
+      operations:
+      - method: GET
+        name: getemployeesalaryandwages
+        description: Retrieves an employee's salary and wages
+        call: payroll-nz-payrollnz.getemployeesalaryandwages
+        with:
+          EmployeeID: rest.EmployeeID
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createemployeesalaryandwage
+        description: Creates an employee salary and wage record
+        call: payroll-nz-payrollnz.createemployeesalaryandwage
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/salaryandwages/{salaryandwagesid}
+      name: employees-employeeid-salaryandwages-salaryandwagesid
+      description: REST surface for Employees-EmployeeID-SalaryAndWages-SalaryAndWagesID.
+      operations:
+      - method: GET
+        name: getemployeesalaryandwage
+        description: Retrieves an employee's salary and wages record by using a unique salary and wage ID
+        call: payroll-nz-payrollnz.getemployeesalaryandwage
+        with:
+          EmployeeID: rest.EmployeeID
+          SalaryAndWagesID: rest.SalaryAndWagesID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateemployeesalaryandwage
+        description: Updates an employee's salary and wages record
+        call: payroll-nz-payrollnz.updateemployeesalaryandwage
+        with:
+          EmployeeID: rest.EmployeeID
+          SalaryAndWagesID: rest.SalaryAndWagesID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteemployeesalaryandwage
+        description: Deletes an employee's salary and wages record
+        call: payroll-nz-payrollnz.deleteemployeesalaryandwage
+        with:
+          EmployeeID: rest.EmployeeID
+          SalaryAndWagesID: rest.SalaryAndWagesID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/tax
+      name: employees-employeeid-tax
+      description: REST surface for Employees-EmployeeID-Tax.
+      operations:
+      - method: GET
+        name: getemployeetax
+        description: Retrieves tax records for a specific employee
+        call: payroll-nz-payrollnz.getemployeetax
+        with:
+          EmployeeID: rest.EmployeeID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateemployeetax
+        description: Updates the tax records for a specific employee
+        call: payroll-nz-payrollnz.updateemployeetax
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/working-patterns
+      name: employees-employeeid-working-patterns
+      description: REST surface for Employees-EmployeeID-Working-Patterns.
+      operations:
+      - method: GET
+        name: getemployeeworkingpatterns
+        description: Retrieves employee's working patterns
+        call: payroll-nz-payrollnz.getemployeeworkingpatterns
+        with:
+          EmployeeID: rest.EmployeeID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createemployeeworkingpattern
+        description: Creates an employee working pattern
+        call: payroll-nz-payrollnz.createemployeeworkingpattern
+        with:
+          EmployeeID: rest.EmployeeID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/employees/{employeeid}/working-patterns/{employeeworkingpatternid}
+      name: employees-employeeid-working-patterns-employeeworkingpatternid
+      description: REST surface for Employees-EmployeeID-Working-Patterns-EmployeeWorkingPatternID.
+      operations:
+      - method: GET
+        name: getemployeeworkingpattern
+        description: Retrieves employee's working patterns
+        call: payroll-nz-payrollnz.getemployeeworkingpattern
+        with:
+          EmployeeID: rest.EmployeeID
+          EmployeeWorkingPatternID: rest.EmployeeWorkingPatternID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteemployeeworkingpattern
+        description: deletes employee's working patterns
+        call: payroll-nz-payrollnz.deleteemployeeworkingpattern
+        with:
+          EmployeeID: rest.EmployeeID
+          EmployeeWorkingPatternID: rest.EmployeeWorkingPatternID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/leavetypes
+      name: leavetypes
+      description: REST surface for LeaveTypes.
+      operations:
+      - method: GET
+        name: getleavetypes
+        description: Retrieves leave types
+        call: payroll-nz-payrollnz.getleavetypes
+        with:
+          page: rest.page
+          ActiveOnly: rest.ActiveOnly
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createleavetype
+        description: Creates a new leave type
+        call: payroll-nz-payrollnz.createleavetype
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/leavetypes/{leavetypeid}
+      name: leavetypes-leavetypeid
+      description: REST surface for LeaveTypes-LeaveTypeID.
+      operations:
+      - method: GET
+        name: getleavetype
+        description: Retrieves a specific leave type by using a unique leave type ID
+        call: payroll-nz-payrollnz.getleavetype
+        with:
+          LeaveTypeID: rest.LeaveTypeID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/payruncalendars
+      name: payruncalendars
+      description: REST surface for PayRunCalendars.
+      operations:
+      - method: GET
+        name: getpayruncalendars
+        description: Retrieves payrun calendars
+        call: payroll-nz-payrollnz.getpayruncalendars
+        with:
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createpayruncalendar
+        description: Creates a new payrun calendar
+        call: payroll-nz-payrollnz.createpayruncalendar
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/payruncalendars/{payrollcalendarid}
+      name: payruncalendars-payrollcalendarid
+      description: REST surface for PayRunCalendars-PayrollCalendarID.
+      operations:
+      - method: GET
+        name: getpayruncalendar
+        description: Retrieves a specific payrun calendar by using a unique payroll calendar ID
+        call: payroll-nz-payrollnz.getpayruncalendar
+        with:
+          PayrollCalendarID: rest.PayrollCalendarID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/payruns
+      name: payruns
+      description: REST surface for PayRuns.
+      operations:
+      - method: GET
+        name: getpayruns
+        description: Retrieves pay runs
+        call: payroll-nz-payrollnz.getpayruns
+        with:
+          page: rest.page
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createpayrun
+        description: Creates a pay run
+        call: payroll-nz-payrollnz.createpayrun
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/payruns/{payrunid}
+      name: payruns-payrunid
+      description: REST surface for PayRuns-PayRunID.
+      operations:
+      - method: GET
+        name: getpayrun
+        description: Retrieves a specific pay run by using a unique pay run ID
+        call: payroll-nz-payrollnz.getpayrun
+        with:
+          PayRunID: rest.PayRunID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/payslips
+      name: payslips
+      description: REST surface for PaySlips.
+      operations:
+      - method: GET
+        name: getpayslips
+        description: Retrieves payslips
+        call: payroll-nz-payrollnz.getpayslips
+        with:
+          page: rest.page
+          PayRunID: rest.PayRunID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/payslips/{payslipid}
+      name: payslips-payslipid
+      description: REST surface for PaySlips-PaySlipID.
+      operations:
+      - method: GET
+        name: getpayslip
+        description: Retrieves a specific payslip by a unique pay slip ID
+        call: payroll-nz-payrollnz.getpayslip
+        with:
+          PaySlipID: rest.PaySlipID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatepaysliplineitems
+        description: Creates an employee pay slip
+        call: payroll-nz-payrollnz.updatepaysliplineitems
+        with:
+          PaySlipID: rest.PaySlipID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reimbursements
+      name: reimbursements
+      description: REST surface for Reimbursements.
+      operations:
+      - method: GET
+        name: getreimbursements
+        description: Retrieves reimbursements
+        call: payroll-nz-payrollnz.getreimbursements
+        with:
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createreimbursement
+        description: Creates a new reimbursement
+        call: payroll-nz-payrollnz.createreimbursement
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reimbursements/{reimbursementid}
+      name: reimbursements-reimbursementid
+      description: REST surface for Reimbursements-ReimbursementID.
+      operations:
+      - method: GET
+        name: getreimbursement
+        description: Retrieves a specific reimbursement by using a unique reimbursement ID
+        call: payroll-nz-payrollnz.getreimbursement
+        with:
+          ReimbursementID: rest.ReimbursementID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/settings
+      name: settings
+      description: REST surface for Settings.
+      operations:
+      - method: GET
+        name: getsettings
+        description: Retrieves settings
+        call: payroll-nz-payrollnz.getsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/settings/trackingcategories
+      name: settings-trackingcategories
+      description: REST surface for Settings-TrackingCategories.
+      operations:
+      - method: GET
+        name: gettrackingcategories
+        description: Retrieves tracking categories
+        call: payroll-nz-payrollnz.gettrackingcategories
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/statutorydeductions
+      name: statutorydeductions
+      description: REST surface for StatutoryDeductions.
+      operations:
+      - method: GET
+        name: getstatutorydeductions
+        description: Retrieves statutory deductions
+        call: payroll-nz-payrollnz.getstatutorydeductions
+        with:
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/statutorydeductions/{id}
+      name: statutorydeductions-id
+      description: REST surface for StatutoryDeductions-id.
+      operations:
+      - method: GET
+        name: getstatutorydeduction
+        description: Retrieves a specific statutory deduction by using a unique statutory deductions id
+        call: payroll-nz-payrollnz.getstatutorydeduction
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/superannuations
+      name: superannuations
+      description: REST surface for Superannuations.
+      operations:
+      - method: GET
+        name: getsuperannuations
+        description: Retrieves superannuations
+        call: payroll-nz-payrollnz.getsuperannuations
+        with:
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsuperannuation
+        description: Creates a new superannuation
+        call: payroll-nz-payrollnz.createsuperannuation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/superannuations/{superannuationid}
+      name: superannuations-superannuationid
+      description: REST surface for Superannuations-SuperannuationID.
+      operations:
+      - method: GET
+        name: getsuperannuation
+        description: Retrieves a specific superannuation using a unique superannuation ID
+        call: payroll-nz-payrollnz.getsuperannuation
+        with:
+          SuperannuationID: rest.SuperannuationID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timesheets
+      name: timesheets
+      description: REST surface for Timesheets.
+      operations:
+      - method: GET
+        name: gettimesheets
+        description: Retrieves timesheets
+        call: payroll-nz-payrollnz.gettimesheets
+        with:
+          page: rest.page
+          filter: rest.filter
+          status: rest.status
+          startDate: rest.startDate
+          endDate: rest.endDate
+          sort: rest.sort
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtimesheet
+        description: Creates a new timesheet
+        call: payroll-nz-payrollnz.createtimesheet
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timesheets/{timesheetid}
+      name: timesheets-timesheetid
+      description: REST surface for Timesheets-TimesheetID.
+      operations:
+      - method: GET
+        name: gettimesheet
+        description: Retrieves a specific timesheet by using a unique timesheet ID
+        call: payroll-nz-payrollnz.gettimesheet
+        with:
+          TimesheetID: rest.TimesheetID
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetimesheet
+        description: Deletes a timesheet
+        call: payroll-nz-payrollnz.deletetimesheet
+        with:
+          TimesheetID: rest.TimesheetID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timesheets/{timesheetid}/approve
+      name: timesheets-timesheetid-approve
+      description: REST surface for Timesheets-TimesheetID-Approve.
+      operations:
+      - method: POST
+        name: approvetimesheet
+        description: Approves a timesheet
+        call: payroll-nz-payrollnz.approvetimesheet
+        with:
+          TimesheetID: rest.TimesheetID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timesheets/{timesheetid}/lines
+      name: timesheets-timesheetid-lines
+      description: REST surface for Timesheets-TimesheetID-Lines.
+      operations:
+      - method: POST
+        name: createtimesheetline
+        description: Create a new timesheet line for a specific time sheet
+        call: payroll-nz-payrollnz.createtimesheetline
+        with:
+          TimesheetID: rest.TimesheetID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timesheets/{timesheetid}/lines/{timesheetlineid}
+      name: timesheets-timesheetid-lines-timesheetlineid
+      description: REST surface for Timesheets-TimesheetID-Lines-TimesheetLineID.
+      operations:
+      - method: PUT
+        name: updatetimesheetline
+        description: Updates a timesheet line for a specific timesheet
+        call: payroll-nz-payrollnz.updatetimesheetline
+        with:
+          TimesheetID: rest.TimesheetID
+          TimesheetLineID: rest.TimesheetLineID
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetimesheetline
+        description: Deletes a timesheet line for a specific timesheet
+        call: payroll-nz-payrollnz.deletetimesheetline
+        with:
+          TimesheetID: rest.TimesheetID
+          TimesheetLineID: rest.TimesheetLineID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/timesheets/{timesheetid}/reverttodraft
+      name: timesheets-timesheetid-reverttodraft
+      description: REST surface for Timesheets-TimesheetID-RevertToDraft.
+      operations:
+      - method: POST
+        name: reverttimesheet
+        description: Reverts a timesheet to draft
+        call: payroll-nz-payrollnz.reverttimesheet
+        with:
+          TimesheetID: rest.TimesheetID
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: payroll-nz-payrollnz-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Xero Payroll NZ — PayrollNz. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: retrieves-deductions-specific-employee
+      description: Retrieves deductions for a specific employee
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getdeductions
+      with:
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-new-deduction-specific-employee
+      description: Creates a new deduction for a specific employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.creatededuction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-single-deduction-using-unique
+      description: Retrieves a single deduction by using a unique deduction ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getdeduction
+      with:
+        deductionId: tools.deductionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-earnings-rates
+      description: Retrieves earnings rates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getearningsrates
+      with:
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-new-earnings-rate
+      description: Creates a new earnings rate
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createearningsrate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-earnings-rates-using
+      description: Retrieves a specific earnings rates by using a unique earnings rate id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getearningsrate
+      with:
+        EarningsRateID: tools.EarningsRateID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-employees
+      description: Retrieves employees
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployees
+      with:
+        filter: tools.filter
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-employees
+      description: Creates an employees
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createemployee
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-employees-using-unique-employee
+      description: Retrieves an employees using a unique employee ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployee
+      with:
+        EmployeeID: tools.EmployeeID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-existing-employee
+      description: Updates an existing employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.updateemployee
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-employment-detail-specific-employee
+      description: Creates an employment detail for a specific employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createemployment
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-leave-records-specific-employee
+      description: Retrieves leave records for a specific employee
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeeleaves
+      with:
+        EmployeeID: tools.EmployeeID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-leave-records-specific-employee
+      description: Creates leave records for a specific employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createemployeeleave
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-leave-records-specific-employee
+      description: Updates leave records for a specific employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.updateemployeeleave
+      with:
+        EmployeeID: tools.EmployeeID
+        LeaveID: tools.LeaveID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-leave-record-specific-employee
+      description: Deletes a leave record for a specific employee
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: payroll-nz-payrollnz.deleteemployeeleave
+      with:
+        EmployeeID: tools.EmployeeID
+        LeaveID: tools.LeaveID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-leave-balances-specific-employee
+      description: Retrieves leave balances for a specific employee
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeeleavebalances
+      with:
+        EmployeeID: tools.EmployeeID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-leave-periods-specific-employee
+      description: Retrieves leave periods for a specific employee
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeeleaveperiods
+      with:
+        EmployeeID: tools.EmployeeID
+        startDate: tools.startDate
+        endDate: tools.endDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-leave-set-up-specific
+      description: Creates a leave set-up for a specific employee. This is required before viewing, configuring and requesting
+        leave for an employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createemployeeleavesetup
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-leave-types-specific-employee
+      description: Retrieves leave types for a specific employee
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeeleavetypes
+      with:
+        EmployeeID: tools.EmployeeID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-leave-type-records-specific
+      description: Creates leave type records for a specific employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createemployeeleavetype
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-opening-balance-specific-employee
+      description: Retrieves the opening balance for a specific employee
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeeopeningbalances
+      with:
+        EmployeeID: tools.EmployeeID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-opening-balances-specific-employee
+      description: Creates opening balances for a specific employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createemployeeopeningbalances
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-multiple-employee-earnings-template
+      description: Creates multiple employee earnings template records for a specific employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createmultipleemployeeearningstemplate
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-pay-templates-specific-employee
+      description: Retrieves pay templates for a specific employee
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeepaytemplates
+      with:
+        EmployeeID: tools.EmployeeID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-earnings-template-records-employee
+      description: Creates earnings template records for an employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createemployeeearningstemplate
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-earnings-template-records-employee
+      description: Updates an earnings template records for an employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.updateemployeeearningstemplate
+      with:
+        EmployeeID: tools.EmployeeID
+        PayTemplateEarningID: tools.PayTemplateEarningID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-employee-s-earnings-template-record
+      description: Deletes an employee's earnings template record
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: payroll-nz-payrollnz.deleteemployeeearningstemplate
+      with:
+        EmployeeID: tools.EmployeeID
+        PayTemplateEarningID: tools.PayTemplateEarningID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-available-payment-methods-specific
+      description: Retrieves available payment methods for a specific employee
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeepaymentmethod
+      with:
+        EmployeeID: tools.EmployeeID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-payment-method-employee
+      description: Creates a payment method for an employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createemployeepaymentmethod
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-employee-s-salary-and-wages
+      description: Retrieves an employee's salary and wages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeesalaryandwages
+      with:
+        EmployeeID: tools.EmployeeID
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-employee-salary-and-wage
+      description: Creates an employee salary and wage record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createemployeesalaryandwage
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-employee-s-salary-and-wages-2
+      description: Retrieves an employee's salary and wages record by using a unique salary and wage ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeesalaryandwage
+      with:
+        EmployeeID: tools.EmployeeID
+        SalaryAndWagesID: tools.SalaryAndWagesID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-employee-s-salary-and-wages
+      description: Updates an employee's salary and wages record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.updateemployeesalaryandwage
+      with:
+        EmployeeID: tools.EmployeeID
+        SalaryAndWagesID: tools.SalaryAndWagesID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-employee-s-salary-and-wages
+      description: Deletes an employee's salary and wages record
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: payroll-nz-payrollnz.deleteemployeesalaryandwage
+      with:
+        EmployeeID: tools.EmployeeID
+        SalaryAndWagesID: tools.SalaryAndWagesID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-tax-records-specific-employee
+      description: Retrieves tax records for a specific employee
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeetax
+      with:
+        EmployeeID: tools.EmployeeID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-tax-records-specific-employee
+      description: Updates the tax records for a specific employee
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.updateemployeetax
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-employee-s-working-patterns
+      description: Retrieves employee's working patterns
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeeworkingpatterns
+      with:
+        EmployeeID: tools.EmployeeID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-employee-working-pattern
+      description: Creates an employee working pattern
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createemployeeworkingpattern
+      with:
+        EmployeeID: tools.EmployeeID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-employee-s-working-patterns-2
+      description: Retrieves employee's working patterns
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getemployeeworkingpattern
+      with:
+        EmployeeID: tools.EmployeeID
+        EmployeeWorkingPatternID: tools.EmployeeWorkingPatternID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-employee-s-working-patterns
+      description: deletes employee's working patterns
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: payroll-nz-payrollnz.deleteemployeeworkingpattern
+      with:
+        EmployeeID: tools.EmployeeID
+        EmployeeWorkingPatternID: tools.EmployeeWorkingPatternID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-leave-types
+      description: Retrieves leave types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getleavetypes
+      with:
+        page: tools.page
+        ActiveOnly: tools.ActiveOnly
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-new-leave-type
+      description: Creates a new leave type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createleavetype
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-leave-type-using
+      description: Retrieves a specific leave type by using a unique leave type ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getleavetype
+      with:
+        LeaveTypeID: tools.LeaveTypeID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-payrun-calendars
+      description: Retrieves payrun calendars
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getpayruncalendars
+      with:
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-new-payrun-calendar
+      description: Creates a new payrun calendar
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createpayruncalendar
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-payrun-calendar-using
+      description: Retrieves a specific payrun calendar by using a unique payroll calendar ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getpayruncalendar
+      with:
+        PayrollCalendarID: tools.PayrollCalendarID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-pay-runs
+      description: Retrieves pay runs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getpayruns
+      with:
+        page: tools.page
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-pay-run
+      description: Creates a pay run
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createpayrun
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-pay-run-using
+      description: Retrieves a specific pay run by using a unique pay run ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getpayrun
+      with:
+        PayRunID: tools.PayRunID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-payslips
+      description: Retrieves payslips
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getpayslips
+      with:
+        page: tools.page
+        PayRunID: tools.PayRunID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-payslip-unique-pay
+      description: Retrieves a specific payslip by a unique pay slip ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getpayslip
+      with:
+        PaySlipID: tools.PaySlipID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-employee-pay-slip
+      description: Creates an employee pay slip
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.updatepaysliplineitems
+      with:
+        PaySlipID: tools.PaySlipID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-reimbursements
+      description: Retrieves reimbursements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getreimbursements
+      with:
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-new-reimbursement
+      description: Creates a new reimbursement
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createreimbursement
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-reimbursement-using-unique
+      description: Retrieves a specific reimbursement by using a unique reimbursement ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getreimbursement
+      with:
+        ReimbursementID: tools.ReimbursementID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-settings
+      description: Retrieves settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-tracking-categories
+      description: Retrieves tracking categories
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.gettrackingcategories
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-statutory-deductions
+      description: Retrieves statutory deductions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getstatutorydeductions
+      with:
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-statutory-deduction-using
+      description: Retrieves a specific statutory deduction by using a unique statutory deductions id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getstatutorydeduction
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-superannuations
+      description: Retrieves superannuations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getsuperannuations
+      with:
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-new-superannuation
+      description: Creates a new superannuation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createsuperannuation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-superannuation-using-unique
+      description: Retrieves a specific superannuation using a unique superannuation ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.getsuperannuation
+      with:
+        SuperannuationID: tools.SuperannuationID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-timesheets
+      description: Retrieves timesheets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.gettimesheets
+      with:
+        page: tools.page
+        filter: tools.filter
+        status: tools.status
+        startDate: tools.startDate
+        endDate: tools.endDate
+        sort: tools.sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: creates-new-timesheet
+      description: Creates a new timesheet
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createtimesheet
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieves-specific-timesheet-using-unique
+      description: Retrieves a specific timesheet by using a unique timesheet ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.gettimesheet
+      with:
+        TimesheetID: tools.TimesheetID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-timesheet
+      description: Deletes a timesheet
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: payroll-nz-payrollnz.deletetimesheet
+      with:
+        TimesheetID: tools.TimesheetID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: approves-timesheet
+      description: Approves a timesheet
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.approvetimesheet
+      with:
+        TimesheetID: tools.TimesheetID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-timesheet-line-specific
+      description: Create a new timesheet line for a specific time sheet
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.createtimesheetline
+      with:
+        TimesheetID: tools.TimesheetID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-timesheet-line-specific-timesheet
+      description: Updates a timesheet line for a specific timesheet
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: payroll-nz-payrollnz.updatetimesheetline
+      with:
+        TimesheetID: tools.TimesheetID
+        TimesheetLineID: tools.TimesheetLineID
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-timesheet-line-specific-timesheet
+      description: Deletes a timesheet line for a specific timesheet
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: payroll-nz-payrollnz.deletetimesheetline
+      with:
+        TimesheetID: tools.TimesheetID
+        TimesheetLineID: tools.TimesheetLineID
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reverts-timesheet-draft
+      description: Reverts a timesheet to draft
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payroll-nz-payrollnz.reverttimesheet
+      with:
+        TimesheetID: tools.TimesheetID
+      outputParameters:
+      - type: object
+        mapping: $.

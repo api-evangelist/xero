@@ -1,0 +1,340 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Xero Bank Feeds API — BankFeeds
+  description: 'Xero Bank Feeds API — BankFeeds. 7 operations. Lead operation: Xero Searches for feed connections. Self-contained
+    Naftiko capability covering one Xero business surface.'
+  tags:
+  - Xero
+  - BankFeeds
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    XERO_API_KEY: XERO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: bankfeeds-bankfeeds
+    baseUri: https://api.xero.com/bankfeeds.xro/1.0
+    description: Xero Bank Feeds API — BankFeeds business capability. Self-contained, no shared references.
+    resources:
+    - name: FeedConnections
+      path: /FeedConnections
+      operations:
+      - name: getfeedconnections
+        method: GET
+        description: Xero Searches for feed connections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number which specifies the set of records to retrieve. By default the number of the records per
+            set is 10. Example - https://api.xero.com/bankfeeds.xro/1.0
+        - name: pageSize
+          in: query
+          type: integer
+          description: Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize=100
+      - name: createfeedconnections
+        method: POST
+        description: Xero Create one or more new feed connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: FeedConnections-DeleteRequests
+      path: /FeedConnections/DeleteRequests
+      operations:
+      - name: deletefeedconnections
+        method: POST
+        description: Xero Delete an existing feed connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: FeedConnections-id
+      path: /FeedConnections/{id}
+      operations:
+      - name: getfeedconnection
+        method: GET
+        description: Xero Retrieve single feed connection based on a unique id provided
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Unique identifier for retrieving single object
+          required: true
+    - name: Statements
+      path: /Statements
+      operations:
+      - name: getstatements
+        method: GET
+        description: Xero Retrieve all statements
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: unique id for single object
+        - name: pageSize
+          in: query
+          type: integer
+          description: Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?pageSize=100
+            to s
+        - name: Xero-Application-Id
+          in: header
+          type: string
+        - name: Xero-User-Id
+          in: header
+          type: string
+      - name: createstatements
+        method: POST
+        description: Xero Creates one or more new statements
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Statements-statementId
+      path: /Statements/{statementId}
+      operations:
+      - name: getstatement
+        method: GET
+        description: Xero Retrieve single statement based on unique id provided
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: statementId
+          in: path
+          type: string
+          description: statement id for single object
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.XERO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: bankfeeds-bankfeeds-rest
+    port: 8080
+    description: REST adapter for Xero Bank Feeds API — BankFeeds. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/feedconnections
+      name: feedconnections
+      description: REST surface for FeedConnections.
+      operations:
+      - method: GET
+        name: getfeedconnections
+        description: Xero Searches for feed connections
+        call: bankfeeds-bankfeeds.getfeedconnections
+        with:
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createfeedconnections
+        description: Xero Create one or more new feed connection
+        call: bankfeeds-bankfeeds.createfeedconnections
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/feedconnections/deleterequests
+      name: feedconnections-deleterequests
+      description: REST surface for FeedConnections-DeleteRequests.
+      operations:
+      - method: POST
+        name: deletefeedconnections
+        description: Xero Delete an existing feed connection
+        call: bankfeeds-bankfeeds.deletefeedconnections
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/feedconnections/{id}
+      name: feedconnections-id
+      description: REST surface for FeedConnections-id.
+      operations:
+      - method: GET
+        name: getfeedconnection
+        description: Xero Retrieve single feed connection based on a unique id provided
+        call: bankfeeds-bankfeeds.getfeedconnection
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/statements
+      name: statements
+      description: REST surface for Statements.
+      operations:
+      - method: GET
+        name: getstatements
+        description: Xero Retrieve all statements
+        call: bankfeeds-bankfeeds.getstatements
+        with:
+          page: rest.page
+          pageSize: rest.pageSize
+          Xero-Application-Id: rest.Xero-Application-Id
+          Xero-User-Id: rest.Xero-User-Id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createstatements
+        description: Xero Creates one or more new statements
+        call: bankfeeds-bankfeeds.createstatements
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/statements/{statementid}
+      name: statements-statementid
+      description: REST surface for Statements-statementId.
+      operations:
+      - method: GET
+        name: getstatement
+        description: Xero Retrieve single statement based on unique id provided
+        call: bankfeeds-bankfeeds.getstatement
+        with:
+          statementId: rest.statementId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: bankfeeds-bankfeeds-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Xero Bank Feeds API — BankFeeds. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: xero-searches-feed-connections
+      description: Xero Searches for feed connections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bankfeeds-bankfeeds.getfeedconnections
+      with:
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-create-one-more-new
+      description: Xero Create one or more new feed connection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: bankfeeds-bankfeeds.createfeedconnections
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-delete-existing-feed-connection
+      description: Xero Delete an existing feed connection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: bankfeeds-bankfeeds.deletefeedconnections
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-retrieve-single-feed-connection
+      description: Xero Retrieve single feed connection based on a unique id provided
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bankfeeds-bankfeeds.getfeedconnection
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-retrieve-all-statements
+      description: Xero Retrieve all statements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bankfeeds-bankfeeds.getstatements
+      with:
+        page: tools.page
+        pageSize: tools.pageSize
+        Xero-Application-Id: tools.Xero-Application-Id
+        Xero-User-Id: tools.Xero-User-Id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-creates-one-more-new
+      description: Xero Creates one or more new statements
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: bankfeeds-bankfeeds.createstatements
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-retrieve-single-statement-based
+      description: Xero Retrieve single statement based on unique id provided
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bankfeeds-bankfeeds.getstatement
+      with:
+        statementId: tools.statementId
+      outputParameters:
+      - type: object
+        mapping: $.

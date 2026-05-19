@@ -1,0 +1,288 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Xero Assets API — Asset
+  description: 'Xero Assets API — Asset. 6 operations. Lead operation: Xero searches fixed asset types. Self-contained Naftiko
+    capability covering one Xero business surface.'
+  tags:
+  - Xero
+  - Asset
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    XERO_API_KEY: XERO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: assets-asset
+    baseUri: https://api.xero.com/assets.xro/1.0
+    description: Xero Assets API — Asset business capability. Self-contained, no shared references.
+    resources:
+    - name: AssetTypes
+      path: /AssetTypes
+      operations:
+      - name: getassettypes
+        method: GET
+        description: Xero searches fixed asset types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createassettype
+        method: POST
+        description: Xero adds a fixed asset type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Assets
+      path: /Assets
+      operations:
+      - name: getassets
+        method: GET
+        description: Xero searches fixed asset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+          description: Required when retrieving a collection of assets. See Asset Status Codes
+          required: true
+        - name: page
+          in: query
+          type: integer
+          description: Results are paged. This specifies which page of the results to return. The default page is 1.
+        - name: pageSize
+          in: query
+          type: integer
+          description: The number of records returned per page. By default the number of records returned is 10.
+        - name: orderBy
+          in: query
+          type: string
+          description: Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the
+            asset status is DISPOSED it also allows DisposalDate and Di
+        - name: sortDirection
+          in: query
+          type: string
+          description: ASC or DESC
+        - name: filterBy
+          in: query
+          type: string
+          description: A string that can be used to filter the list to only return assets containing the text. Checks it against
+            the AssetName, AssetNumber, Description and AssetTypeN
+      - name: createasset
+        method: POST
+        description: Xero adds a fixed asset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Assets-id
+      path: /Assets/{id}
+      operations:
+      - name: getassetbyid
+        method: GET
+        description: Xero Retrieves fixed asset by id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: fixed asset id for single object
+          required: true
+    - name: Settings
+      path: /Settings
+      operations:
+      - name: getassetsettings
+        method: GET
+        description: Xero searches fixed asset settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.XERO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: assets-asset-rest
+    port: 8080
+    description: REST adapter for Xero Assets API — Asset. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/assettypes
+      name: assettypes
+      description: REST surface for AssetTypes.
+      operations:
+      - method: GET
+        name: getassettypes
+        description: Xero searches fixed asset types
+        call: assets-asset.getassettypes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createassettype
+        description: Xero adds a fixed asset type
+        call: assets-asset.createassettype
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/assets
+      name: assets
+      description: REST surface for Assets.
+      operations:
+      - method: GET
+        name: getassets
+        description: Xero searches fixed asset
+        call: assets-asset.getassets
+        with:
+          status: rest.status
+          page: rest.page
+          pageSize: rest.pageSize
+          orderBy: rest.orderBy
+          sortDirection: rest.sortDirection
+          filterBy: rest.filterBy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createasset
+        description: Xero adds a fixed asset
+        call: assets-asset.createasset
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/assets/{id}
+      name: assets-id
+      description: REST surface for Assets-id.
+      operations:
+      - method: GET
+        name: getassetbyid
+        description: Xero Retrieves fixed asset by id
+        call: assets-asset.getassetbyid
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/settings
+      name: settings
+      description: REST surface for Settings.
+      operations:
+      - method: GET
+        name: getassetsettings
+        description: Xero searches fixed asset settings
+        call: assets-asset.getassetsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: assets-asset-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Xero Assets API — Asset. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: xero-searches-fixed-asset-types
+      description: Xero searches fixed asset types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: assets-asset.getassettypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-adds-fixed-asset-type
+      description: Xero adds a fixed asset type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: assets-asset.createassettype
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-searches-fixed-asset
+      description: Xero searches fixed asset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: assets-asset.getassets
+      with:
+        status: tools.status
+        page: tools.page
+        pageSize: tools.pageSize
+        orderBy: tools.orderBy
+        sortDirection: tools.sortDirection
+        filterBy: tools.filterBy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-adds-fixed-asset
+      description: Xero adds a fixed asset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: assets-asset.createasset
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-retrieves-fixed-asset-id
+      description: Xero Retrieves fixed asset by id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: assets-asset.getassetbyid
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: xero-searches-fixed-asset-settings
+      description: Xero searches fixed asset settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: assets-asset.getassetsettings
+      outputParameters:
+      - type: object
+        mapping: $.
