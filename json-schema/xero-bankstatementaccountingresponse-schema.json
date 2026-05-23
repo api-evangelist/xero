@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BankStatementAccountingResponse",
+  "title": "BankStatementAccountingResponse",
+  "type": "object",
+  "properties": {
+    "bankAccountId": {
+      "type": "string",
+      "description": "Xero Identifier of bank account",
+      "format": "uuid"
+    },
+    "bankAccountName": {
+      "type": "string",
+      "description": "Name of bank account"
+    },
+    "bankAccountCurrencyCode": {
+      "type": "string",
+      "description": "Currency code of the bank account"
+    },
+    "statements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StatementResponse"
+      },
+      "description": "List of bank statements and linked accounting data for the requested period"
+    }
+  },
+  "additionalProperties": false
+}

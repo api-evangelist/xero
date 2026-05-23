@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PnlAccountType",
+  "title": "PnlAccountType",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "number",
+      "description": "Total movement on this account type",
+      "format": "double",
+      "x-is-money": true
+    },
+    "title": {
+      "type": "string",
+      "description": "Name of this account type, it will be either Trading Income or Other Income for Revenue section / Direct Cost or Operating Expenses for Expense section"
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PnlAccount"
+      },
+      "description": "A list of the movement on each account detail during the query period. Refer to the account detail element below"
+    }
+  },
+  "additionalProperties": false
+}

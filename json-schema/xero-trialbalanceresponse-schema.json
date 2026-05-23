@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrialBalanceResponse",
+  "title": "TrialBalanceResponse",
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date of the report"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date",
+      "description": "End date of the report"
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TrialBalanceAccount"
+      },
+      "description": "Refer to the accounts section below"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BankTransactionResponse",
+  "title": "BankTransactionResponse",
+  "type": "object",
+  "properties": {
+    "bankTransactionId": {
+      "type": "string",
+      "description": "Xero Identifier of transaction",
+      "format": "uuid"
+    },
+    "batchPaymentId": {
+      "type": "string",
+      "description": "Xero Identifier of batch payment. Present if the transaction is part of a batch.",
+      "format": "uuid"
+    },
+    "contact": {
+      "$ref": "#/components/schemas/ContactResponse"
+    },
+    "date": {
+      "type": "string",
+      "description": "Date of transaction - YYYY-MM-DD",
+      "format": "date"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Amount of transaction",
+      "format": "double",
+      "x-is-money": true
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LineItemResponse"
+      },
+      "description": "The LineItems element can contain any number of individual LineItem sub-elements. Not included in summary mode"
+    }
+  },
+  "additionalProperties": false
+}

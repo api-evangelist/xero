@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BrandingTheme",
+  "title": "BrandingTheme",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/branding-themes/"
+  },
+  "properties": {
+    "BrandingThemeID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Name": {
+      "description": "Name of branding theme",
+      "type": "string"
+    },
+    "LogoUrl": {
+      "description": "The location of the image file used as the logo on this branding theme",
+      "type": "string"
+    },
+    "Type": {
+      "description": "Always INVOICE",
+      "type": "string",
+      "enum": [
+        "INVOICE"
+      ]
+    },
+    "SortOrder": {
+      "description": "Integer \u2013 ranked order of branding theme. The default branding theme has a value of 0",
+      "type": "integer"
+    },
+    "CreatedDateUTC": {
+      "description": "UTC timestamp of creation date of branding theme",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    }
+  },
+  "type": "object"
+}

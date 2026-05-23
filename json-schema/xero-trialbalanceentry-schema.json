@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrialBalanceEntry",
+  "title": "TrialBalanceEntry",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "number",
+      "description": "Net movement or net balance in the account",
+      "format": "double",
+      "x-is-money": true
+    },
+    "entryType": {
+      "type": "string",
+      "description": "Sign (Debit/Credit) of the movement of balance in the account"
+    }
+  },
+  "additionalProperties": false
+}

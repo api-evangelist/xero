@@ -1,0 +1,21 @@
+{
+  "operationId": "deleteEmployeeWorkingPattern",
+  "method": "DELETE",
+  "path": "/Employees/{EmployeeID}/Working-Patterns/{EmployeeWorkingPatternID}",
+  "summary": "deletes employee's working patterns",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-26 22:11:10.809249",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "operationId": "getSuperannuation",
+  "method": "GET",
+  "path": "/Superannuations/{SuperannuationID}",
+  "summary": "Retrieves a specific superannuation using a unique superannuation ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "563273ea-0dae-4f82-86a4-e0db77c008ea",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-09-11 00:36:29.574515",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "benefit": {
+          "id": "563273ea-0dae-4f82-86a4-e0db77c008ea",
+          "name": "KiwiSaver",
+          "category": "KiwiSaver",
+          "liabilityAccountId": "fa5cdc43-643b-4ad8-b4ac-3ffe0d0f4488",
+          "expenseAccountId": "b343c3b0-5941-4166-82b4-dd926622e0e2",
+          "standardAmount": null,
+          "percentage": 3,
+          "calculationTypeNZ": "PercentageOfTaxableEarnings",
+          "currentRecord": true,
+          "companyMax": null
+        }
+      }
+    }
+  ]
+}

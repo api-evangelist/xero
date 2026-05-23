@@ -1,0 +1,28 @@
+{
+  "operationId": "getBatchPaymentHistory",
+  "method": "GET",
+  "path": "/BatchPayments/{BatchPaymentID}/History",
+  "summary": "Xero Retrieves history from a specific batch payment",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "c58e2f9c-baad-42a4-8bb7-f32b6f88fa04",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1550898452503)/",
+        "HistoryRecords": [
+          {
+            "Changes": "Approved",
+            "DateUTCString": "2017-11-28 18:29:52",
+            "DateUTC": "/Date(1511893792813+0000)/",
+            "User": "Buzz Lightyear",
+            "Details": ""
+          }
+        ]
+      }
+    }
+  ]
+}

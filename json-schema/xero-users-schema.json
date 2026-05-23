@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Users",
+  "title": "Users",
+  "type": "object",
+  "x-objectArrayKey": "users",
+  "properties": {
+    "Users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/User"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrialBalanceMovement",
+  "title": "TrialBalanceMovement",
+  "type": "object",
+  "properties": {
+    "debits": {
+      "type": "number",
+      "description": "Debit amount",
+      "format": "double",
+      "x-is-money": true
+    },
+    "credits": {
+      "type": "number",
+      "description": "Credit amount",
+      "format": "double",
+      "x-is-money": true
+    },
+    "movement": {
+      "$ref": "#/components/schemas/TrialBalanceEntry"
+    },
+    "signedMovement": {
+      "type": "number",
+      "description": "Value of movement. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative",
+      "format": "double",
+      "x-is-money": true
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,39 @@
+{
+  "operationId": "createEmployeeEarningsTemplate",
+  "method": "POST",
+  "path": "/Employees/{EmployeeID}/PayTemplates/Earnings",
+  "summary": "Creates earnings template records for an employee",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "ratePerUnit": 20,
+        "numberOfUnits": 8,
+        "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+        "name": "My New One"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 14:48:24.603214",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "earningTemplate": {
+          "payTemplateEarningID": "11b4e492-5d56-4eac-a9ce-687d7b9a4a84",
+          "ratePerUnit": 20,
+          "numberOfUnits": 8,
+          "fixedAmount": null,
+          "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+          "name": "Ordinary Time"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "operationId": "getFinancialStatementTrialBalance",
+  "method": "GET",
+  "path": "/FinancialStatements/TrialBalance",
+  "summary": "Xero Get Trial Balance report",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "startDate": "2020-07-01",
+        "endDate": "2021-06-30",
+        "accounts": [
+          {
+            "accountId": "abcdefab-3bbf-4f2a-9e4c-20ec7b8e6b41",
+            "accountType": "ASSET",
+            "accountCode": "ASS",
+            "accountClass": "BANK",
+            "status": "ACTIVE",
+            "reportingCode": "ASS",
+            "accountName": "Everyday transactions",
+            "balance": {
+              "value": 100,
+              "entryType": "DEBIT"
+            },
+            "signedBalance": -23,
+            "accountMovement": {
+              "debits": 0,
+              "credits": 0,
+              "movement": {
+                "value": 123,
+                "entryType": "CREDIT"
+              },
+              "signedMovement": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "type": "invalid-request",
+        "title": "InvalidRequest",
+        "status": 400,
+        "detail": "Organisation xxx does not exist"
+      }
+    }
+  ]
+}

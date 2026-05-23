@@ -1,0 +1,37 @@
+{
+  "operationId": "createEmployment",
+  "method": "POST",
+  "path": "/Employees/{EmployeeID}/Employment",
+  "summary": "Creates an employment detail for a specific employee",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "payrollCalendarID": "9aa56064-990f-4ad3-a189-d966d8f6a030",
+        "startDate": "2020-09-02",
+        "engagementType": "FixedTerm",
+        "fixedTermEndDate": "2026-01-01"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-24 20:53:58.862462",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "employment": {
+          "payrollCalendarID": "9aa56064-990f-4ad3-a189-d966d8f6a030",
+          "startDate": "2020-09-02 00:00:00",
+          "engagementType": "FixedTerm",
+          "fixedTermEndDate": "2026-01-01 00:00:00"
+        }
+      }
+    }
+  ]
+}

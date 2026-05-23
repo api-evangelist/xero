@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NICategoryLetter",
+  "title": "NICategoryLetter",
+  "description": "The employee's NI Category letter.",
+  "type": "string",
+  "example": "I",
+  "enum": [
+    "A",
+    "B",
+    "C",
+    "F",
+    "H",
+    "I",
+    "J",
+    "L",
+    "M",
+    "S",
+    "V",
+    "X",
+    "Z",
+    "D",
+    "E",
+    "K",
+    "N"
+  ]
+}

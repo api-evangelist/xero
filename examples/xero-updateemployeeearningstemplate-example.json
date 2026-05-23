@@ -1,0 +1,38 @@
+{
+  "operationId": "updateEmployeeEarningsTemplate",
+  "method": "PUT",
+  "path": "/Employees/{EmployeeID}/PayTemplates/Earnings/{PayTemplateEarningID}",
+  "summary": "Updates an earnings template records for an employee",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "ratePerUnit": 25,
+        "numberOfUnits": 4,
+        "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 18:54:08.652434",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "earningTemplate": {
+          "payTemplateEarningID": "1527cf6c-93db-41bf-aba2-9d6af1d3c499",
+          "ratePerUnit": 25,
+          "numberOfUnits": 4,
+          "fixedAmount": null,
+          "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+          "name": "Ordinary Time"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentMethod",
+  "title": "PaymentMethod",
+  "type": "object",
+  "properties": {
+    "paymentMethod": {
+      "description": "The payment method code",
+      "type": "string",
+      "enum": [
+        "Cheque",
+        "Electronically",
+        "Manual"
+      ]
+    },
+    "bankAccounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BankAccount"
+      }
+    }
+  }
+}

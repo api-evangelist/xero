@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayItems",
+  "title": "PayItems",
+  "type": "object",
+  "x-objectArrayKey": "pay_items",
+  "properties": {
+    "PayItems": {
+      "$ref": "#/components/schemas/PayItem"
+    }
+  }
+}

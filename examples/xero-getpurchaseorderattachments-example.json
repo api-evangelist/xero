@@ -1,0 +1,42 @@
+{
+  "operationId": "getPurchaseOrderAttachments",
+  "method": "GET",
+  "path": "/PurchaseOrders/{PurchaseOrderID}/Attachments",
+  "summary": "Xero Retrieves attachments for a specific purchase order",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "dfc29f55-8ddd-4921-a82c-bcc0798d207f",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1602100184437)/",
+        "Attachments": [
+          {
+            "AttachmentID": "dce4eaa7-c8a9-4867-9434-95832b427d3b",
+            "FileName": "xero-dev1.png",
+            "Url": "https://api.xero.com/api.xro/2.0/PurchaseOrders/93369c9b-c481-4e21-aaab-bb19e9a26efe/Attachments/2D_2.png",
+            "MimeType": "image/png",
+            "ContentLength": 98715
+          },
+          {
+            "AttachmentID": "e58bd37b-e47f-451a-a42c-f946ef229c3e",
+            "FileName": "xero-dev2.png",
+            "Url": "https://api.xero.com/api.xro/2.0/PurchaseOrders/93369c9b-c481-4e21-aaab-bb19e9a26efe/Attachments/2D.png",
+            "MimeType": "image/png",
+            "ContentLength": 82529
+          },
+          {
+            "AttachmentID": "c8faa564-223f-45e4-a5a1-94430a5b52c1",
+            "FileName": "xero-dev3.png",
+            "Url": "https://api.xero.com/api.xro/2.0/PurchaseOrders/93369c9b-c481-4e21-aaab-bb19e9a26efe/Attachments/Screen%20Shot%202020-09-12%20at%204.31.14%20pm.png",
+            "MimeType": "image/png",
+            "ContentLength": 146384
+          }
+        ]
+      }
+    }
+  ]
+}

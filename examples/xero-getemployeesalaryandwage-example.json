@@ -1,0 +1,36 @@
+{
+  "operationId": "getEmployeeSalaryAndWage",
+  "method": "GET",
+  "path": "/Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}",
+  "summary": "Retrieves an employee's salary and wages record by using a unique salary and wage ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 00:25:03.864178",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "salaryAndWages": [
+          {
+            "salaryAndWagesID": "b0026f5a-fa8e-43aa-95e4-cec3c0972e39",
+            "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+            "numberOfUnitsPerWeek": 0,
+            "ratePerUnit": 25,
+            "numberOfUnitsPerDay": 0,
+            "daysPerWeek": 0,
+            "effectiveFrom": "2019-02-07 00:00:00",
+            "annualSalary": 25,
+            "status": "Active",
+            "paymentType": "Hourly",
+            "workPatternType": "DaysAndHours"
+          }
+        ]
+      }
+    }
+  ]
+}

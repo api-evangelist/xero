@@ -1,0 +1,80 @@
+{
+  "operationId": "createProject",
+  "method": "POST",
+  "path": "/Projects",
+  "summary": "Xero Create one or more new projects",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "{ \"contactId\": \"00000000-0000-0000-000-000000000000\", \"name\": \"New Kitchen\", \"deadlineUtc\": \"2019-12-10T12:59:59Z\", \"estimateAmount\": \"99.99\" }"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "example": {
+        "projectId": "ed957eee-bc6f-4f52-a663-aa42e6af9620",
+        "contactId": "216830cb-9a68-487e-928b-c1a7ccc4fc81",
+        "name": "New Kitchen",
+        "currencyCode": "AUD",
+        "minutesLogged": 0,
+        "totalTaskAmount": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "totalExpenseAmount": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "minutesToBeInvoiced": 0,
+        "taskAmountToBeInvoiced": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "taskAmountInvoiced": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "expenseAmountToBeInvoiced": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "expenseAmountInvoiced": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "projectAmountInvoiced": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "deposit": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "depositApplied": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "creditNoteAmount": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "totalInvoiced": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "totalToBeInvoiced": {
+          "currency": "AUD",
+          "value": 0.0
+        },
+        "deadlineUtc": "2020-03-03T15:00:00Z",
+        "estimate": {
+          "currency": "AUD",
+          "value": 99.99
+        },
+        "status": "INPROGRESS"
+      }
+    }
+  ]
+}

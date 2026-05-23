@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Phone",
+  "title": "Phone",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/types"
+  },
+  "properties": {
+    "PhoneType": {
+      "type": "string",
+      "enum": [
+        "DEFAULT",
+        "DDI",
+        "MOBILE",
+        "FAX",
+        "OFFICE"
+      ]
+    },
+    "PhoneNumber": {
+      "description": "max length = 50",
+      "maxLength": 50,
+      "type": "string"
+    },
+    "PhoneAreaCode": {
+      "description": "max length = 10",
+      "maxLength": 10,
+      "type": "string"
+    },
+    "PhoneCountryCode": {
+      "description": "max length = 20",
+      "maxLength": 20,
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

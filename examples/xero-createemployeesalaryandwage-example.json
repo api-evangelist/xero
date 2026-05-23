@@ -1,0 +1,49 @@
+{
+  "operationId": "createEmployeeSalaryAndWage",
+  "method": "POST",
+  "path": "/Employees/{EmployeeID}/SalaryAndWages",
+  "summary": "Creates an employee salary and wage record",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+        "numberOfUnitsPerWeek": 2,
+        "ratePerUnit": 10,
+        "numberOfUnitsPerDay": 2,
+        "daysPerWeek": 1,
+        "effectiveFrom": "2020-05-01",
+        "annualSalary": 100,
+        "status": "Active",
+        "paymentType": "Salary"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 00:22:47.464262",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "salaryAndWages": {
+          "salaryAndWagesID": "0211c70c-93d5-4da1-a570-b66d8df2ca15",
+          "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+          "numberOfUnitsPerWeek": 2,
+          "ratePerUnit": null,
+          "numberOfUnitsPerDay": 2,
+          "daysPerWeek": 1,
+          "effectiveFrom": "2020-05-01 00:00:00",
+          "annualSalary": 100,
+          "status": "Active",
+          "paymentType": "Salary",
+          "workPatternType": "DaysAndHours"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "operationId": "getEmployeePaymentMethod",
+  "method": "GET",
+  "path": "/Employees/{EmployeeID}/PaymentMethods",
+  "summary": "Retrieves available payment methods for a specific employee",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-26 23:34:53.685631",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "paymentMethod": {
+          "bankAccounts": [
+            {
+              "accountName": "Casual Worker",
+              "accountNumber": "0607050201419000",
+              "sortCode": null,
+              "particulars": null,
+              "code": null,
+              "dollarAmount": null,
+              "reference": "",
+              "calculationType": "Balance"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

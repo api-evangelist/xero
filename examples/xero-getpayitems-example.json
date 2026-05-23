@@ -1,0 +1,165 @@
+{
+  "operationId": "getPayItems",
+  "method": "GET",
+  "path": "/PayItems",
+  "summary": "Retrieves pay items",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573620869531)/",
+        "PayItems": {
+          "EarningsRates": [
+            {
+              "EarningsRateID": "ab874dfb-ab09-4c91-954e-43acf6fc23b4",
+              "Name": "Ordinary Hours",
+              "EarningsType": "ORDINARYTIMEEARNINGS",
+              "RateType": "RATEPERUNIT",
+              "AccountCode": "477",
+              "TypeOfUnits": "Hours",
+              "RatePerUnit": 3,
+              "IsExemptFromTax": false,
+              "IsExemptFromSuper": false,
+              "IsReportableAsW1": false,
+              "IsQualifyingEarnings": true,
+              "AllowanceContributesToAnnualLeaveRate": true,
+              "AllowanceContributesToOvertimeRate": false,
+              "UpdatedDateUTC": "/Date(1573620821000+0000)/",
+              "CurrentRecord": true
+            },
+            {
+              "EarningsRateID": "dc3ff92e-0e49-4967-aa4b-0bb21c0594ce",
+              "Name": "Overtime Hours (exempt from super)",
+              "EarningsType": "OVERTIMEEARNINGS",
+              "RateType": "RATEPERUNIT",
+              "AccountCode": "477",
+              "TypeOfUnits": "Hours",
+              "IsExemptFromTax": false,
+              "IsExemptFromSuper": true,
+              "IsReportableAsW1": false,
+              "IsQualifyingEarnings": false,
+              "AllowanceContributesToAnnualLeaveRate": false,
+              "AllowanceContributesToOvertimeRate": false,
+              "UpdatedDateUTC": "/Date(1547500330000+0000)/",
+              "CurrentRecord": true
+            },
+            {
+              "EarningsRateID": "f59999ca-cd5c-4a54-a381-2d0c817f0c3e",
+              "Name": "Redundancy",
+              "EarningsType": "LUMPSUMD",
+              "RateType": "FIXEDAMOUNT",
+              "AccountCode": "477",
+              "IsExemptFromTax": true,
+              "IsExemptFromSuper": true,
+              "IsReportableAsW1": true,
+              "IsQualifyingEarnings": false,
+              "AllowanceContributesToAnnualLeaveRate": false,
+              "AllowanceContributesToOvertimeRate": false,
+              "UpdatedDateUTC": "/Date(1547500330000+0000)/",
+              "CurrentRecord": true
+            },
+            {
+              "EarningsRateID": "c97dafac-9d99-406f-9f6c-abfaf81c527d",
+              "Name": "ETP Leave Earning",
+              "EarningsType": "EMPLOYMENTTERMINATIONPAYMENT",
+              "RateType": "RATEPERUNIT",
+              "AccountCode": "477",
+              "TypeOfUnits": "Hours",
+              "IsExemptFromTax": false,
+              "IsExemptFromSuper": true,
+              "IsReportableAsW1": true,
+              "IsQualifyingEarnings": false,
+              "AllowanceContributesToAnnualLeaveRate": false,
+              "AllowanceContributesToOvertimeRate": false,
+              "UpdatedDateUTC": "/Date(1573620791000+0000)/",
+              "EmploymentTerminationPaymentType": "O",
+              "CurrentRecord": true
+            }
+          ],
+          "DeductionTypes": [
+            {
+              "DeductionTypeID": "727af5e8-b347-4ae7-85fc-9b82266d0aec",
+              "DeductionCategory": "UNIONFEES",
+              "Name": "Union Fees/Subscriptions",
+              "AccountCode": "850",
+              "ReducesTax": false,
+              "ReducesSuper": false,
+              "IsExemptFromW1": false,
+              "UpdatedDateUTC": "/Date(1547500330000+0000)/",
+              "CurrentRecord": true
+            },
+            {
+              "DeductionTypeID": "04191cd3-7952-4a87-9911-9d8575280f6a",
+              "DeductionCategory": "NONE",
+              "Name": "Lease Payments",
+              "AccountCode": "850",
+              "ReducesTax": true,
+              "ReducesSuper": true,
+              "IsExemptFromW1": false,
+              "UpdatedDateUTC": "/Date(1547500330000+0000)/",
+              "CurrentRecord": true
+            }
+          ],
+          "ReimbursementTypes": [
+            {
+              "ReimbursementTypeID": "98ba33b2-db5b-4204-bcac-5ddd98d63524",
+              "Name": "Travel Costs",
+              "AccountCode": "850",
+              "UpdatedDateUTC": "/Date(1547500330000+0000)/",
+              "CurrentRecord": true
+            },
+            {
+              "ReimbursementTypeID": "aa8cfa40-d872-4be0-8a94-bb7f00962f74",
+              "Name": "Other Reimbursable Costs",
+              "AccountCode": "850",
+              "UpdatedDateUTC": "/Date(1547500330000+0000)/",
+              "CurrentRecord": true
+            }
+          ],
+          "LeaveTypes": [
+            {
+              "LeaveTypeID": "fbcc9dab-6238-43d9-a3f4-d768423fdcfa",
+              "Name": "Annual Leave",
+              "TypeOfUnits": "Hours",
+              "NormalEntitlement": 152,
+              "LeaveLoadingRate": 1.0,
+              "IsPaidLeave": true,
+              "ShowOnPayslip": true,
+              "UpdatedDateUTC": "/Date(1573620853000+0000)/",
+              "CurrentRecord": true,
+              "SGCExempt": false,
+              "IsQualifyingEarnings": true
+            },
+            {
+              "LeaveTypeID": "74195ab2-1f2b-4136-8ddc-20387a0b1027",
+              "Name": "Long Service Leave",
+              "TypeOfUnits": "Hours",
+              "IsPaidLeave": true,
+              "ShowOnPayslip": false,
+              "UpdatedDateUTC": "/Date(1547500330000+0000)/",
+              "CurrentRecord": true,
+              "SGCExempt": false,
+              "IsQualifyingEarnings": true
+            },
+            {
+              "LeaveTypeID": "ff4d16da-ae8a-4f57-acb3-9ee593996bce",
+              "Name": "Parental Leave (unpaid)",
+              "TypeOfUnits": "Hours",
+              "IsPaidLeave": false,
+              "ShowOnPayslip": false,
+              "UpdatedDateUTC": "/Date(1547500330000+0000)/",
+              "CurrentRecord": true,
+              "SGCExempt": false,
+              "IsQualifyingEarnings": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

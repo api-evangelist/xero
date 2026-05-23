@@ -1,0 +1,30 @@
+{
+  "operationId": "getPayRunCalendar",
+  "method": "GET",
+  "path": "/PayRunCalendars/{PayrollCalendarID}",
+  "summary": "Retrieves a specific payrun calendar by using a unique payroll calendar ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-26 23:54:48.439806",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "payRunCalendar": {
+          "payrollCalendarID": "9aa56064-990f-4ad3-a189-d966d8f6a030",
+          "name": "Weekly",
+          "calendarType": "Weekly",
+          "periodStartDate": "2019-07-08 00:00:00",
+          "periodEndDate": "2019-07-14 00:00:00",
+          "paymentDate": "2019-07-16 00:00:00",
+          "updatedDateUTC": "2019-09-24 05:08:45"
+        }
+      }
+    }
+  ]
+}

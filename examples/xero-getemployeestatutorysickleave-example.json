@@ -1,0 +1,45 @@
+{
+  "operationId": "getEmployeeStatutorySickLeave",
+  "method": "GET",
+  "path": "/StatutoryLeaves/Sick/{StatutorySickLeaveID}",
+  "summary": "Retrieves a statutory sick leave for an employee",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "c484213d-6225-4ede-bc5e-e81ef350af41",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-04-17 18:31:49.389552",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "statutorySickLeave": {
+          "statutoryLeaveID": "17f4c3c7-d65c-4572-9118-03798f26f813",
+          "employeeID": "aad6b292-7b94-408b-93f6-e489867e3fb0",
+          "leaveTypeID": "054a2b5e-fe51-4494-9486-3e3130323c69",
+          "startDate": "2020-03-28",
+          "endDate": "2020-04-01",
+          "workPattern": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "isPregnancyRelated": false,
+          "sufficientNotice": true,
+          "isEntitled": false,
+          "entitlementWeeksRequested": 0.6,
+          "entitlementWeeksQualified": 28,
+          "entitlementWeeksRemaining": 0,
+          "overlapsWithOtherLeave": false,
+          "entitlementFailureReasons": [
+            "AweLowerThanLel"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Employment",
+  "title": "Employment",
+  "type": "object",
+  "required": [
+    "payrollCalendarID",
+    "startDate",
+    "engagementType"
+  ],
+  "properties": {
+    "payrollCalendarID": {
+      "description": "Xero unique identifier for the payroll calendar of the employee",
+      "type": "string",
+      "format": "uuid"
+    },
+    "payRunCalendarID": {
+      "description": "Xero unique identifier for the payrun calendar for the employee (Deprecated in version 1.1.6)",
+      "type": "string",
+      "format": "uuid"
+    },
+    "startDate": {
+      "description": "Start date of the employment (YYYY-MM-DD)",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "engagementType": {
+      "description": "Engagement type of the employee",
+      "type": "string",
+      "example": "Permanent"
+    },
+    "fixedTermEndDate": {
+      "description": "End date for an employee with a fixed-term engagement type",
+      "type": "string",
+      "format": "date",
+      "example": "2020-01-19",
+      "x-is-date": true
+    }
+  }
+}

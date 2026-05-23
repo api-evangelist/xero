@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TenNinetyNineContact",
+  "title": "TenNinetyNineContact",
+  "properties": {
+    "Box1": {
+      "description": "Box 1 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box2": {
+      "description": "Box 2 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box3": {
+      "description": "Box 3 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box4": {
+      "description": "Box 4 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box5": {
+      "description": "Box 5 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box6": {
+      "description": "Box 6 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box7": {
+      "description": "Box 7 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box8": {
+      "description": "Box 8 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box9": {
+      "description": "Box 9 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box10": {
+      "description": "Box 10 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box11": {
+      "description": "Box 11 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box13": {
+      "description": "Box 13 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Box14": {
+      "description": "Box 14 on 1099 Form",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Name": {
+      "description": "Contact name on 1099 Form",
+      "type": "string"
+    },
+    "FederalTaxIDType": {
+      "description": "Contact Fed Tax ID type",
+      "type": "string"
+    },
+    "City": {
+      "description": "Contact city on 1099 Form",
+      "type": "string"
+    },
+    "Zip": {
+      "description": "Contact zip on 1099 Form",
+      "type": "string"
+    },
+    "State": {
+      "description": "Contact State on 1099 Form",
+      "type": "string"
+    },
+    "Email": {
+      "description": "Contact email on 1099 Form",
+      "type": "string"
+    },
+    "StreetAddress": {
+      "description": "Contact address on 1099 Form",
+      "type": "string"
+    },
+    "TaxID": {
+      "description": "Contact tax id on 1099 Form",
+      "type": "string"
+    },
+    "ContactId": {
+      "description": "Contact contact id",
+      "type": "string",
+      "format": "uuid"
+    },
+    "LegalName": {
+      "description": "Contact legal name",
+      "type": "string"
+    },
+    "BusinessName": {
+      "description": "Contact business name",
+      "type": "string"
+    },
+    "FederalTaxClassification": {
+      "description": "Contact federal tax classification",
+      "type": "string",
+      "enum": [
+        "SOLE_PROPRIETOR",
+        "PARTNERSHIP",
+        "TRUST_OR_ESTATE",
+        "NONPROFIT",
+        "C_CORP",
+        "S_CORP",
+        "OTHER"
+      ]
+    }
+  }
+}

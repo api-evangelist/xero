@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeaveBalance",
+  "title": "LeaveBalance",
+  "type": "object",
+  "properties": {
+    "LeaveName": {
+      "description": "The name of the leave type",
+      "type": "string",
+      "example": "Annual Leave"
+    },
+    "LeaveTypeID": {
+      "description": "Identifier of the leave type (see PayItems)",
+      "type": "string",
+      "example": "544d9292-4329-4512-bfff-a9f15236d776"
+    },
+    "NumberOfUnits": {
+      "description": "The balance of the leave available",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 81.2602
+    },
+    "TypeOfUnits": {
+      "description": "The type of units as specified by the LeaveType (see PayItems)",
+      "type": "string",
+      "example": "Hours"
+    }
+  }
+}

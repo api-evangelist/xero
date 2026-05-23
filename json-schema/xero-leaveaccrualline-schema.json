@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeaveAccrualLine",
+  "title": "LeaveAccrualLine",
+  "type": "object",
+  "properties": {
+    "LeaveTypeID": {
+      "description": "Xero identifier for the Leave type.",
+      "type": "string",
+      "format": "uuid",
+      "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+    },
+    "NumberOfUnits": {
+      "description": "Leave Accrual number of units",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 105.5
+    },
+    "AutoCalculate": {
+      "description": "If you want to auto calculate leave.",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

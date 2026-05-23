@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/APIException",
+  "title": "APIException",
+  "description": "The object returned for a bad request",
+  "type": "object",
+  "properties": {
+    "ErrorNumber": {
+      "description": "The error number",
+      "type": "number",
+      "format": "integer",
+      "example": 16
+    },
+    "Type": {
+      "description": "The type of error",
+      "type": "string",
+      "example": "QueryParseException"
+    },
+    "Message": {
+      "description": "The message describing the error",
+      "type": "string",
+      "example": "No property or field 'hi' exists in type 'Employee' (at index 0)"
+    }
+  }
+}

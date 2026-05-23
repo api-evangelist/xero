@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BalanceSheetAccountDetail",
+  "title": "BalanceSheetAccountDetail",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Accounting code"
+    },
+    "accountID": {
+      "type": "string",
+      "description": "ID of the account",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string",
+      "description": "Account name"
+    },
+    "reportingCode": {
+      "type": "string",
+      "description": "Reporting code"
+    },
+    "total": {
+      "type": "number",
+      "description": "Total movement on this account",
+      "format": "double",
+      "x-is-money": true
+    }
+  },
+  "additionalProperties": false
+}

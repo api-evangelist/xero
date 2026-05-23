@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OnlineInvoices",
+  "title": "OnlineInvoices",
+  "type": "object",
+  "x-objectArrayKey": "online_invoices",
+  "properties": {
+    "OnlineInvoices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OnlineInvoice"
+      }
+    }
+  }
+}

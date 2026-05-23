@@ -1,0 +1,37 @@
+{
+  "operationId": "createTimesheetLine",
+  "method": "POST",
+  "path": "/Timesheets/{TimesheetID}/Lines",
+  "summary": "Create a new timesheet line for a specific time sheet",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "date": "2020-08-03",
+        "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+        "numberOfUnits": 1
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-28 21:07:39.595514",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "timesheetLine": {
+          "timesheetLineID": "10c3c63e-6cd0-4630-861f-08a2baa657fa",
+          "date": "2020-08-03 00:00:00",
+          "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+          "trackingItemID": null,
+          "numberOfUnits": 1
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "operationId": "getBatchPayment",
+  "method": "GET",
+  "path": "/BatchPayments/{BatchPaymentID}",
+  "summary": "Xero Retrieves a specific batch payment using a unique batch payment Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "6ab84949-4fe5-4788-a135-4d8f690d24d7",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1550866184006)/",
+        "BatchPayments": [
+          {
+            "Account": {
+              "AccountID": "13918178-849a-4823-9a31-57b7eac713d7",
+              "CurrencyCode": "NZD"
+            },
+            "Reference": "ref",
+            "BatchPaymentID": "44a1013e-4946-4a73-b207-dfe5424a5ea5",
+            "DateString": "2018-10-03 00:00:00",
+            "Date": "/Date(1538524800000+0000)/",
+            "Payments": [
+              {
+                "Invoice": {
+                  "InvoiceID": "5aa9451d-95d1-4f95-a966-bbab2573f71c",
+                  "CurrencyCode": "NZD",
+                  "Payments": [],
+                  "CreditNotes": [],
+                  "Prepayments": [],
+                  "Overpayments": [],
+                  "HasErrors": false,
+                  "IsDiscounted": false,
+                  "LineItems": []
+                },
+                "PaymentID": "a22a64cb-364e-43fa-9a1f-bb2cd1f4adde",
+                "Reference": "ref/cheque",
+                "Amount": 913.55,
+                "BankAmount": 913.55
+              },
+              {
+                "Invoice": {
+                  "InvoiceID": "30a87092-31b5-4a2c-831e-327486533dd2",
+                  "CurrencyCode": "AUD",
+                  "Payments": [],
+                  "CreditNotes": [],
+                  "Prepayments": [],
+                  "Overpayments": [],
+                  "HasErrors": false,
+                  "IsDiscounted": false,
+                  "LineItems": []
+                },
+                "PaymentID": "6e20be79-32d8-4ae1-978e-f76d9b245c02",
+                "Amount": 495,
+                "BankAmount": 540
+              },
+              {
+                "Invoice": {
+                  "InvoiceID": "86d6e00f-ef56-49f7-9a54-796ccd5ca057",
+                  "CurrencyCode": "NZD",
+                  "Payments": [],
+                  "CreditNotes": [],
+                  "Prepayments": [],
+                  "Overpayments": [],
+                  "HasErrors": false,
+                  "IsDiscounted": false,
+                  "LineItems": []
+                },
+                "PaymentID": "4ba761b8-5940-4a3f-bcdf-7775adb00332",
+                "Amount": 3080,
+                "BankAmount": 3080
+              }
+            ],
+            "Type": "RECBATCH",
+            "Status": "AUTHORISED",
+            "TotalAmount": 4533.55,
+            "UpdatedDateUTC": "/Date(1538525239370+0000)/",
+            "IsReconciled": false
+          }
+        ]
+      }
+    }
+  ]
+}

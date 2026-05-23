@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeedConnections",
+  "title": "FeedConnections",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/bank-feeds-api/feed-connections"
+  },
+  "type": "object",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FeedConnection"
+      }
+    }
+  }
+}

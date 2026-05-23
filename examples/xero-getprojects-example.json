@@ -1,0 +1,85 @@
+{
+  "operationId": "getProjects",
+  "method": "GET",
+  "path": "/Projects",
+  "summary": "Xero Retrieves all projects",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "pagination": {
+          "page": 1,
+          "pageSize": 50,
+          "pageCount": 1,
+          "itemCount": 9
+        },
+        "items": [
+          {
+            "projectId": "b021e7cb-1903-4292-b48b-5b27b4271e3e",
+            "contactId": "216830cb-9a68-487e-928b-c1a7ccc4fc81",
+            "name": "FooProject28916",
+            "currencyCode": "AUD",
+            "minutesLogged": 180,
+            "totalTaskAmount": {
+              "currency": "AUD",
+              "value": 60.0
+            },
+            "totalExpenseAmount": {
+              "currency": "AUD",
+              "value": 499.0
+            },
+            "minutesToBeInvoiced": 180,
+            "taskAmountToBeInvoiced": {
+              "currency": "AUD",
+              "value": 60.0
+            },
+            "taskAmountInvoiced": {
+              "currency": "AUD",
+              "value": 0.0
+            },
+            "expenseAmountToBeInvoiced": {
+              "currency": "AUD",
+              "value": 499.0
+            },
+            "expenseAmountInvoiced": {
+              "currency": "AUD",
+              "value": 0.0
+            },
+            "projectAmountInvoiced": {
+              "currency": "AUD",
+              "value": 0.0
+            },
+            "deposit": {
+              "currency": "AUD",
+              "value": 0.0
+            },
+            "depositApplied": {
+              "currency": "AUD",
+              "value": 0.0
+            },
+            "creditNoteAmount": {
+              "currency": "AUD",
+              "value": 0.0
+            },
+            "totalInvoiced": {
+              "currency": "AUD",
+              "value": 0.0
+            },
+            "totalToBeInvoiced": {
+              "currency": "AUD",
+              "value": 559.0
+            },
+            "deadlineUtc": "2020-03-03T15:00:00Z",
+            "estimate": {
+              "currency": "AUD",
+              "value": 99.99
+            },
+            "status": "INPROGRESS"
+          }
+        ]
+      }
+    }
+  ]
+}

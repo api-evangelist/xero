@@ -1,0 +1,26 @@
+{
+  "operationId": "getSuperfundProducts",
+  "method": "GET",
+  "path": "/SuperfundProducts",
+  "summary": "Retrieves superfund products",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573570720295)/",
+        "SuperFundProducts": [
+          {
+            "USI": "OSF0001AU",
+            "ABN": "24248426878",
+            "ProductName": "Accumulate Plus (Commonwealth Bank Group Super)"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AllowanceCategory",
+  "title": "AllowanceCategory",
+  "type": "string",
+  "enum": [
+    "NONDEDUCTIBLE",
+    "UNIFORM",
+    "PRIVATEVEHICLE",
+    "HOMEOFFICE",
+    "TRANSPORT",
+    "GENERAL",
+    "OTHER"
+  ]
+}

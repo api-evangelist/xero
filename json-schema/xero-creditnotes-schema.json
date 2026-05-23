@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditNotes",
+  "title": "CreditNotes",
+  "type": "object",
+  "x-objectArrayKey": "credit_notes",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "Warnings": {
+      "description": "Displays array of warning messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "CreditNotes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreditNote"
+      }
+    }
+  }
+}

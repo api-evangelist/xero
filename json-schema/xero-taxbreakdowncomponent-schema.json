@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TaxBreakdownComponent",
+  "title": "TaxBreakdownComponent",
+  "properties": {
+    "TaxComponentId": {
+      "description": "The unique ID number of this component",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Type": {
+      "description": "The type of the jurisdiction",
+      "type": "string",
+      "enum": [
+        "SYSGST/USCOUNTRY",
+        "SYSGST/USSTATE",
+        "SYSGST/USCOUNTY",
+        "SYSGST/USCITY",
+        "SYSGST/USSPECIAL"
+      ]
+    },
+    "Name": {
+      "description": "The name of the jurisdiction",
+      "type": "string"
+    },
+    "TaxPercentage": {
+      "description": "The percentage of the tax",
+      "type": "number"
+    },
+    "TaxAmount": {
+      "description": "The amount of the tax",
+      "type": "number"
+    },
+    "TaxableAmount": {
+      "description": "The amount that is taxable",
+      "type": "number"
+    },
+    "NonTaxableAmount": {
+      "description": "The amount that is not taxable",
+      "type": "number"
+    },
+    "ExemptAmount": {
+      "description": "The amount that is exempt",
+      "type": "number"
+    },
+    "StateAssignedNo": {
+      "description": "The state assigned number of the jurisdiction",
+      "type": "string"
+    },
+    "JurisdictionRegion": {
+      "description": "Name identifying the region within the country",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReportRow",
+  "title": "ReportRow",
+  "type": "object",
+  "properties": {
+    "RowType": {
+      "$ref": "#/components/schemas/RowType"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Cells": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReportCell"
+      }
+    }
+  }
+}

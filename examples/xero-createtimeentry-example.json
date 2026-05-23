@@ -1,0 +1,35 @@
+{
+  "operationId": "createTimeEntry",
+  "method": "POST",
+  "path": "/Projects/{projectId}/Time",
+  "summary": "Xero Creates a time entry for a specific project",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "userId": "00000000-0000-0000-0000-000000000000",
+        "taskId": "00000000-0000-0000-0000-000000000000",
+        "dateUtc": "2020-02-26T15:00:00Z",
+        "duration": 30,
+        "description": "My description"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "timeEntryId": "c6539534-f1d2-43a6-80df-3bd1f8aca24d",
+        "userId": "c6539534-f1d2-43a6-80df-3bd1f8aca24d",
+        "projectId": "b021e7cb-1903-4292-b48b-5b27b4271e3e",
+        "taskId": "7be77337-feec-4458-bb1b-dbaa5a4aafce",
+        "dateUtc": "2020-02-26T15:00:00Z",
+        "dateEnteredUtc": "2020-02-28T20:37:42.8652832Z",
+        "duration": 30,
+        "description": "My description",
+        "status": "ACTIVE"
+      }
+    }
+  ]
+}

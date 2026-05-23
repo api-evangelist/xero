@@ -1,0 +1,14 @@
+{
+  "operationId": "getAssociationsByObject",
+  "method": "GET",
+  "path": "/Associations/{ObjectId}",
+  "summary": "Retrieves an association object using a unique object ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": "[ { \"SendWithObject\":false, \"Name\":\"testfile.pdf\", \"Size\":12357, \"CreatedDateUtc\":\"2020-12-10T01:22:00.0000000\", \"AssociationDateUtc\":\"2020-12-10T01:22:00.0000000\", \"FileId\":\"6beccb4a-0d7d-4518-93f3-e0cd1dccb254\", \"ObjectId\":\"1270bf7c-5d18-473a-9231-1e36c4bd33ed\", \"ObjectType\":\"Business\", \"ObjectGroup\":\"Contact\" } ]"
+    }
+  ]
+}

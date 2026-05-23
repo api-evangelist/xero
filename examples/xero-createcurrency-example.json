@@ -1,0 +1,29 @@
+{
+  "operationId": "createCurrency",
+  "method": "PUT",
+  "path": "/Currencies",
+  "summary": "Create a new currency for a Xero organisation",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "Code": "USD",
+        "Description": "United States Dollar"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Currencies": [
+          {
+            "Code": "USD",
+            "Description": "United States Dollar"
+          }
+        ]
+      }
+    }
+  ]
+}

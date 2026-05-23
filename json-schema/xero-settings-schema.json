@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Settings",
+  "title": "Settings",
+  "type": "object",
+  "properties": {
+    "Accounts": {
+      "description": "Payroll Account details for SuperExpense, SuperLiabilty, WagesExpense, PAYGLiability & WagesPayable.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Account"
+      }
+    },
+    "TrackingCategories": {
+      "description": "Tracking categories for Employees and Timesheets",
+      "type": "object",
+      "properties": {
+        "EmployeeGroups": {
+          "description": "The tracking category used for employees",
+          "type": "object",
+          "properties": {
+            "TrackingCategoryID": {
+              "description": "The identifier for the tracking category",
+              "type": "string",
+              "format": "uuid",
+              "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+            },
+            "TrackingCategoryName": {
+              "description": "Name of the tracking category",
+              "type": "string"
+            }
+          }
+        },
+        "TimesheetCategories": {
+          "description": "The tracking category used for timesheets",
+          "type": "object",
+          "properties": {
+            "TrackingCategoryID": {
+              "description": "The identifier for the tracking category",
+              "type": "string",
+              "format": "uuid",
+              "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+            },
+            "TrackingCategoryName": {
+              "description": "Name of the tracking category",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "DaysInPayrollYear": {
+      "description": "Number of days in the Payroll year",
+      "type": "integer",
+      "format": "int32",
+      "example": 365
+    },
+    "EmployeesAreSTP2": {
+      "description": "Indicates if the organisation has been enabled for STP Phase 2 editing of employees.",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

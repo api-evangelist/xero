@@ -1,0 +1,36 @@
+{
+  "operationId": "getEmployeeWorkingPatterns",
+  "method": "GET",
+  "path": "/Employees/{EmployeeID}/Working-Patterns",
+  "summary": "Retrieves employee's working patterns",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-24 20:16:15.354219",
+        "httpStatusCode": "OK",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 2
+        },
+        "problem": null,
+        "payeeWorkingPatterns": [
+          {
+            "payeeWorkingPatternID": "d0a325df-c9d5-4246-9e95-5172328a729b",
+            "effectiveFrom": "2020-01-01 00:00:00"
+          },
+          {
+            "payeeWorkingPatternID": "af50c5d4-a0f5-4306-ad61-8505b8ec6286",
+            "effectiveFrom": "2024-07-09 00:00:00"
+          }
+        ]
+      }
+    }
+  ]
+}

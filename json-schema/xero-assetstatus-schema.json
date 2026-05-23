@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AssetStatus",
+  "title": "AssetStatus",
+  "type": "string",
+  "description": "See Asset Status Codes.",
+  "example": "Draft",
+  "enum": [
+    "Draft",
+    "Registered",
+    "Disposed"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "operationId": "createAsset",
+  "method": "POST",
+  "path": "/Assets",
+  "summary": "Xero adds a fixed asset",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "assetName": "Computer74863",
+        "assetNumber": "123477544",
+        "purchaseDate": "2020-01-01",
+        "purchasePrice": 100.0,
+        "disposalPrice": 23.23,
+        "assetStatus": "Draft",
+        "bookDepreciationSetting": {
+          "depreciationMethod": "StraightLine",
+          "averagingMethod": "ActualDays",
+          "depreciationRate": 0.5,
+          "depreciationCalculationMethod": "None"
+        },
+        "bookDepreciationDetail": {
+          "currentCapitalGain": 5.32,
+          "currentGainLoss": 3.88,
+          "depreciationStartDate": "2020-01-02",
+          "costLimit": 100.0,
+          "currentAccumDepreciationAmount": 2.25
+        },
+        "AccountingBookValue": 99.5
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "assetId": "2257c64a-77ca-444c-a5ea-fa9a588c7039",
+        "assetName": "Computer74863",
+        "assetNumber": "123477544",
+        "purchaseDate": "2020-01-01 00:00:00",
+        "purchasePrice": 100.0,
+        "disposalPrice": 23.23,
+        "assetStatus": "Draft",
+        "trackingItems": [],
+        "bookDepreciationSetting": {
+          "depreciableObjectId": "2257c64a-77ca-444c-a5ea-fa9a588c7039",
+          "depreciableObjectType": "Asset",
+          "bookEffectiveDateOfChangeId": "b58a2ace-1213-4681-9f11-2e30f57b5b8c",
+          "depreciationMethod": "StraightLine",
+          "averagingMethod": "ActualDays",
+          "depreciationRate": 0.5,
+          "depreciationCalculationMethod": "None"
+        },
+        "bookDepreciationDetail": {
+          "depreciationStartDate": "2020-01-02 00:00:00",
+          "priorAccumDepreciationAmount": 0.0,
+          "currentAccumDepreciationAmount": 0.0,
+          "currentCapitalGain": 0.0,
+          "currentGainLoss": 0.0
+        },
+        "taxDepreciationSettings": [],
+        "taxDepreciationDetails": [],
+        "canRollback": true,
+        "accountingBookValue": 76.77,
+        "taxValues": [],
+        "isDeleteEnabledForDate": true
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "resourceValidationErrors": [],
+        "fieldValidationErrors": [
+          {
+            "fieldName": "BookDepreciationSetting.DepreciationRate",
+            "valueProvided": "",
+            "localisedMessage": "Can''t have both Depreciation Rate and Effective Life",
+            "type": "http://common.service.xero.com/errors/validation/field",
+            "title": "Validation Error",
+            "detail": "Can''t have both Depreciation Rate and Effective Life"
+          }
+        ],
+        "type": "http://common.service.xero.com/errors/validation",
+        "title": "The resource update failed validation.",
+        "detail": "Validation Errors"
+      }
+    }
+  ]
+}

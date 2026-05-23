@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeStatutorySickLeave",
+  "title": "EmployeeStatutorySickLeave",
+  "type": "object",
+  "required": [
+    "employeeID",
+    "startDate",
+    "endDate",
+    "workPattern",
+    "leaveTypeID",
+    "isPregnancyRelated",
+    "sufficientNotice"
+  ],
+  "properties": {
+    "statutoryLeaveID": {
+      "description": "The unique identifier (guid) of a statutory leave",
+      "type": "string",
+      "format": "uuid"
+    },
+    "employeeID": {
+      "description": "The unique identifier (guid) of the employee",
+      "type": "string",
+      "format": "uuid"
+    },
+    "leaveTypeID": {
+      "description": "The unique identifier (guid) of the \"Statutory Sick Leave (non-pensionable)\" pay item",
+      "type": "string",
+      "format": "uuid"
+    },
+    "startDate": {
+      "description": "The date when the leave starts",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "endDate": {
+      "description": "The date when the leave ends",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "type": {
+      "description": "the type of statutory leave",
+      "type": "string",
+      "example": "Sick"
+    },
+    "status": {
+      "description": "the type of statutory leave",
+      "type": "string",
+      "example": "Pending"
+    },
+    "workPattern": {
+      "description": "The days of the work week the employee is scheduled to work at the time the leave is taken",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "isPregnancyRelated": {
+      "description": "Whether the sick leave was pregnancy related",
+      "type": "boolean"
+    },
+    "sufficientNotice": {
+      "description": "Whether the employee provided sufficient notice and documentation as required by the employer supporting the sick leave request",
+      "type": "boolean"
+    },
+    "isEntitled": {
+      "description": "Whether the leave was entitled to receive payment",
+      "type": "boolean"
+    },
+    "entitlementWeeksRequested": {
+      "description": "The amount of requested time (in weeks)",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "entitlementWeeksQualified": {
+      "description": "The amount of statutory sick leave time off (in weeks) that is available to take at the time the leave was requested",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "entitlementWeeksRemaining": {
+      "description": "A calculated amount of time (in weeks) that remains for the statutory sick leave period",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "overlapsWithOtherLeave": {
+      "description": "Whether another leave (Paternity, Shared Parental specifically) occurs during the requested leave's period. While this is allowed it could affect payment amounts",
+      "type": "boolean"
+    },
+    "entitlementFailureReasons": {
+      "description": "If the leave requested was considered \"not entitled\", the reasons why are listed here.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "UnableToCalculateAwe",
+          "AweLowerThanLel",
+          "NotQualifiedInPreviousPiw",
+          "ExceededMaximumEntitlementWeeksOfSsp",
+          "ExceededMaximumDurationOfPiw",
+          "SufficientNoticeNotGiven"
+        ]
+      }
+    }
+  }
+}

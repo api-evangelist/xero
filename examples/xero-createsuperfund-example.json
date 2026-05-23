@@ -1,0 +1,36 @@
+{
+  "operationId": "createSuperfund",
+  "method": "POST",
+  "path": "/Superfunds",
+  "summary": "Creates a superfund",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "[ { \"usi\":\"PTC0133AU\", \"Type\":\"REGULATED\", \"Name\":\"Bar99359\", \"AccountNumber\":\"FB36350\", \"AccountName\":\"Foo38428\", \"USI\":\"PTC0133AU\" } ]"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573583393024)/",
+        "SuperFunds": [
+          {
+            "SuperFundID": "e02e44eb-2dba-4d5e-84da-8a0c3a4a4fef",
+            "Name": "AMG Super",
+            "Type": "REGULATED",
+            "ABN": "30099320583",
+            "USI": "PTC0133AU",
+            "AccountNumber": "FB36350",
+            "AccountName": "Foo38428",
+            "UpdatedDateUTC": "/Date(1573583393009+0000)/"
+          }
+        ]
+      }
+    }
+  ]
+}

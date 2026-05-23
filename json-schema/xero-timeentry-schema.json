@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeEntry",
+  "title": "TimeEntry",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/projects/time"
+  },
+  "type": "object",
+  "properties": {
+    "timeEntryId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "00000000-0000-0000-000-000000000000",
+      "description": "Identifier of the time entry."
+    },
+    "userId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "00000000-0000-0000-000-000000000000",
+      "description": "The xero user identifier of the person who logged time."
+    },
+    "projectId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "00000000-0000-0000-000-000000000000",
+      "description": "Identifier of the project, that the task (which the time entry is logged against) belongs to."
+    },
+    "taskId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "00000000-0000-0000-000-000000000000",
+      "description": "Identifier of the task that time entry is logged against."
+    },
+    "dateUtc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date time that time entry is logged on. UTC Date Time in ISO-8601 format."
+    },
+    "dateEnteredUtc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date time that time entry is created. UTC Date Time in ISO-8601 format. By default it is set to server time."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "The duration of logged minutes."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the time entry."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "LOCKED",
+        "INVOICED"
+      ],
+      "description": "Status of the time entry. By default a time entry is created with status of `ACTIVE`. A `LOCKED` state indicates that the time entry is currently changing state (for example being invoiced). Updates are not allowed when in this state. It will have a status of INVOICED once it is invoiced."
+    }
+  }
+}

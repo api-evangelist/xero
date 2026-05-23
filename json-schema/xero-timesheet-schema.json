@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Timesheet",
+  "title": "Timesheet",
+  "type": "object",
+  "required": [
+    "EmployeeID",
+    "StartDate",
+    "EndDate"
+  ],
+  "properties": {
+    "EmployeeID": {
+      "description": "The Xero identifier for an employee",
+      "type": "string",
+      "format": "uuid",
+      "example": "72a0d0c2-0cf8-4f0b-ade1-33231f47b41b"
+    },
+    "StartDate": {
+      "description": "Period start date (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "EndDate": {
+      "description": "Period end date (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "Status": {
+      "$ref": "#/components/schemas/TimesheetStatus"
+    },
+    "Hours": {
+      "description": "Timesheet total hours",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 31.0
+    },
+    "TimesheetID": {
+      "description": "The Xero identifier for a Payroll Timesheet",
+      "type": "string",
+      "format": "uuid",
+      "example": "049765fc-4506-48fb-bf88-3578dec0ec47"
+    },
+    "TimesheetLines": {
+      "$ref": "#/components/schemas/TimesheetLines"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true,
+      "example": "/Date(1583967733054+0000)/"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    }
+  }
+}

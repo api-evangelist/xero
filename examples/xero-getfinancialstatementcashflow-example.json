@@ -1,0 +1,179 @@
+{
+  "operationId": "getFinancialStatementCashflow",
+  "method": "GET",
+  "path": "/FinancialStatements/Cashflow",
+  "summary": "Xero Get Cash flow report",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "startDate": "2018-07-01",
+        "endDate": "2019-06-30",
+        "cashBalance": {
+          "openingCashBalance": 5000,
+          "closingCashBalance": -50000,
+          "netCashMovement": -55000
+        },
+        "cashflowActivities": [
+          {
+            "name": "Operating Activities",
+            "total": -41000,
+            "cashflowTypes": [
+              {
+                "name": "Receipts from customers",
+                "total": 34000,
+                "accounts": [
+                  {
+                    "accountId": "abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2",
+                    "accountType": "REVENUE",
+                    "accountClass": "REVENUE",
+                    "code": "455",
+                    "name": "Cellar Door - Till Variance",
+                    "reportingCode": "EXP",
+                    "total": -1000
+                  },
+                  {
+                    "accountId": "abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2",
+                    "accountType": "CURRENT",
+                    "accountClass": "ASSET",
+                    "code": "123",
+                    "name": "Loan - Darleen's",
+                    "reportingCode": "ASS",
+                    "total": 35000
+                  }
+                ]
+              },
+              {
+                "name": "Payments to suppliers and employees",
+                "total": -75000,
+                "accounts": [
+                  {
+                    "accountId": "abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2",
+                    "accountType": "CURRENT",
+                    "accountClass": "ASSET",
+                    "code": "123",
+                    "name": "Loan - Darleen's",
+                    "reportingCode": "ASS",
+                    "total": -75000
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Investing Activities",
+            "total": -35000,
+            "cashflowTypes": [
+              {
+                "name": "Payment for property, plant and equipment",
+                "total": -36000,
+                "accounts": [
+                  {
+                    "accountId": "abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2",
+                    "accountType": "FIXED",
+                    "accountClass": "ASSET",
+                    "code": "138",
+                    "name": "Motor Vehicles at Cost",
+                    "reportingCode": "ASS",
+                    "total": -1000
+                  },
+                  {
+                    "accountId": "abcdefab-5353-9d4b-7cad-51b2c2a2754a",
+                    "accountType": "FIXED",
+                    "accountClass": "ASSET",
+                    "code": "140",
+                    "name": "Equipment at cost",
+                    "reportingCode": "ASS",
+                    "total": -35000
+                  }
+                ]
+              },
+              {
+                "name": "Proceeds from sale of property, plant and equipment",
+                "total": 1000,
+                "accounts": [
+                  {
+                    "accountId": "abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2",
+                    "accountType": "FIXED",
+                    "accountClass": "ASSET",
+                    "code": "138",
+                    "name": "Motor Vehicles at Cost",
+                    "reportingCode": "ASS",
+                    "total": 1000
+                  },
+                  {
+                    "accountId": "abcdefab-5353-9d4b-7cad-51b2c2a2754a",
+                    "accountType": "FIXED",
+                    "accountClass": "ASSET",
+                    "code": "140",
+                    "name": "Equipment at cost",
+                    "reportingCode": "ASS",
+                    "total": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Financing Activities",
+            "total": -14000,
+            "cashflowTypes": [
+              {
+                "name": "Proceeds from borrowings",
+                "total": 1000.5,
+                "accounts": [
+                  {
+                    "accountId": "abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2",
+                    "accountType": "TERMLIAB",
+                    "accountClass": "LIABILITY",
+                    "code": "244",
+                    "name": "Loan - Shellcoll Distribution 2019",
+                    "reportingCode": "LIA.CUR.LOA",
+                    "total": 1000.5
+                  }
+                ]
+              },
+              {
+                "name": "Repayment of borrowings",
+                "total": -15000.5,
+                "accounts": [
+                  {
+                    "accountId": "abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2",
+                    "accountType": "TERMLIAB",
+                    "accountClass": "LIABILITY",
+                    "code": "244",
+                    "name": "Loan - Shellcoll Distribution 2019",
+                    "reportingCode": "LIA.CUR.LOA",
+                    "total": -15000.5
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "type": "invalid-request",
+        "title": "InvalidRequest",
+        "status": 400,
+        "detail": "Organisation xxx does not exist"
+      }
+    },
+    {
+      "status": "503",
+      "contentType": "application/json",
+      "example": {
+        "type": "service-unavailable",
+        "title": "ServiceUnavailable",
+        "status": 503,
+        "detail": "Cannot process org xxx at this time. Apologies for inconvenience."
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Attachments",
+  "title": "Attachments",
+  "type": "object",
+  "x-objectArrayKey": "attachments",
+  "properties": {
+    "Attachments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attachment"
+      }
+    }
+  }
+}

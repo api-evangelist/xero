@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Bill",
+  "title": "Bill",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/organisation/"
+  },
+  "properties": {
+    "Day": {
+      "description": "Day of Month (0-31)",
+      "type": "integer"
+    },
+    "Type": {
+      "$ref": "#/components/schemas/PaymentTermType"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchPaymentDetails",
+  "title": "BatchPaymentDetails",
+  "description": "Bank details for use on a batch payment stored with each contact",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/Contact/"
+  },
+  "properties": {
+    "BankAccountNumber": {
+      "description": "Bank account number for use with Batch Payments",
+      "type": "string",
+      "example": "123-456-1111111"
+    },
+    "BankAccountName": {
+      "description": "Name of bank for use with Batch Payments",
+      "type": "string",
+      "example": "ACME Bank"
+    },
+    "Details": {
+      "description": "(Non-NZ Only) These details are sent to the org\u2019s bank as a reference for the batch payment transaction. They will also show with the batch payment transaction in the bank reconciliation Find & Match screen. Depending on your individual bank, the detail may also show on the bank statement imported into Xero. Maximum field length = 18",
+      "type": "string",
+      "example": "Hello World"
+    },
+    "Code": {
+      "description": "(NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find & Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.",
+      "type": "string",
+      "maxLength": 12,
+      "example": "ABC"
+    },
+    "Reference": {
+      "description": "(NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find & Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.",
+      "type": "string",
+      "maxLength": 12,
+      "example": "Foobar"
+    }
+  }
+}

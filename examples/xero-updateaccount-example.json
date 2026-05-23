@@ -1,0 +1,81 @@
+{
+  "operationId": "updateAccount",
+  "method": "POST",
+  "path": "/Accounts/{AccountID}",
+  "summary": "Xero Updates a chart of accounts",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "Accounts": [
+          {
+            "Code": "123456",
+            "Name": "BarFoo",
+            "AccountID": "99ce6032-0678-4aa0-8148-240c75fee33a",
+            "Type": "EXPENSE",
+            "Description": "GoodBye World",
+            "TaxType": "INPUT",
+            "EnablePaymentsToAccount": false,
+            "ShowInExpenseClaims": false,
+            "Class": "EXPENSE",
+            "ReportingCode": "EXP",
+            "ReportingCodeName": "Expense",
+            "UpdatedDateUTC": "2019-02-21T16:29:47.96-08:00"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "9012e75c-ec08-40a9-ae15-153fc1f35c4d",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1550795389340)/",
+        "Accounts": [
+          {
+            "AccountID": "99ce6032-0678-4aa0-8148-240c75fee33a",
+            "Code": "654321",
+            "Name": "BarFoo",
+            "Status": "ACTIVE",
+            "Type": "EXPENSE",
+            "TaxType": "INPUT",
+            "Description": "Good Bye World",
+            "Class": "EXPENSE",
+            "EnablePaymentsToAccount": false,
+            "ShowInExpenseClaims": false,
+            "ReportingCode": "EXP",
+            "ReportingCodeName": "Expense",
+            "UpdatedDateUTC": "/Date(1550795389333+0000)/"
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "ErrorNumber": 10,
+        "Type": "ValidationException",
+        "Message": "A validation exception occurred",
+        "Elements": [
+          {
+            "AccountID": "00000000-0000-0000-0000-000000000000",
+            "Code": "123456",
+            "Name": "Foobar",
+            "Type": "EXPENSE",
+            "Description": "Hello World",
+            "ValidationErrors": [
+              {
+                "Message": "Please enter a unique Name."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

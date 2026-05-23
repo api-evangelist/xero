@@ -1,0 +1,33 @@
+{
+  "operationId": "getEarningsRate",
+  "method": "GET",
+  "path": "/EarningsRates/{EarningsRateID}",
+  "summary": "Retrieves a specific earnings rates by using a unique earnings rate id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-28 18:25:57.819199",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "earningsRate": {
+          "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+          "name": "Ordinary Time",
+          "earningsType": "RegularEarnings",
+          "rateType": "RatePerUnit",
+          "typeOfUnits": "hours",
+          "currentRecord": true,
+          "expenseAccountID": "1c91e520-a12b-45cc-8194-99950858e5bf",
+          "fixedAmount": null,
+          "ratePerUnit": null,
+          "multipleOfOrdinaryEarningsRate": null
+        }
+      }
+    }
+  ]
+}

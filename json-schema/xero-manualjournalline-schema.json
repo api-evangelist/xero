@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ManualJournalLine",
+  "title": "ManualJournalLine",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/manual-journals/"
+  },
+  "properties": {
+    "LineAmount": {
+      "description": "total for line. Debits are positive, credits are negative value",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": -2569.0
+    },
+    "AccountCode": {
+      "description": "See Accounts",
+      "type": "string",
+      "example": 720
+    },
+    "AccountID": {
+      "description": "See Accounts",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Description": {
+      "description": "Description for journal line",
+      "type": "string",
+      "example": "Coded incorrectly Office Equipment should be Computer Equipment"
+    },
+    "TaxType": {
+      "description": "The tax type from TaxRates",
+      "type": "string"
+    },
+    "Tracking": {
+      "description": "Optional Tracking Category \u2013 see Tracking. Any JournalLine can have a maximum of 2 <TrackingCategory> elements.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TrackingCategory"
+      }
+    },
+    "TaxAmount": {
+      "description": "The calculated tax amount based on the TaxType and LineAmount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 0.0
+    },
+    "IsBlank": {
+      "description": "is the line blank",
+      "type": "boolean",
+      "example": false
+    }
+  },
+  "type": "object"
+}

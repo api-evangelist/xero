@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayRun",
+  "title": "PayRun",
+  "type": "object",
+  "required": [
+    "PayrollCalendarID"
+  ],
+  "properties": {
+    "PayrollCalendarID": {
+      "description": "Xero identifier for pay run",
+      "type": "string",
+      "format": "uuid",
+      "example": "bfac31bd-ea62-4fc8-a5e7-7965d9504b15"
+    },
+    "PayRunID": {
+      "description": "Xero identifier for pay run",
+      "type": "string",
+      "format": "uuid",
+      "example": "bba1d10f-63b1-4692-b5c5-a99f869523a4"
+    },
+    "PayRunPeriodStartDate": {
+      "description": "Period Start Date for the PayRun (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "PayRunPeriodEndDate": {
+      "description": "Period End Date for the PayRun (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "PayRunStatus": {
+      "$ref": "#/components/schemas/PayRunStatus"
+    },
+    "PaymentDate": {
+      "description": "Payment Date for the PayRun (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "PayslipMessage": {
+      "description": "Payslip message for the PayRun",
+      "type": "string",
+      "example": "Thanks for being awesome"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true,
+      "example": "/Date(1583967733054+0000)/"
+    },
+    "Payslips": {
+      "description": "The payslips in the payrun",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PayslipSummary"
+      }
+    },
+    "Wages": {
+      "description": "The total Wages for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 1060.5
+    },
+    "Deductions": {
+      "description": "The total Deductions for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 0.0
+    },
+    "Tax": {
+      "description": "The total Tax for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 198.0
+    },
+    "Super": {
+      "description": "The total Super for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 75.6
+    },
+    "Reimbursement": {
+      "description": "The total Reimbursements for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 0.0
+    },
+    "NetPay": {
+      "description": "The total NetPay for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 862.5
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    }
+  }
+}

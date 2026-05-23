@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Setting",
+  "title": "Setting",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "assetNumberPrefix": {
+      "type": "string",
+      "example": "FA-",
+      "description": "The prefix used for fixed asset numbers (\u201cFA-\u201d by default)"
+    },
+    "assetNumberSequence": {
+      "type": "string",
+      "example": "0022",
+      "description": "The next available sequence number"
+    },
+    "assetStartDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2015-07-31 00:00:00",
+      "description": "The date depreciation calculations started on registered fixed assets in Xero"
+    },
+    "lastDepreciationDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2015-07-01 00:00:00",
+      "description": "The last depreciation date"
+    },
+    "defaultGainOnDisposalAccountId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "346ddb97-739a-4274-b43b-66aa3218d17c",
+      "description": "Default account that gains are posted to"
+    },
+    "defaultLossOnDisposalAccountId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "1b798541-24e2-4855-9309-c023a0b576f3",
+      "description": "Default account that losses are posted to"
+    },
+    "defaultCapitalGainOnDisposalAccountId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "6d6a0bdb-e118-45d8-a023-2ad617ec1cb7",
+      "description": "Default account that capital gains are posted to"
+    },
+    "optInForTax": {
+      "type": "boolean",
+      "description": "opt in for tax calculation",
+      "example": false
+    }
+  },
+  "type": "object"
+}

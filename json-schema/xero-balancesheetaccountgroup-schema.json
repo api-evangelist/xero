@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BalanceSheetAccountGroup",
+  "title": "BalanceSheetAccountGroup",
+  "type": "object",
+  "properties": {
+    "accountTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BalanceSheetAccountType"
+      }
+    },
+    "total": {
+      "type": "number",
+      "description": "Total value of all the accounts in this type",
+      "format": "double",
+      "x-is-money": true
+    }
+  },
+  "additionalProperties": false
+}

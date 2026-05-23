@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Allocations",
+  "title": "Allocations",
+  "type": "object",
+  "x-objectArrayKey": "allocations",
+  "properties": {
+    "Allocations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Allocation"
+      }
+    }
+  }
+}

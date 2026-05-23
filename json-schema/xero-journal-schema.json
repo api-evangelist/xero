@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Journal",
+  "title": "Journal",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/journals/"
+  },
+  "properties": {
+    "JournalID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "JournalDate": {
+      "description": "Date the journal was posted",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "JournalNumber": {
+      "description": "Xero generated journal number",
+      "type": "integer"
+    },
+    "CreatedDateUTC": {
+      "description": "Created date UTC format",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "Reference": {
+      "description": "reference field for additional indetifying information",
+      "type": "string"
+    },
+    "SourceID": {
+      "description": "The identifier for the source transaction (e.g. InvoiceID)",
+      "type": "string",
+      "format": "uuid"
+    },
+    "SourceType": {
+      "description": "The journal source type. The type of transaction that created the journal",
+      "type": "string",
+      "enum": [
+        "ACCREC",
+        "ACCPAY",
+        "ACCRECCREDIT",
+        "ACCPAYCREDIT",
+        "ACCRECPAYMENT",
+        "ACCPAYPAYMENT",
+        "ARCREDITPAYMENT",
+        "APCREDITPAYMENT",
+        "CASHREC",
+        "CASHPAID",
+        "TRANSFER",
+        "ARPREPAYMENT",
+        "APPREPAYMENT",
+        "AROVERPAYMENT",
+        "APOVERPAYMENT",
+        "EXPCLAIM",
+        "EXPPAYMENT",
+        "MANJOURNAL",
+        "PAYSLIP",
+        "WAGEPAYABLE",
+        "INTEGRATEDPAYROLLPE",
+        "INTEGRATEDPAYROLLPT",
+        "EXTERNALSPENDMONEY",
+        "INTEGRATEDPAYROLLPTPAYMENT",
+        "INTEGRATEDPAYROLLCN"
+      ]
+    },
+    "JournalLines": {
+      "description": "See JournalLines",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/JournalLine"
+      }
+    }
+  },
+  "type": "object"
+}

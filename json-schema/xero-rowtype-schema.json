@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RowType",
+  "title": "RowType",
+  "type": "string",
+  "enum": [
+    "Header",
+    "Section",
+    "Row",
+    "SummaryRow"
+  ]
+}

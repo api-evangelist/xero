@@ -1,0 +1,21 @@
+{
+  "operationId": "deleteTimesheetLine",
+  "method": "DELETE",
+  "path": "/Timesheets/{TimesheetID}/Lines/{TimesheetLineID}",
+  "summary": "Deletes a timesheet line for a specific timesheet",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-28 22:01:51.861069",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null
+      }
+    }
+  ]
+}

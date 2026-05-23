@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReportWithRow",
+  "title": "ReportWithRow",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/reports/"
+  },
+  "properties": {
+    "ReportID": {
+      "description": "ID of the Report",
+      "type": "string"
+    },
+    "ReportName": {
+      "description": "Name of the report",
+      "type": "string"
+    },
+    "ReportTitle": {
+      "description": "Title of the report",
+      "type": "string"
+    },
+    "ReportType": {
+      "description": "The type of report (BalanceSheet,ProfitLoss, etc)",
+      "type": "string"
+    },
+    "ReportTitles": {
+      "description": "Report titles array (3 to 4 strings with the report name, orgnisation name and time frame of report)",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ReportDate": {
+      "description": "Date of report",
+      "type": "string"
+    },
+    "Rows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReportRows"
+      }
+    },
+    "UpdatedDateUTC": {
+      "description": "Updated Date",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "Fields": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReportFields"
+      }
+    }
+  }
+}

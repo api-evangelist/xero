@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayrollCalendar",
+  "title": "PayrollCalendar",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "description": "Name of the Payroll Calendar",
+      "type": "string",
+      "example": "Fortnightly Calendar"
+    },
+    "CalendarType": {
+      "$ref": "#/components/schemas/CalendarType"
+    },
+    "StartDate": {
+      "description": "The start date of the upcoming pay period. The end date will be calculated based upon this date, and the calendar type selected (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "PaymentDate": {
+      "description": "The date on which employees will be paid for the upcoming pay period (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "PayrollCalendarID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid",
+      "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true,
+      "example": "/Date(1583967733054+0000)/"
+    },
+    "ReferenceDate": {
+      "description": "Reference Date (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    }
+  }
+}

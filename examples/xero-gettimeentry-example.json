@@ -1,0 +1,24 @@
+{
+  "operationId": "getTimeEntry",
+  "method": "GET",
+  "path": "/Projects/{projectId}/Time/{timeEntryId}",
+  "summary": "Xero Retrieves a single time entry for a specific project",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "timeEntryId": "3cd35eca-704f-4bca-b258-236028ae8ed1",
+        "userId": "740add2a-a703-4b8a-a670-1093919c2040",
+        "projectId": "b021e7cb-1903-4292-b48b-5b27b4271e3e",
+        "taskId": "7be77337-feec-4458-bb1b-dbaa5a4aafce",
+        "dateUtc": "2020-02-27T15:00:00Z",
+        "dateEnteredUtc": "2020-02-21T21:41:22.2642727Z",
+        "duration": 45,
+        "description": "My description",
+        "status": "ACTIVE"
+      }
+    }
+  ]
+}

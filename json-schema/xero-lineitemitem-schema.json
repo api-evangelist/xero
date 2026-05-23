@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LineItemItem",
+  "title": "LineItemItem",
+  "properties": {
+    "Code": {
+      "description": "User defined item code (max length = 30)",
+      "maxLength": 30,
+      "type": "string"
+    },
+    "Name": {
+      "description": "The name of the item (max length = 50)",
+      "maxLength": 50,
+      "type": "string"
+    },
+    "ItemID": {
+      "description": "The Xero identifier for an Item",
+      "type": "string",
+      "format": "uuid"
+    }
+  }
+}

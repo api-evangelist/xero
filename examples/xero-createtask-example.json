@@ -1,0 +1,47 @@
+{
+  "operationId": "createTask",
+  "method": "POST",
+  "path": "/Projects/{projectId}/Tasks",
+  "summary": "Xero Allows you to create a task",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "{ \"status\": \"INPROGRESS\" }"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "example": {
+        "name": "Demolition",
+        "rate": {
+          "currency": "AUD",
+          "value": 20
+        },
+        "chargeType": "TIME",
+        "status": "ACTIVE",
+        "estimateMinutes": 12000,
+        "taskId": "00000000-0000-0000-0000-000000000000",
+        "projectId": "00000000-0000-0000-0000-000000000000",
+        "totalMinutes": 300,
+        "totalAmount": {
+          "currency": "AUD",
+          "value": 100
+        },
+        "minutesToBeInvoiced": 300,
+        "minutesInvoiced": 0,
+        "nonChargeableMinutes": 0,
+        "fixedMinutes": 0,
+        "amountToBeInvoiced": {
+          "currency": "AUD",
+          "value": 100
+        },
+        "amountInvoiced": {
+          "currency": "AUD",
+          "value": 0
+        }
+      }
+    }
+  ]
+}

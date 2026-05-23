@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RepeatingInvoice",
+  "title": "RepeatingInvoice",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/repeating-invoices/"
+  },
+  "properties": {
+    "Type": {
+      "description": "See Invoice Types",
+      "type": "string",
+      "enum": [
+        "ACCPAY",
+        "ACCREC"
+      ]
+    },
+    "Contact": {
+      "$ref": "#/components/schemas/Contact"
+    },
+    "Schedule": {
+      "$ref": "#/components/schemas/Schedule"
+    },
+    "LineItems": {
+      "description": "See LineItems",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LineItem"
+      }
+    },
+    "LineAmountTypes": {
+      "$ref": "#/components/schemas/LineAmountTypes",
+      "type": "string"
+    },
+    "Reference": {
+      "description": "ACCREC only \u2013 additional reference number",
+      "type": "string"
+    },
+    "BrandingThemeID": {
+      "description": "See BrandingThemes",
+      "type": "string",
+      "format": "uuid"
+    },
+    "CurrencyCode": {
+      "$ref": "#/components/schemas/CurrencyCode",
+      "type": "string"
+    },
+    "Status": {
+      "description": "One of the following - DRAFT or AUTHORISED \u2013 See Invoice Status Codes",
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "AUTHORISED",
+        "DELETED"
+      ]
+    },
+    "SubTotal": {
+      "description": "Total of invoice excluding taxes",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "TotalTax": {
+      "description": "Total tax on invoice",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Total": {
+      "description": "Total of Invoice tax inclusive (i.e. SubTotal + TotalTax)",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "RepeatingInvoiceID": {
+      "description": "Xero generated unique identifier for repeating invoice template",
+      "type": "string",
+      "format": "uuid"
+    },
+    "ID": {
+      "description": "Xero generated unique identifier for repeating invoice template",
+      "type": "string",
+      "format": "uuid"
+    },
+    "HasAttachments": {
+      "description": "Boolean to indicate if an invoice has an attachment",
+      "readOnly": true,
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "Attachments": {
+      "description": "Displays array of attachments from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attachment"
+      }
+    },
+    "ApprovedForSending": {
+      "description": "Boolean to indicate whether the invoice has been approved for sending",
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "SendCopy": {
+      "description": "Boolean to indicate whether a copy is sent to sender's email",
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "MarkAsSent": {
+      "description": "Boolean to indicate whether the invoice in the Xero app displays as \"sent\"",
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "IncludePDF": {
+      "description": "Boolean to indicate whether to include PDF attachment",
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    }
+  },
+  "type": "object"
+}

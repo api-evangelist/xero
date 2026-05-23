@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Quotes",
+  "title": "Quotes",
+  "type": "object",
+  "x-objectArrayKey": "quotes",
+  "properties": {
+    "Quotes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Quote"
+      }
+    }
+  }
+}

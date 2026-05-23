@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrialBalanceAccount",
+  "title": "TrialBalanceAccount",
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "string",
+      "description": "ID of the account",
+      "format": "uuid"
+    },
+    "accountType": {
+      "type": "string",
+      "description": "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>"
+    },
+    "accountCode": {
+      "type": "string",
+      "description": "Customer defined alpha numeric account code e.g 200 or SALES"
+    },
+    "accountClass": {
+      "type": "string",
+      "description": "The class of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountClassTypes'>Account Class Types</a>"
+    },
+    "status": {
+      "type": "string",
+      "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See <a href='https://developer.xero.com/documentation/api/types#AccountStatusCodes'>Account Status Codes</a>"
+    },
+    "reportingCode": {
+      "type": "string",
+      "description": "Reporting code (Shown if set)"
+    },
+    "accountName": {
+      "type": "string",
+      "description": "Name of the account"
+    },
+    "balance": {
+      "$ref": "#/components/schemas/TrialBalanceEntry"
+    },
+    "signedBalance": {
+      "type": "number",
+      "description": "Value of balance. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative",
+      "format": "double",
+      "x-is-money": true
+    },
+    "accountMovement": {
+      "$ref": "#/components/schemas/TrialBalanceMovement"
+    }
+  },
+  "additionalProperties": false
+}

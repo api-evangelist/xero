@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Prepayment",
+  "title": "Prepayment",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/prepayments/"
+  },
+  "properties": {
+    "Type": {
+      "description": "See Prepayment Types",
+      "type": "string",
+      "enum": [
+        "RECEIVE-PREPAYMENT",
+        "SPEND-PREPAYMENT",
+        "ARPREPAYMENT",
+        "APPREPAYMENT"
+      ]
+    },
+    "Contact": {
+      "$ref": "#/components/schemas/Contact"
+    },
+    "Date": {
+      "description": "The date the prepayment is created YYYY-MM-DD",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "Status": {
+      "description": "See Prepayment Status Codes",
+      "type": "string",
+      "enum": [
+        "AUTHORISED",
+        "PAID",
+        "VOIDED"
+      ]
+    },
+    "LineAmountTypes": {
+      "$ref": "#/components/schemas/LineAmountTypes",
+      "type": "string"
+    },
+    "LineItems": {
+      "description": "See Prepayment Line Items",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LineItem"
+      }
+    },
+    "SubTotal": {
+      "description": "The subtotal of the prepayment excluding taxes",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "TotalTax": {
+      "description": "The total tax on the prepayment",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Total": {
+      "description": "The total of the prepayment(subtotal + total tax)",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Reference": {
+      "description": "Returns Invoice number field. Reference field isn't available.",
+      "type": "string",
+      "readOnly": true
+    },
+    "InvoiceNumber": {
+      "description": "Returns Invoice number for prepayment receive document only.",
+      "type": "string",
+      "readOnly": true
+    },
+    "UpdatedDateUTC": {
+      "description": "UTC timestamp of last update to the prepayment",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "CurrencyCode": {
+      "$ref": "#/components/schemas/CurrencyCode",
+      "type": "string"
+    },
+    "PrepaymentID": {
+      "description": "Xero generated unique identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "CurrencyRate": {
+      "description": "The currency rate for a multicurrency prepayment. If no rate is specified, the XE.com day rate is used",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "RemainingCredit": {
+      "description": "The remaining credit balance on the prepayment",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Allocations": {
+      "description": "See Allocations",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Allocation"
+      }
+    },
+    "Payments": {
+      "description": "See Payments",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Payment"
+      }
+    },
+    "AppliedAmount": {
+      "description": "The amount of applied to an invoice",
+      "type": "number",
+      "format": "double",
+      "example": 2.0
+    },
+    "HasAttachments": {
+      "description": "boolean to indicate if a prepayment has an attachment",
+      "readOnly": true,
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "Attachments": {
+      "description": "See Attachments",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attachment"
+      }
+    }
+  },
+  "type": "object"
+}

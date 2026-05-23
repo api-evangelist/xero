@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BrandingThemes",
+  "title": "BrandingThemes",
+  "type": "object",
+  "x-objectArrayKey": "branding_themes",
+  "properties": {
+    "BrandingThemes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BrandingTheme"
+      }
+    }
+  }
+}

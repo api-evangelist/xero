@@ -1,0 +1,55 @@
+{
+  "operationId": "updateEmployeeLeave",
+  "method": "PUT",
+  "path": "/Employees/{EmployeeID}/Leave/{LeaveID}",
+  "summary": "Updates leave records for a specific employee",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "leaveTypeID": "b0b1b79e-2a25-46c2-ad08-ca25ef48d7e4",
+        "description": "Creating a Description",
+        "startDate": "2020-04-24",
+        "endDate": "2020-04-26",
+        "periods": [
+          {
+            "periodStartDate": "2020-04-20",
+            "periodEndDate": "2020-04-26",
+            "numberOfUnits": 1,
+            "periodStatus": "Approved"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-26 20:29:55.843279",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "leave": {
+          "leaveID": "82a04ba6-a5cc-4e7d-86d4-b9f381a494e8",
+          "leaveTypeID": "b0b1b79e-2a25-46c2-ad08-ca25ef48d7e4",
+          "description": "Creating a Description",
+          "startDate": "2020-04-24 00:00:00",
+          "endDate": "2020-04-26 00:00:00",
+          "periods": [
+            {
+              "periodStartDate": "2020-04-20 00:00:00",
+              "periodEndDate": "2020-04-26 00:00:00",
+              "numberOfUnits": 1,
+              "periodStatus": "Approved"
+            }
+          ],
+          "updatedDateUTC": "2020-08-26 20:29:55.885453"
+        }
+      }
+    }
+  ]
+}

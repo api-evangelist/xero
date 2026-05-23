@@ -1,0 +1,13 @@
+{
+  "operationId": "updateProject",
+  "method": "PUT",
+  "path": "/Projects/{projectId}",
+  "summary": "Xero Updates a specific project",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "{ \"name\": \"New Kitchen\", \"deadlineUtc\": \"2017-04-23T18:25:43.511Z\", \"estimateAmount\": 99.99 }"
+    }
+  ],
+  "responseExamples": []
+}

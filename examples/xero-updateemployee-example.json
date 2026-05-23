@@ -1,0 +1,52 @@
+{
+  "operationId": "updateEmployee",
+  "method": "POST",
+  "path": "/Employees/{EmployeeID}",
+  "summary": "Updates an employee's detail",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "[ { \"MiddleNames\": \"Frank\" } ]"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "3f93110a-df13-49c7-b82f-a069813df188",
+        "DateTimeUTC": "/Date(1573621524786)/",
+        "Employees": [
+          {
+            "EmployeeID": "cdfb8371-0b21-4b8a-8903-1024df6c391e",
+            "FirstName": "Albus",
+            "MiddleNames": "Frank",
+            "LastName": "Dumbledore",
+            "Status": "ACTIVE",
+            "Email": "albus39608@hogwarts.edu",
+            "DateOfBirth": "/Date(321523200000+0000)/",
+            "JobTitle": "Regional Manager",
+            "Gender": "M",
+            "HomeAddress": {
+              "AddressLine1": "101 Green St",
+              "City": "Island Bay",
+              "Region": "NSW",
+              "PostalCode": "6023",
+              "Country": "AUSTRALIA"
+            },
+            "Phone": "444-2323",
+            "Mobile": "555-1212",
+            "StartDate": "/Date(321523200000+0000)/",
+            "Classification": "corporate",
+            "OrdinaryEarningsRateID": "ab874dfb-ab09-4c91-954e-43acf6fc23b4",
+            "UpdatedDateUTC": "/Date(1573621524755+0000)/",
+            "IsAuthorisedToApproveLeave": true,
+            "IsAuthorisedToApproveTimesheets": true
+          }
+        ]
+      }
+    }
+  ]
+}

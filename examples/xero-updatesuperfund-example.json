@@ -1,0 +1,34 @@
+{
+  "operationId": "updateSuperfund",
+  "method": "POST",
+  "path": "/Superfunds/{SuperFundID}",
+  "summary": "Updates a superfund",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": " [ { \"Type\":\"REGULATED\", \"Name\":\"Nice23534\" } ]"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573570941547)/",
+        "SuperFunds": [
+          {
+            "SuperFundID": "fde8e070-bf59-4e56-b1d7-c75a09474b8d",
+            "Name": "Accumulate Plus (Commonwealth Bank Group Super)",
+            "Type": "REGULATED",
+            "ABN": "24248426878",
+            "USI": "OSF0001AU",
+            "UpdatedDateUTC": "/Date(1573510468000+0000)/"
+          }
+        ]
+      }
+    }
+  ]
+}

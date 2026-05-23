@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BankAccount",
+  "title": "BankAccount",
+  "type": "object",
+  "properties": {
+    "StatementText": {
+      "description": "The text that will appear on your employee's bank statement when they receive payment",
+      "type": "string",
+      "example": "Salary"
+    },
+    "AccountName": {
+      "description": "The name of the account",
+      "type": "string",
+      "example": "James Lebron Savings"
+    },
+    "BSB": {
+      "description": "The BSB number of the account",
+      "type": "string",
+      "example": 122344
+    },
+    "AccountNumber": {
+      "description": "The account number",
+      "type": "string",
+      "example": 345678
+    },
+    "Remainder": {
+      "description": "If this account is the Remaining bank account",
+      "type": "boolean",
+      "example": false
+    },
+    "Amount": {
+      "description": "Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 200.0
+    }
+  }
+}

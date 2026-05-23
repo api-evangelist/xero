@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Actions",
+  "title": "Actions",
+  "type": "object",
+  "x-objectArrayKey": "actions",
+  "properties": {
+    "Actions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Action"
+      }
+    }
+  }
+}

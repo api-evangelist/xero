@@ -1,0 +1,13 @@
+{
+  "operationId": "updateTask",
+  "method": "PUT",
+  "path": "/Projects/{projectId}/Tasks/{taskId}",
+  "summary": "Xero Allows you to update a task",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": ""
+    }
+  ],
+  "responseExamples": []
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HomeAddress",
+  "title": "HomeAddress",
+  "required": [
+    "AddressLine1"
+  ],
+  "properties": {
+    "AddressLine1": {
+      "description": "Address line 1 for employee home address",
+      "type": "string",
+      "example": "123 Main St"
+    },
+    "AddressLine2": {
+      "description": "Address line 2 for employee home address",
+      "type": "string",
+      "example": "Apt 4"
+    },
+    "City": {
+      "description": "Suburb for employee home address",
+      "type": "string",
+      "example": "St. Kilda"
+    },
+    "Region": {
+      "$ref": "#/components/schemas/State"
+    },
+    "PostalCode": {
+      "description": "PostCode for employee home address",
+      "type": "string",
+      "example": 3182
+    },
+    "Country": {
+      "description": "Country of HomeAddress",
+      "type": "string",
+      "example": "AUSTRALIA"
+    }
+  },
+  "type": "object"
+}

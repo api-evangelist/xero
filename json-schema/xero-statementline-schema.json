@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StatementLine",
+  "title": "StatementLine",
+  "type": "object",
+  "description": "the lines details for a statement",
+  "properties": {
+    "postedDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2018-06-10",
+      "description": "The date that the transaction was processed or cleared as seen in internet banking ISO-8601 YYYY-MM-DD"
+    },
+    "description": {
+      "type": "string",
+      "example": "Description for statement line 2",
+      "maximum": 2000,
+      "description": "Transaction description"
+    },
+    "amount": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": "5.00",
+      "description": "Transaction amount"
+    },
+    "creditDebitIndicator": {
+      "$ref": "#/components/schemas/CreditDebitIndicator"
+    },
+    "transactionId": {
+      "type": "string",
+      "example": "transaction-id-2",
+      "description": "Financial institute's internal transaction identifier. If provided this field is factored into duplicate detection."
+    },
+    "payeeName": {
+      "type": "string",
+      "example": "Payee name for statement line 2",
+      "description": "Typically the merchant or payee name",
+      "maximum": 255
+    },
+    "reference": {
+      "type": "string",
+      "example": "Reference for statement line 2",
+      "description": "Optional field to enhance the Description",
+      "maximum": 255
+    },
+    "chequeNumber": {
+      "type": "string",
+      "example": "021",
+      "description": "The cheque/check number",
+      "maximum": 20
+    },
+    "transactionType": {
+      "type": "string",
+      "example": "Refund",
+      "description": "Descriptive transaction type",
+      "maximum": 30
+    }
+  }
+}

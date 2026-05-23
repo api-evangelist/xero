@@ -1,0 +1,84 @@
+{
+  "operationId": "getEarningsOrders",
+  "method": "GET",
+  "path": "/EarningsOrders",
+  "summary": "Retrieves earnings orders",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "5bf85b65-c2de-4632-8e5e-cc0ab3d18ff0",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-04-20 23:21:36.048005",
+        "httpStatusCode": "OK",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 8
+        },
+        "problem": null,
+        "statutoryDeductions": [
+          {
+            "id": "d00d0128-500b-4685-8332-8fc8743a395c",
+            "name": "AEO (maintenance)",
+            "liabilityAccountId": "921237ae-76ff-4f4c-bf70-5c3c177b149d",
+            "statutoryDeductionCategory": "PriorityOrder",
+            "currentRecord": true
+          },
+          {
+            "id": "f7a63612-a68d-431e-96d4-3fd0708e46b5",
+            "name": "AEO (fines)",
+            "liabilityAccountId": "921237ae-76ff-4f4c-bf70-5c3c177b149d",
+            "statutoryDeductionCategory": "PriorityOrder",
+            "currentRecord": true
+          },
+          {
+            "id": "dabd9a53-25ac-4349-9fb3-8005ea781574",
+            "name": "AEO (civil debts)",
+            "liabilityAccountId": "921237ae-76ff-4f4c-bf70-5c3c177b149d",
+            "statutoryDeductionCategory": "NonPriorityOrder",
+            "currentRecord": true
+          },
+          {
+            "id": "73ae94bb-182c-4242-8d67-1a281597ca9c",
+            "name": "CTAEO",
+            "liabilityAccountId": "921237ae-76ff-4f4c-bf70-5c3c177b149d",
+            "statutoryDeductionCategory": "PriorityOrder",
+            "currentRecord": true
+          },
+          {
+            "id": "649a3c59-3937-43d2-b0e4-5e8942f17ffa",
+            "name": "Child Support DEO",
+            "liabilityAccountId": "921237ae-76ff-4f4c-bf70-5c3c177b149d",
+            "statutoryDeductionCategory": "PriorityOrder",
+            "currentRecord": true
+          },
+          {
+            "id": "d4a4441f-452a-4067-97ac-ded4d157c319",
+            "name": "Earnings Arrestment (Scotland)",
+            "liabilityAccountId": "921237ae-76ff-4f4c-bf70-5c3c177b149d",
+            "statutoryDeductionCategory": "TableBased",
+            "currentRecord": true
+          },
+          {
+            "id": "deec134a-2378-439c-89db-a71fa57fb28a",
+            "name": "Conjoined Arrestment Order (Scotland)",
+            "liabilityAccountId": "921237ae-76ff-4f4c-bf70-5c3c177b149d",
+            "statutoryDeductionCategory": "TableBased",
+            "currentRecord": true
+          },
+          {
+            "id": "750c7c89-0579-45b4-becc-221a52119bd4",
+            "name": "Current Maintenance Arrest (Scotland)",
+            "liabilityAccountId": "921237ae-76ff-4f4c-bf70-5c3c177b149d",
+            "statutoryDeductionCategory": "NonPriorityOrder",
+            "currentRecord": true
+          }
+        ]
+      }
+    }
+  ]
+}

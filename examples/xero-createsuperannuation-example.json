@@ -1,0 +1,45 @@
+{
+  "operationId": "createSuperannuation",
+  "method": "POST",
+  "path": "/Superannuations",
+  "summary": "Creates a new superannuation",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "name": "SidSaver",
+        "category": "Other",
+        "liabilityAccountId": "568f2e9a-0870-46cc-8678-f83f132ed4e3",
+        "expenseAccountId": "e4eb36f6-97e3-4427-a394-dd4e1b355c2e",
+        "CalculationTypeNZ": "FixedAmount",
+        "standardAmount": 10
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "8905a754-7ce8-40e2-9fa5-f819deb7adce",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-09-11 00:36:31.768043",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "benefit": {
+          "id": "8905a754-7ce8-40e2-9fa5-f819deb7adce",
+          "name": "SidSaver",
+          "category": "Other",
+          "liabilityAccountId": "568f2e9a-0870-46cc-8678-f83f132ed4e3",
+          "expenseAccountId": "e4eb36f6-97e3-4427-a394-dd4e1b355c2e",
+          "standardAmount": 10,
+          "percentage": null,
+          "calculationTypeNZ": "FixedAmount",
+          "currentRecord": true,
+          "companyMax": null
+        }
+      }
+    }
+  ]
+}

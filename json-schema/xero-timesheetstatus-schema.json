@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimesheetStatus",
+  "title": "TimesheetStatus",
+  "type": "string",
+  "enum": [
+    "DRAFT",
+    "PROCESSED",
+    "APPROVED",
+    "REJECTED",
+    "REQUESTED"
+  ]
+}

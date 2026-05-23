@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeductionType",
+  "title": "DeductionType",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "description": "Name of the earnings rate (max length = 100)",
+      "type": "string",
+      "example": "PTO",
+      "maxLength": 100
+    },
+    "AccountCode": {
+      "description": "See Accounts",
+      "type": "string",
+      "example": 720
+    },
+    "ReducesTax": {
+      "description": "Indicates that this is a pre-tax deduction that will reduce the amount of tax you withhold from an employee.",
+      "type": "boolean",
+      "example": false
+    },
+    "ReducesSuper": {
+      "description": "Most deductions don\u2019t reduce your superannuation guarantee contribution liability, so typically you will not set any value for this.",
+      "type": "boolean",
+      "example": false
+    },
+    "IsExemptFromW1": {
+      "description": "Boolean to determine if the deduction type is reportable or exempt from W1",
+      "type": "boolean",
+      "example": false
+    },
+    "DeductionTypeID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid",
+      "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true,
+      "example": "/Date(1583967733054+0000)/"
+    },
+    "DeductionCategory": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "UNIONFEES",
+        "WORKPLACEGIVING"
+      ]
+    },
+    "CurrentRecord": {
+      "description": "Is the current record",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

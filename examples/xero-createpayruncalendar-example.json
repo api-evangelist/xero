@@ -1,0 +1,40 @@
+{
+  "operationId": "createPayRunCalendar",
+  "method": "POST",
+  "path": "/PayRunCalendars",
+  "summary": "Creates a new payrun calendar",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "name": "My Weekly Cal",
+        "calendarType": "Weekly",
+        "periodStartDate": "2020-05-01",
+        "paymentDate": "2020-05-15"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-26 23:54:49.315983",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "payRunCalendar": {
+          "payrollCalendarID": "54e9706a-c4e8-45ff-9c63-6fcac7ee7cde",
+          "name": "My Weekly Cal",
+          "calendarType": "Weekly",
+          "periodStartDate": "2020-05-01 00:00:00",
+          "periodEndDate": "2020-05-07 00:00:00",
+          "paymentDate": "2020-05-15 00:00:00",
+          "updatedDateUTC": "2020-08-26 23:54:49.486332"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeaveType",
+  "title": "LeaveType",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "description": "Name of the earnings rate (max length = 100)",
+      "type": "string",
+      "example": "PTO",
+      "maxLength": 100
+    },
+    "TypeOfUnits": {
+      "description": "The type of units by which leave entitlements are normally tracked. These are typically the same as the type of units used for the employee\u2019s ordinary earnings rate",
+      "type": "string",
+      "example": "Hours"
+    },
+    "LeaveTypeID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid",
+      "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+    },
+    "NormalEntitlement": {
+      "description": "The number of units the employee is entitled to each year",
+      "type": "number",
+      "format": "double",
+      "example": 152.0
+    },
+    "LeaveLoadingRate": {
+      "description": "Enter an amount here if your organisation pays an additional percentage on top of ordinary earnings when your employees take leave (typically 17.5%)",
+      "type": "number",
+      "format": "double",
+      "example": 2.0
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true,
+      "example": "/Date(1583967733054+0000)/"
+    },
+    "IsPaidLeave": {
+      "description": "Set this to indicate that an employee will be paid when taking this type of leave",
+      "type": "boolean",
+      "example": true
+    },
+    "ShowOnPayslip": {
+      "description": "Set this if you want a balance for this leave type to be shown on your employee\u2019s payslips",
+      "type": "boolean",
+      "example": true
+    },
+    "CurrentRecord": {
+      "description": "Is the current record",
+      "type": "boolean",
+      "example": true
+    },
+    "LeaveCategoryCode": {
+      "$ref": "#/components/schemas/LeaveCategoryCode"
+    },
+    "SGCExempt": {
+      "description": "Set this to indicate that the leave type is exempt from superannuation guarantee contribution",
+      "type": "boolean",
+      "example": true
+    },
+    "IsQualifyingEarnings": {
+      "description": "Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on earnings type and superannuation settings",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FieldValidationErrorsElement",
+  "title": "FieldValidationErrorsElement",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/api/http-response-codes"
+  },
+  "properties": {
+    "fieldName": {
+      "description": "The field name of the erroneous field",
+      "type": "string"
+    },
+    "valueProvided": {
+      "description": "The provided value",
+      "type": "string"
+    },
+    "localisedMessage": {
+      "description": "Explanation of the field validation error",
+      "type": "string"
+    },
+    "type": {
+      "description": "Internal type of the field validation error message",
+      "type": "string"
+    },
+    "title": {
+      "description": "Title of the field validation error",
+      "type": "string"
+    },
+    "detail": {
+      "description": "Detail of the field validation error",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

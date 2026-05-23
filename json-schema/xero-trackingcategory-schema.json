@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrackingCategory",
+  "title": "TrackingCategory",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/tracking-categories/"
+  },
+  "properties": {
+    "TrackingCategoryID": {
+      "description": "The Xero identifier for a tracking category e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+      "type": "string",
+      "format": "uuid"
+    },
+    "TrackingOptionID": {
+      "description": "The Xero identifier for a tracking option e.g. dc54c220-0140-495a-b925-3246adc0075f",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Name": {
+      "description": "The name of the tracking category e.g. Department, Region (max length = 100)",
+      "maxLength": 100,
+      "type": "string"
+    },
+    "Option": {
+      "description": "The option name of the tracking option e.g. East, West (max length = 100)",
+      "maxLength": 100,
+      "type": "string"
+    },
+    "Status": {
+      "description": "The status of a tracking category",
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "ARCHIVED",
+        "DELETED"
+      ]
+    },
+    "Options": {
+      "description": "See Tracking Options",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TrackingOption"
+      }
+    }
+  },
+  "type": "object"
+}

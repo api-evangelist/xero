@@ -1,0 +1,31 @@
+{
+  "operationId": "getLeaveType",
+  "method": "GET",
+  "path": "/LeaveTypes/{LeaveTypeID}",
+  "summary": "Retrieves a specific leave type by using a unique leave type ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 20:49:58.729366",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "leaveType": {
+          "leaveTypeID": "b0b1b79e-2a25-46c2-ad08-ca25ef48d7e4",
+          "name": "Annual Leave",
+          "isPaidLeave": true,
+          "showOnPayslip": true,
+          "updatedDateUTC": "2019-09-22 23:09:32",
+          "isActive": true,
+          "typeOfUnits": "Hours",
+          "typeOfUnitsToAccrue": "Days"
+        }
+      }
+    }
+  ]
+}

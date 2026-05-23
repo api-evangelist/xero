@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PrepaymentResponse",
+  "title": "PrepaymentResponse",
+  "type": "object",
+  "properties": {
+    "prepaymentId": {
+      "type": "string",
+      "description": "Xero Identifier of prepayment",
+      "format": "uuid"
+    },
+    "contact": {
+      "$ref": "#/components/schemas/ContactResponse"
+    },
+    "total": {
+      "type": "number",
+      "description": "Total of Invoice tax inclusive (i.e. SubTotal + TotalTax); Not included in summary mode",
+      "format": "double",
+      "x-is-money": true
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LineItemResponse"
+      },
+      "description": "Not included in summary mode"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,35 @@
+{
+  "operationId": "getSuperfunds",
+  "method": "GET",
+  "path": "/Superfunds",
+  "summary": "Retrieves superfunds",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573570941142)/",
+        "SuperFunds": [
+          {
+            "SuperFundID": "fde8e070-bf59-4e56-b1d7-c75a09474b8d",
+            "Name": "Accumulate Plus (Commonwealth Bank Group Super)",
+            "Type": "REGULATED",
+            "USI": "OSF0001AU",
+            "UpdatedDateUTC": "/Date(1573510468000+0000)/"
+          },
+          {
+            "SuperFundID": "69079de5-67ef-43bb-b5a5-3e7c2ccad7f0",
+            "Name": "AMG Super",
+            "Type": "REGULATED",
+            "USI": "PTC0133AU",
+            "UpdatedDateUTC": "/Date(1573490487000+0000)/"
+          }
+        ]
+      }
+    }
+  ]
+}

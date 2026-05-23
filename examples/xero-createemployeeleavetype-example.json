@@ -1,0 +1,50 @@
+{
+  "operationId": "createEmployeeLeaveType",
+  "method": "POST",
+  "path": "/Employees/{EmployeeID}/LeaveTypes",
+  "summary": "Creates leave type records for a specific employee",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "leaveTypeID": "35da97ae-05b9-427f-9a98-69157ba42cec",
+        "scheduleOfAccrual": "AnnuallyAfter6Months",
+        "unitsAccruedAnnually": 10,
+        "typeOfUnitsToAccrue": "Hours",
+        "openingBalanceTypeOfUnits": "Hours",
+        "maximumToAccrue": 80,
+        "openingBalance": 100,
+        "rateAccruedHourly": null
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 14:31:54.337008",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "leaveType": {
+          "leaveTypeID": "35da97ae-05b9-427f-9a98-69157ba42cec",
+          "scheduleOfAccrual": "AnnuallyAfter6Months",
+          "maximumToAccrue": 80,
+          "openingBalance": 100,
+          "rateAccruedHourly": null,
+          "percentageOfGrossEarnings": 0,
+          "includeHolidayPayEveryPay": null,
+          "showAnnualLeaveInAdvance": null,
+          "annualLeaveTotalAmountPaid": null,
+          "scheduleOfAccrualDate": null,
+          "unitsAccruedAnnually": 0,
+          "typeOfUnitsToAccrue": "Hours",
+          "openingBalanceTypeOfUnits": "Hours"
+        }
+      }
+    }
+  ]
+}

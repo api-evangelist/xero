@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Benefit",
+  "title": "Benefit",
+  "type": "object",
+  "required": [
+    "name",
+    "category",
+    "liabilityAccountId",
+    "expenseAccountId"
+  ],
+  "properties": {
+    "id": {
+      "description": "The Xero identifier for superannuation",
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "description": "Name of the superannuations",
+      "type": "string"
+    },
+    "category": {
+      "description": "Superannuations Category type",
+      "type": "string",
+      "enum": [
+        "KiwiSaver",
+        "ComplyingFund",
+        "Other"
+      ]
+    },
+    "liabilityAccountId": {
+      "description": "Xero identifier for Liability Account",
+      "type": "string",
+      "format": "uuid"
+    },
+    "expenseAccountId": {
+      "description": "Xero identifier for Expense Account",
+      "type": "string",
+      "format": "uuid"
+    },
+    "calculationTypeNZ": {
+      "description": "Calculation Type of the superannuation either FixedAmount or PercentageOfTaxableEarnings",
+      "type": "string",
+      "enum": [
+        "FixedAmount",
+        "PercentageOfTaxableEarnings"
+      ]
+    },
+    "standardAmount": {
+      "description": "Standard amount of the superannuation",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "percentage": {
+      "description": "Percentage of Taxable Earnings of the superannuation",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "companyMax": {
+      "description": "Company Maximum amount of the superannuation",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "currentRecord": {
+      "description": "Identifier of a record is active or not.",
+      "type": "boolean"
+    }
+  }
+}

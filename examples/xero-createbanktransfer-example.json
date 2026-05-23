@@ -1,0 +1,94 @@
+{
+  "operationId": "createBankTransfer",
+  "method": "PUT",
+  "path": "/BankTransfers",
+  "summary": "Xero Creates a bank transfer",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "BankTransfers": [
+          {
+            "FromBankAccount": {
+              "Code": "090",
+              "Name": "My Savings",
+              "AccountID": "00000000-0000-0000-0000-000000000000",
+              "Type": "BANK",
+              "BankAccountNumber": "123455",
+              "Status": "ACTIVE",
+              "BankAccountType": "BANK",
+              "CurrencyCode": "USD",
+              "TaxType": "NONE",
+              "EnablePaymentsToAccount": false,
+              "ShowInExpenseClaims": false,
+              "Class": "ASSET",
+              "ReportingCode": "ASS",
+              "ReportingCodeName": "Assets",
+              "HasAttachments": false,
+              "UpdatedDateUTC": "2016-10-17T13:45:33.993-07:00"
+            },
+            "ToBankAccount": {
+              "Code": "088",
+              "Name": "Business Wells Fargo",
+              "AccountID": "00000000-0000-0000-0000-000000000000",
+              "Type": "BANK",
+              "BankAccountNumber": "123455",
+              "Status": "ACTIVE",
+              "BankAccountType": "BANK",
+              "CurrencyCode": "USD",
+              "TaxType": "NONE",
+              "EnablePaymentsToAccount": false,
+              "ShowInExpenseClaims": false,
+              "Class": "ASSET",
+              "ReportingCode": "ASS",
+              "ReportingCodeName": "Assets",
+              "HasAttachments": false,
+              "UpdatedDateUTC": "2016-06-03T08:31:14.517-07:00"
+            },
+            "Amount": "50.00",
+            "FromIsReconciled": true,
+            "ToIsReconciled": true,
+            "Reference": "Sub 098801"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "ae767b68-affd-4e17-bac0-83eaf1854dcd",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1551311317475)/",
+        "BankTransfers": [
+          {
+            "BankTransferID": "76eea4b6-f026-464c-b6f3-5fb39a196145",
+            "DateString": "2019-02-27 00:00:00",
+            "Date": "/Date(1551225600000+0000)/",
+            "FromBankAccount": {
+              "AccountID": "7e5e243b-9fcd-4aef-8e3a-c70be1e39bfa",
+              "Code": "090",
+              "Name": "My Savings"
+            },
+            "ToBankAccount": {
+              "AccountID": "6f7594f2-f059-4d56-9e67-47ac9733bfe9",
+              "Code": "088",
+              "Name": "Business Wells Fargo"
+            },
+            "Amount": 50.0,
+            "FromBankTransactionID": "e4059952-5acb-4a56-b076-53fad85f2930",
+            "ToBankTransactionID": "88e4ac17-293b-4e5a-8d8b-3ce3a0b1ee17",
+            "FromIsReconciled": true,
+            "ToIsReconciled": true,
+            "Reference": "Sub 098801",
+            "CurrencyRate": 1.0,
+            "ValidationErrors": []
+          }
+        ]
+      }
+    }
+  ]
+}

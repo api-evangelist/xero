@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TaxLine",
+  "title": "TaxLine",
+  "type": "object",
+  "properties": {
+    "PayslipTaxLineID": {
+      "description": "Xero identifier for payslip tax line ID.",
+      "type": "string",
+      "format": "uuid",
+      "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+    },
+    "Amount": {
+      "description": "The tax line amount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 50.0
+    },
+    "TaxTypeName": {
+      "description": "Name of the tax type.",
+      "type": "string",
+      "example": "Manual Adjustment"
+    },
+    "Description": {
+      "description": "Description of the tax line.",
+      "type": "string"
+    },
+    "ManualTaxType": {
+      "$ref": "#/components/schemas/ManualTaxType"
+    },
+    "LiabilityAccount": {
+      "description": "The tax line liability account code. For posted pay run you should be able to see liability account code",
+      "type": "string",
+      "example": 620
+    }
+  }
+}

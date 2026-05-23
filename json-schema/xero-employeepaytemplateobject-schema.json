@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeePayTemplateObject",
+  "title": "EmployeePayTemplateObject",
+  "type": "object",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "problem": {
+      "$ref": "#/components/schemas/Problem"
+    },
+    "payTemplate": {
+      "$ref": "#/components/schemas/EmployeePayTemplate"
+    }
+  }
+}

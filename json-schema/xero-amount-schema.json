@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Amount",
+  "title": "Amount",
+  "type": "object",
+  "properties": {
+    "currency": {
+      "$ref": "#/components/schemas/CurrencyCode",
+      "type": "string"
+    },
+    "value": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 1.0
+    }
+  }
+}

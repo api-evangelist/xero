@@ -1,0 +1,32 @@
+{
+  "operationId": "getStatutoryLeaveSummary",
+  "method": "GET",
+  "path": "/StatutoryLeaves/Summary/{EmployeeID}",
+  "summary": "Retrieves a specific employee's summary of statutory leaves using a unique employee ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "1908f4d1-b85d-4d6d-a885-6b6e2922ad03",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-04-02 19:47:06.079138",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "statutoryLeaves": [
+          {
+            "statutoryLeaveID": "17f4c3c7-d65c-4572-9118-03798f26f813",
+            "employeeID": "aad6b292-7b94-408b-93f6-e489867e3fb0",
+            "type": "Sick",
+            "endDate": "2020-04-01",
+            "startDate": "2020-03-28",
+            "isEntitled": false,
+            "status": "Pending"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "operationId": "getOverpayments",
+  "method": "GET",
+  "path": "/Overpayments",
+  "summary": "Xero Retrieves overpayments",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "c0ce675e-e5bc-4b2a-a20e-76a9eaedf89d",
+        "Status": "OK",
+        "ProviderName": "Provider Name Example",
+        "DateTimeUTC": "/Date(1552428951416)/",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 5
+        },
+        "Overpayments": [
+          {
+            "OverpaymentID": "098b4dcb-5622-4699-87f8-9d40c4ccceb3",
+            "ID": "098b4dcb-5622-4699-87f8-9d40c4ccceb3",
+            "Type": "SPEND-OVERPAYMENT",
+            "Reference": "Reference for payment1",
+            "RemainingCredit": 500.0,
+            "Allocations": [],
+            "Payments": [],
+            "HasAttachments": false,
+            "Contact": {
+              "ContactID": "af3ffcc1-c578-4658-82f3-5d8d458cc7af",
+              "Name": "Daddy Warbucks",
+              "Addresses": [],
+              "Phones": [],
+              "ContactGroups": [],
+              "ContactPersons": [],
+              "HasValidationErrors": false
+            },
+            "DateString": "2019-03-12 00:00:00",
+            "Date": "/Date(1552348800000+0000)/",
+            "Status": "AUTHORISED",
+            "LineAmountTypes": "NoTax",
+            "LineItems": [],
+            "SubTotal": 500.0,
+            "TotalTax": 0.0,
+            "Total": 500.0,
+            "UpdatedDateUTC": "/Date(1552428535123+0000)/",
+            "CurrencyCode": "NZD"
+          },
+          {
+            "OverpaymentID": "2a8bda49-8908-473b-8bcf-1f90990460eb",
+            "ID": "2a8bda49-8908-473b-8bcf-1f90990460eb",
+            "Type": "RECEIVE-OVERPAYMENT",
+            "Reference": "Reference for payment2",
+            "RemainingCredit": 20.0,
+            "Allocations": [],
+            "Payments": [],
+            "HasAttachments": false,
+            "Contact": {
+              "ContactID": "430fa14a-f945-44d3-9f97-5df5e28441b8",
+              "Name": "Liam Gallagher",
+              "Addresses": [],
+              "Phones": [],
+              "ContactGroups": [],
+              "ContactPersons": [],
+              "HasValidationErrors": false
+            },
+            "DateString": "2019-03-13 00:00:00",
+            "Date": "/Date(1552435200000+0000)/",
+            "Status": "AUTHORISED",
+            "LineAmountTypes": "NoTax",
+            "LineItems": [],
+            "SubTotal": 20.0,
+            "TotalTax": 0.0,
+            "Total": 20.0,
+            "UpdatedDateUTC": "/Date(1552428568250+0000)/",
+            "CurrencyCode": "NZD"
+          },
+          {
+            "OverpaymentID": "ed7f6041-c915-4667-bd1d-54c48e92161e",
+            "ID": "ed7f6041-c915-4667-bd1d-54c48e92161e",
+            "Type": "SPEND-OVERPAYMENT",
+            "Reference": "Reference for payment3",
+            "RemainingCredit": 3000.0,
+            "Allocations": [],
+            "Payments": [],
+            "HasAttachments": false,
+            "Contact": {
+              "ContactID": "430fa14a-f945-44d3-9f97-5df5e28441b8",
+              "Name": "Liam Gallagher",
+              "Addresses": [],
+              "Phones": [],
+              "ContactGroups": [],
+              "ContactPersons": [],
+              "HasValidationErrors": false
+            },
+            "DateString": "2019-03-12 00:00:00",
+            "Date": "/Date(1552348800000+0000)/",
+            "Status": "AUTHORISED",
+            "LineAmountTypes": "NoTax",
+            "LineItems": [],
+            "SubTotal": 3000.0,
+            "TotalTax": 0.0,
+            "Total": 3000.0,
+            "UpdatedDateUTC": "/Date(1552428781527+0000)/",
+            "CurrencyCode": "NZD"
+          },
+          {
+            "OverpaymentID": "0859adbc-ea00-40cd-a877-258cf8644975",
+            "ID": "0859adbc-ea00-40cd-a877-258cf8644975",
+            "Type": "RECEIVE-OVERPAYMENT",
+            "Reference": "Reference for payment4",
+            "RemainingCredit": 20.0,
+            "Allocations": [],
+            "Payments": [],
+            "HasAttachments": false,
+            "Contact": {
+              "ContactID": "430fa14a-f945-44d3-9f97-5df5e28441b8",
+              "Name": "Liam Gallagher",
+              "Addresses": [],
+              "Phones": [],
+              "ContactGroups": [],
+              "ContactPersons": [],
+              "HasValidationErrors": false
+            },
+            "DateString": "2019-03-13 00:00:00",
+            "Date": "/Date(1552435200000+0000)/",
+            "Status": "AUTHORISED",
+            "LineAmountTypes": "NoTax",
+            "LineItems": [],
+            "SubTotal": 20.0,
+            "TotalTax": 0.0,
+            "Total": 20.0,
+            "UpdatedDateUTC": "/Date(1552428842190+0000)/",
+            "CurrencyCode": "NZD"
+          },
+          {
+            "OverpaymentID": "687b877f-634a-415d-92b2-74e62977de30",
+            "ID": "687b877f-634a-415d-92b2-74e62977de30",
+            "Type": "RECEIVE-OVERPAYMENT",
+            "Reference": "Reference for payment5",
+            "RemainingCredit": 20.0,
+            "Allocations": [],
+            "Payments": [],
+            "HasAttachments": false,
+            "Contact": {
+              "ContactID": "430fa14a-f945-44d3-9f97-5df5e28441b8",
+              "Name": "Liam Gallagher",
+              "Addresses": [],
+              "Phones": [],
+              "ContactGroups": [],
+              "ContactPersons": [],
+              "HasValidationErrors": false
+            },
+            "DateString": "2019-03-13 00:00:00",
+            "Date": "/Date(1552435200000+0000)/",
+            "Status": "AUTHORISED",
+            "LineAmountTypes": "NoTax",
+            "LineItems": [],
+            "SubTotal": 20.0,
+            "TotalTax": 0.0,
+            "Total": 20.0,
+            "UpdatedDateUTC": "/Date(1552428950730+0000)/",
+            "CurrencyCode": "NZD"
+          }
+        ]
+      }
+    }
+  ]
+}

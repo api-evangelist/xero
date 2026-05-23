@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Deduction",
+  "title": "Deduction",
+  "type": "object",
+  "required": [
+    "deductionName",
+    "deductionCategory",
+    "liabilityAccountId"
+  ],
+  "properties": {
+    "deductionId": {
+      "description": "The Xero identifier for Deduction",
+      "type": "string",
+      "format": "uuid"
+    },
+    "deductionName": {
+      "description": "Name of the deduction",
+      "type": "string"
+    },
+    "deductionCategory": {
+      "description": "Deduction Category type",
+      "type": "string",
+      "enum": [
+        "PayrollGiving",
+        "KiwiSaverVoluntaryContributions",
+        "Superannuation",
+        "NzOther"
+      ]
+    },
+    "liabilityAccountId": {
+      "description": "Xero identifier for Liability Account",
+      "type": "string",
+      "format": "uuid"
+    },
+    "currentRecord": {
+      "description": "Identifier of a record is active or not.",
+      "type": "boolean"
+    },
+    "standardAmount": {
+      "description": "Standard amount of the deduction.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    }
+  }
+}

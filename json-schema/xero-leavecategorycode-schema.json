@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeaveCategoryCode",
+  "title": "LeaveCategoryCode",
+  "description": "Code used to identify the Leave Category",
+  "type": "string",
+  "enum": [
+    "ANNUALLEAVE",
+    "LONGSERVICELEAVE",
+    "PERSONALSICKCARERSLEAVE",
+    "ROSTEREDDAYOFF",
+    "TIMEOFFINLIEU",
+    "COMPASSIONATEANDBEREAVEMENTLEAVE",
+    "STUDYLEAVE",
+    "FAMILYANDDOMESTICVIOLENCELEAVE",
+    "SPECIALPAIDLEAVE",
+    "COMMUNITYSERVICELEAVE",
+    "JURYDUTYLEAVE",
+    "DEFENCERESERVELEAVE"
+  ],
+  "example": "ANNUALLEAVE"
+}

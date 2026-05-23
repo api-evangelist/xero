@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DevelopmentalRoleDetails",
+  "title": "DevelopmentalRoleDetails",
+  "type": "object",
+  "required": [
+    "startDate",
+    "endDate",
+    "developmentalRole"
+  ],
+  "properties": {
+    "startDate": {
+      "description": "The start date of the developmental role",
+      "type": "string",
+      "format": "date",
+      "example": "2024-12-02",
+      "x-is-date": true
+    },
+    "endDate": {
+      "description": "The end date of the developmental role",
+      "type": "string",
+      "format": "date",
+      "example": "2024-12-02",
+      "x-is-date": true
+    },
+    "developmentalRole": {
+      "description": "The developmental role type - \"Apprentice\" is the only supported role currently",
+      "type": "string",
+      "example": "Apprentice"
+    },
+    "publicKey": {
+      "description": "The public key of the developmental role. Public key is required if the intention is to edit an existing developmental role. If no key is supplied a new developmental role will be created",
+      "type": "string",
+      "format": "uuid"
+    }
+  }
+}

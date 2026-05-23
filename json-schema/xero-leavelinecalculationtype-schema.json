@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeaveLineCalculationType",
+  "title": "LeaveLineCalculationType",
+  "description": "Calculation type for leave line for Opening Balance on Employee",
+  "type": "string",
+  "enum": [
+    "NOCALCULATIONREQUIRED",
+    "FIXEDAMOUNTEACHPERIOD",
+    "ENTERRATEINPAYTEMPLATE",
+    "BASEDONORDINARYEARNINGS"
+  ]
+}

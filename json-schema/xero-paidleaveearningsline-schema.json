@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaidLeaveEarningsLine",
+  "title": "PaidLeaveEarningsLine",
+  "type": "object",
+  "required": [
+    "LeaveTypeID",
+    "Amount"
+  ],
+  "properties": {
+    "LeaveTypeID": {
+      "description": "Xero leave type identifier",
+      "type": "string",
+      "format": "uuid",
+      "example": "742998cb-7584-4ecf-aa88-d694f59c50f9"
+    },
+    "Amount": {
+      "description": "Paid leave amount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 500.0
+    },
+    "SGCAppliedLeaveLoadingAmount": {
+      "description": "The amount of leave loading applied for the leave type that is subject to Superannuation Guarantee Contributions. *Only applicable for Leave Types with Annual Leave Categories",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 50.0
+    },
+    "SGCExemptedLeaveLoadingAmount": {
+      "description": "The amount of leave loading applied for the leave type that is exempt from Superannuation Guarantee Contributions. *Only applicable for Leave Types with Annual Leave Categories",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 60.0
+    },
+    "ResetSTPCategorisation": {
+      "description": "Reset the STP categorisations for the leave type. *Only applicable for Leave Types with Annual Leave Categories",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

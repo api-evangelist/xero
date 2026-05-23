@@ -1,0 +1,54 @@
+{
+  "operationId": "updatePayslip",
+  "method": "POST",
+  "path": "/Payslip/{PayslipID}",
+  "summary": "Updates a payslip",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "Payslip": {
+          "EmployeeID": "cdfb8371-0b21-4b8a-8903-1024df6c391e",
+          "DeductionLines": [
+            {
+              "DeductionTypeID": "727af5e8-b347-4ae7-85fc-9b82266d0aec",
+              "CalculationType": "FIXEDAMOUNT",
+              "NumberOfUnits": 10
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1589568253813)/",
+        "Payslips": [
+          {
+            "EmployeeID": "cdfb8371-0b21-4b8a-8903-1024df6c391e",
+            "PayslipID": "c81e8bcc-56b0-4740-b46b-767753a6ee45",
+            "FirstName": "Albus",
+            "LastName": "Dumbledore",
+            "LastEdited": "/Date(1589568253735+0000)/",
+            "Tax": 0,
+            "NetPay": 1.4,
+            "UpdatedDateUTC": "/Date(1589568253735+0000)/",
+            "DeductionLines": [
+              {
+                "Amount": 4,
+                "CalculationType": "FIXEDAMOUNT",
+                "DeductionTypeID": "ed05ea82-e40a-4eb6-9c2e-4b3c03e7e938"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeTax",
+  "title": "EmployeeTax",
+  "type": "object",
+  "properties": {
+    "irdNumber": {
+      "description": "The IRD Number.",
+      "type": "string",
+      "example": 111111111
+    },
+    "taxCode": {
+      "$ref": "#/components/schemas/TaxCode"
+    },
+    "specialTaxRatePercentage": {
+      "description": "Special tax rate percentage.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 17.5
+    },
+    "hasSpecialStudentLoanRate": {
+      "description": "Does the employee has a special student loan rate?",
+      "type": "boolean",
+      "example": true
+    },
+    "specialStudentLoanRatePercentage": {
+      "description": "The employee student loan rate percentage.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 2.0
+    },
+    "isEligibleForKiwiSaver": {
+      "description": "The employee eligibility for KiwiSaver.",
+      "type": "boolean",
+      "example": true
+    },
+    "esctRatePercentage": {
+      "description": "Employer superannuation contribution tax rate.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 1.0
+    },
+    "kiwiSaverContributions": {
+      "description": "Contribution Option which can be 'MakeContributions' 'OptOut', 'OnAContributionsHoliday', 'OnASavingsSuspension', 'NotCurrentlyAKiwiSaverMember' for employees without a KiwiSaver membership",
+      "type": "string",
+      "example": "MakeContributions",
+      "enum": [
+        "MakeContributions",
+        "OptOut",
+        "OnAContributionsHoliday",
+        "OnASavingsSuspension",
+        "NotCurrentlyAKiwiSaverMember"
+      ]
+    },
+    "kiwiSaverEmployeeContributionRatePercentage": {
+      "description": "Employee Contribution percentage.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 4.0
+    },
+    "kiwiSaverEmployerContributionRatePercentage": {
+      "description": "Employer Contribution percentage.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.0
+    },
+    "kiwiSaverEmployerSalarySacrificeContributionRatePercentage": {
+      "description": "Employer Contribution through Salary Sacrifice percentage.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 2.0
+    },
+    "kiwiSaverOptOutDate": {
+      "description": "Opt Out Date.",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true,
+      "example": "2020-06-01 00:00:00"
+    },
+    "kiwiSaverContributionHolidayEndDate": {
+      "description": "Contribution holiday expiry date or end date.",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true,
+      "example": "2019-06-01 00:00:00"
+    },
+    "hasStudentLoanBalance": {
+      "description": "Does the employee have a remaining student loan balance? Set a remaining balance if you have received a letter from IR.",
+      "type": "boolean",
+      "example": false
+    },
+    "studentLoanBalance": {
+      "description": "The employee's student loan balance shown on the letter from IR.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 30.0
+    },
+    "studentLoanAsAt": {
+      "description": "The date of the letter from IR.",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true,
+      "example": "2020-07-01 00:00:00"
+    }
+  }
+}

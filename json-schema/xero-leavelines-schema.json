@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeaveLines",
+  "title": "LeaveLines",
+  "type": "object",
+  "x-objectArrayKey": "employee",
+  "description": "The leave type lines",
+  "properties": {
+    "Employee": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LeaveLine"
+      }
+    }
+  }
+}

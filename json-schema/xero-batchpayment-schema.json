@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchPayment",
+  "title": "BatchPayment",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/BatchPayments/"
+  },
+  "properties": {
+    "Account": {
+      "$ref": "#/components/schemas/Account"
+    },
+    "Reference": {
+      "description": "(NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find & Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.",
+      "type": "string",
+      "maxLength": 255
+    },
+    "Particulars": {
+      "description": "(NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find & Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.",
+      "type": "string",
+      "maxLength": 12
+    },
+    "Code": {
+      "description": "(NZ Only) Optional references for the batch payment transaction. It will also show with the batch payment transaction in the bank reconciliation Find & Match screen. Depending on your individual bank, the detail may also show on the bank statement you import into Xero.",
+      "type": "string",
+      "maxLength": 12
+    },
+    "Details": {
+      "description": "(Non-NZ Only) These details are sent to the org\u2019s bank as a reference for the batch payment transaction. They will also show with the batch payment transaction in the bank reconciliation Find & Match screen. Depending on your individual bank, the detail may also show on the bank statement imported into Xero. Maximum field length = 18",
+      "type": "string"
+    },
+    "Narrative": {
+      "description": "(UK Only) Only shows on the statement line in Xero. Max length =18",
+      "type": "string",
+      "maxLength": 18
+    },
+    "BatchPaymentID": {
+      "description": "The Xero generated unique identifier for the bank transaction (read-only)",
+      "readOnly": true,
+      "type": "string",
+      "format": "uuid"
+    },
+    "DateString": {
+      "description": "Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06",
+      "type": "string"
+    },
+    "Date": {
+      "description": "Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "Amount": {
+      "description": "The amount of the payment. Must be less than or equal to the outstanding amount owing on the invoice e.g. 200.00",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Payments": {
+      "description": "An array of payments",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Payment"
+      }
+    },
+    "Type": {
+      "description": "PAYBATCH for bill payments or RECBATCH for sales invoice payments (read-only)",
+      "readOnly": true,
+      "type": "string",
+      "enum": [
+        "PAYBATCH",
+        "RECBATCH"
+      ]
+    },
+    "Status": {
+      "description": "AUTHORISED or DELETED (read-only). New batch payments will have a status of AUTHORISED. It is not possible to delete batch payments via the API.",
+      "readOnly": true,
+      "type": "string",
+      "enum": [
+        "AUTHORISED",
+        "DELETED"
+      ]
+    },
+    "TotalAmount": {
+      "description": "The total of the payments that make up the batch (read-only)",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "readOnly": true
+    },
+    "UpdatedDateUTC": {
+      "description": "UTC timestamp of last update to the payment",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "IsReconciled": {
+      "description": "Booelan that tells you if the batch payment has been reconciled (read-only)",
+      "readOnly": true,
+      "type": "boolean"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    }
+  },
+  "type": "object"
+}

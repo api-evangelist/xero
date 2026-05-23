@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ImportSummary",
+  "title": "ImportSummary",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/api-guides/conversions"
+  },
+  "description": "A summary of the import from setup endpoint",
+  "type": "object",
+  "properties": {
+    "Accounts": {
+      "$ref": "#/components/schemas/ImportSummaryAccounts"
+    },
+    "Organisation": {
+      "$ref": "#/components/schemas/ImportSummaryOrganisation"
+    }
+  }
+}

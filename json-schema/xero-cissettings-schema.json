@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CISSettings",
+  "title": "CISSettings",
+  "type": "object",
+  "x-objectArrayKey": "cis_settings",
+  "properties": {
+    "CISSettings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CISSetting"
+      }
+    }
+  }
+}

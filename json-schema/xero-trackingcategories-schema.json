@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrackingCategories",
+  "title": "TrackingCategories",
+  "type": "object",
+  "x-objectArrayKey": "tracking_categories",
+  "properties": {
+    "TrackingCategories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TrackingCategory"
+      }
+    }
+  }
+}

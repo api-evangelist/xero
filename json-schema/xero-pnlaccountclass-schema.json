@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PnlAccountClass",
+  "title": "PnlAccountClass",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "number",
+      "description": "Total revenue/expense value",
+      "format": "double",
+      "x-is-money": true
+    },
+    "accountTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PnlAccountType"
+      },
+      "description": "Contains trading income and other income for revenue section / operating expenses and direct cost for expense section if the data is available for each section. Refer to the account type element below"
+    }
+  },
+  "additionalProperties": false
+}

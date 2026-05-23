@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimeEntryCreateOrUpdate",
+  "title": "TimeEntryCreateOrUpdate",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/projects/time"
+  },
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "00000000-0000-0000-000-000000000000",
+      "description": "The xero user identifier of the person logging the time."
+    },
+    "taskId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "00000000-0000-0000-000-000000000000",
+      "description": "Identifier of the task that time entry is logged against."
+    },
+    "dateUtc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date time entry is logged on. UTC Date Time in ISO-8601 format."
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Number of minutes to be logged. Duration is between 1 and 59940 inclusively."
+    },
+    "description": {
+      "type": "string",
+      "description": "An optional description of the time entry, will be set to null if not provided during update."
+    }
+  },
+  "required": [
+    "userId",
+    "taskId",
+    "dateUtc",
+    "duration"
+  ]
+}

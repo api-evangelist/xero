@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayRunCalendar",
+  "title": "PayRunCalendar",
+  "type": "object",
+  "required": [
+    "name",
+    "calendarType",
+    "periodStartDate",
+    "paymentDate"
+  ],
+  "properties": {
+    "payrollCalendarID": {
+      "description": "Xero unique identifier for the payroll calendar",
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "description": "Name of the calendar",
+      "type": "string"
+    },
+    "calendarType": {
+      "$ref": "#/components/schemas/CalendarType"
+    },
+    "periodStartDate": {
+      "description": "Period start date of the calendar",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "periodEndDate": {
+      "description": "Period end date of the calendar",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "paymentDate": {
+      "description": "Payment date of the calendar",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "updatedDateUTC": {
+      "description": "UTC timestamp of the last update to the pay run calendar",
+      "type": "string",
+      "format": "date-time",
+      "x-is-datetime": true
+    }
+  }
+}

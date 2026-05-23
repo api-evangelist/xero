@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CourtOrderLine",
+  "title": "CourtOrderLine",
+  "type": "object",
+  "properties": {
+    "courtOrderTypeID": {
+      "description": "Xero identifier for payroll court order type",
+      "type": "string",
+      "format": "uuid"
+    },
+    "amount": {
+      "description": "Amount",
+      "type": "number",
+      "format": "double"
+    }
+  }
+}

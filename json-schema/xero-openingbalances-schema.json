@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OpeningBalances",
+  "title": "OpeningBalances",
+  "type": "object",
+  "properties": {
+    "OpeningBalanceDate": {
+      "description": "Opening Balance Date. (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "Tax": {
+      "description": "Opening Balance tax",
+      "type": "string",
+      "example": "4333d5cd-53a5-4c31-98e5-a8b4e5676b0b"
+    },
+    "EarningsLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EarningsLine"
+      }
+    },
+    "DeductionLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeductionLine"
+      }
+    },
+    "SuperLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SuperLine"
+      }
+    },
+    "ReimbursementLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReimbursementLine"
+      }
+    },
+    "LeaveLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OpeningBalanceLeaveLine"
+      }
+    },
+    "PaidLeaveEarningsLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PaidLeaveEarningsLine"
+      }
+    }
+  }
+}

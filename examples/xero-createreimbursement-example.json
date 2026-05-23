@@ -1,0 +1,42 @@
+{
+  "operationId": "createReimbursement",
+  "method": "POST",
+  "path": "/Reimbursements",
+  "summary": "Creates a new reimbursement",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "name": "My new Reimburse",
+        "accountID": "fa5cdc43-643b-4ad8-b4ac-3ffe0d0f4488",
+        "reimbursementCategory": "GSTInclusive",
+        "calculationType": "FixedAmount"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 23:25:30.523827",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "reimbursement": {
+          "reimbursementID": "c7a8e7fd-b4f1-4f7b-9256-1b3edaa72de7",
+          "name": "My new Reimburse",
+          "accountID": "fa5cdc43-643b-4ad8-b4ac-3ffe0d0f4488",
+          "currentRecord": true,
+          "standardAmount": null,
+          "standardTypeOfUnits": null,
+          "standardRatePerUnit": null,
+          "reimbursementCategory": "GSTInclusive",
+          "calculationType": "FixedAmount"
+        }
+      }
+    }
+  ]
+}

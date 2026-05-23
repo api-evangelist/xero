@@ -1,0 +1,14 @@
+{
+  "operationId": "getInbox",
+  "method": "GET",
+  "path": "/Inbox",
+  "summary": "Retrieves inbox folder",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": "{ \"Name\": \"Inbox\", \"FileCount\": 14, \"Email\": \"xero.inbox.jpf4.6oo29retajkhtfus@xerofiles.com\", \"IsInbox\": true, \"Id\": \"bf924975-7097-46f2-a143-1ecfbab3c8c3\" }"
+    }
+  ]
+}

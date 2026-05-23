@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Journals",
+  "title": "Journals",
+  "type": "object",
+  "x-objectArrayKey": "journals",
+  "properties": {
+    "Warnings": {
+      "description": "Displays array of warning messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "Journals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Journal"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "operationId": "getBudgets",
+  "method": "GET",
+  "path": "/Budgets",
+  "summary": "Xero Retrieve a list of budgets",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "04e93d48-e72f-4775-b7dd-15a041fab972",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1551399323399)/",
+        "Budgets": [
+          {
+            "BudgetID": "847da917-9565-466c-a9cd-3ecf7eb9d094",
+            "Status": "APPROVED",
+            "Description": "FY2021 budget",
+            "Type": "TRACKING",
+            "UpdatedDateUTC": "/Date(1622138002077+0000)/",
+            "BudgetLines": [],
+            "Tracking": []
+          },
+          {
+            "BudgetID": "93a4bab1-0021-4320-a2ec-c250528b4bc5",
+            "Status": "APPROVED",
+            "Description": "Overall Budget",
+            "Type": "OVERALL",
+            "UpdatedDateUTC": "/Date(1622137786913+0000)/",
+            "BudgetLines": [],
+            "Tracking": []
+          }
+        ]
+      }
+    }
+  ]
+}

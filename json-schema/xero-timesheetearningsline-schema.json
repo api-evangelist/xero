@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TimesheetEarningsLine",
+  "title": "TimesheetEarningsLine",
+  "type": "object",
+  "properties": {
+    "earningsLineID": {
+      "description": "Xero identifier for payroll earnings line",
+      "type": "string",
+      "format": "uuid"
+    },
+    "earningsRateID": {
+      "description": "Xero identifier for payroll leave earnings rate",
+      "type": "string",
+      "format": "uuid"
+    },
+    "displayName": {
+      "description": "name of earnings rate for display in UI",
+      "type": "string"
+    },
+    "ratePerUnit": {
+      "description": "Rate per unit for leave earnings line",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "numberOfUnits": {
+      "description": "Leave earnings number of units",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "fixedAmount": {
+      "description": "Leave earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "amount": {
+      "description": "The amount of the earnings line.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "isLinkedToTimesheet": {
+      "description": "Identifies if the leave earnings is taken from the timesheet. False for leave earnings line",
+      "type": "boolean"
+    },
+    "isAverageDailyPayRate": {
+      "description": "Identifies if the earnings is using an average daily pay rate",
+      "type": "boolean"
+    },
+    "isSystemGenerated": {
+      "description": "Flag to identify whether the earnings line is system generated or not.",
+      "type": "boolean"
+    }
+  }
+}

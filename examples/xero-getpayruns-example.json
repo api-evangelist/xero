@@ -1,0 +1,36 @@
+{
+  "operationId": "getPayRuns",
+  "method": "GET",
+  "path": "/PayRuns",
+  "summary": "Retrieves pay runs",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573611063074)/",
+        "PayRuns": [
+          {
+            "PayRunID": "5de420bb-4ad2-405c-beb1-2610bcc2144e",
+            "PayrollCalendarID": "78bb86b9-e1ea-47ac-b75d-f087a81931de",
+            "PayRunPeriodStartDate": "/Date(1572566400000+0000)/",
+            "PayRunPeriodEndDate": "/Date(1573084800000+0000)/",
+            "PaymentDate": "/Date(1573171200000+0000)/",
+            "Wages": 200.0,
+            "Deductions": 33.0,
+            "Tax": 78.0,
+            "Super": 0.0,
+            "Reimbursement": 22.0,
+            "NetPay": 89.0,
+            "PayRunStatus": "POSTED",
+            "UpdatedDateUTC": "/Date(1573610970000+0000)/"
+          }
+        ]
+      }
+    }
+  ]
+}

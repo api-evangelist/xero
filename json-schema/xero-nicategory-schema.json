@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NICategory",
+  "title": "NICategory",
+  "type": "object",
+  "required": [
+    "niCategory",
+    "workplacePostcode"
+  ],
+  "properties": {
+    "startDate": {
+      "description": "The start date of the NI category (YYYY-MM-DD)",
+      "type": "string",
+      "format": "date",
+      "example": "2024-12-02",
+      "x-is-date": true
+    },
+    "niCategory": {
+      "$ref": "#/components/schemas/NICategoryLetter"
+    },
+    "niCategoryID": {
+      "description": "Xero unique identifier for the NI category",
+      "type": "number",
+      "example": 15
+    },
+    "dateFirstEmployedAsCivilian": {
+      "description": "The date in which the employee was first employed as a civilian (YYYY-MM-DD)",
+      "type": "string",
+      "format": "date",
+      "example": "2024-12-02",
+      "x-is-date": true
+    },
+    "workplacePostcode": {
+      "description": "The workplace postcode",
+      "type": "string",
+      "example": "SW1A 1AA"
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "workplacePostcode"
+      ],
+      "properties": {
+        "niCategory": {
+          "enum": [
+            "F",
+            "I",
+            "L",
+            "S",
+            "N",
+            "E",
+            "D",
+            "K"
+          ]
+        }
+      }
+    },
+    {
+      "required": [
+        "dateFirstEmployedAsCivilian"
+      ],
+      "properties": {
+        "niCategory": {
+          "enum": [
+            "V"
+          ]
+        }
+      }
+    }
+  ]
+}

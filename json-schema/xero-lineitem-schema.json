@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LineItem",
+  "title": "LineItem",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/api/invoices#post"
+  },
+  "properties": {
+    "LineItemID": {
+      "description": "LineItem unique ID",
+      "type": "string",
+      "format": "uuid",
+      "example": "00000000-0000-0000-0000-000000000000"
+    },
+    "Description": {
+      "description": "Description needs to be at least 1 char long. A line item with just a description (i.e no unit amount or quantity) can be created by specifying just a <Description> element that contains at least 1 character",
+      "type": "string"
+    },
+    "Quantity": {
+      "description": "LineItem Quantity",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "UnitAmount": {
+      "description": "LineItem Unit Amount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "ItemCode": {
+      "description": "See Items",
+      "type": "string"
+    },
+    "AccountCode": {
+      "description": "See Accounts",
+      "type": "string"
+    },
+    "AccountID": {
+      "description": "The associated account ID related to this line item",
+      "type": "string",
+      "format": "uuid",
+      "example": "00000000-0000-0000-0000-000000000000"
+    },
+    "TaxType": {
+      "description": "The tax type from TaxRates",
+      "type": "string"
+    },
+    "TaxAmount": {
+      "description": "The tax amount is auto calculated as a percentage of the line amount (see below) based on the tax rate. This value can be overriden if the calculated <TaxAmount> is not correct.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Item": {
+      "$ref": "#/components/schemas/LineItemItem"
+    },
+    "LineAmount": {
+      "description": "If you wish to omit either the Quantity or UnitAmount you can provide a LineAmount and Xero will calculate the missing amount for you. The line amount reflects the discounted price if either a DiscountRate or DiscountAmount has been used i.e. LineAmount = Quantity * Unit Amount * ((100 - DiscountRate)/100) or LineAmount = (Quantity * UnitAmount) - DiscountAmount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Tracking": {
+      "description": "Optional Tracking Category \u2013 see Tracking.  Any LineItem can have a  maximum of 2 <TrackingCategory> elements.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LineItemTracking"
+      }
+    },
+    "DiscountRate": {
+      "description": "Percentage discount being applied to a line item (only supported on  ACCREC invoices \u2013 ACC PAY invoices and credit notes in Xero do not support discounts",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "DiscountAmount": {
+      "description": "Discount amount being applied to a line item. Only supported on ACCREC invoices and quotes. ACCPAY invoices and credit notes in Xero do not support discounts.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "RepeatingInvoiceID": {
+      "description": "The Xero identifier for a Repeating Invoice",
+      "example": "00000000-0000-0000-0000-000000000000",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Taxability": {
+      "description": "The type of taxability",
+      "type": "string",
+      "enum": [
+        "TAXABLE",
+        "NON_TAXABLE",
+        "EXEMPT",
+        "PART_TAXABLE",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "SalesTaxCodeId": {
+      "description": "The ID of the sales tax code",
+      "type": "number"
+    },
+    "TaxBreakdown": {
+      "description": "An array of tax components defined for this line item",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TaxBreakdownComponent"
+      }
+    }
+  },
+  "type": "object"
+}

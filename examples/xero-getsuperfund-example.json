@@ -1,0 +1,33 @@
+{
+  "operationId": "getSuperfund",
+  "method": "GET",
+  "path": "/Superfunds/{SuperFundID}",
+  "summary": "Retrieves a superfund by using a unique superfund ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573571518603)/",
+        "SuperFunds": [
+          {
+            "SuperFundID": "540f4327-dda2-4b36-9c2f-2fe1c93a72b5",
+            "Name": "My Self Managed one",
+            "Type": "SMSF",
+            "ABN": "53004085616",
+            "EmployerNumber": "9876543",
+            "BSB": "324324",
+            "AccountNumber": "234234234",
+            "AccountName": "My Checking",
+            "UpdatedDateUTC": "/Date(1573571429000+0000)/",
+            "ElectronicServiceAddress": "FG48739"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "operationId": "getFeedConnections",
+  "method": "GET",
+  "path": "/FeedConnections",
+  "summary": "Xero Searches for feed connections",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "202",
+      "contentType": "application/json",
+      "example": {
+        "pagination": {
+          "page": 1,
+          "pageCount": 1,
+          "pageSize": 87654321,
+          "itemCount": 39
+        },
+        "items": [
+          {
+            "id": "c0eb97b5-4f97-465a-8268-276513c14396",
+            "accountToken": "foobar31306",
+            "accountType": "BANK",
+            "accountNumber": "123496842",
+            "accountName": "SDK Bank 95921",
+            "accountId": "aefbf6be-4285-4ca5-bf39-0f486c8515c7",
+            "currency": "GBP",
+            "country": "GB"
+          },
+          {
+            "id": "3b44b539-4e39-4d53-9334-d8ba01674752",
+            "accountToken": "foobar74770",
+            "accountType": "BANK",
+            "accountNumber": "123481122",
+            "accountName": "SDK Bank 11272",
+            "accountId": "fc2f3cc2-126e-40d7-9fc1-12e52d0a71f1",
+            "currency": "GBP",
+            "country": "GB"
+          }
+        ]
+      }
+    }
+  ]
+}

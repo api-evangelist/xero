@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StatutoryDeductionLine",
+  "title": "StatutoryDeductionLine",
+  "type": "object",
+  "properties": {
+    "statutoryDeductionTypeID": {
+      "description": "Xero identifier for payroll statutory deduction type",
+      "type": "string",
+      "format": "uuid"
+    },
+    "amount": {
+      "description": "The amount of the statutory deduction line",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "fixedAmount": {
+      "description": "Fixed Amount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "manualAdjustment": {
+      "description": "Identifies if the tax line is a manual adjustment",
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "operationId": "createFeedConnections",
+  "method": "POST",
+  "path": "/FeedConnections",
+  "summary": "Xero Create one or more new feed connection",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "items": [
+          {
+            "accountToken": "foobar71760",
+            "accountNumber": "123458637",
+            "accountName": "SDK Bank 90861",
+            "accountType": "BANK",
+            "currency": "GBP"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "202",
+      "contentType": "application/json",
+      "example": {
+        "items": [
+          {
+            "id": "2a19d46c-2a92-4e50-9401-dcf2cb895be7",
+            "accountToken": "foobar71760",
+            "status": "PENDING"
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "items": [
+          {
+            "accountToken": "foobar71760",
+            "status": "REJECTED",
+            "error": {
+              "type": "invalid-request",
+              "title": "Invalid Request",
+              "status": 400,
+              "detail": "For the request field 'AccountNumber' exceeded the maximum length of 40."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

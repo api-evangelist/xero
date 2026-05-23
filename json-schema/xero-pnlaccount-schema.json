@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PnlAccount",
+  "title": "PnlAccount",
+  "type": "object",
+  "properties": {
+    "accountID": {
+      "type": "string",
+      "description": "ID of the account",
+      "format": "uuid"
+    },
+    "accountType": {
+      "type": "string",
+      "description": "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>"
+    },
+    "code": {
+      "type": "string",
+      "description": "Account code"
+    },
+    "name": {
+      "type": "string",
+      "description": "Account name"
+    },
+    "reportingCode": {
+      "type": "string",
+      "description": "Reporting code (Shown if set)"
+    },
+    "total": {
+      "type": "number",
+      "description": "Total movement on this account",
+      "format": "double",
+      "x-is-money": true
+    }
+  },
+  "additionalProperties": false
+}

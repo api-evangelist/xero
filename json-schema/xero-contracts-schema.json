@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Contracts",
+  "title": "Contracts",
+  "type": "object",
+  "required": [
+    "startDate",
+    "employmentStatus",
+    "contractType"
+  ],
+  "properties": {
+    "startDate": {
+      "description": "The contract start date of the employee. This will be locked once an employee has been paid and cannot be changed (YYYY-MM-DD)",
+      "type": "string",
+      "format": "date",
+      "example": "2024-12-02",
+      "x-is-date": true
+    },
+    "employmentStatus": {
+      "$ref": "#/components/schemas/EmploymentStatus"
+    },
+    "contractType": {
+      "$ref": "#/components/schemas/ContractType"
+    },
+    "publicKey": {
+      "description": "The public key of the contract. Public key is required if the intention is to edit an existing contract. If no key is supplied a new contract will be created",
+      "type": "string",
+      "format": "uuid"
+    },
+    "isFixedTerm": {
+      "description": "describes whether the contract is fixed term (required if trying to create Fixed term contract)",
+      "type": "boolean"
+    },
+    "fixedTermEndDate": {
+      "description": "The fixed term end date of the employee. Not required if isFixedTerm is false or not provided (required if trying to create Fixed term contract)",
+      "type": "string",
+      "format": "date",
+      "example": "2025-11-01",
+      "x-is-date": true
+    },
+    "developmentalRoleDetails": {
+      "$ref": "#/components/schemas/DevelopmentalRoleDetails"
+    }
+  }
+}

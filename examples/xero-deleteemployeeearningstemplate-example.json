@@ -1,0 +1,21 @@
+{
+  "operationId": "deleteEmployeeEarningsTemplate",
+  "method": "DELETE",
+  "path": "/Employees/{EmployeeID}/PayTemplates/Earnings/{PayTemplateEarningID}",
+  "summary": "Deletes an employee's earnings template record",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 18:54:09.136854",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null
+      }
+    }
+  ]
+}

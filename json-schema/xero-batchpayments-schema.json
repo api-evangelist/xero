@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchPayments",
+  "title": "BatchPayments",
+  "type": "object",
+  "x-objectArrayKey": "batch_payments",
+  "properties": {
+    "BatchPayments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BatchPayment"
+      }
+    }
+  }
+}

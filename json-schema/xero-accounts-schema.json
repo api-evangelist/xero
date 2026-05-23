@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Accounts",
+  "title": "Accounts",
+  "type": "object",
+  "x-objectArrayKey": "accounts",
+  "properties": {
+    "Accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Account"
+      }
+    }
+  }
+}

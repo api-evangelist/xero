@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeaveEarningsLine",
+  "title": "LeaveEarningsLine",
+  "type": "object",
+  "properties": {
+    "EarningsRateID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid",
+      "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+    },
+    "RatePerUnit": {
+      "description": "Rate per unit of the EarningsLine.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 38.0
+    },
+    "NumberOfUnits": {
+      "description": "Earnings rate number of units.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 2.5
+    },
+    "PayOutType": {
+      "$ref": "#/components/schemas/PayOutType"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "operationId": "getAssetSettings",
+  "method": "GET",
+  "path": "/Settings",
+  "summary": "Xero searches fixed asset settings",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "assetNumberPrefix": "FA-",
+        "assetNumberSequence": "0007",
+        "assetStartDate": "2016-01-01 00:00:00",
+        "optInForTax": false
+      }
+    }
+  ]
+}

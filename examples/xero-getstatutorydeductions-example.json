@@ -1,0 +1,42 @@
+{
+  "operationId": "getStatutoryDeductions",
+  "method": "GET",
+  "path": "/StatutoryDeductions",
+  "summary": "Retrieves statutory deductions",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "e3731829-9801-4809-a1a1-bbe40cd18b7e",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 23:46:21.021285",
+        "httpStatusCode": "OK",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 8
+        },
+        "problem": null,
+        "statutoryDeductions": [
+          {
+            "id": "e3731829-9801-4809-a1a1-bbe40cd18b7e",
+            "name": "Child Support",
+            "liabilityAccountId": "fa5cdc43-643b-4ad8-b4ac-3ffe0d0f4488",
+            "statutoryDeductionCategory": "ChildSupport",
+            "currentRecord": true
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000000",
+            "name": "Student Loan",
+            "liabilityAccountId": "fa5cdc43-643b-4ad8-b4ac-3ffe0d0f4488",
+            "statutoryDeductionCategory": "StudentLoan",
+            "currentRecord": true
+          }
+        ]
+      }
+    }
+  ]
+}

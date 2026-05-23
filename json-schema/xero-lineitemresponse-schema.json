@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LineItemResponse",
+  "title": "LineItemResponse",
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "string",
+      "description": "Xero Identifier of account",
+      "format": "uuid"
+    },
+    "reportingCode": {
+      "type": "string",
+      "description": "Shown if set"
+    },
+    "lineAmount": {
+      "type": "number",
+      "description": "Amount of line item",
+      "format": "double",
+      "x-is-money": true
+    },
+    "accountType": {
+      "type": "string",
+      "description": "Account type"
+    }
+  },
+  "additionalProperties": false
+}

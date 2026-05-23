@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeductionLine",
+  "title": "DeductionLine",
+  "type": "object",
+  "required": [
+    "DeductionTypeID"
+  ],
+  "properties": {
+    "DeductionTypeID": {
+      "description": "Xero deduction type identifier",
+      "type": "string",
+      "format": "uuid",
+      "example": "59cd9d04-4521-4cc3-93ac-7841651ff407"
+    },
+    "CalculationType": {
+      "$ref": "#/components/schemas/DeductionTypeCalculationType"
+    },
+    "Amount": {
+      "description": "Deduction type amount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.0
+    },
+    "Percentage": {
+      "description": "The Percentage of the Deduction",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.0
+    },
+    "NumberOfUnits": {
+      "description": "Deduction number of units",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.0
+    }
+  }
+}

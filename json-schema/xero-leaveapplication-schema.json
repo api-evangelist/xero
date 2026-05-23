@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeaveApplication",
+  "title": "LeaveApplication",
+  "type": "object",
+  "properties": {
+    "LeaveApplicationID": {
+      "description": "The Xero identifier for Payroll Employee",
+      "type": "string",
+      "format": "uuid",
+      "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+    },
+    "EmployeeID": {
+      "description": "The Xero identifier for Payroll Employee",
+      "type": "string",
+      "format": "uuid",
+      "example": "fb4ebd68-6568-41eb-96ab-628a0f54b4b8"
+    },
+    "LeaveTypeID": {
+      "description": "The Xero identifier for Leave Type",
+      "type": "string",
+      "format": "uuid",
+      "example": "742998cb-7584-4ecf-aa88-d694f59c50f9"
+    },
+    "Title": {
+      "description": "The title of the leave",
+      "type": "string",
+      "example": "Annual Leave"
+    },
+    "StartDate": {
+      "description": "Start date of the leave (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "EndDate": {
+      "description": "End date of the leave (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "Description": {
+      "description": "The Description of the Leave",
+      "type": "string",
+      "example": "My leave"
+    },
+    "PayOutType": {
+      "$ref": "#/components/schemas/PayOutType"
+    },
+    "LeavePeriods": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LeavePeriod"
+      }
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true,
+      "example": "/Date(1583967733054+0000)/"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    }
+  }
+}

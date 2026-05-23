@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Folders",
+  "title": "Folders",
+  "type": "object",
+  "properties": {
+    "Folders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Folder"
+      }
+    }
+  }
+}

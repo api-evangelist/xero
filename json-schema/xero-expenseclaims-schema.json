@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ExpenseClaims",
+  "title": "ExpenseClaims",
+  "type": "object",
+  "x-objectArrayKey": "expense_claims",
+  "properties": {
+    "ExpenseClaims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ExpenseClaim"
+      }
+    }
+  }
+}

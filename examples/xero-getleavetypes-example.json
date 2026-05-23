@@ -1,0 +1,48 @@
+{
+  "operationId": "getLeaveTypes",
+  "method": "GET",
+  "path": "/LeaveTypes",
+  "summary": "Retrieves leave types",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 20:49:58.409560",
+        "httpStatusCode": "OK",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 15
+        },
+        "problem": null,
+        "leaveTypes": [
+          {
+            "leaveTypeID": "b0b1b79e-2a25-46c2-ad08-ca25ef48d7e4",
+            "name": "Annual Leave",
+            "isPaidLeave": true,
+            "showOnPayslip": true,
+            "updatedDateUTC": "2019-09-22T23:09:32Z",
+            "isActive": true,
+            "typeOfUnits": "Hours",
+            "typeOfUnitsToAccrue": "Days"
+          },
+          {
+            "leaveTypeID": "71b548db-6e40-4b64-be8b-f6a71455d8ab",
+            "name": "Annual Leave - Cash Up",
+            "isPaidLeave": true,
+            "showOnPayslip": true,
+            "updatedDateUTC": "2019-09-22T23:09:32Z",
+            "isActive": true,
+            "typeOfUnits": "Hours",
+            "typeOfUnitsToAccrue": "Days"
+          }
+        ]
+      }
+    }
+  ]
+}

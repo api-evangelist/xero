@@ -1,0 +1,50 @@
+{
+  "operationId": "createBenefit",
+  "method": "POST",
+  "path": "/Benefits",
+  "summary": "Creates a new employee benefit",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "name": "My Big Bennie",
+        "category": "StakeholderPension",
+        "liabilityAccountId": "e0faa299-ca0d-4b0a-9e32-0dfabdf9179a",
+        "expenseAccountId": "4b03500d-32fd-4616-8d70-e1e56e0519c6",
+        "standardAmount": 50,
+        "percentage": 25,
+        "calculationType": "PercentageOfGross"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "95352407-6477-42f1-bd9c-bab28af8b0d9",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-04-15 18:59:01.581236",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "benefit": {
+          "id": "d295bf25-fb61-4f91-9b62-a9ae87633746",
+          "name": "My Big Bennie",
+          "category": "StakeholderPension",
+          "liabilityAccountId": "e0faa299-ca0d-4b0a-9e32-0dfabdf9179a",
+          "expenseAccountId": "4b03500d-32fd-4616-8d70-e1e56e0519c6",
+          "standardAmount": null,
+          "percentage": 25,
+          "calculationType": "PercentageOfGross",
+          "currentRecord": true,
+          "showBalanceToEmployee": true,
+          "subjectToNIC": null,
+          "subjectToPension": null,
+          "subjectToTax": null,
+          "isCalculatingOnQualifyingEarnings": null
+        }
+      }
+    }
+  ]
+}

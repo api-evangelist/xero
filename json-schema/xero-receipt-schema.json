@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Receipt",
+  "title": "Receipt",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/receipts/"
+  },
+  "properties": {
+    "Date": {
+      "description": "Date of receipt \u2013 YYYY-MM-DD",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "Contact": {
+      "$ref": "#/components/schemas/Contact"
+    },
+    "LineItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LineItem"
+      }
+    },
+    "User": {
+      "$ref": "#/components/schemas/User"
+    },
+    "Reference": {
+      "description": "Additional reference number",
+      "type": "string"
+    },
+    "LineAmountTypes": {
+      "$ref": "#/components/schemas/LineAmountTypes",
+      "type": "string"
+    },
+    "SubTotal": {
+      "description": "Total of receipt excluding taxes",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "TotalTax": {
+      "description": "Total tax on receipt",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Total": {
+      "description": "Total of receipt tax inclusive (i.e. SubTotal + TotalTax)",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "ReceiptID": {
+      "description": "Xero generated unique identifier for receipt",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Status": {
+      "description": "Current status of receipt \u2013 see status types",
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "SUBMITTED",
+        "AUTHORISED",
+        "DECLINED",
+        "VOIDED"
+      ]
+    },
+    "ReceiptNumber": {
+      "description": "Xero generated sequence number for receipt in current claim for a given user",
+      "readOnly": true,
+      "type": "string"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified date UTC format",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "HasAttachments": {
+      "description": "boolean to indicate if a receipt has an attachment",
+      "readOnly": true,
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "Url": {
+      "description": "URL link to a source document \u2013 shown as \u201cGo to [appName]\u201d in the Xero app",
+      "readOnly": true,
+      "type": "string"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "Warnings": {
+      "description": "Displays array of warning messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "Attachments": {
+      "description": "Displays array of attachments from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attachment"
+      }
+    }
+  },
+  "type": "object"
+}

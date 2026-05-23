@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentFrequencyType",
+  "title": "PaymentFrequencyType",
+  "type": "string",
+  "enum": [
+    "WEEKLY",
+    "MONTHLY",
+    "FORTNIGHTLY",
+    "QUARTERLY",
+    "TWICEMONTHLY",
+    "FOURWEEKLY",
+    "YEARLY"
+  ]
+}

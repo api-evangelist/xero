@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeOpeningBalance",
+  "title": "EmployeeOpeningBalance",
+  "type": "object",
+  "properties": {
+    "periodEndDate": {
+      "description": "The opening balance period end date.",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true,
+      "example": "2020-07-01 00:00:00"
+    },
+    "daysPaid": {
+      "description": "The paid number of days.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "unpaidWeeks": {
+      "description": "The number of unpaid weeks.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "grossEarnings": {
+      "description": "The gross earnings during the period.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    }
+  }
+}

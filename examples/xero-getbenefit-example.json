@@ -1,0 +1,37 @@
+{
+  "operationId": "getBenefit",
+  "method": "GET",
+  "path": "/Benefits/{id}",
+  "summary": "Retrieves a specific benefit by using a unique benefit ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "e7959d7b-370d-47e5-bb15-4b68f136ddae",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-04-15 18:45:04.513427",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "benefit": {
+          "id": "17ee7e28-9f4c-4675-9590-cc0547c9f7ac",
+          "name": "Mind The Gap Pensions",
+          "category": "StakeholderPension",
+          "liabilityAccountId": "d659ebbf-0760-4e07-a1fb-8de6b9ecdff9",
+          "expenseAccountId": "edda7154-dfc8-4486-a82b-e5e955408eaa",
+          "standardAmount": null,
+          "percentage": 3,
+          "calculationType": "PercentageOfGross",
+          "currentRecord": true,
+          "showBalanceToEmployee": false,
+          "subjectToNIC": null,
+          "subjectToPension": null,
+          "subjectToTax": null,
+          "isCalculatingOnQualifyingEarnings": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "operationId": "getEmployeeStatutoryLeaveBalances",
+  "method": "GET",
+  "path": "/Employees/{EmployeeID}/StatutoryLeaveBalance",
+  "summary": "Retrieves a specific employee's leave balances using a unique employee ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "ee863df3-c394-4102-bb91-2b14de404c1c",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-03-31 05:03:47.418497",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "leaveBalance": {
+          "leaveType": "Sick",
+          "balanceRemaining": 1120,
+          "units": "Hours"
+        }
+      }
+    }
+  ]
+}

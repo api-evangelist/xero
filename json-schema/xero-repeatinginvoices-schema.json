@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RepeatingInvoices",
+  "title": "RepeatingInvoices",
+  "type": "object",
+  "x-objectArrayKey": "repeating_invoices",
+  "properties": {
+    "RepeatingInvoices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/RepeatingInvoice"
+      }
+    }
+  }
+}

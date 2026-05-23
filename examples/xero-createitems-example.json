@@ -1,0 +1,55 @@
+{
+  "operationId": "createItems",
+  "method": "PUT",
+  "path": "/Items",
+  "summary": "Xero Creates one or more items",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "Items": [
+          {
+            "Code": "code123",
+            "Name": "Item Name XYZ",
+            "Description": "Foobar",
+            "InventoryAssetAccountCode": "140",
+            "PurchaseDetails": {
+              "COGSAccountCode": "500"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "ae7ef7c8-9024-4d42-8d59-5f26ed3f508b",
+        "Status": "OK",
+        "ProviderName": "Provider Name Example",
+        "DateTimeUTC": "/Date(1552331871904)/",
+        "Items": [
+          {
+            "ItemID": "a4544d51-48f6-441f-a623-99ecbced6ab7",
+            "Code": "abc65591",
+            "Description": "foobar",
+            "UpdatedDateUTC": "/Date(1552331871707)/",
+            "PurchaseDetails": {},
+            "SalesDetails": {},
+            "Name": "Hello11350",
+            "IsTrackedAsInventory": false,
+            "IsSold": true,
+            "IsPurchased": true,
+            "ValidationErrors": [
+              {
+                "Message": "Price List Item with Code ''abc'' already exists"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

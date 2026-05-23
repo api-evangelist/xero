@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentDelete",
+  "title": "PaymentDelete",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/payments/"
+  },
+  "properties": {
+    "Status": {
+      "description": "The status of the payment.",
+      "type": "string",
+      "default": "DELETED"
+    }
+  },
+  "required": [
+    "Status"
+  ],
+  "type": "object"
+}

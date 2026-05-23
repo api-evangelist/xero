@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContactGroups",
+  "title": "ContactGroups",
+  "type": "object",
+  "x-objectArrayKey": "contact_groups",
+  "properties": {
+    "ContactGroups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ContactGroup"
+      }
+    }
+  }
+}

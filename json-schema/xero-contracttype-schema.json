@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContractType",
+  "title": "ContractType",
+  "description": "The contract type of the employee.",
+  "type": "string",
+  "example": "FullTime",
+  "enum": [
+    "FullTime",
+    "PartTime",
+    "ZeroHour",
+    "Unspecified"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProblemType",
+  "title": "ProblemType",
+  "enum": [
+    "NotSet",
+    "bank-account-not-found",
+    "internal-error",
+    "invalid-application",
+    "invalid-request",
+    "organisation-not-found",
+    "organisation-offline",
+    "request-timeout",
+    "service-unavailable",
+    "unauthorized",
+    "rate-limit-error"
+  ],
+  "type": "string"
+}

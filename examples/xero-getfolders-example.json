@@ -1,0 +1,14 @@
+{
+  "operationId": "getFolders",
+  "method": "GET",
+  "path": "/Folders",
+  "summary": "Retrieves folders",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": "[ { \"Name\":\"Inbox\", \"FileCount\":14, \"Email\":\"xero.inbox.jpf4.6oo29retajkhtfus@xerofiles.com\", \"IsInbox\":true, \"Id\":\"bf924975-7097-46f2-a143-1ecfbab3c8c3\" }, { \"Name\":\"Contracts\", \"FileCount\":7, \"IsInbox\":false, \"Id\":\"554ff1ad-4b94-4266-9b45-e29bcb75e6bf\" } ]"
+    }
+  ]
+}

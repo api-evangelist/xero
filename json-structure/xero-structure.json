@@ -1,0 +1,2984 @@
+{
+  "provider": "Xero",
+  "providerId": "xero",
+  "kind": "json-structure",
+  "description": "Structural overview of the Xero API surface; extracted from openapi/.",
+  "schemaCount": 136,
+  "operationCount": 237,
+  "schemas": [
+    {
+      "name": "AddressForOrganisation",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "Address",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "Phone",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Accounts",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Account",
+      "type": "object",
+      "propertyCount": 20,
+      "required": []
+    },
+    {
+      "name": "AccountType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Attachments",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Attachment",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "BankTransactions",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "BankTransaction",
+      "type": "object",
+      "propertyCount": 22,
+      "required": [
+        "Type",
+        "LineItems",
+        "BankAccount"
+      ]
+    },
+    {
+      "name": "LineAmountTypes",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "LineItem",
+      "type": "object",
+      "propertyCount": 18,
+      "required": []
+    },
+    {
+      "name": "LineItemItem",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "LineItemTracking",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "BankTransfers",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "BankTransfer",
+      "type": "object",
+      "propertyCount": 14,
+      "required": [
+        "FromBankAccount",
+        "ToBankAccount",
+        "Amount"
+      ]
+    },
+    {
+      "name": "BatchPayments",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "BatchPayment",
+      "type": "object",
+      "propertyCount": 17,
+      "required": []
+    },
+    {
+      "name": "BatchPaymentDetails",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "BatchPaymentDelete",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "Status",
+        "BatchPaymentID"
+      ]
+    },
+    {
+      "name": "BatchPaymentDeleteByUrlParam",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "Status"
+      ]
+    },
+    {
+      "name": "BrandingThemes",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "BrandingTheme",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "PaymentServices",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PaymentService",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Contacts",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Contact",
+      "type": "object",
+      "propertyCount": 43,
+      "required": []
+    },
+    {
+      "name": "Budgets",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Budget",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "BudgetLine",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "BudgetBalance",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Balances",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AccountsReceivable",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AccountsPayable",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CISSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CISSetting",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CISOrgSettings",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CISOrgSetting",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ContactPerson",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ContactGroups",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ContactGroup",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "RequestEmpty",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CreditNotes",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "CreditNote",
+      "type": "object",
+      "propertyCount": 31,
+      "required": []
+    },
+    {
+      "name": "Allocations",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Allocation",
+      "type": "object",
+      "propertyCount": 10,
+      "required": [
+        "Amount",
+        "Invoice",
+        "Date"
+      ]
+    },
+    {
+      "name": "Currencies",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Currency",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CurrencyCode",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Employees",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Employee",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "ExpenseClaims",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ExpenseClaim",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "HistoryRecords",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "HistoryRecord",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Invoices",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Invoice",
+      "type": "object",
+      "propertyCount": 41,
+      "required": []
+    },
+    {
+      "name": "OnlineInvoices",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "OnlineInvoice",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "InvoiceReminders",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "InvoiceReminder",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Items",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Item",
+      "type": "object",
+      "propertyCount": 16,
+      "required": [
+        "Code"
+      ]
+    },
+    {
+      "name": "Purchase",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Journals",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Journal",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "JournalLine",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "LinkedTransactions",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "LinkedTransaction",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "ManualJournals",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ManualJournal",
+      "type": "object",
+      "propertyCount": 14,
+      "required": [
+        "Narration"
+      ]
+    },
+    {
+      "name": "ManualJournalLine",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Actions",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Action",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Organisations",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Organisation",
+      "type": "object",
+      "propertyCount": 33,
+      "required": []
+    },
+    {
+      "name": "CountryCode",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "TimeZone",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "PaymentTerm",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PaymentTermType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ExternalLink",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Bill",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Overpayments",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Overpayment",
+      "type": "object",
+      "propertyCount": 20,
+      "required": []
+    },
+    {
+      "name": "Payments",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PaymentDelete",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "Status"
+      ]
+    },
+    {
+      "name": "Payment",
+      "type": "object",
+      "propertyCount": 28,
+      "required": []
+    },
+    {
+      "name": "Prepayments",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Prepayment",
+      "type": "object",
+      "propertyCount": 21,
+      "required": []
+    },
+    {
+      "name": "PurchaseOrders",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PurchaseOrder",
+      "type": "object",
+      "propertyCount": 28,
+      "required": []
+    },
+    {
+      "name": "Pagination",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Quotes",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Quote",
+      "type": "object",
+      "propertyCount": 24,
+      "required": []
+    },
+    {
+      "name": "QuoteLineAmountTypes",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "QuoteStatusCodes",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Receipts",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Receipt",
+      "type": "object",
+      "propertyCount": 18,
+      "required": []
+    },
+    {
+      "name": "RepeatingInvoices",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "RepeatingInvoice",
+      "type": "object",
+      "propertyCount": 20,
+      "required": []
+    },
+    {
+      "name": "ReportWithRows",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ReportWithRow",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "ReportRows",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "RowType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ReportRow",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ReportCell",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ReportAttribute",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ReportFields",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Reports",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Report",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "TenNinetyNineContact",
+      "type": "object",
+      "propertyCount": 25,
+      "required": []
+    },
+    {
+      "name": "Schedule",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "TaxRates",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TaxType",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Setup",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ConversionDate",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ConversionBalances",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "BalanceDetails",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ImportSummaryObject",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ImportSummary",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ImportSummaryAccounts",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "ImportSummaryOrganisation",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TaxRate",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "TaxComponent",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "TrackingCategories",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TrackingCategory",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "TrackingOptions",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TrackingOption",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "SalesTrackingCategory",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Users",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "Error",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Element",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "ValidationError",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "InvoiceAddress",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "TaxBreakdownComponent",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/Accounts",
+      "operationId": "getAccounts",
+      "summary": "Xero Retrieves the full chart of accounts",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Accounts",
+      "operationId": "createAccount",
+      "summary": "Xero Creates a new chart of accounts",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Accounts/{AccountID}",
+      "operationId": "getAccount",
+      "summary": "Xero Retrieves a single chart of accounts by using a unique account Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Accounts/{AccountID}",
+      "operationId": "updateAccount",
+      "summary": "Xero Updates a chart of accounts",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/Accounts/{AccountID}",
+      "operationId": "deleteAccount",
+      "summary": "Xero Deletes a chart of accounts",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Accounts/{AccountID}/Attachments",
+      "operationId": "getAccountAttachments",
+      "summary": "Xero Retrieves attachments for a specific accounts by using a unique account Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Accounts/{AccountID}/Attachments/{AttachmentID}",
+      "operationId": "getAccountAttachmentById",
+      "summary": "Xero Retrieves a specific attachment from a specific account using a unique attachment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Accounts/{AccountID}/Attachments/{FileName}",
+      "operationId": "getAccountAttachmentByFileName",
+      "summary": "Xero Retrieves an attachment for a specific account by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Accounts/{AccountID}/Attachments/{FileName}",
+      "operationId": "updateAccountAttachmentByFileName",
+      "summary": "Xero Updates attachment on a specific account by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Accounts/{AccountID}/Attachments/{FileName}",
+      "operationId": "createAccountAttachmentByFileName",
+      "summary": "Xero Creates an attachment on a specific account",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BatchPayments",
+      "operationId": "getBatchPayments",
+      "summary": "Xero Retrieves either one or many batch payments for invoices",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/BatchPayments",
+      "operationId": "deleteBatchPayment",
+      "summary": "Xero Updates a specific batch payment for invoices and credit notes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/BatchPayments",
+      "operationId": "createBatchPayment",
+      "summary": "Xero Creates one or many batch payments for invoices",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BatchPayments/{BatchPaymentID}",
+      "operationId": "getBatchPayment",
+      "summary": "Xero Retrieves a specific batch payment using a unique batch payment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/BatchPayments/{BatchPaymentID}",
+      "operationId": "deleteBatchPaymentByUrlParam",
+      "summary": "Xero Updates a specific batch payment for invoices and credit notes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BatchPayments/{BatchPaymentID}/History",
+      "operationId": "getBatchPaymentHistory",
+      "summary": "Xero Retrieves history from a specific batch payment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/BatchPayments/{BatchPaymentID}/History",
+      "operationId": "createBatchPaymentHistoryRecord",
+      "summary": "Xero Creates a history record for a specific batch payment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransactions",
+      "operationId": "getBankTransactions",
+      "summary": "Xero Retrieves any spent or received money transactions",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/BankTransactions",
+      "operationId": "updateOrCreateBankTransactions",
+      "summary": "Xero Updates or creates one or more spent or received money transaction",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/BankTransactions",
+      "operationId": "createBankTransactions",
+      "summary": "Xero Creates one or more spent or received money transaction",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransactions/{BankTransactionID}",
+      "operationId": "getBankTransaction",
+      "summary": "Xero Retrieves a single spent or received money transaction by using a unique bank transaction Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/BankTransactions/{BankTransactionID}",
+      "operationId": "updateBankTransaction",
+      "summary": "Xero Updates a single spent or received money transaction",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransactions/{BankTransactionID}/Attachments",
+      "operationId": "getBankTransactionAttachments",
+      "summary": "Xero Retrieves any attachments from a specific bank transactions",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransactions/{BankTransactionID}/Attachments/{AttachmentID}",
+      "operationId": "getBankTransactionAttachmentById",
+      "summary": "Xero Retrieves specific attachments from a specific BankTransaction using a unique attachment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransactions/{BankTransactionID}/Attachments/{FileName}",
+      "operationId": "getBankTransactionAttachmentByFileName",
+      "summary": "Xero Retrieves a specific attachment from a specific bank transaction by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/BankTransactions/{BankTransactionID}/Attachments/{FileName}",
+      "operationId": "updateBankTransactionAttachmentByFileName",
+      "summary": "Xero Updates a specific attachment from a specific bank transaction by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/BankTransactions/{BankTransactionID}/Attachments/{FileName}",
+      "operationId": "createBankTransactionAttachmentByFileName",
+      "summary": "Xero Creates an attachment for a specific bank transaction by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransactions/{BankTransactionID}/History",
+      "operationId": "getBankTransactionsHistory",
+      "summary": "Xero Retrieves history from a specific bank transaction using a unique bank transaction Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/BankTransactions/{BankTransactionID}/History",
+      "operationId": "createBankTransactionHistoryRecord",
+      "summary": "Xero Creates a history record for a specific bank transactions",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransfers",
+      "operationId": "getBankTransfers",
+      "summary": "Xero Retrieves all bank transfers",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/BankTransfers",
+      "operationId": "createBankTransfer",
+      "summary": "Xero Creates a bank transfer",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransfers/{BankTransferID}",
+      "operationId": "getBankTransfer",
+      "summary": "Xero Retrieves specific bank transfers by using a unique bank transfer Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransfers/{BankTransferID}/Attachments",
+      "operationId": "getBankTransferAttachments",
+      "summary": "Xero Retrieves attachments from a specific bank transfer",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransfers/{BankTransferID}/Attachments/{AttachmentID}",
+      "operationId": "getBankTransferAttachmentById",
+      "summary": "Xero Retrieves a specific attachment from a specific bank transfer using a unique attachment ID",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransfers/{BankTransferID}/Attachments/{FileName}",
+      "operationId": "getBankTransferAttachmentByFileName",
+      "summary": "Xero Retrieves a specific attachment on a specific bank transfer by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/BankTransfers/{BankTransferID}/Attachments/{FileName}",
+      "operationId": "updateBankTransferAttachmentByFileName",
+      "summary": null,
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/BankTransfers/{BankTransferID}/Attachments/{FileName}",
+      "operationId": "createBankTransferAttachmentByFileName",
+      "summary": null,
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BankTransfers/{BankTransferID}/History",
+      "operationId": "getBankTransferHistory",
+      "summary": "Xero Retrieves history from a specific bank transfer using a unique bank transfer Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/BankTransfers/{BankTransferID}/History",
+      "operationId": "createBankTransferHistoryRecord",
+      "summary": "Xero Creates a history record for a specific bank transfer",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BrandingThemes",
+      "operationId": "getBrandingThemes",
+      "summary": "Xero Retrieves all the branding themes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BrandingThemes/{BrandingThemeID}",
+      "operationId": "getBrandingTheme",
+      "summary": "Xero Retrieves a specific branding theme using a unique branding theme Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/BrandingThemes/{BrandingThemeID}/PaymentServices",
+      "operationId": "getBrandingThemePaymentServices",
+      "summary": "Xero Retrieves the payment services for a specific branding theme",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/BrandingThemes/{BrandingThemeID}/PaymentServices",
+      "operationId": "createBrandingThemePaymentServices",
+      "summary": "Xero Creates a new custom payment service for a specific branding theme",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Budgets",
+      "operationId": "getBudgets",
+      "summary": "Xero Retrieve a list of budgets",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Budgets/{BudgetID}",
+      "operationId": "getBudget",
+      "summary": "Xero Retrieves a specific budget, which includes budget lines",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Contacts",
+      "operationId": "getContacts",
+      "summary": "Retrieves all contacts in a Xero organisation",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Contacts",
+      "operationId": "updateOrCreateContacts",
+      "summary": "Updates or creates one or more contacts in a Xero organisation",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Contacts",
+      "operationId": "createContacts",
+      "summary": "Creates multiple contacts (bulk) in a Xero organisation",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Contacts/{ContactNumber}",
+      "operationId": "getContactByContactNumber",
+      "summary": "Retrieves a specific contact by contact number in a Xero organisation",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Contacts/{ContactID}",
+      "operationId": "getContact",
+      "summary": "Retrieves a specific contacts in a Xero organisation using a unique contact Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Contacts/{ContactID}",
+      "operationId": "updateContact",
+      "summary": "Updates a specific contact in a Xero organisation",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Contacts/{ContactID}/Attachments",
+      "operationId": "getContactAttachments",
+      "summary": "Retrieves attachments for a specific contact in a Xero organisation",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Contacts/{ContactID}/Attachments/{AttachmentID}",
+      "operationId": "getContactAttachmentById",
+      "summary": "Xero Retrieves a specific attachment from a specific contact using a unique attachment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Contacts/{ContactID}/Attachments/{FileName}",
+      "operationId": "getContactAttachmentByFileName",
+      "summary": "Xero Retrieves a specific attachment from a specific contact by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Contacts/{ContactID}/Attachments/{FileName}",
+      "operationId": "updateContactAttachmentByFileName",
+      "summary": null,
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Contacts/{ContactID}/Attachments/{FileName}",
+      "operationId": "createContactAttachmentByFileName",
+      "summary": null,
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Contacts/{ContactID}/CISSettings",
+      "operationId": "getContactCISSettings",
+      "summary": "Retrieves CIS settings for a specific contact in a Xero organisation",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Contacts/{ContactID}/History",
+      "operationId": "getContactHistory",
+      "summary": "Xero Retrieves history records for a specific contact",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Contacts/{ContactID}/History",
+      "operationId": "createContactHistory",
+      "summary": "Xero Creates a new history record for a specific contact",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ContactGroups",
+      "operationId": "getContactGroups",
+      "summary": "Xero Retrieves the contact Id and name of each contact group",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ContactGroups",
+      "operationId": "createContactGroup",
+      "summary": "Xero Creates a contact group",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ContactGroups/{ContactGroupID}",
+      "operationId": "getContactGroup",
+      "summary": "Xero Retrieves a specific contact group by using a unique contact group Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ContactGroups/{ContactGroupID}",
+      "operationId": "updateContactGroup",
+      "summary": "Xero Updates a specific contact group",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ContactGroups/{ContactGroupID}/Contacts",
+      "operationId": "createContactGroupContacts",
+      "summary": "Xero Creates contacts to a specific contact group",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ContactGroups/{ContactGroupID}/Contacts",
+      "operationId": "deleteContactGroupContacts",
+      "summary": "Xero Deletes all contacts from a specific contact group",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/ContactGroups/{ContactGroupID}/Contacts/{ContactID}",
+      "operationId": "deleteContactGroupContact",
+      "summary": "Xero Deletes a specific contact from a contact group using a unique contact Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/CreditNotes",
+      "operationId": "getCreditNotes",
+      "summary": "Xero Retrieves any credit notes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/CreditNotes",
+      "operationId": "updateOrCreateCreditNotes",
+      "summary": "Xero Updates or creates one or more credit notes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/CreditNotes",
+      "operationId": "createCreditNotes",
+      "summary": "Xero Creates a new credit note",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/CreditNotes/{CreditNoteID}",
+      "operationId": "getCreditNote",
+      "summary": "Xero Retrieves a specific credit note using a unique credit note Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/CreditNotes/{CreditNoteID}",
+      "operationId": "updateCreditNote",
+      "summary": "Xero Updates a specific credit note",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/CreditNotes/{CreditNoteID}/Attachments",
+      "operationId": "getCreditNoteAttachments",
+      "summary": "Xero Retrieves attachments for a specific credit notes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/CreditNotes/{CreditNoteID}/Attachments/{AttachmentID}",
+      "operationId": "getCreditNoteAttachmentById",
+      "summary": "Xero Retrieves a specific attachment from a specific credit note using a unique attachment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/CreditNotes/{CreditNoteID}/Attachments/{FileName}",
+      "operationId": "getCreditNoteAttachmentByFileName",
+      "summary": "Xero Retrieves a specific attachment on a specific credit note by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/CreditNotes/{CreditNoteID}/Attachments/{FileName}",
+      "operationId": "updateCreditNoteAttachmentByFileName",
+      "summary": "Xero Updates attachments on a specific credit note by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/CreditNotes/{CreditNoteID}/Attachments/{FileName}",
+      "operationId": "createCreditNoteAttachmentByFileName",
+      "summary": "Xero Creates an attachment for a specific credit note",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/CreditNotes/{CreditNoteID}/pdf",
+      "operationId": "getCreditNoteAsPdf",
+      "summary": "Xero Retrieves credit notes as PDF files",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/CreditNotes/{CreditNoteID}/Allocations",
+      "operationId": "createCreditNoteAllocation",
+      "summary": "Xero Creates allocation for a specific credit note",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/CreditNotes/{CreditNoteID}/Allocations/{AllocationID}",
+      "operationId": "deleteCreditNoteAllocations",
+      "summary": "Xero Deletes an Allocation from a Credit Note",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/CreditNotes/{CreditNoteID}/History",
+      "operationId": "getCreditNoteHistory",
+      "summary": "Xero Retrieves history records of a specific credit note",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/CreditNotes/{CreditNoteID}/History",
+      "operationId": "createCreditNoteHistory",
+      "summary": "Xero Retrieves history records of a specific credit note",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Currencies",
+      "operationId": "getCurrencies",
+      "summary": "Retrieves currencies for your Xero organisation",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Currencies",
+      "operationId": "createCurrency",
+      "summary": "Create a new currency for a Xero organisation",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Employees",
+      "operationId": "getEmployees",
+      "summary": "Retrieves employees used in Xero payrun",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Employees",
+      "operationId": "updateOrCreateEmployees",
+      "summary": "Creates a single new employees used in Xero payrun",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Employees",
+      "operationId": "createEmployees",
+      "summary": "Creates new employees used in Xero payrun",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Employees/{EmployeeID}",
+      "operationId": "getEmployee",
+      "summary": "Retrieves a specific employee used in Xero payrun using a unique employee Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ExpenseClaims",
+      "operationId": "getExpenseClaims",
+      "summary": "Xero Retrieves expense claims",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ExpenseClaims",
+      "operationId": "createExpenseClaims",
+      "summary": "Xero Creates expense claims",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ExpenseClaims/{ExpenseClaimID}",
+      "operationId": "getExpenseClaim",
+      "summary": "Xero Retrieves a specific expense claim using a unique expense claim Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ExpenseClaims/{ExpenseClaimID}",
+      "operationId": "updateExpenseClaim",
+      "summary": "Xero Updates a specific expense claims",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ExpenseClaims/{ExpenseClaimID}/History",
+      "operationId": "getExpenseClaimHistory",
+      "summary": "Xero Retrieves history records of a specific expense claim",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ExpenseClaims/{ExpenseClaimID}/History",
+      "operationId": "createExpenseClaimHistory",
+      "summary": "Xero Creates a history record for a specific expense claim",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Invoices",
+      "operationId": "getInvoices",
+      "summary": "Xero Retrieves sales invoices or purchase bills",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Invoices",
+      "operationId": "updateOrCreateInvoices",
+      "summary": "Xero Updates or creates one or more sales invoices or purchase bills",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Invoices",
+      "operationId": "createInvoices",
+      "summary": "Xero Creates one or more sales invoices or purchase bills",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Invoices/{InvoiceID}",
+      "operationId": "getInvoice",
+      "summary": "Xero Retrieves a specific sales invoice or purchase bill using a unique invoice Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Invoices/{InvoiceID}",
+      "operationId": "updateInvoice",
+      "summary": "Xero Updates a specific sales invoices or purchase bills",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Invoices/{InvoiceID}/pdf",
+      "operationId": "getInvoiceAsPdf",
+      "summary": "Xero Retrieves invoices or purchase bills as PDF files",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Invoices/{InvoiceID}/Attachments",
+      "operationId": "getInvoiceAttachments",
+      "summary": "Xero Retrieves attachments for a specific invoice or purchase bill",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Invoices/{InvoiceID}/Attachments/{AttachmentID}",
+      "operationId": "getInvoiceAttachmentById",
+      "summary": "Xero Retrieves a specific attachment from a specific invoices or purchase bills by using a unique attachment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Invoices/{InvoiceID}/Attachments/{FileName}",
+      "operationId": "getInvoiceAttachmentByFileName",
+      "summary": "Xero Retrieves an attachment from a specific invoice or purchase bill by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Invoices/{InvoiceID}/Attachments/{FileName}",
+      "operationId": "updateInvoiceAttachmentByFileName",
+      "summary": "Xero Updates an attachment from a specific invoices or purchase bill by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Invoices/{InvoiceID}/Attachments/{FileName}",
+      "operationId": "createInvoiceAttachmentByFileName",
+      "summary": "Xero Creates an attachment for a specific invoice or purchase bill by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Invoices/{InvoiceID}/OnlineInvoice",
+      "operationId": "getOnlineInvoice",
+      "summary": "Xero Retrieves a URL to an online invoice",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Invoices/{InvoiceID}/Email",
+      "operationId": "emailInvoice",
+      "summary": "Xero Sends a copy of a specific invoice to related contact via email",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Invoices/{InvoiceID}/History",
+      "operationId": "getInvoiceHistory",
+      "summary": "Xero Retrieves history records for a specific invoice",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Invoices/{InvoiceID}/History",
+      "operationId": "createInvoiceHistory",
+      "summary": "Xero Creates a history record for a specific invoice",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/InvoiceReminders/Settings",
+      "operationId": "getInvoiceReminders",
+      "summary": "Xero Retrieves invoice reminder settings",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Items",
+      "operationId": "getItems",
+      "summary": "Xero Retrieves items",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Items",
+      "operationId": "updateOrCreateItems",
+      "summary": "Xero Updates or creates one or more items",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Items",
+      "operationId": "createItems",
+      "summary": "Xero Creates one or more items",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Items/{ItemID}",
+      "operationId": "getItem",
+      "summary": "Xero Retrieves a specific item using a unique item Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Items/{ItemID}",
+      "operationId": "updateItem",
+      "summary": "Xero Updates a specific item",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/Items/{ItemID}",
+      "operationId": "deleteItem",
+      "summary": "Xero Deletes a specific item",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Items/{ItemID}/History",
+      "operationId": "getItemHistory",
+      "summary": "Xero Retrieves history for a specific item",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Items/{ItemID}/History",
+      "operationId": "createItemHistory",
+      "summary": "Xero Creates a history record for a specific item",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Journals",
+      "operationId": "getJournals",
+      "summary": "Xero Retrieves journals",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Journals/{JournalID}",
+      "operationId": "getJournal",
+      "summary": "Xero Retrieves a specific journal using a unique journal Id.",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Journals/{JournalNumber}",
+      "operationId": "getJournalByNumber",
+      "summary": "Xero Retrieves a specific journal using a unique journal number.",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/LinkedTransactions",
+      "operationId": "getLinkedTransactions",
+      "summary": "Xero Retrieves linked transactions (billable expenses)",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/LinkedTransactions",
+      "operationId": "createLinkedTransaction",
+      "summary": "Xero Creates linked transactions (billable expenses)",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/LinkedTransactions/{LinkedTransactionID}",
+      "operationId": "getLinkedTransaction",
+      "summary": "Xero Retrieves a specific linked transaction (billable expenses) using a unique linked transaction Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/LinkedTransactions/{LinkedTransactionID}",
+      "operationId": "updateLinkedTransaction",
+      "summary": "Xero Updates a specific linked transactions (billable expenses)",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/LinkedTransactions/{LinkedTransactionID}",
+      "operationId": "deleteLinkedTransaction",
+      "summary": "Xero Deletes a specific linked transactions (billable expenses)",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ManualJournals",
+      "operationId": "getManualJournals",
+      "summary": "Xero Retrieves manual journals",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ManualJournals",
+      "operationId": "updateOrCreateManualJournals",
+      "summary": "Xero Updates or creates a single manual journal",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ManualJournals",
+      "operationId": "createManualJournals",
+      "summary": "Xero Creates one or more manual journals",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ManualJournals/{ManualJournalID}",
+      "operationId": "getManualJournal",
+      "summary": "Xero Retrieves a specific manual journal",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ManualJournals/{ManualJournalID}",
+      "operationId": "updateManualJournal",
+      "summary": "Xero Updates a specific manual journal",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ManualJournals/{ManualJournalID}/Attachments",
+      "operationId": "getManualJournalAttachments",
+      "summary": "Xero Retrieves attachment for a specific manual journal",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ManualJournals/{ManualJournalID}/Attachments/{AttachmentID}",
+      "operationId": "getManualJournalAttachmentById",
+      "summary": "Xero Allows you to retrieve a specific attachment from a specific manual journal using a unique attachment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ManualJournals/{ManualJournalID}/Attachments/{FileName}",
+      "operationId": "getManualJournalAttachmentByFileName",
+      "summary": "Xero Retrieves a specific attachment from a specific manual journal by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/ManualJournals/{ManualJournalID}/Attachments/{FileName}",
+      "operationId": "updateManualJournalAttachmentByFileName",
+      "summary": "Xero Updates a specific attachment from a specific manual journal by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ManualJournals/{ManualJournalID}/Attachments/{FileName}",
+      "operationId": "createManualJournalAttachmentByFileName",
+      "summary": "Xero Creates a specific attachment for a specific manual journal by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ManualJournals/{ManualJournalID}/History",
+      "operationId": "getManualJournalsHistory",
+      "summary": "Xero Retrieves history for a specific manual journal",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/ManualJournals/{ManualJournalID}/History",
+      "operationId": "createManualJournalHistoryRecord",
+      "summary": "Xero Creates a history record for a specific manual journal",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Organisation",
+      "operationId": "getOrganisations",
+      "summary": "Retrieves Xero organisation details",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Organisation/Actions",
+      "operationId": "getOrganisationActions",
+      "summary": "Retrieves a list of the key actions your app has permission to perform in the connected Xero organisation.",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Organisation/{OrganisationID}/CISSettings",
+      "operationId": "getOrganisationCISSettings",
+      "summary": "Retrieves the CIS settings for the Xero organistaion.",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Overpayments",
+      "operationId": "getOverpayments",
+      "summary": "Xero Retrieves overpayments",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Overpayments/{OverpaymentID}",
+      "operationId": "getOverpayment",
+      "summary": "Xero Retrieves a specific overpayment using a unique overpayment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Overpayments/{OverpaymentID}/Allocations",
+      "operationId": "createOverpaymentAllocations",
+      "summary": "Xero Creates a single allocation for a specific overpayment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/Overpayments/{OverpaymentID}/Allocations/{AllocationID}",
+      "operationId": "deleteOverpaymentAllocations",
+      "summary": "Xero Deletes an Allocation from an overpayment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Overpayments/{OverpaymentID}/History",
+      "operationId": "getOverpaymentHistory",
+      "summary": "Xero Retrieves history records of a specific overpayment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Overpayments/{OverpaymentID}/History",
+      "operationId": "createOverpaymentHistory",
+      "summary": "Xero Creates a history record for a specific overpayment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Payments",
+      "operationId": "getPayments",
+      "summary": "Xero Retrieves payments for invoices and credit notes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Payments",
+      "operationId": "createPayment",
+      "summary": "Xero Creates a single payment for invoice or credit notes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Payments",
+      "operationId": "createPayments",
+      "summary": "Xero Creates multiple payments for invoices or credit notes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Payments/{PaymentID}",
+      "operationId": "getPayment",
+      "summary": "Xero Retrieves a specific payment for invoices and credit notes using a unique payment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Payments/{PaymentID}",
+      "operationId": "deletePayment",
+      "summary": "Xero Updates a specific payment for invoices and credit notes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Payments/{PaymentID}/History",
+      "operationId": "getPaymentHistory",
+      "summary": "Xero Retrieves history records of a specific payment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Payments/{PaymentID}/History",
+      "operationId": "createPaymentHistory",
+      "summary": "Xero Creates a history record for a specific payment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/PaymentServices",
+      "operationId": "getPaymentServices",
+      "summary": "Xero Retrieves payment services",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/PaymentServices",
+      "operationId": "createPaymentService",
+      "summary": "Xero Creates a payment service",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Prepayments",
+      "operationId": "getPrepayments",
+      "summary": "Xero Retrieves prepayments",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Prepayments/{PrepaymentID}",
+      "operationId": "getPrepayment",
+      "summary": "Xero Allows you to retrieve a specified prepayments",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Prepayments/{PrepaymentID}/Allocations",
+      "operationId": "createPrepaymentAllocations",
+      "summary": "Xero Allows you to create an Allocation for prepayments",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/Prepayments/{PrepaymentID}/Allocations/{AllocationID}",
+      "operationId": "deletePrepaymentAllocations",
+      "summary": "Xero Deletes an Allocation from a Prepayment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Prepayments/{PrepaymentID}/History",
+      "operationId": "getPrepaymentHistory",
+      "summary": "Xero Retrieves history record for a specific prepayment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Prepayments/{PrepaymentID}/History",
+      "operationId": "createPrepaymentHistory",
+      "summary": "Xero Creates a history record for a specific prepayment",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/PurchaseOrders",
+      "operationId": "getPurchaseOrders",
+      "summary": "Xero Retrieves purchase orders",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/PurchaseOrders",
+      "operationId": "updateOrCreatePurchaseOrders",
+      "summary": "Xero Updates or creates one or more purchase orders",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/PurchaseOrders",
+      "operationId": "createPurchaseOrders",
+      "summary": "Xero Creates one or more purchase orders",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/PurchaseOrders/{PurchaseOrderID}/pdf",
+      "operationId": "getPurchaseOrderAsPdf",
+      "summary": "Xero Retrieves specific purchase order as PDF files using a unique purchase order Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/PurchaseOrders/{PurchaseOrderID}",
+      "operationId": "getPurchaseOrder",
+      "summary": "Xero Retrieves a specific purchase order using a unique purchase order Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/PurchaseOrders/{PurchaseOrderID}",
+      "operationId": "updatePurchaseOrder",
+      "summary": "Xero Updates a specific purchase order",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/PurchaseOrders/{PurchaseOrderNumber}",
+      "operationId": "getPurchaseOrderByNumber",
+      "summary": "Xero Retrieves a specific purchase order using purchase order number",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/PurchaseOrders/{PurchaseOrderID}/History",
+      "operationId": "getPurchaseOrderHistory",
+      "summary": "Xero Retrieves history for a specific purchase order",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/PurchaseOrders/{PurchaseOrderID}/History",
+      "operationId": "createPurchaseOrderHistory",
+      "summary": "Xero Creates a history record for a specific purchase orders",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/PurchaseOrders/{PurchaseOrderID}/Attachments",
+      "operationId": "getPurchaseOrderAttachments",
+      "summary": "Xero Retrieves attachments for a specific purchase order",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/PurchaseOrders/{PurchaseOrderID}/Attachments/{AttachmentID}",
+      "operationId": "getPurchaseOrderAttachmentById",
+      "summary": "Xero Retrieves specific attachment for a specific purchase order using a unique attachment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}",
+      "operationId": "getPurchaseOrderAttachmentByFileName",
+      "summary": "Xero Retrieves a specific attachment for a specific purchase order by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}",
+      "operationId": "updatePurchaseOrderAttachmentByFileName",
+      "summary": "Xero Updates a specific attachment for a specific purchase order by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}",
+      "operationId": "createPurchaseOrderAttachmentByFileName",
+      "summary": "Xero Creates attachment for a specific purchase order",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Quotes",
+      "operationId": "getQuotes",
+      "summary": "Xero Retrieves sales quotes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Quotes",
+      "operationId": "updateOrCreateQuotes",
+      "summary": "Xero Updates or creates one or more quotes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Quotes",
+      "operationId": "createQuotes",
+      "summary": "Xero Create one or more quotes",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Quotes/{QuoteID}",
+      "operationId": "getQuote",
+      "summary": "Xero Retrieves a specific quote using a unique quote Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Quotes/{QuoteID}",
+      "operationId": "updateQuote",
+      "summary": "Xero Updates a specific quote",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Quotes/{QuoteID}/History",
+      "operationId": "getQuoteHistory",
+      "summary": "Xero Retrieves history records of a specific quote",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Quotes/{QuoteID}/History",
+      "operationId": "createQuoteHistory",
+      "summary": "Xero Creates a history record for a specific quote",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Quotes/{QuoteID}/pdf",
+      "operationId": "getQuoteAsPdf",
+      "summary": "Xero Retrieves a specific quote as a PDF file using a unique quote Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Quotes/{QuoteID}/Attachments",
+      "operationId": "getQuoteAttachments",
+      "summary": "Xero Retrieves attachments for a specific quote",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Quotes/{QuoteID}/Attachments/{AttachmentID}",
+      "operationId": "getQuoteAttachmentById",
+      "summary": "Xero Retrieves a specific attachment from a specific quote using a unique attachment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Quotes/{QuoteID}/Attachments/{FileName}",
+      "operationId": "getQuoteAttachmentByFileName",
+      "summary": "Xero Retrieves a specific attachment from a specific quote by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Quotes/{QuoteID}/Attachments/{FileName}",
+      "operationId": "updateQuoteAttachmentByFileName",
+      "summary": "Xero Updates a specific attachment from a specific quote by filename",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Quotes/{QuoteID}/Attachments/{FileName}",
+      "operationId": "createQuoteAttachmentByFileName",
+      "summary": "Xero Creates attachment for a specific quote",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Receipts",
+      "operationId": "getReceipts",
+      "summary": "Xero Retrieves draft expense claim receipts for any user",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Receipts",
+      "operationId": "createReceipt",
+      "summary": "Xero Creates draft expense claim receipts for any user",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Receipts/{ReceiptID}",
+      "operationId": "getReceipt",
+      "summary": "Xero Retrieves a specific draft expense claim receipt by using a unique receipt Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Receipts/{ReceiptID}",
+      "operationId": "updateReceipt",
+      "summary": "Xero Updates a specific draft expense claim receipts",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Receipts/{ReceiptID}/Attachments",
+      "operationId": "getReceiptAttachments",
+      "summary": "Xero Retrieves attachments for a specific expense claim receipt",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Receipts/{ReceiptID}/Attachments/{AttachmentID}",
+      "operationId": "getReceiptAttachmentById",
+      "summary": "Xero Retrieves a specific attachments from a specific expense claim receipts by using a unique attachment Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Receipts/{ReceiptID}/Attachments/{FileName}",
+      "operationId": "getReceiptAttachmentByFileName",
+      "summary": "Xero Retrieves a specific attachment from a specific expense claim receipts by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Receipts/{ReceiptID}/Attachments/{FileName}",
+      "operationId": "updateReceiptAttachmentByFileName",
+      "summary": "Xero Updates a specific attachment on a specific expense claim receipts by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Receipts/{ReceiptID}/Attachments/{FileName}",
+      "operationId": "createReceiptAttachmentByFileName",
+      "summary": "Xero Creates an attachment on a specific expense claim receipts by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Receipts/{ReceiptID}/History",
+      "operationId": "getReceiptHistory",
+      "summary": "Xero Retrieves a history record for a specific receipt",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/Receipts/{ReceiptID}/History",
+      "operationId": "createReceiptHistory",
+      "summary": "Xero Creates a history record for a specific receipt",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/RepeatingInvoices",
+      "operationId": "getRepeatingInvoices",
+      "summary": "Xero Retrieves repeating invoices",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/RepeatingInvoices",
+      "operationId": "updateOrCreateRepeatingInvoices",
+      "summary": "Xero Creates or deletes one or more repeating invoice templates",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/RepeatingInvoices",
+      "operationId": "createRepeatingInvoices",
+      "summary": "Xero Creates one or more repeating invoice templates",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/RepeatingInvoices/{RepeatingInvoiceID}",
+      "operationId": "getRepeatingInvoice",
+      "summary": "Xero Retrieves a specific repeating invoice by using a unique repeating invoice Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/RepeatingInvoices/{RepeatingInvoiceID}",
+      "operationId": "updateRepeatingInvoice",
+      "summary": "Xero Deletes a specific repeating invoice template",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/RepeatingInvoices/{RepeatingInvoiceID}/Attachments",
+      "operationId": "getRepeatingInvoiceAttachments",
+      "summary": "Xero Retrieves attachments from a specific repeating invoice",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{AttachmentID}",
+      "operationId": "getRepeatingInvoiceAttachmentById",
+      "summary": "Xero Retrieves a specific attachment from a specific repeating invoice",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}",
+      "operationId": "getRepeatingInvoiceAttachmentByFileName",
+      "summary": "Xero Retrieves a specific attachment from a specific repeating invoices by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}",
+      "operationId": "updateRepeatingInvoiceAttachmentByFileName",
+      "summary": "Xero Updates a specific attachment from a specific repeating invoices by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}",
+      "operationId": "createRepeatingInvoiceAttachmentByFileName",
+      "summary": "Xero Creates an attachment from a specific repeating invoices by file name",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/RepeatingInvoices/{RepeatingInvoiceID}/History",
+      "operationId": "getRepeatingInvoiceHistory",
+      "summary": "Xero Retrieves history record for a specific repeating invoice",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/RepeatingInvoices/{RepeatingInvoiceID}/History",
+      "operationId": "createRepeatingInvoiceHistory",
+      "summary": "Xero Creates a  history record for a specific repeating invoice",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports/TenNinetyNine",
+      "operationId": "getReportTenNinetyNine",
+      "summary": "Xero Retrieve reports for 1099",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports/AgedPayablesByContact",
+      "operationId": "getReportAgedPayablesByContact",
+      "summary": "Xero Retrieves report for aged payables by contact",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports/AgedReceivablesByContact",
+      "operationId": "getReportAgedReceivablesByContact",
+      "summary": "Xero Retrieves report for aged receivables by contact",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports/BalanceSheet",
+      "operationId": "getReportBalanceSheet",
+      "summary": "Xero Retrieves report for balancesheet",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports/BankSummary",
+      "operationId": "getReportBankSummary",
+      "summary": "Xero Retrieves report for bank summary",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports/{ReportID}",
+      "operationId": "getReportFromId",
+      "summary": "Xero Retrieves a specific report using a unique ReportID",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports/BudgetSummary",
+      "operationId": "getReportBudgetSummary",
+      "summary": "Xero Retrieves report for budget summary",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports/ExecutiveSummary",
+      "operationId": "getReportExecutiveSummary",
+      "summary": "Xero Retrieves report for executive summary",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports",
+      "operationId": "getReportsList",
+      "summary": "Xero Retrieves a list of the organistaions unique reports that require a uuid to fetch",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports/ProfitAndLoss",
+      "operationId": "getReportProfitAndLoss",
+      "summary": "Xero Retrieves report for profit and loss",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Reports/TrialBalance",
+      "operationId": "getReportTrialBalance",
+      "summary": "Xero Retrieves report for trial balance",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/Setup",
+      "operationId": "postSetup",
+      "summary": "Xero Sets the chart of accounts, the conversion date and conversion balances",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/TaxRates",
+      "operationId": "getTaxRates",
+      "summary": "Xero Retrieves tax rates",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/TaxRates",
+      "operationId": "updateTaxRate",
+      "summary": "Xero Updates tax rates",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/TaxRates",
+      "operationId": "createTaxRates",
+      "summary": "Xero Creates one or more tax rates",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/TaxRates/{TaxType}",
+      "operationId": "getTaxRateByTaxType",
+      "summary": "Xero Retrieves a specific tax rate according to given TaxType code",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/TrackingCategories",
+      "operationId": "getTrackingCategories",
+      "summary": "Xero Retrieves tracking categories and options",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/TrackingCategories",
+      "operationId": "createTrackingCategory",
+      "summary": "Xero Create tracking categories",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/TrackingCategories/{TrackingCategoryID}",
+      "operationId": "getTrackingCategory",
+      "summary": "Xero Retrieves specific tracking categories and options using a unique tracking category Id",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/TrackingCategories/{TrackingCategoryID}",
+      "operationId": "updateTrackingCategory",
+      "summary": "Xero Updates a specific tracking category",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/TrackingCategories/{TrackingCategoryID}",
+      "operationId": "deleteTrackingCategory",
+      "summary": "Xero Deletes a specific tracking category",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/TrackingCategories/{TrackingCategoryID}/Options",
+      "operationId": "createTrackingOptions",
+      "summary": "Xero Creates options for a specific tracking category",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/TrackingCategories/{TrackingCategoryID}/Options/{TrackingOptionID}",
+      "operationId": "updateTrackingOptions",
+      "summary": "Xero Updates a specific option for a specific tracking category",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/TrackingCategories/{TrackingCategoryID}/Options/{TrackingOptionID}",
+      "operationId": "deleteTrackingOptions",
+      "summary": "Xero Deletes a specific option for a specific tracking category",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Users",
+      "operationId": "getUsers",
+      "summary": "Xero Retrieves users",
+      "tags": [
+        "Accounting"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/Users/{UserID}",
+      "operationId": "getUser",
+      "summary": "Xero Retrieves a specific user",
+      "tags": [
+        "Accounting"
+      ]
+    }
+  ]
+}

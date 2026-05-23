@@ -1,0 +1,39 @@
+{
+  "operationId": "approveLeaveApplication",
+  "method": "POST",
+  "path": "/LeaveApplications/{LeaveApplicationID}/approve",
+  "summary": "Approve a requested leave application by a unique leave application id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573679791457)/",
+        "LeaveApplications": [
+          {
+            "LeaveApplicationID": "1d4cd583-0107-4386-936b-672eb3d1f624",
+            "EmployeeID": "cdfb8371-0b21-4b8a-8903-1024df6c391e",
+            "LeaveTypeID": "184ea8f7-d143-46dd-bef3-0c60e1aa6fca",
+            "LeavePeriods": [
+              {
+                "PayPeriodStartDate": "/Date(1573171200000+0000)/",
+                "PayPeriodEndDate": "/Date(1573689600000+0000)/",
+                "LeavePeriodStatus": "SCHEDULED",
+                "NumberOfUnits": 7.6
+              }
+            ],
+            "Title": "Requested Leave",
+            "StartDate": "/Date(1573516800000+0000)/",
+            "EndDate": "/Date(1573516800000+0000)/",
+            "UpdatedDateUTC": "/Date(1573623008000+0000)/",
+            "PayOutType": "DEFAULT"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "operationId": "getCreditNotes",
+  "method": "GET",
+  "path": "/CreditNotes",
+  "summary": "Xero Retrieves any credit notes",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "306379b0-3d75-4c77-953a-be08fa0efae8",
+        "Status": "OK",
+        "ProviderName": "Provider Name Example",
+        "DateTimeUTC": "/Date(1551812506620)/",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 2
+        },
+        "CreditNotes": [
+          {
+            "CreditNoteID": "249f15fa-f2a7-4acc-8769-0984103f2225",
+            "CreditNoteNumber": "CN-0005",
+            "Payments": [
+              {
+                "PaymentID": "6b037c9b-2e5d-4905-84d3-eabfb3438242",
+                "Date": "/Date(1552521600000+0000)/",
+                "Amount": 2.0,
+                "Reference": "Too much",
+                "CurrencyRate": 1.0,
+                "HasAccount": false,
+                "HasValidationErrors": false
+              }
+            ],
+            "ID": "249f15fa-f2a7-4acc-8769-0984103f2225",
+            "CurrencyRate": 1.0,
+            "Type": "ACCRECCREDIT",
+            "Reference": "US Tour",
+            "RemainingCredit": 32.5,
+            "Allocations": [],
+            "HasAttachments": true,
+            "Contact": {
+              "ContactID": "430fa14a-f945-44d3-9f97-5df5e28441b8",
+              "Name": "Liam Gallagher",
+              "Addresses": [],
+              "Phones": [],
+              "ContactGroups": [],
+              "ContactPersons": [],
+              "HasValidationErrors": false
+            },
+            "DateString": "2019-03-05 00:00:00",
+            "Date": "/Date(1551744000000+0000)/",
+            "Status": "AUTHORISED",
+            "LineAmountTypes": "Exclusive",
+            "LineItems": [],
+            "SubTotal": 30.0,
+            "TotalTax": 4.5,
+            "Total": 34.5,
+            "UpdatedDateUTC": "/Date(1551812346157+0000)/",
+            "CurrencyCode": "NZD"
+          },
+          {
+            "CreditNoteID": "f8021bd2-9a6a-4c19-8477-163da0b9290f",
+            "CreditNoteNumber": "",
+            "Payments": [],
+            "ID": "f8021bd2-9a6a-4c19-8477-163da0b9290f",
+            "CurrencyRate": 1.0,
+            "Type": "ACCPAYCREDIT",
+            "Reference": "",
+            "RemainingCredit": 46.0,
+            "Allocations": [],
+            "HasAttachments": false,
+            "Contact": {
+              "ContactID": "430fa14a-f945-44d3-9f97-5df5e28441b8",
+              "Name": "Liam Gallagher",
+              "Addresses": [],
+              "Phones": [],
+              "ContactGroups": [],
+              "ContactPersons": [],
+              "HasValidationErrors": false
+            },
+            "DateString": "2019-01-05 00:00:00",
+            "Date": "/Date(1546646400000+0000)/",
+            "Status": "DRAFT",
+            "LineAmountTypes": "Exclusive",
+            "LineItems": [],
+            "SubTotal": 40.0,
+            "TotalTax": 6.0,
+            "Total": 46.0,
+            "UpdatedDateUTC": "/Date(1551812506153+0000)/",
+            "CurrencyCode": "NZD"
+          }
+        ]
+      }
+    }
+  ]
+}

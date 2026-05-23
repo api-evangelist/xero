@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Overpayment",
+  "title": "Overpayment",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/overpayments/"
+  },
+  "properties": {
+    "Type": {
+      "description": "See Overpayment Types",
+      "type": "string",
+      "enum": [
+        "RECEIVE-OVERPAYMENT",
+        "SPEND-OVERPAYMENT",
+        "AROVERPAYMENT"
+      ]
+    },
+    "Contact": {
+      "$ref": "#/components/schemas/Contact"
+    },
+    "Date": {
+      "description": "The date the overpayment is created YYYY-MM-DD",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "Status": {
+      "description": "See Overpayment Status Codes",
+      "type": "string",
+      "enum": [
+        "AUTHORISED",
+        "PAID",
+        "VOIDED"
+      ]
+    },
+    "LineAmountTypes": {
+      "$ref": "#/components/schemas/LineAmountTypes",
+      "type": "string"
+    },
+    "LineItems": {
+      "description": "See Overpayment Line Items",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LineItem"
+      }
+    },
+    "SubTotal": {
+      "description": "The subtotal of the overpayment excluding taxes",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "TotalTax": {
+      "description": "The total tax on the overpayment",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Total": {
+      "description": "The total of the overpayment (subtotal + total tax)",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "UpdatedDateUTC": {
+      "description": "UTC timestamp of last update to the overpayment",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "CurrencyCode": {
+      "$ref": "#/components/schemas/CurrencyCode",
+      "type": "string"
+    },
+    "OverpaymentID": {
+      "description": "Xero generated unique identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "CurrencyRate": {
+      "description": "The currency rate for a multicurrency overpayment. If no rate is specified, the XE.com day rate is used",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "RemainingCredit": {
+      "description": "The remaining credit balance on the overpayment",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Allocations": {
+      "description": "See Allocations",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Allocation"
+      }
+    },
+    "AppliedAmount": {
+      "description": "The amount of applied to an invoice",
+      "type": "number",
+      "format": "double",
+      "example": 2.0
+    },
+    "Payments": {
+      "description": "See Payments",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Payment"
+      }
+    },
+    "HasAttachments": {
+      "description": "boolean to indicate if a overpayment has an attachment",
+      "readOnly": true,
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "Reference": {
+      "description": "An optional description for Overpayment",
+      "type": "string",
+      "example": "Ref for payment"
+    },
+    "Attachments": {
+      "description": "See Attachments",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attachment"
+      }
+    }
+  },
+  "type": "object"
+}

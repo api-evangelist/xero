@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CashBalance",
+  "title": "CashBalance",
+  "type": "object",
+  "properties": {
+    "openingCashBalance": {
+      "type": "number",
+      "description": "Opening balance of cash and cash equivalents",
+      "format": "double",
+      "x-is-money": true
+    },
+    "closingCashBalance": {
+      "type": "number",
+      "description": "Closing balance of cash and cash equivalents",
+      "format": "double",
+      "x-is-money": true
+    },
+    "netCashMovement": {
+      "type": "number",
+      "description": "Net movement of cash and cash equivalents for the period",
+      "format": "double",
+      "x-is-money": true,
+      "readOnly": true
+    }
+  },
+  "additionalProperties": false
+}

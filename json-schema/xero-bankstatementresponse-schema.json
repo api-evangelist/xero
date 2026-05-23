@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BankStatementResponse",
+  "title": "BankStatementResponse",
+  "type": "object",
+  "properties": {
+    "statementLines": {
+      "$ref": "#/components/schemas/StatementLinesResponse"
+    },
+    "currentStatement": {
+      "$ref": "#/components/schemas/CurrentStatementResponse"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+  "operationId": "getStatutoryDeduction",
+  "method": "GET",
+  "path": "/StatutoryDeductions/{id}",
+  "summary": "Retrieves a specific statutory deduction by using a unique statutory deductions id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "e3731829-9801-4809-a1a1-bbe40cd18b7e",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-28 00:01:57.656299",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "statutoryDeduction": {
+          "id": "e3731829-9801-4809-a1a1-bbe40cd18b7e",
+          "name": "Child Support",
+          "liabilityAccountId": "fa5cdc43-643b-4ad8-b4ac-3ffe0d0f4488",
+          "statutoryDeductionCategory": "ChildSupport",
+          "currentRecord": true
+        }
+      }
+    }
+  ]
+}

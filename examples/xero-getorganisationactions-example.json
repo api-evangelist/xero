@@ -1,0 +1,73 @@
+{
+  "operationId": "getOrganisationActions",
+  "method": "GET",
+  "path": "/Organisation/Actions",
+  "summary": "Retrieves a list of the key actions your app has permission to perform in the connected Xero organisation.",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "f02c0dd1-1917-4d57-9853-997f6bcaf2bc",
+        "Status": "OK",
+        "ProviderName": "Java OA2 dev 01",
+        "DateTimeUTC": "/Date(1602883301013)/",
+        "Actions": [
+          {
+            "Name": "CreateApprovedInvoice",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "CreateDraftPurchaseOrder",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "CreateApprovedBill",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "AttachFilesIntoInvoice",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "UseMulticurrency",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "CreateDraftInvoice",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "CreateRepeatingInvoice",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "CreateRepeatingBill",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "CreateSentQuote",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "CreateInvoicePayment",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "CreateApprovedPurchaseOrder",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "CreateDraftQuote",
+            "Status": "ALLOWED"
+          },
+          {
+            "Name": "CreateDraftBill",
+            "Status": "ALLOWED"
+          }
+        ]
+      }
+    }
+  ]
+}

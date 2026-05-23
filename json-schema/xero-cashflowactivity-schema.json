@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CashflowActivity",
+  "title": "CashflowActivity",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the cashflow activity type. It will be either Operating Activities, Investing Activities or Financing Activities"
+    },
+    "total": {
+      "type": "number",
+      "description": "Total value of the activity type",
+      "format": "double",
+      "x-is-money": true
+    },
+    "cashflowTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CashflowType"
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeLeaveBalance",
+  "title": "EmployeeLeaveBalance",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Name of the leave type.",
+      "type": "string",
+      "example": "Holiday"
+    },
+    "leaveTypeID": {
+      "description": "The Xero identifier for leave type",
+      "type": "string",
+      "format": "uuid"
+    },
+    "balance": {
+      "description": "The employees current balance for the corresponding leave type.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "typeOfUnits": {
+      "description": "The type of the units of the leave.",
+      "type": "string",
+      "example": "hours"
+    }
+  }
+}

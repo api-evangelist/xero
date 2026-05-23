@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalaryAndWages",
+  "title": "SalaryAndWages",
+  "type": "object",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "problem": {
+      "$ref": "#/components/schemas/Problem"
+    },
+    "salaryAndWages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SalaryAndWage"
+      }
+    }
+  }
+}

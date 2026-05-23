@@ -1,0 +1,27 @@
+{
+  "operationId": "getTrackingCategory",
+  "method": "GET",
+  "path": "/TrackingCategories/{TrackingCategoryID}",
+  "summary": "Xero Retrieves specific tracking categories and options using a unique tracking category Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "b75b8862-39c0-45a8-82b8-30ab4831996b",
+        "Status": "OK",
+        "ProviderName": "Provider Name Example",
+        "DateTimeUTC": "/Date(1555085855442)/",
+        "TrackingCategories": [
+          {
+            "Name": "Foo41157",
+            "Status": "DELETED",
+            "TrackingCategoryID": "22f10184-0deb-44ae-a312-b1f6ea70e51f",
+            "Options": []
+          }
+        ]
+      }
+    }
+  ]
+}

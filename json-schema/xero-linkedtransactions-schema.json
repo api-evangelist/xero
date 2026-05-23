@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LinkedTransactions",
+  "title": "LinkedTransactions",
+  "type": "object",
+  "x-objectArrayKey": "linked_transactions",
+  "properties": {
+    "LinkedTransactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LinkedTransaction"
+      }
+    }
+  }
+}

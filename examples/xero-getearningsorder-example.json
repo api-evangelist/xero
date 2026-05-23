@@ -1,0 +1,28 @@
+{
+  "operationId": "getEarningsOrder",
+  "method": "GET",
+  "path": "/EarningsOrders/{id}",
+  "summary": "Retrieves a specific earnings orders by using a unique earnings orders id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "e0fd1c57-e9d0-4c3f-9a1a-0355ddf7c060",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-04-20 23:37:30.339852",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "statutoryDeduction": {
+          "id": "d00d0128-500b-4685-8332-8fc8743a395c",
+          "name": "AEO (maintenance)",
+          "liabilityAccountId": "921237ae-76ff-4f4c-bf70-5c3c177b149d",
+          "statutoryDeductionCategory": "PriorityOrder",
+          "currentRecord": true
+        }
+      }
+    }
+  ]
+}

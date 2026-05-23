@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayslipSummary",
+  "title": "PayslipSummary",
+  "type": "object",
+  "properties": {
+    "EmployeeID": {
+      "description": "The Xero identifier for an employee",
+      "type": "string",
+      "format": "uuid",
+      "example": "4729f087-8eec-49c1-8294-4d11a5a0a37c"
+    },
+    "PayslipID": {
+      "description": "Xero identifier for the payslip",
+      "type": "string",
+      "format": "uuid",
+      "example": "f3c0874d-7cdd-459a-a95c-d90d51decc42"
+    },
+    "FirstName": {
+      "description": "First name of employee",
+      "type": "string",
+      "example": "Karen"
+    },
+    "LastName": {
+      "description": "Last name of employee",
+      "type": "string",
+      "example": "Jones"
+    },
+    "EmployeeGroup": {
+      "description": "Employee group name",
+      "type": "string",
+      "example": "Marketing"
+    },
+    "Wages": {
+      "description": "The Wages for the Payslip",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 1060.5
+    },
+    "Deductions": {
+      "description": "The Deductions for the Payslip",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 0.0
+    },
+    "Tax": {
+      "description": "The Tax for the Payslip",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 198.0
+    },
+    "Super": {
+      "description": "The Super for the Payslip",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 75.6
+    },
+    "Reimbursements": {
+      "description": "The Reimbursements for the Payslip",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 0.0
+    },
+    "NetPay": {
+      "description": "The NetPay for the Payslip",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 862.5
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true,
+      "example": "/Date(1583967733054+0000)/"
+    }
+  }
+}

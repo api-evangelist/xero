@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Item",
+  "title": "Item",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/items/"
+  },
+  "properties": {
+    "Code": {
+      "description": "User defined item code (max length = 30)",
+      "maxLength": 30,
+      "type": "string"
+    },
+    "InventoryAssetAccountCode": {
+      "description": "The inventory asset account for the item. The account must be of type INVENTORY. The  COGSAccountCode in PurchaseDetails is also required to create a tracked item",
+      "type": "string"
+    },
+    "Name": {
+      "description": "The name of the item (max length = 50)",
+      "maxLength": 50,
+      "type": "string"
+    },
+    "IsSold": {
+      "description": "Boolean value, defaults to true. When IsSold is true the item will be available on sales transactions in the Xero UI. If IsSold is updated to false then Description and SalesDetails values will be nulled.",
+      "type": "boolean"
+    },
+    "IsPurchased": {
+      "description": "Boolean value, defaults to true. When IsPurchased is true the item is available for purchase transactions in the Xero UI. If IsPurchased is updated to false then PurchaseDescription and PurchaseDetails values will be nulled.",
+      "type": "boolean"
+    },
+    "Description": {
+      "description": "The sales description of the item (max length = 4000)",
+      "maxLength": 4000,
+      "type": "string"
+    },
+    "PurchaseDescription": {
+      "description": "The purchase description of the item (max length = 4000)",
+      "maxLength": 4000,
+      "type": "string"
+    },
+    "PurchaseDetails": {
+      "$ref": "#/components/schemas/Purchase"
+    },
+    "SalesDetails": {
+      "$ref": "#/components/schemas/Purchase"
+    },
+    "IsTrackedAsInventory": {
+      "description": "True for items that are tracked as inventory. An item will be tracked as inventory if the InventoryAssetAccountCode and COGSAccountCode are set.",
+      "type": "boolean"
+    },
+    "TotalCostPool": {
+      "description": "The value of the item on hand. Calculated using average cost accounting.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "QuantityOnHand": {
+      "description": "The quantity of the item on hand",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified date in UTC format",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "ItemID": {
+      "description": "The Xero identifier for an Item",
+      "type": "string",
+      "format": "uuid"
+    },
+    "StatusAttributeString": {
+      "description": "Status of object",
+      "type": "string"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    }
+  },
+  "required": [
+    "Code"
+  ],
+  "type": "object"
+}

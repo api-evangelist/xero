@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PurchaseOrder",
+  "title": "PurchaseOrder",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/purchase-orders/"
+  },
+  "properties": {
+    "Contact": {
+      "$ref": "#/components/schemas/Contact"
+    },
+    "LineItems": {
+      "description": "See LineItems",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LineItem"
+      }
+    },
+    "Date": {
+      "description": "Date purchase order was issued \u2013 YYYY-MM-DD. If the Date element is not specified then it will default to the current date based on the timezone setting of the organisation",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "DeliveryDate": {
+      "description": "Date the goods are to be delivered \u2013 YYYY-MM-DD",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "LineAmountTypes": {
+      "$ref": "#/components/schemas/LineAmountTypes",
+      "type": "string"
+    },
+    "PurchaseOrderNumber": {
+      "description": "Unique alpha numeric code identifying purchase order (when missing will auto-generate from your Organisation Invoice Settings)",
+      "type": "string"
+    },
+    "Reference": {
+      "description": "Additional reference number",
+      "type": "string"
+    },
+    "BrandingThemeID": {
+      "description": "See BrandingThemes",
+      "type": "string",
+      "format": "uuid"
+    },
+    "CurrencyCode": {
+      "$ref": "#/components/schemas/CurrencyCode",
+      "type": "string"
+    },
+    "Status": {
+      "description": "See Purchase Order Status Codes",
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "SUBMITTED",
+        "AUTHORISED",
+        "BILLED",
+        "DELETED"
+      ]
+    },
+    "SentToContact": {
+      "description": "Boolean to set whether the purchase order should be marked as \u201csent\u201d. This can be set only on purchase orders that have been approved or billed",
+      "type": "boolean"
+    },
+    "DeliveryAddress": {
+      "description": "The address the goods are to be delivered to",
+      "type": "string"
+    },
+    "AttentionTo": {
+      "description": "The person that the delivery is going to",
+      "type": "string"
+    },
+    "Telephone": {
+      "description": "The phone number for the person accepting the delivery",
+      "type": "string"
+    },
+    "DeliveryInstructions": {
+      "description": "A free text feild for instructions (500 characters max)",
+      "type": "string"
+    },
+    "ExpectedArrivalDate": {
+      "description": "The date the goods are expected to arrive.",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "PurchaseOrderID": {
+      "description": "Xero generated unique identifier for purchase order",
+      "type": "string",
+      "format": "uuid"
+    },
+    "CurrencyRate": {
+      "description": "The currency rate for a multicurrency purchase order. If no rate is specified, the XE.com day rate is used.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "SubTotal": {
+      "description": "Total of purchase order excluding taxes",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "TotalTax": {
+      "description": "Total tax on purchase order",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Total": {
+      "description": "Total of Purchase Order tax inclusive (i.e. SubTotal + TotalTax)",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "TotalDiscount": {
+      "description": "Total of discounts applied on the purchase order line items",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "HasAttachments": {
+      "description": "boolean to indicate if a purchase order has an attachment",
+      "readOnly": true,
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified date UTC format",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "StatusAttributeString": {
+      "description": "A string to indicate if a invoice status",
+      "type": "string"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "Warnings": {
+      "description": "Displays array of warning messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "Attachments": {
+      "description": "Displays array of attachments from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attachment"
+      }
+    }
+  },
+  "type": "object"
+}

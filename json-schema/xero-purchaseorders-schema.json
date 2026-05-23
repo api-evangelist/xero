@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PurchaseOrders",
+  "title": "PurchaseOrders",
+  "type": "object",
+  "x-objectArrayKey": "purchase_orders",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "Warnings": {
+      "description": "Displays array of warning messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "PurchaseOrders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PurchaseOrder"
+      }
+    }
+  }
+}

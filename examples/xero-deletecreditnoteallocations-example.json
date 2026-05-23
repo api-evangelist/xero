@@ -1,0 +1,23 @@
+{
+  "operationId": "deleteCreditNoteAllocations",
+  "method": "DELETE",
+  "path": "/CreditNotes/{CreditNoteID}/Allocations/{AllocationID}",
+  "summary": "Xero Deletes an Allocation from a Credit Note",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "AllocationId": "2bb15054-3868-4f85-a9c6-0402ec8c1201",
+        "Date": "/Date(1551822670731)/",
+        "Invoice": [
+          {
+            "InvoiceID": "b7eb1fc9-a0f9-4e8e-9373-6689f5350832"
+          }
+        ],
+        "IsDeleted": true
+      }
+    }
+  ]
+}

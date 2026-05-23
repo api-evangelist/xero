@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ManualJournals",
+  "title": "ManualJournals",
+  "type": "object",
+  "x-objectArrayKey": "manual_journals",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "Warnings": {
+      "description": "Displays array of warning messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "ManualJournals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ManualJournal"
+      }
+    }
+  }
+}

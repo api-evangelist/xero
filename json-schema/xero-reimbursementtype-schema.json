@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReimbursementType",
+  "title": "ReimbursementType",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "description": "Name of the earnings rate (max length = 100)",
+      "type": "string",
+      "example": "PTO",
+      "maxLength": 100
+    },
+    "AccountCode": {
+      "description": "See Accounts",
+      "type": "string",
+      "example": 720
+    },
+    "ReimbursementTypeID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid",
+      "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true,
+      "example": "/Date(1583967733054+0000)/"
+    },
+    "CurrentRecord": {
+      "description": "Is the current record",
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

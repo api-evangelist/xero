@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EarningsType",
+  "title": "EarningsType",
+  "type": "string",
+  "enum": [
+    "FIXED",
+    "ORDINARYTIMEEARNINGS",
+    "OVERTIMEEARNINGS",
+    "ALLOWANCE",
+    "LUMPSUMD",
+    "EMPLOYMENTTERMINATIONPAYMENT",
+    "LUMPSUMA",
+    "LUMPSUMB",
+    "BONUSESANDCOMMISSIONS",
+    "LUMPSUME",
+    "LUMPSUMW",
+    "DIRECTORSFEES",
+    "PAIDPARENTALLEAVE",
+    "WORKERSCOMPENSATION"
+  ]
+}

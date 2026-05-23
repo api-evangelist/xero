@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContactPerson",
+  "title": "ContactPerson",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/contacts/"
+  },
+  "properties": {
+    "FirstName": {
+      "description": "First name of person",
+      "type": "string"
+    },
+    "LastName": {
+      "description": "Last name of person",
+      "type": "string"
+    },
+    "EmailAddress": {
+      "description": "Email address of person",
+      "type": "string"
+    },
+    "IncludeInEmails": {
+      "description": "boolean to indicate whether contact should be included on emails with invoices etc.",
+      "type": "boolean"
+    }
+  },
+  "type": "object"
+}

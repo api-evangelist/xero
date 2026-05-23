@@ -1,0 +1,39 @@
+{
+  "operationId": "getPayrollCalendars",
+  "method": "GET",
+  "path": "/PayrollCalendars",
+  "summary": "Retrieves payroll calendars",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573611063408)/",
+        "PayrollCalendars": [
+          {
+            "PayrollCalendarID": "78bb86b9-e1ea-47ac-b75d-f087a81931de",
+            "Name": "Sid Weekly",
+            "CalendarType": "WEEKLY",
+            "StartDate": "/Date(1573171200000+0000)/",
+            "PaymentDate": "/Date(1573776000000+0000)/",
+            "UpdatedDateUTC": "/Date(1573077687000+0000)/",
+            "ReferenceDate": "/Date(1573171200000+0000)/"
+          },
+          {
+            "PayrollCalendarID": "22a05fc5-386d-4950-9842-3e7a6c812135",
+            "Name": "Weekly",
+            "CalendarType": "WEEKLY",
+            "StartDate": "/Date(1546560000000+0000)/",
+            "PaymentDate": "/Date(1547164800000+0000)/",
+            "UpdatedDateUTC": "/Date(1572916157000+0000)/",
+            "ReferenceDate": "/Date(1573171200000+0000)/"
+          }
+        ]
+      }
+    }
+  ]
+}

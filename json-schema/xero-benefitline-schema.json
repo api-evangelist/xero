@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BenefitLine",
+  "title": "BenefitLine",
+  "type": "object",
+  "properties": {
+    "benefitTypeID": {
+      "description": "Xero identifier for payroll benefit type",
+      "type": "string",
+      "format": "uuid"
+    },
+    "displayName": {
+      "description": "Benefit display name",
+      "type": "string"
+    },
+    "amount": {
+      "description": "The amount of the benefit line.",
+      "type": "number",
+      "format": "double"
+    },
+    "fixedAmount": {
+      "description": "Benefit fixed amount",
+      "type": "number",
+      "format": "double"
+    },
+    "percentage": {
+      "description": "Benefit rate percentage",
+      "type": "number",
+      "format": "double"
+    }
+  }
+}

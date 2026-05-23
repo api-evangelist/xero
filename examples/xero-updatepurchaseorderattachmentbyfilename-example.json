@@ -1,0 +1,28 @@
+{
+  "operationId": "updatePurchaseOrderAttachmentByFileName",
+  "method": "POST",
+  "path": "/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}",
+  "summary": "Xero Updates a specific attachment for a specific purchase order by filename",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "aeff9be0-54c2-45dd-8e3d-aa4f8af0fbd7",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1602100086197)/",
+        "Attachments": [
+          {
+            "AttachmentID": "dce4eaa7-c8a9-4867-9434-95832b427d3b",
+            "FileName": "xero-dev.png",
+            "Url": "https://api.xero.com/api.xro/2.0/PurchaseOrders/93369c9b-c481-4e21-aaab-bb19e9a26efe/Attachments/2D_2.png",
+            "MimeType": "image/png",
+            "ContentLength": 98715
+          }
+        ]
+      }
+    }
+  ]
+}

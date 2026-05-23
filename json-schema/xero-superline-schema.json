@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SuperLine",
+  "title": "SuperLine",
+  "type": "object",
+  "properties": {
+    "SuperMembershipID": {
+      "description": "Xero super membership ID",
+      "type": "string",
+      "format": "uuid",
+      "example": "4333d5cd-53a5-4c31-98e5-a8b4e5676b0b"
+    },
+    "ContributionType": {
+      "$ref": "#/components/schemas/SuperannuationContributionType"
+    },
+    "CalculationType": {
+      "$ref": "#/components/schemas/SuperannuationCalculationType"
+    },
+    "MinimumMonthlyEarnings": {
+      "description": "amount of minimum earnings",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 450.0
+    },
+    "ExpenseAccountCode": {
+      "description": "expense account code",
+      "type": "string",
+      "example": 478
+    },
+    "LiabilityAccountCode": {
+      "description": "liabilty account code",
+      "type": "string",
+      "example": 826
+    },
+    "Percentage": {
+      "description": "percentage for super line",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 9.0
+    },
+    "Amount": {
+      "description": "Super membership amount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.0
+    }
+  }
+}

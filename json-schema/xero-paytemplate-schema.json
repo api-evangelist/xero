@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayTemplate",
+  "title": "PayTemplate",
+  "type": "object",
+  "properties": {
+    "EarningsLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EarningsLine"
+      }
+    },
+    "DeductionLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeductionLine"
+      }
+    },
+    "SuperLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SuperLine"
+      }
+    },
+    "ReimbursementLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReimbursementLine"
+      }
+    },
+    "LeaveLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LeaveLine"
+      }
+    }
+  }
+}

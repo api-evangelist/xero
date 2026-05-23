@@ -1,0 +1,38 @@
+{
+  "operationId": "getEmployeeLeaveTypes",
+  "method": "GET",
+  "path": "/Employees/{EmployeeID}/LeaveTypes",
+  "summary": "Retrieves leave types for a specific employee",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 14:25:16.004485",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "leaveTypes": [
+          {
+            "leaveTypeID": "0441497f-5dc7-4cd3-a90d-f2e07e21b2a6",
+            "scheduleOfAccrual": "PercentageOfGrossEarnings",
+            "maximumToAccrue": 0,
+            "openingBalance": 0,
+            "rateAccruedHourly": null,
+            "percentageOfGrossEarnings": 8,
+            "includeHolidayPayEveryPay": true,
+            "showAnnualLeaveInAdvance": null,
+            "annualLeaveTotalAmountPaid": null,
+            "scheduleOfAccrualDate": null,
+            "unitsAccruedAnnually": 0,
+            "typeOfUnitsToAccrue": "Weeks",
+            "openingBalanceTypeOfUnits": "Weeks"
+          }
+        ]
+      }
+    }
+  ]
+}

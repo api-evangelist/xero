@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InvoiceReminder",
+  "title": "InvoiceReminder",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/invoice-reminders/"
+  },
+  "properties": {
+    "Enabled": {
+      "description": "setting for on or off",
+      "type": "boolean"
+    }
+  },
+  "type": "object"
+}

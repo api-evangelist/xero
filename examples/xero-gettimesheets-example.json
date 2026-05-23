@@ -1,0 +1,69 @@
+{
+  "operationId": "getTimesheets",
+  "method": "GET",
+  "path": "/Timesheets",
+  "summary": "Retrieves timesheets",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573516183708)/",
+        "Timesheets": [
+          {
+            "TimesheetID": "863bbd31-0447-4419-80d5-d733d5e723ba",
+            "EmployeeID": "b34e89ff-770d-4099-b7e5-f968767118bc",
+            "StartDate": "/Date(1547769600000)/",
+            "EndDate": "/Date(1548288000000)/",
+            "Status": "APPROVED",
+            "Hours": 24.0,
+            "TimesheetLines": [
+              {
+                "EarningsRateID": "ab874dfb-ab09-4c91-954e-43acf6fc23b4",
+                "NumberOfUnits": [
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  4.0,
+                  0.0
+                ],
+                "UpdatedDateUTC": "/Date(1572915827000+0000)/"
+              }
+            ],
+            "UpdatedDateUTC": "/Date(1572915827000+0000)/"
+          },
+          {
+            "TimesheetID": "544eb3a7-0d63-495b-90ae-f6aa3c26c2c8",
+            "EmployeeID": "7aa04979-ded5-44d9-b09a-793749425844",
+            "StartDate": "/Date(1572566400000)/",
+            "EndDate": "/Date(1573084800000)/",
+            "Status": "APPROVED",
+            "Hours": 10.0,
+            "TimesheetLines": [
+              {
+                "EarningsRateID": "ab874dfb-ab09-4c91-954e-43acf6fc23b4",
+                "NumberOfUnits": [
+                  2.0,
+                  2.0,
+                  2.0,
+                  2.0,
+                  2.0,
+                  0.0,
+                  0.0
+                ],
+                "UpdatedDateUTC": "/Date(1572916045000+0000)/"
+              }
+            ],
+            "UpdatedDateUTC": "/Date(1572916045000+0000)/"
+          }
+        ]
+      }
+    }
+  ]
+}

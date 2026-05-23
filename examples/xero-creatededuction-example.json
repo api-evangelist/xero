@@ -1,0 +1,38 @@
+{
+  "operationId": "createDeduction",
+  "method": "POST",
+  "path": "/Deductions",
+  "summary": "Creates a new deduction for a specific employee",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "deductionName": "My new deduction",
+        "deductionCategory": "NzOther",
+        "liabilityAccountId": "568f2e9a-0870-46cc-8678-f83f132ed4e3"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 20:43:54.956329",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "deduction": {
+          "deductionId": "0ee805eb-f5b0-4061-9b35-d9ea550da04e",
+          "deductionName": "My new deduction",
+          "deductionCategory": "NzOther",
+          "liabilityAccountId": "568f2e9a-0870-46cc-8678-f83f132ed4e3",
+          "currentRecord": true,
+          "standardAmount": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeOpeningBalancesObject",
+  "title": "EmployeeOpeningBalancesObject",
+  "type": "object",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "problem": {
+      "$ref": "#/components/schemas/Problem"
+    },
+    "openingBalances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EmployeeOpeningBalance"
+      }
+    }
+  }
+}

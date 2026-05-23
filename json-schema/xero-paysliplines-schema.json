@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayslipLines",
+  "title": "PayslipLines",
+  "type": "object",
+  "properties": {
+    "EarningsLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EarningsLine"
+      }
+    },
+    "LeaveEarningsLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LeaveEarningsLine"
+      }
+    },
+    "TimesheetEarningsLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EarningsLine"
+      }
+    },
+    "DeductionLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeductionLine"
+      }
+    },
+    "LeaveAccrualLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LeaveAccrualLine"
+      }
+    },
+    "ReimbursementLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReimbursementLine"
+      }
+    },
+    "SuperannuationLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SuperannuationLine"
+      }
+    },
+    "TaxLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TaxLine"
+      }
+    }
+  }
+}

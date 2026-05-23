@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContactDetail",
+  "title": "ContactDetail",
+  "type": "object",
+  "properties": {
+    "contactId": {
+      "type": "string",
+      "description": "ID of the contact associated with the transactions.\r\n\r\nTransactions with no contact will be grouped under the special ID: 86793108-198C-46D8-90A3-43C1D12686CE.\r\n\r\nTransactions that are receive or spend bank transfers will be grouped under the special ID: 207322B3-6A58-4BE7-80F1-430123914AD6",
+      "format": "uuid"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the contact associated with the transactions.\r\n\r\nIf no contact is associated with the transactions this will appear as \u201cNone Provided\u201d,\r\n\r\nFor receive or spend bank transfer transactions, this will appear as \u201cBank Transfer\u201d."
+    },
+    "total": {
+      "type": "number",
+      "description": "Total value for the contact",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalDetail": {
+      "$ref": "#/components/schemas/ContactTotalDetail"
+    },
+    "totalOther": {
+      "$ref": "#/components/schemas/ContactTotalOther"
+    },
+    "accountCodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of account codes involved in transactions."
+    }
+  },
+  "additionalProperties": false
+}

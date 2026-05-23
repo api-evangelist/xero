@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ConversionBalances",
+  "title": "ConversionBalances",
+  "description": "Balance supplied for each account that has a value as at the conversion date.",
+  "properties": {
+    "AccountCode": {
+      "description": "The account code for a account",
+      "type": "string"
+    },
+    "Balance": {
+      "description": "The opening balances of the account. Debits are positive, credits are negative values",
+      "type": "number",
+      "format": "double"
+    },
+    "BalanceDetails": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BalanceDetails"
+      }
+    }
+  },
+  "type": "object"
+}

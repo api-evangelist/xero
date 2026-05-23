@@ -1,0 +1,41 @@
+{
+  "operationId": "deleteFeedConnections",
+  "method": "POST",
+  "path": "/FeedConnections/DeleteRequests",
+  "summary": "Xero Delete an existing feed connection",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "items": [
+          {
+            "id": "b4cc693b-24d9-42ec-a6d4-2943d253ff63"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "202",
+      "contentType": "application/json",
+      "example": {
+        "items": [
+          {
+            "id": "b4cc693b-24d9-42ec-a6d4-2943d253ff63",
+            "status": "PENDING"
+          },
+          {
+            "accountToken": "10000125",
+            "status": "REJECTED",
+            "error": {
+              "type": "feed-connected-in-different-organisation",
+              "title": "Feed connected in different organisation",
+              "detail": "The AccountToken is connected to another Xero Bank Account associated with this bank. This Xero Bank Account belongs to a different Xero Organisation."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

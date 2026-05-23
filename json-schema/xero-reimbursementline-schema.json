@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReimbursementLine",
+  "title": "ReimbursementLine",
+  "type": "object",
+  "properties": {
+    "ReimbursementTypeID": {
+      "description": "Xero reimbursement type identifier",
+      "type": "string",
+      "format": "uuid",
+      "example": "bd246b96-c637-4767-81cf-851ba8fa93c2"
+    },
+    "Amount": {
+      "description": "Reimbursement type amount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.0
+    },
+    "Description": {
+      "description": "Reimbursement lines description (max length 50)",
+      "type": "string",
+      "example": "For the taxi",
+      "maxLength": 50
+    },
+    "ExpenseAccount": {
+      "description": "Reimbursement expense account. For posted pay run you should be able to see expense account code.",
+      "type": "string",
+      "example": 420
+    }
+  }
+}

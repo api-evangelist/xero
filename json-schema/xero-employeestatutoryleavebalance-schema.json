@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeStatutoryLeaveBalance",
+  "title": "EmployeeStatutoryLeaveBalance",
+  "type": "object",
+  "properties": {
+    "leaveType": {
+      "description": "The type of statutory leave",
+      "type": "string",
+      "enum": [
+        "Sick",
+        "Adoption",
+        "Maternity",
+        "Paternity",
+        "Sharedparental"
+      ]
+    },
+    "balanceRemaining": {
+      "description": "The balance remaining for the corresponding leave type as of specified date.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "units": {
+      "description": "The units will be \"Hours\"",
+      "type": "string",
+      "enum": [
+        "Hours"
+      ]
+    }
+  }
+}

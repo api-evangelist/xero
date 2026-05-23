@@ -1,0 +1,133 @@
+{
+  "operationId": "getBankTransaction",
+  "method": "GET",
+  "path": "/BankTransactions/{BankTransactionID}",
+  "summary": "Xero Retrieves a single spent or received money transaction by using a unique bank transaction Id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "612e204d-21ab-469b-ac84-afe0697b4461",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1551212902962)/",
+        "BankTransactions": [
+          {
+            "BankTransactionID": "db54aab0-ad40-4ced-bcff-0940ba20db2c",
+            "BankAccount": {
+              "AccountID": "6f7594f2-f059-4d56-9e67-47ac9733bfe9",
+              "Code": "088",
+              "Name": "Business Wells Fargo"
+            },
+            "BatchPayment": {
+              "Account": {
+                "AccountID": "6f7594f2-f059-4d56-9e67-47ac9733bfe9"
+              },
+              "BatchPaymentID": "b54aa50c-794c-461b-89d1-846e1b84d9c0",
+              "Date": "/Date(1476316800000+0000)/",
+              "Type": "RECBATCH",
+              "Status": "AUTHORISED",
+              "TotalAmount": "12.00",
+              "UpdatedDateUTC": "/Date(1476392487037+0000)/",
+              "IsReconciled": "false"
+            },
+            "Type": "RECEIVE",
+            "IsReconciled": false,
+            "CurrencyRate": 1.0,
+            "PrepaymentID": "cb62750f-b49c-464b-a45b-e2e2c514c8a9",
+            "HasAttachments": true,
+            "Attachments": [
+              {
+                "AttachmentID": "45dd3143-9856-42d2-9a6c-53814f67a33e",
+                "FileName": "sample2.jpg",
+                "Url": "https://api.xero.com/api.xro/2.0/banktransaction/db54aab0-ad40-4ced-bcff-0940ba20db2c/Attachments/sample2.jpg",
+                "MimeType": "image/jpg",
+                "ContentLength": 2878711
+              }
+            ],
+            "Contact": {
+              "ContactID": "9c2c64de-12c9-4167-b503-e2c0e1aa1f49",
+              "ContactStatus": "ACTIVE",
+              "Name": "sam",
+              "EmailAddress": "",
+              "BankAccountDetails": "",
+              "Addresses": [
+                {
+                  "AddressType": "STREET",
+                  "City": "",
+                  "Region": "",
+                  "PostalCode": "",
+                  "Country": ""
+                },
+                {
+                  "AddressType": "POBOX",
+                  "City": "",
+                  "Region": "",
+                  "PostalCode": "",
+                  "Country": ""
+                }
+              ],
+              "Phones": [
+                {
+                  "PhoneType": "DEFAULT",
+                  "PhoneNumber": "",
+                  "PhoneAreaCode": "",
+                  "PhoneCountryCode": ""
+                },
+                {
+                  "PhoneType": "DDI",
+                  "PhoneNumber": "",
+                  "PhoneAreaCode": "",
+                  "PhoneCountryCode": ""
+                },
+                {
+                  "PhoneType": "FAX",
+                  "PhoneNumber": "",
+                  "PhoneAreaCode": "",
+                  "PhoneCountryCode": ""
+                },
+                {
+                  "PhoneType": "MOBILE",
+                  "PhoneNumber": "",
+                  "PhoneAreaCode": "",
+                  "PhoneCountryCode": ""
+                }
+              ],
+              "UpdatedDateUTC": "/Date(1518821703467+0000)/",
+              "ContactGroups": [],
+              "DefaultCurrency": "USD",
+              "ContactPersons": [],
+              "HasValidationErrors": false
+            },
+            "DateString": "2016-10-13 00:00:00",
+            "Date": "/Date(1476316800000+0000)/",
+            "Status": "AUTHORISED",
+            "LineAmountTypes": "Exclusive",
+            "LineItems": [
+              {
+                "Description": "hello",
+                "UnitAmount": 10.0,
+                "TaxType": "OUTPUT",
+                "TaxAmount": 0.0,
+                "LineAmount": 10.0,
+                "AccountCode": "400",
+                "Tracking": [],
+                "Quantity": 1.0,
+                "LineItemID": "40bec527-a744-4149-96c5-0ab643b51158",
+                "AccountID": "ebd06280-af70-4bed-97c6-7451a454ad85",
+                "ValidationErrors": []
+              }
+            ],
+            "SubTotal": 10.0,
+            "TotalTax": 0.0,
+            "Total": 10.0,
+            "UpdatedDateUTC": "/Date(1476389616437+0000)/",
+            "CurrencyCode": "USD"
+          }
+        ]
+      }
+    }
+  ]
+}

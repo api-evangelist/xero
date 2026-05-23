@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SuperFundProducts",
+  "title": "SuperFundProducts",
+  "type": "object",
+  "x-objectArrayKey": "super_fund_products",
+  "properties": {
+    "SuperFundProducts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SuperFundProduct"
+      }
+    }
+  }
+}

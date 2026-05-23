@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StatutoryDeductionCategory",
+  "title": "StatutoryDeductionCategory",
+  "description": "Statutory Deduction Category",
+  "type": "string",
+  "enum": [
+    "PriorityOrder",
+    "NonPriorityOrder",
+    "TableBased",
+    "ChildSupport",
+    "CourtFines",
+    "InlandRevenueArrears",
+    "MsdRepayments",
+    "StudentLoan",
+    "AdditionalStudentLoan",
+    "VoluntaryStudentLoan",
+    "KiwiSaver"
+  ]
+}

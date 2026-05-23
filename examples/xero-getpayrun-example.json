@@ -1,0 +1,65 @@
+{
+  "operationId": "getPayRun",
+  "method": "GET",
+  "path": "/PayRuns/{PayRunID}",
+  "summary": "Retrieves a pay run by using a unique pay run id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573692531699)/",
+        "PayRuns": [
+          {
+            "PayRunID": "21d6317b-5319-4b3d-8d78-48904db6b665",
+            "PayrollCalendarID": "78bb86b9-e1ea-47ac-b75d-f087a81931de",
+            "PayRunPeriodStartDate": "/Date(1572566400000+0000)/",
+            "PayRunPeriodEndDate": "/Date(1573084800000+0000)/",
+            "PaymentDate": "/Date(1573171200000+0000)/",
+            "Wages": 205.4,
+            "Deductions": 37,
+            "Tax": 0,
+            "Super": 0,
+            "Reimbursement": 77,
+            "NetPay": 168.4,
+            "PayRunStatus": "POSTED",
+            "UpdatedDateUTC": "/Date(1573692155000+0000)/",
+            "Payslips": [
+              {
+                "EmployeeID": "cdfb8371-0b21-4b8a-8903-1024df6c391e",
+                "PayslipID": "c81e8bcc-56b0-4740-b46b-767753a6ee45",
+                "FirstName": "Albus",
+                "LastName": "Dumbledore",
+                "EmployeeGroup": "foo",
+                "Wages": 5.4,
+                "Deductions": 4,
+                "Tax": 0,
+                "Super": 0,
+                "Reimbursements": 55,
+                "NetPay": 1.4,
+                "UpdatedDateUTC": "/Date(1573692155000+0000)/"
+              },
+              {
+                "EmployeeID": "7aa04979-ded5-44d9-b09a-793749425844",
+                "PayslipID": "76b9cb4e-d024-47cf-b09a-4c9cea2870f1",
+                "FirstName": "John",
+                "LastName": "Smith",
+                "Wages": 200,
+                "Deductions": 33,
+                "Tax": 0,
+                "Super": 0,
+                "Reimbursements": 22,
+                "NetPay": 167,
+                "UpdatedDateUTC": "/Date(1573692155000+0000)/"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

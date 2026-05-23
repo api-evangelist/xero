@@ -1,0 +1,30 @@
+{
+  "operationId": "updatePayRun",
+  "method": "POST",
+  "path": "/PayRuns/{PayRunID}",
+  "summary": "Updates a pay run",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573693093680)/",
+        "PayRuns": [
+          {
+            "PayRunID": "f8fcda54-643f-4406-902a-d7b020d0a036",
+            "PayrollCalendarID": "78bb86b9-e1ea-47ac-b75d-f087a81931de",
+            "PayRunPeriodStartDate": "/Date(1572566400000+0000)/",
+            "PayRunPeriodEndDate": "/Date(1573084800000+0000)/",
+            "PaymentDate": "/Date(1573171200000+0000)/",
+            "PayRunStatus": "POSTED",
+            "UpdatedDateUTC": "/Date(1573693093000+0000)/"
+          }
+        ]
+      }
+    }
+  ]
+}

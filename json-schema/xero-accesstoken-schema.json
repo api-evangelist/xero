@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccessToken",
+  "title": "AccessToken",
+  "externalDocs": {
+    "url": "http://developer.xero.com"
+  },
+  "type": "object",
+  "properties": {
+    "id_token": {
+      "description": "Xero unique identifier",
+      "type": "string"
+    },
+    "access_token": {
+      "description": "access token provided during authentication flow",
+      "type": "string"
+    },
+    "expires_in": {
+      "description": "time in seconds until access token expires.",
+      "type": "integer",
+      "format": "int64"
+    },
+    "token_type": {
+      "description": "type of token i.e. Bearer",
+      "type": "string"
+    },
+    "refresh_token": {
+      "description": "token used to refresh an expired access token",
+      "type": "string"
+    }
+  }
+}

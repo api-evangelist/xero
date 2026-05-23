@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Association",
+  "title": "Association",
+  "type": "object",
+  "properties": {
+    "SendWithObject": {
+      "description": "Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.",
+      "type": "boolean",
+      "example": true
+    },
+    "Name": {
+      "description": "The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.",
+      "type": "string",
+      "example": "Test.pdf"
+    },
+    "Size": {
+      "description": "The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.",
+      "type": "integer",
+      "example": 12357
+    },
+    "CreatedDateUtc": {
+      "description": "The date the file was created (UTC). Note- The CreatedDateUtc element is only returned when using /Associations/{ObjectId} endpoint.",
+      "type": "string",
+      "format": "date-time",
+      "example": "2020-12-10T01:22:00.0000000"
+    },
+    "AssociationDateUtc": {
+      "description": "The date the file was associated with the object (UTC). Note- The AssociationDateUtc element is only returned when using /Associations/{ObjectId} endpoint.",
+      "type": "string",
+      "format": "date-time",
+      "example": "2020-12-10T01:22:00.0000000"
+    },
+    "FileId": {
+      "description": "The unique identifier of the file",
+      "type": "string",
+      "format": "uuid"
+    },
+    "ObjectId": {
+      "description": "The identifier of the object that the file is being associated with (e.g. InvoiceID, BankTransactionID, ContactID)",
+      "type": "string",
+      "format": "uuid"
+    },
+    "ObjectGroup": {
+      "$ref": "#/components/schemas/ObjectGroup"
+    },
+    "ObjectType": {
+      "$ref": "#/components/schemas/ObjectType"
+    }
+  }
+}

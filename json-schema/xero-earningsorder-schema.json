@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EarningsOrder",
+  "title": "EarningsOrder",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "id": {
+      "description": "Xero unique identifier for an earning rate",
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "description": "Name of the earning order",
+      "type": "string"
+    },
+    "statutoryDeductionCategory": {
+      "$ref": "#/components/schemas/StatutoryDeductionCategory"
+    },
+    "liabilityAccountId": {
+      "description": "Xero identifier for Liability Account",
+      "type": "string",
+      "format": "uuid"
+    },
+    "currentRecord": {
+      "description": "Identifier of a record is active or not.",
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

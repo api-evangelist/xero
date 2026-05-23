@@ -1,0 +1,29 @@
+{
+  "operationId": "getDeduction",
+  "method": "GET",
+  "path": "/Deductions/{deductionId}",
+  "summary": "Retrieves a single deduction by using a unique deduction ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 20:43:54.846821",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "deduction": {
+          "deductionId": "a3760fe4-68a4-4e38-8326-fe616af7dc74",
+          "deductionName": "KiwiSaver Voluntary Contributions",
+          "deductionCategory": "KiwiSaverVoluntaryContributions",
+          "liabilityAccountId": "26c57f04-0436-40cc-9cd9-1a21185d88bb",
+          "currentRecord": true,
+          "standardAmount": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProjectCreateOrUpdate",
+  "title": "ProjectCreateOrUpdate",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/projects/projects"
+  },
+  "type": "object",
+  "properties": {
+    "contactId": {
+      "externalDocs": {
+        "url": "https://developer.xero.com/documentation/api/contacts"
+      },
+      "type": "string",
+      "format": "uuid",
+      "example": "01234567-89ab-cdef-0123-456789abcdef",
+      "description": "Identifier of the contact this project was created for."
+    },
+    "name": {
+      "type": "string",
+      "example": "New Kitchen",
+      "description": "Name of the project."
+    },
+    "estimateAmount": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 1.0
+    },
+    "deadlineUtc": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2019-12-10T12:59:59Z",
+      "description": "Deadline for the project. UTC Date Time in ISO-8601 format."
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

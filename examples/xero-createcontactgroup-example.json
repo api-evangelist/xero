@@ -1,0 +1,61 @@
+{
+  "operationId": "createContactGroup",
+  "method": "PUT",
+  "path": "/ContactGroups",
+  "summary": "Xero Creates a contact group",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "ContactGroups": [
+          {
+            "Name": "VIPs"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "5afe53f9-2271-45b8-9767-88d023b71d34",
+        "Status": "OK",
+        "ProviderName": "Provider Name Example",
+        "DateTimeUTC": "/Date(1551745740920)/",
+        "ContactGroups": [
+          {
+            "ContactGroupID": "d7a86b80-8dac-4d89-a334-9dcf5753676c",
+            "Name": "Suppliers",
+            "Status": "ACTIVE",
+            "Contacts": [],
+            "HasValidationErrors": false
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "ErrorNumber": 10,
+        "Type": "ValidationException",
+        "Message": "A validation exception occurred",
+        "Elements": [
+          {
+            "ContactGroupID": "00000000-0000-0000-0000-000000000000",
+            "Name": "Suppliers",
+            "Contacts": [],
+            "HasValidationErrors": true,
+            "ValidationErrors": [
+              {
+                "Message": "You\u2019ve reached the limit of 100 contact groups."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

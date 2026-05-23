@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ValidationError",
+  "title": "ValidationError",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/api/http-response-codes"
+  },
+  "properties": {
+    "Message": {
+      "description": "Validation error message",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

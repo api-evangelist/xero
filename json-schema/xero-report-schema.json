@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Report",
+  "title": "Report",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/reports/"
+  },
+  "properties": {
+    "ReportName": {
+      "description": "See Prepayment Types",
+      "type": "string"
+    },
+    "ReportType": {
+      "description": "See Prepayment Types",
+      "type": "string",
+      "enum": [
+        "AgedPayablesByContact"
+      ]
+    },
+    "ReportTitle": {
+      "description": "See Prepayment Types",
+      "type": "string"
+    },
+    "ReportDate": {
+      "description": "Date of report",
+      "type": "string"
+    },
+    "UpdatedDateUTC": {
+      "description": "Updated Date",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "Contacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TenNinetyNineContact"
+      }
+    }
+  }
+}

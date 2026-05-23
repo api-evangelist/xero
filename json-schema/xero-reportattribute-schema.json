@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReportAttribute",
+  "title": "ReportAttribute",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/reports/"
+  },
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Value": {
+      "type": "string"
+    }
+  }
+}

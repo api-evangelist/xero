@@ -1,0 +1,83 @@
+{
+  "operationId": "getBudget",
+  "method": "GET",
+  "path": "/Budgets/{BudgetID}",
+  "summary": "Xero Retrieves a specific budget, which includes budget lines",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "04e93d48-e72f-4775-b7dd-15a041fab972",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1551399323399)/",
+        "Budgets": {
+          "BudgetID": "c1d195d4-92aa-4abd-867a-7ac2f9d60500",
+          "Type": "TRACKING",
+          "Description": "Daniels Northern Budget",
+          "UpdatedDateUTC": "2017-08-14 01:18:26.740000",
+          "Tracking": [
+            {
+              "TrackingCategoryID": "e94ba240-3edf-4ef3-8317-10147b968f94",
+              "Name": "Region",
+              "TrackingOptionID": "e94ba240-3edf-4ef3-8317-10147b968f94",
+              "Option": "North"
+            },
+            {
+              "TrackingCategoryID": "d8580491-4167-4a81-9624-ad3bdd8e46ce",
+              "Name": "Salesperson",
+              "TrackingOptionID": "9c24de87-a2b7-439d-a216-35d1af7bdec3",
+              "Option": "Daniel"
+            }
+          ],
+          "BudgetLines": [
+            {
+              "AccountID": "9c24de87-a2b7-439d-a216-35d1af7bdec3",
+              "AccountCode": "200",
+              "BudgetBalances": [
+                {
+                  "Period": "2019-08",
+                  "Amount": "1000",
+                  "Notes": "Sample note"
+                },
+                {
+                  "Period": "2019-09",
+                  "Amount": "1050",
+                  "Notes": ""
+                },
+                {
+                  "Period": "2019-10",
+                  "Amount": "1102",
+                  "Notes": ""
+                }
+              ]
+            },
+            {
+              "AccountID": "385f90ae-e798-4990-9b1c-db8eb8b735c2",
+              "AccountCode": "420",
+              "BudgetBalances": [
+                {
+                  "Period": "2019-08",
+                  "Amount": "500",
+                  "Notes": ""
+                },
+                {
+                  "Period": "2019-09",
+                  "Amount": "505",
+                  "Notes": "Special Month"
+                },
+                {
+                  "Period": "2019-10",
+                  "Amount": "510",
+                  "Notes": ""
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

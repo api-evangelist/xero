@@ -1,0 +1,14 @@
+{
+  "operationId": "getFolder",
+  "method": "GET",
+  "path": "/Folders/{FolderId}",
+  "summary": "Retrieves specific folder by using a unique folder ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": "{ \"Name\": \"My Docs\", \"FileCount\": 0, \"IsInbox\": false, \"Id\": \"4c5f3fe4-2516-4863-ac88-3029351773bf\" }"
+    }
+  ]
+}

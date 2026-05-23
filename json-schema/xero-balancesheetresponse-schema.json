@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BalanceSheetResponse",
+  "title": "BalanceSheetResponse",
+  "type": "object",
+  "properties": {
+    "balanceDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Balance date of the report"
+    },
+    "asset": {
+      "$ref": "#/components/schemas/BalanceSheetAccountGroup"
+    },
+    "liability": {
+      "$ref": "#/components/schemas/BalanceSheetAccountGroup"
+    },
+    "equity": {
+      "$ref": "#/components/schemas/BalanceSheetAccountGroup"
+    }
+  },
+  "additionalProperties": false
+}

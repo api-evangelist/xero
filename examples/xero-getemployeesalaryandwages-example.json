@@ -1,0 +1,54 @@
+{
+  "operationId": "getEmployeeSalaryAndWages",
+  "method": "GET",
+  "path": "/Employees/{EmployeeID}/SalaryAndWages",
+  "summary": "Retrieves an employee's salary and wages",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 00:25:03.669749",
+        "httpStatusCode": "OK",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 2
+        },
+        "problem": null,
+        "salaryAndWages": [
+          {
+            "salaryAndWagesID": "b0026f5a-fa8e-43aa-95e4-cec3c0972e39",
+            "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+            "numberOfUnitsPerWeek": 0,
+            "ratePerUnit": 25,
+            "numberOfUnitsPerDay": 0,
+            "daysPerWeek": 0,
+            "effectiveFrom": "2019-02-07 00:00:00",
+            "annualSalary": 25,
+            "status": "Active",
+            "paymentType": "Hourly",
+            "workPatternType": "DaysAndHours"
+          },
+          {
+            "salaryAndWagesID": "0211c70c-93d5-4da1-a570-b66d8df2ca15",
+            "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+            "numberOfUnitsPerWeek": 2,
+            "ratePerUnit": null,
+            "numberOfUnitsPerDay": 2,
+            "daysPerWeek": 1,
+            "effectiveFrom": "2020-05-01 00:00:00",
+            "annualSalary": 100,
+            "status": "Active",
+            "paymentType": "Salary",
+            "workPatternType": "DaysAndHours"
+          }
+        ]
+      }
+    }
+  ]
+}

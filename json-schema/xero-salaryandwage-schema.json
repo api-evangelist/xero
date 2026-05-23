@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalaryAndWage",
+  "title": "SalaryAndWage",
+  "type": "object",
+  "required": [
+    "earningsRateID",
+    "numberOfUnitsPerWeek",
+    "numberOfUnitsPerDay",
+    "effectiveFrom",
+    "annualSalary",
+    "status",
+    "paymentType"
+  ],
+  "properties": {
+    "salaryAndWagesID": {
+      "description": "Xero unique identifier for a salary and wages record",
+      "type": "string",
+      "format": "uuid"
+    },
+    "earningsRateID": {
+      "description": "Xero unique identifier for an earnings rate",
+      "type": "string",
+      "format": "uuid"
+    },
+    "numberOfUnitsPerWeek": {
+      "description": "The Number of Units per week for the corresponding salary and wages",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "ratePerUnit": {
+      "description": "The rate of each unit for the corresponding salary and wages",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "numberOfUnitsPerDay": {
+      "description": "The Number of Units per day for the corresponding salary and wages",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "daysPerWeek": {
+      "description": "The days per week for the salary.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "effectiveFrom": {
+      "description": "The effective date of the corresponding salary and wages",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "annualSalary": {
+      "description": "The annual salary",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "status": {
+      "description": "The current status of the corresponding salary and wages",
+      "type": "string",
+      "enum": [
+        "Active",
+        "Pending",
+        "History"
+      ]
+    },
+    "paymentType": {
+      "description": "The type of the payment of the corresponding salary and wages",
+      "type": "string",
+      "enum": [
+        "Salary",
+        "Hourly"
+      ]
+    },
+    "workPatternType": {
+      "description": "The type of the Working Pattern of the corresponding salary and wages",
+      "type": "string",
+      "enum": [
+        "DaysAndHours",
+        "RegularWeek"
+      ]
+    }
+  }
+}

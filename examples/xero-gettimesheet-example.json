@@ -1,0 +1,43 @@
+{
+  "operationId": "getTimesheet",
+  "method": "GET",
+  "path": "/Timesheets/{TimesheetID}",
+  "summary": "Retrieves a timesheet by using a unique timesheet id",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573516184161)/",
+        "Timesheet": {
+          "TimesheetID": "df954ca3-3a70-47e9-9a3e-80711e7c5f90",
+          "EmployeeID": "b34e89ff-770d-4099-b7e5-f968767118bc",
+          "StartDate": "/Date(1547164800000+0000)/",
+          "EndDate": "/Date(1547683200000+0000)/",
+          "Status": "APPROVED",
+          "Hours": 15.0,
+          "TimesheetLines": [
+            {
+              "EarningsRateID": "ab874dfb-ab09-4c91-954e-43acf6fc23b4",
+              "NumberOfUnits": [
+                3.0,
+                3.0,
+                3.0,
+                3.0,
+                0.0,
+                3.0,
+                0.0
+              ],
+              "UpdatedDateUTC": "/Date(1572915797000+0000)/"
+            }
+          ],
+          "UpdatedDateUTC": "/Date(1572915797000+0000)/"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SuperMembership",
+  "title": "SuperMembership",
+  "type": "object",
+  "required": [
+    "SuperFundID",
+    "EmployeeNumber"
+  ],
+  "properties": {
+    "SuperMembershipID": {
+      "description": "Xero unique identifier for Super membership",
+      "type": "string",
+      "format": "uuid",
+      "example": "4333d5cd-53a5-4c31-98e5-a8b4e5676b0b"
+    },
+    "SuperFundID": {
+      "description": "Xero identifier for super fund",
+      "type": "string",
+      "format": "uuid",
+      "example": "2187a42b-639a-45cb-9eed-cd4ae488306a"
+    },
+    "EmployeeNumber": {
+      "description": "The membership number assigned to the employee by the super fund.",
+      "type": "string",
+      "example": 1234
+    }
+  }
+}

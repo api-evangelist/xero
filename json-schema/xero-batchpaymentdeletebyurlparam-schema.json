@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchPaymentDeleteByUrlParam",
+  "title": "BatchPaymentDeleteByUrlParam",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/accounting/batchpayments"
+  },
+  "properties": {
+    "Status": {
+      "description": "The status of the batch payment.",
+      "type": "string",
+      "default": "DELETED"
+    }
+  },
+  "required": [
+    "Status"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,42 @@
+{
+  "operationId": "getTaxRateByTaxType",
+  "method": "GET",
+  "path": "/TaxRates/{TaxType}",
+  "summary": "Xero Retrieves a specific tax rate according to given TaxType code",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "455d494d-9706-465b-b584-7086ca406b27",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1550797359081)/",
+        "TaxRates": [
+          {
+            "Name": "15% GST on Expenses",
+            "TaxType": "INPUT2",
+            "ReportTaxType": "INPUT",
+            "CanApplyToAssets": true,
+            "CanApplyToEquity": true,
+            "CanApplyToExpenses": true,
+            "CanApplyToLiabilities": true,
+            "CanApplyToRevenue": false,
+            "DisplayTaxRate": 15.0,
+            "EffectiveRate": 15.0,
+            "Status": "ACTIVE",
+            "TaxComponents": [
+              {
+                "Name": "GST",
+                "Rate": 15.0,
+                "IsCompound": false,
+                "IsNonRecoverable": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

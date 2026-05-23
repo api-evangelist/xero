@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayRuns",
+  "title": "PayRuns",
+  "type": "object",
+  "x-objectArrayKey": "pay_runs",
+  "properties": {
+    "PayRuns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PayRun"
+      }
+    }
+  }
+}

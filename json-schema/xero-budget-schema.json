@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Budget",
+  "title": "Budget",
+  "type": "object",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/budgets/"
+  },
+  "properties": {
+    "BudgetID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Type": {
+      "description": "Type of Budget. OVERALL or TRACKING",
+      "type": "string",
+      "enum": [
+        "OVERALL",
+        "TRACKING"
+      ]
+    },
+    "Description": {
+      "description": "The Budget description",
+      "maxLength": 255,
+      "type": "string"
+    },
+    "UpdatedDateUTC": {
+      "description": "UTC timestamp of last update to budget",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "BudgetLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BudgetLine"
+      }
+    },
+    "Tracking": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TrackingCategory"
+      }
+    }
+  }
+}

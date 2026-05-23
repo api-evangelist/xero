@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BankTransfer",
+  "title": "BankTransfer",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/bank-transfers/"
+  },
+  "properties": {
+    "FromBankAccount": {
+      "$ref": "#/components/schemas/Account"
+    },
+    "ToBankAccount": {
+      "$ref": "#/components/schemas/Account"
+    },
+    "Amount": {
+      "description": "amount of the transaction",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Date": {
+      "description": "The date of the Transfer YYYY-MM-DD",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "BankTransferID": {
+      "description": "The identifier of the Bank Transfer",
+      "readOnly": true,
+      "type": "string",
+      "format": "uuid"
+    },
+    "CurrencyRate": {
+      "description": "The currency rate",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "FromBankTransactionID": {
+      "description": "The Bank Transaction ID for the source account",
+      "readOnly": true,
+      "type": "string",
+      "format": "uuid"
+    },
+    "ToBankTransactionID": {
+      "description": "The Bank Transaction ID for the destination account",
+      "readOnly": true,
+      "type": "string",
+      "format": "uuid"
+    },
+    "FromIsReconciled": {
+      "description": "The Bank Transaction boolean to show if it is reconciled for the source account",
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "ToIsReconciled": {
+      "description": "The Bank Transaction boolean to show if it is reconciled for the destination account",
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "Reference": {
+      "description": "Reference for the transactions.",
+      "type": "string"
+    },
+    "HasAttachments": {
+      "description": "Boolean to indicate if a Bank Transfer has an attachment",
+      "readOnly": true,
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "CreatedDateUTC": {
+      "description": "UTC timestamp of creation date of bank transfer",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    }
+  },
+  "required": [
+    "FromBankAccount",
+    "ToBankAccount",
+    "Amount"
+  ],
+  "type": "object"
+}

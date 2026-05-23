@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Connection",
+  "title": "Connection",
+  "externalDocs": {
+    "url": "http://developer.xero.com"
+  },
+  "properties": {
+    "id": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "tenantId": {
+      "description": "Xero identifier of organisation",
+      "type": "string",
+      "format": "uuid"
+    },
+    "authEventId": {
+      "description": "Identifier shared across connections authorised at the same time",
+      "type": "string",
+      "format": "uuid"
+    },
+    "tenantType": {
+      "description": "Xero tenant type (i.e. ORGANISATION, PRACTICE)",
+      "type": "string"
+    },
+    "tenantName": {
+      "description": "Xero tenant name",
+      "type": "string"
+    },
+    "createdDateUtc": {
+      "description": "The date when the user connected this tenant to your app",
+      "type": "string",
+      "format": "date-time",
+      "x-is-datetime": true,
+      "x-php-format": "\\DateTime"
+    },
+    "updatedDateUtc": {
+      "description": "The date when the user most recently connected this tenant to your app. May differ to the created date if the user has disconnected and subsequently reconnected this tenant to your app.",
+      "type": "string",
+      "format": "date-time",
+      "x-is-datetime": true,
+      "x-php-format": "\\DateTime"
+    }
+  }
+}

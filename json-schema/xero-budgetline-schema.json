@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BudgetLine",
+  "title": "BudgetLine",
+  "type": "object",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/budgets/"
+  },
+  "properties": {
+    "AccountID": {
+      "description": "See Accounts",
+      "type": "string",
+      "format": "uuid"
+    },
+    "AccountCode": {
+      "description": "See Accounts",
+      "type": "string",
+      "example": "090"
+    },
+    "BudgetBalances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BudgetBalance"
+      }
+    }
+  }
+}

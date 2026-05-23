@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SalesTrackingCategory",
+  "title": "SalesTrackingCategory",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/tracking-categories/"
+  },
+  "properties": {
+    "TrackingCategoryName": {
+      "description": "The default sales tracking category name for contacts",
+      "type": "string"
+    },
+    "TrackingOptionName": {
+      "description": "The default purchase tracking category name for contacts",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

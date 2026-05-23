@@ -1,0 +1,30 @@
+{
+  "operationId": "createReceiptHistory",
+  "method": "PUT",
+  "path": "/Receipts/{ReceiptID}/History",
+  "summary": "Xero Creates a history record for a specific receipt",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "ErrorNumber": 10,
+        "Type": "ValidationException",
+        "Message": "A validation exception occurred",
+        "Elements": [
+          {
+            "DateUTCString": "2019-03-15 21:51:50",
+            "DateUTC": "/Date(1552686710791)/",
+            "Details": "Hello World",
+            "ValidationErrors": [
+              {
+                "Message": "The document with the supplied id was not found for this endpoint."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

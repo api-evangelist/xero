@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EarningsOrders",
+  "title": "EarningsOrders",
+  "type": "object",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "problem": {
+      "$ref": "#/components/schemas/Problem"
+    },
+    "statutoryDeductions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EarningsOrder"
+      }
+    }
+  }
+}

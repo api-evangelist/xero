@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContactTotalOther",
+  "title": "ContactTotalOther",
+  "type": "object",
+  "properties": {
+    "totalOutstandingAged": {
+      "type": "number",
+      "description": "Total outstanding invoice value for the contact within the period where the invoices are more than 90 days old",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalVoided": {
+      "type": "number",
+      "description": "Total voided value for the contact.",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalCredited": {
+      "type": "number",
+      "description": "Total credited value for the contact.",
+      "format": "double",
+      "x-is-money": true
+    },
+    "transactionCount": {
+      "type": "integer",
+      "description": "Number of transactions for the contact.",
+      "format": "int32"
+    }
+  },
+  "additionalProperties": false
+}

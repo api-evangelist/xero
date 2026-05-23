@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Project",
+  "title": "Project",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/projects/projects"
+  },
+  "type": "object",
+  "properties": {
+    "projectId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "254553fa-2be8-4991-bd5e-70a97ea12ef8",
+      "description": "Identifier of the project."
+    },
+    "contactId": {
+      "externalDocs": {
+        "url": "https://developer.xero.com/documentation/api/contacts"
+      },
+      "type": "string",
+      "format": "uuid",
+      "example": "01234567-89ab-cdef-0123-456789abcdef",
+      "description": "Identifier of the contact this project was created for."
+    },
+    "name": {
+      "type": "string",
+      "example": "New Kitchen",
+      "description": "Name of the project."
+    },
+    "currencyCode": {
+      "$ref": "#/components/schemas/CurrencyCode",
+      "type": "string"
+    },
+    "minutesLogged": {
+      "type": "integer",
+      "example": 0,
+      "description": "A total of minutes logged against all tasks on the Project."
+    },
+    "totalTaskAmount": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "totalExpenseAmount": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "estimateAmount": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "minutesToBeInvoiced": {
+      "type": "integer",
+      "example": 0,
+      "description": "Minutes which have not been invoiced across all chargeable tasks in the project."
+    },
+    "taskAmountToBeInvoiced": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "taskAmountInvoiced": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "expenseAmountToBeInvoiced": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "expenseAmountInvoiced": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "projectAmountInvoiced": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "deposit": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "depositApplied": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "creditNoteAmount": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "deadlineUtc": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2019-12-10T12:59:59Z",
+      "description": "Deadline for the project. UTC Date Time in ISO-8601 format."
+    },
+    "totalInvoiced": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "totalToBeInvoiced": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "estimate": {
+      "$ref": "#/components/schemas/Amount"
+    },
+    "status": {
+      "type": "string",
+      "$ref": "#/components/schemas/ProjectStatus"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

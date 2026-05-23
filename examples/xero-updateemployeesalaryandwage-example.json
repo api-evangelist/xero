@@ -1,0 +1,49 @@
+{
+  "operationId": "updateEmployeeSalaryAndWage",
+  "method": "PUT",
+  "path": "/Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}",
+  "summary": "Updates an employee's salary and wages record",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+        "numberOfUnitsPerWeek": 3,
+        "ratePerUnit": 11,
+        "numberOfUnitsPerDay": 3,
+        "daysPerWeek": 1,
+        "effectiveFrom": "2020-05-15",
+        "annualSalary": 101,
+        "status": "Active",
+        "paymentType": "Salary"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 00:25:11.497664",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "salaryAndWages": {
+          "salaryAndWagesID": "1912d614-99d0-43e6-8d63-5b539dcfe358",
+          "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+          "numberOfUnitsPerWeek": 3,
+          "ratePerUnit": null,
+          "numberOfUnitsPerDay": 3,
+          "daysPerWeek": 1,
+          "effectiveFrom": "2020-05-15 00:00:00",
+          "annualSalary": 101,
+          "status": "Active",
+          "paymentType": "Salary",
+          "workPatternType": "RegularWeek"
+        }
+      }
+    }
+  ]
+}

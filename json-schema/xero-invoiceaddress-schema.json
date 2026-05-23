@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InvoiceAddress",
+  "title": "InvoiceAddress",
+  "properties": {
+    "InvoiceAddressType": {
+      "description": "Indicates whether the address is defined as origin (FROM) or destination (TO)",
+      "type": "string",
+      "enum": [
+        "FROM",
+        "TO"
+      ]
+    },
+    "AddressLine1": {
+      "description": "First line of a physical address",
+      "type": "string"
+    },
+    "AddressLine2": {
+      "description": "Second line of a physical address",
+      "type": "string"
+    },
+    "AddressLine3": {
+      "description": "Third line of a physical address",
+      "type": "string"
+    },
+    "AddressLine4": {
+      "description": "Fourth line of a physical address",
+      "type": "string"
+    },
+    "City": {
+      "description": "City of a physical address",
+      "type": "string"
+    },
+    "Region": {
+      "description": "Region or state of a physical address",
+      "type": "string"
+    },
+    "PostalCode": {
+      "description": "Postal code of a physical address",
+      "type": "string"
+    },
+    "Country": {
+      "description": "Country of a physical address",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

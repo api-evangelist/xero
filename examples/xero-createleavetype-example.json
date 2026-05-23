@@ -1,0 +1,40 @@
+{
+  "operationId": "createLeaveType",
+  "method": "POST",
+  "path": "/LeaveTypes",
+  "summary": "Creates a new leave type",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "name": "My wqwhhiktun Leave",
+        "isPaidLeave": false,
+        "showOnPayslip": true
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 20:49:59.913545",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "leaveType": {
+          "leaveTypeID": "80464f55-b5c9-4d05-84c7-219d98baa3e2",
+          "name": "My wqwhhiktun Leave",
+          "isPaidLeave": false,
+          "showOnPayslip": true,
+          "updatedDateUTC": "2020-08-27 20:49:59.831561",
+          "isActive": true,
+          "typeOfUnits": "Hours",
+          "typeOfUnitsToAccrue": "Hours"
+        }
+      }
+    }
+  ]
+}

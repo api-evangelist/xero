@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UploadObject",
+  "title": "UploadObject",
+  "type": "object",
+  "required": [
+    "body",
+    "name",
+    "filename"
+  ],
+  "properties": {
+    "body": {
+      "type": "string",
+      "format": "byte"
+    },
+    "name": {
+      "type": "string",
+      "description": "exact name of the file you are uploading"
+    },
+    "filename": {
+      "type": "string"
+    },
+    "mimeType": {
+      "type": "string"
+    }
+  }
+}

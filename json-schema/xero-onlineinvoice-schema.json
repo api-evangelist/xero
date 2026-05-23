@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OnlineInvoice",
+  "title": "OnlineInvoice",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/invoices/"
+  },
+  "properties": {
+    "OnlineInvoiceUrl": {
+      "description": "the URL to an online invoice",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

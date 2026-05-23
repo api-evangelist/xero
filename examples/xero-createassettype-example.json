@@ -1,0 +1,74 @@
+{
+  "operationId": "createAssetType",
+  "method": "POST",
+  "path": "/AssetTypes",
+  "summary": "Xero adds a fixed asset type",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "assetTypeName": "Machinery11004",
+        "fixedAssetAccountId": "3d8d063a-c148-4bb8-8b3c-a5e2ad3b1e82",
+        "depreciationExpenseAccountId": "d1602f69-f900-4616-8d34-90af393fa368",
+        "accumulatedDepreciationAccountId": "9195cadd-8645-41e6-9f67-7bcd421defe8",
+        "bookDepreciationSetting": {
+          "depreciationMethod": "DiminishingValue100",
+          "averagingMethod": "ActualDays",
+          "depreciationRate": 0.05,
+          "depreciationCalculationMethod": "None"
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "assetTypeId": "85509b5d-308e-420d-9532-b85105058916",
+        "assetTypeName": "Machinery11004",
+        "fixedAssetAccountId": "3d8d063a-c148-4bb8-8b3c-a5e2ad3b1e82",
+        "depreciationExpenseAccountId": "d1602f69-f900-4616-8d34-90af393fa368",
+        "accumulatedDepreciationAccountId": "9195cadd-8645-41e6-9f67-7bcd421defe8",
+        "bookDepreciationSetting": {
+          "depreciableObjectId": "00000000-0000-0000-0000-000000000000",
+          "depreciableObjectType": "None",
+          "depreciationMethod": "DiminishingValue100",
+          "averagingMethod": "ActualDays",
+          "depreciationRate": 0.05,
+          "depreciationCalculationMethod": "None"
+        },
+        "locks": 0,
+        "lockPrivateUseAccount": false
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "resourceValidationErrors": [],
+        "fieldValidationErrors": [
+          {
+            "fieldName": "FixedAssetAccountId",
+            "valueProvided": "",
+            "localisedMessage": "Fixed Asset Account Id is invalid",
+            "type": "http://common.service.xero.com/errors/validation/field",
+            "title": "Validation Error",
+            "detail": "Fixed Asset Account Id is invalid"
+          },
+          {
+            "fieldName": "DepreciationExpenseAccountId",
+            "valueProvided": "",
+            "localisedMessage": "Depreciation Expense Account Id is invalid",
+            "type": "http://common.service.xero.com/errors/validation/field",
+            "title": "Validation Error",
+            "detail": "Depreciation Expense Account Id is invalid"
+          }
+        ],
+        "type": "http://common.service.xero.com/errors/validation",
+        "title": "The resource update failed validation.",
+        "detail": "Validation Errors"
+      }
+    }
+  ]
+}

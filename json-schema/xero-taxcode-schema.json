@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TaxCode",
+  "title": "TaxCode",
+  "description": "Tax codes used for employee tax",
+  "type": "string",
+  "enum": [
+    "ND",
+    "M",
+    "ME",
+    "MSL",
+    "MESL",
+    "SB",
+    "S",
+    "SH",
+    "ST",
+    "SBSL",
+    "SSL",
+    "SHSL",
+    "STSL",
+    "WT",
+    "CAE",
+    "EDW",
+    "NSW",
+    "STC",
+    "STCSL"
+  ]
+}

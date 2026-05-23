@@ -1,0 +1,52 @@
+{
+  "operationId": "createEmployee",
+  "method": "POST",
+  "path": "/Employees",
+  "summary": "Creates a payroll employee",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "[ { \"FirstName\": \"Albus\", \"LastName\": \"Dumbledore\", \"DateOfBirth\": \"/Date(321523200000+0000)/\", \"HomeAddress\": { \"AddressLine1\": \"101 Green St\", \"City\": \"Island Bay\", \"Region\": \"NSW\", \"PostalCode\": \"6023\", \"Country\": \"AUSTRALIA\" }, \"StartDate\": \"/Date(321523200000+0000)/\", \"MiddleNames\": \"Percival\", \"Email\": \"albus39608@hogwarts.edu\", \"Gender\": \"M\", \"Phone\": \"444-2323\", \"Mobile\": \"555-1212\", \"IsAuthorisedToApproveLeave\": true, \"IsAuthorisedToApproveTimesheets\": true, \"JobTitle\": \"Regional Manager\", \"Classification\": \"corporate\", \"OrdinaryEarningsRateID\": \"ab874dfb-ab09-4c91-954e-43acf6fc23b4\", \"Status\": \"ACTIVE\" } ]"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573621524489)/",
+        "Employees": [
+          {
+            "EmployeeID": "cdfb8371-0b21-4b8a-8903-1024df6c391e",
+            "FirstName": "Albus",
+            "MiddleNames": "Percival",
+            "LastName": "Dumbledore",
+            "Status": "ACTIVE",
+            "Email": "albus39608@hogwarts.edu",
+            "DateOfBirth": "/Date(321523200000+0000)/",
+            "JobTitle": "Regional Manager",
+            "Gender": "M",
+            "HomeAddress": {
+              "AddressLine1": "101 Green St",
+              "City": "Island Bay",
+              "Region": "NSW",
+              "PostalCode": "6023",
+              "Country": "AUSTRALIA"
+            },
+            "Phone": "444-2323",
+            "Mobile": "555-1212",
+            "StartDate": "/Date(321523200000+0000)/",
+            "Classification": "corporate",
+            "OrdinaryEarningsRateID": "ab874dfb-ab09-4c91-954e-43acf6fc23b4",
+            "UpdatedDateUTC": "/Date(1573621524458+0000)/",
+            "IsAuthorisedToApproveLeave": true,
+            "IsAuthorisedToApproveTimesheets": true
+          }
+        ]
+      }
+    }
+  ]
+}

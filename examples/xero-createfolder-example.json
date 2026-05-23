@@ -1,0 +1,24 @@
+{
+  "operationId": "createFolder",
+  "method": "POST",
+  "path": "/Folders",
+  "summary": "Creates a new folder",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "{ \"Name\": \"My Docs\" }"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": "{ \"Name\": \"My Docs\", \"FileCount\": 0, \"IsInbox\": false, \"Id\": \"913970ad-8c8e-4666-8294-35b9cac23206\" }"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": "[ { \"type\":\"Validation\", \"title\":\"Validation failure\", \"detail\":\"Name contains one or more bad characters\" } ]"
+    }
+  ]
+}

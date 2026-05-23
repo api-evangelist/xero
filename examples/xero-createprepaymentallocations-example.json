@@ -1,0 +1,58 @@
+{
+  "operationId": "createPrepaymentAllocations",
+  "method": "PUT",
+  "path": "/Prepayments/{PrepaymentID}/Allocations",
+  "summary": "Xero Allows you to create an Allocation for prepayments",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "Allocations": [
+          {
+            "Invoice": {
+              "LineItems": [],
+              "InvoiceID": "00000000-0000-0000-0000-000000000000"
+            },
+            "Amount": 1,
+            "Date": "2019-01-10"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "d4758808-d14d-45d5-851a-52787ae5739a",
+        "Status": "OK",
+        "ProviderName": "Provider Name Example",
+        "DateTimeUTC": "/Date(1552522424927)/",
+        "Allocations": [
+          {
+            "Amount": 1.0,
+            "Date": "/Date(1552435200000+0000)/",
+            "Invoice": {
+              "InvoiceID": "c7c37b83-ac95-45ea-88ba-8ad83a5f22fe",
+              "Payments": [],
+              "CreditNotes": [],
+              "Prepayments": [],
+              "Overpayments": [],
+              "HasErrors": false,
+              "IsDiscounted": false,
+              "LineItems": [],
+              "ValidationErrors": []
+            },
+            "Prepayment": {
+              "PrepaymentID": "ce0cddef-cf5a-4e59-b638-f225679115a7",
+              "ID": "ce0cddef-cf5a-4e59-b638-f225679115a7",
+              "LineItems": []
+            },
+            "ValidationErrors": []
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HistoryRecord",
+  "title": "HistoryRecord",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/api/history-and-notes"
+  },
+  "properties": {
+    "Details": {
+      "description": "details",
+      "type": "string"
+    },
+    "Changes": {
+      "description": "Name of branding theme",
+      "type": "string"
+    },
+    "User": {
+      "description": "has a value of 0",
+      "type": "string"
+    },
+    "DateUTC": {
+      "description": "UTC timestamp of creation date of branding theme",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    }
+  },
+  "type": "object"
+}

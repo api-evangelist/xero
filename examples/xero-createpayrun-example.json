@@ -1,0 +1,35 @@
+{
+  "operationId": "createPayRun",
+  "method": "POST",
+  "path": "/PayRuns",
+  "summary": "Creates a pay run",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "[ { \"PayrollCalendarID\": \"78bb86b9-e1ea-47ac-b75d-f087a81931de\", \"PayRunPeriodStartDate\": \"/Date(1572566400000+0000)/\", \"PayRunPeriodEndDate\": \"/Date(1573084800000+0000)/\", \"PayRunStatus\": \"DRAFT\", \"PaymentDate\": \"/Date(1573171200000+0000)/\" } ]"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573685818311)/",
+        "PayRuns": [
+          {
+            "PayRunID": "d1348fab-f47a-4697-beea-922ee262407a",
+            "PayrollCalendarID": "78bb86b9-e1ea-47ac-b75d-f087a81931de",
+            "PayRunPeriodStartDate": "/Date(1572566400000+0000)/",
+            "PayRunPeriodEndDate": "/Date(1573084800000+0000)/",
+            "PaymentDate": "/Date(1573171200000+0000)/",
+            "PayRunStatus": "DRAFT",
+            "UpdatedDateUTC": "/Date(1573685818311+0000)/"
+          }
+        ]
+      }
+    }
+  ]
+}

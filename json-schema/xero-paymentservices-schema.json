@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentServices",
+  "title": "PaymentServices",
+  "type": "object",
+  "x-objectArrayKey": "payment_services",
+  "properties": {
+    "PaymentServices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PaymentService"
+      }
+    }
+  }
+}

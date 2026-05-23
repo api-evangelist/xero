@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ObjectGroup",
+  "title": "ObjectGroup",
+  "description": "The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.",
+  "type": "string",
+  "enum": [
+    "Account",
+    "BankTransaction",
+    "Contact",
+    "CreditNote",
+    "Invoice",
+    "Item",
+    "ManualJournal",
+    "Overpayment",
+    "Payment",
+    "Prepayment",
+    "Quote",
+    "Receipt"
+  ]
+}

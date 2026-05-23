@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/User",
+  "title": "User",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/users/"
+  },
+  "properties": {
+    "UserID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "EmailAddress": {
+      "description": "Email address of user",
+      "type": "string"
+    },
+    "FirstName": {
+      "description": "First name of user",
+      "type": "string"
+    },
+    "LastName": {
+      "description": "Last name of user",
+      "type": "string"
+    },
+    "UpdatedDateUTC": {
+      "description": "Timestamp of last change to user",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "IsSubscriber": {
+      "description": "Boolean to indicate if user is the subscriber",
+      "type": "boolean"
+    },
+    "OrganisationRole": {
+      "description": "User role that defines permissions in Xero and via API (READONLY, INVOICEONLY, STANDARD, FINANCIALADVISER, etc)",
+      "type": "string",
+      "enum": [
+        "READONLY",
+        "INVOICEONLY",
+        "STANDARD",
+        "FINANCIALADVISER",
+        "MANAGEDCLIENT",
+        "CASHBOOKCLIENT",
+        "UNKNOWN",
+        "REMOVED"
+      ]
+    }
+  },
+  "type": "object"
+}

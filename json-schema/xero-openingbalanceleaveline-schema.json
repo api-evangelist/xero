@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OpeningBalanceLeaveLine",
+  "title": "OpeningBalanceLeaveLine",
+  "type": "object",
+  "properties": {
+    "LeaveTypeID": {
+      "description": "Xero leave type identifier",
+      "type": "string",
+      "format": "uuid",
+      "example": "742998cb-7584-4ecf-aa88-d694f59c50f9"
+    },
+    "NumberOfUnits": {
+      "description": "Number of units for leave line.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 2.5
+    }
+  }
+}

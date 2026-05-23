@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeStatutorySickLeaves",
+  "title": "EmployeeStatutorySickLeaves",
+  "type": "object",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "problem": {
+      "$ref": "#/components/schemas/Problem"
+    },
+    "statutorySickLeave": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EmployeeStatutorySickLeave"
+      }
+    }
+  }
+}

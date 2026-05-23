@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RequestEmpty",
+  "title": "RequestEmpty",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/invoice/"
+  },
+  "properties": {
+    "Status": {
+      "description": "Need at least one field to create an empty JSON payload",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

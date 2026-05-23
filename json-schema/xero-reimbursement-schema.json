@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Reimbursement",
+  "title": "Reimbursement",
+  "type": "object",
+  "required": [
+    "name",
+    "accountID"
+  ],
+  "properties": {
+    "reimbursementID": {
+      "description": "Xero unique identifier for a reimbursement",
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "description": "Name of the reimbursement",
+      "type": "string"
+    },
+    "accountID": {
+      "description": "Xero unique identifier for the account used for the reimbursement",
+      "type": "string",
+      "format": "uuid"
+    },
+    "currentRecord": {
+      "description": "Indicates that whether the reimbursement is active",
+      "type": "boolean"
+    },
+    "reimbursementCategory": {
+      "description": "See Reimbursement Categories",
+      "type": "string",
+      "enum": [
+        "GST",
+        "NoGST",
+        "GSTInclusive"
+      ]
+    },
+    "calculationType": {
+      "description": "See Calculation Types",
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "FixedAmount",
+        "RatePerUnit"
+      ]
+    },
+    "standardAmount": {
+      "description": "Optional Fixed Rate Amount. Applicable when calculation type is Fixed Amount",
+      "type": "string"
+    },
+    "standardTypeOfUnits": {
+      "description": "Optional Type Of Units. Applicable when calculation type is Rate Per Unit",
+      "type": "string",
+      "enum": [
+        "Hours",
+        "km"
+      ]
+    },
+    "standardRatePerUnit": {
+      "description": "Optional Rate Per Unit. Applicable when calculation type is Rate Per Unit",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    }
+  }
+}

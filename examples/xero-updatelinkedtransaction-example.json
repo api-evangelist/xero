@@ -1,0 +1,71 @@
+{
+  "operationId": "updateLinkedTransaction",
+  "method": "POST",
+  "path": "/LinkedTransactions/{LinkedTransactionID}",
+  "summary": "Xero Updates a specific linked transactions (billable expenses)",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "LinkedTransactions": [
+          {
+            "SourceTransactionID": "00000000-0000-0000-0000-000000000000",
+            "SourceLineItemID": "00000000-0000-0000-0000-000000000000"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "bd364af7-08f0-432b-81db-c1e5ba05f3dd",
+        "Status": "OK",
+        "ProviderName": "Provider Name Example",
+        "DateTimeUTC": "/Date(1552351488159)/",
+        "LinkedTransactions": [
+          {
+            "LinkedTransactionID": "e9684b6c-4df9-45a0-917b-85cc29857008",
+            "SourceTransactionID": "a848644a-f20f-4630-98c3-386bd7505631",
+            "SourceLineItemID": "b0df260d-3cc8-4ced-9bd6-41924f624ed3",
+            "ContactID": "4e1753b9-018a-4775-b6aa-1bc7871cfee3",
+            "Status": "DRAFT",
+            "Type": "BILLABLEEXPENSE",
+            "UpdatedDateUTC": "/Date(1552351055000+0000)/",
+            "SourceTransactionTypeCode": "ACCPAY"
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "ErrorNumber": 10,
+        "Type": "ValidationException",
+        "Message": "A validation exception occurred",
+        "Elements": [
+          {
+            "LinkedTransactionID": "5a68b5b4-8cf0-4af5-8c3c-513cc19e1c73",
+            "SourceTransactionID": "aec416dd-38ea-40dc-9f0b-813c8c71f87f",
+            "SourceLineItemID": "77e0b23b-5b79-4f4b-ae20-c9031d41442f",
+            "ContactID": "4e1753b9-018a-4775-b6aa-1bc7871cfee3",
+            "TargetTransactionID": "83693fc1-5b05-4807-b190-109d4a85dd5f",
+            "TargetLineItemID": "d5128ff1-0f39-4d2a-a6d5-46dfaf5f075c",
+            "Status": "ONDRAFT",
+            "Type": "BILLABLEEXPENSE",
+            "UpdatedDateUTC": "/Date(1552349706000+0000)/",
+            "SourceTransactionTypeCode": "ACCPAY",
+            "ValidationErrors": [
+              {
+                "Message": "The ContactID and the TargetTransaction ContactID do not match"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

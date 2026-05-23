@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SuperannuationLine",
+  "title": "SuperannuationLine",
+  "type": "object",
+  "properties": {
+    "SuperMembershipID": {
+      "description": "Xero identifier for payroll super fund membership ID.",
+      "type": "string",
+      "format": "uuid",
+      "example": "e0eb6747-7c17-4075-b804-989f8d4e5d39"
+    },
+    "ContributionType": {
+      "$ref": "#/components/schemas/SuperannuationContributionType"
+    },
+    "CalculationType": {
+      "$ref": "#/components/schemas/SuperannuationCalculationType"
+    },
+    "MinimumMonthlyEarnings": {
+      "description": "Superannuation minimum monthly earnings.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 100.5
+    },
+    "ExpenseAccountCode": {
+      "description": "Superannuation expense account code.",
+      "type": "string",
+      "example": 450
+    },
+    "LiabilityAccountCode": {
+      "description": "Superannuation liability account code",
+      "type": "string",
+      "example": 650
+    },
+    "PaymentDateForThisPeriod": {
+      "description": "Superannuation payment date for the current period (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "Percentage": {
+      "description": "Superannuation percentage",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 4.0
+    },
+    "Amount": {
+      "description": "Superannuation amount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.5
+    }
+  }
+}

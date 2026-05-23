@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Error",
+  "title": "Error",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/api/http-response-codes"
+  },
+  "properties": {
+    "ErrorNumber": {
+      "description": "Exception number",
+      "type": "integer"
+    },
+    "Type": {
+      "description": "Exception type",
+      "type": "string"
+    },
+    "Message": {
+      "description": "Exception message",
+      "type": "string"
+    },
+    "Elements": {
+      "description": "Array of Elements of validation Errors",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Element"
+      }
+    }
+  },
+  "type": "object"
+}

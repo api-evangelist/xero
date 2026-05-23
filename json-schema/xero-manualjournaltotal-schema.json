@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ManualJournalTotal",
+  "title": "ManualJournalTotal",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "number",
+      "description": "Total value of manual journals.",
+      "format": "double",
+      "x-is-money": true
+    }
+  },
+  "additionalProperties": false
+}

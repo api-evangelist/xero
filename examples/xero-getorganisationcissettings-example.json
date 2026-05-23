@@ -1,0 +1,21 @@
+{
+  "operationId": "getOrganisationCISSettings",
+  "method": "GET",
+  "path": "/Organisation/{OrganisationID}/CISSettings",
+  "summary": "Retrieves the CIS settings for the Xero organistaion.",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "CISSettings": [
+          {
+            "CISEnambed": true,
+            "Rate": 10
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayItem",
+  "title": "PayItem",
+  "type": "object",
+  "properties": {
+    "EarningsRates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/EarningsRate"
+      }
+    },
+    "DeductionTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeductionType"
+      }
+    },
+    "LeaveTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LeaveType"
+      }
+    },
+    "ReimbursementTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReimbursementType"
+      }
+    }
+  }
+}

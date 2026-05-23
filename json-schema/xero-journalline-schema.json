@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/JournalLine",
+  "title": "JournalLine",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/api/journals#JournalLines"
+  },
+  "properties": {
+    "JournalLineID": {
+      "description": "Xero identifier for Journal",
+      "type": "string",
+      "format": "uuid",
+      "example": "7be9db36-3598-4755-ba5c-c2dbc8c4a7a2"
+    },
+    "AccountID": {
+      "description": "See Accounts",
+      "type": "string",
+      "format": "uuid",
+      "example": "ceef66a5-a545-413b-9312-78a53caadbc4"
+    },
+    "AccountCode": {
+      "description": "See Accounts",
+      "type": "string",
+      "example": "090"
+    },
+    "AccountType": {
+      "$ref": "#/components/schemas/AccountType",
+      "type": "string"
+    },
+    "AccountName": {
+      "description": "See AccountCodes",
+      "type": "string",
+      "example": "Checking Account"
+    },
+    "Description": {
+      "description": "The description from the source transaction line item. Only returned if populated.",
+      "type": "string",
+      "example": "My business checking account"
+    },
+    "NetAmount": {
+      "description": "Net amount of journal line. This will be a positive value for a debit and negative for a credit",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 4130.98
+    },
+    "GrossAmount": {
+      "description": "Gross amount of journal line (NetAmount + TaxAmount).",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 4130.98
+    },
+    "TaxAmount": {
+      "description": "Total tax on a journal line",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "readOnly": true,
+      "example": 0.0
+    },
+    "TaxType": {
+      "description": "The tax type from taxRates",
+      "type": "string"
+    },
+    "TaxName": {
+      "description": "see TaxRates",
+      "type": "string",
+      "example": "Tax Exempt"
+    },
+    "TrackingCategories": {
+      "description": "Optional Tracking Category \u2013 see Tracking. Any JournalLine can have a maximum of 2 <TrackingCategory> elements.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TrackingCategory"
+      }
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContactResponse",
+  "title": "ContactResponse",
+  "type": "object",
+  "properties": {
+    "contactId": {
+      "type": "string",
+      "description": "Xero Identifier of contact",
+      "format": "uuid"
+    },
+    "contactName": {
+      "type": "string",
+      "description": "Full name of contact/organisation"
+    }
+  },
+  "additionalProperties": false
+}

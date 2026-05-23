@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Employee",
+  "title": "Employee",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/employees/"
+  },
+  "properties": {
+    "EmployeeID": {
+      "description": "The Xero identifier for an employee e.g. 297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Status": {
+      "description": "Current status of an employee \u2013 see contact status types",
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "ARCHIVED",
+        "GDPRREQUEST",
+        "DELETED"
+      ]
+    },
+    "FirstName": {
+      "description": "First name of an employee (max length = 255)",
+      "maxLength": 255,
+      "type": "string"
+    },
+    "LastName": {
+      "description": "Last name of an employee (max length = 255)",
+      "maxLength": 255,
+      "type": "string"
+    },
+    "ExternalLink": {
+      "$ref": "#/components/schemas/ExternalLink"
+    },
+    "UpdatedDateUTC": {
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "StatusAttributeString": {
+      "description": "A string to indicate if a invoice status",
+      "type": "string",
+      "example": "ERROR"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PayrollCalendars",
+  "title": "PayrollCalendars",
+  "type": "object",
+  "x-objectArrayKey": "payroll_calendars",
+  "properties": {
+    "PayrollCalendars": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PayrollCalendar"
+      }
+    }
+  }
+}

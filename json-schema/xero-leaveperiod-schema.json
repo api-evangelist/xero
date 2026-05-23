@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeavePeriod",
+  "title": "LeavePeriod",
+  "type": "object",
+  "properties": {
+    "NumberOfUnits": {
+      "description": "The Number of Units for the leave",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 22.8
+    },
+    "PayPeriodEndDate": {
+      "description": "The Pay Period End Date (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "PayPeriodStartDate": {
+      "description": "The Pay Period Start Date (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true,
+      "example": "/Date(322560000000+0000)/"
+    },
+    "LeavePeriodStatus": {
+      "$ref": "#/components/schemas/LeavePeriodStatus"
+    }
+  }
+}

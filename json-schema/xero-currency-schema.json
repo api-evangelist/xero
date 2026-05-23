@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Currency",
+  "title": "Currency",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/currencies/"
+  },
+  "properties": {
+    "Code": {
+      "$ref": "#/components/schemas/CurrencyCode",
+      "type": "string"
+    },
+    "Description": {
+      "description": "Name of Currency",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

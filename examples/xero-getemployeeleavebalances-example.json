@@ -1,0 +1,52 @@
+{
+  "operationId": "getEmployeeLeaveBalances",
+  "method": "GET",
+  "path": "/Employees/{EmployeeID}/LeaveBalances",
+  "summary": "Retrieves leave balances for a specific employee",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-26 22:26:48.044835",
+        "httpStatusCode": "OK",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 4
+        },
+        "problem": null,
+        "leaveBalances": [
+          {
+            "name": "Holiday Pay",
+            "leaveTypeID": "0441497f-5dc7-4cd3-a90d-f2e07e21b2a6",
+            "balance": 0,
+            "typeOfUnits": "Dollars"
+          },
+          {
+            "name": "Annual Leave",
+            "leaveTypeID": "b0b1b79e-2a25-46c2-ad08-ca25ef48d7e4",
+            "balance": 0,
+            "typeOfUnits": "Hours"
+          },
+          {
+            "name": "Sick Leave",
+            "leaveTypeID": "f2f994cf-1899-46f3-ad4f-5d92d78c3719",
+            "balance": 0,
+            "typeOfUnits": "Hours"
+          },
+          {
+            "name": "Alternative Holidays",
+            "leaveTypeID": "34129765-11cb-4d8c-b568-84a2219beda3",
+            "balance": 0,
+            "typeOfUnits": "Hours"
+          }
+        ]
+      }
+    }
+  ]
+}

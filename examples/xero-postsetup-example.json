@@ -1,0 +1,71 @@
+{
+  "operationId": "postSetup",
+  "method": "POST",
+  "path": "/Setup",
+  "summary": "Xero Sets the chart of accounts, the conversion date and conversion balances",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "ConversionDate": {},
+        "ConversionBalances": [],
+        "Accounts": [
+          {
+            "Code": "200",
+            "Name": "Sales",
+            "Type": "SALES",
+            "ReportingCode": "REV.TRA.GOO"
+          },
+          {
+            "Code": "400",
+            "Name": "Advertising",
+            "Type": "OVERHEADS",
+            "ReportingCode": "EXP"
+          },
+          {
+            "Code": "610",
+            "Name": "Accounts Receivable",
+            "Type": "CURRENT",
+            "SystemAccount": "DEBTORS",
+            "ReportingCode": "ASS.CUR.REC.TRA"
+          },
+          {
+            "Code": "800",
+            "Name": "Accounts Payable",
+            "Type": "CURRLIAB",
+            "SystemAccount": "CREDITORS",
+            "ReportingCode": "LIA.CUR.PAY"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "80dcb65b-4d14-4350-84e6-1438a809244a",
+        "Status": "OK",
+        "ProviderName": "Java Public Example",
+        "DateTimeUTC": "/Date(1604457589645)/",
+        "ImportSummary": {
+          "Accounts": {
+            "Total": 17,
+            "New": 0,
+            "Updated": 8,
+            "Deleted": 0,
+            "Locked": 0,
+            "System": 9,
+            "Errored": 0,
+            "Present": true,
+            "NewOrUpdated": 8
+          },
+          "Organisation": {
+            "Present": false
+          }
+        }
+      }
+    }
+  ]
+}

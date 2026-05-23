@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StatementLinesResponse",
+  "title": "StatementLinesResponse",
+  "type": "object",
+  "properties": {
+    "unreconciledAmountPos": {
+      "type": "number",
+      "description": "Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is positive.",
+      "format": "double",
+      "x-is-money": true
+    },
+    "unreconciledAmountNeg": {
+      "type": "number",
+      "description": "Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is negative.",
+      "format": "double",
+      "x-is-money": true
+    },
+    "unreconciledLines": {
+      "type": "integer",
+      "description": "Count of all statement lines where the reconciled flag is set to FALSE.",
+      "format": "int32"
+    },
+    "avgDaysUnreconciledPos": {
+      "type": "number",
+      "description": "Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is positive. Provides an indication of the age of unreconciled transactions.",
+      "format": "double",
+      "x-is-money": true
+    },
+    "avgDaysUnreconciledNeg": {
+      "type": "number",
+      "description": "Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is negative. Provides an indication of the age of unreconciled transactions.",
+      "format": "double",
+      "x-is-money": true
+    },
+    "earliestUnreconciledTransaction": {
+      "type": "string",
+      "description": "UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.",
+      "format": "date"
+    },
+    "latestUnreconciledTransaction": {
+      "type": "string",
+      "description": "UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.",
+      "format": "date"
+    },
+    "deletedAmount": {
+      "type": "number",
+      "description": "Sum of the amounts of all deleted statement lines.  Transactions may be deleted due to duplication or otherwise.",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalAmount": {
+      "type": "number",
+      "description": "Sum of the amounts of all statement lines.  This is used as a metric of comparison to the unreconciled figures above.",
+      "format": "double",
+      "x-is-money": true
+    },
+    "dataSource": {
+      "$ref": "#/components/schemas/DataSourceResponse"
+    },
+    "earliestReconciledTransaction": {
+      "type": "string",
+      "description": "UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.",
+      "format": "date"
+    },
+    "latestReconciledTransaction": {
+      "type": "string",
+      "description": "UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.",
+      "format": "date"
+    },
+    "reconciledAmountPos": {
+      "type": "number",
+      "description": "Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is positive.",
+      "format": "double",
+      "x-is-money": true
+    },
+    "reconciledAmountNeg": {
+      "type": "number",
+      "description": "Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is negative.",
+      "format": "double",
+      "x-is-money": true
+    },
+    "reconciledLines": {
+      "type": "integer",
+      "description": "Count of all statement lines where the reconciled flag is set to TRUE",
+      "format": "int32"
+    },
+    "totalAmountPos": {
+      "type": "number",
+      "description": "Sum of the amounts of all statement lines where the amount is positive",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalAmountNeg": {
+      "type": "number",
+      "description": "Sum of the amounts of all statement lines where the amount is negative.",
+      "format": "double",
+      "x-is-money": true
+    }
+  },
+  "additionalProperties": false
+}

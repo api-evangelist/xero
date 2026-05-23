@@ -1,0 +1,61 @@
+{
+  "operationId": "approveTimesheet",
+  "method": "POST",
+  "path": "/Timesheets/{TimesheetID}/Approve",
+  "summary": "Approves a timesheet",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-28 21:07:40.391866",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "timesheet": {
+          "timesheetID": "f2a2aff0-9944-411e-bc58-44f22304188d",
+          "payrollCalendarID": "f6931b89-d9c8-4f25-b4fa-268b5fd24197",
+          "employeeID": "272a7559-1b8f-4d3a-977b-d05578cb9546",
+          "startDate": "2020-08-01 00:00:00",
+          "endDate": "2020-08-31 00:00:00",
+          "status": "Approved",
+          "totalHours": 13,
+          "updatedDateUTC": "2020-08-28 21:07:40.561340",
+          "timesheetLines": [
+            {
+              "timesheetLineID": "10c3c63e-6cd0-4630-861f-08a2baa657fa",
+              "date": "2020-08-03 00:00:00",
+              "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+              "trackingItemID": null,
+              "numberOfUnits": 1
+            },
+            {
+              "timesheetLineID": "3397aab1-6cac-4804-a72b-00f396b04a08",
+              "date": "2020-08-04 00:00:00",
+              "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+              "trackingItemID": null,
+              "numberOfUnits": 2
+            },
+            {
+              "timesheetLineID": "11f3608f-c53a-474d-ba17-053849de318b",
+              "date": "2020-08-02 00:00:00",
+              "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+              "trackingItemID": null,
+              "numberOfUnits": 5
+            },
+            {
+              "timesheetLineID": "f5b416b7-d431-4d54-baff-9cd6de620c70",
+              "date": "2020-08-03 00:00:00",
+              "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+              "trackingItemID": null,
+              "numberOfUnits": 5
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

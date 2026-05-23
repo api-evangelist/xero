@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AllowanceType",
+  "title": "AllowanceType",
+  "type": "string",
+  "enum": [
+    "CAR",
+    "TRANSPORT",
+    "LAUNDRY",
+    "MEALS",
+    "TRAVEL",
+    "OTHER",
+    "TOOLS",
+    "TASKS",
+    "QUALIFICATIONS"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StartBalance",
+  "title": "StartBalance",
+  "description": "The starting balance of the statement",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": "9.0000",
+      "description": "decimal(19,4) unsigned Opening/closing balance amount."
+    },
+    "creditDebitIndicator": {
+      "$ref": "#/components/schemas/CreditDebitIndicator"
+    }
+  }
+}

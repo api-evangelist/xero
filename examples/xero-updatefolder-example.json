@@ -1,0 +1,24 @@
+{
+  "operationId": "updateFolder",
+  "method": "PUT",
+  "path": "/Folders/{FolderId}",
+  "summary": "Updates an existing folder",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "{ \"Name\": \"Your Docs\" }"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": "{ \"Name\": \"Your Docs\", \"FileCount\": 0, \"IsInbox\": false, \"Id\": \"4c5f3fe4-2516-4863-ac88-3029351773bf\" }"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": "[ { \"type\":\"Validation\", \"title\":\"Validation failure\", \"detail\":\"Name contains one or more bad characters\" } ]"
+    }
+  ]
+}

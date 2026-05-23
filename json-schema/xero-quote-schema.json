@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Quote",
+  "title": "Quote",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/Quotes/"
+  },
+  "properties": {
+    "QuoteID": {
+      "description": "QuoteID GUID is automatically generated and is returned after create or GET.",
+      "type": "string",
+      "format": "uuid"
+    },
+    "QuoteNumber": {
+      "description": "Unique alpha numeric code identifying a quote (Max Length = 255)",
+      "maxLength": 255,
+      "type": "string"
+    },
+    "Reference": {
+      "description": "Additional reference number",
+      "maxLength": 4000,
+      "type": "string"
+    },
+    "Terms": {
+      "description": "Terms of the quote",
+      "maxLength": 4000,
+      "type": "string"
+    },
+    "Contact": {
+      "$ref": "#/components/schemas/Contact"
+    },
+    "LineItems": {
+      "description": "See LineItems",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LineItem"
+      }
+    },
+    "Date": {
+      "description": "Date quote was issued \u2013 YYYY-MM-DD. If the Date element is not specified it will default to the current date based on the timezone setting of the organisation",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "DateString": {
+      "description": "Date the quote was issued (YYYY-MM-DD)",
+      "type": "string"
+    },
+    "ExpiryDate": {
+      "description": "Date the quote expires \u2013 YYYY-MM-DD.",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "ExpiryDateString": {
+      "description": "Date the quote expires \u2013 YYYY-MM-DD.",
+      "type": "string"
+    },
+    "Status": {
+      "$ref": "#/components/schemas/QuoteStatusCodes",
+      "type": "string"
+    },
+    "CurrencyCode": {
+      "$ref": "#/components/schemas/CurrencyCode",
+      "type": "string"
+    },
+    "CurrencyRate": {
+      "description": "The currency rate for a multicurrency quote",
+      "type": "number",
+      "format": "double"
+    },
+    "SubTotal": {
+      "description": "Total of quote excluding taxes.",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "TotalTax": {
+      "description": "Total tax on quote",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Total": {
+      "description": "Total of Quote tax inclusive (i.e. SubTotal + TotalTax). This will be ignored if it doesn\u2019t equal the sum of the LineAmounts",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "TotalDiscount": {
+      "description": "Total of discounts applied on the quote line items",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Title": {
+      "description": "Title text for the quote",
+      "type": "string",
+      "maxLength": 100
+    },
+    "Summary": {
+      "description": "Summary text for the quote",
+      "type": "string",
+      "maxLength": 3000
+    },
+    "BrandingThemeID": {
+      "description": "See BrandingThemes",
+      "type": "string",
+      "format": "uuid"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified date UTC format",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "LineAmountTypes": {
+      "$ref": "#/components/schemas/QuoteLineAmountTypes",
+      "type": "string",
+      "description": "See Quote Line Amount Types"
+    },
+    "StatusAttributeString": {
+      "description": "A string to indicate if a invoice status",
+      "type": "string"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    }
+  },
+  "type": "object"
+}

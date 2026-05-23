@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeWorkingPattern",
+  "title": "EmployeeWorkingPattern",
+  "type": "object",
+  "required": [
+    "payeeWorkingPatternID",
+    "effectiveFrom"
+  ],
+  "properties": {
+    "payeeWorkingPatternID": {
+      "description": "The Xero identifier for for Employee working pattern",
+      "type": "string",
+      "format": "uuid"
+    },
+    "effectiveFrom": {
+      "description": "The effective date of the corresponding salary and wages",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    }
+  }
+}

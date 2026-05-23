@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ExpenseClaim",
+  "title": "ExpenseClaim",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/expense-claims/"
+  },
+  "properties": {
+    "ExpenseClaimID": {
+      "description": "Xero generated unique identifier for an expense claim",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Status": {
+      "description": "Current status of an expense claim \u2013 see status types",
+      "type": "string",
+      "enum": [
+        "SUBMITTED",
+        "AUTHORISED",
+        "PAID",
+        "VOIDED",
+        "DELETED"
+      ]
+    },
+    "Payments": {
+      "description": "See Payments",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Payment"
+      }
+    },
+    "User": {
+      "$ref": "#/components/schemas/User"
+    },
+    "Receipts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Receipt"
+      }
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified date UTC format",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "Total": {
+      "description": "The total of an expense claim being paid",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "AmountDue": {
+      "description": "The amount due to be paid for an expense claim",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "AmountPaid": {
+      "description": "The amount still to pay for an expense claim",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "PaymentDueDate": {
+      "description": "The date when the expense claim is due to be paid YYYY-MM-DD",
+      "readOnly": true,
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "ReportingDate": {
+      "description": "The date the expense claim will be reported in Xero YYYY-MM-DD",
+      "readOnly": true,
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "ReceiptID": {
+      "description": "The Xero identifier for the Receipt e.g. e59a2c7f-1306-4078-a0f3-73537afcbba9",
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "type": "object"
+}

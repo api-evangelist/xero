@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeWorkingPatternWithWorkingWeeksRequest",
+  "title": "EmployeeWorkingPatternWithWorkingWeeksRequest",
+  "type": "object",
+  "required": [
+    "effectiveFrom",
+    "workingWeeks"
+  ],
+  "properties": {
+    "effectiveFrom": {
+      "description": "The effective date of the corresponding salary and wages",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "workingWeeks": {
+      "$ref": "#/components/schemas/WorkingWeeks"
+    }
+  }
+}

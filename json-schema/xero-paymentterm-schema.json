@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentTerm",
+  "title": "PaymentTerm",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/organisation/"
+  },
+  "properties": {
+    "Bills": {
+      "$ref": "#/components/schemas/Bill"
+    },
+    "Sales": {
+      "$ref": "#/components/schemas/Bill"
+    }
+  },
+  "type": "object"
+}

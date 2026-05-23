@@ -1,0 +1,24 @@
+{
+  "operationId": "updateFile",
+  "method": "PUT",
+  "path": "/Files/{FileId}",
+  "summary": "Update a file",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "{ \"FolderId\": \"bf924975-7097-46f2-a143-1ecfbab3c8c3\" }"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": "{ \"Name\": \"helo-heros.jpg\", \"MimeType\": \"application/jpg\", \"Size\": 2878711, \"CreatedDateUtc\": \"2021-02-10T23:17:50.1930000\", \"UpdatedDateUtc\": \"2021-02-10T23:58:54.1000000\", \"User\": { \"Name\": \"sid.maestre@xero.com\", \"FirstName\": \"Sidney\", \"LastName\": \"Maestre\", \"FullName\": \"Sidney Maestre\", \"Id\": \"740add2a-a703-4b8a-a670-1093919c2040\" }, \"FolderId\": \"bf924975-7097-46f2-a143-1ecfbab3c8c3\", \"Id\": \"efd77bfc-7018-4da1-b251-7aa2d438382c\" }"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": "[ { \"type\":\"Rename\", \"title\":\"Rename failed\", \"detail\":\"Unable to rename efd77bfc-7018-4da1-b251-7aa2d438382c to FooBar\" } ]"
+    }
+  ]
+}

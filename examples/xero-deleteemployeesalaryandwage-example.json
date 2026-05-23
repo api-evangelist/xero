@@ -1,0 +1,21 @@
+{
+  "operationId": "deleteEmployeeSalaryAndWage",
+  "method": "DELETE",
+  "path": "/Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}",
+  "summary": "Deletes an employee's salary and wages record",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 00:25:11.539109",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null
+      }
+    }
+  ]
+}

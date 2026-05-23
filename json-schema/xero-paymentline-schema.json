@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentLine",
+  "title": "PaymentLine",
+  "type": "object",
+  "properties": {
+    "paymentLineID": {
+      "description": "Xero identifier for payroll payment line",
+      "type": "string",
+      "format": "uuid"
+    },
+    "amount": {
+      "description": "The amount of the payment line",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "accountNumber": {
+      "description": "The account number",
+      "type": "string"
+    },
+    "sortCode": {
+      "description": "The account sort code",
+      "type": "string"
+    },
+    "accountName": {
+      "description": "The account name",
+      "type": "string"
+    }
+  }
+}

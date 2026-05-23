@@ -1,0 +1,30 @@
+{
+  "operationId": "createOverpaymentHistory",
+  "method": "PUT",
+  "path": "/Overpayments/{OverpaymentID}/History",
+  "summary": "Xero Creates a history record for a specific overpayment",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "ErrorNumber": 10,
+        "Type": "ValidationException",
+        "Message": "A validation exception occurred",
+        "Elements": [
+          {
+            "DateUTCString": "2019-03-12 22:30:13",
+            "DateUTC": "/Date(1552429813667)/",
+            "Details": "Hello World",
+            "ValidationErrors": [
+              {
+                "Message": "The document with the supplied id was not found for this endpoint."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

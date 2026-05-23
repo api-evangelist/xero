@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BankTransactions",
+  "title": "BankTransactions",
+  "type": "object",
+  "x-objectArrayKey": "bank_transactions",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "Warnings": {
+      "description": "Displays array of warning messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "BankTransactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BankTransaction"
+      }
+    }
+  }
+}

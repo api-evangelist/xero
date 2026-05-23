@@ -1,0 +1,41 @@
+{
+  "operationId": "getEmployeeLeavePeriods",
+  "method": "GET",
+  "path": "/Employees/{EmployeeID}/LeavePeriods",
+  "summary": "Retrieves leave periods for a specific employee",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 13:35:49.440741",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "periods": [
+          {
+            "periodStartDate": "2020-02-24 00:00:00",
+            "periodEndDate": "2020-03-01 00:00:00",
+            "numberOfUnits": 24,
+            "periodStatus": "Estimated",
+            "typeOfUnits": "Hours",
+            "numberOfUnitsTaken": 0.6,
+            "typeOfUnitsTaken": "Weeks"
+          },
+          {
+            "periodStartDate": "2020-03-02 00:00:00",
+            "periodEndDate": "2020-03-08 00:00:00",
+            "numberOfUnits": 40,
+            "periodStatus": "Estimated",
+            "typeOfUnits": "Hours",
+            "numberOfUnitsTaken": 1,
+            "typeOfUnitsTaken": "Weeks"
+          }
+        ]
+      }
+    }
+  ]
+}

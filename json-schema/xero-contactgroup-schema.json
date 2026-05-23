@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContactGroup",
+  "title": "ContactGroup",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/contactgroups/"
+  },
+  "properties": {
+    "Name": {
+      "description": "The Name of the contact group. Required when creating a new contact  group",
+      "type": "string"
+    },
+    "Status": {
+      "description": "The Status of a contact group. To delete a contact group update the status to DELETED. Only contact groups with a status of ACTIVE are returned on GETs.",
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "DELETED"
+      ]
+    },
+    "ContactGroupID": {
+      "description": "The Xero identifier for an contact group \u2013 specified as a string following the endpoint name. e.g. /297c2dc5-cc47-4afd-8ec8-74990b8761e9",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Contacts": {
+      "description": "The ContactID and Name of Contacts in a contact group. Returned on GETs when the ContactGroupID is supplied in the URL.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Contact"
+      }
+    }
+  },
+  "type": "object"
+}

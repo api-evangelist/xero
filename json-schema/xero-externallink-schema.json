@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ExternalLink",
+  "title": "ExternalLink",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/organisation/"
+  },
+  "properties": {
+    "LinkType": {
+      "description": "See External link types",
+      "type": "string",
+      "enum": [
+        "Facebook",
+        "GooglePlus",
+        "LinkedIn",
+        "Twitter",
+        "Website"
+      ]
+    },
+    "Url": {
+      "description": "URL for service e.g. http://twitter.com/xeroapi",
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

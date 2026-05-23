@@ -1,0 +1,71 @@
+{
+  "operationId": "getSettings",
+  "method": "GET",
+  "path": "/Settings",
+  "summary": "Retrieves payroll settings",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573585252781)/",
+        "Settings": {
+          "Accounts": [
+            {
+              "AccountID": "85bd2954-7ef5-4fbe-9e40-a1990d0fd63f",
+              "Type": "BANK",
+              "Code": "094",
+              "Name": "Bank of A"
+            },
+            {
+              "AccountID": "7e65fa75-1c64-43d7-b0b4-c05f196e2190",
+              "Type": "WAGESPAYABLELIABILITY",
+              "Code": "804",
+              "Name": "Wages Payable - Payroll"
+            },
+            {
+              "AccountID": "dbc164fa-0cdf-4848-92d3-0d1dc864c53f",
+              "Type": "PAYGLIABILITY",
+              "Code": "825",
+              "Name": "PAYG Withholdings Payable"
+            },
+            {
+              "AccountID": "7dad84d4-bc7a-482e-99b1-d879e4856578",
+              "Type": "SUPERANNUATIONEXPENSE",
+              "Code": "478",
+              "Name": "Superannuation"
+            },
+            {
+              "AccountID": "df3679fe-5ebc-42ce-a7ac-b4d36b520795",
+              "Type": "SUPERANNUATIONLIABILITY",
+              "Code": "826",
+              "Name": "Superannuation Payable"
+            },
+            {
+              "AccountID": "7e130864-5864-4c60-94eb-3c53c95da138",
+              "Type": "WAGESEXPENSE",
+              "Code": "477",
+              "Name": "Wages and Salaries"
+            }
+          ],
+          "TrackingCategories": {
+            "EmployeeGroups": {
+              "TrackingCategoryID": "a28f419f-6ec3-4dcf-9be0-7959ea983630",
+              "TrackingCategoryName": "Foo70317"
+            },
+            "TimesheetCategories": {
+              "TrackingCategoryID": "89375aed-ed51-4624-9e5d-92db6bfa8974",
+              "TrackingCategoryName": "Foo32551"
+            }
+          },
+          "DaysInPayrollYear": "364",
+          "EmployeesAreSTP2": false
+        }
+      }
+    }
+  ]
+}

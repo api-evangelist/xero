@@ -1,0 +1,28 @@
+{
+  "operationId": "createPurchaseOrderAttachmentByFileName",
+  "method": "PUT",
+  "path": "/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}",
+  "summary": "Xero Creates attachment for a specific purchase order",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "c728a4a4-179e-4bbd-a2d5-63e7f9ceba92",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1602099934723)/",
+        "Attachments": [
+          {
+            "AttachmentID": "e58bd37b-e47f-451a-a42c-f946ef229c3e",
+            "FileName": "xero-dev.png",
+            "Url": "https://api.xero.com/api.xro/2.0/PurchaseOrders/93369c9b-c481-4e21-aaab-bb19e9a26efe/Attachments/2D.png",
+            "MimeType": "image/png",
+            "ContentLength": 82529
+          }
+        ]
+      }
+    }
+  ]
+}

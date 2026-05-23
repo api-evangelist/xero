@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Contact",
+  "title": "Contact",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/contacts/"
+  },
+  "properties": {
+    "ContactID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "MergedToContactID": {
+      "description": "ID for the destination of a merged contact. Only returned when using paging or when fetching a contact by ContactId or ContactNumber.",
+      "type": "string",
+      "format": "uuid"
+    },
+    "ContactNumber": {
+      "description": "This can be updated via the API only i.e. This field is read only on the Xero contact screen, used to identify contacts in external systems (max length = 50). If the Contact Number is used, this is displayed as Contact Code in the Contacts UI in Xero.",
+      "maxLength": 50,
+      "type": "string"
+    },
+    "AccountNumber": {
+      "description": "A user defined account number. This can be updated via the API and the Xero UI (max length = 50)",
+      "maxLength": 50,
+      "type": "string"
+    },
+    "ContactStatus": {
+      "description": "Current status of a contact \u2013 see contact status types",
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "ARCHIVED",
+        "GDPRREQUEST"
+      ]
+    },
+    "Name": {
+      "description": "Full name of contact/organisation (max length = 255)",
+      "maxLength": 255,
+      "type": "string"
+    },
+    "FirstName": {
+      "description": "First name of contact person (max length = 255)",
+      "maxLength": 255,
+      "type": "string"
+    },
+    "LastName": {
+      "description": "Last name of contact person (max length = 255)",
+      "maxLength": 255,
+      "type": "string"
+    },
+    "CompanyNumber": {
+      "description": "Company registration number (max length = 50)",
+      "maxLength": 50,
+      "type": "string"
+    },
+    "EmailAddress": {
+      "description": "Email address of contact person (umlauts not supported) (max length  = 255)",
+      "maxLength": 255,
+      "type": "string"
+    },
+    "ContactPersons": {
+      "description": "See contact persons",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ContactPerson"
+      }
+    },
+    "BankAccountDetails": {
+      "description": "Bank account number of contact",
+      "type": "string"
+    },
+    "TaxNumber": {
+      "description": "Tax number of contact \u2013 this is also known as the ABN (Australia), GST Number (New Zealand), VAT Number (UK) or Tax ID Number (US and global) in the Xero UI depending on which regionalized version of Xero you are using (max length = 50)",
+      "maxLength": 50,
+      "type": "string"
+    },
+    "TaxNumberType": {
+      "description": "Identifier of the regional type of tax number, such as US, UK, or other regional tax identifiers",
+      "type": "string",
+      "enum": [
+        "SSN",
+        "EIN",
+        "ITIN",
+        "ATIN"
+      ]
+    },
+    "AccountsReceivableTaxType": {
+      "description": "The tax type from TaxRates",
+      "type": "string"
+    },
+    "AccountsPayableTaxType": {
+      "description": "The tax type from TaxRates",
+      "type": "string"
+    },
+    "Addresses": {
+      "description": "Store certain address types for a contact \u2013 see address types",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Address"
+      }
+    },
+    "Phones": {
+      "description": "Store certain phone types for a contact \u2013 see phone types",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Phone"
+      }
+    },
+    "IsSupplier": {
+      "description": "true or false \u2013 Boolean that describes if a contact that has any AP  invoices entered against them. Cannot be set via PUT or POST \u2013 it is automatically set when an accounts payable invoice is generated against this contact.",
+      "type": "boolean"
+    },
+    "IsCustomer": {
+      "description": "true or false \u2013 Boolean that describes if a contact has any AR invoices entered against them. Cannot be set via PUT or POST \u2013 it is automatically set when an accounts receivable invoice is generated against this contact.",
+      "type": "boolean"
+    },
+    "SalesDefaultLineAmountType": {
+      "description": "The default sales line amount type for a contact. Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.",
+      "type": "string",
+      "enum": [
+        "INCLUSIVE",
+        "EXCLUSIVE",
+        "NONE"
+      ]
+    },
+    "PurchasesDefaultLineAmountType": {
+      "description": "The default purchases line amount type for a contact Only available when summaryOnly parameter or paging is used, or when fetch by ContactId or ContactNumber.",
+      "type": "string",
+      "enum": [
+        "INCLUSIVE",
+        "EXCLUSIVE",
+        "NONE"
+      ]
+    },
+    "DefaultCurrency": {
+      "$ref": "#/components/schemas/CurrencyCode",
+      "type": "string"
+    },
+    "XeroNetworkKey": {
+      "description": "Store XeroNetworkKey for contacts.",
+      "type": "string"
+    },
+    "SalesDefaultAccountCode": {
+      "description": "The default sales account code for contacts",
+      "type": "string"
+    },
+    "PurchasesDefaultAccountCode": {
+      "description": "The default purchases account code for contacts",
+      "type": "string"
+    },
+    "SalesTrackingCategories": {
+      "description": "The default sales tracking categories for contacts",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SalesTrackingCategory"
+      }
+    },
+    "PurchasesTrackingCategories": {
+      "description": "The default purchases tracking categories for contacts",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SalesTrackingCategory"
+      }
+    },
+    "TrackingCategoryName": {
+      "description": "The name of the Tracking Category assigned to the contact under SalesTrackingCategories and PurchasesTrackingCategories",
+      "type": "string"
+    },
+    "TrackingCategoryOption": {
+      "description": "The name of the Tracking Option assigned to the contact under SalesTrackingCategories and PurchasesTrackingCategories",
+      "type": "string"
+    },
+    "PaymentTerms": {
+      "$ref": "#/components/schemas/PaymentTerm"
+    },
+    "UpdatedDateUTC": {
+      "description": "UTC timestamp of last update to contact",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "ContactGroups": {
+      "description": "Displays which contact groups a contact is included in",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ContactGroup"
+      }
+    },
+    "Website": {
+      "description": "Website address for contact (read only)",
+      "readOnly": true,
+      "type": "string"
+    },
+    "BrandingTheme": {
+      "$ref": "#/components/schemas/BrandingTheme"
+    },
+    "BatchPayments": {
+      "$ref": "#/components/schemas/BatchPaymentDetails"
+    },
+    "Discount": {
+      "description": "The default discount rate for the contact (read only)",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Balances": {
+      "$ref": "#/components/schemas/Balances"
+    },
+    "Attachments": {
+      "description": "Displays array of attachments from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attachment"
+      }
+    },
+    "HasAttachments": {
+      "description": "A boolean to indicate if a contact has an attachment",
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "ValidationErrors": {
+      "description": "Displays validation errors returned from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "HasValidationErrors": {
+      "description": "A boolean to indicate if a contact has an validation errors",
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "StatusAttributeString": {
+      "description": "Status of object",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

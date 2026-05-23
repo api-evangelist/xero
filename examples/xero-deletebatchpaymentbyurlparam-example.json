@@ -1,0 +1,43 @@
+{
+  "operationId": "deleteBatchPaymentByUrlParam",
+  "method": "POST",
+  "path": "/BatchPayments/{BatchPaymentID}",
+  "summary": "Xero Updates a specific batch payment for invoices and credit notes",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "Status": "DELETED"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "ee23328c-4a8b-4ee7-8fb6-9796ffab9cb0",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1583945852489)/",
+        "BatchPayments": [
+          {
+            "Account": {
+              "AccountID": "efb6e3a4-3156-4cee-bfe1-a282a3cc1d8f",
+              "CurrencyCode": "NZD"
+            },
+            "BatchPaymentID": "b649632e-2782-4c74-95a5-d994d7140ed9",
+            "DateString": "2022-08-01 00:00:00",
+            "Date": "/Date(1659312000000+0000)/",
+            "Payments": [],
+            "Type": "PAYBATCH",
+            "Status": "DELETED",
+            "TotalAmount": 18.0,
+            "UpdatedDateUTC": "/Date(1659377631813+0000)/",
+            "IsReconciled": false
+          }
+        ]
+      }
+    }
+  ]
+}

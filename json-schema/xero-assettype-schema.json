@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AssetType",
+  "title": "AssetType",
+  "type": "object",
+  "x-snake": "asset_type",
+  "required": [
+    "assetTypeName",
+    "bookDepreciationSetting"
+  ],
+  "properties": {
+    "assetTypeId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "5da209c5-5e19-4a43-b925-71b776c49ced",
+      "description": "Xero generated unique identifier for asset types"
+    },
+    "assetTypeName": {
+      "type": "string",
+      "example": "Computer Equipment",
+      "description": "The name of the asset type"
+    },
+    "fixedAssetAccountId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "24e260f1-bfc4-4766-ad7f-8a8ce01de879",
+      "description": "The asset account for fixed assets of this type"
+    },
+    "depreciationExpenseAccountId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "b23fc79b-d66b-44b0-a240-e138e086fcbc",
+      "description": "The expense account for the depreciation of fixed assets of this type"
+    },
+    "accumulatedDepreciationAccountId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "ca4c6b39-4f4f-43e8-98da-5e1f350a6694",
+      "description": "The account for accumulated depreciation of fixed assets of this type"
+    },
+    "bookDepreciationSetting": {
+      "$ref": "#/components/schemas/BookDepreciationSetting"
+    },
+    "locks": {
+      "type": "integer",
+      "example": 33,
+      "description": "All asset types that have accumulated depreciation for any assets that use them are deemed \u2018locked\u2019 and cannot be removed."
+    }
+  }
+}

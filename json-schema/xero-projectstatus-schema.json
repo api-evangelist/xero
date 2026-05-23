@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProjectStatus",
+  "title": "ProjectStatus",
+  "description": "Status for project",
+  "example": "INPROGRESS",
+  "type": "string",
+  "enum": [
+    "INPROGRESS",
+    "CLOSED"
+  ]
+}

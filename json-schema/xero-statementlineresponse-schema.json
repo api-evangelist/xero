@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StatementLineResponse",
+  "title": "StatementLineResponse",
+  "type": "object",
+  "properties": {
+    "statementLineId": {
+      "type": "string",
+      "description": "Xero Identifier of statement line",
+      "format": "uuid"
+    },
+    "postedDate": {
+      "type": "string",
+      "description": "Date of when statement line was posted",
+      "format": "date"
+    },
+    "payee": {
+      "type": "string",
+      "description": "Payee description of statement line"
+    },
+    "reference": {
+      "type": "string",
+      "description": "Reference description of statement line"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Notes description of statement line"
+    },
+    "chequeNo": {
+      "type": "string",
+      "description": "Cheque number of statement line"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Amount of statement line",
+      "format": "double",
+      "x-is-money": true
+    },
+    "transactionDate": {
+      "type": "string",
+      "description": "Transaction date of statement line",
+      "format": "date"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of statement line"
+    },
+    "isReconciled": {
+      "type": "boolean",
+      "description": "Boolean to show if statement line is reconciled"
+    },
+    "isDuplicate": {
+      "type": "boolean",
+      "description": "Boolean to show if statement line is duplicate"
+    },
+    "isDeleted": {
+      "type": "boolean",
+      "description": "Boolean to show if statement line is deleted"
+    },
+    "payments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PaymentResponse"
+      },
+      "description": "List of payments associated with reconciled statement lines"
+    },
+    "bankTransactions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BankTransactionResponse"
+      },
+      "description": "List of bank transactions associated with reconciled statement lines"
+    }
+  },
+  "additionalProperties": false
+}

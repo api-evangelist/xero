@@ -1,0 +1,19 @@
+{
+  "operationId": "updateTimeEntry",
+  "method": "PUT",
+  "path": "/Projects/{projectId}/Time/{timeEntryId}",
+  "summary": "Xero Updates a time entry for a specific project",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "userId": "00000000-0000-0000-0000-000000000000",
+        "taskId": "00000000-0000-0000-0000-000000000000",
+        "dateUtc": "2020-02-27T15:00:00Z",
+        "duration": 45,
+        "description": "My UPDATED description"
+      }
+    }
+  ],
+  "responseExamples": []
+}

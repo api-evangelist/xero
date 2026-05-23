@@ -1,0 +1,153 @@
+{
+  "operationId": "getPaySlips",
+  "method": "GET",
+  "path": "/PaySlips",
+  "summary": "Retrieves payslips",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-28 22:55:58.680968",
+        "httpStatusCode": "OK",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 6
+        },
+        "problem": null,
+        "paySlips": [
+          {
+            "paySlipID": "17d88883-686a-400f-9551-34fa366effc4",
+            "employeeID": "68342973-c405-4b86-b5d3-d7b877c27995",
+            "payRunID": "be103bd8-321b-419f-8177-48280560771a",
+            "lastEdited": "2019-09-23 02:13:29",
+            "firstName": "Tony",
+            "lastName": "Starkmzamlagmdison",
+            "totalEarnings": 162,
+            "grossEarnings": 162,
+            "totalPay": 137.88,
+            "totalEmployerTaxes": 0.7,
+            "totalEmployeeTaxes": 19.26,
+            "totalDeductions": 0,
+            "totalReimbursements": 0,
+            "totalStatutoryDeductions": 4.86,
+            "totalSuperannuation": 4.86,
+            "bacsHash": null,
+            "paymentMethod": "Electronically",
+            "earningsLines": [
+              {
+                "earningsLineID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+                "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+                "displayName": "Ordinary Time",
+                "ratePerUnit": 25,
+                "numberOfUnits": 6,
+                "fixedAmount": null,
+                "amount": 150,
+                "isLinkedToTimesheet": false,
+                "isAverageDailyPayRate": null,
+                "isSystemGenerated": true
+              }
+            ],
+            "leaveEarningsLines": [
+              {
+                "earningsLineID": "0441497f-5dc7-4cd3-a90d-f2e07e21b2a6",
+                "earningsRateID": "39b3560a-5d2f-4538-924a-4349dc86396e",
+                "displayName": "Holiday Pay",
+                "ratePerUnit": null,
+                "numberOfUnits": null,
+                "fixedAmount": 12,
+                "amount": 12,
+                "isLinkedToTimesheet": false,
+                "isAverageDailyPayRate": null,
+                "isSystemGenerated": true
+              }
+            ],
+            "timesheetEarningsLines": [],
+            "deductionLines": [],
+            "reimbursementLines": [],
+            "leaveAccrualLines": [
+              {
+                "leaveTypeID": "0441497f-5dc7-4cd3-a90d-f2e07e21b2a6",
+                "numberOfUnits": 12
+              },
+              {
+                "leaveTypeID": "b0b1b79e-2a25-46c2-ad08-ca25ef48d7e4",
+                "numberOfUnits": 0
+              },
+              {
+                "leaveTypeID": "f2f994cf-1899-46f3-ad4f-5d92d78c3719",
+                "numberOfUnits": 0
+              },
+              {
+                "leaveTypeID": "34129765-11cb-4d8c-b568-84a2219beda3",
+                "numberOfUnits": 0
+              }
+            ],
+            "superannuationLines": [
+              {
+                "superannuationTypeID": "563273ea-0dae-4f82-86a4-e0db77c008ea",
+                "displayName": "KiwiSaver",
+                "amount": 4.86,
+                "fixedAmount": null,
+                "percentage": 3,
+                "manualAdjustment": false
+              }
+            ],
+            "paymentLines": [
+              {
+                "paymentLineID": "a300f7c3-e934-4e67-84c5-d8687cf4a2b4",
+                "amount": 137.88,
+                "accountNumber": "0607050201419000",
+                "sortCode": null,
+                "accountName": "Casual Worker"
+              }
+            ],
+            "employeeTaxLines": [
+              {
+                "taxLineID": "1d7c6670-c227-4de9-a7fc-fbf7ec16a804",
+                "description": null,
+                "amount": 19.26,
+                "globalTaxTypeID": 11,
+                "manualAdjustment": false
+              }
+            ],
+            "employerTaxLines": [
+              {
+                "taxLineID": "b790f489-9bbf-4979-a987-53dddf8b648f",
+                "description": null,
+                "amount": 0.7,
+                "globalTaxTypeID": 10,
+                "manualAdjustment": false
+              }
+            ],
+            "statutoryDeductionLines": [
+              {
+                "statutoryDeductionTypeID": "b5efd8d1-0c93-4a14-a314-b5cba4a4e6b3",
+                "amount": 4.86,
+                "fixedAmount": null,
+                "manualAdjustment": null
+              }
+            ],
+            "taxSettings": {
+              "periodUnits": 1.0,
+              "periodType": "weeks",
+              "taxCode": "M",
+              "specialTaxRate": null,
+              "lumpSumTaxCode": "SB",
+              "lumpSumAmount": null
+            },
+            "grossEarningsHistory": {
+              "daysPaid": 1,
+              "unpaidWeeks": 0
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

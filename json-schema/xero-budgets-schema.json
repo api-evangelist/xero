@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Budgets",
+  "title": "Budgets",
+  "type": "object",
+  "x-objectArrayKey": "budgets",
+  "properties": {
+    "Budgets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Budget"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeductionTypeCalculationType",
+  "title": "DeductionTypeCalculationType",
+  "type": "string",
+  "enum": [
+    "FIXEDAMOUNT",
+    "PRETAX",
+    "POSTTAX"
+  ]
+}

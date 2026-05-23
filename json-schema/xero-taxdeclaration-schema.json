@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TaxDeclaration",
+  "title": "TaxDeclaration",
+  "properties": {
+    "EmployeeID": {
+      "description": "Address line 1 for employee home address",
+      "type": "string",
+      "format": "uuid",
+      "example": "123 Main St"
+    },
+    "EmploymentBasis": {
+      "$ref": "#/components/schemas/EmploymentBasis"
+    },
+    "TFNExemptionType": {
+      "$ref": "#/components/schemas/TFNExemptionType"
+    },
+    "TaxFileNumber": {
+      "description": "The tax file number e.g 123123123.",
+      "type": "string",
+      "example": 123123123
+    },
+    "ABN": {
+      "description": "11-digit Australian Business Number e.g 21006819692 or an empty string (\"\") to unset a previously set value. Only applicable, and mandatory if income type is NONEMPLOYEE.",
+      "type": "string",
+      "example": 21006819692
+    },
+    "AustralianResidentForTaxPurposes": {
+      "description": "If the employee is Australian resident for tax purposes. e.g true or false",
+      "type": "boolean",
+      "example": true
+    },
+    "ResidencyStatus": {
+      "$ref": "#/components/schemas/ResidencyStatus"
+    },
+    "TaxScaleType": {
+      "$ref": "#/components/schemas/TaxScaleType"
+    },
+    "WorkCondition": {
+      "$ref": "#/components/schemas/WorkCondition"
+    },
+    "SeniorMaritalStatus": {
+      "$ref": "#/components/schemas/SeniorMaritalStatus"
+    },
+    "TaxFreeThresholdClaimed": {
+      "description": "If tax free threshold claimed. e.g true or false",
+      "type": "boolean",
+      "example": false
+    },
+    "TaxOffsetEstimatedAmount": {
+      "description": "If has tax offset estimated then the tax offset estimated amount. e.g 100",
+      "type": "number",
+      "format": "int",
+      "example": 100
+    },
+    "HasHELPDebt": {
+      "description": "If employee has HECS or HELP debt. e.g true or false",
+      "type": "boolean",
+      "example": false
+    },
+    "HasSFSSDebt": {
+      "description": "If employee has financial supplement debt. e.g true or false",
+      "type": "boolean",
+      "example": false
+    },
+    "HasTradeSupportLoanDebt": {
+      "description": "If employee has trade support loan. e.g true or false",
+      "type": "boolean",
+      "example": false
+    },
+    "UpwardVariationTaxWithholdingAmount": {
+      "description": "If the employee has requested that additional tax be withheld each pay run. e.g 50",
+      "type": "number",
+      "format": "int",
+      "example": 50
+    },
+    "EligibleToReceiveLeaveLoading": {
+      "description": "If the employee is eligible to receive an additional percentage on top of ordinary earnings when they take leave (typically 17.5%). e.g true or false",
+      "type": "boolean",
+      "example": false
+    },
+    "ApprovedWithholdingVariationPercentage": {
+      "description": "If the employee has approved withholding variation. e.g (0 - 100)",
+      "type": "number",
+      "format": "int",
+      "example": 75
+    },
+    "HasStudentStartupLoan": {
+      "description": "If the employee is eligible for student startup loan rules",
+      "type": "boolean",
+      "example": true
+    },
+    "HasLoanOrStudentDebt": {
+      "description": "If the employee has any of the following loans or debts: Higher Education Loan Program (HELP/HECS), VET Student Loan (VSL), Financial Supplement (FS), Student Start-up Loan (SSL), or Trade Support Loan (TSL)",
+      "type": "boolean",
+      "example": true
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true,
+      "example": "/Date(1583967733054+0000)/"
+    },
+    "IncludeLeaveLoadingInQualifyingEarnings": {
+      "description": "Optional Boolean to determine if leave loading is considered as qualifying earnings for superannuation guarantee calculations",
+      "type": "boolean",
+      "example": true
+    }
+  },
+  "type": "object"
+}

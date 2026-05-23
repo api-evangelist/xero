@@ -1,0 +1,23 @@
+{
+  "operationId": "getFeedConnection",
+  "method": "GET",
+  "path": "/FeedConnections/{id}",
+  "summary": "Xero Retrieve single feed connection based on a unique id provided",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "b58b685a-1bee-4904-91f1-fee30bb6ea52",
+        "accountToken": "foobar84778",
+        "accountType": "BANK",
+        "accountNumber": "123434859",
+        "accountName": "SDK Bank 5517",
+        "accountId": "f4c4d595-da94-493b-999a-19d1ae1f508a",
+        "currency": "GBP",
+        "country": "GB"
+      }
+    }
+  ]
+}

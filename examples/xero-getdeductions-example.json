@@ -1,0 +1,44 @@
+{
+  "operationId": "getDeductions",
+  "method": "GET",
+  "path": "/Deductions",
+  "summary": "Retrieves deductions for a specific employee",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 20:43:53.931198",
+        "httpStatusCode": "OK",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 4
+        },
+        "problem": null,
+        "deductions": [
+          {
+            "deductionId": "a3760fe4-68a4-4e38-8326-fe616af7dc74",
+            "deductionName": "KiwiSaver Voluntary Contributions",
+            "deductionCategory": "KiwiSaverVoluntaryContributions",
+            "liabilityAccountId": "26c57f04-0436-40cc-9cd9-1a21185d88bb",
+            "currentRecord": true,
+            "standardAmount": null
+          },
+          {
+            "deductionId": "a131596e-2f83-4f6c-9573-99c4cbfcefd1",
+            "deductionName": "Rent",
+            "deductionCategory": "NzOther",
+            "liabilityAccountId": "26c57f04-0436-40cc-9cd9-1a21185d88bb",
+            "currentRecord": true,
+            "standardAmount": 200
+          }
+        ]
+      }
+    }
+  ]
+}

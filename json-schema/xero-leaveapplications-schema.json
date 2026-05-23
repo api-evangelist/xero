@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeaveApplications",
+  "title": "LeaveApplications",
+  "type": "object",
+  "x-objectArrayKey": "leave_applications",
+  "properties": {
+    "LeaveApplications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LeaveApplication"
+      }
+    }
+  }
+}

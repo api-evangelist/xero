@@ -1,0 +1,94 @@
+{
+  "operationId": "getFinancialStatementProfitAndLoss",
+  "method": "GET",
+  "path": "/FinancialStatements/ProfitAndLoss",
+  "summary": "Xero Get Profit & Loss report",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "startDate": "2020-07-01",
+        "endDate": "2021-06-30",
+        "netProfitLoss": 123,
+        "revenue": {
+          "total": 20922.46,
+          "accountTypes": [
+            {
+              "total": 20825.41,
+              "title": "Trading Income",
+              "accounts": [
+                {
+                  "accountID": "abcdefab-2006-43c2-a5da-3c0e5f43b452",
+                  "accountType": "REVENUE",
+                  "code": "200",
+                  "name": "Sales",
+                  "reportingCode": "REV",
+                  "total": 20825.41
+                }
+              ]
+            },
+            {
+              "total": 97.05,
+              "title": "Other Income",
+              "accounts": [
+                {
+                  "accountID": "abcdefab-4d63-4af8-937f-04087ae2e36e",
+                  "accountType": "OTHERINCOME",
+                  "code": "270",
+                  "name": "Interest Income",
+                  "reportingCode": "REV.OTH",
+                  "total": 97.05
+                }
+              ]
+            }
+          ]
+        },
+        "expense": {
+          "total": 1282.06,
+          "accountTypes": [
+            {
+              "total": 1137.59,
+              "title": "Direct Cost",
+              "accounts": [
+                {
+                  "accountID": "abcdefab-d381-4bd6-ba47-7af927d25825",
+                  "accountType": "DIRECTCOSTS",
+                  "code": "300",
+                  "name": "Purchases",
+                  "reportingCode": "EXP.DC",
+                  "total": 1137.59
+                }
+              ]
+            },
+            {
+              "total": 144.47,
+              "title": "Operating Expenses",
+              "accounts": [
+                {
+                  "accountID": "abcdefab-f897-4168-b5d1-2279bf74bb82",
+                  "accountType": "EXPENSE",
+                  "code": "453",
+                  "name": "Office Expenses",
+                  "reportingCode": "EXP",
+                  "total": 144.47
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "type": "invalid-request",
+        "title": "InvalidRequest",
+        "status": 400,
+        "detail": "Organisation xxx does not exist"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ImportSummaryObject",
+  "title": "ImportSummaryObject",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/api-guides/conversions"
+  },
+  "properties": {
+    "ImportSummary": {
+      "$ref": "#/components/schemas/ImportSummary"
+    }
+  }
+}

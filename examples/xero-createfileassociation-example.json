@@ -1,0 +1,24 @@
+{
+  "operationId": "createFileAssociation",
+  "method": "POST",
+  "path": "/Files/{FileId}/Associations",
+  "summary": "Creates a new file association",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "{ \"ObjectId\": \"1270bf7c-5d18-473a-9231-1e36c4bd33ed\", \"ObjectGroup\": \"Contact\", \"ObjectType\": \"Business\" }"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "example": "{ \"FileId\": \"6beccb4a-0d7d-4518-93f3-e0cd1dccb254\", \"ObjectId\": \"1270bf7c-5d18-473a-9231-1e36c4bd33ed\", \"ObjectType\": \"Business\", \"ObjectGroup\": \"Contact\" }"
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": "[ { \"type\":\"Validation\", \"title\":\"Validation failure\", \"detail\":\"Object is not a Account\" } ]"
+    }
+  ]
+}

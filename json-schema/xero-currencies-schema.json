@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Currencies",
+  "title": "Currencies",
+  "type": "object",
+  "x-objectArrayKey": "currencies",
+  "properties": {
+    "Currencies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Currency"
+      }
+    }
+  }
+}

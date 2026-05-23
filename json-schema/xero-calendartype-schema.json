@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CalendarType",
+  "title": "CalendarType",
+  "type": "string",
+  "enum": [
+    "WEEKLY",
+    "FORTNIGHTLY",
+    "FOURWEEKLY",
+    "MONTHLY",
+    "TWICEMONTHLY",
+    "QUARTERLY"
+  ]
+}

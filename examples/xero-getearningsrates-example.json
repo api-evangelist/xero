@@ -1,0 +1,64 @@
+{
+  "operationId": "getEarningsRates",
+  "method": "GET",
+  "path": "/EarningsRates",
+  "summary": "Retrieves earnings rates",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-28 18:25:57.064773",
+        "httpStatusCode": "OK",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 15
+        },
+        "problem": null,
+        "earningsRates": [
+          {
+            "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+            "name": "Ordinary Time",
+            "earningsType": "RegularEarnings",
+            "rateType": "RatePerUnit",
+            "typeOfUnits": "hours",
+            "currentRecord": true,
+            "expenseAccountID": "1c91e520-a12b-45cc-8194-99950858e5bf",
+            "fixedAmount": null,
+            "ratePerUnit": null,
+            "multipleOfOrdinaryEarningsRate": null
+          },
+          {
+            "earningsRateID": "31407b3e-0967-4ae0-a7f1-3df4e6481a2e",
+            "name": "ACC (First Week)",
+            "earningsType": "OtherGrossEarnings",
+            "rateType": "MultipleOfOrdinaryEarningsRate",
+            "typeOfUnits": "hours",
+            "currentRecord": true,
+            "expenseAccountID": "1c91e520-a12b-45cc-8194-99950858e5bf",
+            "fixedAmount": null,
+            "ratePerUnit": null,
+            "multipleOfOrdinaryEarningsRate": 0.8
+          },
+          {
+            "earningsRateID": "6e5a4cf2-aa38-4558-a46e-f6998dad239b",
+            "name": "Directors Fees",
+            "earningsType": "WithholdingIncome",
+            "rateType": "FixedAmount",
+            "typeOfUnits": null,
+            "currentRecord": true,
+            "expenseAccountID": "1c91e520-a12b-45cc-8194-99950858e5bf",
+            "fixedAmount": 1000,
+            "ratePerUnit": null,
+            "multipleOfOrdinaryEarningsRate": null
+          }
+        ]
+      }
+    }
+  ]
+}

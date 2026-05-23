@@ -1,0 +1,34 @@
+{
+  "operationId": "updateEmployeeOpeningBalances",
+  "method": "PUT",
+  "path": "/Employees/{EmployeeID}/ukopeningbalances",
+  "summary": "Updates a specific employee's opening balances",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "statutoryAdoptionPay": 20,
+        "statutoryMaternityPay": 20,
+        "statutoryPaternityPay": 20,
+        "statutorySharedParentalPay": 20,
+        "statutorySickPay": 20,
+        "priorEmployeeNumber": 20
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "21953776-783c-426c-bf15-cbde997839c4",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-03-27 15:45:09.707863",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "openingBalances": null
+      }
+    }
+  ]
+}

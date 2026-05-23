@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeLeave",
+  "title": "EmployeeLeave",
+  "type": "object",
+  "required": [
+    "leaveTypeID",
+    "description",
+    "startDate",
+    "endDate"
+  ],
+  "properties": {
+    "leaveID": {
+      "description": "The Xero identifier for LeaveType",
+      "type": "string",
+      "format": "uuid"
+    },
+    "leaveTypeID": {
+      "description": "The Xero identifier for LeaveType",
+      "type": "string",
+      "format": "uuid"
+    },
+    "description": {
+      "description": "The description of the leave  (max length = 50)",
+      "type": "string"
+    },
+    "startDate": {
+      "description": "Start date of the leave (YYYY-MM-DD)",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "endDate": {
+      "description": "End date of the leave (YYYY-MM-DD)",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "periods": {
+      "description": "The leave period information. The StartDate, EndDate and NumberOfUnits needs to be specified when you do not want to calculate NumberOfUnits automatically. Using incorrect period StartDate and EndDate will result in automatic computation of the NumberOfUnits.",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LeavePeriod"
+      }
+    },
+    "updatedDateUTC": {
+      "description": "UTC timestamp of last update to the leave type note",
+      "type": "string",
+      "format": "date-time",
+      "x-is-datetime": true
+    }
+  }
+}

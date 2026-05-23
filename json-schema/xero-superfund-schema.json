@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SuperFund",
+  "title": "SuperFund",
+  "type": "object",
+  "required": [
+    "Type"
+  ],
+  "properties": {
+    "SuperFundID": {
+      "description": "Xero identifier for a super fund",
+      "type": "string",
+      "format": "uuid",
+      "example": "bfac31bd-ea62-4fc8-a5e7-7965d9504b15"
+    },
+    "Type": {
+      "$ref": "#/components/schemas/SuperFundType"
+    },
+    "Name": {
+      "description": "Name of the super fund",
+      "type": "string",
+      "example": "MLC Navigator Retirement Plan - Superannuation Service (including Series 2) (MLC Superannuation Fund)"
+    },
+    "ABN": {
+      "description": "ABN of the self managed super fund",
+      "type": "string",
+      "example": 40022701955
+    },
+    "BSB": {
+      "description": "BSB of the self managed super fund",
+      "type": "string",
+      "example": 234324
+    },
+    "AccountNumber": {
+      "description": "The account number for the self managed super fund.",
+      "type": "string",
+      "example": 234234234
+    },
+    "AccountName": {
+      "description": "The account name for the self managed super fund.",
+      "type": "string",
+      "example": "Money account"
+    },
+    "ElectronicServiceAddress": {
+      "description": "The electronic service address for the self managed super fund.",
+      "type": "string",
+      "example": 12345678
+    },
+    "EmployerNumber": {
+      "description": "Some funds assign a unique number to each employer",
+      "type": "string",
+      "example": 324324
+    },
+    "SPIN": {
+      "description": "The SPIN of the Regulated SuperFund. This field has been deprecated. It will only be present for legacy superfunds. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN.",
+      "type": "string",
+      "example": 4545445454
+    },
+    "USI": {
+      "description": "The USI of the Regulated SuperFund",
+      "type": "string",
+      "example": 40022701955001
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true,
+      "example": "/Date(1583967733054+0000)/"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    }
+  }
+}

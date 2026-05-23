@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProjectUsers",
+  "title": "ProjectUsers",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/projects/users"
+  },
+  "type": "object",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ProjectUser"
+      }
+    }
+  }
+}

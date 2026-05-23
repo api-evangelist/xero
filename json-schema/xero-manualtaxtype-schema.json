@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ManualTaxType",
+  "title": "ManualTaxType",
+  "type": "string",
+  "enum": [
+    "PAYGMANUAL",
+    "ETPOMANUAL",
+    "ETPRMANUAL",
+    "SCHEDULE5MANUAL",
+    "SCHEDULE5STSLMANUAL",
+    "SCHEDULE4MANUAL"
+  ]
+}

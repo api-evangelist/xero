@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmploymentStatus",
+  "title": "EmploymentStatus",
+  "description": "The employment status of the employee.",
+  "type": "string",
+  "example": "Employee",
+  "enum": [
+    "Employee",
+    "Worker",
+    "Unspecified"
+  ]
+}

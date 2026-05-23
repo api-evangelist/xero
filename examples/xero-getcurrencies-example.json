@@ -1,0 +1,25 @@
+{
+  "operationId": "getCurrencies",
+  "method": "GET",
+  "path": "/Currencies",
+  "summary": "Retrieves currencies for your Xero organisation",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "e6803fc8-8035-4251-b3e4-39d6b2de0f4a",
+        "Status": "OK",
+        "ProviderName": "Provider Name Example",
+        "DateTimeUTC": "/Date(1552322853043)/",
+        "Currencies": [
+          {
+            "Code": "NZD",
+            "Description": "New Zealand Dollar"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchPaymentDelete",
+  "title": "BatchPaymentDelete",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/accounting/batchpayments"
+  },
+  "properties": {
+    "BatchPaymentID": {
+      "description": "The Xero generated unique identifier for the bank transaction (read-only)",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Status": {
+      "description": "The status of the batch payment.",
+      "type": "string",
+      "default": "DELETED"
+    }
+  },
+  "required": [
+    "Status",
+    "BatchPaymentID"
+  ],
+  "type": "object"
+}

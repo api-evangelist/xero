@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EarningsRateCalculationType",
+  "title": "EarningsRateCalculationType",
+  "type": "string",
+  "enum": [
+    "USEEARNINGSRATE",
+    "ENTEREARNINGSRATE",
+    "ANNUALSALARY"
+  ]
+}

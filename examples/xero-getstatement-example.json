@@ -1,0 +1,29 @@
+{
+  "operationId": "getStatement",
+  "method": "GET",
+  "path": "/Statements/{statementId}",
+  "summary": "Xero Retrieve single statement based on unique id provided",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "97aca24a-dd10-4cda-98c7-1084a048257b",
+        "feedConnectionId": "6a4b9ff5-3a5f-4321-936b-4796163550f6",
+        "status": "DELIVERED",
+        "startDate": "2019-08-11",
+        "endDate": "2019-10-11",
+        "startBalance": {
+          "amount": "100.0000",
+          "creditDebitIndicator": "CREDIT"
+        },
+        "endBalance": {
+          "amount": "150.0000",
+          "creditDebitIndicator": "CREDIT"
+        },
+        "statementLineCount": "1"
+      }
+    }
+  ]
+}

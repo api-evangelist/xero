@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AssetStatusQueryParam",
+  "title": "AssetStatusQueryParam",
+  "type": "string",
+  "description": "See Asset Status Codes.",
+  "example": "DRAFT",
+  "enum": [
+    "DRAFT",
+    "REGISTERED",
+    "DISPOSED"
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreditNote",
+  "title": "CreditNote",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/credit-notes/"
+  },
+  "properties": {
+    "Type": {
+      "description": "See Credit Note Types",
+      "type": "string",
+      "enum": [
+        "ACCPAYCREDIT",
+        "ACCRECCREDIT"
+      ]
+    },
+    "Contact": {
+      "$ref": "#/components/schemas/Contact"
+    },
+    "Date": {
+      "description": "The date the credit note is issued YYYY-MM-DD. If the Date element is not specified then it will default to the current date based on the timezone setting of the organisation",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "DueDate": {
+      "description": "Date invoice is due \u2013 YYYY-MM-DD",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "Status": {
+      "description": "See Credit Note Status Codes",
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "SUBMITTED",
+        "DELETED",
+        "AUTHORISED",
+        "PAID",
+        "VOIDED"
+      ]
+    },
+    "LineAmountTypes": {
+      "$ref": "#/components/schemas/LineAmountTypes",
+      "type": "string"
+    },
+    "LineItems": {
+      "description": "See Invoice Line Items",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LineItem"
+      }
+    },
+    "SubTotal": {
+      "description": "The subtotal of the credit note excluding taxes",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "TotalTax": {
+      "description": "The total tax on the credit note",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Total": {
+      "description": "The total of the Credit Note(subtotal + total tax)",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "CISDeduction": {
+      "description": "CIS deduction for UK contractors",
+      "readOnly": true,
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "CISRate": {
+      "description": "CIS Deduction rate for the organisation",
+      "type": "number",
+      "format": "double",
+      "readOnly": true,
+      "x-is-money": true
+    },
+    "UpdatedDateUTC": {
+      "description": "UTC timestamp of last update to the credit note",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "CurrencyCode": {
+      "description": "The specified currency code",
+      "$ref": "#/components/schemas/CurrencyCode",
+      "type": "string"
+    },
+    "FullyPaidOnDate": {
+      "description": "Date when credit note was fully paid(UTC format)",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "CreditNoteID": {
+      "description": "Xero generated unique identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "CreditNoteNumber": {
+      "description": "ACCRECCREDIT \u2013 Unique alpha numeric code identifying credit note (when missing will auto-generate from your Organisation Invoice Settings)",
+      "type": "string"
+    },
+    "Reference": {
+      "description": "ACCRECCREDIT only \u2013 additional reference number",
+      "type": "string"
+    },
+    "SentToContact": {
+      "description": "Boolean to set whether the credit note in the Xero app should be marked as \u201csent\u201d. This can be set only on credit notes that have been approved",
+      "readOnly": true,
+      "type": "boolean"
+    },
+    "CurrencyRate": {
+      "description": "The currency rate for a multicurrency invoice. If no rate is specified, the XE.com day rate is used",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "RemainingCredit": {
+      "description": "The remaining credit balance on the Credit Note",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Allocations": {
+      "description": "See Allocations",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Allocation"
+      }
+    },
+    "AppliedAmount": {
+      "description": "The amount of applied to an invoice",
+      "type": "number",
+      "format": "double",
+      "example": 2.0,
+      "x-is-money": true
+    },
+    "Payments": {
+      "description": "See Payments",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Payment"
+      }
+    },
+    "BrandingThemeID": {
+      "description": "See BrandingThemes",
+      "type": "string",
+      "format": "uuid"
+    },
+    "StatusAttributeString": {
+      "description": "A string to indicate if a invoice status",
+      "type": "string"
+    },
+    "HasAttachments": {
+      "description": "boolean to indicate if a credit note has an attachment",
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "HasErrors": {
+      "description": "A boolean to indicate if a credit note has an validation errors",
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "Warnings": {
+      "description": "Displays array of warning messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "InvoiceAddresses": {
+      "description": "An array of addresses used to auto calculate sales tax",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InvoiceAddress"
+      }
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,22 @@
+{
+  "operationId": "getContactCISSettings",
+  "method": "GET",
+  "path": "/Contacts/{ContactID}/CISSettings",
+  "summary": "Retrieves CIS settings for a specific contact in a Xero organisation",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "CISSetting": [
+          {
+            "CISContractorEnabled": true,
+            "CISSubContractorEnabled": true,
+            "Rate": 100
+          }
+        ]
+      }
+    }
+  ]
+}

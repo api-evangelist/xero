@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BookDepreciationDetail",
+  "title": "BookDepreciationDetail",
+  "properties": {
+    "currentCapitalGain": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 5.25,
+      "description": "When an asset is disposed, this will be the sell price minus the purchase price if a profit was made."
+    },
+    "currentGainLoss": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.5,
+      "description": "When an asset is disposed, this will be the lowest one of sell price or purchase price, minus the current book value."
+    },
+    "depreciationStartDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2015-07-01 00:00:00",
+      "description": "YYYY-MM-DD"
+    },
+    "costLimit": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 9000.0,
+      "description": "The value of the asset you want to depreciate, if this is less than the cost of the asset."
+    },
+    "residualValue": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10000.0,
+      "description": "The value of the asset remaining when you've fully depreciated it."
+    },
+    "priorAccumDepreciationAmount": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 0.45,
+      "description": "All depreciation prior to the current financial year."
+    },
+    "currentAccumDepreciationAmount": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 5.0,
+      "description": "All depreciation occurring in the current financial year."
+    },
+    "businessUseCapitalGain": {
+      "type": "number",
+      "format": "decimal",
+      "x-is-money": true,
+      "description": "(New Zealand Orgs Only) The portion of capital gain realised from the disposal of a fixed asset that is attributable to its business use."
+    },
+    "businessUseCurrentGainLoss": {
+      "type": "number",
+      "format": "decimal",
+      "x-is-money": true,
+      "description": "(New Zealand Orgs Only) Represents the gain or loss from the disposal of the business use portion of a fixed asset. This value records the financial result (profit or loss) related specifically to the asset\u2019s business use."
+    },
+    "privateUseCapitalGain": {
+      "type": "number",
+      "format": "decimal",
+      "x-is-money": true,
+      "description": "(New Zealand Orgs Only) The portion of capital gain realised from the disposal of a fixed asset that is attributable to its private (non-business) use."
+    },
+    "privateUseCurrentGainLoss": {
+      "type": "number",
+      "format": "decimal",
+      "x-is-money": true,
+      "description": "(New Zealand Orgs Only) Represents the gain or loss from the disposal of the private use portion of a fixed asset. This value records the financial result (profit or loss) related specifically to the asset\u2019s private use."
+    },
+    "initialDeductionPercentage": {
+      "type": "number",
+      "format": "decimal",
+      "description": "(New Zealand Orgs Only) The Investment Boost deduction percentage."
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TaxComponent",
+  "title": "TaxComponent",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/tax-rates/"
+  },
+  "properties": {
+    "Name": {
+      "description": "Name of Tax Component",
+      "type": "string"
+    },
+    "Rate": {
+      "description": "Tax Rate (up to 4dp)",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "IsCompound": {
+      "description": "Boolean to describe if Tax rate is compounded.",
+      "type": "boolean"
+    },
+    "IsNonRecoverable": {
+      "description": "Boolean to describe if tax rate is non-recoverable. Non-recoverable rates are only applicable to Canadian organisations",
+      "type": "boolean"
+    }
+  },
+  "type": "object"
+}

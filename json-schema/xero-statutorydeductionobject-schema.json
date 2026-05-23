@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StatutoryDeductionObject",
+  "title": "StatutoryDeductionObject",
+  "type": "object",
+  "properties": {
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "problem": {
+      "$ref": "#/components/schemas/Problem"
+    },
+    "statutoryDeduction": {
+      "$ref": "#/components/schemas/StatutoryDeduction"
+    }
+  }
+}

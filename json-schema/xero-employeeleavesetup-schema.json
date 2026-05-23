@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeLeaveSetup",
+  "title": "EmployeeLeaveSetup",
+  "type": "object",
+  "properties": {
+    "includeHolidayPay": {
+      "description": "Identifier if holiday pay will be included in each payslip",
+      "type": "boolean",
+      "example": false
+    },
+    "holidayPayOpeningBalance": {
+      "description": "Initial holiday pay balance. A percentage \u2014 usually 8% \u2014 of gross earnings since their last work anniversary.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.5
+    },
+    "annualLeaveOpeningBalance": {
+      "description": "Initial annual leave balance. The balance at their last anniversary, less any leave taken since then and excluding accrued annual leave.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 25.89
+    },
+    "negativeAnnualLeaveBalancePaidAmount": {
+      "description": "The dollar value of annual leave opening balance if negative.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.0
+    },
+    "SickLeaveToAccrueAnnually": {
+      "description": "Number of units accrued annually for sick leave. The type of units is determined by the property \"TypeOfUnitsToAccrue\" on the \"Sick Leave\" leave type",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 100.5
+    },
+    "SickLeaveMaximumToAccrue": {
+      "description": "Maximum number of units accrued annually for sick leave. The type of units is determined by the property \"TypeOfUnitsToAccrue\" on the \"Sick Leave\" leave type",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 200.5
+    },
+    "sickLeaveOpeningBalance": {
+      "description": "Initial sick leave balance. This will be positive unless they've taken sick leave in advance",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 10.5
+    },
+    "SickLeaveScheduleOfAccrual": {
+      "description": "Set Schedule of Accrual Type for Sick Leave",
+      "type": "string",
+      "example": "OnAnniversaryDate"
+    },
+    "SickLeaveAnniversaryDate": {
+      "description": "If Sick Leave Schedule of Accrual is \"OnAnniversaryDate\", this is the date when entitled to Sick Leave. When null the Employee's start date is used as the anniversary date",
+      "type": "string",
+      "format": "date",
+      "example": "2020-01-19",
+      "x-is-date": true
+    },
+    "AnnualLeaveAnniversaryDate": {
+      "description": "The first date the employee will accrue Annual Leave. When null the Employee's start date is used as the anniversary date",
+      "type": "string",
+      "format": "date",
+      "example": "2020-01-19",
+      "x-is-date": true
+    }
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "operationId": "createStatements",
+  "method": "POST",
+  "path": "/Statements",
+  "summary": "Xero Creates one or more new statements",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "items": [
+          {
+            "feedConnectionId": "6a4b9ff5-3a5f-4321-936b-4796163550f6",
+            "startDate": "2019-08-11",
+            "endDate": "2019-08-11",
+            "startBalance": {
+              "amount": "100",
+              "creditDebitIndicator": "CREDIT"
+            },
+            "endBalance": {
+              "amount": "150",
+              "creditDebitIndicator": "CREDIT"
+            },
+            "statementLines": [
+              {
+                "postedDate": "2019-08-11",
+                "description": "My new line",
+                "amount": "50",
+                "creditDebitIndicator": "CREDIT",
+                "transactionId": "123446422",
+                "payeeName": "StarLord90315",
+                "reference": "Foobar95578",
+                "chequeNumber": "12379009",
+                "transactionType": "Refund"
+              }
+            ]
+          },
+          {
+            "feedConnectionId": "2ebe6393-f3bb-48ab-9a0e-b04fa8585a70",
+            "startDate": "2019-08-11",
+            "endDate": "2019-08-11",
+            "startBalance": {
+              "amount": "100",
+              "creditDebitIndicator": "CREDIT"
+            },
+            "endBalance": {
+              "amount": "150",
+              "creditDebitIndicator": "CREDIT"
+            },
+            "statementLines": [
+              {
+                "postedDate": "2019-08-11",
+                "description": "My new line",
+                "amount": "50",
+                "creditDebitIndicator": "CREDIT",
+                "transactionId": "123449402",
+                "payeeName": "StarLord56705",
+                "reference": "Foobar67355",
+                "chequeNumber": "12379350",
+                "transactionType": "Currency Conversion Fee"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "202",
+      "contentType": "application/json",
+      "example": {
+        "items": [
+          {
+            "id": "d69b02b7-a30c-464a-99cf-ba9770373c61",
+            "feedConnectionId": "6a4b9ff5-3a5f-4321-936b-4796163550f6",
+            "status": "PENDING"
+          },
+          {
+            "id": "598f255c-015b-4138-93df-2e06c64565b3",
+            "feedConnectionId": "2ebe6393-f3bb-48ab-9a0e-b04fa8585a70",
+            "status": "PENDING"
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/problem+json",
+      "example": {
+        "type": "invalid-request",
+        "title": "Invalid Request",
+        "status": 400,
+        "detail": "For the request field 'StatementLine.ChequeNumber' exceeded the maximum length of 20."
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/problem+json",
+      "example": {
+        "type": "invalid-application",
+        "title": "Invalid Application",
+        "status": 403,
+        "detail": "The application has not been configured to use these API endpoints."
+      }
+    },
+    {
+      "status": "409",
+      "contentType": "application/problem+json",
+      "example": {
+        "items": [
+          {
+            "id": "29fefeb6-f449-470d-9179-f1d8900930d6",
+            "feedConnectionId": "6a4b9ff5-3a5f-4321-936b-4796163550f6",
+            "status": "REJECTED",
+            "errors": [
+              {
+                "type": "duplicate-statement",
+                "title": "Duplicate Statement Received",
+                "status": 409,
+                "detail": "The received statement was marked as a duplicate."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "status": "413",
+      "contentType": "application/problem+json",
+      "example": {
+        "type": "invalid-request",
+        "title": "Request too large",
+        "status": 413,
+        "detail": "Request size of 3500000 bytes exceeds the limit of 3000000 bytes."
+      }
+    },
+    {
+      "status": "422",
+      "contentType": "application/problem+json",
+      "example": {
+        "type": "invalid-end-balance",
+        "title": "Invalid End Balance",
+        "status": 422,
+        "detail": "End balance does not match start balance +/- statement line amounts."
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/problem+json",
+      "example": {
+        "type": "internal-error",
+        "title": "Intermittent Internal Xero Error",
+        "status": 500,
+        "detail": "The request should be retried. If the error persists, a Xero support issue should be raised."
+      }
+    }
+  ]
+}

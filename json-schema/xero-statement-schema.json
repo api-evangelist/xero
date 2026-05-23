@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Statement",
+  "title": "Statement",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "example": "ba4f3127-5e46-427d-80ea-dea2fcd26afe",
+      "description": "GUID used to identify the Statement."
+    },
+    "feedConnectionId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "87cb0dc8-fa32-409c-b622-19f8de8dcc83",
+      "description": "The Xero generated feed connection Id that identifies the Xero Bank Account Container into which the statement should be delivered. This is obtained by calling GET FeedConnections."
+    },
+    "status": {
+      "enum": [
+        "PENDING",
+        "REJECTED",
+        "DELIVERED"
+      ],
+      "example": "PENDING",
+      "description": "Current status of statements"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2018-07-27",
+      "description": "Opening balance date (can be no older than one year from the current date) ISO-8601 YYYY-MM-DD"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2018-07-27",
+      "description": "Closing balance date ISO-8601 YYYY-MM-DD"
+    },
+    "startBalance": {
+      "$ref": "#/components/schemas/StartBalance"
+    },
+    "endBalance": {
+      "$ref": "#/components/schemas/EndBalance"
+    },
+    "statementLines": {
+      "$ref": "#/components/schemas/StatementLines"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Error"
+      }
+    },
+    "statementLineCount": {
+      "type": "integer",
+      "example": 1
+    }
+  }
+}

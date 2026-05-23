@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TaxSettings",
+  "title": "TaxSettings",
+  "type": "object",
+  "properties": {
+    "periodUnits": {
+      "description": "The number of units for the period type",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "periodType": {
+      "description": "The type of period (\"weeks\" or \"months\")",
+      "type": "string",
+      "enum": [
+        "weeks",
+        "months"
+      ],
+      "example": "weeks"
+    },
+    "taxCode": {
+      "$ref": "#/components/schemas/TaxCode"
+    },
+    "specialTaxRate": {
+      "description": "Tax rate for STC and WT",
+      "type": "string"
+    },
+    "lumpSumTaxCode": {
+      "description": "Tax code for a lump sum amount",
+      "type": "string"
+    },
+    "lumpSumAmount": {
+      "description": "The total of the lump sum amount",
+      "type": "string"
+    }
+  }
+}

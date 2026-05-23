@@ -1,0 +1,127 @@
+{
+  "operationId": "getFinancialStatementBalanceSheet",
+  "method": "GET",
+  "path": "/FinancialStatements/BalanceSheet",
+  "summary": "Xero Get Balance Sheet report",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "balanceDate": "2021-05-12",
+        "asset": {
+          "accountTypes": [
+            {
+              "accountType": "INVENTORY",
+              "accounts": [
+                {
+                  "code": "630",
+                  "accountID": "abcdeabc-80bb-47f5-9418-d1fc2241b838",
+                  "name": "Inventory",
+                  "reportingCode": "ASS.CUR.INY",
+                  "total": 3
+                }
+              ],
+              "total": 3
+            },
+            {
+              "accountType": "CURRENT",
+              "accounts": [
+                {
+                  "code": "610",
+                  "accountID": "abcdeabc-b4d1-45a5-82f7-19deda692a31",
+                  "name": "Accounts Receivable",
+                  "reportingCode": "ASS.CUR.REC.TRA",
+                  "total": 100
+                }
+              ],
+              "total": 100
+            },
+            {
+              "accountType": "BANK",
+              "accounts": [
+                {
+                  "accountID": "abcdeabc-3a6d-4c53-ba82-ea1c92d02ef4",
+                  "name": "Buz Acc",
+                  "reportingCode": "ASS",
+                  "total": -42.3
+                }
+              ],
+              "total": -42.3
+            }
+          ],
+          "total": 60.7
+        },
+        "liability": {
+          "accountTypes": [
+            {
+              "accountType": "CURRLIAB",
+              "accounts": [
+                {
+                  "code": "820",
+                  "accountID": "abcdeabc-40f7-49f1-ad89-1930c1366e5b",
+                  "name": "GST",
+                  "reportingCode": "LIA.CUR.TAX.GST",
+                  "total": 1.59
+                },
+                {
+                  "code": "860",
+                  "accountID": "abcdeabc-2877-4c00-be7d-475b1ded30d7",
+                  "name": "Rounding",
+                  "reportingCode": "LIA.CUR",
+                  "total": -0.1
+                },
+                {
+                  "code": "800",
+                  "accountID": "abcdeabc-80ba-4b58-8d72-f8e9ca0f2f00",
+                  "name": "Accounts Payable",
+                  "reportingCode": "LIA.CUR.PAY.TRA",
+                  "total": 44.4
+                }
+              ],
+              "total": 45.89
+            }
+          ],
+          "total": 45.89
+        },
+        "equity": {
+          "accountTypes": [
+            {
+              "accountType": "EQUITY",
+              "accounts": [
+                {
+                  "accountID": "00000000-0000-0000-0000-000000000000",
+                  "name": "Current Year Earnings",
+                  "total": 14.81
+                }
+              ],
+              "total": 14.81
+            }
+          ],
+          "total": 14.81
+        }
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "type": "invalid-request",
+        "title": "InvalidRequest",
+        "status": 400,
+        "detail": "Organisation xxx does not exist"
+      }
+    },
+    {
+      "status": "503",
+      "contentType": "application/json",
+      "example": {
+        "type": "service-unavailable",
+        "title": "ServiceUnavailable",
+        "status": 503,
+        "detail": "Cannot process org xxx at this time. Apologies for inconvenience."
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "operationId": "createPayrollCalendar",
+  "method": "POST",
+  "path": "/PayrollCalendars",
+  "summary": "Creates a Payroll Calendar",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "[ { \"PayrollCalendarID\":\"78bb86b9-e1ea-47ac-b75d-f087a81931de\", \"PayRunPeriodStartDate\":\"/Date(1572566400000+0000)/\", \"PayRunPeriodEndDate\":\"/Date(1573084800000+0000)/\", \"PayRunStatus\":\"DRAFT\", \"PaymentDate\":\"/Date(1573171200000+0000)/\" } ]"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1584125518649)/",
+        "PayrollCalendars": [
+          {
+            "PayrollCalendarID": "57accbfe-f729-4be3-b3cb-8c3445c61d3a",
+            "Name": "MyCal37127",
+            "CalendarType": "WEEKLY",
+            "StartDate": "/Date(1572998400000+0000)/",
+            "PaymentDate": "/Date(1573516800000+0000)/",
+            "UpdatedDateUTC": "/Date(1584125518633+0000)/"
+          }
+        ]
+      }
+    }
+  ]
+}

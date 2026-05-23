@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountType",
+  "title": "AccountType",
+  "description": "See Account Types",
+  "type": "string",
+  "enum": [
+    "BANK",
+    "CURRENT",
+    "CURRLIAB",
+    "DEPRECIATN",
+    "DIRECTCOSTS",
+    "EQUITY",
+    "EXPENSE",
+    "FIXED",
+    "INVENTORY",
+    "LIABILITY",
+    "NONCURRENT",
+    "OTHERINCOME",
+    "OVERHEADS",
+    "PREPAYMENT",
+    "REVENUE",
+    "SALES",
+    "TERMLIAB",
+    "PAYG"
+  ]
+}

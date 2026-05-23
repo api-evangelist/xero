@@ -1,0 +1,44 @@
+{
+  "operationId": "createMultipleEmployeeEarningsTemplate",
+  "method": "POST",
+  "path": "/Employees/{EmployeeID}/PayTemplateEarnings",
+  "summary": "Creates multiple employee earnings template records for a specific employee",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "[{\"ratePerUnit\":20.0,\"numberOfUnits\":8.0,\"earningsRateID\":\"f9d8f5b5-9049-47f4-8541-35e200f750a5\"},{\"ratePerUnit\":0.0,\"numberOfUnits\":8.0,\"earningsRateID\":\"65b83d94-f20f-45e1-85ae-387fcf460c26\"}]"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-27 15:01:52.936904",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "earningTemplates": [
+          {
+            "payTemplateEarningID": "1527cf6c-93db-41bf-aba2-9d6af1d3c499",
+            "ratePerUnit": 20,
+            "numberOfUnits": 8,
+            "fixedAmount": null,
+            "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+            "name": "Ordinary Time"
+          },
+          {
+            "payTemplateEarningID": "92e757cc-b026-404d-804e-9dc2047a03e6",
+            "ratePerUnit": 0,
+            "numberOfUnits": 8,
+            "fixedAmount": null,
+            "earningsRateID": "65b83d94-f20f-45e1-85ae-387fcf460c26",
+            "name": "Salary"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "operationId": "updateTimesheetLine",
+  "method": "PUT",
+  "path": "/Timesheets/{TimesheetID}/Lines/{TimesheetLineID}",
+  "summary": "Updates a timesheet line for a specific timesheet",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "date": "2020-08-04",
+        "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+        "numberOfUnits": 2
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-28 21:07:39.907459",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "timesheetLine": {
+          "timesheetLineID": "3397aab1-6cac-4804-a72b-00f396b04a08",
+          "date": "2020-08-04 00:00:00",
+          "earningsRateID": "f9d8f5b5-9049-47f4-8541-35e200f750a5",
+          "trackingItemID": null,
+          "numberOfUnits": 2
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProjectUser",
+  "title": "ProjectUser",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/projects/users"
+  },
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "254553fa-2be8-4991-bd5e-70a97ea12ef8",
+      "description": "Identifier of the user of the project."
+    },
+    "name": {
+      "type": "string",
+      "example": "Sidney Allen",
+      "description": "Full name of the user."
+    },
+    "email": {
+      "type": "string",
+      "example": "sidneyallen@xero.com",
+      "description": "Email address of the user."
+    }
+  }
+}

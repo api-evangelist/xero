@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ManualJournal",
+  "title": "ManualJournal",
+  "externalDocs": {
+    "url": "http://developer.xero.com/documentation/api/manual-journals/"
+  },
+  "properties": {
+    "Narration": {
+      "description": "Description of journal being posted",
+      "type": "string"
+    },
+    "JournalLines": {
+      "description": "See JournalLines",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ManualJournalLine"
+      }
+    },
+    "Date": {
+      "description": "Date journal was posted \u2013 YYYY-MM-DD",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "LineAmountTypes": {
+      "$ref": "#/components/schemas/LineAmountTypes",
+      "type": "string"
+    },
+    "Status": {
+      "description": "See Manual Journal Status Codes",
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "POSTED",
+        "DELETED",
+        "VOIDED",
+        "ARCHIVED"
+      ]
+    },
+    "Url": {
+      "description": "Url link to a source document \u2013 shown as \u201cGo to [appName]\u201d in the Xero app",
+      "type": "string"
+    },
+    "ShowOnCashBasisReports": {
+      "description": "Boolean \u2013 default is true if not specified",
+      "type": "boolean"
+    },
+    "HasAttachments": {
+      "description": "Boolean to indicate if a manual journal has an attachment",
+      "readOnly": true,
+      "type": "boolean",
+      "default": "false",
+      "example": "false"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified date UTC format",
+      "type": "string",
+      "x-is-msdate-time": true,
+      "example": "/Date(1573755038314)/",
+      "readOnly": true
+    },
+    "ManualJournalID": {
+      "description": "The Xero identifier for a Manual Journal",
+      "type": "string",
+      "format": "uuid"
+    },
+    "StatusAttributeString": {
+      "description": "A string to indicate if a invoice status",
+      "type": "string",
+      "example": "ERROR"
+    },
+    "Warnings": {
+      "description": "Displays array of warning messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ValidationError"
+      }
+    },
+    "Attachments": {
+      "description": "Displays array of attachments from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Attachment"
+      }
+    }
+  },
+  "required": [
+    "Narration"
+  ],
+  "type": "object"
+}

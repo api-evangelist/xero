@@ -1,0 +1,30 @@
+{
+  "operationId": "getPayrollCalendar",
+  "method": "GET",
+  "path": "/PayrollCalendars/{PayrollCalendarID}",
+  "summary": "Retrieves payroll calendar by using a unique payroll calendar ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "00000000-0000-0000-0000-000000000000",
+        "Status": "OK",
+        "ProviderName": "provider-name",
+        "DateTimeUTC": "/Date(1573611453008)/",
+        "PayrollCalendars": [
+          {
+            "PayrollCalendarID": "78bb86b9-e1ea-47ac-b75d-f087a81931de",
+            "Name": "Sid Weekly",
+            "CalendarType": "WEEKLY",
+            "StartDate": "/Date(1573171200000+0000)/",
+            "PaymentDate": "/Date(1573776000000+0000)/",
+            "UpdatedDateUTC": "/Date(1573077687000+0000)/",
+            "ReferenceDate": "/Date(1573171200000+0000)/"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InvalidField",
+  "title": "InvalidField",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The name of the field that caused the error",
+      "type": "string",
+      "example": "DateOfBirth"
+    },
+    "reason": {
+      "description": "The reason the error occurred",
+      "type": "string",
+      "example": "The Date of Birth is required."
+    }
+  }
+}

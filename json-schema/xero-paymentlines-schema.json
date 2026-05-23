@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentLines",
+  "title": "PaymentLines",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/PaymentLine"
+  }
+}

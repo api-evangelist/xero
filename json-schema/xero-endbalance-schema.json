@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EndBalance",
+  "title": "EndBalance",
+  "description": "The StartBalance plus all the Statement Line Amounts should be equal to the EndBalance Amount.",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": "10.1340"
+    },
+    "creditDebitIndicator": {
+      "$ref": "#/components/schemas/CreditDebitIndicator"
+    }
+  }
+}

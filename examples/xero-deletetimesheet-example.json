@@ -1,0 +1,21 @@
+{
+  "operationId": "deleteTimesheet",
+  "method": "DELETE",
+  "path": "/Timesheets/{TimesheetID}",
+  "summary": "Deletes a timesheet",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-28 21:07:41.421722",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null
+      }
+    }
+  ]
+}

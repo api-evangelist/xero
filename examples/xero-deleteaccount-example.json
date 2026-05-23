@@ -1,0 +1,59 @@
+{
+  "operationId": "deleteAccount",
+  "method": "DELETE",
+  "path": "/Accounts/{AccountID}",
+  "summary": "Xero Deletes a chart of accounts",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "76bb0543-8efe-4acc-b7f6-67dfcdec37b4",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1550798217216)/",
+        "Accounts": [
+          {
+            "AccountID": "7f3c0bec-f3e7-4073-b4d6-cc56dd027ef1",
+            "Code": "123456",
+            "Name": "FooBar",
+            "Status": "DELETED",
+            "Type": "EXPENSE",
+            "TaxType": "INPUT",
+            "Description": "Hello World",
+            "Class": "EXPENSE",
+            "EnablePaymentsToAccount": false,
+            "ShowInExpenseClaims": false,
+            "ReportingCode": "EXP",
+            "ReportingCodeName": "Expense",
+            "UpdatedDateUTC": "/Date(1550798217210+0000)/"
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "ErrorNumber": 10,
+        "Type": "ValidationException",
+        "Message": "A validation exception occurred",
+        "Elements": [
+          {
+            "AccountID": "00000000-0000-0000-0000-000000000000",
+            "Code": "123456",
+            "Name": "Foobar",
+            "Type": "EXPENSE",
+            "Description": "Hello World",
+            "ValidationErrors": [
+              {
+                "Message": "Please enter a unique Name."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

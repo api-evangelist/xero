@@ -1,0 +1,13 @@
+{
+  "operationId": "emailInvoice",
+  "method": "POST",
+  "path": "/Invoices/{InvoiceID}/Email",
+  "summary": "Xero Sends a copy of a specific invoice to related contact via email",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {}
+    }
+  ],
+  "responseExamples": []
+}

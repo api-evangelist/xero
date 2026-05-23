@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BankTransfers",
+  "title": "BankTransfers",
+  "type": "object",
+  "x-objectArrayKey": "bank_transfers",
+  "properties": {
+    "BankTransfers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BankTransfer"
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FileObject",
+  "title": "FileObject",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "manufacturer",
+    "releaseDate"
+  ],
+  "properties": {
+    "Name": {
+      "description": "File Name",
+      "type": "string",
+      "example": "File2.jpg"
+    },
+    "MimeType": {
+      "description": "MimeType of the file (image/png, image/jpeg, application/pdf, etc..)",
+      "type": "string",
+      "example": "image/jpeg"
+    },
+    "Size": {
+      "description": "Numeric value in bytes",
+      "type": "integer",
+      "example": 3615
+    },
+    "CreatedDateUtc": {
+      "description": "Created date in UTC",
+      "type": "string",
+      "example": "2020-12-03 19:04:58.697000"
+    },
+    "UpdatedDateUtc": {
+      "description": "Updated date in UTC",
+      "type": "string",
+      "example": "2020-12-03 19:04:58.697000"
+    },
+    "User": {
+      "$ref": "#/components/schemas/User"
+    },
+    "Id": {
+      "description": "File object's UUID",
+      "type": "string",
+      "format": "uuid",
+      "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+    },
+    "FolderId": {
+      "description": "Folder relation object's UUID",
+      "type": "string",
+      "format": "uuid",
+      "example": "0f8ccf21-7267-4268-9167-a1e2c40c84c8"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReimbursementLines",
+  "title": "ReimbursementLines",
+  "type": "object",
+  "x-objectArrayKey": "reimbursement_lines",
+  "description": "The reimbursement type lines",
+  "properties": {
+    "ReimbursementLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ReimbursementLine"
+      }
+    }
+  }
+}

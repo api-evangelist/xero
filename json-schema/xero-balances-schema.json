@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Balances",
+  "title": "Balances",
+  "type": "object",
+  "description": "The raw AccountsReceivable(sales invoices) and AccountsPayable(bills) outstanding and overdue amounts, not converted to base currency (read only)",
+  "properties": {
+    "AccountsReceivable": {
+      "$ref": "#/components/schemas/AccountsReceivable"
+    },
+    "AccountsPayable": {
+      "$ref": "#/components/schemas/AccountsPayable"
+    }
+  }
+}

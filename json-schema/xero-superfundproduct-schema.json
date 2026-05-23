@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SuperFundProduct",
+  "title": "SuperFundProduct",
+  "type": "object",
+  "properties": {
+    "ABN": {
+      "description": "The ABN of the Regulated SuperFund",
+      "type": "string",
+      "example": 839182848805
+    },
+    "USI": {
+      "description": "The USI of the Regulated SuperFund",
+      "type": "string",
+      "example": 839182848805001
+    },
+    "SPIN": {
+      "description": "The SPIN of the Regulated SuperFund. This field has been deprecated. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN",
+      "type": "string",
+      "example": "NML0117AU"
+    },
+    "ProductName": {
+      "description": "The name of the Regulated SuperFund",
+      "type": "string",
+      "example": "MLC Navigator Retirement Plan - Superannuation Service (including Series 2) (MLC Superannuation Fund)"
+    }
+  }
+}

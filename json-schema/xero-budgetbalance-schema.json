@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BudgetBalance",
+  "title": "BudgetBalance",
+  "type": "object",
+  "properties": {
+    "Period": {
+      "description": "Period the amount applies to (e.g. \u201c2019-08\u201d)",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "Amount": {
+      "description": "LineItem Quantity",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "UnitAmount": {
+      "description": "Budgeted amount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Notes": {
+      "description": "Any footnotes associated with this balance",
+      "maxLength": 255,
+      "type": "string"
+    }
+  }
+}

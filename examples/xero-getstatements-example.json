@@ -1,0 +1,73 @@
+{
+  "operationId": "getStatements",
+  "method": "GET",
+  "path": "/Statements",
+  "summary": "Xero Retrieve all statements",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "pagination": {
+          "page": 1,
+          "pageCount": 210,
+          "pageSize": 3,
+          "itemCount": 3
+        },
+        "items": [
+          {
+            "id": "9817e4b8-82b3-4526-91f7-040bd278053f",
+            "feedConnectionId": "6a4b9ff5-3a5f-4321-936b-4796163550f6",
+            "status": "REJECTED",
+            "startDate": "2019-08-01",
+            "endDate": "2019-08-15",
+            "startBalance": {
+              "amount": "100.0000",
+              "creditDebitIndicator": "CREDIT"
+            },
+            "endBalance": {
+              "amount": "150.0000",
+              "creditDebitIndicator": "CREDIT"
+            },
+            "statementLineCount": "1",
+            "errors": [
+              {
+                "type": "duplicate-statement",
+                "title": "Duplicate Statement Received",
+                "status": 409,
+                "detail": "The received statement was marked as a duplicate."
+              }
+            ]
+          },
+          {
+            "id": "2fc57bac-7aa7-4981-a5cd-8aee83fe698c",
+            "feedConnectionId": "6a4b9ff5-3a5f-4321-936b-4796163550f6",
+            "status": "DELIVERED",
+            "startDate": "2019-08-01",
+            "endDate": "2019-08-15",
+            "startBalance": {
+              "amount": "100.0000",
+              "creditDebitIndicator": "CREDIT"
+            },
+            "endBalance": {
+              "amount": "150.0000",
+              "creditDebitIndicator": "CREDIT"
+            },
+            "statementLineCount": "1"
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/problem+json",
+      "example": {
+        "type": "invalid-request",
+        "title": "Invalid Request",
+        "status": 400,
+        "detail": "For the request field missing parameter."
+      }
+    }
+  ]
+}

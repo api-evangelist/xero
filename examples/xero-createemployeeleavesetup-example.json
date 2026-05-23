@@ -1,0 +1,46 @@
+{
+  "operationId": "createEmployeeLeaveSetup",
+  "method": "POST",
+  "path": "/Employees/{EmployeeID}/LeaveSetup",
+  "summary": "Creates a leave set-up for a specific employee. This is required before viewing, configuring and requesting leave for an employee",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "holidayPayOpeningBalance": 10,
+        "annualLeaveOpeningBalance": 100,
+        "sickLeaveToAccrueAnnually": 20,
+        "sickLeaveOpeningBalance": 10,
+        "sickLeaveScheduleOfAccrual": "OnAnniversaryDate",
+        "sickLeaveAnniversaryDate": "2023-12-31",
+        "annualLeaveAnniversaryDate": "2023-12-31"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-26 16:50:48.724566",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "leaveSetup": {
+          "includeHolidayPay": null,
+          "holidayPayOpeningBalance": 10,
+          "annualLeaveOpeningBalance": 100,
+          "negativeAnnualLeaveBalancePaidAmount": null,
+          "sickLeaveToAccrueAnnually": 20,
+          "sickLeaveMaximumToAccrue": null,
+          "sickLeaveOpeningBalance": 10,
+          "sickLeaveScheduleOfAccrual": "OnAnniversaryDate",
+          "sickLeaveAnniversaryDate": "2023-12-31",
+          "annualLeaveAnniversaryDate": "2023-12-31"
+        }
+      }
+    }
+  ]
+}

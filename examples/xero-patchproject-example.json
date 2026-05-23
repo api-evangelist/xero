@@ -1,0 +1,13 @@
+{
+  "operationId": "patchProject",
+  "method": "PATCH",
+  "path": "/Projects/{projectId}",
+  "summary": "Xero creates a project for the specified contact",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "{ \"status\": \"INPROGRESS\" }"
+    }
+  ],
+  "responseExamples": []
+}

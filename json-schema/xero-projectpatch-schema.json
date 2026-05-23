@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProjectPatch",
+  "title": "ProjectPatch",
+  "externalDocs": {
+    "url": "https://developer.xero.com/documentation/projects/projects"
+  },
+  "type": "object",
+  "properties": {
+    "status": {
+      "$ref": "#/components/schemas/ProjectStatus",
+      "type": "string"
+    }
+  },
+  "required": [
+    "status"
+  ]
+}

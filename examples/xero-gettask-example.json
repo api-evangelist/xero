@@ -1,0 +1,42 @@
+{
+  "operationId": "getTask",
+  "method": "GET",
+  "path": "/Projects/{projectId}/Tasks/{taskId}",
+  "summary": "Xero Retrieves a single project task",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "name": "Demolition",
+        "rate": {
+          "currency": "AUD",
+          "value": 20
+        },
+        "chargeType": "TIME",
+        "status": "ACTIVE",
+        "estimateMinutes": 12000,
+        "taskId": "7be77337-feec-4458-bb1b-dbaa5a4aafce",
+        "projectId": "b021e7cb-1903-4292-b48b-5b27b4271e3e",
+        "totalMinutes": 300,
+        "totalAmount": {
+          "currency": "AUD",
+          "value": 100
+        },
+        "minutesToBeInvoiced": 300,
+        "minutesInvoiced": 0,
+        "nonChargeableMinutes": 0,
+        "fixedMinutes": 0,
+        "amountToBeInvoiced": {
+          "currency": "AUD",
+          "value": 100
+        },
+        "amountInvoiced": {
+          "currency": "AUD",
+          "value": 0
+        }
+      }
+    }
+  ]
+}

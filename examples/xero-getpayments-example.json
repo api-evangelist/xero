@@ -1,0 +1,122 @@
+{
+  "operationId": "getPayments",
+  "method": "GET",
+  "path": "/Payments",
+  "summary": "Xero Retrieves payments for invoices and credit notes",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "9f310473-e1b5-4704-a25c-eec653deb596",
+        "Status": "OK",
+        "ProviderName": "Provider Name Example",
+        "DateTimeUTC": "/Date(1552431874205)/",
+        "pagination": {
+          "page": 1,
+          "pageSize": 100,
+          "pageCount": 1,
+          "itemCount": 2
+        },
+        "Payments": [
+          {
+            "PaymentID": "99ea7f6b-c513-4066-bc27-b7c65dcd76c2",
+            "BatchPaymentID": "b54aa50c-794c-461b-89d1-846e1b84d9c0",
+            "BatchPayment": {
+              "Account": {
+                "AccountID": "5690f1e8-1d02-4893-90c2-ee1a69eff942"
+              },
+              "BatchPaymentID": "b54aa50c-794c-461b-89d1-846e1b84d9c0",
+              "Date": "/Date(1552521600000+0000)/",
+              "Type": "RECBATCH",
+              "Status": "AUTHORISED",
+              "TotalAmount": "50.00",
+              "UpdatedDateUTC": "/Date(1541176592690+0000)/",
+              "IsReconciled": "false"
+            },
+            "Date": "/Date(1543449600000+0000)/",
+            "BankAmount": 46.0,
+            "Amount": 46.0,
+            "Reference": "",
+            "CurrencyRate": 1.0,
+            "PaymentType": "ACCRECPAYMENT",
+            "Status": "AUTHORISED",
+            "UpdatedDateUTC": "/Date(1541176592690+0000)/",
+            "HasAccount": true,
+            "IsReconciled": false,
+            "Account": {
+              "AccountID": "5690f1e8-1d02-4893-90c2-ee1a69eff942",
+              "Code": "970"
+            },
+            "Invoice": {
+              "Type": "ACCREC",
+              "InvoiceID": "046d8a6d-1ae1-4b4d-9340-5601bdf41b87",
+              "InvoiceNumber": "INV-0002",
+              "Payments": [],
+              "CreditNotes": [],
+              "Prepayments": [],
+              "Overpayments": [],
+              "HasErrors": false,
+              "IsDiscounted": false,
+              "Contact": {
+                "ContactID": "a3675fc4-f8dd-4f03-ba5b-f1870566bcd7",
+                "ContactNumber": "",
+                "Name": "Barney Rubble-83203",
+                "Addresses": [],
+                "Phones": [],
+                "ContactGroups": [],
+                "ContactPersons": [],
+                "HasValidationErrors": false
+              },
+              "LineItems": [],
+              "CurrencyCode": "NZD"
+            },
+            "HasValidationErrors": false
+          },
+          {
+            "PaymentID": "6b037c9b-2e5d-4905-84d3-eabfb3438242",
+            "Date": "/Date(1552521600000+0000)/",
+            "BankAmount": 2.0,
+            "Amount": 2.0,
+            "Reference": "Too much",
+            "CurrencyRate": 1.0,
+            "PaymentType": "ARCREDITPAYMENT",
+            "Status": "AUTHORISED",
+            "UpdatedDateUTC": "/Date(1551812346173+0000)/",
+            "HasAccount": true,
+            "IsReconciled": false,
+            "Account": {
+              "AccountID": "136ebd08-60ea-4592-8982-be92c153b53a",
+              "Code": "980"
+            },
+            "Invoice": {
+              "Type": "ACCRECCREDIT",
+              "InvoiceID": "249f15fa-f2a7-4acc-8769-0984103f2225",
+              "InvoiceNumber": "CN-0005",
+              "Payments": [],
+              "CreditNotes": [],
+              "Prepayments": [],
+              "Overpayments": [],
+              "HasErrors": false,
+              "IsDiscounted": false,
+              "Contact": {
+                "ContactID": "430fa14a-f945-44d3-9f97-5df5e28441b8",
+                "ContactNumber": "",
+                "Name": "Liam Gallagher",
+                "Addresses": [],
+                "Phones": [],
+                "ContactGroups": [],
+                "ContactPersons": [],
+                "HasValidationErrors": false
+              },
+              "LineItems": [],
+              "CurrencyCode": "NZD"
+            },
+            "HasValidationErrors": false
+          }
+        ]
+      }
+    }
+  ]
+}

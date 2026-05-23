@@ -1,0 +1,34 @@
+{
+  "operationId": "createEmployeeOpeningBalances",
+  "method": "POST",
+  "path": "/Employees/{EmployeeID}/OpeningBalances",
+  "summary": "Creates opening balances for a specific employee",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": "[{\"periodEndDate\":\"2020-10-01\",\"daysPaid\":3,\"unpaidWeeks\":2,\"grossEarnings\":40.0}]"
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "00000000-0000-0000-0000-000000000000",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-08-28 19:55:36.539949",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "openingBalances": [
+          {
+            "periodEndDate": "2020-10-01 00:00:00",
+            "daysPaid": 3,
+            "unpaidWeeks": 2,
+            "grossEarnings": 40
+          }
+        ]
+      }
+    }
+  ]
+}

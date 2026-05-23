@@ -1,0 +1,33 @@
+{
+  "operationId": "getProjectUsers",
+  "method": "GET",
+  "path": "/ProjectsUsers",
+  "summary": "Xero Retrieves a list of all project users",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "pagination": {
+          "page": 1,
+          "pageSize": 50,
+          "pageCount": 1,
+          "itemCount": 2
+        },
+        "items": [
+          {
+            "userId": "740add2a-a703-4b8a-a670-1093919c2040",
+            "name": "Test User",
+            "email": "test@xero.com"
+          },
+          {
+            "userId": "00000000-0000-0000-0000-000000000000",
+            "name": "API Team",
+            "email": "api@xero.com"
+          }
+        ]
+      }
+    }
+  ]
+}

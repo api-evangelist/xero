@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeeStatutoryLeaveSummary",
+  "title": "EmployeeStatutoryLeaveSummary",
+  "type": "object",
+  "properties": {
+    "statutoryLeaveID": {
+      "description": "The unique identifier (guid) of a statutory leave.",
+      "type": "string",
+      "format": "uuid"
+    },
+    "employeeID": {
+      "description": "The unique identifier (guid) of the employee",
+      "type": "string",
+      "format": "uuid"
+    },
+    "type": {
+      "description": "The category of statutory leave",
+      "type": "string",
+      "enum": [
+        "Sick",
+        "Adoption",
+        "Maternity",
+        "Paternity",
+        "Sharedparental"
+      ]
+    },
+    "startDate": {
+      "description": "The date when the leave starts",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "endDate": {
+      "description": "The date when the leave ends",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "isEntitled": {
+      "description": "Whether the leave was entitled to receive payment",
+      "type": "boolean"
+    },
+    "status": {
+      "description": "The status of the leave",
+      "type": "string",
+      "enum": [
+        "Pending",
+        "In-Progress",
+        "Completed"
+      ]
+    }
+  }
+}

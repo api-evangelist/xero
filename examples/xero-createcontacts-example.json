@@ -1,0 +1,225 @@
+{
+  "operationId": "createContacts",
+  "method": "PUT",
+  "path": "/Contacts",
+  "summary": "Creates multiple contacts (bulk) in a Xero organisation",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "example": {
+        "Contacts": [
+          {
+            "ContactID": "3ff6d40c-af9a-40a3-89ce-3c1556a25591",
+            "ContactStatus": "ACTIVE",
+            "Name": "Foo9987",
+            "EmailAddress": "sid32476@blah.com",
+            "BankAccountDetails": "",
+            "Addresses": [
+              {
+                "AddressType": "STREET",
+                "City": "",
+                "Region": "",
+                "PostalCode": "",
+                "Country": ""
+              },
+              {
+                "AddressType": "POBOX",
+                "City": "",
+                "Region": "",
+                "PostalCode": "",
+                "Country": ""
+              }
+            ],
+            "Phones": [
+              {
+                "PhoneType": "DEFAULT",
+                "PhoneNumber": "",
+                "PhoneAreaCode": "",
+                "PhoneCountryCode": ""
+              },
+              {
+                "PhoneType": "DDI",
+                "PhoneNumber": "",
+                "PhoneAreaCode": "",
+                "PhoneCountryCode": ""
+              },
+              {
+                "PhoneType": "FAX",
+                "PhoneNumber": "",
+                "PhoneAreaCode": "",
+                "PhoneCountryCode": ""
+              },
+              {
+                "PhoneType": "MOBILE",
+                "PhoneNumber": "555-1212",
+                "PhoneAreaCode": "415",
+                "PhoneCountryCode": ""
+              }
+            ],
+            "UpdatedDateUTC": "/Date(1551399321043+0000)/",
+            "ContactGroups": [],
+            "IsSupplier": false,
+            "IsCustomer": false,
+            "SalesTrackingCategories": [],
+            "PurchasesTrackingCategories": [],
+            "PaymentTerms": {
+              "Bills": {
+                "Day": 15,
+                "Type": "OFCURRENTMONTH"
+              },
+              "Sales": {
+                "Day": 10,
+                "Type": "DAYSAFTERBILLMONTH"
+              }
+            },
+            "ContactPersons": []
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "e997d6d7-6dad-4458-beb8-d9c1bf7f2edf",
+        "Status": "OK",
+        "ProviderName": "Xero API Partner",
+        "DateTimeUTC": "/Date(1551399321121)/",
+        "Contacts": [
+          {
+            "ContactID": "3ff6d40c-af9a-40a3-89ce-3c1556a25591",
+            "ContactStatus": "ACTIVE",
+            "CompanyNumber": "NumberBusiness1234",
+            "Name": "Foo9987",
+            "EmailAddress": "sid32476@blah.com",
+            "BankAccountDetails": "",
+            "Addresses": [
+              {
+                "AddressType": "STREET",
+                "City": "",
+                "Region": "",
+                "PostalCode": "",
+                "Country": ""
+              },
+              {
+                "AddressType": "POBOX",
+                "City": "",
+                "Region": "",
+                "PostalCode": "",
+                "Country": ""
+              }
+            ],
+            "Phones": [
+              {
+                "PhoneType": "DEFAULT",
+                "PhoneNumber": "",
+                "PhoneAreaCode": "",
+                "PhoneCountryCode": ""
+              },
+              {
+                "PhoneType": "DDI",
+                "PhoneNumber": "",
+                "PhoneAreaCode": "",
+                "PhoneCountryCode": ""
+              },
+              {
+                "PhoneType": "FAX",
+                "PhoneNumber": "",
+                "PhoneAreaCode": "",
+                "PhoneCountryCode": ""
+              },
+              {
+                "PhoneType": "MOBILE",
+                "PhoneNumber": "555-1212",
+                "PhoneAreaCode": "415",
+                "PhoneCountryCode": ""
+              }
+            ],
+            "UpdatedDateUTC": "/Date(1551399321043+0000)/",
+            "ContactGroups": [],
+            "IsSupplier": false,
+            "IsCustomer": false,
+            "SalesDefaultLineAmountType": "INCLUSIVE",
+            "PurchasesDefaultLineAmountType": "INCLUSIVE",
+            "SalesTrackingCategories": [],
+            "PurchasesTrackingCategories": [],
+            "PaymentTerms": {
+              "Bills": {
+                "Day": 15,
+                "Type": "OFCURRENTMONTH"
+              },
+              "Sales": {
+                "Day": 10,
+                "Type": "DAYSAFTERBILLMONTH"
+              }
+            },
+            "ContactPersons": [],
+            "HasValidationErrors": false
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "example": {
+        "ErrorNumber": 10,
+        "Type": "ValidationException",
+        "Message": "A validation exception occurred",
+        "Elements": [
+          {
+            "ContactID": "00000000-0000-0000-0000-000000000000",
+            "AccountNumber": "12345-ABCD",
+            "Name": "Buzz Lightyear",
+            "EmailAddress": "buzzlightyear@email.com",
+            "AccountsReceivableTaxType": "NONE",
+            "AccountsPayableTaxType": "INPUT",
+            "Addresses": [
+              {
+                "AddressType": "STREET",
+                "AddressLine1": "101 Green St",
+                "AddressLine2": "5th floor",
+                "City": "San Francisco",
+                "Region": "CA",
+                "PostalCode": "94041",
+                "Country": "US",
+                "AttentionTo": "Rod Drury",
+                "ValidationErrors": []
+              }
+            ],
+            "Phones": [
+              {
+                "PhoneType": "MOBILE",
+                "PhoneNumber": "555-1212",
+                "PhoneAreaCode": "415",
+                "ValidationErrors": []
+              }
+            ],
+            "ContactGroups": [],
+            "PaymentTerms": {
+              "Bills": {
+                "Day": 15,
+                "Type": "OFCURRENTMONTH",
+                "ValidationErrors": []
+              },
+              "Sales": {
+                "Day": 10,
+                "Type": "DAYSAFTERBILLMONTH",
+                "ValidationErrors": []
+              }
+            },
+            "ContactPersons": [],
+            "HasValidationErrors": true,
+            "ValidationErrors": [
+              {
+                "Message": "The contact name Buzz Lightyear is already assigned to another contact. The contact name must be unique across all active contacts."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

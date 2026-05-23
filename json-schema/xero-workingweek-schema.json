@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WorkingWeek",
+  "title": "WorkingWeek",
+  "type": "object",
+  "required": [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday"
+  ],
+  "properties": {
+    "monday": {
+      "description": "The number of hours worked on a Monday",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "tuesday": {
+      "description": "The number of hours worked on a Tuesday",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "wednesday": {
+      "description": "The number of hours worked on a Wednesday",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "thursday": {
+      "description": "The number of hours worked on a Thursday",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "friday": {
+      "description": "The number of hours worked on a Friday",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "saturday": {
+      "description": "The number of hours worked on a Saturday",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "sunday": {
+      "description": "The number of hours worked on a Sunday",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    }
+  }
+}

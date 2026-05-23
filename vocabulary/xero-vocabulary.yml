@@ -1,0 +1,6 @@
+name: Xero Domain Vocabulary
+provider: Xero
+providerId: xero
+description: Tag-derived vocabulary for the Xero API surface; sourced from openapi/ tags.
+terms:
+- term: Accounting

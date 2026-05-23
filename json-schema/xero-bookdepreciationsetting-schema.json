@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BookDepreciationSetting",
+  "title": "BookDepreciationSetting",
+  "properties": {
+    "depreciationMethod": {
+      "type": "string",
+      "enum": [
+        "NoDepreciation",
+        "StraightLine",
+        "DiminishingValue100",
+        "DiminishingValue150",
+        "DiminishingValue200",
+        "FullDepreciation"
+      ],
+      "example": "StraightLine",
+      "description": "The method of depreciation applied to this asset. See Depreciation Methods"
+    },
+    "averagingMethod": {
+      "type": "string",
+      "enum": [
+        "FullMonth",
+        "ActualDays"
+      ],
+      "example": "ActualDays",
+      "description": "The method of averaging applied to this asset. See Averaging Methods"
+    },
+    "depreciationRate": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 0.05,
+      "description": "The rate of depreciation (e.g. 0.05)"
+    },
+    "effectiveLifeYears": {
+      "type": "integer",
+      "example": 5,
+      "description": "Effective life of the asset in years (e.g. 5)"
+    },
+    "depreciationCalculationMethod": {
+      "type": "string",
+      "enum": [
+        "Rate",
+        "Life",
+        "None"
+      ],
+      "example": "None",
+      "description": "See Depreciation Calculation Methods"
+    },
+    "depreciableObjectId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+      "description": "Unique Xero identifier for the depreciable object"
+    },
+    "depreciableObjectType": {
+      "type": "string",
+      "example": "Asset",
+      "description": "The type of asset object"
+    },
+    "bookEffectiveDateOfChangeId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "68f17094-af97-4f1b-b36b-013b45b6ad3c",
+      "description": "Unique Xero identifier for the effective date change"
+    }
+  }
+}

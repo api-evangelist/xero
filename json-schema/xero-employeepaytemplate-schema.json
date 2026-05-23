@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EmployeePayTemplate",
+  "title": "EmployeePayTemplate",
+  "type": "object",
+  "required": [
+    "EarningTemplates"
+  ],
+  "properties": {
+    "employeeID": {
+      "description": "Unique identifier for the employee",
+      "type": "string",
+      "format": "uuid"
+    },
+    "earningTemplates": {
+      "$ref": "#/components/schemas/EarningsTemplates"
+    }
+  }
+}

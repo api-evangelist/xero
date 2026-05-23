@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CashflowType",
+  "title": "CashflowType",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the activity"
+    },
+    "total": {
+      "type": "number",
+      "description": "Total value of the activity",
+      "format": "double",
+      "x-is-money": true
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CashflowAccount"
+      },
+      "description": "List of the accounts in this activity"
+    }
+  },
+  "additionalProperties": false
+}

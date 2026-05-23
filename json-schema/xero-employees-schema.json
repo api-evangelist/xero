@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Employees",
+  "title": "Employees",
+  "type": "object",
+  "x-objectArrayKey": "employees",
+  "properties": {
+    "Employees": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Employee"
+      }
+    }
+  }
+}

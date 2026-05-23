@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountsReceivable",
+  "title": "AccountsReceivable",
+  "type": "object",
+  "properties": {
+    "Outstanding": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Overdue": {
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    }
+  }
+}

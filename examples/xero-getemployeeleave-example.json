@@ -1,0 +1,37 @@
+{
+  "operationId": "getEmployeeLeave",
+  "method": "GET",
+  "path": "/Employees/{EmployeeID}/Leave/{LeaveID}",
+  "summary": "Retrieves a specific employee's leave record using a unique employee ID",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "id": "6ae25805-fef3-4c9b-9e69-9ccc71a6a8da",
+        "providerName": "provider-name",
+        "dateTimeUTC": "2020-03-27 19:58:03.845541",
+        "httpStatusCode": "OK",
+        "pagination": null,
+        "problem": null,
+        "leave": {
+          "leaveID": "384bf62a-5884-484d-b675-a3ad9c662f8e",
+          "leaveTypeID": "ed08dffe-788e-4b24-9630-f0fa2f4d164c",
+          "description": "Vacation to Majorca",
+          "startDate": "2020-02-17 00:00:00",
+          "endDate": "2020-02-21 00:00:00",
+          "periods": [
+            {
+              "periodStartDate": "2020-02-17 00:00:00",
+              "periodEndDate": "2020-02-23 00:00:00",
+              "numberOfUnits": 40,
+              "periodStatus": "Approved"
+            }
+          ],
+          "updatedDateUTC": "2020-02-10 10:15:53"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EarningsTemplate",
+  "title": "EarningsTemplate",
+  "type": "object",
+  "properties": {
+    "payTemplateEarningID": {
+      "description": "The Xero identifier for the earnings template",
+      "type": "string",
+      "format": "uuid"
+    },
+    "ratePerUnit": {
+      "description": "The rate per unit",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "numberOfUnits": {
+      "description": "The rate per unit",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "fixedAmount": {
+      "description": "The fixed amount per period",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "earningsRateID": {
+      "description": "The corresponding earnings rate identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "description": "The read-only name of the Earning Template.",
+      "type": "string"
+    }
+  }
+}

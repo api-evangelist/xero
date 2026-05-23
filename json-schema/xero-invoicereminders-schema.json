@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InvoiceReminders",
+  "title": "InvoiceReminders",
+  "type": "object",
+  "x-objectArrayKey": "invoice_reminders",
+  "properties": {
+    "InvoiceReminders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InvoiceReminder"
+      }
+    }
+  }
+}

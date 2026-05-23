@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EarningsLine",
+  "title": "EarningsLine",
+  "type": "object",
+  "required": [
+    "EarningsRateID"
+  ],
+  "properties": {
+    "EarningsRateID": {
+      "description": "Xero unique id for earnings rate",
+      "type": "string",
+      "format": "uuid",
+      "example": "72e962d1-fcac-4083-8a71-742bb3e7ae14"
+    },
+    "CalculationType": {
+      "$ref": "#/components/schemas/EarningsRateCalculationType"
+    },
+    "AnnualSalary": {
+      "description": "Annual salary for earnings line",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 40000.0
+    },
+    "NumberOfUnitsPerWeek": {
+      "description": "number of units for earning line",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 38.0
+    },
+    "RatePerUnit": {
+      "description": "Rate per unit of the EarningsLine.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 38.0
+    },
+    "NormalNumberOfUnits": {
+      "description": "Normal number of units for EarningsLine. Applicable when RateType is \"MULTIPLE\"",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 38.0
+    },
+    "Amount": {
+      "description": "Earnings rate amount",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 38.0
+    },
+    "NumberOfUnits": {
+      "description": "Earnings rate number of units.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 2.5
+    },
+    "FixedAmount": {
+      "description": "Earnings rate amount. Only applicable if the EarningsRate RateType is Fixed",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true,
+      "example": 2.5
+    }
+  }
+}

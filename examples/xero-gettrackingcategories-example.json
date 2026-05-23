@@ -1,0 +1,33 @@
+{
+  "operationId": "getTrackingCategories",
+  "method": "GET",
+  "path": "/TrackingCategories",
+  "summary": "Xero Retrieves tracking categories and options",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "example": {
+        "Id": "cec55068-8061-48e5-ac83-c77e7c54cf3d",
+        "Status": "OK",
+        "ProviderName": "Provider Name Example",
+        "DateTimeUTC": "/Date(1555085855047)/",
+        "TrackingCategories": [
+          {
+            "Name": "BarFoo",
+            "Status": "ACTIVE",
+            "TrackingCategoryID": "22f10184-0deb-44ae-a312-b1f6ea70e51f",
+            "Options": []
+          },
+          {
+            "Name": "HelloWorld",
+            "Status": "ACTIVE",
+            "TrackingCategoryID": "0c9fce3e-a111-4d99-803a-62cf3f40e633",
+            "Options": []
+          }
+        ]
+      }
+    }
+  ]
+}
