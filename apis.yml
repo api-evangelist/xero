@@ -16,7 +16,7 @@ tags:
   - Payroll
   - Small Business
 created: '2024-11-07'
-modified: '2026-05-19'
+modified: '2026-05-30'
 url: https://raw.githubusercontent.com/api-evangelist/xero/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
@@ -37,6 +37,8 @@ apis:
       url: https://developer.xero.com/documentation/api/accounting/overview
     - type: OpenAPI
       url: openapi/xero-accounting-openapi.yml
+    - type: AsyncAPI
+      url: asyncapi/xero-webhooks-asyncapi.yml
     - type: NaftikoCapability
       url: capabilities/accounting-accounting.yaml
   - aid: xero:xero-assets-api

@@ -1,0 +1,427 @@
+asyncapi: 2.6.0
+info:
+  title: Xero Webhooks
+  version: '1.0.0'
+  description: |-
+    AsyncAPI 2.6 description of Xero's outbound webhook surface for the INVOICE
+    and CONTACT event categories. Xero delivers event notifications by issuing
+    HTTP POST requests with a JSON body to a single subscriber URL configured
+    per application in the Xero developer portal.
+
+    Each delivery carries one batch payload (`WebhookEvent`) containing one or
+    more `events`. Every event declares the `eventCategory` (`INVOICE` or
+    `CONTACT`) and the `eventType` (`CREATE` or `UPDATE`). Xero does not push
+    the changed resource itself; the subscriber dereferences `resourceUrl` /
+    `resourceId` against the Xero Accounting API to fetch the current state of
+    the resource for the identified `tenantId`.
+
+    Source documentation:
+      - Webhooks overview:
+        https://developer.xero.com/documentation/guides/webhooks/overview/
+      - Webhooks OpenAPI (canonical schema source):
+        https://github.com/XeroAPI/Xero-OpenAPI/blob/master/xero-webhooks.yaml
+
+    Security and signing:
+      Every webhook POST is signed by Xero. The `x-xero-signature` HTTP request
+      header carries a Base64-encoded HMAC-SHA256 of the raw, unmodified JSON
+      request body, computed with the application's webhook signing key
+      (configured in the Xero developer portal) as the secret. Subscribers
+      MUST recompute the HMAC over the raw bytes of the body and compare it
+      against the header using a constant-time comparison. On mismatch the
+      subscriber MUST respond `401 Unauthorized`; on match it MUST respond
+      `200 OK`. The same signed request shape is used during the initial
+      "intent to receive" verification handshake.
+  contact:
+    name: Xero Platform Team
+    url: https://developer.xero.com
+    email: api@xero.com
+  license:
+    name: Xero Developer Platform Terms and Conditions
+    url: https://developer.xero.com/xero-developer-platform-terms-conditions/
+
+defaultContentType: application/json
+
+servers:
+  subscriber:
+    url: '{webhookUrl}'
+    protocol: https
+    description: |-
+      Customer-hosted HTTPS endpoint that receives webhook POSTs from Xero.
+      The full URL is configured per application in the Xero developer
+      portal (My Apps -> Webhooks). A single delivery URL receives events
+      for every event category the application subscribes to.
+    variables:
+      webhookUrl:
+        default: https://example.com/xero/webhook
+        description: Fully-qualified HTTPS URL of the subscriber endpoint.
+    security:
+      - xeroSignature: []
+
+channels:
+  invoices:
+    description: |-
+      Notifications for organisation invoice events. Xero emits an event when
+      an invoice is created or updated (including state transitions such as
+      AUTHORISED, PAID, VOIDED, or archival). The payload does not include the
+      invoice body; subscribers GET `resourceUrl` against the Xero Accounting
+      API using credentials for `tenantId` to retrieve the current resource.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: 0.3.0
+    subscribe:
+      operationId: receiveInvoiceEvent
+      summary: Receive Invoice webhook events (CREATE, UPDATE).
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: 0.3.0
+      message:
+        oneOf:
+          - $ref: '#/components/messages/InvoiceCreateEvent'
+          - $ref: '#/components/messages/InvoiceUpdateEvent'
+
+  contacts:
+    description: |-
+      Notifications for organisation contact events. Xero emits an event when
+      a contact is created or updated (including archival, which Xero models
+      as an update). The payload does not include the contact body;
+      subscribers GET `resourceUrl` against the Xero Accounting API using
+      credentials for `tenantId` to retrieve the current resource.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: 0.3.0
+    subscribe:
+      operationId: receiveContactEvent
+      summary: Receive Contact webhook events (CREATE, UPDATE).
+      bindings:
+        http:
+          type: request
+          method: POST
+          bindingVersion: 0.3.0
+      message:
+        oneOf:
+          - $ref: '#/components/messages/ContactCreateEvent'
+          - $ref: '#/components/messages/ContactUpdateEvent'
+
+components:
+  securitySchemes:
+    xeroSignature:
+      type: httpApiKey
+      in: header
+      name: x-xero-signature
+      description: |-
+        Base64-encoded HMAC-SHA256 of the raw JSON request body, keyed by the
+        application's webhook signing key (a per-application secret displayed
+        in the Xero developer portal). HTTP header names are case-insensitive;
+        Xero documents the header as `x-xero-signature` and it is also
+        commonly referenced as `X-Xero-Signature`.
+
+        Verification (subscriber side):
+          1. Read the raw, unmodified request body bytes.
+          2. Compute HMAC-SHA256(signingKey, rawBody) and Base64-encode it.
+          3. Constant-time compare against the `x-xero-signature` header.
+          4. On match respond `200 OK`; on mismatch respond `401 Unauthorized`.
+
+  messages:
+    InvoiceCreateEvent:
+      name: InvoiceCreateEvent
+      title: Invoice Create
+      summary: Emitted when an invoice resource is created in a Xero organisation.
+      contentType: application/json
+      bindings:
+        http:
+          headers:
+            type: object
+            properties:
+              x-xero-signature:
+                type: string
+                description: Base64-encoded HMAC-SHA256 of the raw request body.
+            required:
+              - x-xero-signature
+          bindingVersion: 0.3.0
+      headers:
+        type: object
+        properties:
+          x-xero-signature:
+            type: string
+            description: Base64-encoded HMAC-SHA256 of the raw request body.
+        required:
+          - x-xero-signature
+      payload:
+        $ref: '#/components/schemas/InvoiceWebhookEvent'
+      examples:
+        - name: invoiceCreate
+          summary: Single INVOICE / CREATE event batch.
+          payload:
+            events:
+              - resourceUrl: https://api.xero.com/api.xro/2.0/Invoices/55d84274-a3da-4829-a7c0-0cab601b95cc
+                resourceId: 55d84274-a3da-4829-a7c0-0cab601b95cc
+                tenantId: aef86862-2015-4b6b-88bc-d89032cecc50
+                tenantType: ORGANISATION
+                eventCategory: INVOICE
+                eventType: CREATE
+                eventDateUtc: '2026-05-30T00:44:09.923'
+            firstEventSequence: 1
+            lastEventSequence: 1
+            entropy: FXNGWLCCGVANWHKILRUB
+
+    InvoiceUpdateEvent:
+      name: InvoiceUpdateEvent
+      title: Invoice Update
+      summary: Emitted when an invoice resource is updated (including archival) in a Xero organisation.
+      contentType: application/json
+      bindings:
+        http:
+          headers:
+            type: object
+            properties:
+              x-xero-signature:
+                type: string
+                description: Base64-encoded HMAC-SHA256 of the raw request body.
+            required:
+              - x-xero-signature
+          bindingVersion: 0.3.0
+      headers:
+        type: object
+        properties:
+          x-xero-signature:
+            type: string
+            description: Base64-encoded HMAC-SHA256 of the raw request body.
+        required:
+          - x-xero-signature
+      payload:
+        $ref: '#/components/schemas/InvoiceWebhookEvent'
+      examples:
+        - name: invoiceUpdate
+          summary: Single INVOICE / UPDATE event batch.
+          payload:
+            events:
+              - resourceUrl: https://api.xero.com/api.xro/2.0/Invoices/55d84274-a3da-4829-a7c0-0cab601b95cc
+                resourceId: 55d84274-a3da-4829-a7c0-0cab601b95cc
+                tenantId: aef86862-2015-4b6b-88bc-d89032cecc50
+                tenantType: ORGANISATION
+                eventCategory: INVOICE
+                eventType: UPDATE
+                eventDateUtc: '2026-05-30T00:48:11.117'
+            firstEventSequence: 2
+            lastEventSequence: 2
+            entropy: PQRSTUVWXYZABCDEFGHI
+
+    ContactCreateEvent:
+      name: ContactCreateEvent
+      title: Contact Create
+      summary: Emitted when a contact resource is created in a Xero organisation.
+      contentType: application/json
+      bindings:
+        http:
+          headers:
+            type: object
+            properties:
+              x-xero-signature:
+                type: string
+                description: Base64-encoded HMAC-SHA256 of the raw request body.
+            required:
+              - x-xero-signature
+          bindingVersion: 0.3.0
+      headers:
+        type: object
+        properties:
+          x-xero-signature:
+            type: string
+            description: Base64-encoded HMAC-SHA256 of the raw request body.
+        required:
+          - x-xero-signature
+      payload:
+        $ref: '#/components/schemas/ContactWebhookEvent'
+      examples:
+        - name: contactCreate
+          summary: Single CONTACT / CREATE event batch.
+          payload:
+            events:
+              - resourceUrl: https://api.xero.com/api.xro/2.0/Contacts/717f2bfc-c6d4-41fd-b238-3f2f0c0cf777
+                resourceId: 717f2bfc-c6d4-41fd-b238-3f2f0c0cf777
+                tenantId: c2cc9b6e-9458-4c7d-93cc-f02b81b0594f
+                tenantType: ORGANISATION
+                eventCategory: CONTACT
+                eventType: CREATE
+                eventDateUtc: '2026-05-30T01:15:39.902'
+            firstEventSequence: 1
+            lastEventSequence: 1
+            entropy: S0m3r4Nd0mt3xt
+
+    ContactUpdateEvent:
+      name: ContactUpdateEvent
+      title: Contact Update
+      summary: Emitted when a contact resource is updated (including archival) in a Xero organisation.
+      contentType: application/json
+      bindings:
+        http:
+          headers:
+            type: object
+            properties:
+              x-xero-signature:
+                type: string
+                description: Base64-encoded HMAC-SHA256 of the raw request body.
+            required:
+              - x-xero-signature
+          bindingVersion: 0.3.0
+      headers:
+        type: object
+        properties:
+          x-xero-signature:
+            type: string
+            description: Base64-encoded HMAC-SHA256 of the raw request body.
+        required:
+          - x-xero-signature
+      payload:
+        $ref: '#/components/schemas/ContactWebhookEvent'
+      examples:
+        - name: contactUpdate
+          summary: Single CONTACT / UPDATE event batch.
+          payload:
+            events:
+              - resourceUrl: https://api.xero.com/api.xro/2.0/Contacts/717f2bfc-c6d4-41fd-b238-3f2f0c0cf777
+                resourceId: 717f2bfc-c6d4-41fd-b238-3f2f0c0cf777
+                tenantId: c2cc9b6e-9458-4c7d-93cc-f02b81b0594f
+                tenantType: ORGANISATION
+                eventCategory: CONTACT
+                eventType: UPDATE
+                eventDateUtc: '2026-05-30T01:17:02.418'
+            firstEventSequence: 2
+            lastEventSequence: 2
+            entropy: A1B2C3D4E5F6G7H8I9J0
+
+  schemas:
+    WebhookEvent:
+      type: object
+      description: |-
+        Batch envelope POSTed by Xero to the subscriber URL. One delivery may
+        contain multiple `events`. The envelope is the canonical payload that
+        is HMAC-SHA256 signed and surfaced in the `x-xero-signature` header.
+      required:
+        - events
+        - firstEventSequence
+        - lastEventSequence
+        - entropy
+      properties:
+        events:
+          type: array
+          description: A list of events that have occurred.
+          items:
+            $ref: '#/components/schemas/Event'
+        firstEventSequence:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+          description: The sequence number of the first event in the list.
+        lastEventSequence:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+          description: The sequence number of the last event in the list.
+        entropy:
+          type: string
+          description: A random string included by Xero for security or validation purposes.
+
+    Event:
+      type: object
+      description: A single change notification emitted by Xero.
+      required:
+        - resourceUrl
+        - resourceId
+        - eventDateUtc
+        - eventType
+        - eventCategory
+        - tenantId
+        - tenantType
+      properties:
+        resourceUrl:
+          type: string
+          format: uri
+          description: The URL to retrieve the resource that has changed.
+        resourceId:
+          type: string
+          format: uuid
+          description: The ID of the resource that has changed (e.g. InvoiceID or ContactID).
+        eventDateUtc:
+          type: string
+          format: date-time
+          description: The date and time the event occurred (UTC).
+        eventType:
+          type: string
+          description: The type of event that occurred.
+          enum:
+            - CREATE
+            - UPDATE
+        eventCategory:
+          type: string
+          description: The category of event that occurred. Only categories the application is subscribed to are delivered.
+          enum:
+            - INVOICE
+            - CONTACT
+        tenantId:
+          type: string
+          format: uuid
+          description: The ID of the tenant (OrganisationID) the event relates to.
+        tenantType:
+          type: string
+          description: The type of tenant. INVOICE and CONTACT events are always emitted for an ORGANISATION tenant.
+          enum:
+            - ORGANISATION
+
+    InvoiceEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventCategory:
+              type: string
+              enum:
+                - INVOICE
+            resourceUrl:
+              type: string
+              format: uri
+              description: URL of the invoice resource on the Xero Accounting API.
+              example: https://api.xero.com/api.xro/2.0/Invoices/55d84274-a3da-4829-a7c0-0cab601b95cc
+
+    ContactEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventCategory:
+              type: string
+              enum:
+                - CONTACT
+            resourceUrl:
+              type: string
+              format: uri
+              description: URL of the contact resource on the Xero Accounting API.
+              example: https://api.xero.com/api.xro/2.0/Contacts/717f2bfc-c6d4-41fd-b238-3f2f0c0cf777
+
+    InvoiceWebhookEvent:
+      description: Batch envelope whose `events[]` are constrained to the INVOICE category.
+      allOf:
+        - $ref: '#/components/schemas/WebhookEvent'
+        - type: object
+          properties:
+            events:
+              type: array
+              items:
+                $ref: '#/components/schemas/InvoiceEvent'
+
+    ContactWebhookEvent:
+      description: Batch envelope whose `events[]` are constrained to the CONTACT category.
+      allOf:
+        - $ref: '#/components/schemas/WebhookEvent'
+        - type: object
+          properties:
+            events:
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactEvent'
