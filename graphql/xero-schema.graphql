@@ -1,0 +1,2249 @@
+"""
+Conceptual GraphQL schema for the Xero Accounting Platform.
+Derived from the Xero REST API surface (Accounting, Assets, Bank Feeds,
+Finance, Identity, Payroll, Projects, Files APIs).
+This is NOT an officially published Xero schema — it is a reference artifact
+mapping Xero's documented resource types and relationships into GraphQL SDL.
+Source: https://developer.xero.com/documentation/
+"""
+
+# ---------------------------------------------------------------------------
+# Scalars
+# ---------------------------------------------------------------------------
+
+scalar Date
+scalar DateTime
+scalar Decimal
+scalar UUID
+
+# ---------------------------------------------------------------------------
+# Enumerations
+# ---------------------------------------------------------------------------
+
+enum AccountType {
+  BANK
+  CURRENT
+  CURRLIAB
+  DEPRECIATN
+  DIRECTCOSTS
+  EQUITY
+  EXPENSE
+  FIXED
+  INVENTORY
+  LIABILITY
+  NONCURRENT
+  OTHERINCOME
+  OVERHEADS
+  PREPAYMENT
+  REVENUE
+  SALES
+  TERMLIAB
+  PAYGLIABILITY
+  SUPERANNUATIONEXPENSE
+  SUPERANNUATIONLIABILITY
+  WAGESEXPENSE
+}
+
+enum AccountStatus {
+  ACTIVE
+  ARCHIVED
+}
+
+enum BankTransactionType {
+  RECEIVE
+  RECEIVE_OVERPAYMENT
+  RECEIVE_PREPAYMENT
+  SPEND
+  SPEND_OVERPAYMENT
+  SPEND_PREPAYMENT
+  RECEIVE_TRANSFER
+  SPEND_TRANSFER
+}
+
+enum BankTransactionStatus {
+  AUTHORISED
+  DELETED
+}
+
+enum ContactStatus {
+  ACTIVE
+  ARCHIVED
+  GDPRREQUEST
+}
+
+enum CreditNoteType {
+  ACCPAYCREDIT
+  ACCRECCREDIT
+}
+
+enum CreditNoteStatus {
+  DRAFT
+  SUBMITTED
+  DELETED
+  AUTHORISED
+  PAID
+  VOIDED
+}
+
+enum CurrencyCode {
+  AUD
+  CAD
+  CHF
+  CNY
+  EUR
+  GBP
+  HKD
+  JPY
+  NZD
+  SGD
+  USD
+  ZAR
+}
+
+enum InvoiceType {
+  ACCPAY
+  ACCREC
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SUBMITTED
+  DELETED
+  AUTHORISED
+  PAID
+  VOIDED
+}
+
+enum LineAmountType {
+  EXCLUSIVE
+  INCLUSIVE
+  NOTAX
+}
+
+enum OverpaymentType {
+  RECEIVE_OVERPAYMENT
+  SPEND_OVERPAYMENT
+}
+
+enum OverpaymentStatus {
+  AUTHORISED
+  PAID
+  VOIDED
+}
+
+enum PaymentType {
+  ACCRECPAYMENT
+  ACCPAYPAYMENT
+  ARCREDITPAYMENT
+  APCREDITPAYMENT
+  AROVERPAYMENTPAYMENT
+  ARPREPAYMENTPAYMENT
+  APPREPAYMENTPAYMENT
+  APOVERPAYMENTPAYMENT
+}
+
+enum PaymentStatus {
+  AUTHORISED
+  DELETED
+}
+
+enum PrepaymentType {
+  RECEIVE_PREPAYMENT
+  SPEND_PREPAYMENT
+}
+
+enum PrepaymentStatus {
+  AUTHORISED
+  PAID
+  VOIDED
+}
+
+enum PurchaseOrderStatus {
+  DRAFT
+  SUBMITTED
+  AUTHORISED
+  BILLED
+  DELETED
+}
+
+enum QuoteStatus {
+  DRAFT
+  SENT
+  DECLINED
+  ACCEPTED
+  INVOICED
+  DELETED
+}
+
+enum RepeatingInvoiceStatus {
+  DRAFT
+  AUTHORISED
+  DELETED
+}
+
+enum RepeatingInvoiceType {
+  ACCPAY
+  ACCREC
+}
+
+enum ManualJournalStatus {
+  DRAFT
+  POSTED
+  DELETED
+  VOIDED
+  ARCHIVED
+}
+
+enum TaxType {
+  OUTPUT
+  INPUT
+  CAPEXINPUT
+  EXEMPTEXPORT
+  EXEMPTEXPENSES
+  EXEMPTCAPITAL
+  EXEMPTOUTPUT
+  INPUTTAXED
+  BASEXCLUDED
+  GSTONCAPIMPORTS
+  GSTONIMPORTS
+  NONE
+  OUTPUT2
+  ZERORATED
+  INPUT2
+  CAPEXINPUT2
+  CAPEXOUTPUT
+  CAPEXOUTPUT2
+  CAPEXSRINPUT
+  CAPEXSROUTPUT
+  SROUTPUT
+  SRINPUT
+  SROUTPUT2
+  ZERORATEDINPUT
+  ZERORATEDOUTPUT
+  DRCCAPEXINPUT
+  DRCCAPEXOUTPUT
+  DRCCAPEXINPUT2
+  DRCCAPEXOUTPUT2
+  DRCINPUT
+  DRCOUTPUT
+  DRCINPUT2
+  DRCOUTPUT2
+  ZCAINPUT
+  ZCAOUTPUT
+  MVINPUT
+  MVOUTPUT
+}
+
+enum OrganisationType {
+  COMPANY
+  CHARITY
+  CLUBSOCIETY
+  PARTNERSHIP
+  PRACTICE
+  PERSON
+  SOLETRADER
+  TRUST
+}
+
+enum OrganisationStatus {
+  ACTIVE
+}
+
+enum AssetStatus {
+  DRAFT
+  REGISTERED
+  DISPOSED
+}
+
+enum ProjectStatus {
+  INPROGRESS
+  CLOSED
+}
+
+enum TaskStatus {
+  ACTIVE
+  LOCKED
+}
+
+enum PayPeriod {
+  WEEKLY
+  FORTNIGHTLY
+  FOURWEEKLY
+  MONTHLY
+  QUARTERLY
+  YEARLY
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  TERMINATED
+}
+
+enum LeaveStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+}
+
+enum PhoneType {
+  DEFAULT
+  DDI
+  MOBILE
+  FAX
+  OFFICE
+}
+
+enum AddressType {
+  POBOX
+  STREET
+  DELIVERY
+}
+
+enum SortOrderType {
+  ASC
+  DESC
+}
+
+# ---------------------------------------------------------------------------
+# Supporting types
+# ---------------------------------------------------------------------------
+
+type Address {
+  addressType: AddressType
+  addressLine1: String
+  addressLine2: String
+  addressLine3: String
+  addressLine4: String
+  city: String
+  region: String
+  postalCode: String
+  country: String
+  attentionTo: String
+}
+
+type Phone {
+  phoneType: PhoneType
+  phoneNumber: String
+  phoneAreaCode: String
+  phoneCountryCode: String
+}
+
+type ContactPerson {
+  firstName: String
+  lastName: String
+  emailAddress: String
+  includeInEmails: Boolean
+}
+
+type ExternalLink {
+  linkType: String
+  url: String
+  description: String
+}
+
+type LineItem {
+  lineItemID: UUID
+  description: String
+  quantity: Decimal
+  unitAmount: Decimal
+  itemCode: String
+  accountCode: String
+  taxType: String
+  taxAmount: Decimal
+  lineAmount: Decimal
+  discountRate: Decimal
+  discountAmount: Decimal
+  trackingCategories: [TrackingCategoryOption]
+  item: Item
+}
+
+type TrackingCategoryOption {
+  trackingCategoryID: UUID
+  trackingOptionID: UUID
+  name: String
+  option: String
+}
+
+type PaymentTerm {
+  days: Int
+  type: String
+}
+
+type Allocation {
+  invoice: Invoice
+  overpayment: Overpayment
+  prepayment: Prepayment
+  creditNote: CreditNote
+  amount: Decimal
+  date: Date
+  statusAttributeString: String
+}
+
+type ValidationError {
+  message: String
+}
+
+# ---------------------------------------------------------------------------
+# Core Accounting Types
+# ---------------------------------------------------------------------------
+
+type Account {
+  accountID: UUID!
+  code: String
+  name: String
+  status: AccountStatus
+  type: AccountType
+  taxType: String
+  description: String
+  class: String
+  systemAccount: String
+  enablePaymentsToAccount: Boolean
+  showInExpenseClaims: Boolean
+  bankAccountNumber: String
+  bankAccountType: String
+  currencyCode: CurrencyCode
+  reportingCode: String
+  reportingCodeName: String
+  hasAttachments: Boolean
+  updatedDateUTC: DateTime
+  addToWatchlist: Boolean
+}
+
+type BankTransaction {
+  bankTransactionID: UUID!
+  type: BankTransactionType!
+  contact: Contact
+  lineItems: [LineItem]
+  bankAccount: Account!
+  isReconciled: Boolean
+  date: Date
+  reference: String
+  currencyCode: CurrencyCode
+  currencyRate: Decimal
+  url: String
+  status: BankTransactionStatus
+  lineAmountTypes: LineAmountType
+  subTotal: Decimal
+  totalTax: Decimal
+  total: Decimal
+  prepaymentID: UUID
+  overpaymentID: UUID
+  updatedDateUTC: DateTime
+  hasAttachments: Boolean
+  statusAttributeString: String
+  validationErrors: [ValidationError]
+  attachments: [Attachment]
+}
+
+type BankTransfer {
+  bankTransferID: UUID!
+  fromBankAccount: Account!
+  toBankAccount: Account!
+  amount: Decimal!
+  date: Date
+  currencyRate: Decimal
+  fromBankTransactionID: UUID
+  toBankTransactionID: UUID
+  fromIsReconciled: Boolean
+  toIsReconciled: Boolean
+  reference: String
+  hasAttachments: Boolean
+  createdDateUTC: DateTime
+  attachments: [Attachment]
+}
+
+type BrandingTheme {
+  brandingThemeID: UUID!
+  name: String
+  logoURL: String
+  type: String
+  sortOrder: Int
+  createdDateUTC: DateTime
+  paymentServices: [PaymentService]
+}
+
+type Contact {
+  contactID: UUID!
+  contactNumber: String
+  accountNumber: String
+  contactStatus: ContactStatus
+  name: String
+  firstName: String
+  lastName: String
+  emailAddress: String
+  skypeUserName: String
+  contactPersons: [ContactPerson]
+  bankAccountDetails: String
+  taxNumber: String
+  accountsReceivableTaxType: String
+  accountsPayableTaxType: String
+  addresses: [Address]
+  phones: [Phone]
+  isSupplier: Boolean
+  isCustomer: Boolean
+  defaultCurrency: CurrencyCode
+  updatedDateUTC: DateTime
+  contactGroups: [ContactGroup]
+  website: String
+  brandingTheme: BrandingTheme
+  batchPayments: BatchPaymentDetails
+  discount: Decimal
+  balances: ContactBalances
+  hasAttachments: Boolean
+  hasValidationErrors: Boolean
+  statusAttributeString: String
+  validationErrors: [ValidationError]
+  salesDefaultLineAmountType: LineAmountType
+  purchasesDefaultLineAmountType: LineAmountType
+  salesDefaultAccountCode: String
+  purchasesDefaultAccountCode: String
+  trackingCategoryName: String
+  trackingCategoryOption: String
+  paymentTerms: PaymentTerms
+  externalLinks: [ExternalLink]
+  attachments: [Attachment]
+}
+
+type ContactBalances {
+  accountsReceivable: BalanceDetail
+  accountsPayable: BalanceDetail
+}
+
+type BalanceDetail {
+  outstanding: Decimal
+  overdue: Decimal
+}
+
+type BatchPaymentDetails {
+  bankAccountNumber: String
+  bankAccountName: String
+  details: String
+  code: String
+  reference: String
+}
+
+type PaymentTerms {
+  bills: PaymentTerm
+  sales: PaymentTerm
+}
+
+type ContactGroup {
+  contactGroupID: UUID!
+  name: String
+  status: String
+  contacts: [Contact]
+  hasValidationErrors: Boolean
+  validationErrors: [ValidationError]
+}
+
+type CreditNote {
+  creditNoteID: UUID!
+  type: CreditNoteType!
+  contact: Contact!
+  date: Date
+  dueDate: Date
+  status: CreditNoteStatus
+  lineAmountTypes: LineAmountType
+  lineItems: [LineItem]
+  subTotal: Decimal
+  totalTax: Decimal
+  total: Decimal
+  creditNoteNumber: String
+  reference: String
+  sentToContact: Boolean
+  currencyCode: CurrencyCode
+  currencyRate: Decimal
+  remainingCredit: Decimal
+  allocations: [Allocation]
+  appliedAmount: Decimal
+  payments: [Payment]
+  brandingThemeID: UUID
+  hasAttachments: Boolean
+  updatedDateUTC: DateTime
+  statusAttributeString: String
+  validationErrors: [ValidationError]
+  attachments: [Attachment]
+}
+
+type Currency {
+  code: CurrencyCode!
+  description: String
+}
+
+type Employee {
+  employeeID: UUID!
+  status: EmployeeStatus
+  firstName: String!
+  lastName: String!
+  externalLink: ExternalLink
+  updatedDateUTC: DateTime
+}
+
+type ExpenseClaim {
+  expenseClaimID: UUID!
+  user: User!
+  receipts: [Receipt]
+  payments: [Payment]
+  status: String
+  total: Decimal
+  amountDue: Decimal
+  amountPaid: Decimal
+  paymentDueDate: Date
+  reportingDate: Date
+  updatedDateUTC: DateTime
+}
+
+type Invoice {
+  invoiceID: UUID!
+  type: InvoiceType!
+  contact: Contact
+  lineItems: [LineItem]
+  date: Date
+  dueDate: Date
+  lineAmountTypes: LineAmountType
+  invoiceNumber: String
+  reference: String
+  brandingThemeID: UUID
+  url: String
+  currencyCode: CurrencyCode
+  currencyRate: Decimal
+  status: InvoiceStatus
+  sentToContact: Boolean
+  expectedPaymentDate: Date
+  plannedPaymentDate: Date
+  cisDeduction: Decimal
+  cisRate: Decimal
+  subTotal: Decimal
+  totalTax: Decimal
+  total: Decimal
+  totalDiscount: Decimal
+  invoiceID_: UUID
+  hasErrors: Boolean
+  isDiscounted: Boolean
+  payments: [Payment]
+  prepayments: [Prepayment]
+  overpayments: [Overpayment]
+  amountDue: Decimal
+  amountPaid: Decimal
+  fullyPaidOnDate: Date
+  amountCredited: Decimal
+  updatedDateUTC: DateTime
+  hasAttachments: Boolean
+  repeatingInvoiceID: UUID
+  statusAttributeString: String
+  validationErrors: [ValidationError]
+  warnings: [ValidationError]
+  attachments: [Attachment]
+}
+
+type Item {
+  itemID: UUID!
+  code: String!
+  inventoryAssetAccountCode: String
+  name: String
+  isSold: Boolean
+  isPurchased: Boolean
+  description: String
+  purchaseDescription: String
+  purchaseDetails: Purchase
+  salesDetails: Purchase
+  isTracked: Boolean
+  totalCostPool: Decimal
+  quantityOnHand: Decimal
+  updatedDateUTC: DateTime
+  statusAttributeString: String
+  validationErrors: [ValidationError]
+}
+
+type Purchase {
+  unitPrice: Decimal
+  accountCode: String
+  cogsAccountCode: String
+  taxType: String
+}
+
+type Journal {
+  journalID: UUID!
+  journalDate: Date
+  journalNumber: Int
+  createdDateUTC: DateTime
+  reference: String
+  sourceID: UUID
+  sourceType: String
+  journalLines: [JournalLine]
+}
+
+type JournalLine {
+  journalLineID: UUID!
+  accountID: UUID
+  accountCode: String
+  accountType: AccountType
+  accountName: String
+  description: String
+  netAmount: Decimal
+  grossAmount: Decimal
+  taxAmount: Decimal
+  taxType: String
+  taxName: String
+  trackingCategories: [TrackingCategoryOption]
+}
+
+type LinkedTransaction {
+  linkedTransactionID: UUID!
+  sourceTransactionID: UUID
+  sourceLineItemID: UUID
+  contactID: UUID
+  targetTransactionID: UUID
+  targetLineItemID: UUID
+  status: String
+  type: String
+  updatedDateUTC: DateTime
+  sourceTransactionTypeCode: String
+}
+
+type ManualJournal {
+  manualJournalID: UUID!
+  narration: String
+  journalLines: [ManualJournalLine]
+  date: Date
+  lineAmountTypes: LineAmountType
+  status: ManualJournalStatus
+  url: String
+  showOnCashBasisReports: Boolean
+  hasAttachments: Boolean
+  updatedDateUTC: DateTime
+  statusAttributeString: String
+  validationErrors: [ValidationError]
+  attachments: [Attachment]
+}
+
+type ManualJournalLine {
+  lineAmount: Decimal!
+  accountCode: String
+  accountID: UUID
+  description: String
+  taxType: String
+  taxAmount: Decimal
+  trackingCategories: [TrackingCategoryOption]
+  isBlank: Boolean
+}
+
+type Organisation {
+  organisationID: UUID!
+  apiKey: String
+  name: String
+  legalName: String
+  paysTax: Boolean
+  version: String
+  organisationType: OrganisationType
+  baseCurrency: CurrencyCode
+  countryCode: String
+  isDemoCompany: Boolean
+  organisationStatus: OrganisationStatus
+  registrationNumber: String
+  employerIdentificationNumber: String
+  taxNumber: String
+  financialYearEndDay: Int
+  financialYearEndMonth: Int
+  salesTaxBasis: String
+  salesTaxPeriod: String
+  defaultSalesTax: String
+  defaultPurchasesTax: String
+  periodsLockDate: Date
+  endOfYearLockDate: Date
+  createdDateUTC: DateTime
+  timezone: String
+  organisationEntityType: String
+  shortCode: String
+  class: String
+  edition: String
+  lineOfBusiness: String
+  addresses: [Address]
+  phones: [Phone]
+  externalLinks: [ExternalLink]
+  paymentTerms: PaymentTerms
+}
+
+type Overpayment {
+  overpaymentID: UUID!
+  type: OverpaymentType
+  contact: Contact
+  date: Date
+  status: OverpaymentStatus
+  lineAmountTypes: LineAmountType
+  lineItems: [LineItem]
+  subTotal: Decimal
+  totalTax: Decimal
+  total: Decimal
+  updatedDateUTC: DateTime
+  currencyCode: CurrencyCode
+  currencyRate: Decimal
+  remainingCredit: Decimal
+  allocations: [Allocation]
+  appliedAmount: Decimal
+  payments: [Payment]
+  hasAttachments: Boolean
+  attachments: [Attachment]
+}
+
+type Payment {
+  paymentID: UUID!
+  invoice: Invoice
+  creditNote: CreditNote
+  prepayment: Prepayment
+  overpayment: Overpayment
+  invoiceNumber: String
+  creditNoteNumber: String
+  bankAccountNumber: String
+  isReconciled: Boolean
+  account: Account
+  code: String
+  date: Date
+  currencyRate: Decimal
+  amount: Decimal!
+  bankAmount: Decimal
+  reference: String
+  isReconciled_: Boolean
+  status: PaymentStatus
+  paymentType: PaymentType
+  updatedDateUTC: DateTime
+  hasAccount: Boolean
+  hasValidationErrors: Boolean
+  statusAttributeString: String
+  validationErrors: [ValidationError]
+}
+
+type PaymentService {
+  paymentServiceID: UUID!
+  paymentServiceName: String
+  paymentServiceUrl: String
+  payNowText: String
+  paymentServiceType: String
+}
+
+type Prepayment {
+  prepaymentID: UUID!
+  type: PrepaymentType
+  contact: Contact
+  date: Date
+  status: PrepaymentStatus
+  lineAmountTypes: LineAmountType
+  lineItems: [LineItem]
+  subTotal: Decimal
+  totalTax: Decimal
+  total: Decimal
+  reference: String
+  updatedDateUTC: DateTime
+  currencyCode: CurrencyCode
+  currencyRate: Decimal
+  remainingCredit: Decimal
+  allocations: [Allocation]
+  appliedAmount: Decimal
+  hasAttachments: Boolean
+  payments: [Payment]
+  attachments: [Attachment]
+}
+
+type PurchaseOrder {
+  purchaseOrderID: UUID!
+  contact: Contact
+  lineItems: [LineItem]
+  date: Date
+  deliveryDate: Date
+  lineAmountTypes: LineAmountType
+  purchaseOrderNumber: String
+  reference: String
+  brandingThemeID: UUID
+  currencyCode: CurrencyCode
+  status: PurchaseOrderStatus
+  sentToContact: Boolean
+  deliveryAddress: String
+  attentionTo: String
+  telephone: String
+  deliveryInstructions: String
+  expectedArrivalDate: Date
+  purchaseOrderID_: UUID
+  currencyRate: Decimal
+  subTotal: Decimal
+  totalTax: Decimal
+  total: Decimal
+  totalDiscount: Decimal
+  hasErrors: Boolean
+  updatedDateUTC: DateTime
+  hasAttachments: Boolean
+  statusAttributeString: String
+  validationErrors: [ValidationError]
+  warnings: [ValidationError]
+  attachments: [Attachment]
+}
+
+type Quote {
+  quoteID: UUID!
+  quoteNumber: String
+  reference: String
+  terms: String
+  contact: Contact
+  lineItems: [LineItem]
+  date: Date
+  expiryDate: Date
+  status: QuoteStatus
+  currencyCode: CurrencyCode
+  currencyRate: Decimal
+  lineAmountTypes: LineAmountType
+  subTotal: Decimal
+  totalTax: Decimal
+  total: Decimal
+  totalDiscount: Decimal
+  title: String
+  summary: String
+  brandingThemeID: UUID
+  updatedDateUTC: DateTime
+  statusAttributeString: String
+  validationErrors: [ValidationError]
+  attachments: [Attachment]
+}
+
+type Receipt {
+  receiptID: UUID!
+  date: Date!
+  contact: Contact!
+  lineItems: [LineItem]
+  user: User!
+  reference: String
+  lineAmountTypes: LineAmountType
+  subTotal: Decimal
+  totalTax: Decimal
+  total: Decimal
+  receiptNumber: Int
+  status: String
+  url: String
+  hasAttachments: Boolean
+  updatedDateUTC: DateTime
+  statusAttributeString: String
+  validationErrors: [ValidationError]
+  attachments: [Attachment]
+}
+
+type RepeatingInvoice {
+  repeatingInvoiceID: UUID!
+  type: RepeatingInvoiceType
+  contact: Contact
+  schedule: Schedule
+  lineItems: [LineItem]
+  lineAmountTypes: LineAmountType
+  reference: String
+  brandingThemeID: UUID
+  currencyCode: CurrencyCode
+  status: RepeatingInvoiceStatus
+  subTotal: Decimal
+  totalTax: Decimal
+  total: Decimal
+  invoiceID: UUID
+  hasAttachments: Boolean
+  attachments: [Attachment]
+  approvedForSending: Boolean
+  sendCopy: Boolean
+  markAsSent: Boolean
+  includePDF: Boolean
+}
+
+type Schedule {
+  period: Int
+  unit: String
+  dueDate: Int
+  dueDateType: String
+  startDate: Date
+  nextScheduledDate: Date
+  endDate: Date
+}
+
+type TaxRate {
+  name: String!
+  taxType: TaxType
+  taxComponents: [TaxComponent]
+  status: String
+  reportTaxType: String
+  canApplyToAssets: Boolean
+  canApplyToEquity: Boolean
+  canApplyToExpenses: Boolean
+  canApplyToLiabilities: Boolean
+  canApplyToRevenue: Boolean
+  displayTaxRate: Decimal
+  effectiveRate: Decimal
+}
+
+type TaxComponent {
+  name: String
+  rate: Decimal
+  isCompound: Boolean
+  isNonRecoverable: Boolean
+}
+
+type TrackingCategory {
+  trackingCategoryID: UUID!
+  trackingOptionID: UUID
+  name: String
+  status: String
+  options: [TrackingOption]
+}
+
+type TrackingOption {
+  trackingOptionID: UUID!
+  name: String
+  status: String
+}
+
+type User {
+  userID: UUID!
+  emailAddress: String
+  firstName: String
+  lastName: String
+  updatedDateUTC: DateTime
+  isSubscriber: Boolean
+  organisationRole: String
+}
+
+type Attachment {
+  attachmentID: UUID!
+  fileName: String
+  url: String
+  mimeType: String
+  contentLength: Int
+  includeOnline: Boolean
+}
+
+# ---------------------------------------------------------------------------
+# Batch Payment
+# ---------------------------------------------------------------------------
+
+type BatchPayment {
+  account: Account
+  reference: String
+  particulars: String
+  code: String
+  details: String
+  narrative: String
+  batchPaymentID: UUID!
+  dateString: String
+  date: Date
+  amount: Decimal
+  payments: [Payment]
+  type: String
+  status: String
+  totalAmount: Decimal
+  updatedDateUTC: DateTime
+  isReconciled: Boolean
+}
+
+# ---------------------------------------------------------------------------
+# Budget
+# ---------------------------------------------------------------------------
+
+type Budget {
+  budgetID: UUID!
+  type: String
+  description: String
+  updatedDateUTC: DateTime
+  trackingCategories: [TrackingCategory]
+  budgetLines: [BudgetLine]
+}
+
+type BudgetLine {
+  accountID: UUID
+  accountCode: String
+  budgetBalances: [BudgetBalance]
+}
+
+type BudgetBalance {
+  period: String
+  amount: Decimal
+  unitAmount: Decimal
+  notes: String
+}
+
+# ---------------------------------------------------------------------------
+# Reports
+# ---------------------------------------------------------------------------
+
+type Report {
+  reportID: String
+  reportName: String
+  reportType: String
+  reportTitles: [String]
+  reportDate: String
+  updatedDateUTC: DateTime
+  rows: [ReportRow]
+  fields: [ReportField]
+}
+
+type ReportRow {
+  rowType: String
+  title: String
+  rows: [ReportRow]
+  cells: [ReportCell]
+}
+
+type ReportCell {
+  value: String
+  attributes: [ReportAttribute]
+}
+
+type ReportAttribute {
+  value: String
+  id: String
+}
+
+type ReportField {
+  fieldID: String
+  description: String
+}
+
+type BalanceSheet {
+  reportID: String
+  reportName: String
+  reportDate: String
+  updatedDateUTC: DateTime
+  rows: [ReportRow]
+}
+
+type ProfitAndLoss {
+  reportID: String
+  reportName: String
+  reportDate: String
+  updatedDateUTC: DateTime
+  rows: [ReportRow]
+}
+
+type CashFlow {
+  reportID: String
+  reportName: String
+  reportDate: String
+  updatedDateUTC: DateTime
+  rows: [ReportRow]
+}
+
+type BankSummary {
+  reportID: String
+  reportName: String
+  reportDate: String
+  updatedDateUTC: DateTime
+  rows: [ReportRow]
+}
+
+type TrialBalance {
+  reportID: String
+  reportName: String
+  reportDate: String
+  updatedDateUTC: DateTime
+  rows: [ReportRow]
+}
+
+type BudgetSummary {
+  reportID: String
+  reportName: String
+  reportDate: String
+  periods: Int
+  timeframe: Int
+  updatedDateUTC: DateTime
+  rows: [ReportRow]
+}
+
+type AgedPayables {
+  reportID: String
+  reportName: String
+  reportDate: String
+  updatedDateUTC: DateTime
+  rows: [ReportRow]
+}
+
+type AgedReceivables {
+  reportID: String
+  reportName: String
+  reportDate: String
+  updatedDateUTC: DateTime
+  rows: [ReportRow]
+}
+
+# ---------------------------------------------------------------------------
+# Assets API
+# ---------------------------------------------------------------------------
+
+type Asset {
+  assetId: UUID!
+  assetName: String!
+  assetNumber: String
+  purchaseDate: Date
+  purchasePrice: Decimal
+  disposalPrice: Decimal
+  assetStatus: AssetStatus
+  warrantyExpiryDate: Date
+  serialNumber: String
+  bookValue: Decimal
+  disposalDate: Date
+  assetType: AssetType
+  bookDepreciationSetting: DepreciationSetting
+  bookDepreciationDetail: DepreciationDetail
+  canRollback: Boolean
+  accountingBookValue: Decimal
+  isDeleteEnabledForDate: Boolean
+}
+
+type AssetType {
+  assetTypeId: UUID!
+  assetTypeName: String!
+  fixedAssetAccountId: UUID
+  depreciationExpenseAccountId: UUID
+  accumulatedDepreciationAccountId: UUID
+  bookDepreciationSetting: DepreciationSetting
+  locks: Int
+  lockPrivateUseAccount: Boolean
+}
+
+type DepreciationSetting {
+  depreciationMethod: String
+  averagingMethod: String
+  depreciationRate: Decimal
+  effectiveLifeYears: Int
+  depreciationCalculationMethod: String
+  privateUsePercentage: Decimal
+}
+
+type DepreciationDetail {
+  currentCapitalGain: Decimal
+  currentGainLoss: Decimal
+  depreciationStartDate: Date
+  costLimit: Decimal
+  residualValue: Decimal
+  priorAccumDepreciation: Decimal
+  currentAccumDepreciation: Decimal
+}
+
+type AssetSetting {
+  assetNumberPrefix: String
+  assetNumberSequence: String
+  assetStartDate: Date
+  lastDepreciationDate: Date
+  defaultGainOnDisposalAccountId: UUID
+  defaultLossOnDisposalAccountId: UUID
+  defaultCapitalGainOnDisposalAccountId: UUID
+  optInForTax: Boolean
+}
+
+# ---------------------------------------------------------------------------
+# Bank Feeds API
+# ---------------------------------------------------------------------------
+
+type FeedConnection {
+  id: UUID!
+  accountToken: String
+  accountId: String
+  accountNumber: String
+  accountName: String
+  accountType: String
+  currency: CurrencyCode
+  country: String
+  status: String
+  error: FeedConnectionError
+}
+
+type FeedConnectionError {
+  type: String
+  title: String
+  status: Int
+  detail: String
+}
+
+type Statement {
+  id: UUID!
+  feedConnectionId: UUID
+  status: String
+  startDate: Date
+  endDate: Date
+  startBalance: StatementBalance
+  endBalance: StatementBalance
+  statementLines: [StatementLine]
+  errors: [StatementError]
+  refreshedDateUtc: DateTime
+}
+
+type StatementBalance {
+  amount: Decimal
+  creditDebitIndicator: String
+}
+
+type StatementLine {
+  id: UUID!
+  postedDate: Date
+  description: String
+  amount: Decimal
+  creditDebitIndicator: String
+  transactionId: String
+  payeeName: String
+  reference: String
+  chequeNumber: String
+}
+
+type StatementError {
+  statementLineId: UUID
+  type: String
+  title: String
+  status: Int
+  detail: String
+}
+
+# ---------------------------------------------------------------------------
+# Projects API
+# ---------------------------------------------------------------------------
+
+type Project {
+  projectId: UUID!
+  contactId: UUID
+  name: String!
+  currencyCode: CurrencyCode
+  minutesLogged: Int
+  totalTaskAmount: Amount
+  totalExpenseAmount: Amount
+  minutesToBeBilled: Int
+  taskAmountToBeInvoiced: Amount
+  taskAmountInvoiced: Amount
+  expenseAmountToBeInvoiced: Amount
+  expenseAmountInvoiced: Amount
+  projectAmountInvoiced: Amount
+  deposit: Amount
+  depositApplied: Amount
+  creditNoteAmount: Amount
+  deadlineUtc: DateTime
+  totalInvoiced: Amount
+  totalToBeInvoiced: Amount
+  estimate: Amount
+  status: ProjectStatus
+}
+
+type Amount {
+  currency: CurrencyCode
+  value: Decimal
+}
+
+type Task {
+  taskId: UUID!
+  name: String!
+  rate: Rate
+  chargeType: String
+  estimateMinutes: Int
+  projectId: UUID
+  totalMinutes: Int
+  totalAmount: Amount
+  minutesInvoiced: Int
+  minutesToBeInvoiced: Int
+  fixedMinutes: Int
+  nonChargeableMinutes: Int
+  amountToInvoice: Amount
+  amountInvoiced: Amount
+  status: TaskStatus
+}
+
+type Rate {
+  currency: CurrencyCode
+  value: Decimal
+}
+
+type TimeEntry {
+  timeEntryId: UUID!
+  userId: UUID
+  projectId: UUID
+  taskId: UUID
+  dateUtc: DateTime
+  duration: Int
+  description: String
+  statusDateUtc: DateTime
+  status: String
+}
+
+type ProjectUser {
+  userId: UUID!
+  name: String
+  email: String
+}
+
+# ---------------------------------------------------------------------------
+# Files API
+# ---------------------------------------------------------------------------
+
+type FileObject {
+  id: UUID!
+  name: String
+  mimeType: String
+  size: Int
+  createdDateUtc: DateTime
+  updatedDateUtc: DateTime
+  user: FileUser
+  folder: Folder
+}
+
+type Folder {
+  id: UUID!
+  name: String
+  fileCount: Int
+  email: String
+  isInbox: Boolean
+}
+
+type FileUser {
+  userId: UUID!
+  name: String
+  fullName: String
+}
+
+type Association {
+  fileId: UUID
+  objectId: UUID
+  objectGroup: String
+  objectType: String
+}
+
+# ---------------------------------------------------------------------------
+# Identity / Connection Types
+# ---------------------------------------------------------------------------
+
+type Connection {
+  id: UUID!
+  tenantId: UUID
+  tenantType: String
+  tenantName: String
+  createdDateUtc: DateTime
+  updatedDateUtc: DateTime
+}
+
+type RefreshToken {
+  id: UUID!
+  token: String
+  refreshToken: String
+  tenantId: UUID
+  tenantType: String
+  createdDateUtc: DateTime
+  expiresDateUtc: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Payroll AU Types
+# ---------------------------------------------------------------------------
+
+type PayrollEmployee {
+  employeeID: UUID!
+  firstName: String!
+  lastName: String!
+  dateOfBirth: Date
+  homeAddress: Address
+  startDate: Date
+  title: String
+  middleNames: String
+  email: String
+  gender: String
+  phoneNumber: String
+  mobile: String
+  twitter: String
+  isAuthorisedToApproveLeave: Boolean
+  isAuthorisedToApproveTimesheets: Boolean
+  payrollCalendarID: UUID
+  updatedDateUTC: DateTime
+  createdDateUTC: DateTime
+  status: EmployeeStatus
+}
+
+type PayRun {
+  payRunID: UUID!
+  payrollCalendarID: UUID!
+  payRunPeriodStartDate: Date
+  payRunPeriodEndDate: Date
+  payRunStatus: String
+  paymentDate: Date
+  paySlips: [PaySlip]
+  updatedDateUTC: DateTime
+}
+
+type PaySlip {
+  paySlipID: UUID!
+  employeeID: UUID
+  payRunID: UUID
+  lastEdited: DateTime
+  firstName: String
+  lastName: String
+  totalEarnings: Decimal
+  grossEarnings: Decimal
+  totalPay: Decimal
+  totalEmployerTaxes: Decimal
+  totalEmployeeTaxes: Decimal
+  totalDeductions: Decimal
+  totalReimbursements: Decimal
+  totalStatutoryEarnings: Decimal
+  netPay: Decimal
+  bacsHash: String
+  paymentMethod: String
+}
+
+type LeaveApplication {
+  leaveApplicationID: UUID!
+  employeeID: UUID
+  leaveTypeID: UUID
+  leaveType: String
+  title: String
+  description: String
+  startDate: Date
+  endDate: Date
+  payOutType: String
+  updatedDateUTC: DateTime
+  leaveStatus: LeaveStatus
+}
+
+type PayrollCalendar {
+  payrollCalendarID: UUID!
+  name: String
+  calendarType: PayPeriod
+  startDate: Date
+  paymentDate: Date
+  updatedDateUTC: DateTime
+}
+
+# ---------------------------------------------------------------------------
+# Query Root
+# ---------------------------------------------------------------------------
+
+type Query {
+  # Accounts
+  accounts(
+    where: String
+    order: String
+    modifiedAfter: DateTime
+    includeArchived: Boolean
+  ): [Account]
+  account(accountID: UUID!): Account
+
+  # Bank Transactions
+  bankTransactions(
+    where: String
+    order: String
+    page: Int
+    unitdp: Int
+    modifiedAfter: DateTime
+  ): [BankTransaction]
+  bankTransaction(bankTransactionID: UUID!): BankTransaction
+
+  # Bank Transfers
+  bankTransfers(modifiedAfter: DateTime): [BankTransfer]
+  bankTransfer(bankTransferID: UUID!): BankTransfer
+
+  # Batch Payments
+  batchPayments(modifiedAfter: DateTime): [BatchPayment]
+  batchPayment(batchPaymentID: UUID!): BatchPayment
+
+  # Branding Themes
+  brandingThemes: [BrandingTheme]
+  brandingTheme(brandingThemeID: UUID!): BrandingTheme
+
+  # Budgets
+  budgets(sourceGUID: UUID, dateFrom: Date, dateTo: Date): [Budget]
+  budget(budgetID: UUID!): Budget
+
+  # Contacts
+  contacts(
+    where: String
+    order: String
+    ids: [UUID]
+    page: Int
+    includeArchived: Boolean
+    summaryOnly: Boolean
+    searchTerm: String
+    modifiedAfter: DateTime
+  ): [Contact]
+  contact(contactID: UUID!): Contact
+
+  # Contact Groups
+  contactGroups(where: String): [ContactGroup]
+  contactGroup(contactGroupID: UUID!): ContactGroup
+
+  # Credit Notes
+  creditNotes(
+    where: String
+    order: String
+    page: Int
+    unitdp: Int
+    modifiedAfter: DateTime
+  ): [CreditNote]
+  creditNote(creditNoteID: UUID!): CreditNote
+
+  # Currencies
+  currencies(where: String, order: String): [Currency]
+
+  # Employees
+  employees(where: String): [Employee]
+  employee(employeeID: UUID!): Employee
+
+  # Expense Claims
+  expenseClaims(where: String, order: String, modifiedAfter: DateTime): [ExpenseClaim]
+  expenseClaim(expenseClaimID: UUID!): ExpenseClaim
+
+  # Invoices
+  invoices(
+    where: String
+    order: String
+    ids: [UUID]
+    invoiceNumbers: [String]
+    contactIDs: [UUID]
+    statuses: [InvoiceStatus]
+    page: Int
+    includeArchived: Boolean
+    createdByMyApp: Boolean
+    unitdp: Int
+    summaryOnly: Boolean
+    modifiedAfter: DateTime
+  ): [Invoice]
+  invoice(invoiceID: UUID!): Invoice
+
+  # Items
+  items(where: String, order: String, unitdp: Int, modifiedAfter: DateTime): [Item]
+  item(itemID: UUID!): Item
+
+  # Journals
+  journals(offset: Int, paymentsOnly: Boolean, modifiedAfter: DateTime): [Journal]
+  journal(journalID: UUID!): Journal
+
+  # Linked Transactions
+  linkedTransactions(
+    page: Int
+    linkedTransactionID: UUID
+    sourceTransactionID: UUID
+    contactID: UUID
+    status: String
+    targetTransactionID: UUID
+  ): [LinkedTransaction]
+
+  # Manual Journals
+  manualJournals(
+    where: String
+    order: String
+    page: Int
+    modifiedAfter: DateTime
+  ): [ManualJournal]
+  manualJournal(manualJournalID: UUID!): ManualJournal
+
+  # Organisation
+  organisation: Organisation
+
+  # Overpayments
+  overpayments(
+    where: String
+    order: String
+    page: Int
+    unitdp: Int
+    modifiedAfter: DateTime
+  ): [Overpayment]
+  overpayment(overpaymentID: UUID!): Overpayment
+
+  # Payments
+  payments(where: String, order: String, page: Int, modifiedAfter: DateTime): [Payment]
+  payment(paymentID: UUID!): Payment
+
+  # Payment Services
+  paymentServices: [PaymentService]
+
+  # Prepayments
+  prepayments(
+    where: String
+    order: String
+    page: Int
+    unitdp: Int
+    modifiedAfter: DateTime
+  ): [Prepayment]
+  prepayment(prepaymentID: UUID!): Prepayment
+
+  # Purchase Orders
+  purchaseOrders(
+    status: PurchaseOrderStatus
+    dateFrom: Date
+    dateTo: Date
+    order: String
+    page: Int
+    modifiedAfter: DateTime
+  ): [PurchaseOrder]
+  purchaseOrder(purchaseOrderID: UUID!): PurchaseOrder
+
+  # Quotes
+  quotes(
+    dateFrom: Date
+    dateTo: Date
+    expiryDateFrom: Date
+    expiryDateTo: Date
+    contactID: UUID
+    status: QuoteStatus
+    quoteNumber: String
+    order: String
+    page: Int
+    modifiedAfter: DateTime
+  ): [Quote]
+  quote(quoteID: UUID!): Quote
+
+  # Receipts
+  receipts(where: String, order: String, unitdp: Int, modifiedAfter: DateTime): [Receipt]
+  receipt(receiptID: UUID!): Receipt
+
+  # Repeating Invoices
+  repeatingInvoices(where: String, order: String): [RepeatingInvoice]
+  repeatingInvoice(repeatingInvoiceID: UUID!): RepeatingInvoice
+
+  # Reports
+  balanceSheet(date: Date, periods: Int, timeframe: String, trackingOptionID1: String, trackingOptionID2: String, standardLayout: Boolean, paymentsOnly: Boolean): BalanceSheet
+  profitAndLoss(fromDate: Date, toDate: Date, periods: Int, timeframe: String, trackingCategoryID: UUID, trackingCategoryID2: UUID, trackingOptionID: UUID, trackingOptionID2: UUID, standardLayout: Boolean, paymentsOnly: Boolean): ProfitAndLoss
+  cashFlow(fromDate: Date, toDate: Date): CashFlow
+  bankSummary(fromDate: Date, toDate: Date): BankSummary
+  trialBalance(date: Date, paymentsOnly: Boolean): TrialBalance
+  budgetSummary(date: Date, periods: Int, timeframe: Int): BudgetSummary
+  agedPayables(contactID: UUID!, date: Date, fromDate: Date, toDate: Date): AgedPayables
+  agedReceivables(contactID: UUID!, date: Date, fromDate: Date, toDate: Date): AgedReceivables
+  reports: [Report]
+  report(reportID: String!): Report
+
+  # Tax Rates
+  taxRates(where: String, order: String, taxType: TaxType): [TaxRate]
+
+  # Tracking Categories
+  trackingCategories(where: String, order: String, includeArchived: Boolean): [TrackingCategory]
+  trackingCategory(trackingCategoryID: UUID!): TrackingCategory
+
+  # Users
+  users(where: String, order: String, modifiedAfter: DateTime): [User]
+  user(userID: UUID!): User
+
+  # Assets API
+  assets(status: AssetStatus, page: Int, pageSize: Int, orderBy: String, sortOrder: SortOrderType): [Asset]
+  asset(id: UUID!): Asset
+  assetTypes: [AssetType]
+  assetType(id: UUID!): AssetType
+  assetSettings: AssetSetting
+
+  # Bank Feeds API
+  feedConnections(page: Int, pageSize: Int): [FeedConnection]
+  feedConnection(id: UUID!): FeedConnection
+  statements(feedConnectionId: UUID, page: Int, pageSize: Int): [Statement]
+  statement(statementId: UUID!): Statement
+
+  # Projects API
+  projects(contactID: UUID, states: [ProjectStatus], page: Int, pageSize: Int): [Project]
+  project(projectId: UUID!): Project
+  tasks(projectId: UUID!, page: Int, pageSize: Int, taskStatus: TaskStatus, chargeType: String): [Task]
+  task(projectId: UUID!, taskId: UUID!): Task
+  timeEntries(projectId: UUID!, userId: UUID, taskId: UUID, page: Int, pageSize: Int): [TimeEntry]
+  projectUsers(page: Int, pageSize: Int): [ProjectUser]
+
+  # Files API
+  files(folderId: UUID, page: Int, pagesize: Int): [FileObject]
+  file(fileId: UUID!): FileObject
+  folders: [Folder]
+  folder(folderId: UUID!): Folder
+  associations(objectId: UUID!): [Association]
+
+  # Identity API
+  connections: [Connection]
+  refreshTokens(tokenType: String): [RefreshToken]
+
+  # Payroll AU
+  payrollEmployees(where: String, order: String, page: Int, modifiedAfter: DateTime): [PayrollEmployee]
+  payrollEmployee(employeeID: UUID!): PayrollEmployee
+  payRuns(where: String, order: String, page: Int, modifiedAfter: DateTime): [PayRun]
+  payRun(payRunID: UUID!): PayRun
+  paySlips(payRunID: UUID!): [PaySlip]
+  paySlip(employeeID: UUID!): PaySlip
+  leaveApplications(where: String, order: String, page: Int, modifiedAfter: DateTime): [LeaveApplication]
+  leaveApplication(leaveApplicationID: UUID!): LeaveApplication
+  payrollCalendars(where: String, order: String): [PayrollCalendar]
+  payrollCalendar(payrollCalendarID: UUID!): PayrollCalendar
+
+  # Attachments
+  invoiceAttachments(invoiceID: UUID!): [Attachment]
+  creditNoteAttachments(creditNoteID: UUID!): [Attachment]
+  bankTransactionAttachments(bankTransactionID: UUID!): [Attachment]
+  manualJournalAttachments(manualJournalID: UUID!): [Attachment]
+  receiptAttachments(receiptID: UUID!): [Attachment]
+  purchaseOrderAttachments(purchaseOrderID: UUID!): [Attachment]
+  accountAttachments(accountID: UUID!): [Attachment]
+}
+
+# ---------------------------------------------------------------------------
+# Mutation Root
+# ---------------------------------------------------------------------------
+
+type Mutation {
+  # Accounts
+  createAccount(input: AccountInput!): Account
+  updateAccount(accountID: UUID!, input: AccountInput!): Account
+  deleteAccount(accountID: UUID!): Boolean
+
+  # Bank Transactions
+  createBankTransaction(input: BankTransactionInput!): BankTransaction
+  updateBankTransaction(bankTransactionID: UUID!, input: BankTransactionInput!): BankTransaction
+
+  # Bank Transfers
+  createBankTransfer(input: BankTransferInput!): BankTransfer
+
+  # Batch Payments
+  createBatchPayment(input: BatchPaymentInput!): BatchPayment
+  deleteBatchPayment(batchPaymentID: UUID!): Boolean
+
+  # Contacts
+  createContact(input: ContactInput!): Contact
+  updateContact(contactID: UUID!, input: ContactInput!): Contact
+  archiveContact(contactID: UUID!): Contact
+
+  # Contact Groups
+  createContactGroup(input: ContactGroupInput!): ContactGroup
+  updateContactGroup(contactGroupID: UUID!, input: ContactGroupInput!): ContactGroup
+  deleteContactGroup(contactGroupID: UUID!): Boolean
+
+  # Credit Notes
+  createCreditNote(input: CreditNoteInput!): CreditNote
+  updateCreditNote(creditNoteID: UUID!, input: CreditNoteInput!): CreditNote
+  deleteCreditNote(creditNoteID: UUID!): Boolean
+
+  # Currencies
+  createCurrency(code: CurrencyCode!, description: String): Currency
+
+  # Invoices
+  createInvoice(input: InvoiceInput!): Invoice
+  updateInvoice(invoiceID: UUID!, input: InvoiceInput!): Invoice
+  deleteInvoice(invoiceID: UUID!): Boolean
+  emailInvoice(invoiceID: UUID!): Boolean
+
+  # Items
+  createItem(input: ItemInput!): Item
+  updateItem(itemID: UUID!, input: ItemInput!): Item
+  deleteItem(itemID: UUID!): Boolean
+
+  # Manual Journals
+  createManualJournal(input: ManualJournalInput!): ManualJournal
+  updateManualJournal(manualJournalID: UUID!, input: ManualJournalInput!): ManualJournal
+  deleteManualJournal(manualJournalID: UUID!): Boolean
+
+  # Overpayments
+  createAllocationOnOverpayment(overpaymentID: UUID!, input: AllocationInput!): Overpayment
+  deleteAllocationOnOverpayment(overpaymentID: UUID!, allocationID: UUID!): Boolean
+
+  # Payments
+  createPayment(input: PaymentInput!): Payment
+  updatePayment(paymentID: UUID!, status: PaymentStatus!): Payment
+  deletePayment(paymentID: UUID!): Boolean
+
+  # Prepayments
+  createAllocationOnPrepayment(prepaymentID: UUID!, input: AllocationInput!): Prepayment
+  deleteAllocationOnPrepayment(prepaymentID: UUID!, allocationID: UUID!): Boolean
+
+  # Purchase Orders
+  createPurchaseOrder(input: PurchaseOrderInput!): PurchaseOrder
+  updatePurchaseOrder(purchaseOrderID: UUID!, input: PurchaseOrderInput!): PurchaseOrder
+  deletePurchaseOrder(purchaseOrderID: UUID!): Boolean
+  emailPurchaseOrder(purchaseOrderID: UUID!, to: String, subject: String, message: String): Boolean
+
+  # Quotes
+  createQuote(input: QuoteInput!): Quote
+  updateQuote(quoteID: UUID!, input: QuoteInput!): Quote
+  deleteQuote(quoteID: UUID!): Boolean
+
+  # Receipts
+  createReceipt(input: ReceiptInput!): Receipt
+  updateReceipt(receiptID: UUID!, input: ReceiptInput!): Receipt
+
+  # Repeating Invoices
+  updateRepeatingInvoice(repeatingInvoiceID: UUID!, status: RepeatingInvoiceStatus!): RepeatingInvoice
+
+  # Tax Rates
+  createTaxRate(input: TaxRateInput!): TaxRate
+  updateTaxRate(taxType: TaxType!, input: TaxRateInput!): TaxRate
+
+  # Tracking Categories
+  createTrackingCategory(name: String!): TrackingCategory
+  updateTrackingCategory(trackingCategoryID: UUID!, name: String, status: String): TrackingCategory
+  deleteTrackingCategory(trackingCategoryID: UUID!): Boolean
+  createTrackingOption(trackingCategoryID: UUID!, name: String!): TrackingOption
+  updateTrackingOption(trackingCategoryID: UUID!, trackingOptionID: UUID!, name: String, status: String): TrackingOption
+  deleteTrackingOption(trackingCategoryID: UUID!, trackingOptionID: UUID!): Boolean
+
+  # Assets
+  createAsset(input: AssetInput!): Asset
+  updateAsset(assetId: UUID!, input: AssetInput!): Asset
+  createAssetType(input: AssetTypeInput!): AssetType
+  updateAssetType(assetTypeId: UUID!, input: AssetTypeInput!): AssetType
+  updateAssetSettings(input: AssetSettingInput!): AssetSetting
+
+  # Bank Feeds
+  createFeedConnections(input: [FeedConnectionInput!]!): [FeedConnection]
+  deleteFeedConnection(id: UUID!): Boolean
+  createStatements(input: [StatementInput!]!): [Statement]
+
+  # Projects
+  createProject(input: ProjectInput!): Project
+  updateProject(projectId: UUID!, input: ProjectInput!): Project
+  closeProject(projectId: UUID!): Project
+  patchProject(projectId: UUID!, status: ProjectStatus): Project
+  createTask(projectId: UUID!, input: TaskInput!): Task
+  updateTask(projectId: UUID!, taskId: UUID!, input: TaskInput!): Task
+  deleteTask(projectId: UUID!, taskId: UUID!): Boolean
+  createTimeEntry(projectId: UUID!, input: TimeEntryInput!): TimeEntry
+  updateTimeEntry(projectId: UUID!, timeEntryId: UUID!, input: TimeEntryInput!): TimeEntry
+  deleteTimeEntry(projectId: UUID!, timeEntryId: UUID!): Boolean
+
+  # Files
+  uploadFile(folderId: UUID, input: FileInput!): FileObject
+  deleteFile(fileId: UUID!): Boolean
+  createFolder(name: String!): Folder
+  updateFolder(folderId: UUID!, name: String!): Folder
+  deleteFolder(folderId: UUID!): Boolean
+  createAssociation(input: AssociationInput!): Association
+  deleteAssociation(fileId: UUID!, objectId: UUID!, objectGroup: String!): Boolean
+
+  # Identity
+  deleteConnection(id: UUID!): Boolean
+  refreshToken(token: String!): RefreshToken
+}
+
+# ---------------------------------------------------------------------------
+# Input Types
+# ---------------------------------------------------------------------------
+
+input AccountInput {
+  code: String
+  name: String!
+  type: AccountType!
+  status: AccountStatus
+  description: String
+  taxType: String
+  enablePaymentsToAccount: Boolean
+  showInExpenseClaims: Boolean
+  bankAccountNumber: String
+  currencyCode: CurrencyCode
+}
+
+input BankTransactionInput {
+  type: BankTransactionType!
+  contactID: UUID
+  lineItems: [LineItemInput!]!
+  bankAccountID: UUID!
+  isReconciled: Boolean
+  date: Date
+  reference: String
+  currencyCode: CurrencyCode
+  url: String
+}
+
+input BankTransferInput {
+  fromBankAccountID: UUID!
+  toBankAccountID: UUID!
+  amount: Decimal!
+  date: Date
+}
+
+input BatchPaymentInput {
+  accountID: UUID!
+  reference: String
+  date: Date!
+  payments: [PaymentInput!]!
+}
+
+input ContactInput {
+  name: String!
+  firstName: String
+  lastName: String
+  emailAddress: String
+  contactNumber: String
+  accountNumber: String
+  addresses: [AddressInput]
+  phones: [PhoneInput]
+  isSupplier: Boolean
+  isCustomer: Boolean
+  defaultCurrency: CurrencyCode
+  contactStatus: ContactStatus
+}
+
+input ContactGroupInput {
+  name: String!
+}
+
+input CreditNoteInput {
+  type: CreditNoteType!
+  contactID: UUID!
+  date: Date
+  dueDate: Date
+  status: CreditNoteStatus
+  lineAmountTypes: LineAmountType
+  lineItems: [LineItemInput!]!
+  reference: String
+  currencyCode: CurrencyCode
+}
+
+input InvoiceInput {
+  type: InvoiceType!
+  contactID: UUID!
+  lineItems: [LineItemInput!]!
+  date: Date
+  dueDate: Date
+  lineAmountTypes: LineAmountType
+  invoiceNumber: String
+  reference: String
+  brandingThemeID: UUID
+  url: String
+  currencyCode: CurrencyCode
+  status: InvoiceStatus
+}
+
+input ItemInput {
+  code: String!
+  name: String
+  description: String
+  isSold: Boolean
+  isPurchased: Boolean
+  salesDetails: PurchaseInput
+  purchaseDetails: PurchaseInput
+}
+
+input ManualJournalInput {
+  narration: String!
+  date: Date
+  lineAmountTypes: LineAmountType
+  status: ManualJournalStatus
+  url: String
+  showOnCashBasisReports: Boolean
+  journalLines: [ManualJournalLineInput!]!
+}
+
+input PaymentInput {
+  invoiceID: UUID
+  creditNoteID: UUID
+  prepaymentID: UUID
+  overpaymentID: UUID
+  accountID: UUID!
+  date: Date!
+  amount: Decimal!
+  reference: String
+  currencyRate: Decimal
+  isReconciled: Boolean
+}
+
+input PurchaseOrderInput {
+  contactID: UUID!
+  lineItems: [LineItemInput!]!
+  date: Date
+  deliveryDate: Date
+  lineAmountTypes: LineAmountType
+  purchaseOrderNumber: String
+  reference: String
+  currencyCode: CurrencyCode
+  status: PurchaseOrderStatus
+}
+
+input QuoteInput {
+  contactID: UUID!
+  lineItems: [LineItemInput!]!
+  date: Date
+  expiryDate: Date
+  status: QuoteStatus
+  lineAmountTypes: LineAmountType
+  quoteNumber: String
+  reference: String
+  terms: String
+  title: String
+  summary: String
+  currencyCode: CurrencyCode
+}
+
+input ReceiptInput {
+  date: Date!
+  contactID: UUID!
+  userID: UUID!
+  lineItems: [LineItemInput!]!
+  reference: String
+  lineAmountTypes: LineAmountType
+  url: String
+  status: String
+}
+
+input TaxRateInput {
+  name: String!
+  taxComponents: [TaxComponentInput!]!
+  status: String
+  reportTaxType: String
+}
+
+input AllocationInput {
+  invoiceID: UUID
+  overpaymentID: UUID
+  prepaymentID: UUID
+  creditNoteID: UUID
+  amount: Decimal!
+  date: Date
+}
+
+input LineItemInput {
+  description: String
+  quantity: Decimal
+  unitAmount: Decimal
+  itemCode: String
+  accountCode: String
+  taxType: String
+  trackingCategories: [TrackingCategoryInput]
+  discountRate: Decimal
+  discountAmount: Decimal
+}
+
+input TrackingCategoryInput {
+  trackingCategoryID: UUID
+  trackingOptionID: UUID
+  name: String
+  option: String
+}
+
+input AddressInput {
+  addressType: AddressType
+  addressLine1: String
+  addressLine2: String
+  city: String
+  region: String
+  postalCode: String
+  country: String
+}
+
+input PhoneInput {
+  phoneType: PhoneType
+  phoneNumber: String
+  phoneAreaCode: String
+  phoneCountryCode: String
+}
+
+input PurchaseInput {
+  unitPrice: Decimal
+  accountCode: String
+  taxType: String
+}
+
+input ManualJournalLineInput {
+  lineAmount: Decimal!
+  accountCode: String
+  description: String
+  taxType: String
+  trackingCategories: [TrackingCategoryInput]
+}
+
+input TaxComponentInput {
+  name: String!
+  rate: Decimal!
+  isCompound: Boolean
+}
+
+input AssetInput {
+  assetName: String!
+  assetNumber: String
+  purchaseDate: Date
+  purchasePrice: Decimal
+  serialNumber: String
+  warrantyExpiryDate: Date
+  assetTypeId: UUID
+  assetStatus: AssetStatus
+  bookDepreciationSetting: DepreciationSettingInput
+}
+
+input AssetTypeInput {
+  assetTypeName: String!
+  fixedAssetAccountId: UUID
+  depreciationExpenseAccountId: UUID
+  accumulatedDepreciationAccountId: UUID
+  bookDepreciationSetting: DepreciationSettingInput
+}
+
+input AssetSettingInput {
+  assetNumberPrefix: String
+  assetNumberSequence: String
+  assetStartDate: Date
+  defaultGainOnDisposalAccountId: UUID
+  defaultLossOnDisposalAccountId: UUID
+  defaultCapitalGainOnDisposalAccountId: UUID
+  optInForTax: Boolean
+}
+
+input DepreciationSettingInput {
+  depreciationMethod: String
+  averagingMethod: String
+  depreciationRate: Decimal
+  effectiveLifeYears: Int
+}
+
+input FeedConnectionInput {
+  accountToken: String
+  accountId: String
+  accountNumber: String
+  accountName: String
+  accountType: String
+  currency: CurrencyCode!
+  country: String
+}
+
+input StatementInput {
+  feedConnectionId: UUID!
+  startDate: Date!
+  endDate: Date!
+  startBalance: StatementBalanceInput!
+  endBalance: StatementBalanceInput!
+  statementLines: [StatementLineInput!]!
+}
+
+input StatementBalanceInput {
+  amount: Decimal!
+  creditDebitIndicator: String!
+}
+
+input StatementLineInput {
+  postedDate: Date!
+  description: String
+  amount: Decimal!
+  creditDebitIndicator: String!
+  transactionId: String
+  payeeName: String
+  reference: String
+}
+
+input ProjectInput {
+  contactId: UUID
+  name: String!
+  currencyCode: CurrencyCode
+  deadlineUtc: DateTime
+  estimate: Decimal
+}
+
+input TaskInput {
+  name: String!
+  rate: RateInput
+  chargeType: String!
+  estimateMinutes: Int
+}
+
+input RateInput {
+  currency: CurrencyCode
+  value: Decimal
+}
+
+input TimeEntryInput {
+  userId: UUID
+  taskId: UUID!
+  dateUtc: DateTime!
+  duration: Int!
+  description: String
+}
+
+input FileInput {
+  name: String!
+  mimeType: String!
+  content: String
+}
+
+input AssociationInput {
+  fileId: UUID!
+  objectId: UUID!
+  objectGroup: String!
+  objectType: String!
+}
