@@ -1,0 +1,775 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Xero Projects API",
+    "version": "11.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Project",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Xero Retrieves all projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "projectIds",
+                "value": "",
+                "type": "query",
+                "description": "Search for all projects that match a comma separated list of projectIds"
+              },
+              {
+                "name": "contactID",
+                "value": "",
+                "type": "query",
+                "description": "Filter for projects for a specific contact"
+              },
+              {
+                "name": "states",
+                "value": "",
+                "type": "query",
+                "description": "Filter for projects in a particular state (INPROGRESS or CLOSED)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to retrieve, create and update projects."
+        },
+        {
+          "info": {
+            "name": "Xero Create one or more new projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Xero Create one or more new projects"
+        },
+        {
+          "info": {
+            "name": "Xero Retrieves a single project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to retrieve a specific project using the projectId"
+        },
+        {
+          "info": {
+            "name": "Xero Updates a specific project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to update a specific projects."
+        },
+        {
+          "info": {
+            "name": "Xero creates a project for the specified contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to update a specific projects."
+        },
+        {
+          "info": {
+            "name": "Xero Retrieves a list of all project users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/projects.xro/2.0/ProjectsUsers",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to retrieve the users on a projects."
+        },
+        {
+          "info": {
+            "name": "Xero Retrieves all project tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId/Tasks",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500."
+              },
+              {
+                "name": "taskIds",
+                "value": "",
+                "type": "query",
+                "description": "Search for all tasks that match a comma separated list of taskIds, i.e. GET https://.../tasks?taskIds={taskID},{taskID}"
+              },
+              {
+                "name": "chargeType",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to retrieve a specific project"
+        },
+        {
+          "info": {
+            "name": "Xero Allows you to create a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId/Tasks",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can create a task on a specified projectId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to create a specific task"
+        },
+        {
+          "info": {
+            "name": "Xero Retrieves a single project task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId/Tasks/:taskId",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual task by appending the taskId to the endpoint, i.e. GET https://.../tasks/{taskID}"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to retrieve a specific project"
+        },
+        {
+          "info": {
+            "name": "Xero Allows you to update a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId/Tasks/:taskId",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual task by appending the id to the endpoint"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to update a specific task"
+        },
+        {
+          "info": {
+            "name": "Xero Allows you to delete a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId/Tasks/:taskId",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual task by appending the id to the endpoint"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to delete a specific task"
+        },
+        {
+          "info": {
+            "name": "Xero Retrieves all time entries associated with a specific project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId/Time",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the project, that the task (which the time entry is logged against) belongs to."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The xero user identifier of the person who logged time."
+              },
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the task that time entry is logged against."
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "query",
+                "description": "Finds all time entries for this invoice."
+              },
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "Finds all time entries for this contact identifier."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500."
+              },
+              {
+                "name": "states",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of states to find. Will find all time entries that are in the status of whatever is specified."
+              },
+              {
+                "name": "isChargeable",
+                "value": "",
+                "type": "query",
+                "description": "Finds all time entries which relate to tasks with the charge type `TIME` or `FIXED`."
+              },
+              {
+                "name": "dateAfterUtc",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 UTC date. Finds all time entries on or after this date filtered on the `dateUtc` field."
+              },
+              {
+                "name": "dateBeforeUtc",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 UTC date. Finds all time entries on or before this date filtered on the `dateUtc` field."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to retrieve the time entries associated with a specific project"
+        },
+        {
+          "info": {
+            "name": "Xero Creates a time entry for a specific project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId/Time",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to create a specific task"
+        },
+        {
+          "info": {
+            "name": "Xero Retrieves a single time entry for a specific project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId/Time/:timeEntryId",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              },
+              {
+                "name": "timeEntryId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual time entry by appending the id to the endpoint"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to get a single time entry in a project"
+        },
+        {
+          "info": {
+            "name": "Xero Updates a time entry for a specific project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId/Time/:timeEntryId",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              },
+              {
+                "name": "timeEntryId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual time entry by appending the id to the endpoint"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to update time entry in a project"
+        },
+        {
+          "info": {
+            "name": "Xero Deletes a time entry for a specific project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/projects.xro/2.0/Projects/:projectId/Time/:timeEntryId",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual project by appending the projectId to the endpoint"
+              },
+              {
+                "name": "timeEntryId",
+                "value": "",
+                "type": "path",
+                "description": "You can specify an individual task by appending the id to the endpoint"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows you to delete a specific time entry"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

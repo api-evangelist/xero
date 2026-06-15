@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Xero OAuth 2 Identity Service API",
+    "version": "11.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Identity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Xero Retrieves the connections for this user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/Connections",
+            "params": [
+              {
+                "name": "authEventId",
+                "value": "00000000-0000-0000-0000-000000000000",
+                "type": "query",
+                "description": "Filter by authEventId"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Override the base server url that include version"
+        },
+        {
+          "info": {
+            "name": "Xero Deletes a connection for this user (i.e. disconnect a tenant)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/Connections/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for retrieving single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Override the base server url that include version"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,242 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Xero Assets API",
+    "version": "11.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Asset",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Xero searches fixed asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/assets.xro/1.0/Assets",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Required when retrieving a collection of assets. See Asset Status Codes"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Results are paged. This specifies which page of the results to return. The default page is 1."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The number of records returned per page. By default the number of records returned is 10."
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice."
+              },
+              {
+                "name": "sortDirection",
+                "value": "",
+                "type": "query",
+                "description": "ASC or DESC"
+              },
+              {
+                "name": "filterBy",
+                "value": "",
+                "type": "query",
+                "description": "A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate options, you can search for available fixed asset in the system"
+        },
+        {
+          "info": {
+            "name": "Xero adds a fixed asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/assets.xro/1.0/Assets",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Adds an asset to the system"
+        },
+        {
+          "info": {
+            "name": "Xero Retrieves fixed asset by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/assets.xro/1.0/Assets/:id",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "fixed asset id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate asset id, you can search for\na specific fixed asset in the system\n"
+        },
+        {
+          "info": {
+            "name": "Xero searches fixed asset types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/assets.xro/1.0/AssetTypes",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate options, you can search for available fixed asset types in the system"
+        },
+        {
+          "info": {
+            "name": "Xero adds a fixed asset type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/assets.xro/1.0/AssetTypes",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Adds an fixed asset type to the system"
+        },
+        {
+          "info": {
+            "name": "Xero searches fixed asset settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/assets.xro/1.0/Settings",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate options, you can search for available fixed asset types in the system"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

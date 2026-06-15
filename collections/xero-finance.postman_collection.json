@@ -1,0 +1,1791 @@
+{
+  "item": [
+    {
+      "id": "20c6ae30-f358-4a46-828f-9581a453c2bc",
+      "name": "Finance",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6d6f2385-9b87-4b79-b2b2-9ca9d67e7c84",
+          "name": "Xero Get cash validation",
+          "request": {
+            "name": "Xero Get cash validation",
+            "description": {
+              "content": "Summarizes the total cash position for each account for an org",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CashValidation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "balanceDate",
+                  "value": "<string>",
+                  "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the current date will be used.\r\n\r\nThe ‘balance date’ will return transactions based on the accounting date entered by the user.  Transactions before the balanceDate will be included.\r\nThe user has discretion as to which accounting period the transaction relates to.\r\n\r\nThe ‘balance date’  will control the latest maximum date of transactions included in the aggregate numbers.  Balance date does not affect the CurrentStatement object, as this will always return the most recent statement before asAtSystemDate (if specified)"
+                },
+                {
+                  "disabled": false,
+                  "key": "asAtSystemDate",
+                  "value": "<string>",
+                  "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the current date will be used.\r\n\r\nThe ‘as at’ date will return transactions based on the  creation date.  It reflects the date the transactions were entered into Xero, not the accounting date.\r\nThe ‘as at’ date can not be overridden by the user.  This can be used to estimate a ‘historical frequency of reconciliation’.\r\n\r\nThe ‘as at’ date will affect the current statement in the response, as any candidate statements created after this date will be filtered out.  Thus the current statement returned will be the most recent statement prior to the specified ‘as at’ date.  Be aware that neither the begin date, nor the balance date, will affect the current statement.\r\n\r\nNote;  information is only presented when system architecture allows, meaning historical cash validation information will be an estimate. In addition, delete events are not aware of the ‘as at’ functionality in this endpoint, meaning that transactions deleted at the time the API is accessed will be considered to always have been deleted."
+                },
+                {
+                  "disabled": false,
+                  "key": "beginDate",
+                  "value": "<string>",
+                  "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the aggregate results will be drawn from the user’s total history.\r\n\r\nThe ‘begin date’ will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.\r\nThe user has discretion as to which accounting period the transaction relates to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile finance.statements.read finance.cashvalidation.read finance.bankstatementsplus.read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9c0dc3a2-c49b-4f5f-9473-5fcce8e58ab5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CashValidation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "balanceDate",
+                      "value": "2021-09-15"
+                    },
+                    {
+                      "key": "asAtSystemDate",
+                      "value": "2021-09-15"
+                    },
+                    {
+                      "key": "beginDate",
+                      "value": "2021-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"accountId\": \"73151de8-3676-4887-a021-edec960dd537\",\n    \"statementBalance\": {\n      \"value\": 100,\n      \"type\": \"DEBIT\"\n    },\n    \"statementBalanceDate\": \"2021-03-01\",\n    \"bankStatement\": {\n      \"statementLines\": {\n        \"unreconciledAmountPos\": 4577,\n        \"unreconciledAmountNeg\": -2367,\n        \"unreconciledLines\": 8,\n        \"avgDaysUnreconciledPos\": 112.265531,\n        \"avgDaysUnreconciledNeg\": 149.298992,\n        \"earliestUnreconciledTransaction\": \"2019-03-01\",\n        \"latestUnreconciledTransaction\": \"2021-03-01\",\n        \"deletedAmount\": 50,\n        \"totalAmount\": 189,\n        \"dataSource\": {\n          \"directBankFeed\": 0,\n          \"fileUpload\": 300,\n          \"manual\": -188,\n          \"directBankFeedPos\": 0,\n          \"fileUploadPos\": 2223,\n          \"manualPos\": 0,\n          \"directBankFeedNeg\": 0,\n          \"fileUploadNeg\": -1890,\n          \"manualNeg\": -500,\n          \"otherPos\": 0,\n          \"otherNeg\": 0,\n          \"other\": 100\n        },\n        \"earliestReconciledTransaction\": \"2019-03-01\",\n        \"latestReconciledTransaction\": \"2020-03-01\",\n        \"reconciledAmountPos\": 0,\n        \"reconciledAmountNeg\": -288,\n        \"reconciledLines\": 3,\n        \"totalAmountPos\": 2245,\n        \"totalAmountNeg\": -1995\n      },\n      \"currentStatement\": {\n        \"startDate\": \"2021-03-01\",\n        \"endDate\": \"2021-03-01\",\n        \"startBalance\": 0,\n        \"endBalance\": 0,\n        \"importedDateTimeUtc\": \"2021-03-09T05:22:14.3Z\",\n        \"importSourceType\": \"Manual\"\n      }\n    },\n    \"cashAccount\": {\n      \"unreconciledAmountPos\": 1440,\n      \"unreconciledAmountNeg\": -1000,\n      \"startingBalance\": 0,\n      \"accountBalance\": 0,\n      \"balanceCurrency\": \"NZD\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a90a00a3-bee1-42b6-b4f8-cbe2dfe59797",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CashValidation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "balanceDate",
+                      "value": "2021-09-15"
+                    },
+                    {
+                      "key": "asAtSystemDate",
+                      "value": "2021-09-15"
+                    },
+                    {
+                      "key": "beginDate",
+                      "value": "2021-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"InvalidRequest\",\n  \"status\": 400,\n  \"detail\": \"Invalid BalanceDate: '2020-01'\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "067722e2-61be-4c8d-8af2-7623c99eeb4a",
+          "name": "Xero Get Balance Sheet report",
+          "request": {
+            "name": "Xero Get Balance Sheet report",
+            "description": {
+              "content": "The balance sheet report is a standard financial report which describes the financial position of an organisation at a point in time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "FinancialStatements",
+                "BalanceSheet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "balanceDate",
+                  "value": "<string>",
+                  "description": "Specifies the date for balance sheet report.\r\n\r\nFormat yyyy-MM-dd. If no parameter is provided, the current date will be used."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile finance.statements.read finance.cashvalidation.read finance.bankstatementsplus.read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "93d68183-a93e-4320-bd23-915a0617ad2a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "BalanceSheet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "balanceDate",
+                      "value": "2020-06-30"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"balanceDate\": \"2021-05-12\",\n  \"asset\": {\n    \"accountTypes\": [\n      {\n        \"accountType\": \"INVENTORY\",\n        \"accounts\": [\n          {\n            \"code\": \"630\",\n            \"accountID\": \"abcdeabc-80bb-47f5-9418-d1fc2241b838\",\n            \"name\": \"Inventory\",\n            \"reportingCode\": \"ASS.CUR.INY\",\n            \"total\": 3\n          }\n        ],\n        \"total\": 3\n      },\n      {\n        \"accountType\": \"CURRENT\",\n        \"accounts\": [\n          {\n            \"code\": \"610\",\n            \"accountID\": \"abcdeabc-b4d1-45a5-82f7-19deda692a31\",\n            \"name\": \"Accounts Receivable\",\n            \"reportingCode\": \"ASS.CUR.REC.TRA\",\n            \"total\": 100\n          }\n        ],\n        \"total\": 100\n      },\n      {\n        \"accountType\": \"BANK\",\n        \"accounts\": [\n          {\n            \"accountID\": \"abcdeabc-3a6d-4c53-ba82-ea1c92d02ef4\",\n            \"name\": \"Buz Acc\",\n            \"reportingCode\": \"ASS\",\n            \"total\": -42.3\n          }\n        ],\n        \"total\": -42.3\n      }\n    ],\n    \"total\": 60.7\n  },\n  \"liability\": {\n    \"accountTypes\": [\n      {\n        \"accountType\": \"CURRLIAB\",\n        \"accounts\": [\n          {\n            \"code\": \"820\",\n            \"accountID\": \"abcdeabc-40f7-49f1-ad89-1930c1366e5b\",\n            \"name\": \"GST\",\n            \"reportingCode\": \"LIA.CUR.TAX.GST\",\n            \"total\": 1.59\n          },\n          {\n            \"code\": \"860\",\n            \"accountID\": \"abcdeabc-2877-4c00-be7d-475b1ded30d7\",\n            \"name\": \"Rounding\",\n            \"reportingCode\": \"LIA.CUR\",\n            \"total\": -0.1\n          },\n          {\n            \"code\": \"800\",\n            \"accountID\": \"abcdeabc-80ba-4b58-8d72-f8e9ca0f2f00\",\n            \"name\": \"Accounts Payable\",\n            \"reportingCode\": \"LIA.CUR.PAY.TRA\",\n            \"total\": 44.4\n          }\n        ],\n        \"total\": 45.89\n      }\n    ],\n    \"total\": 45.89\n  },\n  \"equity\": {\n    \"accountTypes\": [\n      {\n        \"accountType\": \"EQUITY\",\n        \"accounts\": [\n          {\n            \"accountID\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"Current Year Earnings\",\n            \"total\": 14.81\n          }\n        ],\n        \"total\": 14.81\n      }\n    ],\n    \"total\": 14.81\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55dfeabd-c798-4566-8155-bdb85bee38de",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "BalanceSheet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "balanceDate",
+                      "value": "2020-06-30"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"InvalidRequest\",\n  \"status\": 400,\n  \"detail\": \"Organisation xxx does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b099579d-146a-47d9-a6a2-a5ffa66781b1",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "BalanceSheet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "balanceDate",
+                      "value": "2020-06-30"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"service-unavailable\",\n  \"title\": \"ServiceUnavailable\",\n  \"status\": 503,\n  \"detail\": \"Cannot process org xxx at this time. Apologies for inconvenience.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f50f508b-ae8b-4e84-92e8-24e040780e2d",
+          "name": "Xero Get Cash flow report",
+          "request": {
+            "name": "Xero Get Cash flow report",
+            "description": {
+              "content": "The statement of cash flows - direct method, provides the year to date changes in operating, financing and investing cash flow activities for an organisation. Cashflow statement is not available in US region at this stage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "FinancialStatements",
+                "Cashflow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the start date for cash flow report.\r\n\r\nIf no parameter is provided, the date of 12 months before the end date will be used."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the end date for cash flow report.\r\n\r\nIf no parameter is provided, the current date will be used."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile finance.statements.read finance.cashvalidation.read finance.bankstatementsplus.read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "544d2bd9-d110-4837-830e-bc4f2636b03f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "Cashflow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2020-09-15"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2021-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"startDate\": \"2018-07-01\",\n  \"endDate\": \"2019-06-30\",\n  \"cashBalance\": {\n    \"openingCashBalance\": 5000,\n    \"closingCashBalance\": -50000,\n    \"netCashMovement\": -55000\n  },\n  \"cashflowActivities\": [\n    {\n      \"name\": \"Operating Activities\",\n      \"total\": -41000,\n      \"cashflowTypes\": [\n        {\n          \"name\": \"Receipts from customers\",\n          \"total\": 34000,\n          \"accounts\": [\n            {\n              \"accountId\": \"abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2\",\n              \"accountType\": \"REVENUE\",\n              \"accountClass\": \"REVENUE\",\n              \"code\": \"455\",\n              \"name\": \"Cellar Door - Till Variance\",\n              \"reportingCode\": \"EXP\",\n              \"total\": -1000\n            },\n            {\n              \"accountId\": \"abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2\",\n              \"accountType\": \"CURRENT\",\n              \"accountClass\": \"ASSET\",\n              \"code\": \"123\",\n              \"name\": \"Loan - Darleen's\",\n              \"reportingCode\": \"ASS\",\n              \"total\": 35000\n            }\n          ]\n        },\n        {\n          \"name\": \"Payments to suppliers and employees\",\n          \"total\": -75000,\n          \"accounts\": [\n            {\n              \"accountId\": \"abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2\",\n              \"accountType\": \"CURRENT\",\n              \"accountClass\": \"ASSET\",\n              \"code\": \"123\",\n              \"name\": \"Loan - Darleen's\",\n              \"reportingCode\": \"ASS\",\n              \"total\": -75000\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"Investing Activities\",\n      \"total\": -35000,\n      \"cashflowTypes\": [\n        {\n          \"name\": \"Payment for property, plant and equipment\",\n          \"total\": -36000,\n          \"accounts\": [\n            {\n              \"accountId\": \"abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2\",\n              \"accountType\": \"FIXED\",\n              \"accountClass\": \"ASSET\",\n              \"code\": \"138\",\n              \"name\": \"Motor Vehicles at Cost\",\n              \"reportingCode\": \"ASS\",\n              \"total\": -1000\n            },\n            {\n              \"accountId\": \"abcdefab-5353-9d4b-7cad-51b2c2a2754a\",\n              \"accountType\": \"FIXED\",\n              \"accountClass\": \"ASSET\",\n              \"code\": \"140\",\n              \"name\": \"Equipment at cost\",\n              \"reportingCode\": \"ASS\",\n              \"total\": -35000\n            }\n          ]\n        },\n        {\n          \"name\": \"Proceeds from sale of property, plant and equipment\",\n          \"total\": 1000,\n          \"accounts\": [\n            {\n              \"accountId\": \"abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2\",\n              \"accountType\": \"FIXED\",\n              \"accountClass\": \"ASSET\",\n              \"code\": \"138\",\n              \"name\": \"Motor Vehicles at Cost\",\n              \"reportingCode\": \"ASS\",\n              \"total\": 1000\n            },\n            {\n              \"accountId\": \"abcdefab-5353-9d4b-7cad-51b2c2a2754a\",\n              \"accountType\": \"FIXED\",\n              \"accountClass\": \"ASSET\",\n              \"code\": \"140\",\n              \"name\": \"Equipment at cost\",\n              \"reportingCode\": \"ASS\",\n              \"total\": 0\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"Financing Activities\",\n      \"total\": -14000,\n      \"cashflowTypes\": [\n        {\n          \"name\": \"Proceeds from borrowings\",\n          \"total\": 1000.5,\n          \"accounts\": [\n            {\n              \"accountId\": \"abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2\",\n              \"accountType\": \"TERMLIAB\",\n              \"accountClass\": \"LIABILITY\",\n              \"code\": \"244\",\n              \"name\": \"Loan - Shellcoll Distribution 2019\",\n              \"reportingCode\": \"LIA.CUR.LOA\",\n              \"total\": 1000.5\n            }\n          ]\n        },\n        {\n          \"name\": \"Repayment of borrowings\",\n          \"total\": -15000.5,\n          \"accounts\": [\n            {\n              \"accountId\": \"abcdefab-4d1e-4d1a-9e4c-68b2c2a278e2\",\n              \"accountType\": \"TERMLIAB\",\n              \"accountClass\": \"LIABILITY\",\n              \"code\": \"244\",\n              \"name\": \"Loan - Shellcoll Distribution 2019\",\n              \"reportingCode\": \"LIA.CUR.LOA\",\n              \"total\": -15000.5\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69496f1e-4c53-469d-bc10-eaab5c98a29f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "Cashflow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2020-09-15"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2021-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"InvalidRequest\",\n  \"status\": 400,\n  \"detail\": \"Organisation xxx does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ecbda42-6cf7-4e7d-8ae3-fc782e4959a5",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "Cashflow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2020-09-15"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2021-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"service-unavailable\",\n  \"title\": \"ServiceUnavailable\",\n  \"status\": 503,\n  \"detail\": \"Cannot process org xxx at this time. Apologies for inconvenience.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dd42c78-01d2-4abe-81ea-9a47ea1f8023",
+          "name": "Xero Get Profit & Loss report",
+          "request": {
+            "name": "Xero Get Profit & Loss report",
+            "description": {
+              "content": "The profit and loss statement is a standard financial report providing detailed year to date income and expense detail for an organisation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "FinancialStatements",
+                "ProfitAndLoss"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the start date for profit and loss report\r\n\r\nIf no parameter is provided, the date of 12 months before the end date will be used."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the end date for profit and loss report \r\n\r\nIf no parameter is provided, the current date will be used."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile finance.statements.read finance.cashvalidation.read finance.bankstatementsplus.read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "202d3a7f-f2c3-40a3-b853-ec7d44d3bc0f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "ProfitAndLoss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2020-09-15"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2021-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"startDate\": \"2020-07-01\",\n  \"endDate\": \"2021-06-30\",\n  \"netProfitLoss\": 123,\n  \"revenue\": {\n    \"total\": 20922.46,\n    \"accountTypes\": [\n      {\n        \"total\": 20825.41,\n        \"title\": \"Trading Income\",\n        \"accounts\": [\n          {\n            \"accountID\": \"abcdefab-2006-43c2-a5da-3c0e5f43b452\",\n            \"accountType\": \"REVENUE\",\n            \"code\": \"200\",\n            \"name\": \"Sales\",\n            \"reportingCode\": \"REV\",\n            \"total\": 20825.41\n          }\n        ]\n      },\n      {\n        \"total\": 97.05,\n        \"title\": \"Other Income\",\n        \"accounts\": [\n          {\n            \"accountID\": \"abcdefab-4d63-4af8-937f-04087ae2e36e\",\n            \"accountType\": \"OTHERINCOME\",\n            \"code\": \"270\",\n            \"name\": \"Interest Income\",\n            \"reportingCode\": \"REV.OTH\",\n            \"total\": 97.05\n          }\n        ]\n      }\n    ]\n  },\n  \"expense\": {\n    \"total\": 1282.06,\n    \"accountTypes\": [\n      {\n        \"total\": 1137.59,\n        \"title\": \"Direct Cost\",\n        \"accounts\": [\n          {\n            \"accountID\": \"abcdefab-d381-4bd6-ba47-7af927d25825\",\n            \"accountType\": \"DIRECTCOSTS\",\n            \"code\": \"300\",\n            \"name\": \"Purchases\",\n            \"reportingCode\": \"EXP.DC\",\n            \"total\": 1137.59\n          }\n        ]\n      },\n      {\n        \"total\": 144.47,\n        \"title\": \"Operating Expenses\",\n        \"accounts\": [\n          {\n            \"accountID\": \"abcdefab-f897-4168-b5d1-2279bf74bb82\",\n            \"accountType\": \"EXPENSE\",\n            \"code\": \"453\",\n            \"name\": \"Office Expenses\",\n            \"reportingCode\": \"EXP\",\n            \"total\": 144.47\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3392df8e-2442-44bb-ae0a-5e6e06789b11",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "ProfitAndLoss"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2020-09-15"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2021-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"InvalidRequest\",\n  \"status\": 400,\n  \"detail\": \"Organisation xxx does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11ca8fe7-086b-4cba-ad71-f4591dd34f7b",
+          "name": "Xero Get Trial Balance report",
+          "request": {
+            "name": "Xero Get Trial Balance report",
+            "description": {
+              "content": "The trial balance provides a detailed list of all accounts of an organisation at a point in time, with revenue and expense items being year to date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "FinancialStatements",
+                "TrialBalance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "Date e.g. yyyy-MM-dd \r\n\r\nSpecifies the end date for trial balance report \r\n\r\nIf no parameter is provided, the current date will be used."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile finance.statements.read finance.cashvalidation.read finance.bankstatementsplus.read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7d94d827-b1bc-4eee-b61e-08e457666b93",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "TrialBalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "endDate",
+                      "value": "2021-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"startDate\": \"2020-07-01\",\n  \"endDate\": \"2021-06-30\",\n  \"accounts\": [\n    {\n      \"accountId\": \"abcdefab-3bbf-4f2a-9e4c-20ec7b8e6b41\",\n      \"accountType\": \"ASSET\",\n      \"accountCode\": \"ASS\",\n      \"accountClass\": \"BANK\",\n      \"status\": \"ACTIVE\",\n      \"reportingCode\": \"ASS\",\n      \"accountName\": \"Everyday transactions\",\n      \"balance\": {\n        \"value\": 100,\n        \"entryType\": \"DEBIT\"\n      },\n      \"signedBalance\": -23,\n      \"accountMovement\": {\n        \"debits\": 0,\n        \"credits\": 0,\n        \"movement\": {\n          \"value\": 123,\n          \"entryType\": \"CREDIT\"\n        },\n        \"signedMovement\": 0\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f695433-dae2-40a2-8b11-4c300fcf5ac8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "TrialBalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "endDate",
+                      "value": "2021-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"InvalidRequest\",\n  \"status\": 400,\n  \"detail\": \"Organisation xxx does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "842d5a04-ad3b-4d24-ad60-ff914eac4050",
+          "name": "Xero Get revenue by contacts report",
+          "request": {
+            "name": "Xero Get revenue by contacts report",
+            "description": {
+              "content": "The revenue by contact report provides a year to date profit and loss for customers and suppliers for a given organisation, including detailed contact information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "FinancialStatements",
+                "contacts",
+                "revenue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "contactIds",
+                  "value": "<uuid>",
+                  "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included"
+                },
+                {
+                  "disabled": false,
+                  "key": "contactIds",
+                  "value": "<uuid>",
+                  "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeManualJournals",
+                  "value": "<boolean>",
+                  "description": "Specifies whether to include the manual journals in the report.\r\n            \r\nIf no parameter is provided, manual journals will not be included."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the start date for the report.\r\n            \r\nIf no parameter is provided, the date of 12 months before the end date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the end date for the report.\r\n\r\nIf no parameter is provided, the current date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile finance.statements.read finance.cashvalidation.read finance.bankstatementsplus.read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c0ba4896-5c3a-431b-a9c5-d88bcc9638ca",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "contacts",
+                    "revenue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contactIds",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "contactIds",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "includeManualJournals",
+                      "value": "true"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2020-09-15"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2020-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"startDate\": \"2019-10-17\",\n  \"endDate\": \"2020-10-16\",\n  \"total\": 1200,\n  \"totalDetail\": {\n    \"totalPaid\": 400,\n    \"totalOutstanding\": 1000,\n    \"totalCreditedUnApplied\": 200\n  },\n  \"totalOther\": {\n    \"totalOutstandingAged\": 1000,\n    \"totalVoided\": 150,\n    \"totalCredited\": 10\n  },\n  \"contacts\": [\n    {\n      \"id\": \"1f580fe2-0659-31ee-eeb4-5c49d15d8bfa\",\n      \"name\": \"FirstContact\",\n      \"total\": 1400,\n      \"totalDetail\": {\n        \"totalPaid\": 400,\n        \"totalOutstanding\": 1000,\n        \"totalCreditedUnApplied\": 0\n      },\n      \"totalOther\": {\n        \"totalOutstandingAged\": 1000,\n        \"totalVoided\": 150,\n        \"totalCredited\": 0,\n        \"transactionCount\": 3\n      },\n      \"accountCodes\": [\n        \"090\",\n        \"200\",\n        \"09-BANK\"\n      ]\n    },\n    {\n      \"id\": \"20e94281-4751-fb7e-ee5e-96b43ae93c8a\",\n      \"name\": \"SecondContact\",\n      \"total\": -200,\n      \"totalDetail\": {\n        \"totalPaid\": 10,\n        \"totalOutstanding\": 20,\n        \"totalCreditedUnApplied\": 200\n      },\n      \"totalOther\": {\n        \"totalOutstandingAged\": 2,\n        \"totalVoided\": 3,\n        \"totalCredited\": 4,\n        \"transactionCount\": 1\n      },\n      \"accountCodes\": [\n        \"900\"\n      ]\n    }\n  ],\n  \"manualJournals\": {\n    \"total\": -100\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b6bd0b1-c50f-4f44-a7ed-b27a097f147e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "contacts",
+                    "revenue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contactIds",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "contactIds",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "includeManualJournals",
+                      "value": "true"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2020-09-15"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2020-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"InvalidRequest\",\n  \"status\": 400,\n  \"detail\": \"Organisation xxx does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51b0a273-616e-43ad-bc30-87e67b3e7f9f",
+          "name": "Xero Get expense by contacts report",
+          "request": {
+            "name": "Xero Get expense by contacts report",
+            "description": {
+              "content": "The expense by contact report provides a year to date profit and loss for customers and suppliers for a given organisation, including detailed contact information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "FinancialStatements",
+                "contacts",
+                "expense"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "contactIds",
+                  "value": "<uuid>",
+                  "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included"
+                },
+                {
+                  "disabled": false,
+                  "key": "contactIds",
+                  "value": "<uuid>",
+                  "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeManualJournals",
+                  "value": "<boolean>",
+                  "description": "Specifies whether to include the manual journals in the report.\r\n            \r\nIf no parameter is provided, manual journals will not be included."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the start date for the report.\r\n            \r\nIf no parameter is provided, the date of 12 months before the end date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the end date for the report.\r\n\r\nIf no parameter is provided, the current date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile finance.statements.read finance.cashvalidation.read finance.bankstatementsplus.read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "20ec9bcd-1d8e-4c2b-be43-262272dc8663",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "contacts",
+                    "expense"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contactIds",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "contactIds",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "includeManualJournals",
+                      "value": "true"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2020-09-15"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2020-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"startDate\": \"2019-10-17\",\n  \"endDate\": \"2020-10-16\",\n  \"total\": 1200,\n  \"totalDetail\": {\n    \"totalPaid\": 400,\n    \"totalOutstanding\": 1000,\n    \"totalCreditedUnApplied\": 200\n  },\n  \"totalOther\": {\n    \"totalOutstandingAged\": 1000,\n    \"totalVoided\": 150,\n    \"totalCredited\": 10\n  },\n  \"contacts\": [\n    {\n      \"id\": \"1f580fe2-0659-31ee-eeb4-5c49d15d8bfa\",\n      \"name\": \"FirstContact\",\n      \"total\": 1400,\n      \"totalDetail\": {\n        \"totalPaid\": 400,\n        \"totalOutstanding\": 1000,\n        \"totalCreditedUnApplied\": 0\n      },\n      \"totalOther\": {\n        \"totalOutstandingAged\": 1000,\n        \"totalVoided\": 150,\n        \"totalCredited\": 0,\n        \"transactionCount\": 3\n      },\n      \"accountCodes\": [\n        \"090\",\n        \"200\",\n        \"09-BANK\"\n      ]\n    },\n    {\n      \"id\": \"20e94281-4751-fb7e-ee5e-96b43ae93c8a\",\n      \"name\": \"SecondContact\",\n      \"total\": -200,\n      \"totalDetail\": {\n        \"totalPaid\": 0,\n        \"totalOutstanding\": 0,\n        \"totalCreditedUnApplied\": 200\n      },\n      \"totalOther\": {\n        \"totalOutstandingAged\": 2,\n        \"totalVoided\": 3,\n        \"totalCredited\": 4,\n        \"transactionCount\": 1\n      },\n      \"accountCodes\": [\n        \"900\"\n      ]\n    }\n  ],\n  \"manualJournals\": {\n    \"total\": -100\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b96af3a8-c564-4d57-8e6b-080cf3dcb5a6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FinancialStatements",
+                    "contacts",
+                    "expense"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contactIds",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "contactIds",
+                      "value": "00000000-0000-0000-0000-000000000000"
+                    },
+                    {
+                      "key": "includeManualJournals",
+                      "value": "true"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "2020-09-15"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2020-09-15"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"InvalidRequest\",\n  \"status\": 400,\n  \"detail\": \"Organisation xxx does not exist\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f6998da-107e-40db-881b-5e2f89626364",
+          "name": "Xero Get Bank Statement Accounting",
+          "request": {
+            "name": "Xero Get Bank Statement Accounting",
+            "description": {
+              "content": "For lenders that prefer using bank statement data as the source of truth.  We provide a data point that will allow access to customer bank statements, plus for reconciled bank transactions the matching accounting, invoice and billing data as well.  As customers reconcile bank statements to invoices and bills, this transaction detail will provide valuable insight for lender's assessment measures. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "BankStatementsPlus",
+                "statements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "BankAccountID",
+                  "value": "<uuid>",
+                  "description": "(Required) string, GUID\r\n\r\nBank account Id"
+                },
+                {
+                  "disabled": false,
+                  "key": "FromDate",
+                  "value": "<string>",
+                  "description": "(Required) date, yyyy-MM-dd \r\n\r\nSpecifies the start date of the query period. \r\nThe maximum range of the query period is 12 months. If the specified query period is more than 12 months the request will be rejected."
+                },
+                {
+                  "disabled": false,
+                  "key": "ToDate",
+                  "value": "<string>",
+                  "description": "(Required) date, yyyy-MM-dd \r\n\r\nSpecifies the end date of the query period. \r\nIf the end date is a future date, the request will be rejected."
+                },
+                {
+                  "disabled": false,
+                  "key": "SummaryOnly",
+                  "value": "<boolean>",
+                  "description": "boolean, true/false\r\n\r\nThe default value is true if no parameter is provided.\r\n\r\nIn summary mode, the response will exclude the computation-heavy LineItems fields from bank transaction, invoice, credit note, prepayment and overpayment data, making the API calls quicker and more efficient."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile finance.statements.read finance.cashvalidation.read finance.bankstatementsplus.read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8078f9ed-afff-4937-ab22-b67ee9e1b904",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "BankStatementsPlus",
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "BankAccountID",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "FromDate",
+                      "value": "2020-07-01"
+                    },
+                    {
+                      "key": "ToDate",
+                      "value": "2021-06-30"
+                    },
+                    {
+                      "key": "SummaryOnly",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bankAccountId\": \"1234eee9-47f0-4179-bd46-9adb4f21cc7f\",\n  \"bankAccountName\": \"ANZ BANK\",\n  \"bankAccountCurrencyCode\": \"NZD\",\n  \"statements\": [\n    {\n      \"statementId\": \"7c29eee9-47f0-4179-bd46-9adb4f21cc7f\",\n      \"startDate\": \"2021-01-01\",\n      \"endDate\": \"2021-01-02\",\n      \"importedDateTimeUtc\": \"2021-01-02T12:00:00Z\",\n      \"importSource\": \"STMTIMPORTSRC/MANUAL\",\n      \"startBalance\": 10,\n      \"endBalance\": 200,\n      \"indicativeStartBalance\": 10,\n      \"indicativeEndBalance\": 200,\n      \"statementLines\": [\n        {\n          \"statementLineId\": \"1234eee9-47f0-4179-bd46-9adb4f21cc7f\",\n          \"postedDate\": \"2021-01-01\",\n          \"payee\": \"ACME Thneeds ABC1234567890 SYDNEY\",\n          \"reference\": \"Eft\",\n          \"notes\": \"payment to bank\",\n          \"chequeNo\": \"123\",\n          \"amount\": 100,\n          \"transactionDate\": \"2021-01-01\",\n          \"type\": \"Debit\",\n          \"isReconciled\": true,\n          \"isDuplicate\": false,\n          \"isDeleted\": false,\n          \"payments\": [\n            {\n              \"paymentId\": \"47ec8431-23c2-4ef9-90e5-b440fe55d086\",\n              \"batchPaymentId\": \"ecc83387-ffaa-4023-b111-b3fd9e3e4a8e\",\n              \"date\": \"2021-01-01\",\n              \"amount\": 80,\n              \"bankAmount\": 80,\n              \"currencyRate\": 1,\n              \"invoice\": {\n                \"invoiceId\": \"c01dd6ac-8835-4bf2-af8b-841db9534d7f\",\n                \"contact\": {\n                  \"contactId\": \"1234eee9-47f0-4179-bd46-9adb4f21cc7f\",\n                  \"contactName\": \"Bob\"\n                },\n                \"total\": 80,\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"f7fe1049-d1cf-4d10-9df1-67a6e363015f\",\n                    \"reportingCode\": \"REV.OTH\",\n                    \"lineAmount\": 80,\n                    \"accountType\": \"REVENUE\"\n                  }\n                ]\n              }\n            },\n            {\n              \"paymentId\": \"54e8eee0-91a7-4a4d-bb9b-957302a2760a\",\n              \"batchPaymentId\": \"ecc83387-ffaa-4023-b111-b3fd9e3e4a8e\",\n              \"date\": \"2021-01-01\",\n              \"amount\": 15,\n              \"bankAmount\": 15,\n              \"currencyRate\": 1,\n              \"creditNote\": {\n                \"creditNoteId\": \"c346d6a5-f013-4207-bc70-f2dd80a5f37f\",\n                \"contact\": {\n                  \"contactId\": \"1234eee9-47f0-4179-bd46-9adb4f21cc7f\",\n                  \"contactName\": \"Bob\"\n                },\n                \"total\": 15,\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"f7fe1049-d1cf-4d10-9df1-67a6e363015f\",\n                    \"reportingCode\": \"REV.OTH\",\n                    \"lineAmount\": 15,\n                    \"accountType\": \"REVENUE\"\n                  }\n                ]\n              }\n            },\n            {\n              \"paymentId\": \"f94dad64-658c-491f-b901-05d38e9e8702\",\n              \"date\": \"2021-01-01\",\n              \"amount\": 5,\n              \"bankAmount\": 5,\n              \"currencyRate\": 1,\n              \"prepayment\": {\n                \"prepaymentId\": \"995f81ae-0afd-4c84-bbe1-90bc7dfa4372\",\n                \"contact\": {\n                  \"contactId\": \"1234eee9-47f0-4179-bd46-9adb4f21cc7f\",\n                  \"contactName\": \"Bob\"\n                },\n                \"total\": 5,\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"f7fe1049-d1cf-4d10-9df1-67a6e363015f\",\n                    \"reportingCode\": \"REV.OTH\",\n                    \"lineAmount\": 5,\n                    \"accountType\": \"REVENUE\"\n                  }\n                ]\n              }\n            },\n            {\n              \"paymentId\": \"6ffbe999-04c8-42d2-bf16-13947c5f1036\",\n              \"date\": \"2021-01-01\",\n              \"amount\": 5,\n              \"bankAmount\": 5,\n              \"currencyRate\": 1,\n              \"overpayment\": {\n                \"overpaymentId\": \"06575718-5100-4e02-8fbf-c2731a112836\",\n                \"contact\": {\n                  \"contactId\": \"1234eee9-47f0-4179-bd46-9adb4f21cc7f\",\n                  \"contactName\": \"Bob\"\n                },\n                \"total\": 5,\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"f7fe1049-d1cf-4d10-9df1-67a6e363015f\",\n                    \"reportingCode\": \"REV.OTH\",\n                    \"lineAmount\": 5,\n                    \"accountType\": \"REVENUE\"\n                  }\n                ]\n              }\n            }\n          ],\n          \"bankTransactions\": [\n            {\n              \"bankTransactionId\": \"55edf88c-6bf6-459a-bd9b-7f250df62eb2\",\n              \"batchPaymentId\": \"2dce9b39-0427-41af-9739-9510e3b68211\",\n              \"contact\": {\n                \"contactId\": \"1234eee9-47f0-4179-bd46-9adb4f21cc7f\",\n                \"contactName\": \"Bob\"\n              },\n              \"date\": \"2021-01-01\",\n              \"amount\": 20,\n              \"lineItems\": [\n                {\n                  \"accountId\": \"f7fe1049-d1cf-4d10-9df1-67a6e363015f\",\n                  \"reportingCode\": \"REV.OTH\",\n                  \"lineAmount\": 20,\n                  \"accountType\": \"REVENUE\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35fdf769-b00e-4623-a627-86bd4d717ae7",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "BankStatementsPlus",
+                    "statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "BankAccountID",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "FromDate",
+                      "value": "2020-07-01"
+                    },
+                    {
+                      "key": "ToDate",
+                      "value": "2021-06-30"
+                    },
+                    {
+                      "key": "SummaryOnly",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "YOUR_XERO_TENANT_ID"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"InvalidRequest\",\n  \"status\": 400,\n  \"detail\": \"AccountId was not supplied\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.xero.com/finance.xro/1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7f4e91d3-d318-49f4-9214-5c47564adc2f",
+    "name": "Xero Finance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Finance API is a collection of endpoints which customers can use in the course of a loan application, which may assist lenders to gain the confidence they need to provide capital.\n\nContact Support:\n Name: Xero Platform Team\n Email: api@xero.com",
+      "type": "text/plain"
+    }
+  }
+}

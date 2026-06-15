@@ -1,0 +1,1737 @@
+{
+  "item": [
+    {
+      "id": "a554c96b-5f47-405c-8c0e-bf1da313fa89",
+      "name": "BankFeeds",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c69adb70-956b-4c0f-b24f-1fbb0b902b14",
+          "name": "Xero Searches for feed connections",
+          "request": {
+            "name": "Xero Searches for feed connections",
+            "description": {
+              "content": "By passing in the appropriate options, you can search for available feed connections in the system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "FeedConnections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 10. Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?page=1 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize=100 to specify page size of 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile bankfeeds"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e5dcd396-bfb7-4935-8988-263404ed2e0a",
+              "name": "search results matching criteria returned with pagination and items array",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FeedConnections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"page\": 1,\n    \"pageCount\": 1,\n    \"pageSize\": 87654321,\n    \"itemCount\": 39\n  },\n  \"items\": [\n    {\n      \"id\": \"c0eb97b5-4f97-465a-8268-276513c14396\",\n      \"accountToken\": \"foobar31306\",\n      \"accountType\": \"BANK\",\n      \"accountNumber\": \"123496842\",\n      \"accountName\": \"SDK Bank 95921\",\n      \"accountId\": \"aefbf6be-4285-4ca5-bf39-0f486c8515c7\",\n      \"currency\": \"GBP\",\n      \"country\": \"GB\"\n    },\n    {\n      \"id\": \"3b44b539-4e39-4d53-9334-d8ba01674752\",\n      \"accountToken\": \"foobar74770\",\n      \"accountType\": \"BANK\",\n      \"accountNumber\": \"123481122\",\n      \"accountName\": \"SDK Bank 11272\",\n      \"accountId\": \"fc2f3cc2-126e-40d7-9fc1-12e52d0a71f1\",\n      \"currency\": \"GBP\",\n      \"country\": \"GB\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0027a5aa-6632-40f9-8284-c57cb5f54fb0",
+              "name": "validation error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FeedConnections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e640aae-4a60-4ae5-99af-01030b3199ec",
+          "name": "Xero Create one or more new feed connection",
+          "request": {
+            "name": "Xero Create one or more new feed connection",
+            "description": {
+              "content": "By passing in the FeedConnections array object in the body, you can create one or more new feed connections",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "FeedConnections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile bankfeeds"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"country\": \"<string>\",\n      \"status\": \"<string>\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"country\": \"<string>\",\n      \"status\": \"<string>\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bce33d9b-7a4f-4c29-97a7-2083ec48c789",
+              "name": "success new feed connection(s)response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FeedConnections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"accountToken\": \"foobar71760\",\n      \"accountNumber\": \"123458637\",\n      \"accountName\": \"SDK Bank 90861\",\n      \"accountType\": \"BANK\",\n      \"currency\": \"GBP\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"2a19d46c-2a92-4e50-9401-dcf2cb895be7\",\n      \"accountToken\": \"foobar71760\",\n      \"status\": \"PENDING\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "935eb8fe-2f4a-4874-9e41-47c22194dc2e",
+              "name": "failed to create new feed connection(s)response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FeedConnections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"accountToken\": \"foobar71760\",\n      \"accountNumber\": \"123458637\",\n      \"accountName\": \"SDK Bank 90861\",\n      \"accountType\": \"BANK\",\n      \"currency\": \"GBP\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"accountToken\": \"foobar71760\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"type\": \"invalid-request\",\n        \"title\": \"Invalid Request\",\n        \"status\": 400,\n        \"detail\": \"For the request field 'AccountNumber' exceeded the maximum length of 40.\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8306a749-b1bb-4c16-9362-4ab00fc96683",
+          "name": "Xero Retrieve single feed connection based on a unique id provided",
+          "request": {
+            "name": "Xero Retrieve single feed connection based on a unique id provided",
+            "description": {
+              "content": "By passing in a FeedConnection Id options, you can search for matching feed connections",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "FeedConnections",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier for retrieving single object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile bankfeeds"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "76b84234-2023-468a-bd34-6ce9f89cbc70",
+              "name": "success returns a FeedConnection object matching the id in response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FeedConnections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for retrieving single object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b58b685a-1bee-4904-91f1-fee30bb6ea52\",\n  \"accountToken\": \"foobar84778\",\n  \"accountType\": \"BANK\",\n  \"accountNumber\": \"123434859\",\n  \"accountName\": \"SDK Bank 5517\",\n  \"accountId\": \"f4c4d595-da94-493b-999a-19d1ae1f508a\",\n  \"currency\": \"GBP\",\n  \"country\": \"GB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a01a1373-7887-4de9-8e4c-4734643d244e",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FeedConnections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for retrieving single object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f608aa3-e4d3-469c-8552-a96c8f6babb7",
+          "name": "Xero Delete an existing feed connection",
+          "request": {
+            "name": "Xero Delete an existing feed connection",
+            "description": {
+              "content": "By passing in FeedConnections array object in the body, you can delete a feed connection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "FeedConnections",
+                "DeleteRequests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile bankfeeds"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"country\": \"<string>\",\n      \"status\": \"<string>\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"<string>\",\n      \"currency\": \"<string>\",\n      \"country\": \"<string>\",\n      \"status\": \"<string>\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d77ae00c-1470-4fda-b7a4-7a04dcff3d5f",
+              "name": "Success response for deleted feed connection",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FeedConnections",
+                    "DeleteRequests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"b4cc693b-24d9-42ec-a6d4-2943d253ff63\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"b4cc693b-24d9-42ec-a6d4-2943d253ff63\",\n      \"status\": \"PENDING\"\n    },\n    {\n      \"accountToken\": \"10000125\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"type\": \"feed-connected-in-different-organisation\",\n        \"title\": \"Feed connected in different organisation\",\n        \"detail\": \"The AccountToken is connected to another Xero Bank Account associated with this bank. This Xero Bank Account belongs to a different Xero Organisation.\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80c4e61c-cc8b-4c17-a008-416b10b819dd",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "FeedConnections",
+                    "DeleteRequests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"id\": \"b4cc693b-24d9-42ec-a6d4-2943d253ff63\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4209c344-740b-4010-a293-26c6a50a09a1",
+          "name": "Xero Retrieve all statements",
+          "request": {
+            "name": "Xero Retrieve all statements",
+            "description": {
+              "content": "By passing in parameters, you can search for matching statements",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Statements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "unique id for single object"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?pageSize=100 to specify page size of 100."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Xero-Application-Id",
+                "value": "00000000-0000-0000-0000-0000000010000",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "Xero-User-Id",
+                "value": "00000000-0000-0000-0000-0000030000000",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile bankfeeds"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eb08650c-734c-4512-97eb-e423a462ed8c",
+              "name": "success returns Statements array of objects response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Xero-Application-Id",
+                    "value": "00000000-0000-0000-0000-0000000010000",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Xero-User-Id",
+                    "value": "00000000-0000-0000-0000-0000030000000",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"page\": 1,\n    \"pageCount\": 210,\n    \"pageSize\": 3,\n    \"itemCount\": 3\n  },\n  \"items\": [\n    {\n      \"id\": \"9817e4b8-82b3-4526-91f7-040bd278053f\",\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"status\": \"REJECTED\",\n      \"startDate\": \"2019-08-01\",\n      \"endDate\": \"2019-08-15\",\n      \"startBalance\": {\n        \"amount\": \"100.0000\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150.0000\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLineCount\": \"1\",\n      \"errors\": [\n        {\n          \"type\": \"duplicate-statement\",\n          \"title\": \"Duplicate Statement Received\",\n          \"status\": 409,\n          \"detail\": \"The received statement was marked as a duplicate.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"2fc57bac-7aa7-4981-a5cd-8aee83fe698c\",\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"2019-08-01\",\n      \"endDate\": \"2019-08-15\",\n      \"startBalance\": {\n        \"amount\": \"100.0000\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150.0000\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLineCount\": \"1\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9faade58-4ef0-4dd7-b20c-198da85f9467",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Xero-Application-Id",
+                    "value": "00000000-0000-0000-0000-0000000010000",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Xero-User-Id",
+                    "value": "00000000-0000-0000-0000-0000030000000",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"Invalid Request\",\n  \"status\": 400,\n  \"detail\": \"For the request field missing parameter.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ea551b1-2c73-4ccf-b872-a363597f350d",
+          "name": "Xero Creates one or more new statements",
+          "request": {
+            "name": "Xero Creates one or more new statements",
+            "description": {},
+            "url": {
+              "path": [
+                "Statements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile bankfeeds"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"<string>\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"<string>\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"<string>\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"<string>\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"<string>\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"<string>\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"<string>\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"<string>\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f028835b-13e5-48bb-a42a-0186b797c70e",
+              "name": "Success returns Statements array of objects in response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123446422\",\n          \"payeeName\": \"StarLord90315\",\n          \"reference\": \"Foobar95578\",\n          \"chequeNumber\": \"12379009\",\n          \"transactionType\": \"Refund\"\n        }\n      ]\n    },\n    {\n      \"feedConnectionId\": \"2ebe6393-f3bb-48ab-9a0e-b04fa8585a70\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123449402\",\n          \"payeeName\": \"StarLord56705\",\n          \"reference\": \"Foobar67355\",\n          \"chequeNumber\": \"12379350\",\n          \"transactionType\": \"Currency Conversion Fee\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"d69b02b7-a30c-464a-99cf-ba9770373c61\",\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"status\": \"PENDING\"\n    },\n    {\n      \"id\": \"598f255c-015b-4138-93df-2e06c64565b3\",\n      \"feedConnectionId\": \"2ebe6393-f3bb-48ab-9a0e-b04fa8585a70\",\n      \"status\": \"PENDING\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1dc1aa57-e0dd-4d3f-bcec-34cbdc6e678f",
+              "name": "Statement failed validation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123446422\",\n          \"payeeName\": \"StarLord90315\",\n          \"reference\": \"Foobar95578\",\n          \"chequeNumber\": \"12379009\",\n          \"transactionType\": \"Refund\"\n        }\n      ]\n    },\n    {\n      \"feedConnectionId\": \"2ebe6393-f3bb-48ab-9a0e-b04fa8585a70\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123449402\",\n          \"payeeName\": \"StarLord56705\",\n          \"reference\": \"Foobar67355\",\n          \"chequeNumber\": \"12379350\",\n          \"transactionType\": \"Currency Conversion Fee\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"Invalid Request\",\n  \"status\": 400,\n  \"detail\": \"For the request field 'StatementLine.ChequeNumber' exceeded the maximum length of 20.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99ef16b6-ad77-48a2-a9fa-40ae72876a79",
+              "name": "Invalid application or feed connection",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123446422\",\n          \"payeeName\": \"StarLord90315\",\n          \"reference\": \"Foobar95578\",\n          \"chequeNumber\": \"12379009\",\n          \"transactionType\": \"Refund\"\n        }\n      ]\n    },\n    {\n      \"feedConnectionId\": \"2ebe6393-f3bb-48ab-9a0e-b04fa8585a70\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123449402\",\n          \"payeeName\": \"StarLord56705\",\n          \"reference\": \"Foobar67355\",\n          \"chequeNumber\": \"12379350\",\n          \"transactionType\": \"Currency Conversion Fee\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"Invalid Application\",\n  \"status\": 403,\n  \"detail\": \"The application has not been configured to use these API endpoints.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b83f1bfe-1a61-481a-8cde-d107910fb843",
+              "name": "Duplicate statement received",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123446422\",\n          \"payeeName\": \"StarLord90315\",\n          \"reference\": \"Foobar95578\",\n          \"chequeNumber\": \"12379009\",\n          \"transactionType\": \"Refund\"\n        }\n      ]\n    },\n    {\n      \"feedConnectionId\": \"2ebe6393-f3bb-48ab-9a0e-b04fa8585a70\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123449402\",\n          \"payeeName\": \"StarLord56705\",\n          \"reference\": \"Foobar67355\",\n          \"chequeNumber\": \"12379350\",\n          \"transactionType\": \"Currency Conversion Fee\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"29fefeb6-f449-470d-9179-f1d8900930d6\",\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"status\": \"REJECTED\",\n      \"errors\": [\n        {\n          \"type\": \"duplicate-statement\",\n          \"title\": \"Duplicate Statement Received\",\n          \"status\": 409,\n          \"detail\": \"The received statement was marked as a duplicate.\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b23c2555-544a-46bb-8854-eab950e0bfc5",
+              "name": "Statement exceeds size limit",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123446422\",\n          \"payeeName\": \"StarLord90315\",\n          \"reference\": \"Foobar95578\",\n          \"chequeNumber\": \"12379009\",\n          \"transactionType\": \"Refund\"\n        }\n      ]\n    },\n    {\n      \"feedConnectionId\": \"2ebe6393-f3bb-48ab-9a0e-b04fa8585a70\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123449402\",\n          \"payeeName\": \"StarLord56705\",\n          \"reference\": \"Foobar67355\",\n          \"chequeNumber\": \"12379350\",\n          \"transactionType\": \"Currency Conversion Fee\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-request\",\n  \"title\": \"Request too large\",\n  \"status\": 413,\n  \"detail\": \"Request size of 3500000 bytes exceeds the limit of 3000000 bytes.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "502ca6bf-26a5-4f22-ab9e-27e39e9c81d6",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123446422\",\n          \"payeeName\": \"StarLord90315\",\n          \"reference\": \"Foobar95578\",\n          \"chequeNumber\": \"12379009\",\n          \"transactionType\": \"Refund\"\n        }\n      ]\n    },\n    {\n      \"feedConnectionId\": \"2ebe6393-f3bb-48ab-9a0e-b04fa8585a70\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123449402\",\n          \"payeeName\": \"StarLord56705\",\n          \"reference\": \"Foobar67355\",\n          \"chequeNumber\": \"12379350\",\n          \"transactionType\": \"Currency Conversion Fee\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"invalid-end-balance\",\n  \"title\": \"Invalid End Balance\",\n  \"status\": 422,\n  \"detail\": \"End balance does not match start balance +/- statement line amounts.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c1ba29d-aaf4-4a66-94a8-d1365fb24836",
+              "name": "Intermittent Xero Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "KEY_VALUE"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123446422\",\n          \"payeeName\": \"StarLord90315\",\n          \"reference\": \"Foobar95578\",\n          \"chequeNumber\": \"12379009\",\n          \"transactionType\": \"Refund\"\n        }\n      ]\n    },\n    {\n      \"feedConnectionId\": \"2ebe6393-f3bb-48ab-9a0e-b04fa8585a70\",\n      \"startDate\": \"2019-08-11\",\n      \"endDate\": \"2019-08-11\",\n      \"startBalance\": {\n        \"amount\": \"100\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"150\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"2019-08-11\",\n          \"description\": \"My new line\",\n          \"amount\": \"50\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"123449402\",\n          \"payeeName\": \"StarLord56705\",\n          \"reference\": \"Foobar67355\",\n          \"chequeNumber\": \"12379350\",\n          \"transactionType\": \"Currency Conversion Fee\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"internal-error\",\n  \"title\": \"Intermittent Internal Xero Error\",\n  \"status\": 500,\n  \"detail\": \"The request should be retried. If the error persists, a Xero support issue should be raised.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c25bd5c-eef6-49ba-aee2-f118c7e741f1",
+          "name": "Xero Retrieve single statement based on unique id provided",
+          "request": {
+            "name": "Xero Retrieve single statement based on unique id provided",
+            "description": {
+              "content": "By passing in a statement id, you can search for matching statements",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Statements",
+                ":statementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "statementId",
+                  "description": "(Required) statement id for single object"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile bankfeeds"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8a2e47fb-f4ad-4c35-adf0-a6bc1ceab0e1",
+              "name": "search results matching id for single statement",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements",
+                    ":statementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "statementId",
+                      "description": "(Required) statement id for single object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"97aca24a-dd10-4cda-98c7-1084a048257b\",\n  \"feedConnectionId\": \"6a4b9ff5-3a5f-4321-936b-4796163550f6\",\n  \"status\": \"DELIVERED\",\n  \"startDate\": \"2019-08-11\",\n  \"endDate\": \"2019-10-11\",\n  \"startBalance\": {\n    \"amount\": \"100.0000\",\n    \"creditDebitIndicator\": \"CREDIT\"\n  },\n  \"endBalance\": {\n    \"amount\": \"150.0000\",\n    \"creditDebitIndicator\": \"CREDIT\"\n  },\n  \"statementLineCount\": \"1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a87a6108-2f40-4d5b-8929-868c075009e5",
+              "name": "Statement not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Statements",
+                    ":statementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "statementId",
+                      "description": "(Required) statement id for single object"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.xero.com/bankfeeds.xro/1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2e056882-af5c-4bfa-bc19-69579bead504",
+    "name": "Xero Bank Feeds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Bank Feeds API is a closed API that is only available to financial institutions that have an established financial services partnership with Xero. If you're an existing financial services partner that wants access, contact your local Partner Manager. If you're a financial institution who wants to provide bank feeds to your business customers, contact us to become a financial services partner.\n\nContact Support:\n Name: Xero Platform Team\n Email: api@xero.com",
+      "type": "text/plain"
+    }
+  }
+}

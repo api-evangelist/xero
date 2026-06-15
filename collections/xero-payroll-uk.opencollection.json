@@ -1,0 +1,2695 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Xero Payroll UK",
+    "version": "12.0.2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PayrollUk",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves employees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "filter",
+                "value": "firstName==John,lastName==Smith,isOffPayrollWorker==false",
+                "type": "query",
+                "description": "Filter by first name, lastname, and/or whether they are an off-payroll worker"
+              },
+              {
+                "name": "page",
+                "value": "5",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves employees"
+        },
+        {
+          "info": {
+            "name": "Creates employees",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates employees"
+        },
+        {
+          "info": {
+            "name": "Retrieves specific employees by using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves specific employees by using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Updates a specific employee's detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates a specific employee's detail"
+        },
+        {
+          "info": {
+            "name": "Creates employment detail for a specific employee using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/Employment",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates employment detail for a specific employee using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves tax records for a specific employee using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/Tax",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves tax records for a specific employee using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee's openingbalances using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/ukopeningbalances",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee's openingbalances using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Creates an opening balance for a specific employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/ukopeningbalances",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates an opening balance for a specific employee"
+        },
+        {
+          "info": {
+            "name": "Updates a specific employee's opening balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/ukopeningbalances",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates a specific employee's opening balances"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee's leave records using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/Leave",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee's leave records using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Creates leave records for a specific employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/Leave",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates leave records for a specific employee"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee's leave record using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/Leave/:LeaveID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "LeaveID",
+                "value": "",
+                "type": "path",
+                "description": "Leave id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee's leave record using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Updates a specific employee's leave records",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/Leave/:LeaveID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "LeaveID",
+                "value": "",
+                "type": "path",
+                "description": "Leave id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates a specific employee's leave records"
+        },
+        {
+          "info": {
+            "name": "Deletes a specific employee's leave record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/Leave/:LeaveID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "LeaveID",
+                "value": "",
+                "type": "path",
+                "description": "Leave id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Deletes a specific employee's leave record"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee's leave balances using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/LeaveBalances",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee's leave balances using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee's leave balances using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/StatutoryLeaveBalance",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "LeaveType",
+                "value": "sick",
+                "type": "query",
+                "description": "Filter by the type of statutory leave"
+              },
+              {
+                "name": "AsOfDate",
+                "value": "",
+                "type": "query",
+                "description": "The date from which to calculate balance remaining. If not specified, current date UTC is used."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee's leave balances using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee's summary of statutory leaves using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/StatutoryLeaves/Summary/:EmployeeID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "activeOnly",
+                "value": "",
+                "type": "query",
+                "description": "Filter response with leaves that are currently active or yet to be taken. If not specified, all leaves (past, current, and future scheduled) are returned"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee's summary of statutory leaves using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Creates statutory sick leave records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/StatutoryLeaves/Sick",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates statutory sick leave records"
+        },
+        {
+          "info": {
+            "name": "Retrieves a statutory sick leave for an employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/StatutoryLeaves/Sick/:StatutorySickLeaveID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "StatutorySickLeaveID",
+                "value": "",
+                "type": "path",
+                "description": "Statutory sick leave id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a statutory sick leave for an employee"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee's leave periods using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/LeavePeriods",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by start date"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by end date"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee's leave periods using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee's leave types using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/LeaveTypes",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee's leave types using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Creates employee leave type records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/LeaveTypes",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates employee leave type records"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee's payment method using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/PaymentMethods",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee's payment method using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Creates an employee payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/PaymentMethods",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates an employee payment method"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee pay templates using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/PayTemplates",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee pay templates using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Creates an earnings template records for a specific employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/PayTemplates/earnings",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates an earnings template records for a specific employee"
+        },
+        {
+          "info": {
+            "name": "Updates a specific employee's earnings template records",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/PayTemplates/earnings/:PayTemplateEarningID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "PayTemplateEarningID",
+                "value": "",
+                "type": "path",
+                "description": "Id for single pay template earnings object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates a specific employee's earnings template records"
+        },
+        {
+          "info": {
+            "name": "Deletes a specific employee's earnings template record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/PayTemplates/earnings/:PayTemplateEarningID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "PayTemplateEarningID",
+                "value": "",
+                "type": "path",
+                "description": "Id for single pay template earnings object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Deletes a specific employee's earnings template record"
+        },
+        {
+          "info": {
+            "name": "Creates multiple earnings template records for a specific employee using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/paytemplateearnings",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates multiple earnings template records for a specific employee using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves employee benefits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Benefits",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves employee benefits"
+        },
+        {
+          "info": {
+            "name": "Creates a new employee benefit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Benefits",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a new employee benefit"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific benefit by using a unique benefit ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Benefits/:id",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the benefit"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific benefit by using a unique benefit ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves deductions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Deductions",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves deductions"
+        },
+        {
+          "info": {
+            "name": "Creates a new deduction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Deductions",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a new deduction"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific deduction by using a unique deduction ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Deductions/:deductionId",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deductionId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the deduction"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific deduction by using a unique deduction ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves earnings orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/EarningsOrders",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves earnings orders"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific earnings orders by using a unique earnings orders id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/EarningsOrders/:id",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the deduction"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific earnings orders by using a unique earnings orders id"
+        },
+        {
+          "info": {
+            "name": "Retrieves earnings rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/EarningsRates",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves earnings rates"
+        },
+        {
+          "info": {
+            "name": "Creates a new earnings rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/EarningsRates",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a new earnings rate"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific earnings rates by using a unique earnings rate id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/EarningsRates/:EarningsRateID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EarningsRateID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the earnings rate"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific earnings rates by using a unique earnings rate id"
+        },
+        {
+          "info": {
+            "name": "Retrieves leave types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/LeaveTypes",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              },
+              {
+                "name": "ActiveOnly",
+                "value": "",
+                "type": "query",
+                "description": "Filters leave types by active status. By default the API returns all leave types."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves leave types"
+        },
+        {
+          "info": {
+            "name": "Creates a new leave type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/LeaveTypes",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a new leave type"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific leave type by using a unique leave type ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/LeaveTypes/:LeaveTypeID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "LeaveTypeID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the leave type"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific leave type by using a unique leave type ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves reimbursements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Reimbursements",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves reimbursements"
+        },
+        {
+          "info": {
+            "name": "Creates a new reimbursement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Reimbursements",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a new reimbursement"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific reimbursement by using a unique reimbursement id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Reimbursements/:ReimbursementID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "ReimbursementID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the reimbursement"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific reimbursement by using a unique reimbursement id"
+        },
+        {
+          "info": {
+            "name": "Retrieves timesheets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Timesheets",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "5",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              },
+              {
+                "name": "filter",
+                "value": "employeeId==00000000-0000-0000-0000-000000000000,payrollCalendarId==00000000-0000-0000-0000-000000000000",
+                "type": "query",
+                "description": "Filter by employeeId and/or payrollCalendarId"
+              },
+              {
+                "name": "status",
+                "value": "Draft",
+                "type": "query",
+                "description": "filter results by any timesheets with a matching timesheet status"
+              },
+              {
+                "name": "startDate",
+                "value": "2019-01-02",
+                "type": "query",
+                "description": "filter results by any timesheets with a startDate on or after the provided date"
+              },
+              {
+                "name": "endDate",
+                "value": "2020-01-02",
+                "type": "query",
+                "description": "filter results by any timesheets with a endDate on or before the provided date"
+              },
+              {
+                "name": "sort",
+                "value": "startDate",
+                "type": "query",
+                "description": "sort the order of timesheets returned. The default is based on the timesheets createdDate, sorted oldest to newest. Currently, the only other option is to reverse the order based on the timesheets startDate, sorted newest to oldest."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves timesheets"
+        },
+        {
+          "info": {
+            "name": "Creates a new timesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Timesheets",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a new timesheet"
+        },
+        {
+          "info": {
+            "name": "Retrieve a specific timesheet by using a unique timesheet ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Timesheets/:TimesheetID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "TimesheetID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the timesheet"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a specific timesheet by using a unique timesheet ID"
+        },
+        {
+          "info": {
+            "name": "Deletes a specific timesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/payroll.xro/2.0/Timesheets/:TimesheetID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "TimesheetID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the timesheet"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Deletes a specific timesheet"
+        },
+        {
+          "info": {
+            "name": "Creates a new timesheet line for a specific timesheet using a unique timesheet ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Timesheets/:TimesheetID/Lines",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "TimesheetID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the timesheet"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a new timesheet line for a specific timesheet using a unique timesheet ID"
+        },
+        {
+          "info": {
+            "name": "Approves a specific timesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Timesheets/:TimesheetID/Approve",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "TimesheetID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the timesheet"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Approves a specific timesheet"
+        },
+        {
+          "info": {
+            "name": "Reverts a specific timesheet to draft",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Timesheets/:TimesheetID/RevertToDraft",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "TimesheetID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the timesheet"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Reverts a specific timesheet to draft"
+        },
+        {
+          "info": {
+            "name": "Updates a specific timesheet line for a specific timesheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/payroll.xro/2.0/Timesheets/:TimesheetID/Lines/:TimesheetLineID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "TimesheetID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the timesheet"
+              },
+              {
+                "name": "TimesheetLineID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the timesheet line"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates a specific timesheet line for a specific timesheet"
+        },
+        {
+          "info": {
+            "name": "Deletes a specific timesheet line",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/payroll.xro/2.0/Timesheets/:TimesheetID/Lines/:TimesheetLineID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "TimesheetID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the timesheet"
+              },
+              {
+                "name": "TimesheetLineID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the timesheet line"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Deletes a specific timesheet line"
+        },
+        {
+          "info": {
+            "name": "Retrieves payrun calendars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/PayRunCalendars",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves payrun calendars"
+        },
+        {
+          "info": {
+            "name": "Creates a new payrun calendar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/PayRunCalendars",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a new payrun calendar"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific payrun calendar by using a unique payrun calendar ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/PayRunCalendars/:PayRunCalendarID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PayRunCalendarID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the payrun calendars"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific payrun calendar by using a unique payrun calendar ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific employee's salary and wages by using a unique employee ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/SalaryAndWages",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific employee's salary and wages by using a unique employee ID"
+        },
+        {
+          "info": {
+            "name": "Creates a salary and wage record for a specific employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/SalaryAndWages",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a salary and wage record for a specific employee"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific salary and wages record for a specific employee using a unique salary and wage id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/SalaryAndWages/:SalaryAndWagesID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "SalaryAndWagesID",
+                "value": "",
+                "type": "path",
+                "description": "Id for single pay template earnings object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific salary and wages record for a specific employee using a unique salary and wage id"
+        },
+        {
+          "info": {
+            "name": "Updates salary and wages record for a specific employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/SalaryAndWages/:SalaryAndWagesID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "SalaryAndWagesID",
+                "value": "",
+                "type": "path",
+                "description": "Id for single pay template earnings object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates salary and wages record for a specific employee"
+        },
+        {
+          "info": {
+            "name": "Deletes a salary and wages record for a specific employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/payroll.xro/2.0/Employees/:EmployeeID/SalaryAndWages/:SalaryAndWagesID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "EmployeeID",
+                "value": "",
+                "type": "path",
+                "description": "Employee id for single object"
+              },
+              {
+                "name": "SalaryAndWagesID",
+                "value": "",
+                "type": "path",
+                "description": "Id for single salary and wages object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Deletes a salary and wages record for a specific employee"
+        },
+        {
+          "info": {
+            "name": "Retrieves pay runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/PayRuns",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "By default get payruns will return all the payruns for an organization. You can add GET https://api.xero.com/payroll.xro/2.0/payRuns?statu={PayRunStatus} to filter the payruns by status."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves pay runs"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific pay run by using a unique pay run ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/PayRuns/:PayRunID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PayRunID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the pay run"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific pay run by using a unique pay run ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves payslips",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Payslips",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 100."
+              },
+              {
+                "name": "PayRunID",
+                "value": "",
+                "type": "query",
+                "description": "PayrunID which specifies the containing payrun of payslips to retrieve. By default, the API does not group payslips by payrun."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves payslips"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific payslip by using a unique payslip ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Payslips/:PayslipID",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PayslipID",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for the payslip"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a specific payslip by using a unique payslip ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves payroll settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Settings",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves payroll settings"
+        },
+        {
+          "info": {
+            "name": "Retrieves tracking categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/payroll.xro/2.0/Settings/trackingCategories",
+            "headers": [
+              {
+                "name": "Xero-Tenant-Id",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves tracking categories"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

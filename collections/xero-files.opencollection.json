@@ -1,0 +1,720 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Xero Files API",
+    "version": "12.0.2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/files.xro/1.0/Files",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "pagesize",
+                "value": "",
+                "type": "query",
+                "description": "pass an optional page size value"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "number of records to skip for pagination"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "values to sort by"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves files"
+        },
+        {
+          "info": {
+            "name": "Uploads a File to the inbox",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/files.xro/1.0/Files",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Uploads a File to the inbox"
+        },
+        {
+          "info": {
+            "name": "Retrieves a file by a unique file ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/files.xro/1.0/Files/:FileId",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "FileId",
+                "value": "",
+                "type": "path",
+                "description": "File id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieves a file by a unique file ID"
+        },
+        {
+          "info": {
+            "name": "Update a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/files.xro/1.0/Files/:FileId",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "FileId",
+                "value": "",
+                "type": "path",
+                "description": "File id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates file properties of a single file"
+        },
+        {
+          "info": {
+            "name": "Deletes a specific file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/files.xro/1.0/Files/:FileId",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "FileId",
+                "value": "",
+                "type": "path",
+                "description": "File id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete a specific file"
+        },
+        {
+          "info": {
+            "name": "Uploads a File to a specific folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/files.xro/1.0/Files/:FolderId",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "FolderId",
+                "value": "",
+                "type": "path",
+                "description": "pass required folder id to save file to specific folder"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Uploads a File to a specific folder"
+        },
+        {
+          "info": {
+            "name": "Retrieves the content of a specific file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/files.xro/1.0/Files/:FileId/Content",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "FileId",
+                "value": "",
+                "type": "path",
+                "description": "File id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate options, retrieve data for specific file"
+        },
+        {
+          "info": {
+            "name": "Retrieves a specific file associations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/files.xro/1.0/Files/:FileId/Associations",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "FileId",
+                "value": "",
+                "type": "path",
+                "description": "File id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate options, \n"
+        },
+        {
+          "info": {
+            "name": "Creates a new file association",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/files.xro/1.0/Files/:FileId/Associations",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "FileId",
+                "value": "",
+                "type": "path",
+                "description": "File id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate options, you can create a new folder"
+        },
+        {
+          "info": {
+            "name": "Deletes an existing file association",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/files.xro/1.0/Files/:FileId/Associations/:ObjectId",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "FileId",
+                "value": "",
+                "type": "path",
+                "description": "File id for single object"
+              },
+              {
+                "name": "ObjectId",
+                "value": "",
+                "type": "path",
+                "description": "Object id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate options, you can create a new folder"
+        },
+        {
+          "info": {
+            "name": "Retrieves an association object using a unique object ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/files.xro/1.0/Associations/:ObjectId",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "ObjectId",
+                "value": "",
+                "type": "path",
+                "description": "Object id for single object"
+              },
+              {
+                "name": "pagesize",
+                "value": "",
+                "type": "query",
+                "description": "pass an optional page size value"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "number of records to skip for pagination"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "values to sort by"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "direction to sort by"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate options, you can retrieve an association"
+        },
+        {
+          "info": {
+            "name": "Retrieves a count of associations for a list of objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/files.xro/1.0/Associations/Count",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "ObjectIds",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of object ids"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate options, you can retrieve the association count for objects"
+        },
+        {
+          "info": {
+            "name": "Retrieves folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/files.xro/1.0/Folders",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "values to sort by"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate options, you can search for available folders"
+        },
+        {
+          "info": {
+            "name": "Creates a new folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.xero.com/files.xro/1.0/Folders",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate properties, you can create a new folder"
+        },
+        {
+          "info": {
+            "name": "Retrieves specific folder by using a unique folder ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/files.xro/1.0/Folders/:FolderId",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "FolderId",
+                "value": "",
+                "type": "path",
+                "description": "Folder id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate ID, you can search for specific folder"
+        },
+        {
+          "info": {
+            "name": "Updates an existing folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.xero.com/files.xro/1.0/Folders/:FolderId",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              },
+              {
+                "name": "Idempotency-Key",
+                "value": "KEY_VALUE"
+              }
+            ],
+            "params": [
+              {
+                "name": "FolderId",
+                "value": "",
+                "type": "path",
+                "description": "Folder id for single object"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate ID and properties, you can update a folder"
+        },
+        {
+          "info": {
+            "name": "Deletes a folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.xero.com/files.xro/1.0/Folders/:FolderId",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "params": [
+              {
+                "name": "FolderId",
+                "value": "",
+                "type": "path",
+                "description": "Folder id for single object"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "By passing in the appropriate ID, you can delete a folder"
+        },
+        {
+          "info": {
+            "name": "Retrieves inbox folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.xero.com/files.xro/1.0/Inbox",
+            "headers": [
+              {
+                "name": "xero-tenant-id",
+                "value": "YOUR_XERO_TENANT_ID"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.xero.com/identity/connect/authorize",
+              "accessTokenUrl": "https://identity.xero.com/connect/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Search for the user inbox"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
