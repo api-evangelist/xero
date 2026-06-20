@@ -8,7 +8,7 @@ description: Xero is a cloud-based accounting software platform that helps small
   for .NET, Java, Node.js, PHP, Ruby, Python, and provides an MCP server for AI-assisted
   accounting workflows.
 kind: contract
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Accounting
 - Bank Feeds
@@ -29,7 +29,7 @@ apis:
     orders, and financial reports. Provides comprehensive access to all accounting
     functions in Xero including chart of accounts, journal entries, tax rates, currencies,
     and tracking categories.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.xero.com/documentation/api/accounting/overview
   baseURL: https://api.xero.com/api.xro/2.0
   tags:
@@ -50,7 +50,7 @@ apis:
   description: API for managing fixed assets in Xero. Supports registering and depreciating
     assets, managing asset types, and running depreciation calculations. Enables automated
     fixed asset lifecycle management integrated with Xero accounting.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.xero.com/documentation/api/assets/overview
   baseURL: https://api.xero.com/assets.xro/1.0
   tags:
@@ -67,7 +67,7 @@ apis:
   description: API for importing bank transaction data into Xero from financial institutions
     and fintech providers. Enables creation and management of bank feed connections
     and statement lines for automated bank reconciliation workflows.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.xero.com/documentation/api/bank-feeds/overview
   baseURL: https://api.xero.com/bankfeeds.xro/1.0
   tags:
@@ -85,7 +85,7 @@ apis:
     and loss reports, and cash flow summaries for Xero organizations. Supports bank
     statement accounting, account usage, and lock history for financial analysis and
     reporting applications.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.xero.com/documentation/api/finance/overview
   baseURL: https://api.xero.com/finance.xro/1.0
   tags:
@@ -102,7 +102,7 @@ apis:
   description: OAuth 2.0 authentication and authorization API for the Xero platform.
     Manages connections to Xero organizations, user identity, and refresh token lifecycle.
     Required for all Xero API integrations to obtain and manage access tokens.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.xero.com/documentation/guides/oauth2/overview/
   baseURL: https://identity.xero.com
   tags:
@@ -120,7 +120,7 @@ apis:
     managing employees, pay runs, pay slips, leave applications, payroll calendars,
     tax declarations, and superannuation. Compliant with Australian payroll regulations
     including Single Touch Payroll (STP).
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.xero.com/documentation/api/payroll-au/overview
   baseURL: https://api.xero.com/payroll.xro/1.0
   tags:
@@ -137,7 +137,7 @@ apis:
   description: Payroll management API for New Zealand businesses using Xero. Supports
     managing employees, pay runs, pay slips, leave management, and compliance with
     New Zealand payroll regulations including KiwiSaver and PAYE.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.xero.com/documentation/api/payroll-nz/overview
   baseURL: https://api.xero.com/payroll.xro/1.0
   tags:
@@ -154,7 +154,7 @@ apis:
     employees, pay runs, pay slips, leave, and compliance with UK payroll regulations
     including PAYE, national insurance, pensions, and Real Time Information (RTI)
     submissions to HMRC.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.xero.com/documentation/api/payroll-uk/overview
   baseURL: https://api.xero.com/payroll.xro/1.0
   tags:
@@ -171,7 +171,7 @@ apis:
     and managing projects, tasks, time entries, and expenses. Enables integration
     of project-based billing with Xero accounting for professional services and project-based
     businesses.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.xero.com/documentation/api/projects/overview
   baseURL: https://api.xero.com/projects.xro/2.0
   tags:
@@ -188,7 +188,7 @@ apis:
     and attaching files to accounting objects in Xero. Enables document management
     workflows integrated with accounting records for invoices, receipts, and other
     financial documents.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://developer.xero.com/documentation/api/files/overview
   baseURL: https://api.xero.com/files.xro/1.0
   tags:
