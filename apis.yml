@@ -227,7 +227,7 @@ common:
   url: https://www.xero.com/us/legal/privacy/
 - type: StatusPage
   url: https://status.xero.com/
-- type: SignUp
+- type: Signup
   url: https://www.xero.com/us/signup/developers/
 - type: GitHubOrganization
   url: https://github.com/XeroAPI

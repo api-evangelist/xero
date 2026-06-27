@@ -2,10 +2,10 @@
   "repo": "xero",
   "feeds": [
     {
-      "source": "https://devblog.xero.com/feed/",
-      "feed_url": "https://devblog.xero.com/feed/",
+      "source": "https://devblog.xero.com/feed",
+      "feed_url": "https://devblog.xero.com/feed",
       "title": "",
-      "saved": 2,
+      "saved": 1,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 21,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 24,
+  "fetched": "2026-06-27T12:03:07Z"
 }
