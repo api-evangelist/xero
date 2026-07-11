@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: developer.xero.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug  2 22:00:00 2026 GMT
+  hsts: false
+- host: api.xero.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 19 23:59:59 2026 GMT
+  hsts: null
+- host: identity.xero.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 24 23:59:59 2026 GMT
+  hsts: false
+domains:
+- domain: xero.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

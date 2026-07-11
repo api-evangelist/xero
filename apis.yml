@@ -201,6 +201,8 @@ apis:
   - type: OpenAPI
     url: openapi/xero-files-openapi.yml
 common:
+- type: DomainSecurity
+  url: security/xero-domain-security.yml
 - type: Authentication
   url: authentication/xero-authentication.yml
 - type: OAuthScopes
