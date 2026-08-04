@@ -1,0 +1,32 @@
+{
+  "provider": "xero",
+  "sources": [
+    "xero-accounting-api-openapi.yml",
+    "xero-asset-api-openapi.yml",
+    "xero-bankfeeds-api-openapi.yml",
+    "xero-files-api-openapi.yml",
+    "xero-finance-api-openapi.yml",
+    "xero-identity-api-openapi.yml",
+    "xero-payrollau-api-openapi.yml",
+    "xero-payrollnz-api-openapi.yml",
+    "xero-payrolluk-api-openapi.yml",
+    "xero-project-api-openapi.yml"
+  ],
+  "outputs": [
+    "xero-accounting-api-openapi.yml",
+    "xero-asset-api-openapi.yml",
+    "xero-bankfeeds-api-openapi.yml",
+    "xero-files-api-openapi.yml",
+    "xero-finance-api-openapi.yml",
+    "xero-identity-api-openapi.yml",
+    "xero-payrollau-api-openapi.yml",
+    "xero-payrollnz-api-openapi.yml",
+    "xero-payrolluk-api-openapi.yml",
+    "xero-project-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

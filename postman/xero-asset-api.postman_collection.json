@@ -1,0 +1,1238 @@
+{
+  "info": {
+    "_postman_id": "bccd44fd-4913-43cb-a093-67fd68f4dfbd",
+    "name": "Xero Accounting Asset API",
+    "description": "Contact Support:\n Name: Xero Platform Team\n Email: api@xero.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:45.000Z",
+    "updatedAt": "2026-07-28T03:35:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bccd44fd-4913-43cb-a093-67fd68f4dfbd"
+  },
+  "item": [
+    {
+      "name": "Assets",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Xero Retrieves fixed asset by id",
+              "id": "0acfa08c-b391-4a6a-a2e0-50a756eb89c7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Assets/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Assets",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "bbb23329-95b4-48c9-81c4-f83d71068d67",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) fixed asset id for single object"
+                    }
+                  ]
+                },
+                "description": "By passing in the appropriate asset id, you can search for\na specific fixed asset in the system\n"
+              },
+              "response": [
+                {
+                  "id": "5ee6c1cf-9d81-44d5-9196-bb30c3ba0fa2",
+                  "name": "search results matching criteria",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Assets/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Assets",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"assetName\": \"<string>\",\n  \"assetId\": \"<uuid>\",\n  \"assetTypeId\": \"<uuid>\",\n  \"assetNumber\": \"<string>\",\n  \"purchaseDate\": \"<date>\",\n  \"purchasePrice\": \"<double>\",\n  \"disposalDate\": \"<date>\",\n  \"disposalPrice\": \"<double>\",\n  \"assetStatus\": \"Registered\",\n  \"warrantyExpiryDate\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"bookDepreciationSetting\": {\n    \"depreciationMethod\": \"DiminishingValue150\",\n    \"averagingMethod\": \"FullMonth\",\n    \"depreciationRate\": \"<double>\",\n    \"effectiveLifeYears\": \"<integer>\",\n    \"depreciationCalculationMethod\": \"Rate\",\n    \"depreciableObjectId\": \"<uuid>\",\n    \"depreciableObjectType\": \"<string>\",\n    \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n  },\n  \"bookDepreciationDetail\": {\n    \"currentCapitalGain\": \"<double>\",\n    \"currentGainLoss\": \"<double>\",\n    \"depreciationStartDate\": \"<date>\",\n    \"costLimit\": \"<double>\",\n    \"residualValue\": \"<double>\",\n    \"priorAccumDepreciationAmount\": \"<double>\",\n    \"currentAccumDepreciationAmount\": \"<double>\",\n    \"businessUseCapitalGain\": \"<number>\",\n    \"businessUseCurrentGainLoss\": \"<number>\",\n    \"privateUseCapitalGain\": \"<number>\",\n    \"privateUseCurrentGainLoss\": \"<number>\",\n    \"initialDeductionPercentage\": \"<number>\"\n  },\n  \"canRollback\": \"<boolean>\",\n  \"accountingBookValue\": \"<double>\",\n  \"isDeleteEnabledForDate\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T03:35:46.000Z",
+                  "updatedAt": "2026-07-28T03:35:46.000Z",
+                  "uid": "35240-5ee6c1cf-9d81-44d5-9196-bb30c3ba0fa2"
+                },
+                {
+                  "id": "e9ba0b0f-ccd8-485d-bf76-ee68f28b4e62",
+                  "name": "bad input parameter",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Assets/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Assets",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:35:46.000Z",
+                  "updatedAt": "2026-07-28T03:35:46.000Z",
+                  "uid": "35240-e9ba0b0f-ccd8-485d-bf76-ee68f28b4e62"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-0acfa08c-b391-4a6a-a2e0-50a756eb89c7"
+            }
+          ],
+          "id": "52df1fa7-bdb9-48c0-93b7-ab7edbad1e8a",
+          "createdAt": "2026-07-28T03:35:46.000Z",
+          "updatedAt": "2026-07-28T03:35:46.000Z",
+          "uid": "35240-52df1fa7-bdb9-48c0-93b7-ab7edbad1e8a"
+        },
+        {
+          "name": "Xero searches fixed asset",
+          "id": "a36e47bb-9eaa-4d5b-8d42-13aad38f4a1b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Assets?status=DRAFT&page=<integer>&pageSize=<integer>&orderBy=DisposalPrice&sortDirection=desc&filterBy=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Assets"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Required when retrieving a collection of assets. See Asset Status Codes",
+                  "key": "status",
+                  "value": "DRAFT"
+                },
+                {
+                  "description": "Results are paged. This specifies which page of the results to return. The default page is 1.",
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The number of records returned per page. By default the number of records returned is 10.",
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice.",
+                  "key": "orderBy",
+                  "value": "DisposalPrice"
+                },
+                {
+                  "description": "ASC or DESC",
+                  "key": "sortDirection",
+                  "value": "desc"
+                },
+                {
+                  "description": "A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields.",
+                  "key": "filterBy",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "By passing in the appropriate options, you can search for available fixed asset in the system"
+          },
+          "response": [
+            {
+              "id": "298e0181-45dd-4b86-aaea-a77a3123cbcb",
+              "name": "search results matching criteria",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Assets?status=DRAFT&page=<integer>&pageSize=<integer>&orderBy=DisposalPrice&sortDirection=desc&filterBy=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Assets"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Required when retrieving a collection of assets. See Asset Status Codes",
+                      "key": "status",
+                      "value": "DRAFT"
+                    },
+                    {
+                      "description": "Results are paged. This specifies which page of the results to return. The default page is 1.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The number of records returned per page. By default the number of records returned is 10.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice.",
+                      "key": "orderBy",
+                      "value": "DisposalPrice"
+                    },
+                    {
+                      "description": "ASC or DESC",
+                      "key": "sortDirection",
+                      "value": "desc"
+                    },
+                    {
+                      "description": "A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields.",
+                      "key": "filterBy",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"assetName\": \"<string>\",\n      \"assetId\": \"<uuid>\",\n      \"assetTypeId\": \"<uuid>\",\n      \"assetNumber\": \"<string>\",\n      \"purchaseDate\": \"<date>\",\n      \"purchasePrice\": \"<double>\",\n      \"disposalDate\": \"<date>\",\n      \"disposalPrice\": \"<double>\",\n      \"assetStatus\": \"Disposed\",\n      \"warrantyExpiryDate\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"bookDepreciationSetting\": {\n        \"depreciationMethod\": \"FullDepreciation\",\n        \"averagingMethod\": \"FullMonth\",\n        \"depreciationRate\": \"<double>\",\n        \"effectiveLifeYears\": \"<integer>\",\n        \"depreciationCalculationMethod\": \"Rate\",\n        \"depreciableObjectId\": \"<uuid>\",\n        \"depreciableObjectType\": \"<string>\",\n        \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n      },\n      \"bookDepreciationDetail\": {\n        \"currentCapitalGain\": \"<double>\",\n        \"currentGainLoss\": \"<double>\",\n        \"depreciationStartDate\": \"<date>\",\n        \"costLimit\": \"<double>\",\n        \"residualValue\": \"<double>\",\n        \"priorAccumDepreciationAmount\": \"<double>\",\n        \"currentAccumDepreciationAmount\": \"<double>\",\n        \"businessUseCapitalGain\": \"<number>\",\n        \"businessUseCurrentGainLoss\": \"<number>\",\n        \"privateUseCapitalGain\": \"<number>\",\n        \"privateUseCurrentGainLoss\": \"<number>\",\n        \"initialDeductionPercentage\": \"<number>\"\n      },\n      \"canRollback\": \"<boolean>\",\n      \"accountingBookValue\": \"<double>\",\n      \"isDeleteEnabledForDate\": \"<boolean>\"\n    },\n    {\n      \"assetName\": \"<string>\",\n      \"assetId\": \"<uuid>\",\n      \"assetTypeId\": \"<uuid>\",\n      \"assetNumber\": \"<string>\",\n      \"purchaseDate\": \"<date>\",\n      \"purchasePrice\": \"<double>\",\n      \"disposalDate\": \"<date>\",\n      \"disposalPrice\": \"<double>\",\n      \"assetStatus\": \"Registered\",\n      \"warrantyExpiryDate\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"bookDepreciationSetting\": {\n        \"depreciationMethod\": \"FullDepreciation\",\n        \"averagingMethod\": \"ActualDays\",\n        \"depreciationRate\": \"<double>\",\n        \"effectiveLifeYears\": \"<integer>\",\n        \"depreciationCalculationMethod\": \"Rate\",\n        \"depreciableObjectId\": \"<uuid>\",\n        \"depreciableObjectType\": \"<string>\",\n        \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n      },\n      \"bookDepreciationDetail\": {\n        \"currentCapitalGain\": \"<double>\",\n        \"currentGainLoss\": \"<double>\",\n        \"depreciationStartDate\": \"<date>\",\n        \"costLimit\": \"<double>\",\n        \"residualValue\": \"<double>\",\n        \"priorAccumDepreciationAmount\": \"<double>\",\n        \"currentAccumDepreciationAmount\": \"<double>\",\n        \"businessUseCapitalGain\": \"<number>\",\n        \"businessUseCurrentGainLoss\": \"<number>\",\n        \"privateUseCapitalGain\": \"<number>\",\n        \"privateUseCurrentGainLoss\": \"<number>\",\n        \"initialDeductionPercentage\": \"<number>\"\n      },\n      \"canRollback\": \"<boolean>\",\n      \"accountingBookValue\": \"<double>\",\n      \"isDeleteEnabledForDate\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-298e0181-45dd-4b86-aaea-a77a3123cbcb"
+            },
+            {
+              "id": "cace3fb3-19e2-460f-b013-7df5e25c14c7",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Assets?status=DRAFT&page=<integer>&pageSize=<integer>&orderBy=DisposalPrice&sortDirection=desc&filterBy=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Assets"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Required when retrieving a collection of assets. See Asset Status Codes",
+                      "key": "status",
+                      "value": "DRAFT"
+                    },
+                    {
+                      "description": "Results are paged. This specifies which page of the results to return. The default page is 1.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The number of records returned per page. By default the number of records returned is 10.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Requests can be ordered by AssetType, AssetName, AssetNumber, PurchaseDate and PurchasePrice. If the asset status is DISPOSED it also allows DisposalDate and DisposalPrice.",
+                      "key": "orderBy",
+                      "value": "DisposalPrice"
+                    },
+                    {
+                      "description": "ASC or DESC",
+                      "key": "sortDirection",
+                      "value": "desc"
+                    },
+                    {
+                      "description": "A string that can be used to filter the list to only return assets containing the text. Checks it against the AssetName, AssetNumber, Description and AssetTypeName fields.",
+                      "key": "filterBy",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-cace3fb3-19e2-460f-b013-7df5e25c14c7"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:46.000Z",
+          "updatedAt": "2026-07-28T03:35:46.000Z",
+          "uid": "35240-a36e47bb-9eaa-4d5b-8d42-13aad38f4a1b"
+        },
+        {
+          "name": "Xero adds a fixed asset",
+          "id": "2f453a44-3fca-40bf-b3ae-33e6ee4b2966",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assetName\": \"<string>\",\n  \"assetId\": \"<uuid>\",\n  \"assetTypeId\": \"<uuid>\",\n  \"assetNumber\": \"<string>\",\n  \"purchaseDate\": \"<date>\",\n  \"purchasePrice\": \"<double>\",\n  \"disposalDate\": \"<date>\",\n  \"disposalPrice\": \"<double>\",\n  \"assetStatus\": \"Registered\",\n  \"warrantyExpiryDate\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"bookDepreciationSetting\": {\n    \"depreciationMethod\": \"DiminishingValue150\",\n    \"averagingMethod\": \"FullMonth\",\n    \"depreciationRate\": \"<double>\",\n    \"effectiveLifeYears\": \"<integer>\",\n    \"depreciationCalculationMethod\": \"Rate\",\n    \"depreciableObjectId\": \"<uuid>\",\n    \"depreciableObjectType\": \"<string>\",\n    \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n  },\n  \"bookDepreciationDetail\": {\n    \"currentCapitalGain\": \"<double>\",\n    \"currentGainLoss\": \"<double>\",\n    \"depreciationStartDate\": \"<date>\",\n    \"costLimit\": \"<double>\",\n    \"residualValue\": \"<double>\",\n    \"priorAccumDepreciationAmount\": \"<double>\",\n    \"currentAccumDepreciationAmount\": \"<double>\",\n    \"businessUseCapitalGain\": \"<number>\",\n    \"businessUseCurrentGainLoss\": \"<number>\",\n    \"privateUseCapitalGain\": \"<number>\",\n    \"privateUseCurrentGainLoss\": \"<number>\",\n    \"initialDeductionPercentage\": \"<number>\"\n  },\n  \"canRollback\": \"<boolean>\",\n  \"accountingBookValue\": \"<double>\",\n  \"isDeleteEnabledForDate\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/Assets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Assets"
+              ]
+            },
+            "description": "Adds an asset to the system"
+          },
+          "response": [
+            {
+              "id": "2fe335c7-f6b0-46c9-9075-45e925d52220",
+              "name": "return single object - create new asset",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetName\": \"<string>\",\n  \"assetId\": \"<uuid>\",\n  \"assetTypeId\": \"<uuid>\",\n  \"assetNumber\": \"<string>\",\n  \"purchaseDate\": \"<date>\",\n  \"purchasePrice\": \"<double>\",\n  \"disposalDate\": \"<date>\",\n  \"disposalPrice\": \"<double>\",\n  \"assetStatus\": \"Registered\",\n  \"warrantyExpiryDate\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"bookDepreciationSetting\": {\n    \"depreciationMethod\": \"DiminishingValue150\",\n    \"averagingMethod\": \"FullMonth\",\n    \"depreciationRate\": \"<double>\",\n    \"effectiveLifeYears\": \"<integer>\",\n    \"depreciationCalculationMethod\": \"Rate\",\n    \"depreciableObjectId\": \"<uuid>\",\n    \"depreciableObjectType\": \"<string>\",\n    \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n  },\n  \"bookDepreciationDetail\": {\n    \"currentCapitalGain\": \"<double>\",\n    \"currentGainLoss\": \"<double>\",\n    \"depreciationStartDate\": \"<date>\",\n    \"costLimit\": \"<double>\",\n    \"residualValue\": \"<double>\",\n    \"priorAccumDepreciationAmount\": \"<double>\",\n    \"currentAccumDepreciationAmount\": \"<double>\",\n    \"businessUseCapitalGain\": \"<number>\",\n    \"businessUseCurrentGainLoss\": \"<number>\",\n    \"privateUseCapitalGain\": \"<number>\",\n    \"privateUseCurrentGainLoss\": \"<number>\",\n    \"initialDeductionPercentage\": \"<number>\"\n  },\n  \"canRollback\": \"<boolean>\",\n  \"accountingBookValue\": \"<double>\",\n  \"isDeleteEnabledForDate\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Assets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Assets"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"assetName\": \"<string>\",\n  \"assetId\": \"<uuid>\",\n  \"assetTypeId\": \"<uuid>\",\n  \"assetNumber\": \"<string>\",\n  \"purchaseDate\": \"<date>\",\n  \"purchasePrice\": \"<double>\",\n  \"disposalDate\": \"<date>\",\n  \"disposalPrice\": \"<double>\",\n  \"assetStatus\": \"Registered\",\n  \"warrantyExpiryDate\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"bookDepreciationSetting\": {\n    \"depreciationMethod\": \"DiminishingValue150\",\n    \"averagingMethod\": \"FullMonth\",\n    \"depreciationRate\": \"<double>\",\n    \"effectiveLifeYears\": \"<integer>\",\n    \"depreciationCalculationMethod\": \"Rate\",\n    \"depreciableObjectId\": \"<uuid>\",\n    \"depreciableObjectType\": \"<string>\",\n    \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n  },\n  \"bookDepreciationDetail\": {\n    \"currentCapitalGain\": \"<double>\",\n    \"currentGainLoss\": \"<double>\",\n    \"depreciationStartDate\": \"<date>\",\n    \"costLimit\": \"<double>\",\n    \"residualValue\": \"<double>\",\n    \"priorAccumDepreciationAmount\": \"<double>\",\n    \"currentAccumDepreciationAmount\": \"<double>\",\n    \"businessUseCapitalGain\": \"<number>\",\n    \"businessUseCurrentGainLoss\": \"<number>\",\n    \"privateUseCapitalGain\": \"<number>\",\n    \"privateUseCurrentGainLoss\": \"<number>\",\n    \"initialDeductionPercentage\": \"<number>\"\n  },\n  \"canRollback\": \"<boolean>\",\n  \"accountingBookValue\": \"<double>\",\n  \"isDeleteEnabledForDate\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-2fe335c7-f6b0-46c9-9075-45e925d52220"
+            },
+            {
+              "id": "77ce126f-7e67-4cc3-982b-6dbf931e58a4",
+              "name": "invalid input, object invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetName\": \"<string>\",\n  \"assetId\": \"<uuid>\",\n  \"assetTypeId\": \"<uuid>\",\n  \"assetNumber\": \"<string>\",\n  \"purchaseDate\": \"<date>\",\n  \"purchasePrice\": \"<double>\",\n  \"disposalDate\": \"<date>\",\n  \"disposalPrice\": \"<double>\",\n  \"assetStatus\": \"Registered\",\n  \"warrantyExpiryDate\": \"<string>\",\n  \"serialNumber\": \"<string>\",\n  \"bookDepreciationSetting\": {\n    \"depreciationMethod\": \"DiminishingValue150\",\n    \"averagingMethod\": \"FullMonth\",\n    \"depreciationRate\": \"<double>\",\n    \"effectiveLifeYears\": \"<integer>\",\n    \"depreciationCalculationMethod\": \"Rate\",\n    \"depreciableObjectId\": \"<uuid>\",\n    \"depreciableObjectType\": \"<string>\",\n    \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n  },\n  \"bookDepreciationDetail\": {\n    \"currentCapitalGain\": \"<double>\",\n    \"currentGainLoss\": \"<double>\",\n    \"depreciationStartDate\": \"<date>\",\n    \"costLimit\": \"<double>\",\n    \"residualValue\": \"<double>\",\n    \"priorAccumDepreciationAmount\": \"<double>\",\n    \"currentAccumDepreciationAmount\": \"<double>\",\n    \"businessUseCapitalGain\": \"<number>\",\n    \"businessUseCurrentGainLoss\": \"<number>\",\n    \"privateUseCapitalGain\": \"<number>\",\n    \"privateUseCurrentGainLoss\": \"<number>\",\n    \"initialDeductionPercentage\": \"<number>\"\n  },\n  \"canRollback\": \"<boolean>\",\n  \"accountingBookValue\": \"<double>\",\n  \"isDeleteEnabledForDate\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Assets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Assets"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "null",
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-77ce126f-7e67-4cc3-982b-6dbf931e58a4"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:46.000Z",
+          "updatedAt": "2026-07-28T03:35:46.000Z",
+          "uid": "35240-2f453a44-3fca-40bf-b3ae-33e6ee4b2966"
+        }
+      ],
+      "id": "a6b6aee4-e90c-4ea5-888d-1b0689f37b93",
+      "createdAt": "2026-07-28T03:35:46.000Z",
+      "updatedAt": "2026-07-28T03:35:46.000Z",
+      "uid": "35240-a6b6aee4-e90c-4ea5-888d-1b0689f37b93"
+    },
+    {
+      "name": "AssetTypes",
+      "item": [
+        {
+          "name": "Xero searches fixed asset types",
+          "id": "69b7aad7-e184-406d-97b7-ba807d7cc486",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/AssetTypes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AssetTypes"
+              ]
+            },
+            "description": "By passing in the appropriate options, you can search for available fixed asset types in the system"
+          },
+          "response": [
+            {
+              "id": "97b4a972-ffc9-4f92-893f-b8951e335b91",
+              "name": "search results matching criteria",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AssetTypes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AssetTypes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"assetTypeName\": \"<string>\",\n    \"bookDepreciationSetting\": {\n      \"depreciationMethod\": \"NoDepreciation\",\n      \"averagingMethod\": \"ActualDays\",\n      \"depreciationRate\": \"<double>\",\n      \"effectiveLifeYears\": \"<integer>\",\n      \"depreciationCalculationMethod\": \"Rate\",\n      \"depreciableObjectId\": \"<uuid>\",\n      \"depreciableObjectType\": \"<string>\",\n      \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n    },\n    \"assetTypeId\": \"<uuid>\",\n    \"fixedAssetAccountId\": \"<uuid>\",\n    \"depreciationExpenseAccountId\": \"<uuid>\",\n    \"accumulatedDepreciationAccountId\": \"<uuid>\",\n    \"locks\": \"<integer>\"\n  },\n  {\n    \"assetTypeName\": \"<string>\",\n    \"bookDepreciationSetting\": {\n      \"depreciationMethod\": \"NoDepreciation\",\n      \"averagingMethod\": \"FullMonth\",\n      \"depreciationRate\": \"<double>\",\n      \"effectiveLifeYears\": \"<integer>\",\n      \"depreciationCalculationMethod\": \"Life\",\n      \"depreciableObjectId\": \"<uuid>\",\n      \"depreciableObjectType\": \"<string>\",\n      \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n    },\n    \"assetTypeId\": \"<uuid>\",\n    \"fixedAssetAccountId\": \"<uuid>\",\n    \"depreciationExpenseAccountId\": \"<uuid>\",\n    \"accumulatedDepreciationAccountId\": \"<uuid>\",\n    \"locks\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-97b4a972-ffc9-4f92-893f-b8951e335b91"
+            },
+            {
+              "id": "1e848707-1de0-4f82-a9a7-7625e0de7b7b",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AssetTypes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AssetTypes"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-1e848707-1de0-4f82-a9a7-7625e0de7b7b"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:46.000Z",
+          "updatedAt": "2026-07-28T03:35:46.000Z",
+          "uid": "35240-69b7aad7-e184-406d-97b7-ba807d7cc486"
+        },
+        {
+          "name": "Xero adds a fixed asset type",
+          "id": "a0f90f24-a1d2-49fd-be72-5f4eedf2565b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assetTypeName\": \"<string>\",\n  \"bookDepreciationSetting\": {\n    \"depreciationMethod\": \"DiminishingValue200\",\n    \"averagingMethod\": \"ActualDays\",\n    \"depreciationRate\": \"<double>\",\n    \"effectiveLifeYears\": \"<integer>\",\n    \"depreciationCalculationMethod\": \"Rate\",\n    \"depreciableObjectId\": \"<uuid>\",\n    \"depreciableObjectType\": \"<string>\",\n    \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n  },\n  \"assetTypeId\": \"<uuid>\",\n  \"fixedAssetAccountId\": \"<uuid>\",\n  \"depreciationExpenseAccountId\": \"<uuid>\",\n  \"accumulatedDepreciationAccountId\": \"<uuid>\",\n  \"locks\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/AssetTypes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AssetTypes"
+              ]
+            },
+            "description": "Adds an fixed asset type to the system"
+          },
+          "response": [
+            {
+              "id": "36706be0-6a38-4407-aa92-50b73ffeccad",
+              "name": "results single object -  created fixed type",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetTypeName\": \"<string>\",\n  \"bookDepreciationSetting\": {\n    \"depreciationMethod\": \"DiminishingValue200\",\n    \"averagingMethod\": \"ActualDays\",\n    \"depreciationRate\": \"<double>\",\n    \"effectiveLifeYears\": \"<integer>\",\n    \"depreciationCalculationMethod\": \"Rate\",\n    \"depreciableObjectId\": \"<uuid>\",\n    \"depreciableObjectType\": \"<string>\",\n    \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n  },\n  \"assetTypeId\": \"<uuid>\",\n  \"fixedAssetAccountId\": \"<uuid>\",\n  \"depreciationExpenseAccountId\": \"<uuid>\",\n  \"accumulatedDepreciationAccountId\": \"<uuid>\",\n  \"locks\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AssetTypes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AssetTypes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"assetTypeName\": \"<string>\",\n  \"bookDepreciationSetting\": {\n    \"depreciationMethod\": \"DiminishingValue200\",\n    \"averagingMethod\": \"ActualDays\",\n    \"depreciationRate\": \"<double>\",\n    \"effectiveLifeYears\": \"<integer>\",\n    \"depreciationCalculationMethod\": \"Rate\",\n    \"depreciableObjectId\": \"<uuid>\",\n    \"depreciableObjectType\": \"<string>\",\n    \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n  },\n  \"assetTypeId\": \"<uuid>\",\n  \"fixedAssetAccountId\": \"<uuid>\",\n  \"depreciationExpenseAccountId\": \"<uuid>\",\n  \"accumulatedDepreciationAccountId\": \"<uuid>\",\n  \"locks\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-36706be0-6a38-4407-aa92-50b73ffeccad"
+            },
+            {
+              "id": "d96fb99f-dbe2-4788-9eca-0647a671bf0e",
+              "name": "invalid input, object invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetTypeName\": \"<string>\",\n  \"bookDepreciationSetting\": {\n    \"depreciationMethod\": \"DiminishingValue200\",\n    \"averagingMethod\": \"ActualDays\",\n    \"depreciationRate\": \"<double>\",\n    \"effectiveLifeYears\": \"<integer>\",\n    \"depreciationCalculationMethod\": \"Rate\",\n    \"depreciableObjectId\": \"<uuid>\",\n    \"depreciableObjectType\": \"<string>\",\n    \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n  },\n  \"assetTypeId\": \"<uuid>\",\n  \"fixedAssetAccountId\": \"<uuid>\",\n  \"depreciationExpenseAccountId\": \"<uuid>\",\n  \"accumulatedDepreciationAccountId\": \"<uuid>\",\n  \"locks\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AssetTypes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AssetTypes"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "null",
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-d96fb99f-dbe2-4788-9eca-0647a671bf0e"
+            },
+            {
+              "id": "c0e2649a-c53e-405b-afb2-a35f18259251",
+              "name": "a type already exists",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assetTypeName\": \"<string>\",\n  \"bookDepreciationSetting\": {\n    \"depreciationMethod\": \"DiminishingValue200\",\n    \"averagingMethod\": \"ActualDays\",\n    \"depreciationRate\": \"<double>\",\n    \"effectiveLifeYears\": \"<integer>\",\n    \"depreciationCalculationMethod\": \"Rate\",\n    \"depreciableObjectId\": \"<uuid>\",\n    \"depreciableObjectType\": \"<string>\",\n    \"bookEffectiveDateOfChangeId\": \"<uuid>\"\n  },\n  \"assetTypeId\": \"<uuid>\",\n  \"fixedAssetAccountId\": \"<uuid>\",\n  \"depreciationExpenseAccountId\": \"<uuid>\",\n  \"accumulatedDepreciationAccountId\": \"<uuid>\",\n  \"locks\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/AssetTypes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AssetTypes"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-c0e2649a-c53e-405b-afb2-a35f18259251"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:46.000Z",
+          "updatedAt": "2026-07-28T03:35:46.000Z",
+          "uid": "35240-a0f90f24-a1d2-49fd-be72-5f4eedf2565b"
+        }
+      ],
+      "id": "79a8f11e-a970-4407-8607-4c622874aa51",
+      "createdAt": "2026-07-28T03:35:46.000Z",
+      "updatedAt": "2026-07-28T03:35:46.000Z",
+      "uid": "35240-79a8f11e-a970-4407-8607-4c622874aa51"
+    },
+    {
+      "name": "Settings",
+      "item": [
+        {
+          "name": "Xero searches fixed asset settings",
+          "id": "a1d692e0-9963-4494-bafb-9ace28791dbe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Settings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Settings"
+              ]
+            },
+            "description": "By passing in the appropriate options, you can search for available fixed asset types in the system"
+          },
+          "response": [
+            {
+              "id": "3c7dedc4-efdc-479e-aa23-3f9ddada60d7",
+              "name": "search results matching criteria",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Settings"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"assetNumberPrefix\": \"<string>\",\n  \"assetNumberSequence\": \"<string>\",\n  \"assetStartDate\": \"<date>\",\n  \"lastDepreciationDate\": \"<date>\",\n  \"defaultGainOnDisposalAccountId\": \"<uuid>\",\n  \"defaultLossOnDisposalAccountId\": \"<uuid>\",\n  \"defaultCapitalGainOnDisposalAccountId\": \"<uuid>\",\n  \"optInForTax\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-3c7dedc4-efdc-479e-aa23-3f9ddada60d7"
+            },
+            {
+              "id": "8c49123c-8523-410c-94f0-b25fb6c74160",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Settings"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:35:46.000Z",
+              "updatedAt": "2026-07-28T03:35:46.000Z",
+              "uid": "35240-8c49123c-8523-410c-94f0-b25fb6c74160"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:46.000Z",
+          "updatedAt": "2026-07-28T03:35:46.000Z",
+          "uid": "35240-a1d692e0-9963-4494-bafb-9ace28791dbe"
+        }
+      ],
+      "id": "e9e3f55e-c539-4b1b-82e6-3aaf7d1ac8f0",
+      "createdAt": "2026-07-28T03:35:46.000Z",
+      "updatedAt": "2026-07-28T03:35:46.000Z",
+      "uid": "35240-e9e3f55e-c539-4b1b-82e6-3aaf7d1ac8f0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.xero.com/api.xro/2.0"
+    }
+  ]
+}

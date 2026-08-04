@@ -1,0 +1,1874 @@
+{
+  "info": {
+    "_postman_id": "2c3247ee-1558-4f24-bee5-fc08d013a399",
+    "name": "Xero Accounting Finance API",
+    "description": "Contact Support:\n Name: Xero Platform Team\n Email: api@xero.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:49.000Z",
+    "updatedAt": "2026-07-28T03:35:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2c3247ee-1558-4f24-bee5-fc08d013a399"
+  },
+  "item": [
+    {
+      "name": "CashValidation",
+      "item": [
+        {
+          "name": "Xero Get cash validation",
+          "id": "a3f0896c-f61c-4c15-a416-d47ec6812faa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/CashValidation?balanceDate=<string>&asAtSystemDate=<string>&beginDate=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "CashValidation"
+              ],
+              "query": [
+                {
+                  "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the current date will be used.\r\n\r\nThe \u2018balance date\u2019 will return transactions based on the accounting date entered by the user.  Transactions before the balanceDate will be included.\r\nThe user has discretion as to which accounting period the transaction relates to.\r\n\r\nThe \u2018balance date\u2019  will control the latest maximum date of transactions included in the aggregate numbers.  Balance date does not affect the CurrentStatement object, as this will always return the most recent statement before asAtSystemDate (if specified)",
+                  "key": "balanceDate",
+                  "value": "<string>"
+                },
+                {
+                  "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the current date will be used.\r\n\r\nThe \u2018as at\u2019 date will return transactions based on the  creation date.  It reflects the date the transactions were entered into Xero, not the accounting date.\r\nThe \u2018as at\u2019 date can not be overridden by the user.  This can be used to estimate a \u2018historical frequency of reconciliation\u2019.\r\n\r\nThe \u2018as at\u2019 date will affect the current statement in the response, as any candidate statements created after this date will be filtered out.  Thus the current statement returned will be the most recent statement prior to the specified \u2018as at\u2019 date.  Be aware that neither the begin date, nor the balance date, will affect the current statement.\r\n\r\nNote;  information is only presented when system architecture allows, meaning historical cash validation information will be an estimate. In addition, delete events are not aware of the \u2018as at\u2019 functionality in this endpoint, meaning that transactions deleted at the time the API is accessed will be considered to always have been deleted.",
+                  "key": "asAtSystemDate",
+                  "value": "<string>"
+                },
+                {
+                  "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the aggregate results will be drawn from the user\u2019s total history.\r\n\r\nThe \u2018begin date\u2019 will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.\r\nThe user has discretion as to which accounting period the transaction relates to.",
+                  "key": "beginDate",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Summarizes the total cash position for each account for an org"
+          },
+          "response": [
+            {
+              "id": "3c4c70ca-3b5b-4957-8c48-6d0b92ca8add",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/CashValidation?balanceDate=<string>&asAtSystemDate=<string>&beginDate=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CashValidation"
+                  ],
+                  "query": [
+                    {
+                      "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the current date will be used.\r\n\r\nThe \u2018balance date\u2019 will return transactions based on the accounting date entered by the user.  Transactions before the balanceDate will be included.\r\nThe user has discretion as to which accounting period the transaction relates to.\r\n\r\nThe \u2018balance date\u2019  will control the latest maximum date of transactions included in the aggregate numbers.  Balance date does not affect the CurrentStatement object, as this will always return the most recent statement before asAtSystemDate (if specified)",
+                      "key": "balanceDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the current date will be used.\r\n\r\nThe \u2018as at\u2019 date will return transactions based on the  creation date.  It reflects the date the transactions were entered into Xero, not the accounting date.\r\nThe \u2018as at\u2019 date can not be overridden by the user.  This can be used to estimate a \u2018historical frequency of reconciliation\u2019.\r\n\r\nThe \u2018as at\u2019 date will affect the current statement in the response, as any candidate statements created after this date will be filtered out.  Thus the current statement returned will be the most recent statement prior to the specified \u2018as at\u2019 date.  Be aware that neither the begin date, nor the balance date, will affect the current statement.\r\n\r\nNote;  information is only presented when system architecture allows, meaning historical cash validation information will be an estimate. In addition, delete events are not aware of the \u2018as at\u2019 functionality in this endpoint, meaning that transactions deleted at the time the API is accessed will be considered to always have been deleted.",
+                      "key": "asAtSystemDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the aggregate results will be drawn from the user\u2019s total history.\r\n\r\nThe \u2018begin date\u2019 will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.\r\nThe user has discretion as to which accounting period the transaction relates to.",
+                      "key": "beginDate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"accountId\": \"<uuid>\",\n    \"statementBalance\": {\n      \"value\": \"<double>\",\n      \"type\": \"<string>\"\n    },\n    \"statementBalanceDate\": \"<date>\",\n    \"bankStatement\": {\n      \"statementLines\": {\n        \"unreconciledAmountPos\": \"<double>\",\n        \"unreconciledAmountNeg\": \"<double>\",\n        \"unreconciledLines\": \"<integer>\",\n        \"avgDaysUnreconciledPos\": \"<double>\",\n        \"avgDaysUnreconciledNeg\": \"<double>\",\n        \"earliestUnreconciledTransaction\": \"<date>\",\n        \"latestUnreconciledTransaction\": \"<date>\",\n        \"deletedAmount\": \"<double>\",\n        \"totalAmount\": \"<double>\",\n        \"dataSource\": {\n          \"directBankFeed\": \"<double>\",\n          \"fileUpload\": \"<double>\",\n          \"manual\": \"<double>\",\n          \"directBankFeedPos\": \"<double>\",\n          \"fileUploadPos\": \"<double>\",\n          \"manualPos\": \"<double>\",\n          \"directBankFeedNeg\": \"<double>\",\n          \"fileUploadNeg\": \"<double>\",\n          \"manualNeg\": \"<double>\",\n          \"otherPos\": \"<double>\",\n          \"otherNeg\": \"<double>\",\n          \"other\": \"<double>\"\n        },\n        \"earliestReconciledTransaction\": \"<date>\",\n        \"latestReconciledTransaction\": \"<date>\",\n        \"reconciledAmountPos\": \"<double>\",\n        \"reconciledAmountNeg\": \"<double>\",\n        \"reconciledLines\": \"<integer>\",\n        \"totalAmountPos\": \"<double>\",\n        \"totalAmountNeg\": \"<double>\"\n      },\n      \"currentStatement\": {\n        \"startDate\": \"<date>\",\n        \"endDate\": \"<date>\",\n        \"startBalance\": \"<double>\",\n        \"endBalance\": \"<double>\",\n        \"importedDateTimeUtc\": \"<dateTime>\",\n        \"importSourceType\": \"<string>\"\n      }\n    },\n    \"cashAccount\": {\n      \"unreconciledAmountPos\": \"<double>\",\n      \"unreconciledAmountNeg\": \"<double>\",\n      \"startingBalance\": \"<double>\",\n      \"accountBalance\": \"<double>\",\n      \"balanceCurrency\": \"<string>\"\n    }\n  },\n  {\n    \"accountId\": \"<uuid>\",\n    \"statementBalance\": {\n      \"value\": \"<double>\",\n      \"type\": \"<string>\"\n    },\n    \"statementBalanceDate\": \"<date>\",\n    \"bankStatement\": {\n      \"statementLines\": {\n        \"unreconciledAmountPos\": \"<double>\",\n        \"unreconciledAmountNeg\": \"<double>\",\n        \"unreconciledLines\": \"<integer>\",\n        \"avgDaysUnreconciledPos\": \"<double>\",\n        \"avgDaysUnreconciledNeg\": \"<double>\",\n        \"earliestUnreconciledTransaction\": \"<date>\",\n        \"latestUnreconciledTransaction\": \"<date>\",\n        \"deletedAmount\": \"<double>\",\n        \"totalAmount\": \"<double>\",\n        \"dataSource\": {\n          \"directBankFeed\": \"<double>\",\n          \"fileUpload\": \"<double>\",\n          \"manual\": \"<double>\",\n          \"directBankFeedPos\": \"<double>\",\n          \"fileUploadPos\": \"<double>\",\n          \"manualPos\": \"<double>\",\n          \"directBankFeedNeg\": \"<double>\",\n          \"fileUploadNeg\": \"<double>\",\n          \"manualNeg\": \"<double>\",\n          \"otherPos\": \"<double>\",\n          \"otherNeg\": \"<double>\",\n          \"other\": \"<double>\"\n        },\n        \"earliestReconciledTransaction\": \"<date>\",\n        \"latestReconciledTransaction\": \"<date>\",\n        \"reconciledAmountPos\": \"<double>\",\n        \"reconciledAmountNeg\": \"<double>\",\n        \"reconciledLines\": \"<integer>\",\n        \"totalAmountPos\": \"<double>\",\n        \"totalAmountNeg\": \"<double>\"\n      },\n      \"currentStatement\": {\n        \"startDate\": \"<date>\",\n        \"endDate\": \"<date>\",\n        \"startBalance\": \"<double>\",\n        \"endBalance\": \"<double>\",\n        \"importedDateTimeUtc\": \"<dateTime>\",\n        \"importSourceType\": \"<string>\"\n      }\n    },\n    \"cashAccount\": {\n      \"unreconciledAmountPos\": \"<double>\",\n      \"unreconciledAmountNeg\": \"<double>\",\n      \"startingBalance\": \"<double>\",\n      \"accountBalance\": \"<double>\",\n      \"balanceCurrency\": \"<string>\"\n    }\n  }\n]",
+              "createdAt": "2026-07-28T03:35:49.000Z",
+              "updatedAt": "2026-07-28T03:35:49.000Z",
+              "uid": "35240-3c4c70ca-3b5b-4957-8c48-6d0b92ca8add"
+            },
+            {
+              "id": "c83eb1f0-815a-4b60-8cbd-217405f0a882",
+              "name": "BadRequest",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/CashValidation?balanceDate=<string>&asAtSystemDate=<string>&beginDate=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CashValidation"
+                  ],
+                  "query": [
+                    {
+                      "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the current date will be used.\r\n\r\nThe \u2018balance date\u2019 will return transactions based on the accounting date entered by the user.  Transactions before the balanceDate will be included.\r\nThe user has discretion as to which accounting period the transaction relates to.\r\n\r\nThe \u2018balance date\u2019  will control the latest maximum date of transactions included in the aggregate numbers.  Balance date does not affect the CurrentStatement object, as this will always return the most recent statement before asAtSystemDate (if specified)",
+                      "key": "balanceDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the current date will be used.\r\n\r\nThe \u2018as at\u2019 date will return transactions based on the  creation date.  It reflects the date the transactions were entered into Xero, not the accounting date.\r\nThe \u2018as at\u2019 date can not be overridden by the user.  This can be used to estimate a \u2018historical frequency of reconciliation\u2019.\r\n\r\nThe \u2018as at\u2019 date will affect the current statement in the response, as any candidate statements created after this date will be filtered out.  Thus the current statement returned will be the most recent statement prior to the specified \u2018as at\u2019 date.  Be aware that neither the begin date, nor the balance date, will affect the current statement.\r\n\r\nNote;  information is only presented when system architecture allows, meaning historical cash validation information will be an estimate. In addition, delete events are not aware of the \u2018as at\u2019 functionality in this endpoint, meaning that transactions deleted at the time the API is accessed will be considered to always have been deleted.",
+                      "key": "asAtSystemDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "date, yyyy-MM-dd \r\n\r\nIf no parameter is provided, the aggregate results will be drawn from the user\u2019s total history.\r\n\r\nThe \u2018begin date\u2019 will return transactions based on the accounting date entered by the user. Transactions after the beginDate will be included.\r\nThe user has discretion as to which accounting period the transaction relates to.",
+                      "key": "beginDate",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:35:49.000Z",
+              "updatedAt": "2026-07-28T03:35:49.000Z",
+              "uid": "35240-c83eb1f0-815a-4b60-8cbd-217405f0a882"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:49.000Z",
+          "updatedAt": "2026-07-28T03:35:49.000Z",
+          "uid": "35240-a3f0896c-f61c-4c15-a416-d47ec6812faa"
+        }
+      ],
+      "id": "94c4efb8-19bb-4525-a913-b5fc1580bb31",
+      "createdAt": "2026-07-28T03:35:49.000Z",
+      "updatedAt": "2026-07-28T03:35:49.000Z",
+      "uid": "35240-94c4efb8-19bb-4525-a913-b5fc1580bb31"
+    },
+    {
+      "name": "FinancialStatements",
+      "item": [
+        {
+          "name": "BalanceSheet",
+          "item": [
+            {
+              "name": "Xero Get Balance Sheet report",
+              "id": "7ff73769-2fec-4e4a-9152-bbb67120a56a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/FinancialStatements/BalanceSheet?balanceDate=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "FinancialStatements",
+                    "BalanceSheet"
+                  ],
+                  "query": [
+                    {
+                      "description": "Specifies the date for balance sheet report.\r\n\r\nFormat yyyy-MM-dd. If no parameter is provided, the current date will be used.",
+                      "key": "balanceDate",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "The balance sheet report is a standard financial report which describes the financial position of an organisation at a point in time."
+              },
+              "response": [
+                {
+                  "id": "8e5bdbd3-1e73-4d4a-83b5-3a489d4cca5a",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/BalanceSheet?balanceDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "BalanceSheet"
+                      ],
+                      "query": [
+                        {
+                          "description": "Specifies the date for balance sheet report.\r\n\r\nFormat yyyy-MM-dd. If no parameter is provided, the current date will be used.",
+                          "key": "balanceDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"balanceDate\": \"<date>\",\n  \"asset\": {\n    \"accountTypes\": [\n      {\n        \"accountType\": \"<string>\",\n        \"accounts\": [\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          },\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          }\n        ],\n        \"total\": \"<double>\"\n      },\n      {\n        \"accountType\": \"<string>\",\n        \"accounts\": [\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          },\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          }\n        ],\n        \"total\": \"<double>\"\n      }\n    ],\n    \"total\": \"<double>\"\n  },\n  \"liability\": {\n    \"accountTypes\": [\n      {\n        \"accountType\": \"<string>\",\n        \"accounts\": [\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          },\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          }\n        ],\n        \"total\": \"<double>\"\n      },\n      {\n        \"accountType\": \"<string>\",\n        \"accounts\": [\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          },\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          }\n        ],\n        \"total\": \"<double>\"\n      }\n    ],\n    \"total\": \"<double>\"\n  },\n  \"equity\": {\n    \"accountTypes\": [\n      {\n        \"accountType\": \"<string>\",\n        \"accounts\": [\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          },\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          }\n        ],\n        \"total\": \"<double>\"\n      },\n      {\n        \"accountType\": \"<string>\",\n        \"accounts\": [\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          },\n          {\n            \"code\": \"<string>\",\n            \"accountID\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          }\n        ],\n        \"total\": \"<double>\"\n      }\n    ],\n    \"total\": \"<double>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-8e5bdbd3-1e73-4d4a-83b5-3a489d4cca5a"
+                },
+                {
+                  "id": "44e3f47b-0f49-4298-bad7-8a46afa87806",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/BalanceSheet?balanceDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "BalanceSheet"
+                      ],
+                      "query": [
+                        {
+                          "description": "Specifies the date for balance sheet report.\r\n\r\nFormat yyyy-MM-dd. If no parameter is provided, the current date will be used.",
+                          "key": "balanceDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-44e3f47b-0f49-4298-bad7-8a46afa87806"
+                },
+                {
+                  "id": "7747ccb4-e121-4807-a3e4-7150f4a8d0f3",
+                  "name": "Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/BalanceSheet?balanceDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "BalanceSheet"
+                      ],
+                      "query": [
+                        {
+                          "description": "Specifies the date for balance sheet report.\r\n\r\nFormat yyyy-MM-dd. If no parameter is provided, the current date will be used.",
+                          "key": "balanceDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-7747ccb4-e121-4807-a3e4-7150f4a8d0f3"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:49.000Z",
+              "updatedAt": "2026-07-28T03:35:49.000Z",
+              "uid": "35240-7ff73769-2fec-4e4a-9152-bbb67120a56a"
+            }
+          ],
+          "id": "2a76f084-c639-450b-aa54-70d2a5fe411f",
+          "createdAt": "2026-07-28T03:35:49.000Z",
+          "updatedAt": "2026-07-28T03:35:49.000Z",
+          "uid": "35240-2a76f084-c639-450b-aa54-70d2a5fe411f"
+        },
+        {
+          "name": "Cashflow",
+          "item": [
+            {
+              "name": "Xero Get Cash flow report",
+              "id": "36b71a21-5b28-490c-b042-e5d3d9e139e4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/FinancialStatements/Cashflow?startDate=<string>&endDate=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "FinancialStatements",
+                    "Cashflow"
+                  ],
+                  "query": [
+                    {
+                      "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the start date for cash flow report.\r\n\r\nIf no parameter is provided, the date of 12 months before the end date will be used.",
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the end date for cash flow report.\r\n\r\nIf no parameter is provided, the current date will be used.",
+                      "key": "endDate",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "The statement of cash flows - direct method, provides the year to date changes in operating, financing and investing cash flow activities for an organisation. Cashflow statement is not available in US region at this stage."
+              },
+              "response": [
+                {
+                  "id": "32b7cce6-074e-4d0d-8f5f-f730ddfbb798",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/Cashflow?startDate=<string>&endDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "Cashflow"
+                      ],
+                      "query": [
+                        {
+                          "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the start date for cash flow report.\r\n\r\nIf no parameter is provided, the date of 12 months before the end date will be used.",
+                          "key": "startDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the end date for cash flow report.\r\n\r\nIf no parameter is provided, the current date will be used.",
+                          "key": "endDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"cashBalance\": {\n    \"openingCashBalance\": \"<double>\",\n    \"closingCashBalance\": \"<double>\",\n    \"netCashMovement\": \"<double>\"\n  },\n  \"cashflowActivities\": [\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<double>\",\n      \"cashflowTypes\": [\n        {\n          \"name\": \"<string>\",\n          \"total\": \"<double>\",\n          \"accounts\": [\n            {\n              \"accountId\": \"<uuid>\",\n              \"accountType\": \"<string>\",\n              \"accountClass\": \"<string>\",\n              \"code\": \"<string>\",\n              \"name\": \"<string>\",\n              \"reportingCode\": \"<string>\",\n              \"total\": \"<double>\"\n            },\n            {\n              \"accountId\": \"<uuid>\",\n              \"accountType\": \"<string>\",\n              \"accountClass\": \"<string>\",\n              \"code\": \"<string>\",\n              \"name\": \"<string>\",\n              \"reportingCode\": \"<string>\",\n              \"total\": \"<double>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"total\": \"<double>\",\n          \"accounts\": [\n            {\n              \"accountId\": \"<uuid>\",\n              \"accountType\": \"<string>\",\n              \"accountClass\": \"<string>\",\n              \"code\": \"<string>\",\n              \"name\": \"<string>\",\n              \"reportingCode\": \"<string>\",\n              \"total\": \"<double>\"\n            },\n            {\n              \"accountId\": \"<uuid>\",\n              \"accountType\": \"<string>\",\n              \"accountClass\": \"<string>\",\n              \"code\": \"<string>\",\n              \"name\": \"<string>\",\n              \"reportingCode\": \"<string>\",\n              \"total\": \"<double>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"total\": \"<double>\",\n      \"cashflowTypes\": [\n        {\n          \"name\": \"<string>\",\n          \"total\": \"<double>\",\n          \"accounts\": [\n            {\n              \"accountId\": \"<uuid>\",\n              \"accountType\": \"<string>\",\n              \"accountClass\": \"<string>\",\n              \"code\": \"<string>\",\n              \"name\": \"<string>\",\n              \"reportingCode\": \"<string>\",\n              \"total\": \"<double>\"\n            },\n            {\n              \"accountId\": \"<uuid>\",\n              \"accountType\": \"<string>\",\n              \"accountClass\": \"<string>\",\n              \"code\": \"<string>\",\n              \"name\": \"<string>\",\n              \"reportingCode\": \"<string>\",\n              \"total\": \"<double>\"\n            }\n          ]\n        },\n        {\n          \"name\": \"<string>\",\n          \"total\": \"<double>\",\n          \"accounts\": [\n            {\n              \"accountId\": \"<uuid>\",\n              \"accountType\": \"<string>\",\n              \"accountClass\": \"<string>\",\n              \"code\": \"<string>\",\n              \"name\": \"<string>\",\n              \"reportingCode\": \"<string>\",\n              \"total\": \"<double>\"\n            },\n            {\n              \"accountId\": \"<uuid>\",\n              \"accountType\": \"<string>\",\n              \"accountClass\": \"<string>\",\n              \"code\": \"<string>\",\n              \"name\": \"<string>\",\n              \"reportingCode\": \"<string>\",\n              \"total\": \"<double>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-32b7cce6-074e-4d0d-8f5f-f730ddfbb798"
+                },
+                {
+                  "id": "16a3fc36-fa23-4911-bec0-244e1383d9ad",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/Cashflow?startDate=<string>&endDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "Cashflow"
+                      ],
+                      "query": [
+                        {
+                          "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the start date for cash flow report.\r\n\r\nIf no parameter is provided, the date of 12 months before the end date will be used.",
+                          "key": "startDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the end date for cash flow report.\r\n\r\nIf no parameter is provided, the current date will be used.",
+                          "key": "endDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-16a3fc36-fa23-4911-bec0-244e1383d9ad"
+                },
+                {
+                  "id": "70b997d8-af0a-46ca-933c-f9caa48706c4",
+                  "name": "Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/Cashflow?startDate=<string>&endDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "Cashflow"
+                      ],
+                      "query": [
+                        {
+                          "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the start date for cash flow report.\r\n\r\nIf no parameter is provided, the date of 12 months before the end date will be used.",
+                          "key": "startDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the end date for cash flow report.\r\n\r\nIf no parameter is provided, the current date will be used.",
+                          "key": "endDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-70b997d8-af0a-46ca-933c-f9caa48706c4"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:49.000Z",
+              "updatedAt": "2026-07-28T03:35:49.000Z",
+              "uid": "35240-36b71a21-5b28-490c-b042-e5d3d9e139e4"
+            }
+          ],
+          "id": "12cbb347-e723-4798-9c63-0824823b9574",
+          "createdAt": "2026-07-28T03:35:49.000Z",
+          "updatedAt": "2026-07-28T03:35:49.000Z",
+          "uid": "35240-12cbb347-e723-4798-9c63-0824823b9574"
+        },
+        {
+          "name": "ProfitAndLoss",
+          "item": [
+            {
+              "name": "Xero Get Profit & Loss report",
+              "id": "b21cf16c-946d-4fb3-939a-c16d9acf8cb2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/FinancialStatements/ProfitAndLoss?startDate=<string>&endDate=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "FinancialStatements",
+                    "ProfitAndLoss"
+                  ],
+                  "query": [
+                    {
+                      "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the start date for profit and loss report\r\n\r\nIf no parameter is provided, the date of 12 months before the end date will be used.",
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the end date for profit and loss report \r\n\r\nIf no parameter is provided, the current date will be used.",
+                      "key": "endDate",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "The profit and loss statement is a standard financial report providing detailed year to date income and expense detail for an organisation."
+              },
+              "response": [
+                {
+                  "id": "2603e3f4-ee4c-4c08-98df-64b746812ec5",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/ProfitAndLoss?startDate=<string>&endDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "ProfitAndLoss"
+                      ],
+                      "query": [
+                        {
+                          "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the start date for profit and loss report\r\n\r\nIf no parameter is provided, the date of 12 months before the end date will be used.",
+                          "key": "startDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the end date for profit and loss report \r\n\r\nIf no parameter is provided, the current date will be used.",
+                          "key": "endDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"netProfitLoss\": \"<double>\",\n  \"revenue\": {\n    \"total\": \"<double>\",\n    \"accountTypes\": [\n      {\n        \"total\": \"<double>\",\n        \"title\": \"<string>\",\n        \"accounts\": [\n          {\n            \"accountID\": \"<uuid>\",\n            \"accountType\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          },\n          {\n            \"accountID\": \"<uuid>\",\n            \"accountType\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          }\n        ]\n      },\n      {\n        \"total\": \"<double>\",\n        \"title\": \"<string>\",\n        \"accounts\": [\n          {\n            \"accountID\": \"<uuid>\",\n            \"accountType\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          },\n          {\n            \"accountID\": \"<uuid>\",\n            \"accountType\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          }\n        ]\n      }\n    ]\n  },\n  \"expense\": {\n    \"total\": \"<double>\",\n    \"accountTypes\": [\n      {\n        \"total\": \"<double>\",\n        \"title\": \"<string>\",\n        \"accounts\": [\n          {\n            \"accountID\": \"<uuid>\",\n            \"accountType\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          },\n          {\n            \"accountID\": \"<uuid>\",\n            \"accountType\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          }\n        ]\n      },\n      {\n        \"total\": \"<double>\",\n        \"title\": \"<string>\",\n        \"accounts\": [\n          {\n            \"accountID\": \"<uuid>\",\n            \"accountType\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          },\n          {\n            \"accountID\": \"<uuid>\",\n            \"accountType\": \"<string>\",\n            \"code\": \"<string>\",\n            \"name\": \"<string>\",\n            \"reportingCode\": \"<string>\",\n            \"total\": \"<double>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-2603e3f4-ee4c-4c08-98df-64b746812ec5"
+                },
+                {
+                  "id": "0ef5eac9-cdf5-420e-994a-3a7c9d84634d",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/ProfitAndLoss?startDate=<string>&endDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "ProfitAndLoss"
+                      ],
+                      "query": [
+                        {
+                          "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the start date for profit and loss report\r\n\r\nIf no parameter is provided, the date of 12 months before the end date will be used.",
+                          "key": "startDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Date e.g. yyyy-MM-dd\r\n\r\nSpecifies the end date for profit and loss report \r\n\r\nIf no parameter is provided, the current date will be used.",
+                          "key": "endDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-0ef5eac9-cdf5-420e-994a-3a7c9d84634d"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:49.000Z",
+              "updatedAt": "2026-07-28T03:35:49.000Z",
+              "uid": "35240-b21cf16c-946d-4fb3-939a-c16d9acf8cb2"
+            }
+          ],
+          "id": "71bb7631-baf0-4a38-9d79-de829ec23b83",
+          "createdAt": "2026-07-28T03:35:49.000Z",
+          "updatedAt": "2026-07-28T03:35:49.000Z",
+          "uid": "35240-71bb7631-baf0-4a38-9d79-de829ec23b83"
+        },
+        {
+          "name": "TrialBalance",
+          "item": [
+            {
+              "name": "Xero Get Trial Balance report",
+              "id": "13d5daac-d452-4e40-9696-4f68ea431e39",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/FinancialStatements/TrialBalance?endDate=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "FinancialStatements",
+                    "TrialBalance"
+                  ],
+                  "query": [
+                    {
+                      "description": "Date e.g. yyyy-MM-dd \r\n\r\nSpecifies the end date for trial balance report \r\n\r\nIf no parameter is provided, the current date will be used.",
+                      "key": "endDate",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "The trial balance provides a detailed list of all accounts of an organisation at a point in time, with revenue and expense items being year to date."
+              },
+              "response": [
+                {
+                  "id": "1e196014-ad99-4b47-8c31-77cc30b0fbbe",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/TrialBalance?endDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "TrialBalance"
+                      ],
+                      "query": [
+                        {
+                          "description": "Date e.g. yyyy-MM-dd \r\n\r\nSpecifies the end date for trial balance report \r\n\r\nIf no parameter is provided, the current date will be used.",
+                          "key": "endDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"accounts\": [\n    {\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"<string>\",\n      \"accountCode\": \"<string>\",\n      \"accountClass\": \"<string>\",\n      \"status\": \"<string>\",\n      \"reportingCode\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"balance\": {\n        \"value\": \"<double>\",\n        \"entryType\": \"<string>\"\n      },\n      \"signedBalance\": \"<double>\",\n      \"accountMovement\": {\n        \"debits\": \"<double>\",\n        \"credits\": \"<double>\",\n        \"movement\": {\n          \"value\": \"<double>\",\n          \"entryType\": \"<string>\"\n        },\n        \"signedMovement\": \"<double>\"\n      }\n    },\n    {\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"<string>\",\n      \"accountCode\": \"<string>\",\n      \"accountClass\": \"<string>\",\n      \"status\": \"<string>\",\n      \"reportingCode\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"balance\": {\n        \"value\": \"<double>\",\n        \"entryType\": \"<string>\"\n      },\n      \"signedBalance\": \"<double>\",\n      \"accountMovement\": {\n        \"debits\": \"<double>\",\n        \"credits\": \"<double>\",\n        \"movement\": {\n          \"value\": \"<double>\",\n          \"entryType\": \"<string>\"\n        },\n        \"signedMovement\": \"<double>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-1e196014-ad99-4b47-8c31-77cc30b0fbbe"
+                },
+                {
+                  "id": "bd7f2145-8923-4bee-b73a-bd87af14d7df",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/TrialBalance?endDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "TrialBalance"
+                      ],
+                      "query": [
+                        {
+                          "description": "Date e.g. yyyy-MM-dd \r\n\r\nSpecifies the end date for trial balance report \r\n\r\nIf no parameter is provided, the current date will be used.",
+                          "key": "endDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-bd7f2145-8923-4bee-b73a-bd87af14d7df"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:49.000Z",
+              "updatedAt": "2026-07-28T03:35:49.000Z",
+              "uid": "35240-13d5daac-d452-4e40-9696-4f68ea431e39"
+            }
+          ],
+          "id": "65801099-9319-4fe9-9804-736dc4546266",
+          "createdAt": "2026-07-28T03:35:49.000Z",
+          "updatedAt": "2026-07-28T03:35:49.000Z",
+          "uid": "35240-65801099-9319-4fe9-9804-736dc4546266"
+        },
+        {
+          "name": "contacts",
+          "item": [
+            {
+              "name": "revenue",
+              "item": [
+                {
+                  "name": "Xero Get revenue by contacts report",
+                  "id": "f80d3d89-70dd-48b8-8b67-050a6be66422",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://identity.xero.com/connect/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://login.xero.com/identity/connect/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/contacts/revenue?contactIds=<uuid>&contactIds=<uuid>&includeManualJournals=<boolean>&startDate=<string>&endDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "contacts",
+                        "revenue"
+                      ],
+                      "query": [
+                        {
+                          "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included",
+                          "key": "contactIds",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included",
+                          "key": "contactIds",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Specifies whether to include the manual journals in the report.\r\n            \r\nIf no parameter is provided, manual journals will not be included.",
+                          "key": "includeManualJournals",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the start date for the report.\r\n            \r\nIf no parameter is provided, the date of 12 months before the end date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                          "key": "startDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the end date for the report.\r\n\r\nIf no parameter is provided, the current date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                          "key": "endDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "The revenue by contact report provides a year to date profit and loss for customers and suppliers for a given organisation, including detailed contact information."
+                  },
+                  "response": [
+                    {
+                      "id": "d6a4e919-7c46-466b-9deb-453dae84dbbf",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "xero-tenant-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/FinancialStatements/contacts/revenue?contactIds=<uuid>&includeManualJournals=<boolean>&startDate=<string>&endDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "FinancialStatements",
+                            "contacts",
+                            "revenue"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included",
+                              "key": "contactIds",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Specifies whether to include the manual journals in the report.\r\n            \r\nIf no parameter is provided, manual journals will not be included.",
+                              "key": "includeManualJournals",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the start date for the report.\r\n            \r\nIf no parameter is provided, the date of 12 months before the end date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                              "key": "startDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the end date for the report.\r\n\r\nIf no parameter is provided, the current date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                              "key": "endDate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"total\": \"<double>\",\n  \"totalDetail\": {\n    \"totalPaid\": \"<double>\",\n    \"totalOutstanding\": \"<double>\",\n    \"totalCreditedUnApplied\": \"<double>\"\n  },\n  \"totalOther\": {\n    \"totalOutstandingAged\": \"<double>\",\n    \"totalVoided\": \"<double>\",\n    \"totalCredited\": \"<double>\"\n  },\n  \"contacts\": [\n    {\n      \"contactId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"total\": \"<double>\",\n      \"totalDetail\": {\n        \"totalPaid\": \"<double>\",\n        \"totalOutstanding\": \"<double>\",\n        \"totalCreditedUnApplied\": \"<double>\"\n      },\n      \"totalOther\": {\n        \"totalOutstandingAged\": \"<double>\",\n        \"totalVoided\": \"<double>\",\n        \"totalCredited\": \"<double>\",\n        \"transactionCount\": \"<integer>\"\n      },\n      \"accountCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"contactId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"total\": \"<double>\",\n      \"totalDetail\": {\n        \"totalPaid\": \"<double>\",\n        \"totalOutstanding\": \"<double>\",\n        \"totalCreditedUnApplied\": \"<double>\"\n      },\n      \"totalOther\": {\n        \"totalOutstandingAged\": \"<double>\",\n        \"totalVoided\": \"<double>\",\n        \"totalCredited\": \"<double>\",\n        \"transactionCount\": \"<integer>\"\n      },\n      \"accountCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"manualJournals\": {\n    \"total\": \"<double>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:35:49.000Z",
+                      "updatedAt": "2026-07-28T03:35:49.000Z",
+                      "uid": "35240-d6a4e919-7c46-466b-9deb-453dae84dbbf"
+                    },
+                    {
+                      "id": "db2d3baa-5f9d-443a-af8f-872bb014b1b8",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "xero-tenant-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/FinancialStatements/contacts/revenue?contactIds=<uuid>&includeManualJournals=<boolean>&startDate=<string>&endDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "FinancialStatements",
+                            "contacts",
+                            "revenue"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included",
+                              "key": "contactIds",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Specifies whether to include the manual journals in the report.\r\n            \r\nIf no parameter is provided, manual journals will not be included.",
+                              "key": "includeManualJournals",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the start date for the report.\r\n            \r\nIf no parameter is provided, the date of 12 months before the end date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                              "key": "startDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the end date for the report.\r\n\r\nIf no parameter is provided, the current date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                              "key": "endDate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:49.000Z",
+                      "updatedAt": "2026-07-28T03:35:49.000Z",
+                      "uid": "35240-db2d3baa-5f9d-443a-af8f-872bb014b1b8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-f80d3d89-70dd-48b8-8b67-050a6be66422"
+                }
+              ],
+              "id": "d7c6abf4-9aef-44bb-93c2-56b3d339306c",
+              "createdAt": "2026-07-28T03:35:49.000Z",
+              "updatedAt": "2026-07-28T03:35:49.000Z",
+              "uid": "35240-d7c6abf4-9aef-44bb-93c2-56b3d339306c"
+            },
+            {
+              "name": "expense",
+              "item": [
+                {
+                  "name": "Xero Get expense by contacts report",
+                  "id": "017d742b-67b2-4594-b721-22bacd09e0b0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://identity.xero.com/connect/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://login.xero.com/identity/connect/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FinancialStatements/contacts/expense?contactIds=<uuid>&contactIds=<uuid>&includeManualJournals=<boolean>&startDate=<string>&endDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FinancialStatements",
+                        "contacts",
+                        "expense"
+                      ],
+                      "query": [
+                        {
+                          "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included",
+                          "key": "contactIds",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included",
+                          "key": "contactIds",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Specifies whether to include the manual journals in the report.\r\n            \r\nIf no parameter is provided, manual journals will not be included.",
+                          "key": "includeManualJournals",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the start date for the report.\r\n            \r\nIf no parameter is provided, the date of 12 months before the end date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                          "key": "startDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the end date for the report.\r\n\r\nIf no parameter is provided, the current date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                          "key": "endDate",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "The expense by contact report provides a year to date profit and loss for customers and suppliers for a given organisation, including detailed contact information."
+                  },
+                  "response": [
+                    {
+                      "id": "fb4cf80c-1070-456e-a1d1-1eb678063bdc",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "xero-tenant-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/FinancialStatements/contacts/expense?contactIds=<uuid>&includeManualJournals=<boolean>&startDate=<string>&endDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "FinancialStatements",
+                            "contacts",
+                            "expense"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included",
+                              "key": "contactIds",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Specifies whether to include the manual journals in the report.\r\n            \r\nIf no parameter is provided, manual journals will not be included.",
+                              "key": "includeManualJournals",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the start date for the report.\r\n            \r\nIf no parameter is provided, the date of 12 months before the end date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                              "key": "startDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the end date for the report.\r\n\r\nIf no parameter is provided, the current date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                              "key": "endDate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"total\": \"<double>\",\n  \"totalDetail\": {\n    \"totalPaid\": \"<double>\",\n    \"totalOutstanding\": \"<double>\",\n    \"totalCreditedUnApplied\": \"<double>\"\n  },\n  \"totalOther\": {\n    \"totalOutstandingAged\": \"<double>\",\n    \"totalVoided\": \"<double>\",\n    \"totalCredited\": \"<double>\"\n  },\n  \"contacts\": [\n    {\n      \"contactId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"total\": \"<double>\",\n      \"totalDetail\": {\n        \"totalPaid\": \"<double>\",\n        \"totalOutstanding\": \"<double>\",\n        \"totalCreditedUnApplied\": \"<double>\"\n      },\n      \"totalOther\": {\n        \"totalOutstandingAged\": \"<double>\",\n        \"totalVoided\": \"<double>\",\n        \"totalCredited\": \"<double>\",\n        \"transactionCount\": \"<integer>\"\n      },\n      \"accountCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"contactId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"total\": \"<double>\",\n      \"totalDetail\": {\n        \"totalPaid\": \"<double>\",\n        \"totalOutstanding\": \"<double>\",\n        \"totalCreditedUnApplied\": \"<double>\"\n      },\n      \"totalOther\": {\n        \"totalOutstandingAged\": \"<double>\",\n        \"totalVoided\": \"<double>\",\n        \"totalCredited\": \"<double>\",\n        \"transactionCount\": \"<integer>\"\n      },\n      \"accountCodes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"manualJournals\": {\n    \"total\": \"<double>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:35:49.000Z",
+                      "updatedAt": "2026-07-28T03:35:49.000Z",
+                      "uid": "35240-fb4cf80c-1070-456e-a1d1-1eb678063bdc"
+                    },
+                    {
+                      "id": "f9a1242c-b029-45ae-aeb2-bf9a14fad447",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "xero-tenant-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/FinancialStatements/contacts/expense?contactIds=<uuid>&includeManualJournals=<boolean>&startDate=<string>&endDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "FinancialStatements",
+                            "contacts",
+                            "expense"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specifies the customer contacts to be included in the report.\r\n\r\nIf no parameter is provided, all customer contacts will be included",
+                              "key": "contactIds",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Specifies whether to include the manual journals in the report.\r\n            \r\nIf no parameter is provided, manual journals will not be included.",
+                              "key": "includeManualJournals",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the start date for the report.\r\n            \r\nIf no parameter is provided, the date of 12 months before the end date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                              "key": "startDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Date yyyy-MM-dd\r\n\r\nSpecifies the end date for the report.\r\n\r\nIf no parameter is provided, the current date will be used.\r\n            \r\nIt is recommended to always specify both a start date and end date; While the initial range may be set to 12 months, this may need to be reduced for high volume organisations in order to improve latency.",
+                              "key": "endDate",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:35:49.000Z",
+                      "updatedAt": "2026-07-28T03:35:49.000Z",
+                      "uid": "35240-f9a1242c-b029-45ae-aeb2-bf9a14fad447"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-017d742b-67b2-4594-b721-22bacd09e0b0"
+                }
+              ],
+              "id": "d89dc4d2-b696-4b3e-a422-f1b00d4ca35a",
+              "createdAt": "2026-07-28T03:35:49.000Z",
+              "updatedAt": "2026-07-28T03:35:49.000Z",
+              "uid": "35240-d89dc4d2-b696-4b3e-a422-f1b00d4ca35a"
+            }
+          ],
+          "id": "6c2b1c83-c845-4eba-95b6-82cc71ea42f5",
+          "createdAt": "2026-07-28T03:35:49.000Z",
+          "updatedAt": "2026-07-28T03:35:49.000Z",
+          "uid": "35240-6c2b1c83-c845-4eba-95b6-82cc71ea42f5"
+        }
+      ],
+      "id": "379b96f5-53e6-4b22-b3af-bd28694af5e7",
+      "createdAt": "2026-07-28T03:35:49.000Z",
+      "updatedAt": "2026-07-28T03:35:49.000Z",
+      "uid": "35240-379b96f5-53e6-4b22-b3af-bd28694af5e7"
+    },
+    {
+      "name": "BankStatementsPlus",
+      "item": [
+        {
+          "name": "statements",
+          "item": [
+            {
+              "name": "Xero Get Bank Statement Accounting",
+              "id": "1e883299-0f8e-48ce-904c-77e8ed048312",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/BankStatementsPlus/statements?BankAccountID=<uuid>&FromDate=<string>&ToDate=<string>&SummaryOnly=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "BankStatementsPlus",
+                    "statements"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) string, GUID\r\n\r\nBank account Id",
+                      "key": "BankAccountID",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "description": "(Required) date, yyyy-MM-dd \r\n\r\nSpecifies the start date of the query period. \r\nThe maximum range of the query period is 12 months. If the specified query period is more than 12 months the request will be rejected.",
+                      "key": "FromDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) date, yyyy-MM-dd \r\n\r\nSpecifies the end date of the query period. \r\nIf the end date is a future date, the request will be rejected.",
+                      "key": "ToDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "boolean, true/false\r\n\r\nThe default value is true if no parameter is provided.\r\n\r\nIn summary mode, the response will exclude the computation-heavy LineItems fields from bank transaction, invoice, credit note, prepayment and overpayment data, making the API calls quicker and more efficient.",
+                      "key": "SummaryOnly",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "description": "For lenders that prefer using bank statement data as the source of truth.  We provide a data point that will allow access to customer bank statements, plus for reconciled bank transactions the matching accounting, invoice and billing data as well.  As customers reconcile bank statements to invoices and bills, this transaction detail will provide valuable insight for lender's assessment measures. "
+              },
+              "response": [
+                {
+                  "id": "8e38d504-451e-4e6e-ab6a-05c4317e00e5",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/BankStatementsPlus/statements?BankAccountID=<uuid>&FromDate=<string>&ToDate=<string>&SummaryOnly=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "BankStatementsPlus",
+                        "statements"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) string, GUID\r\n\r\nBank account Id",
+                          "key": "BankAccountID",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "(Required) date, yyyy-MM-dd \r\n\r\nSpecifies the start date of the query period. \r\nThe maximum range of the query period is 12 months. If the specified query period is more than 12 months the request will be rejected.",
+                          "key": "FromDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) date, yyyy-MM-dd \r\n\r\nSpecifies the end date of the query period. \r\nIf the end date is a future date, the request will be rejected.",
+                          "key": "ToDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "boolean, true/false\r\n\r\nThe default value is true if no parameter is provided.\r\n\r\nIn summary mode, the response will exclude the computation-heavy LineItems fields from bank transaction, invoice, credit note, prepayment and overpayment data, making the API calls quicker and more efficient.",
+                          "key": "SummaryOnly",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"bankAccountId\": \"<uuid>\",\n  \"bankAccountName\": \"<string>\",\n  \"bankAccountCurrencyCode\": \"<string>\",\n  \"statements\": [\n    {\n      \"statementId\": \"<uuid>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"importedDateTimeUtc\": \"<dateTime>\",\n      \"importSource\": \"<string>\",\n      \"startBalance\": \"<double>\",\n      \"endBalance\": \"<double>\",\n      \"indicativeStartBalance\": \"<double>\",\n      \"indicativeEndBalance\": \"<double>\",\n      \"statementLines\": [\n        {\n          \"statementLineId\": \"<uuid>\",\n          \"postedDate\": \"<date>\",\n          \"payee\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"chequeNo\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"transactionDate\": \"<date>\",\n          \"type\": \"<string>\",\n          \"isReconciled\": \"<boolean>\",\n          \"isDuplicate\": \"<boolean>\",\n          \"isDeleted\": \"<boolean>\",\n          \"payments\": [\n            {\n              \"paymentId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"bankAmount\": \"<double>\",\n              \"currencyRate\": \"<double>\",\n              \"invoice\": {\n                \"invoiceId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"creditNote\": {\n                \"creditNoteId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"prepayment\": {\n                \"prepaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"overpayment\": {\n                \"overpaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              }\n            },\n            {\n              \"paymentId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"bankAmount\": \"<double>\",\n              \"currencyRate\": \"<double>\",\n              \"invoice\": {\n                \"invoiceId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"creditNote\": {\n                \"creditNoteId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"prepayment\": {\n                \"prepaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"overpayment\": {\n                \"overpaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              }\n            }\n          ],\n          \"bankTransactions\": [\n            {\n              \"bankTransactionId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"contact\": {\n                \"contactId\": \"<uuid>\",\n                \"contactName\": \"<string>\"\n              },\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"lineItems\": [\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                },\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                }\n              ]\n            },\n            {\n              \"bankTransactionId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"contact\": {\n                \"contactId\": \"<uuid>\",\n                \"contactName\": \"<string>\"\n              },\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"lineItems\": [\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                },\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"statementLineId\": \"<uuid>\",\n          \"postedDate\": \"<date>\",\n          \"payee\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"chequeNo\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"transactionDate\": \"<date>\",\n          \"type\": \"<string>\",\n          \"isReconciled\": \"<boolean>\",\n          \"isDuplicate\": \"<boolean>\",\n          \"isDeleted\": \"<boolean>\",\n          \"payments\": [\n            {\n              \"paymentId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"bankAmount\": \"<double>\",\n              \"currencyRate\": \"<double>\",\n              \"invoice\": {\n                \"invoiceId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"creditNote\": {\n                \"creditNoteId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"prepayment\": {\n                \"prepaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"overpayment\": {\n                \"overpaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              }\n            },\n            {\n              \"paymentId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"bankAmount\": \"<double>\",\n              \"currencyRate\": \"<double>\",\n              \"invoice\": {\n                \"invoiceId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"creditNote\": {\n                \"creditNoteId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"prepayment\": {\n                \"prepaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"overpayment\": {\n                \"overpaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              }\n            }\n          ],\n          \"bankTransactions\": [\n            {\n              \"bankTransactionId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"contact\": {\n                \"contactId\": \"<uuid>\",\n                \"contactName\": \"<string>\"\n              },\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"lineItems\": [\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                },\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                }\n              ]\n            },\n            {\n              \"bankTransactionId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"contact\": {\n                \"contactId\": \"<uuid>\",\n                \"contactName\": \"<string>\"\n              },\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"lineItems\": [\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                },\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"statementId\": \"<uuid>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"importedDateTimeUtc\": \"<dateTime>\",\n      \"importSource\": \"<string>\",\n      \"startBalance\": \"<double>\",\n      \"endBalance\": \"<double>\",\n      \"indicativeStartBalance\": \"<double>\",\n      \"indicativeEndBalance\": \"<double>\",\n      \"statementLines\": [\n        {\n          \"statementLineId\": \"<uuid>\",\n          \"postedDate\": \"<date>\",\n          \"payee\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"chequeNo\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"transactionDate\": \"<date>\",\n          \"type\": \"<string>\",\n          \"isReconciled\": \"<boolean>\",\n          \"isDuplicate\": \"<boolean>\",\n          \"isDeleted\": \"<boolean>\",\n          \"payments\": [\n            {\n              \"paymentId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"bankAmount\": \"<double>\",\n              \"currencyRate\": \"<double>\",\n              \"invoice\": {\n                \"invoiceId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"creditNote\": {\n                \"creditNoteId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"prepayment\": {\n                \"prepaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"overpayment\": {\n                \"overpaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              }\n            },\n            {\n              \"paymentId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"bankAmount\": \"<double>\",\n              \"currencyRate\": \"<double>\",\n              \"invoice\": {\n                \"invoiceId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"creditNote\": {\n                \"creditNoteId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"prepayment\": {\n                \"prepaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"overpayment\": {\n                \"overpaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              }\n            }\n          ],\n          \"bankTransactions\": [\n            {\n              \"bankTransactionId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"contact\": {\n                \"contactId\": \"<uuid>\",\n                \"contactName\": \"<string>\"\n              },\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"lineItems\": [\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                },\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                }\n              ]\n            },\n            {\n              \"bankTransactionId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"contact\": {\n                \"contactId\": \"<uuid>\",\n                \"contactName\": \"<string>\"\n              },\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"lineItems\": [\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                },\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"statementLineId\": \"<uuid>\",\n          \"postedDate\": \"<date>\",\n          \"payee\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"notes\": \"<string>\",\n          \"chequeNo\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"transactionDate\": \"<date>\",\n          \"type\": \"<string>\",\n          \"isReconciled\": \"<boolean>\",\n          \"isDuplicate\": \"<boolean>\",\n          \"isDeleted\": \"<boolean>\",\n          \"payments\": [\n            {\n              \"paymentId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"bankAmount\": \"<double>\",\n              \"currencyRate\": \"<double>\",\n              \"invoice\": {\n                \"invoiceId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"creditNote\": {\n                \"creditNoteId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"prepayment\": {\n                \"prepaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"overpayment\": {\n                \"overpaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              }\n            },\n            {\n              \"paymentId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"bankAmount\": \"<double>\",\n              \"currencyRate\": \"<double>\",\n              \"invoice\": {\n                \"invoiceId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"creditNote\": {\n                \"creditNoteId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"prepayment\": {\n                \"prepaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              },\n              \"overpayment\": {\n                \"overpaymentId\": \"<uuid>\",\n                \"contact\": {\n                  \"contactId\": \"<uuid>\",\n                  \"contactName\": \"<string>\"\n                },\n                \"total\": \"<double>\",\n                \"lineItems\": [\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  },\n                  {\n                    \"accountId\": \"<uuid>\",\n                    \"reportingCode\": \"<string>\",\n                    \"lineAmount\": \"<double>\",\n                    \"accountType\": \"<string>\"\n                  }\n                ]\n              }\n            }\n          ],\n          \"bankTransactions\": [\n            {\n              \"bankTransactionId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"contact\": {\n                \"contactId\": \"<uuid>\",\n                \"contactName\": \"<string>\"\n              },\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"lineItems\": [\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                },\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                }\n              ]\n            },\n            {\n              \"bankTransactionId\": \"<uuid>\",\n              \"batchPaymentId\": \"<uuid>\",\n              \"contact\": {\n                \"contactId\": \"<uuid>\",\n                \"contactName\": \"<string>\"\n              },\n              \"date\": \"<date>\",\n              \"amount\": \"<double>\",\n              \"lineItems\": [\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                },\n                {\n                  \"accountId\": \"<uuid>\",\n                  \"reportingCode\": \"<string>\",\n                  \"lineAmount\": \"<double>\",\n                  \"accountType\": \"<string>\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-8e38d504-451e-4e6e-ab6a-05c4317e00e5"
+                },
+                {
+                  "id": "76e4145f-b37e-4e6f-bf8e-4718dd3b3309",
+                  "name": "BadRequest",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/BankStatementsPlus/statements?BankAccountID=<uuid>&FromDate=<string>&ToDate=<string>&SummaryOnly=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "BankStatementsPlus",
+                        "statements"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) string, GUID\r\n\r\nBank account Id",
+                          "key": "BankAccountID",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "(Required) date, yyyy-MM-dd \r\n\r\nSpecifies the start date of the query period. \r\nThe maximum range of the query period is 12 months. If the specified query period is more than 12 months the request will be rejected.",
+                          "key": "FromDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) date, yyyy-MM-dd \r\n\r\nSpecifies the end date of the query period. \r\nIf the end date is a future date, the request will be rejected.",
+                          "key": "ToDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "boolean, true/false\r\n\r\nThe default value is true if no parameter is provided.\r\n\r\nIn summary mode, the response will exclude the computation-heavy LineItems fields from bank transaction, invoice, credit note, prepayment and overpayment data, making the API calls quicker and more efficient.",
+                          "key": "SummaryOnly",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"type\": \"invalid-application\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:35:49.000Z",
+                  "updatedAt": "2026-07-28T03:35:49.000Z",
+                  "uid": "35240-76e4145f-b37e-4e6f-bf8e-4718dd3b3309"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:49.000Z",
+              "updatedAt": "2026-07-28T03:35:49.000Z",
+              "uid": "35240-1e883299-0f8e-48ce-904c-77e8ed048312"
+            }
+          ],
+          "id": "87855a43-7405-401d-94b8-7edba68e350a",
+          "createdAt": "2026-07-28T03:35:49.000Z",
+          "updatedAt": "2026-07-28T03:35:49.000Z",
+          "uid": "35240-87855a43-7405-401d-94b8-7edba68e350a"
+        }
+      ],
+      "id": "6d30bcef-069e-49d3-a826-447a2f7adc80",
+      "createdAt": "2026-07-28T03:35:49.000Z",
+      "updatedAt": "2026-07-28T03:35:49.000Z",
+      "uid": "35240-6d30bcef-069e-49d3-a826-447a2f7adc80"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.xero.com/api.xro/2.0"
+    }
+  ]
+}

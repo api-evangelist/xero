@@ -1,0 +1,3108 @@
+{
+  "info": {
+    "_postman_id": "026dd5c0-2d0c-401e-9ef2-6d4522e06910",
+    "name": "Xero Accounting Files API",
+    "description": "Operations available to regular developers\n\nContact Support:\n Name: Xero Platform Team\n Email: api@xero.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:47.000Z",
+    "updatedAt": "2026-07-28T03:35:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-026dd5c0-2d0c-401e-9ef2-6d4522e06910"
+  },
+  "item": [
+    {
+      "name": "Files",
+      "item": [
+        {
+          "name": "{FileId}",
+          "item": [
+            {
+              "name": "Content",
+              "item": [
+                {
+                  "name": "Retrieves the content of a specific file",
+                  "id": "aeb28e05-5082-42a3-b393-a5eeabd58f3f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://identity.xero.com/connect/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://login.xero.com/identity/connect/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/octet-stream"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Files/:FileId/Content",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Files",
+                        ":FileId",
+                        "Content"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1d774243-3536-4298-9c46-6b425a7a6759",
+                          "key": "FileId",
+                          "value": "<uuid>",
+                          "description": "(Required) File id for single object"
+                        }
+                      ]
+                    },
+                    "description": "By passing in the appropriate options, retrieve data for specific file"
+                  },
+                  "response": [
+                    {
+                      "id": "9002ed0e-3890-410c-a9ed-e8b39cfd5e2e",
+                      "name": "returns the byte array of the specific file based on id",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "xero-tenant-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/octet-stream"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Files/:FileId/Content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Files",
+                            ":FileId",
+                            "Content"
+                          ],
+                          "variable": [
+                            {
+                              "key": "FileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/octet-stream"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<binary>",
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-9002ed0e-3890-410c-a9ed-e8b39cfd5e2e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-aeb28e05-5082-42a3-b393-a5eeabd58f3f"
+                }
+              ],
+              "id": "d2a38c58-3d25-4898-88ee-335b4a3c1d38",
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-d2a38c58-3d25-4898-88ee-335b4a3c1d38"
+            },
+            {
+              "name": "Associations",
+              "item": [
+                {
+                  "name": "{ObjectId}",
+                  "item": [
+                    {
+                      "name": "Deletes an existing file association",
+                      "id": "d470ee7b-de51-4684-9511-c62748dbf453",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://identity.xero.com/connect/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://login.xero.com/identity/connect/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "xero-tenant-id",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Files/:FileId/Associations/:ObjectId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Files",
+                            ":FileId",
+                            "Associations",
+                            ":ObjectId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c24c68ca-3880-4a28-a119-41c5486f3986",
+                              "key": "FileId",
+                              "value": "<uuid>",
+                              "description": "(Required) File id for single object"
+                            },
+                            {
+                              "id": "b7edecb0-7a4a-4289-908b-ac6b7075c528",
+                              "key": "ObjectId",
+                              "value": "<uuid>",
+                              "description": "(Required) Object id for single object"
+                            }
+                          ]
+                        },
+                        "description": "By passing in the appropriate options, you can create a new folder"
+                      },
+                      "response": [
+                        {
+                          "id": "2bbbe6d3-a5c5-4ef9-8c3e-0abad5550968",
+                          "name": "Successful deletion - return response 204 no content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "xero-tenant-id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Files/:FileId/Associations/:ObjectId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Files",
+                                ":FileId",
+                                "Associations",
+                                ":ObjectId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "FileId"
+                                },
+                                {
+                                  "key": "ObjectId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:35:48.000Z",
+                          "updatedAt": "2026-07-28T03:35:48.000Z",
+                          "uid": "35240-2bbbe6d3-a5c5-4ef9-8c3e-0abad5550968"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-d470ee7b-de51-4684-9511-c62748dbf453"
+                    }
+                  ],
+                  "id": "bcb23a30-852a-49ff-8776-91de1a87925d",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-bcb23a30-852a-49ff-8776-91de1a87925d"
+                },
+                {
+                  "name": "Retrieves a specific file associations",
+                  "id": "4e9e53f2-e8c0-40f8-aef1-af5799431efc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://identity.xero.com/connect/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://login.xero.com/identity/connect/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Files/:FileId/Associations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Files",
+                        ":FileId",
+                        "Associations"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7c7cc9e2-1827-4f70-bbc9-bb13193edc09",
+                          "key": "FileId",
+                          "value": "<uuid>",
+                          "description": "(Required) File id for single object"
+                        }
+                      ]
+                    },
+                    "description": "By passing in the appropriate options, \n"
+                  },
+                  "response": [
+                    {
+                      "id": "571ea719-cf4f-4504-a45a-0ccfe6c0083a",
+                      "name": "search results matching criteria",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "xero-tenant-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Files/:FileId/Associations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Files",
+                            ":FileId",
+                            "Associations"
+                          ],
+                          "variable": [
+                            {
+                              "key": "FileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"SendWithObject\": \"<boolean>\",\n    \"Name\": \"<string>\",\n    \"Size\": \"<integer>\",\n    \"CreatedDateUtc\": \"<dateTime>\",\n    \"AssociationDateUtc\": \"<dateTime>\",\n    \"FileId\": \"<uuid>\",\n    \"ObjectId\": \"<uuid>\",\n    \"ObjectGroup\": \"Account\",\n    \"ObjectType\": \"ApPrepaymentPayment\"\n  },\n  {\n    \"SendWithObject\": \"<boolean>\",\n    \"Name\": \"<string>\",\n    \"Size\": \"<integer>\",\n    \"CreatedDateUtc\": \"<dateTime>\",\n    \"AssociationDateUtc\": \"<dateTime>\",\n    \"FileId\": \"<uuid>\",\n    \"ObjectId\": \"<uuid>\",\n    \"ObjectGroup\": \"Contact\",\n    \"ObjectType\": \"ManJournal\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-571ea719-cf4f-4504-a45a-0ccfe6c0083a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-4e9e53f2-e8c0-40f8-aef1-af5799431efc"
+                },
+                {
+                  "name": "Creates a new file association",
+                  "id": "0882eb1d-6b15-4ba5-8b00-dbeafe5fdc2d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://identity.xero.com/connect/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://login.xero.com/identity/connect/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"SendWithObject\": \"<boolean>\",\n  \"Name\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<dateTime>\",\n  \"AssociationDateUtc\": \"<dateTime>\",\n  \"FileId\": \"<uuid>\",\n  \"ObjectId\": \"<uuid>\",\n  \"ObjectGroup\": \"BankTransaction\",\n  \"ObjectType\": \"Equity\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Files/:FileId/Associations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Files",
+                        ":FileId",
+                        "Associations"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6ec7f87e-b8cb-4c73-830b-735ec1508c18",
+                          "key": "FileId",
+                          "value": "<uuid>",
+                          "description": "(Required) File id for single object"
+                        }
+                      ]
+                    },
+                    "description": "By passing in the appropriate options, you can create a new folder"
+                  },
+                  "response": [
+                    {
+                      "id": "25150d65-89bb-4220-82b0-39904a1b5b80",
+                      "name": "A successful request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                            "key": "Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "xero-tenant-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"SendWithObject\": \"<boolean>\",\n  \"Name\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<dateTime>\",\n  \"AssociationDateUtc\": \"<dateTime>\",\n  \"FileId\": \"<uuid>\",\n  \"ObjectId\": \"<uuid>\",\n  \"ObjectGroup\": \"BankTransaction\",\n  \"ObjectType\": \"Equity\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/Files/:FileId/Associations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Files",
+                            ":FileId",
+                            "Associations"
+                          ],
+                          "variable": [
+                            {
+                              "key": "FileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"SendWithObject\": \"<boolean>\",\n  \"Name\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<dateTime>\",\n  \"AssociationDateUtc\": \"<dateTime>\",\n  \"FileId\": \"<uuid>\",\n  \"ObjectId\": \"<uuid>\",\n  \"ObjectGroup\": \"BankTransaction\",\n  \"ObjectType\": \"Equity\"\n}",
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-25150d65-89bb-4220-82b0-39904a1b5b80"
+                    },
+                    {
+                      "id": "561c8a85-3b36-4848-8d77-a8bd14c6c915",
+                      "name": "invalid input, object invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                            "key": "Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "xero-tenant-id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"SendWithObject\": \"<boolean>\",\n  \"Name\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<dateTime>\",\n  \"AssociationDateUtc\": \"<dateTime>\",\n  \"FileId\": \"<uuid>\",\n  \"ObjectId\": \"<uuid>\",\n  \"ObjectGroup\": \"BankTransaction\",\n  \"ObjectType\": \"Equity\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/Files/:FileId/Associations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Files",
+                            ":FileId",
+                            "Associations"
+                          ],
+                          "variable": [
+                            {
+                              "key": "FileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": \"[ { \\\"type\\\":\\\"Validation\\\", \\\"title\\\":\\\"Validation failure\\\", \\\"detail\\\":\\\"Object is not a Account\\\" } ]\"\n}",
+                      "createdAt": "2026-07-28T03:35:48.000Z",
+                      "updatedAt": "2026-07-28T03:35:48.000Z",
+                      "uid": "35240-561c8a85-3b36-4848-8d77-a8bd14c6c915"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-0882eb1d-6b15-4ba5-8b00-dbeafe5fdc2d"
+                }
+              ],
+              "id": "5a8edfd7-2dbc-4efb-97d7-37fce5cbcfe6",
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-5a8edfd7-2dbc-4efb-97d7-37fce5cbcfe6"
+            },
+            {
+              "name": "Retrieves a file by a unique file ID",
+              "id": "896299df-114c-4fb1-9106-6795e5f32bd5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Files/:FileId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Files",
+                    ":FileId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "dd664776-cd13-475b-8ae7-4856f6a6c3ec",
+                      "key": "FileId",
+                      "value": "<uuid>",
+                      "description": "(Required) File id for single object"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "679de0f2-3ef6-4ff0-8a45-9cb35f358097",
+                  "name": "search results matching criteria",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Files/:FileId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Files",
+                        ":FileId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "FileId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Name\": \"<string>\",\n  \"MimeType\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<string>\",\n  \"UpdatedDateUtc\": \"<string>\",\n  \"User\": {\n    \"Id\": \"<uuid>\",\n    \"Name\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"FullName\": \"<string>\"\n  },\n  \"Id\": \"<uuid>\",\n  \"FolderId\": \"<uuid>\"\n}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-679de0f2-3ef6-4ff0-8a45-9cb35f358097"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-896299df-114c-4fb1-9106-6795e5f32bd5"
+            },
+            {
+              "name": "Update a file",
+              "id": "85cf1bd4-3cad-403a-ae57-25c23d240b1d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"MimeType\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<string>\",\n  \"UpdatedDateUtc\": \"<string>\",\n  \"User\": {\n    \"Id\": \"<uuid>\",\n    \"Name\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"FullName\": \"<string>\"\n  },\n  \"Id\": \"<uuid>\",\n  \"FolderId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Files/:FileId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Files",
+                    ":FileId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8425820f-9d22-45c6-bb09-c5f2e7d0d849",
+                      "key": "FileId",
+                      "value": "<uuid>",
+                      "description": "(Required) File id for single object"
+                    }
+                  ]
+                },
+                "description": "Updates file properties of a single file"
+              },
+              "response": [
+                {
+                  "id": "46080185-eab6-49f9-817d-b22de19875bb",
+                  "name": "A successful request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"MimeType\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<string>\",\n  \"UpdatedDateUtc\": \"<string>\",\n  \"User\": {\n    \"Id\": \"<uuid>\",\n    \"Name\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"FullName\": \"<string>\"\n  },\n  \"Id\": \"<uuid>\",\n  \"FolderId\": \"<uuid>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Files/:FileId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Files",
+                        ":FileId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "FileId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Name\": \"<string>\",\n  \"MimeType\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<string>\",\n  \"UpdatedDateUtc\": \"<string>\",\n  \"User\": {\n    \"Id\": \"<uuid>\",\n    \"Name\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"FullName\": \"<string>\"\n  },\n  \"Id\": \"<uuid>\",\n  \"FolderId\": \"<uuid>\"\n}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-46080185-eab6-49f9-817d-b22de19875bb"
+                },
+                {
+                  "id": "72846650-54e9-41c6-96b6-a7851c0b3361",
+                  "name": "invalid input, object invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"MimeType\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<string>\",\n  \"UpdatedDateUtc\": \"<string>\",\n  \"User\": {\n    \"Id\": \"<uuid>\",\n    \"Name\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"FullName\": \"<string>\"\n  },\n  \"Id\": \"<uuid>\",\n  \"FolderId\": \"<uuid>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Files/:FileId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Files",
+                        ":FileId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "FileId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": \"[ { \\\"type\\\":\\\"Rename\\\", \\\"title\\\":\\\"Rename failed\\\", \\\"detail\\\":\\\"Unable to rename efd77bfc-7018-4da1-b251-7aa2d438382c to FooBar\\\" } ]\"\n}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-72846650-54e9-41c6-96b6-a7851c0b3361"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-85cf1bd4-3cad-403a-ae57-25c23d240b1d"
+            },
+            {
+              "name": "Deletes a specific file",
+              "id": "4c6214e0-9d78-4c52-8189-a4c3bcef58a6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Files/:FileId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Files",
+                    ":FileId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "876a2225-9a38-476b-b72e-6f60b0ddebaa",
+                      "key": "FileId",
+                      "value": "<uuid>",
+                      "description": "(Required) File id for single object"
+                    }
+                  ]
+                },
+                "description": "Delete a specific file"
+              },
+              "response": [
+                {
+                  "id": "e68e3e60-b6e3-494b-84fe-88a5f60c1b13",
+                  "name": "Successful deletion - return response 204 no content",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Files/:FileId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Files",
+                        ":FileId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "FileId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-e68e3e60-b6e3-494b-84fe-88a5f60c1b13"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-4c6214e0-9d78-4c52-8189-a4c3bcef58a6"
+            }
+          ],
+          "id": "d3599112-b074-4016-aa5a-e3ed703a8c6b",
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-d3599112-b074-4016-aa5a-e3ed703a8c6b"
+        },
+        {
+          "name": "{FolderId}",
+          "item": [
+            {
+              "name": "Uploads a File to a specific folder",
+              "id": "fa60435d-5bb5-49cc-ae84-a5013a909323",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) ",
+                      "key": "body",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "(Required) exact name of the file you are uploading",
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "key": "mimeType",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Files/:FolderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Files",
+                    ":FolderId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4cc01858-f6de-460c-a3f8-1a2cbdb6db42",
+                      "key": "FolderId",
+                      "value": "<uuid>",
+                      "description": "(Required) pass required folder id to save file to specific folder"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "4684536e-44c5-44ed-ac03-f8666a8cd3a8",
+                  "name": "A successful request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) ",
+                          "key": "body",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) exact name of the file you are uploading",
+                          "key": "name",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "filename",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "key": "mimeType",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Files/:FolderId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Files",
+                        ":FolderId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "FolderId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Name\": \"<string>\",\n  \"MimeType\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<string>\",\n  \"UpdatedDateUtc\": \"<string>\",\n  \"User\": {\n    \"Id\": \"<uuid>\",\n    \"Name\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"FullName\": \"<string>\"\n  },\n  \"Id\": \"<uuid>\",\n  \"FolderId\": \"<uuid>\"\n}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-4684536e-44c5-44ed-ac03-f8666a8cd3a8"
+                },
+                {
+                  "id": "3796261c-fb11-4f5b-af87-e9e996cb75df",
+                  "name": "invalid input, object invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) ",
+                          "key": "body",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) exact name of the file you are uploading",
+                          "key": "name",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "filename",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "key": "mimeType",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Files/:FolderId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Files",
+                        ":FolderId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "FolderId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": \"[ { \\\"type\\\":\\\"Validation\\\", \\\"title\\\":\\\"Validation failure\\\", \\\"detail\\\":\\\"Extension: boo is not a valid File extension.\\\" } ]\"\n}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-3796261c-fb11-4f5b-af87-e9e996cb75df"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-fa60435d-5bb5-49cc-ae84-a5013a909323"
+            }
+          ],
+          "id": "1bbe70a1-05e6-4e4b-b6de-6cc065dc1bb8",
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-1bbe70a1-05e6-4e4b-b6de-6cc065dc1bb8"
+        },
+        {
+          "name": "Retrieves files",
+          "id": "62b82181-5ce9-4790-9c5b-8bb3d27d532d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Files?pagesize=<integer>&page=<integer>&sort=Name&direction=ASC",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Files"
+              ],
+              "query": [
+                {
+                  "description": "pass an optional page size value",
+                  "key": "pagesize",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "number of records to skip for pagination",
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "values to sort by",
+                  "key": "sort",
+                  "value": "Name"
+                },
+                {
+                  "description": "sort direction",
+                  "key": "direction",
+                  "value": "ASC"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c2ac8d7c-cb79-4055-be36-15364c820b92",
+              "name": "search results matching criteria",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Files?pagesize=<integer>&page=<integer>&sort=Name&direction=ASC",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Files"
+                  ],
+                  "query": [
+                    {
+                      "description": "pass an optional page size value",
+                      "key": "pagesize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "number of records to skip for pagination",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "values to sort by",
+                      "key": "sort",
+                      "value": "Name"
+                    },
+                    {
+                      "description": "sort direction",
+                      "key": "direction",
+                      "value": "ASC"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"TotalCount\": \"<integer>\",\n  \"Page\": \"<integer>\",\n  \"PerPage\": \"<integer>\",\n  \"Items\": [\n    {\n      \"Name\": \"<string>\",\n      \"MimeType\": \"<string>\",\n      \"Size\": \"<integer>\",\n      \"CreatedDateUtc\": \"<string>\",\n      \"UpdatedDateUtc\": \"<string>\",\n      \"User\": {\n        \"Id\": \"<uuid>\",\n        \"Name\": \"<string>\",\n        \"FirstName\": \"<string>\",\n        \"LastName\": \"<string>\",\n        \"FullName\": \"<string>\"\n      },\n      \"Id\": \"<uuid>\",\n      \"FolderId\": \"<uuid>\"\n    },\n    {\n      \"Name\": \"<string>\",\n      \"MimeType\": \"<string>\",\n      \"Size\": \"<integer>\",\n      \"CreatedDateUtc\": \"<string>\",\n      \"UpdatedDateUtc\": \"<string>\",\n      \"User\": {\n        \"Id\": \"<uuid>\",\n        \"Name\": \"<string>\",\n        \"FirstName\": \"<string>\",\n        \"LastName\": \"<string>\",\n        \"FullName\": \"<string>\"\n      },\n      \"Id\": \"<uuid>\",\n      \"FolderId\": \"<uuid>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-c2ac8d7c-cb79-4055-be36-15364c820b92"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-62b82181-5ce9-4790-9c5b-8bb3d27d532d"
+        },
+        {
+          "name": "Uploads a File to the inbox",
+          "id": "492779fc-e49a-492f-a740-83e7046fdb24",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "description": "(Required) ",
+                  "key": "body",
+                  "value": "<string>",
+                  "type": "text"
+                },
+                {
+                  "description": "(Required) exact name of the file you are uploading",
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "filename",
+                  "value": "<string>",
+                  "type": "text"
+                },
+                {
+                  "key": "mimeType",
+                  "value": "<string>",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/Files",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Files"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1d11aff1-2146-4422-a9cd-fddd15a3d8c7",
+              "name": "A successful request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) ",
+                      "key": "body",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "(Required) exact name of the file you are uploading",
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "key": "mimeType",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Files",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Files"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Name\": \"<string>\",\n  \"MimeType\": \"<string>\",\n  \"Size\": \"<integer>\",\n  \"CreatedDateUtc\": \"<string>\",\n  \"UpdatedDateUtc\": \"<string>\",\n  \"User\": {\n    \"Id\": \"<uuid>\",\n    \"Name\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"FullName\": \"<string>\"\n  },\n  \"Id\": \"<uuid>\",\n  \"FolderId\": \"<uuid>\"\n}",
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-1d11aff1-2146-4422-a9cd-fddd15a3d8c7"
+            },
+            {
+              "id": "79c76785-2fd8-45b3-bcfa-6b94e0598df3",
+              "name": "invalid input, object invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) ",
+                      "key": "body",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "(Required) exact name of the file you are uploading",
+                      "key": "name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "key": "mimeType",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Files",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Files"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"example\": \"[ { \\\"type\\\":\\\"Validation\\\", \\\"title\\\":\\\"Validation failure\\\", \\\"detail\\\":\\\"Extension: boo is not a valid File extension.\\\" } ]\"\n}",
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-79c76785-2fd8-45b3-bcfa-6b94e0598df3"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-492779fc-e49a-492f-a740-83e7046fdb24"
+        }
+      ],
+      "id": "38bc461a-7504-4193-b443-597cb002bbd1",
+      "createdAt": "2026-07-28T03:35:48.000Z",
+      "updatedAt": "2026-07-28T03:35:48.000Z",
+      "uid": "35240-38bc461a-7504-4193-b443-597cb002bbd1"
+    },
+    {
+      "name": "Associations",
+      "item": [
+        {
+          "name": "{ObjectId}",
+          "item": [
+            {
+              "name": "Retrieves an association object using a unique object ID",
+              "id": "bd6fce2e-b949-4263-be61-5f9ef6fe8fb3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Associations/:ObjectId?pagesize=<integer>&page=<integer>&sort=CreatedDateUtc&direction=ASC",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Associations",
+                    ":ObjectId"
+                  ],
+                  "query": [
+                    {
+                      "description": "pass an optional page size value",
+                      "key": "pagesize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "number of records to skip for pagination",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "values to sort by",
+                      "key": "sort",
+                      "value": "CreatedDateUtc"
+                    },
+                    {
+                      "description": "direction to sort by",
+                      "key": "direction",
+                      "value": "ASC"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "0c3ae6f4-9b31-4b3f-8137-4bcef50228f4",
+                      "key": "ObjectId",
+                      "value": "<uuid>",
+                      "description": "(Required) Object id for single object"
+                    }
+                  ]
+                },
+                "description": "By passing in the appropriate options, you can retrieve an association"
+              },
+              "response": [
+                {
+                  "id": "f9a6903d-c7d4-45e3-9339-924ab8d9daba",
+                  "name": "search results matching criteria",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Associations/:ObjectId?pagesize=<integer>&page=<integer>&sort=CreatedDateUtc&direction=ASC",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Associations",
+                        ":ObjectId"
+                      ],
+                      "query": [
+                        {
+                          "description": "pass an optional page size value",
+                          "key": "pagesize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "number of records to skip for pagination",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "values to sort by",
+                          "key": "sort",
+                          "value": "CreatedDateUtc"
+                        },
+                        {
+                          "description": "direction to sort by",
+                          "key": "direction",
+                          "value": "ASC"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "ObjectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"SendWithObject\": \"<boolean>\",\n    \"Name\": \"<string>\",\n    \"Size\": \"<integer>\",\n    \"CreatedDateUtc\": \"<dateTime>\",\n    \"AssociationDateUtc\": \"<dateTime>\",\n    \"FileId\": \"<uuid>\",\n    \"ObjectId\": \"<uuid>\",\n    \"ObjectGroup\": \"Account\",\n    \"ObjectType\": \"ApPrepaymentPayment\"\n  },\n  {\n    \"SendWithObject\": \"<boolean>\",\n    \"Name\": \"<string>\",\n    \"Size\": \"<integer>\",\n    \"CreatedDateUtc\": \"<dateTime>\",\n    \"AssociationDateUtc\": \"<dateTime>\",\n    \"FileId\": \"<uuid>\",\n    \"ObjectId\": \"<uuid>\",\n    \"ObjectGroup\": \"Contact\",\n    \"ObjectType\": \"ManJournal\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-f9a6903d-c7d4-45e3-9339-924ab8d9daba"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-bd6fce2e-b949-4263-be61-5f9ef6fe8fb3"
+            }
+          ],
+          "id": "d1d2da86-6389-4f2e-857f-708f6179fb0b",
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-d1d2da86-6389-4f2e-857f-708f6179fb0b"
+        },
+        {
+          "name": "Count",
+          "item": [
+            {
+              "name": "Retrieves a count of associations for a list of objects.",
+              "id": "e56f3521-0c2e-4310-9f65-2c1ed671b4d6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Associations/Count?ObjectIds=<uuid>&ObjectIds=<uuid>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Associations",
+                    "Count"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) A comma-separated list of object ids",
+                      "key": "ObjectIds",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "description": "(Required) A comma-separated list of object ids",
+                      "key": "ObjectIds",
+                      "value": "<uuid>"
+                    }
+                  ]
+                },
+                "description": "By passing in the appropriate options, you can retrieve the association count for objects"
+              },
+              "response": [
+                {
+                  "id": "0ed935c6-a20c-4035-80d3-e8525ddaddc2",
+                  "name": "A dictionary of the object Ids and associations count",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Associations/Count?ObjectIds=<uuid>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Associations",
+                        "Count"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A comma-separated list of object ids",
+                          "key": "ObjectIds",
+                          "value": "<uuid>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-0ed935c6-a20c-4035-80d3-e8525ddaddc2"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-e56f3521-0c2e-4310-9f65-2c1ed671b4d6"
+            }
+          ],
+          "id": "85317658-0461-4e0c-a5d2-83480e33865e",
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-85317658-0461-4e0c-a5d2-83480e33865e"
+        }
+      ],
+      "id": "697e6a7e-f931-47cc-b18f-6958943ce52a",
+      "createdAt": "2026-07-28T03:35:48.000Z",
+      "updatedAt": "2026-07-28T03:35:48.000Z",
+      "uid": "35240-697e6a7e-f931-47cc-b18f-6958943ce52a"
+    },
+    {
+      "name": "Folders",
+      "item": [
+        {
+          "name": "{FolderId}",
+          "item": [
+            {
+              "name": "Retrieves specific folder by using a unique folder ID",
+              "id": "e757be36-e724-40d8-96ec-f8e677fb6f5b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Folders/:FolderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Folders",
+                    ":FolderId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "bfd90a56-4f2e-4b76-895d-aa53e665cd7c",
+                      "key": "FolderId",
+                      "value": "<uuid>",
+                      "description": "(Required) Folder id for single object"
+                    }
+                  ]
+                },
+                "description": "By passing in the appropriate ID, you can search for specific folder"
+              },
+              "response": [
+                {
+                  "id": "2f1ca7da-8282-4eea-98df-4f522626a6b9",
+                  "name": "search results matching criteria",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Folders/:FolderId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Folders",
+                        ":FolderId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "FolderId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Name\": \"<string>\",\n  \"FileCount\": \"<integer>\",\n  \"Email\": \"<string>\",\n  \"IsInbox\": \"<boolean>\",\n  \"Id\": \"<uuid>\"\n}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-2f1ca7da-8282-4eea-98df-4f522626a6b9"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-e757be36-e724-40d8-96ec-f8e677fb6f5b"
+            },
+            {
+              "name": "Updates an existing folder",
+              "id": "bc5bfe9b-44aa-4970-96c8-ab3e009dd333",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"FileCount\": \"<integer>\",\n  \"Email\": \"<string>\",\n  \"IsInbox\": \"<boolean>\",\n  \"Id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Folders/:FolderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Folders",
+                    ":FolderId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "150c586b-b1b5-4565-9da7-b381f0364937",
+                      "key": "FolderId",
+                      "value": "<uuid>",
+                      "description": "(Required) Folder id for single object"
+                    }
+                  ]
+                },
+                "description": "By passing in the appropriate ID and properties, you can update a folder"
+              },
+              "response": [
+                {
+                  "id": "7b7ac6b7-13bc-44db-9e89-2b8d39ea2d98",
+                  "name": "return the updated object",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"FileCount\": \"<integer>\",\n  \"Email\": \"<string>\",\n  \"IsInbox\": \"<boolean>\",\n  \"Id\": \"<uuid>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Folders/:FolderId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Folders",
+                        ":FolderId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "FolderId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Name\": \"<string>\",\n  \"FileCount\": \"<integer>\",\n  \"Email\": \"<string>\",\n  \"IsInbox\": \"<boolean>\",\n  \"Id\": \"<uuid>\"\n}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-7b7ac6b7-13bc-44db-9e89-2b8d39ea2d98"
+                },
+                {
+                  "id": "a94af72d-b772-4b62-89f7-f80a5b80ab25",
+                  "name": "invalid input, object invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"Name\": \"<string>\",\n  \"FileCount\": \"<integer>\",\n  \"Email\": \"<string>\",\n  \"IsInbox\": \"<boolean>\",\n  \"Id\": \"<uuid>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Folders/:FolderId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Folders",
+                        ":FolderId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "FolderId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": \"[ { \\\"type\\\":\\\"Validation\\\", \\\"title\\\":\\\"Validation failure\\\", \\\"detail\\\":\\\"Name contains one or more bad characters\\\" } ]\"\n}",
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-a94af72d-b772-4b62-89f7-f80a5b80ab25"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-bc5bfe9b-44aa-4970-96c8-ab3e009dd333"
+            },
+            {
+              "name": "Deletes a folder",
+              "id": "59f6cea9-0e7e-4d92-93f3-7604099c0a9f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Folders/:FolderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Folders",
+                    ":FolderId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c1a12944-8154-4461-8255-45b899b97d1c",
+                      "key": "FolderId",
+                      "value": "<uuid>",
+                      "description": "(Required) Folder id for single object"
+                    }
+                  ]
+                },
+                "description": "By passing in the appropriate ID, you can delete a folder"
+              },
+              "response": [
+                {
+                  "id": "a18dd5c1-0c98-400e-b2ba-f1c523ba0f3c",
+                  "name": "Successful deletion - return response 204 no content",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "xero-tenant-id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Folders/:FolderId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Folders",
+                        ":FolderId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "FolderId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:35:48.000Z",
+                  "updatedAt": "2026-07-28T03:35:48.000Z",
+                  "uid": "35240-a18dd5c1-0c98-400e-b2ba-f1c523ba0f3c"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-59f6cea9-0e7e-4d92-93f3-7604099c0a9f"
+            }
+          ],
+          "id": "3e7c1ecb-daa3-4107-9658-3689a529f182",
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-3e7c1ecb-daa3-4107-9658-3689a529f182"
+        },
+        {
+          "name": "Retrieves folders",
+          "id": "fa19fdb6-e754-4cfd-a7c0-335036f7b945",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Folders?sort=Size",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Folders"
+              ],
+              "query": [
+                {
+                  "description": "values to sort by",
+                  "key": "sort",
+                  "value": "Size"
+                }
+              ]
+            },
+            "description": "By passing in the appropriate options, you can search for available folders"
+          },
+          "response": [
+            {
+              "id": "f1c12c86-b68b-45a4-b511-ba23f93092a5",
+              "name": "search results matching criteria",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Folders?sort=Size",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Folders"
+                  ],
+                  "query": [
+                    {
+                      "description": "values to sort by",
+                      "key": "sort",
+                      "value": "Size"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"Name\": \"<string>\",\n    \"FileCount\": \"<integer>\",\n    \"Email\": \"<string>\",\n    \"IsInbox\": \"<boolean>\",\n    \"Id\": \"<uuid>\"\n  },\n  {\n    \"Name\": \"<string>\",\n    \"FileCount\": \"<integer>\",\n    \"Email\": \"<string>\",\n    \"IsInbox\": \"<boolean>\",\n    \"Id\": \"<uuid>\"\n  }\n]",
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-f1c12c86-b68b-45a4-b511-ba23f93092a5"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-fa19fdb6-e754-4cfd-a7c0-335036f7b945"
+        },
+        {
+          "name": "Creates a new folder",
+          "id": "90f02c4c-79ea-4ab5-a5dd-85a184606429",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Name\": \"<string>\",\n  \"FileCount\": \"<integer>\",\n  \"Email\": \"<string>\",\n  \"IsInbox\": \"<boolean>\",\n  \"Id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/Folders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Folders"
+              ]
+            },
+            "description": "By passing in the appropriate properties, you can create a new folder"
+          },
+          "response": [
+            {
+              "id": "f2ae95e6-9e29-42a9-a529-53c3564adef5",
+              "name": "search results matching criteria",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"FileCount\": \"<integer>\",\n  \"Email\": \"<string>\",\n  \"IsInbox\": \"<boolean>\",\n  \"Id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Folders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Folders"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Name\": \"<string>\",\n  \"FileCount\": \"<integer>\",\n  \"Email\": \"<string>\",\n  \"IsInbox\": \"<boolean>\",\n  \"Id\": \"<uuid>\"\n}",
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-f2ae95e6-9e29-42a9-a529-53c3564adef5"
+            },
+            {
+              "id": "e5c03fef-309b-4efc-9011-d6ecd9afa80f",
+              "name": "invalid input, object invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Name\": \"<string>\",\n  \"FileCount\": \"<integer>\",\n  \"Email\": \"<string>\",\n  \"IsInbox\": \"<boolean>\",\n  \"Id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Folders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Folders"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"example\": \"[ { \\\"type\\\":\\\"Validation\\\", \\\"title\\\":\\\"Validation failure\\\", \\\"detail\\\":\\\"Name contains one or more bad characters\\\" } ]\"\n}",
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-e5c03fef-309b-4efc-9011-d6ecd9afa80f"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-90f02c4c-79ea-4ab5-a5dd-85a184606429"
+        }
+      ],
+      "id": "695bbe64-3b60-4d72-9685-029b63808124",
+      "createdAt": "2026-07-28T03:35:48.000Z",
+      "updatedAt": "2026-07-28T03:35:48.000Z",
+      "uid": "35240-695bbe64-3b60-4d72-9685-029b63808124"
+    },
+    {
+      "name": "Inbox",
+      "item": [
+        {
+          "name": "Retrieves inbox folder",
+          "id": "c6bb8942-61ae-4fd7-a437-db3ba5969716",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "xero-tenant-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Inbox",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Inbox"
+              ]
+            },
+            "description": "Search for the user inbox"
+          },
+          "response": [
+            {
+              "id": "9b871bc3-43f7-48d1-a47a-6cbf2700cfeb",
+              "name": "search results matching criteria",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "xero-tenant-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Inbox",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Inbox"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Name\": \"<string>\",\n  \"FileCount\": \"<integer>\",\n  \"Email\": \"<string>\",\n  \"IsInbox\": \"<boolean>\",\n  \"Id\": \"<uuid>\"\n}",
+              "createdAt": "2026-07-28T03:35:48.000Z",
+              "updatedAt": "2026-07-28T03:35:48.000Z",
+              "uid": "35240-9b871bc3-43f7-48d1-a47a-6cbf2700cfeb"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:48.000Z",
+          "updatedAt": "2026-07-28T03:35:48.000Z",
+          "uid": "35240-c6bb8942-61ae-4fd7-a437-db3ba5969716"
+        }
+      ],
+      "id": "b52a5ebd-5cc7-4a75-9172-48e2d7b56515",
+      "createdAt": "2026-07-28T03:35:48.000Z",
+      "updatedAt": "2026-07-28T03:35:48.000Z",
+      "uid": "35240-b52a5ebd-5cc7-4a75-9172-48e2d7b56515"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.xero.com/api.xro/2.0"
+    }
+  ]
+}

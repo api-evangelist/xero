@@ -1,0 +1,3646 @@
+{
+  "info": {
+    "_postman_id": "6d25a375-e24d-4adb-96d9-af576ea1daf1",
+    "name": "Xero Accounting Project API",
+    "description": "Contact Support:\n Name: Xero Platform Team\n Email: api@xero.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:36:01.000Z",
+    "updatedAt": "2026-07-28T03:36:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6d25a375-e24d-4adb-96d9-af576ea1daf1"
+  },
+  "item": [
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "Tasks",
+              "item": [
+                {
+                  "name": "{taskId}",
+                  "item": [
+                    {
+                      "name": "Xero Retrieves a single project task",
+                      "id": "72d89b51-0b63-45f6-8191-610d61ec968b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://identity.xero.com/connect/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://login.xero.com/identity/connect/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Tasks/:taskId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Tasks",
+                            ":taskId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0cacef5f-377b-49d4-929e-5e3f6eafc379",
+                              "key": "projectId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                            },
+                            {
+                              "id": "da8f0967-3657-4ace-80b1-d03f89c536e0",
+                              "key": "taskId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual task by appending the taskId to the endpoint, i.e. GET https://.../tasks/{taskID}"
+                            }
+                          ]
+                        },
+                        "description": "Allows you to retrieve a specific project"
+                      },
+                      "response": [
+                        {
+                          "id": "d69c9227-5bc8-4fd1-b1e2-627ba08196a0",
+                          "name": "OK/success, returns the specified task object",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"taskId\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"rate\": {\n    \"currency\": \"YER\",\n    \"value\": \"<double>\"\n  },\n  \"chargeType\": \"TIME\",\n  \"estimateMinutes\": \"<integer>\",\n  \"projectId\": \"<uuid>\",\n  \"totalMinutes\": \"<integer>\",\n  \"totalAmount\": {\n    \"currency\": \"TOP\",\n    \"value\": \"<double>\"\n  },\n  \"minutesInvoiced\": \"<integer>\",\n  \"minutesToBeInvoiced\": \"<integer>\",\n  \"fixedMinutes\": \"<integer>\",\n  \"nonChargeableMinutes\": \"<integer>\",\n  \"amountToBeInvoiced\": {\n    \"currency\": \"CLP\",\n    \"value\": \"<double>\"\n  },\n  \"amountInvoiced\": {\n    \"currency\": \"KRW\",\n    \"value\": \"<double>\"\n  },\n  \"status\": \"INVOICED\"\n}",
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-d69c9227-5bc8-4fd1-b1e2-627ba08196a0"
+                        },
+                        {
+                          "id": "fb4e8fe7-fc13-47eb-98d5-19f5051a5357",
+                          "name": "A failed request due to validation error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-fb4e8fe7-fc13-47eb-98d5-19f5051a5357"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-72d89b51-0b63-45f6-8191-610d61ec968b"
+                    },
+                    {
+                      "name": "Xero Allows you to update a task",
+                      "id": "26fffb75-74f6-4673-8c31-bd8211bef4b9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://identity.xero.com/connect/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://login.xero.com/identity/connect/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                            "key": "Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"rate\": {\n    \"currency\": \"UZS\",\n    \"value\": \"<double>\"\n  },\n  \"chargeType\": \"FIXED\",\n  \"estimateMinutes\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Tasks/:taskId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Tasks",
+                            ":taskId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6ca2bb2c-6f78-4006-a02e-8654e550d94e",
+                              "key": "projectId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                            },
+                            {
+                              "id": "2632a82c-c6c1-404b-b1f3-345430a23009",
+                              "key": "taskId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual task by appending the id to the endpoint"
+                            }
+                          ]
+                        },
+                        "description": "Allows you to update a specific task"
+                      },
+                      "response": [
+                        {
+                          "id": "226b3d28-3800-4ef3-99dc-28a61057a4be",
+                          "name": "OK/Success - return response 204 no content",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                                "key": "Idempotency-Key",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"rate\": {\n    \"currency\": \"UZS\",\n    \"value\": \"<double>\"\n  },\n  \"chargeType\": \"FIXED\",\n  \"estimateMinutes\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-226b3d28-3800-4ef3-99dc-28a61057a4be"
+                        },
+                        {
+                          "id": "61add999-9712-470e-baa8-4aaea45bb5ab",
+                          "name": "A failed request due to validation error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                                "key": "Idempotency-Key",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"rate\": {\n    \"currency\": \"UZS\",\n    \"value\": \"<double>\"\n  },\n  \"chargeType\": \"FIXED\",\n  \"estimateMinutes\": \"<integer>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-61add999-9712-470e-baa8-4aaea45bb5ab"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-26fffb75-74f6-4673-8c31-bd8211bef4b9"
+                    },
+                    {
+                      "name": "Xero Allows you to delete a task",
+                      "id": "3fdc192d-5847-4926-b70f-629a29bbd23c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://identity.xero.com/connect/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://login.xero.com/identity/connect/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Tasks/:taskId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Tasks",
+                            ":taskId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "756899e4-c593-4223-9add-a56b701b280b",
+                              "key": "projectId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                            },
+                            {
+                              "id": "9d6cd12e-d289-4dd1-92b6-26e3d10b66e4",
+                              "key": "taskId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual task by appending the id to the endpoint"
+                            }
+                          ]
+                        },
+                        "description": "Allows you to delete a specific task"
+                      },
+                      "response": [
+                        {
+                          "id": "f4f294e0-12a3-462e-a857-dd68fd797e21",
+                          "name": "Success - return response 204 no content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-f4f294e0-12a3-462e-a857-dd68fd797e21"
+                        },
+                        {
+                          "id": "0fe51c01-5845-4876-b3ed-343b8d235907",
+                          "name": "A failed request due to validation error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Tasks/:taskId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Tasks",
+                                ":taskId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-0fe51c01-5845-4876-b3ed-343b8d235907"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-3fdc192d-5847-4926-b70f-629a29bbd23c"
+                    }
+                  ],
+                  "id": "125599d0-5cfe-4679-a2f5-36fb6414ee59",
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-125599d0-5cfe-4679-a2f5-36fb6414ee59"
+                },
+                {
+                  "name": "Xero Retrieves all project tasks",
+                  "id": "97f11c83-f218-4f15-b835-74ed18bb3393",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://identity.xero.com/connect/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://login.xero.com/identity/connect/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Projects/:projectId/Tasks?page=<integer>&pageSize=<integer>&taskIds=<string>&chargeType=NON_CHARGEABLE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Projects",
+                        ":projectId",
+                        "Tasks"
+                      ],
+                      "query": [
+                        {
+                          "description": "Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Search for all tasks that match a comma separated list of taskIds, i.e. GET https://.../tasks?taskIds={taskID},{taskID}",
+                          "key": "taskIds",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "chargeType",
+                          "value": "NON_CHARGEABLE"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "cfece027-bfe1-446d-8558-35ba3bdacaf2",
+                          "key": "projectId",
+                          "value": "<uuid>",
+                          "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                        }
+                      ]
+                    },
+                    "description": "Allows you to retrieve a specific project"
+                  },
+                  "response": [
+                    {
+                      "id": "54a72da2-1f13-461a-9a41-f339386dec98",
+                      "name": "OK/success, returns a list of task objects",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Tasks?page=<integer>&pageSize=<integer>&taskIds=<string>&chargeType=NON_CHARGEABLE",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Tasks"
+                          ],
+                          "query": [
+                            {
+                              "description": "Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Search for all tasks that match a comma separated list of taskIds, i.e. GET https://.../tasks?taskIds={taskID},{taskID}",
+                              "key": "taskIds",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "chargeType",
+                              "value": "NON_CHARGEABLE"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"taskId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rate\": {\n        \"currency\": \"WST\",\n        \"value\": \"<double>\"\n      },\n      \"chargeType\": \"NON_CHARGEABLE\",\n      \"estimateMinutes\": \"<integer>\",\n      \"projectId\": \"<uuid>\",\n      \"totalMinutes\": \"<integer>\",\n      \"totalAmount\": {\n        \"currency\": \"LYD\",\n        \"value\": \"<double>\"\n      },\n      \"minutesInvoiced\": \"<integer>\",\n      \"minutesToBeInvoiced\": \"<integer>\",\n      \"fixedMinutes\": \"<integer>\",\n      \"nonChargeableMinutes\": \"<integer>\",\n      \"amountToBeInvoiced\": {\n        \"currency\": \"SGD\",\n        \"value\": \"<double>\"\n      },\n      \"amountInvoiced\": {\n        \"currency\": \"PHP\",\n        \"value\": \"<double>\"\n      },\n      \"status\": \"INVOICED\"\n    },\n    {\n      \"taskId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rate\": {\n        \"currency\": \"YER\",\n        \"value\": \"<double>\"\n      },\n      \"chargeType\": \"FIXED\",\n      \"estimateMinutes\": \"<integer>\",\n      \"projectId\": \"<uuid>\",\n      \"totalMinutes\": \"<integer>\",\n      \"totalAmount\": {\n        \"currency\": \"ZMW\",\n        \"value\": \"<double>\"\n      },\n      \"minutesInvoiced\": \"<integer>\",\n      \"minutesToBeInvoiced\": \"<integer>\",\n      \"fixedMinutes\": \"<integer>\",\n      \"nonChargeableMinutes\": \"<integer>\",\n      \"amountToBeInvoiced\": {\n        \"currency\": \"BWP\",\n        \"value\": \"<double>\"\n      },\n      \"amountInvoiced\": {\n        \"currency\": \"AOA\",\n        \"value\": \"<double>\"\n      },\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-54a72da2-1f13-461a-9a41-f339386dec98"
+                    },
+                    {
+                      "id": "0cf840bf-2e86-4fb2-932a-c04c61aea249",
+                      "name": "A failed request due to validation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Tasks?page=<integer>&pageSize=<integer>&taskIds=<string>&chargeType=NON_CHARGEABLE",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Tasks"
+                          ],
+                          "query": [
+                            {
+                              "description": "Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Search for all tasks that match a comma separated list of taskIds, i.e. GET https://.../tasks?taskIds={taskID},{taskID}",
+                              "key": "taskIds",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "chargeType",
+                              "value": "NON_CHARGEABLE"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-0cf840bf-2e86-4fb2-932a-c04c61aea249"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-97f11c83-f218-4f15-b835-74ed18bb3393"
+                },
+                {
+                  "name": "Xero Allows you to create a task",
+                  "id": "9cb73c95-c2b2-4e9f-9844-43c4672efb9a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://identity.xero.com/connect/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://login.xero.com/identity/connect/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"rate\": {\n    \"currency\": \"UZS\",\n    \"value\": \"<double>\"\n  },\n  \"chargeType\": \"FIXED\",\n  \"estimateMinutes\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Projects/:projectId/Tasks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Projects",
+                        ":projectId",
+                        "Tasks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "613ae2db-aac8-456b-aadb-96b74bf5f685",
+                          "key": "projectId",
+                          "value": "<uuid>",
+                          "description": "(Required) You can create a task on a specified projectId"
+                        }
+                      ]
+                    },
+                    "description": "Allows you to create a specific task"
+                  },
+                  "response": [
+                    {
+                      "id": "e035096f-b08a-4950-a9ac-b2868859c2d8",
+                      "name": "OK/success, returns the new task object",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                            "key": "Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"rate\": {\n    \"currency\": \"UZS\",\n    \"value\": \"<double>\"\n  },\n  \"chargeType\": \"FIXED\",\n  \"estimateMinutes\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Tasks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Tasks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"taskId\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"rate\": {\n    \"currency\": \"YER\",\n    \"value\": \"<double>\"\n  },\n  \"chargeType\": \"TIME\",\n  \"estimateMinutes\": \"<integer>\",\n  \"projectId\": \"<uuid>\",\n  \"totalMinutes\": \"<integer>\",\n  \"totalAmount\": {\n    \"currency\": \"TOP\",\n    \"value\": \"<double>\"\n  },\n  \"minutesInvoiced\": \"<integer>\",\n  \"minutesToBeInvoiced\": \"<integer>\",\n  \"fixedMinutes\": \"<integer>\",\n  \"nonChargeableMinutes\": \"<integer>\",\n  \"amountToBeInvoiced\": {\n    \"currency\": \"CLP\",\n    \"value\": \"<double>\"\n  },\n  \"amountInvoiced\": {\n    \"currency\": \"KRW\",\n    \"value\": \"<double>\"\n  },\n  \"status\": \"INVOICED\"\n}",
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-e035096f-b08a-4950-a9ac-b2868859c2d8"
+                    },
+                    {
+                      "id": "ef1fcd2f-072e-4d28-885d-777aee381208",
+                      "name": "A failed request due to validation error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                            "key": "Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"rate\": {\n    \"currency\": \"UZS\",\n    \"value\": \"<double>\"\n  },\n  \"chargeType\": \"FIXED\",\n  \"estimateMinutes\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Tasks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Tasks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-ef1fcd2f-072e-4d28-885d-777aee381208"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-9cb73c95-c2b2-4e9f-9844-43c4672efb9a"
+                }
+              ],
+              "id": "60b2b868-e9ba-48af-aef3-8acceee2eaf3",
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-60b2b868-e9ba-48af-aef3-8acceee2eaf3"
+            },
+            {
+              "name": "Time",
+              "item": [
+                {
+                  "name": "{timeEntryId}",
+                  "item": [
+                    {
+                      "name": "Xero Retrieves a single time entry for a specific project",
+                      "id": "a8268b24-0a71-4a9a-a4c3-96518981e8a9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://identity.xero.com/connect/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://login.xero.com/identity/connect/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Time/:timeEntryId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Time",
+                            ":timeEntryId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "aad07636-cd1a-4c6d-a04a-dc9cffe7d979",
+                              "key": "projectId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                            },
+                            {
+                              "id": "f7dc76ce-fe88-475d-9a7b-174ef0f13432",
+                              "key": "timeEntryId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual time entry by appending the id to the endpoint"
+                            }
+                          ]
+                        },
+                        "description": "Allows you to get a single time entry in a project"
+                      },
+                      "response": [
+                        {
+                          "id": "9647f7fc-33f2-426b-86b9-de5a6158e5ec",
+                          "name": "OK/success, returns the specified time entry",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Time/:timeEntryId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Time",
+                                ":timeEntryId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "timeEntryId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"timeEntryId\": \"<uuid>\",\n  \"userId\": \"<uuid>\",\n  \"projectId\": \"<uuid>\",\n  \"taskId\": \"<uuid>\",\n  \"dateUtc\": \"<dateTime>\",\n  \"dateEnteredUtc\": \"<dateTime>\",\n  \"duration\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"status\": \"LOCKED\"\n}",
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-9647f7fc-33f2-426b-86b9-de5a6158e5ec"
+                        },
+                        {
+                          "id": "1d2e6419-3588-430c-853a-504661c77dd0",
+                          "name": "A failed request due to validation error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Time/:timeEntryId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Time",
+                                ":timeEntryId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "timeEntryId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-1d2e6419-3588-430c-853a-504661c77dd0"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-a8268b24-0a71-4a9a-a4c3-96518981e8a9"
+                    },
+                    {
+                      "name": "Xero Updates a time entry for a specific project",
+                      "id": "e88c4892-09fc-44ec-ae2f-b2b71696e26f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://identity.xero.com/connect/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://login.xero.com/identity/connect/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                            "key": "Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"userId\": \"<uuid>\",\n  \"taskId\": \"<uuid>\",\n  \"dateUtc\": \"<dateTime>\",\n  \"duration\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Time/:timeEntryId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Time",
+                            ":timeEntryId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "51eb9dfb-1822-4cd9-8194-17c08749f743",
+                              "key": "projectId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                            },
+                            {
+                              "id": "13cfa734-88c7-4110-af8b-910ab5fe7a3f",
+                              "key": "timeEntryId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual time entry by appending the id to the endpoint"
+                            }
+                          ]
+                        },
+                        "description": "Allows you to update time entry in a project"
+                      },
+                      "response": [
+                        {
+                          "id": "5045b34d-436c-4c47-a4e0-ebc3a40d9d20",
+                          "name": "Success - return response 204 no content",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                                "key": "Idempotency-Key",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userId\": \"<uuid>\",\n  \"taskId\": \"<uuid>\",\n  \"dateUtc\": \"<dateTime>\",\n  \"duration\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Time/:timeEntryId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Time",
+                                ":timeEntryId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "timeEntryId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-5045b34d-436c-4c47-a4e0-ebc3a40d9d20"
+                        },
+                        {
+                          "id": "87033c96-4e15-45ee-ab92-91c6ff7135b2",
+                          "name": "A failed request due to validation error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                                "key": "Idempotency-Key",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userId\": \"<uuid>\",\n  \"taskId\": \"<uuid>\",\n  \"dateUtc\": \"<dateTime>\",\n  \"duration\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Time/:timeEntryId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Time",
+                                ":timeEntryId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "timeEntryId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-87033c96-4e15-45ee-ab92-91c6ff7135b2"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-e88c4892-09fc-44ec-ae2f-b2b71696e26f"
+                    },
+                    {
+                      "name": "Xero Deletes a time entry for a specific project",
+                      "id": "3de19475-5a94-4667-a688-669262afc416",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://identity.xero.com/connect/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://login.xero.com/identity/connect/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Time/:timeEntryId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Time",
+                            ":timeEntryId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f956240f-2100-4df9-a2de-d06623fdceb6",
+                              "key": "projectId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                            },
+                            {
+                              "id": "8adcc66f-b849-4f71-944c-8c4666ab4289",
+                              "key": "timeEntryId",
+                              "value": "<uuid>",
+                              "description": "(Required) You can specify an individual task by appending the id to the endpoint"
+                            }
+                          ]
+                        },
+                        "description": "Allows you to delete a specific time entry"
+                      },
+                      "response": [
+                        {
+                          "id": "d862217e-465e-4d25-a3cd-c1891ea9b26d",
+                          "name": "Success - return response 204 no content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Time/:timeEntryId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Time",
+                                ":timeEntryId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "timeEntryId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-d862217e-465e-4d25-a3cd-c1891ea9b26d"
+                        },
+                        {
+                          "id": "54b62a05-e1b0-4074-b51f-e9544009dd61",
+                          "name": "A failed request due to validation error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "(Required) Xero identifier for Tenant",
+                                "key": "Xero-Tenant-Id",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Projects/:projectId/Time/:timeEntryId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Projects",
+                                ":projectId",
+                                "Time",
+                                ":timeEntryId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "projectId"
+                                },
+                                {
+                                  "key": "timeEntryId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                          "createdAt": "2026-07-28T03:36:02.000Z",
+                          "updatedAt": "2026-07-28T03:36:02.000Z",
+                          "uid": "35240-54b62a05-e1b0-4074-b51f-e9544009dd61"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-3de19475-5a94-4667-a688-669262afc416"
+                    }
+                  ],
+                  "id": "ed0e8d2e-1e1d-4858-a92a-3cf6b0f36d94",
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-ed0e8d2e-1e1d-4858-a92a-3cf6b0f36d94"
+                },
+                {
+                  "name": "Xero Retrieves all time entries associated with a specific project",
+                  "id": "e3c31a46-c095-4aa8-ac48-aa5dc47a6ddd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://identity.xero.com/connect/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://login.xero.com/identity/connect/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Projects/:projectId/Time?userId=<uuid>&taskId=<uuid>&invoiceId=<uuid>&contactId=<uuid>&page=<integer>&pageSize=<integer>&states=<string>&states=<string>&isChargeable=<boolean>&dateAfterUtc=<dateTime>&dateBeforeUtc=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Projects",
+                        ":projectId",
+                        "Time"
+                      ],
+                      "query": [
+                        {
+                          "description": "The xero user identifier of the person who logged time.",
+                          "key": "userId",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Identifier of the task that time entry is logged against.",
+                          "key": "taskId",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Finds all time entries for this invoice.",
+                          "key": "invoiceId",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Finds all time entries for this contact identifier.",
+                          "key": "contactId",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "description": "Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma-separated list of states to find. Will find all time entries that are in the status of whatever is specified.",
+                          "key": "states",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated list of states to find. Will find all time entries that are in the status of whatever is specified.",
+                          "key": "states",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Finds all time entries which relate to tasks with the charge type `TIME` or `FIXED`.",
+                          "key": "isChargeable",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "ISO 8601 UTC date. Finds all time entries on or after this date filtered on the `dateUtc` field.",
+                          "key": "dateAfterUtc",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "ISO 8601 UTC date. Finds all time entries on or before this date filtered on the `dateUtc` field.",
+                          "key": "dateBeforeUtc",
+                          "value": "<dateTime>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "3bb765fc-c9b2-49ff-b325-c52c7f6c49c5",
+                          "key": "projectId",
+                          "value": "<uuid>",
+                          "description": "(Required) Identifier of the project, that the task (which the time entry is logged against) belongs to."
+                        }
+                      ]
+                    },
+                    "description": "Allows you to retrieve the time entries associated with a specific project"
+                  },
+                  "response": [
+                    {
+                      "id": "e1f194a2-5917-4d19-88d3-1b470d157cf7",
+                      "name": "OK/success, returns a list of time entry objects",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Time?userId=<uuid>&taskId=<uuid>&invoiceId=<uuid>&contactId=<uuid>&page=<integer>&pageSize=<integer>&states=<string>&isChargeable=<boolean>&dateAfterUtc=<dateTime>&dateBeforeUtc=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Time"
+                          ],
+                          "query": [
+                            {
+                              "description": "The xero user identifier of the person who logged time.",
+                              "key": "userId",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Identifier of the task that time entry is logged against.",
+                              "key": "taskId",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Finds all time entries for this invoice.",
+                              "key": "invoiceId",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Finds all time entries for this contact identifier.",
+                              "key": "contactId",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Comma-separated list of states to find. Will find all time entries that are in the status of whatever is specified.",
+                              "key": "states",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Finds all time entries which relate to tasks with the charge type `TIME` or `FIXED`.",
+                              "key": "isChargeable",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "ISO 8601 UTC date. Finds all time entries on or after this date filtered on the `dateUtc` field.",
+                              "key": "dateAfterUtc",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "ISO 8601 UTC date. Finds all time entries on or before this date filtered on the `dateUtc` field.",
+                              "key": "dateBeforeUtc",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"timeEntryId\": \"<uuid>\",\n      \"userId\": \"<uuid>\",\n      \"projectId\": \"<uuid>\",\n      \"taskId\": \"<uuid>\",\n      \"dateUtc\": \"<dateTime>\",\n      \"dateEnteredUtc\": \"<dateTime>\",\n      \"duration\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"status\": \"INVOICED\"\n    },\n    {\n      \"timeEntryId\": \"<uuid>\",\n      \"userId\": \"<uuid>\",\n      \"projectId\": \"<uuid>\",\n      \"taskId\": \"<uuid>\",\n      \"dateUtc\": \"<dateTime>\",\n      \"dateEnteredUtc\": \"<dateTime>\",\n      \"duration\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"status\": \"LOCKED\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-e1f194a2-5917-4d19-88d3-1b470d157cf7"
+                    },
+                    {
+                      "id": "e1c79a94-6e2d-40d6-a21c-b264b8443303",
+                      "name": "A failed request due to validation error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Time?userId=<uuid>&taskId=<uuid>&invoiceId=<uuid>&contactId=<uuid>&page=<integer>&pageSize=<integer>&states=<string>&isChargeable=<boolean>&dateAfterUtc=<dateTime>&dateBeforeUtc=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Time"
+                          ],
+                          "query": [
+                            {
+                              "description": "The xero user identifier of the person who logged time.",
+                              "key": "userId",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Identifier of the task that time entry is logged against.",
+                              "key": "taskId",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Finds all time entries for this invoice.",
+                              "key": "invoiceId",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Finds all time entries for this contact identifier.",
+                              "key": "contactId",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Comma-separated list of states to find. Will find all time entries that are in the status of whatever is specified.",
+                              "key": "states",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Finds all time entries which relate to tasks with the charge type `TIME` or `FIXED`.",
+                              "key": "isChargeable",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "ISO 8601 UTC date. Finds all time entries on or after this date filtered on the `dateUtc` field.",
+                              "key": "dateAfterUtc",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "ISO 8601 UTC date. Finds all time entries on or before this date filtered on the `dateUtc` field.",
+                              "key": "dateBeforeUtc",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-e1c79a94-6e2d-40d6-a21c-b264b8443303"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-e3c31a46-c095-4aa8-ac48-aa5dc47a6ddd"
+                },
+                {
+                  "name": "Xero Creates a time entry for a specific project",
+                  "id": "46eff4c0-1732-424b-bf1c-137aba15434f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://identity.xero.com/connect/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://login.xero.com/identity/connect/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"userId\": \"<uuid>\",\n  \"taskId\": \"<uuid>\",\n  \"dateUtc\": \"<dateTime>\",\n  \"duration\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Projects/:projectId/Time",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Projects",
+                        ":projectId",
+                        "Time"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2e90230c-47f9-4d6c-9022-b285f3749e21",
+                          "key": "projectId",
+                          "value": "<uuid>",
+                          "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                        }
+                      ]
+                    },
+                    "description": "Allows you to create a specific task"
+                  },
+                  "response": [
+                    {
+                      "id": "99f3e5af-a562-49a1-b381-1c0ffbae192c",
+                      "name": "OK/success, returns the newly created time entry",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                            "key": "Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"userId\": \"<uuid>\",\n  \"taskId\": \"<uuid>\",\n  \"dateUtc\": \"<dateTime>\",\n  \"duration\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Time",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Time"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"timeEntryId\": \"<uuid>\",\n  \"userId\": \"<uuid>\",\n  \"projectId\": \"<uuid>\",\n  \"taskId\": \"<uuid>\",\n  \"dateUtc\": \"<dateTime>\",\n  \"dateEnteredUtc\": \"<dateTime>\",\n  \"duration\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"status\": \"LOCKED\"\n}",
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-99f3e5af-a562-49a1-b381-1c0ffbae192c"
+                    },
+                    {
+                      "id": "944cd292-5b07-458a-9616-d362a82aa353",
+                      "name": "A failed request due to validation error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                            "key": "Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) Xero identifier for Tenant",
+                            "key": "Xero-Tenant-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"userId\": \"<uuid>\",\n  \"taskId\": \"<uuid>\",\n  \"dateUtc\": \"<dateTime>\",\n  \"duration\": \"<integer>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/Projects/:projectId/Time",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Projects",
+                            ":projectId",
+                            "Time"
+                          ],
+                          "variable": [
+                            {
+                              "key": "projectId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                      "createdAt": "2026-07-28T03:36:02.000Z",
+                      "updatedAt": "2026-07-28T03:36:02.000Z",
+                      "uid": "35240-944cd292-5b07-458a-9616-d362a82aa353"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-46eff4c0-1732-424b-bf1c-137aba15434f"
+                }
+              ],
+              "id": "9bb38c36-aee2-4ef1-a874-0dc9e32b4f8b",
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-9bb38c36-aee2-4ef1-a874-0dc9e32b4f8b"
+            },
+            {
+              "name": "Xero Retrieves a single project",
+              "id": "7a1ee5ea-ef32-4877-a985-64f8f4eda4dd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Projects/:projectId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Projects",
+                    ":projectId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "662e9a4b-d6ec-4aec-b795-0b3ee103b373",
+                      "key": "projectId",
+                      "value": "<uuid>",
+                      "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                    }
+                  ]
+                },
+                "description": "Allows you to retrieve a specific project using the projectId"
+              },
+              "response": [
+                {
+                  "id": "6be2689e-cd4a-4865-83e5-5e50b7b78338",
+                  "name": "OK/success, returns the specified project object",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Projects/:projectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Projects",
+                        ":projectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"projectId\": \"<uuid>\",\n  \"contactId\": \"<uuid>\",\n  \"currencyCode\": \"TVD\",\n  \"minutesLogged\": \"<integer>\",\n  \"totalTaskAmount\": {\n    \"currency\": \"MOP\",\n    \"value\": \"<double>\"\n  },\n  \"totalExpenseAmount\": {\n    \"currency\": \"XPF\",\n    \"value\": \"<double>\"\n  },\n  \"estimateAmount\": {\n    \"currency\": \"CAD\",\n    \"value\": \"<double>\"\n  },\n  \"minutesToBeInvoiced\": \"<integer>\",\n  \"taskAmountToBeInvoiced\": {\n    \"currency\": \"EUR\",\n    \"value\": \"<double>\"\n  },\n  \"taskAmountInvoiced\": {\n    \"currency\": \"SOS\",\n    \"value\": \"<double>\"\n  },\n  \"expenseAmountToBeInvoiced\": {\n    \"currency\": \"CAD\",\n    \"value\": \"<double>\"\n  },\n  \"expenseAmountInvoiced\": {\n    \"currency\": \"MWK\",\n    \"value\": \"<double>\"\n  },\n  \"projectAmountInvoiced\": {\n    \"currency\": \"BGN\",\n    \"value\": \"<double>\"\n  },\n  \"deposit\": {\n    \"currency\": \"GTQ\",\n    \"value\": \"<double>\"\n  },\n  \"depositApplied\": {\n    \"currency\": \"GHS\",\n    \"value\": \"<double>\"\n  },\n  \"creditNoteAmount\": {\n    \"currency\": \"VUV\",\n    \"value\": \"<double>\"\n  },\n  \"deadlineUtc\": \"<dateTime>\",\n  \"totalInvoiced\": {\n    \"currency\": \"BTN\",\n    \"value\": \"<double>\"\n  },\n  \"totalToBeInvoiced\": {\n    \"currency\": \"RUB\",\n    \"value\": \"<double>\"\n  },\n  \"estimate\": {\n    \"currency\": \"MNT\",\n    \"value\": \"<double>\"\n  },\n  \"status\": \"CLOSED\"\n}",
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-6be2689e-cd4a-4865-83e5-5e50b7b78338"
+                },
+                {
+                  "id": "91607223-a1ef-4ce2-ab48-a857ad18e586",
+                  "name": "A failed request due to validation error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Projects/:projectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Projects",
+                        ":projectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-91607223-a1ef-4ce2-ab48-a857ad18e586"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-7a1ee5ea-ef32-4877-a985-64f8f4eda4dd"
+            },
+            {
+              "name": "Xero Updates a specific project",
+              "id": "871f020c-9d01-43ae-9f67-2746b016fa8e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"contactId\": \"<uuid>\",\n  \"estimateAmount\": \"<double>\",\n  \"deadlineUtc\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Projects/:projectId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Projects",
+                    ":projectId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "16b75da9-1ef2-404d-a75f-72407cd7712a",
+                      "key": "projectId",
+                      "value": "<uuid>",
+                      "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                    }
+                  ]
+                },
+                "description": "Allows you to update a specific projects."
+              },
+              "response": [
+                {
+                  "id": "e6aba833-8045-4308-82a8-3d1b3034ec84",
+                  "name": "Success - return response 204 no content",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"contactId\": \"<uuid>\",\n  \"estimateAmount\": \"<double>\",\n  \"deadlineUtc\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Projects/:projectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Projects",
+                        ":projectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-e6aba833-8045-4308-82a8-3d1b3034ec84"
+                },
+                {
+                  "id": "359b0314-1a4f-4d78-96de-94bb5a5f3332",
+                  "name": "A failed request due to validation error",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"contactId\": \"<uuid>\",\n  \"estimateAmount\": \"<double>\",\n  \"deadlineUtc\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Projects/:projectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Projects",
+                        ":projectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-359b0314-1a4f-4d78-96de-94bb5a5f3332"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-871f020c-9d01-43ae-9f67-2746b016fa8e"
+            },
+            {
+              "name": "Xero creates a project for the specified contact",
+              "id": "eb273b50-0316-40dd-9ac4-a76e7d1281e4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"CLOSED\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Projects/:projectId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Projects",
+                    ":projectId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "fab94a1b-2308-4115-a2ba-54c748ff5590",
+                      "key": "projectId",
+                      "value": "<uuid>",
+                      "description": "(Required) You can specify an individual project by appending the projectId to the endpoint"
+                    }
+                  ]
+                },
+                "description": "Allows you to update a specific projects."
+              },
+              "response": [
+                {
+                  "id": "92c65a40-e433-4509-8c43-46744a49f01b",
+                  "name": "Success - return response 204 no content",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"status\": \"CLOSED\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Projects/:projectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Projects",
+                        ":projectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-92c65a40-e433-4509-8c43-46744a49f01b"
+                },
+                {
+                  "id": "4fb7b4ff-6843-4a5a-beb0-ca9bb16d8221",
+                  "name": "A failed request due to validation error",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"status\": \"CLOSED\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Projects/:projectId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Projects",
+                        ":projectId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "projectId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+                  "createdAt": "2026-07-28T03:36:02.000Z",
+                  "updatedAt": "2026-07-28T03:36:02.000Z",
+                  "uid": "35240-4fb7b4ff-6843-4a5a-beb0-ca9bb16d8221"
+                }
+              ],
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-eb273b50-0316-40dd-9ac4-a76e7d1281e4"
+            }
+          ],
+          "id": "91e8a143-1424-4942-b4c1-298c4fe331c2",
+          "createdAt": "2026-07-28T03:36:02.000Z",
+          "updatedAt": "2026-07-28T03:36:02.000Z",
+          "uid": "35240-91e8a143-1424-4942-b4c1-298c4fe331c2"
+        },
+        {
+          "name": "Xero Retrieves all projects",
+          "id": "462a458a-cf57-404c-834d-47cfc1f49975",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Projects?projectIds=<uuid>&projectIds=<uuid>&contactID=<uuid>&states=<string>&page=1&pageSize=50",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Projects"
+              ],
+              "query": [
+                {
+                  "description": "Search for all projects that match a comma separated list of projectIds",
+                  "key": "projectIds",
+                  "value": "<uuid>"
+                },
+                {
+                  "description": "Search for all projects that match a comma separated list of projectIds",
+                  "key": "projectIds",
+                  "value": "<uuid>"
+                },
+                {
+                  "description": "Filter for projects for a specific contact",
+                  "key": "contactID",
+                  "value": "<uuid>"
+                },
+                {
+                  "description": "Filter for projects in a particular state (INPROGRESS or CLOSED)",
+                  "key": "states",
+                  "value": "<string>"
+                },
+                {
+                  "description": "set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                  "key": "pageSize",
+                  "value": "50"
+                }
+              ]
+            },
+            "description": "Allows you to retrieve, create and update projects."
+          },
+          "response": [
+            {
+              "id": "af5a5df1-9587-4949-9c61-00d46adee2bb",
+              "name": "OK/success, returns a list of project objects",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Projects?projectIds=<uuid>&contactID=<uuid>&states=<string>&page=1&pageSize=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Projects"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search for all projects that match a comma separated list of projectIds",
+                      "key": "projectIds",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "description": "Filter for projects for a specific contact",
+                      "key": "contactID",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "description": "Filter for projects in a particular state (INPROGRESS or CLOSED)",
+                      "key": "states",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"projectId\": \"<uuid>\",\n      \"contactId\": \"<uuid>\",\n      \"currencyCode\": \"FJD\",\n      \"minutesLogged\": \"<integer>\",\n      \"totalTaskAmount\": {\n        \"currency\": \"TMT\",\n        \"value\": \"<double>\"\n      },\n      \"totalExpenseAmount\": {\n        \"currency\": \"RON\",\n        \"value\": \"<double>\"\n      },\n      \"estimateAmount\": {\n        \"currency\": \"NGN\",\n        \"value\": \"<double>\"\n      },\n      \"minutesToBeInvoiced\": \"<integer>\",\n      \"taskAmountToBeInvoiced\": {\n        \"currency\": \"BMD\",\n        \"value\": \"<double>\"\n      },\n      \"taskAmountInvoiced\": {\n        \"currency\": \"AFN\",\n        \"value\": \"<double>\"\n      },\n      \"expenseAmountToBeInvoiced\": {\n        \"currency\": \"HUF\",\n        \"value\": \"<double>\"\n      },\n      \"expenseAmountInvoiced\": {\n        \"currency\": \"SYP\",\n        \"value\": \"<double>\"\n      },\n      \"projectAmountInvoiced\": {\n        \"currency\": \"TTD\",\n        \"value\": \"<double>\"\n      },\n      \"deposit\": {\n        \"currency\": \"SHP\",\n        \"value\": \"<double>\"\n      },\n      \"depositApplied\": {\n        \"currency\": \"GHS\",\n        \"value\": \"<double>\"\n      },\n      \"creditNoteAmount\": {\n        \"currency\": \"JPY\",\n        \"value\": \"<double>\"\n      },\n      \"deadlineUtc\": \"<dateTime>\",\n      \"totalInvoiced\": {\n        \"currency\": \"LAK\",\n        \"value\": \"<double>\"\n      },\n      \"totalToBeInvoiced\": {\n        \"currency\": \"SBD\",\n        \"value\": \"<double>\"\n      },\n      \"estimate\": {\n        \"currency\": \"CNY\",\n        \"value\": \"<double>\"\n      },\n      \"status\": \"CLOSED\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"projectId\": \"<uuid>\",\n      \"contactId\": \"<uuid>\",\n      \"currencyCode\": \"LRD\",\n      \"minutesLogged\": \"<integer>\",\n      \"totalTaskAmount\": {\n        \"currency\": \"ZMK\",\n        \"value\": \"<double>\"\n      },\n      \"totalExpenseAmount\": {\n        \"currency\": \"DJF\",\n        \"value\": \"<double>\"\n      },\n      \"estimateAmount\": {\n        \"currency\": \"PAB\",\n        \"value\": \"<double>\"\n      },\n      \"minutesToBeInvoiced\": \"<integer>\",\n      \"taskAmountToBeInvoiced\": {\n        \"currency\": \"CLP\",\n        \"value\": \"<double>\"\n      },\n      \"taskAmountInvoiced\": {\n        \"currency\": \"ZMK\",\n        \"value\": \"<double>\"\n      },\n      \"expenseAmountToBeInvoiced\": {\n        \"currency\": \"VEF\",\n        \"value\": \"<double>\"\n      },\n      \"expenseAmountInvoiced\": {\n        \"currency\": \"SOS\",\n        \"value\": \"<double>\"\n      },\n      \"projectAmountInvoiced\": {\n        \"currency\": \"TZS\",\n        \"value\": \"<double>\"\n      },\n      \"deposit\": {\n        \"currency\": \"BOB\",\n        \"value\": \"<double>\"\n      },\n      \"depositApplied\": {\n        \"currency\": \"MMK\",\n        \"value\": \"<double>\"\n      },\n      \"creditNoteAmount\": {\n        \"currency\": \"TVD\",\n        \"value\": \"<double>\"\n      },\n      \"deadlineUtc\": \"<dateTime>\",\n      \"totalInvoiced\": {\n        \"currency\": \"TOP\",\n        \"value\": \"<double>\"\n      },\n      \"totalToBeInvoiced\": {\n        \"currency\": \"XDR\",\n        \"value\": \"<double>\"\n      },\n      \"estimate\": {\n        \"currency\": \"PHP\",\n        \"value\": \"<double>\"\n      },\n      \"status\": \"INPROGRESS\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-af5a5df1-9587-4949-9c61-00d46adee2bb"
+            },
+            {
+              "id": "2aadd385-b060-47de-9f1b-55be557df357",
+              "name": "A failed request due to validation error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Projects?projectIds=<uuid>&contactID=<uuid>&states=<string>&page=1&pageSize=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Projects"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search for all projects that match a comma separated list of projectIds",
+                      "key": "projectIds",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "description": "Filter for projects for a specific contact",
+                      "key": "contactID",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "description": "Filter for projects in a particular state (INPROGRESS or CLOSED)",
+                      "key": "states",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-2aadd385-b060-47de-9f1b-55be557df357"
+            }
+          ],
+          "createdAt": "2026-07-28T03:36:02.000Z",
+          "updatedAt": "2026-07-28T03:36:02.000Z",
+          "uid": "35240-462a458a-cf57-404c-834d-47cfc1f49975"
+        },
+        {
+          "name": "Xero Create one or more new projects",
+          "id": "f371d7db-e4b0-4308-9fe0-a2a82f7f92f2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"contactId\": \"<uuid>\",\n  \"estimateAmount\": \"<double>\",\n  \"deadlineUtc\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/Projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Projects"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1e6e80ba-0df4-4721-808c-c955809586d4",
+              "name": "OK/success, returns the new project object",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"contactId\": \"<uuid>\",\n  \"estimateAmount\": \"<double>\",\n  \"deadlineUtc\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Projects"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"name\": \"<string>\",\n  \"projectId\": \"<uuid>\",\n  \"contactId\": \"<uuid>\",\n  \"currencyCode\": \"TVD\",\n  \"minutesLogged\": \"<integer>\",\n  \"totalTaskAmount\": {\n    \"currency\": \"MOP\",\n    \"value\": \"<double>\"\n  },\n  \"totalExpenseAmount\": {\n    \"currency\": \"XPF\",\n    \"value\": \"<double>\"\n  },\n  \"estimateAmount\": {\n    \"currency\": \"CAD\",\n    \"value\": \"<double>\"\n  },\n  \"minutesToBeInvoiced\": \"<integer>\",\n  \"taskAmountToBeInvoiced\": {\n    \"currency\": \"EUR\",\n    \"value\": \"<double>\"\n  },\n  \"taskAmountInvoiced\": {\n    \"currency\": \"SOS\",\n    \"value\": \"<double>\"\n  },\n  \"expenseAmountToBeInvoiced\": {\n    \"currency\": \"CAD\",\n    \"value\": \"<double>\"\n  },\n  \"expenseAmountInvoiced\": {\n    \"currency\": \"MWK\",\n    \"value\": \"<double>\"\n  },\n  \"projectAmountInvoiced\": {\n    \"currency\": \"BGN\",\n    \"value\": \"<double>\"\n  },\n  \"deposit\": {\n    \"currency\": \"GTQ\",\n    \"value\": \"<double>\"\n  },\n  \"depositApplied\": {\n    \"currency\": \"GHS\",\n    \"value\": \"<double>\"\n  },\n  \"creditNoteAmount\": {\n    \"currency\": \"VUV\",\n    \"value\": \"<double>\"\n  },\n  \"deadlineUtc\": \"<dateTime>\",\n  \"totalInvoiced\": {\n    \"currency\": \"BTN\",\n    \"value\": \"<double>\"\n  },\n  \"totalToBeInvoiced\": {\n    \"currency\": \"RUB\",\n    \"value\": \"<double>\"\n  },\n  \"estimate\": {\n    \"currency\": \"MNT\",\n    \"value\": \"<double>\"\n  },\n  \"status\": \"CLOSED\"\n}",
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-1e6e80ba-0df4-4721-808c-c955809586d4"
+            },
+            {
+              "id": "5db0037e-2ae0-450c-bb37-6dd91519c562",
+              "name": "A failed request due to validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"contactId\": \"<uuid>\",\n  \"estimateAmount\": \"<double>\",\n  \"deadlineUtc\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Projects",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Projects"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-5db0037e-2ae0-450c-bb37-6dd91519c562"
+            }
+          ],
+          "createdAt": "2026-07-28T03:36:02.000Z",
+          "updatedAt": "2026-07-28T03:36:02.000Z",
+          "uid": "35240-f371d7db-e4b0-4308-9fe0-a2a82f7f92f2"
+        }
+      ],
+      "id": "717a982c-71b0-4a93-a202-7a9b375bd9b2",
+      "createdAt": "2026-07-28T03:36:02.000Z",
+      "updatedAt": "2026-07-28T03:36:02.000Z",
+      "uid": "35240-717a982c-71b0-4a93-a202-7a9b375bd9b2"
+    },
+    {
+      "name": "ProjectsUsers",
+      "item": [
+        {
+          "name": "Xero Retrieves a list of all project users",
+          "id": "3866c7a0-28fe-4852-9164-ebffbb174893",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ProjectsUsers?page=1&pageSize=50",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ProjectsUsers"
+              ],
+              "query": [
+                {
+                  "description": "set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                  "key": "pageSize",
+                  "value": "50"
+                }
+              ]
+            },
+            "description": "Allows you to retrieve the users on a projects."
+          },
+          "response": [
+            {
+              "id": "0f8aefc6-40ac-45bb-993a-57c3ad89f749",
+              "name": "OK/success, returns a list of project users",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ProjectsUsers?page=1&pageSize=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ProjectsUsers"
+                  ],
+                  "query": [
+                    {
+                      "description": "set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"userId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    {\n      \"userId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-0f8aefc6-40ac-45bb-993a-57c3ad89f749"
+            },
+            {
+              "id": "76de8b77-5e53-4331-a30f-4689c1560f1c",
+              "name": "A failed request due to validation error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ProjectsUsers?page=1&pageSize=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ProjectsUsers"
+                  ],
+                  "query": [
+                    {
+                      "description": "set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.",
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"modelState\": {}\n}",
+              "createdAt": "2026-07-28T03:36:02.000Z",
+              "updatedAt": "2026-07-28T03:36:02.000Z",
+              "uid": "35240-76de8b77-5e53-4331-a30f-4689c1560f1c"
+            }
+          ],
+          "createdAt": "2026-07-28T03:36:02.000Z",
+          "updatedAt": "2026-07-28T03:36:02.000Z",
+          "uid": "35240-3866c7a0-28fe-4852-9164-ebffbb174893"
+        }
+      ],
+      "id": "ef5487b0-44b1-4f49-bd84-4bacc95e63cd",
+      "createdAt": "2026-07-28T03:36:02.000Z",
+      "updatedAt": "2026-07-28T03:36:02.000Z",
+      "uid": "35240-ef5487b0-44b1-4f49-bd84-4bacc95e63cd"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.xero.com/api.xro/2.0"
+    }
+  ]
+}

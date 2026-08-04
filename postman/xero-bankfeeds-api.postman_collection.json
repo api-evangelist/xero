@@ -1,0 +1,1755 @@
+{
+  "info": {
+    "_postman_id": "01b569a6-2e2f-46aa-b43b-b75fd6c1c540",
+    "name": "Xero Accounting BankFeeds API",
+    "description": "Contact Support:\n Name: Xero Platform Team\n Email: api@xero.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:46.000Z",
+    "updatedAt": "2026-07-28T03:35:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-01b569a6-2e2f-46aa-b43b-b75fd6c1c540"
+  },
+  "item": [
+    {
+      "name": "FeedConnections",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Xero Retrieve single feed connection based on a unique id provided",
+              "id": "ab773570-e05a-46b0-97a8-e232fe155e0e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/FeedConnections/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "FeedConnections",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ae117f9d-6966-4199-9850-c541fa13fd98",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) Unique identifier for retrieving single object"
+                    }
+                  ]
+                },
+                "description": "By passing in a FeedConnection Id options, you can search for matching feed connections"
+              },
+              "response": [
+                {
+                  "id": "04468f5e-6ad6-4358-9c94-6adbcc36a3ae",
+                  "name": "success returns a FeedConnection object matching the id in response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FeedConnections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FeedConnections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"accountToken\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"accountName\": \"<string>\",\n  \"accountId\": \"<uuid>\",\n  \"accountType\": \"CREDITCARD\",\n  \"currency\": \"NIO\",\n  \"country\": \"EE\",\n  \"status\": \"PENDING\",\n  \"error\": {\n    \"title\": \"<string>\",\n    \"status\": \"<integer>\",\n    \"detail\": \"<string>\",\n    \"type\": \"feed-connected-in-different-organisation\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:35:47.000Z",
+                  "updatedAt": "2026-07-28T03:35:47.000Z",
+                  "uid": "35240-04468f5e-6ad6-4358-9c94-6adbcc36a3ae"
+                },
+                {
+                  "id": "118ceefa-0bb8-4834-b058-e14806d533c9",
+                  "name": "bad input parameter",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/FeedConnections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FeedConnections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:35:47.000Z",
+                  "updatedAt": "2026-07-28T03:35:47.000Z",
+                  "uid": "35240-118ceefa-0bb8-4834-b058-e14806d533c9"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-ab773570-e05a-46b0-97a8-e232fe155e0e"
+            }
+          ],
+          "id": "ecbe8f43-e823-4c2a-b8f2-40721fe1ea59",
+          "createdAt": "2026-07-28T03:35:47.000Z",
+          "updatedAt": "2026-07-28T03:35:47.000Z",
+          "uid": "35240-ecbe8f43-e823-4c2a-b8f2-40721fe1ea59"
+        },
+        {
+          "name": "DeleteRequests",
+          "item": [
+            {
+              "name": "Xero Delete an existing feed connection",
+              "id": "68fbc8dd-dc28-4ba4-9c63-150433887fbc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"AUD\",\n      \"country\": \"TL\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-connected-in-different-organisation\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"NPR\",\n      \"country\": \"TD\",\n      \"status\": \"PENDING\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-already-connected-in-current-organisation\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/FeedConnections/DeleteRequests",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "FeedConnections",
+                    "DeleteRequests"
+                  ]
+                },
+                "description": "By passing in FeedConnections array object in the body, you can delete a feed connection."
+              },
+              "response": [
+                {
+                  "id": "5a353cff-2f9d-4ceb-805d-68400cccd357",
+                  "name": "Success response for deleted feed connection",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"AUD\",\n      \"country\": \"TL\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-connected-in-different-organisation\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"NPR\",\n      \"country\": \"TD\",\n      \"status\": \"PENDING\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-already-connected-in-current-organisation\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/FeedConnections/DeleteRequests",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FeedConnections",
+                        "DeleteRequests"
+                      ]
+                    }
+                  },
+                  "status": "Accepted",
+                  "code": 202,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"AUD\",\n      \"country\": \"TL\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-connected-in-different-organisation\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"NPR\",\n      \"country\": \"TD\",\n      \"status\": \"PENDING\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-already-connected-in-current-organisation\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:35:47.000Z",
+                  "updatedAt": "2026-07-28T03:35:47.000Z",
+                  "uid": "35240-5a353cff-2f9d-4ceb-805d-68400cccd357"
+                },
+                {
+                  "id": "e37ec99f-b5a7-48cd-8774-6b9ad24c584f",
+                  "name": "bad input parameter",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                        "key": "Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"AUD\",\n      \"country\": \"TL\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-connected-in-different-organisation\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"NPR\",\n      \"country\": \"TD\",\n      \"status\": \"PENDING\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-already-connected-in-current-organisation\"\n      }\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/FeedConnections/DeleteRequests",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "FeedConnections",
+                        "DeleteRequests"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:35:47.000Z",
+                  "updatedAt": "2026-07-28T03:35:47.000Z",
+                  "uid": "35240-e37ec99f-b5a7-48cd-8774-6b9ad24c584f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-68fbc8dd-dc28-4ba4-9c63-150433887fbc"
+            }
+          ],
+          "id": "9d679685-2637-4b54-81cf-476d67e80534",
+          "createdAt": "2026-07-28T03:35:47.000Z",
+          "updatedAt": "2026-07-28T03:35:47.000Z",
+          "uid": "35240-9d679685-2637-4b54-81cf-476d67e80534"
+        },
+        {
+          "name": "Xero Searches for feed connections",
+          "id": "eea649c5-8cc4-4ecc-a231-68645d3fd51c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/FeedConnections?page=<integer>&pageSize=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "FeedConnections"
+              ],
+              "query": [
+                {
+                  "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 10. Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?page=1 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned.",
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize=100 to specify page size of 100.",
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "By passing in the appropriate options, you can search for available feed connections in the system."
+          },
+          "response": [
+            {
+              "id": "e89ed68e-aaf8-4d4f-b537-630b24139520",
+              "name": "search results matching criteria returned with pagination and items array",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/FeedConnections?page=<integer>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "FeedConnections"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 10. Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?page=1 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize=100 to specify page size of 100.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"AUD\",\n      \"country\": \"TL\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-connected-in-different-organisation\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"NPR\",\n      \"country\": \"TD\",\n      \"status\": \"PENDING\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-already-connected-in-current-organisation\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-e89ed68e-aaf8-4d4f-b537-630b24139520"
+            },
+            {
+              "id": "73a39809-c60c-4162-8fc7-4cd678872319",
+              "name": "validation error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/FeedConnections?page=<integer>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "FeedConnections"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number which specifies the set of records to retrieve. By default the number of the records per set is 10. Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?page=1 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/FeedConnections?pageSize=100 to specify page size of 100.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-73a39809-c60c-4162-8fc7-4cd678872319"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:47.000Z",
+          "updatedAt": "2026-07-28T03:35:47.000Z",
+          "uid": "35240-eea649c5-8cc4-4ecc-a231-68645d3fd51c"
+        },
+        {
+          "name": "Xero Create one or more new feed connection",
+          "id": "be1dc48f-c038-41b9-b2d6-5a4ec7fb1729",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"AUD\",\n      \"country\": \"TL\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-connected-in-different-organisation\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"NPR\",\n      \"country\": \"TD\",\n      \"status\": \"PENDING\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-already-connected-in-current-organisation\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/FeedConnections",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "FeedConnections"
+              ]
+            },
+            "description": "By passing in the FeedConnections array object in the body, you can create one or more new feed connections"
+          },
+          "response": [
+            {
+              "id": "07c0e6ca-77cc-41d0-b4da-56366d02b648",
+              "name": "success new feed connection(s)response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"AUD\",\n      \"country\": \"TL\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-connected-in-different-organisation\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"NPR\",\n      \"country\": \"TD\",\n      \"status\": \"PENDING\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-already-connected-in-current-organisation\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/FeedConnections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "FeedConnections"
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"AUD\",\n      \"country\": \"TL\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-connected-in-different-organisation\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"NPR\",\n      \"country\": \"TD\",\n      \"status\": \"PENDING\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-already-connected-in-current-organisation\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-07c0e6ca-77cc-41d0-b4da-56366d02b648"
+            },
+            {
+              "id": "266ffce2-07c1-4b9d-b596-38d1f21749a7",
+              "name": "failed to create new feed connection(s)response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"AUD\",\n      \"country\": \"TL\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-connected-in-different-organisation\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"NPR\",\n      \"country\": \"TD\",\n      \"status\": \"PENDING\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-already-connected-in-current-organisation\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/FeedConnections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "FeedConnections"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"AUD\",\n      \"country\": \"TL\",\n      \"status\": \"REJECTED\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-connected-in-different-organisation\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"accountToken\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<uuid>\",\n      \"accountType\": \"CREDITCARD\",\n      \"currency\": \"NPR\",\n      \"country\": \"TD\",\n      \"status\": \"PENDING\",\n      \"error\": {\n        \"title\": \"<string>\",\n        \"status\": \"<integer>\",\n        \"detail\": \"<string>\",\n        \"type\": \"feed-already-connected-in-current-organisation\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-266ffce2-07c1-4b9d-b596-38d1f21749a7"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:47.000Z",
+          "updatedAt": "2026-07-28T03:35:47.000Z",
+          "uid": "35240-be1dc48f-c038-41b9-b2d6-5a4ec7fb1729"
+        }
+      ],
+      "id": "3ec0e152-3760-444b-8576-045ade788add",
+      "createdAt": "2026-07-28T03:35:47.000Z",
+      "updatedAt": "2026-07-28T03:35:47.000Z",
+      "uid": "35240-3ec0e152-3760-444b-8576-045ade788add"
+    },
+    {
+      "name": "Statements",
+      "item": [
+        {
+          "name": "{statementId}",
+          "item": [
+            {
+              "name": "Xero Retrieve single statement based on unique id provided",
+              "id": "e18cda0e-19ce-479e-b26a-3db8fd605797",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Statements/:statementId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Statements",
+                    ":statementId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2d32a11d-b20e-4815-aae1-830773b1f250",
+                      "key": "statementId",
+                      "value": "<uuid>",
+                      "description": "(Required) statement id for single object"
+                    }
+                  ]
+                },
+                "description": "By passing in a statement id, you can search for matching statements"
+              },
+              "response": [
+                {
+                  "id": "724af3d4-4748-49b0-b8d7-1daf57c2970a",
+                  "name": "search results matching id for single statement",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Statements/:statementId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Statements",
+                        ":statementId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "statementId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"feedConnectionId\": \"<uuid>\",\n  \"status\": \"DELIVERED\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"startBalance\": {\n    \"amount\": \"<double>\",\n    \"creditDebitIndicator\": \"DEBIT\"\n  },\n  \"endBalance\": {\n    \"amount\": \"<double>\",\n    \"creditDebitIndicator\": \"DEBIT\"\n  },\n  \"statementLines\": [\n    {\n      \"postedDate\": \"<date>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"creditDebitIndicator\": \"DEBIT\",\n      \"transactionId\": \"<string>\",\n      \"payeeName\": \"<string>\",\n      \"reference\": \"<string>\",\n      \"chequeNumber\": \"<string>\",\n      \"transactionType\": \"<string>\"\n    },\n    {\n      \"postedDate\": \"<date>\",\n      \"description\": \"<string>\",\n      \"amount\": \"<double>\",\n      \"creditDebitIndicator\": \"DEBIT\",\n      \"transactionId\": \"<string>\",\n      \"payeeName\": \"<string>\",\n      \"reference\": \"<string>\",\n      \"chequeNumber\": \"<string>\",\n      \"transactionType\": \"<string>\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"title\": \"<string>\",\n      \"status\": \"<integer>\",\n      \"detail\": \"<string>\",\n      \"type\": \"invalid-country-specified\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"status\": \"<integer>\",\n      \"detail\": \"<string>\",\n      \"type\": \"invalid-start-and-end-date\"\n    }\n  ],\n  \"statementLineCount\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T03:35:47.000Z",
+                  "updatedAt": "2026-07-28T03:35:47.000Z",
+                  "uid": "35240-724af3d4-4748-49b0-b8d7-1daf57c2970a"
+                },
+                {
+                  "id": "30889fab-42ad-40f7-8385-110e303a5f29",
+                  "name": "Statement not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Xero identifier for Tenant",
+                        "key": "Xero-Tenant-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Statements/:statementId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Statements",
+                        ":statementId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "statementId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:35:47.000Z",
+                  "updatedAt": "2026-07-28T03:35:47.000Z",
+                  "uid": "35240-30889fab-42ad-40f7-8385-110e303a5f29"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-e18cda0e-19ce-479e-b26a-3db8fd605797"
+            }
+          ],
+          "id": "a2ef477c-7f50-4730-ad82-78764c084200",
+          "createdAt": "2026-07-28T03:35:47.000Z",
+          "updatedAt": "2026-07-28T03:35:47.000Z",
+          "uid": "35240-a2ef477c-7f50-4730-ad82-78764c084200"
+        },
+        {
+          "name": "Xero Retrieve all statements",
+          "id": "3ab65567-dc6f-4c68-a50e-7dbcc26b740e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Xero-Application-Id",
+                "value": "00000000-0000-0000-0000-0000000010000"
+              },
+              {
+                "key": "Xero-User-Id",
+                "value": "00000000-0000-0000-0000-0000030000000"
+              },
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Statements?page=<integer>&pageSize=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Statements"
+              ],
+              "query": [
+                {
+                  "description": "unique id for single object",
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?pageSize=100 to specify page size of 100.",
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "By passing in parameters, you can search for matching statements"
+          },
+          "response": [
+            {
+              "id": "c928bed6-2552-4d49-94ae-aa27f65539b7",
+              "name": "success returns Statements array of objects response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Xero-Application-Id",
+                    "value": "00000000-0000-0000-0000-0000000010000"
+                  },
+                  {
+                    "key": "Xero-User-Id",
+                    "value": "00000000-0000-0000-0000-0000030000000"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Statements?page=<integer>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Statements"
+                  ],
+                  "query": [
+                    {
+                      "description": "unique id for single object",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?pageSize=100 to specify page size of 100.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-c928bed6-2552-4d49-94ae-aa27f65539b7"
+            },
+            {
+              "id": "c8ba24cd-ebc5-482a-936c-88e0d46d9458",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Xero-Application-Id",
+                    "value": "00000000-0000-0000-0000-0000000010000"
+                  },
+                  {
+                    "key": "Xero-User-Id",
+                    "value": "00000000-0000-0000-0000-0000030000000"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Statements?page=<integer>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Statements"
+                  ],
+                  "query": [
+                    {
+                      "description": "unique id for single object",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Page size which specifies how many records per page will be returned (default 10). Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?pageSize=100 to specify page size of 100.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-c8ba24cd-ebc5-482a-936c-88e0d46d9458"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:47.000Z",
+          "updatedAt": "2026-07-28T03:35:47.000Z",
+          "uid": "35240-3ab65567-dc6f-4c68-a50e-7dbcc26b740e"
+        },
+        {
+          "name": "Xero Creates one or more new statements",
+          "id": "732d2a6a-b28e-46de-88c1-aabe88c9d5f6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) Xero identifier for Tenant",
+                "key": "Xero-Tenant-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/Statements",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Statements"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "364642fd-3262-4730-81db-e1b910bbe401",
+              "name": "Success returns Statements array of objects in response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Statements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Statements"
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-364642fd-3262-4730-81db-e1b910bbe401"
+            },
+            {
+              "id": "d0d84863-9890-43ec-8161-8c480d7f0b63",
+              "name": "Statement failed validation",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Statements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Statements"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-d0d84863-9890-43ec-8161-8c480d7f0b63"
+            },
+            {
+              "id": "34c5bad8-138f-490e-86ec-9128abe35339",
+              "name": "Invalid application or feed connection",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Statements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Statements"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"type\": \"invalid-request\"\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-34c5bad8-138f-490e-86ec-9128abe35339"
+            },
+            {
+              "id": "e69edee8-e7bb-4125-bf08-48a53099dad6",
+              "name": "Duplicate statement received",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Statements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Statements"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-e69edee8-e7bb-4125-bf08-48a53099dad6"
+            },
+            {
+              "id": "eb8a402e-b123-47eb-8d03-23e5dec54ef7",
+              "name": "Statement exceeds size limit",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Statements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Statements"
+                  ]
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-eb8a402e-b123-47eb-8d03-23e5dec54ef7"
+            },
+            {
+              "id": "c6278012-00b2-4a32-a956-fb90799c4121",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Statements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Statements"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-c6278012-00b2-4a32-a956-fb90799c4121"
+            },
+            {
+              "id": "b5d36ec2-4034-458b-9c9c-0e95a16b7b44",
+              "name": "Intermittent Xero Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "This allows you to safely retry requests without the risk of duplicate processing. 128 character max.",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Xero identifier for Tenant",
+                    "key": "Xero-Tenant-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Statements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Statements"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pagination\": {\n    \"page\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"pageCount\": \"<integer>\",\n    \"itemCount\": \"<integer>\"\n  },\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"PENDING\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-and-end-date\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"feed-already-connected-in-current-organisation\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"feedConnectionId\": \"<uuid>\",\n      \"status\": \"DELIVERED\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"startBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"CREDIT\"\n      },\n      \"endBalance\": {\n        \"amount\": \"<double>\",\n        \"creditDebitIndicator\": \"DEBIT\"\n      },\n      \"statementLines\": [\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"DEBIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        },\n        {\n          \"postedDate\": \"<date>\",\n          \"description\": \"<string>\",\n          \"amount\": \"<double>\",\n          \"creditDebitIndicator\": \"CREDIT\",\n          \"transactionId\": \"<string>\",\n          \"payeeName\": \"<string>\",\n          \"reference\": \"<string>\",\n          \"chequeNumber\": \"<string>\",\n          \"transactionType\": \"<string>\"\n        }\n      ],\n      \"errors\": [\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-organisation-multi-currency\"\n        },\n        {\n          \"title\": \"<string>\",\n          \"status\": \"<integer>\",\n          \"detail\": \"<string>\",\n          \"type\": \"invalid-start-date\"\n        }\n      ],\n      \"statementLineCount\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:35:47.000Z",
+              "updatedAt": "2026-07-28T03:35:47.000Z",
+              "uid": "35240-b5d36ec2-4034-458b-9c9c-0e95a16b7b44"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:47.000Z",
+          "updatedAt": "2026-07-28T03:35:47.000Z",
+          "uid": "35240-732d2a6a-b28e-46de-88c1-aabe88c9d5f6"
+        }
+      ],
+      "id": "6b738965-e500-43a0-821e-5251bd36e44e",
+      "createdAt": "2026-07-28T03:35:47.000Z",
+      "updatedAt": "2026-07-28T03:35:47.000Z",
+      "uid": "35240-6b738965-e500-43a0-821e-5251bd36e44e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.xero.com/api.xro/2.0"
+    }
+  ]
+}

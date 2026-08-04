@@ -1,0 +1,288 @@
+{
+  "info": {
+    "_postman_id": "64727b44-cd1c-4ff7-90f6-99998fd12b26",
+    "name": "Xero Accounting Identity API",
+    "description": "Contact Support:\n Name: Xero Platform Team\n Email: api@xero.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:35:50.000Z",
+    "updatedAt": "2026-07-28T03:35:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-64727b44-cd1c-4ff7-90f6-99998fd12b26"
+  },
+  "item": [
+    {
+      "name": "Connections",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Xero Deletes a connection for this user (i.e. disconnect a tenant)",
+              "id": "76ae3f9b-e2c5-44a6-8414-1b042ef10c34",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                      "type": "string"
+                    },
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://identity.xero.com/connect/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://login.xero.com/identity/connect/authorize",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/Connections/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Connections",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "47710907-db0c-4838-b999-20c239dc50cc",
+                      "key": "id",
+                      "value": "<uuid>",
+                      "description": "(Required) Unique identifier for retrieving single object"
+                    }
+                  ]
+                },
+                "description": "Override the base server url that include version"
+              },
+              "response": [
+                {
+                  "id": "fe7b1868-dec9-4b12-a22b-90336cf23fe5",
+                  "name": "Success - connection has been deleted no content returned",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Connections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Connections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:35:50.000Z",
+                  "updatedAt": "2026-07-28T03:35:50.000Z",
+                  "uid": "35240-fe7b1868-dec9-4b12-a22b-90336cf23fe5"
+                },
+                {
+                  "id": "4bea206f-aa76-4f35-a0fa-9756f95a6d4d",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Connections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Connections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:35:50.000Z",
+                  "updatedAt": "2026-07-28T03:35:50.000Z",
+                  "uid": "35240-4bea206f-aa76-4f35-a0fa-9756f95a6d4d"
+                }
+              ],
+              "createdAt": "2026-07-28T03:35:50.000Z",
+              "updatedAt": "2026-07-28T03:35:50.000Z",
+              "uid": "35240-76ae3f9b-e2c5-44a6-8414-1b042ef10c34"
+            }
+          ],
+          "id": "9b954b25-d24f-48d5-bd5c-8f1b859d3792",
+          "createdAt": "2026-07-28T03:35:50.000Z",
+          "updatedAt": "2026-07-28T03:35:50.000Z",
+          "uid": "35240-9b954b25-d24f-48d5-bd5c-8f1b859d3792"
+        },
+        {
+          "name": "Xero Retrieves the connections for this user",
+          "id": "f61317ed-8e93-4e76-b595-2d603cc4949a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "email openid profile accounting.attachments accounting.attachments.read accounting.budgets.read accounting.contacts accounting.contacts.read accounting.journals.read accounting.reports.read accounting.reports.tenninetynine.read accounting.settings accounting.settings.read accounting.transactions accounting.transactions.read paymentservices",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://identity.xero.com/connect/token",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.xero.com/identity/connect/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Connections?authEventId=<uuid>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Connections"
+              ],
+              "query": [
+                {
+                  "description": "Filter by authEventId",
+                  "key": "authEventId",
+                  "value": "<uuid>"
+                }
+              ]
+            },
+            "description": "Override the base server url that include version"
+          },
+          "response": [
+            {
+              "id": "eb0297ef-afa2-4a06-99db-bb3dbbdf5eeb",
+              "name": "Success - return response of type Connections array with 0 to n Connection",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Connections?authEventId=<uuid>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Connections"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by authEventId",
+                      "key": "authEventId",
+                      "value": "<uuid>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"tenantId\": \"<uuid>\",\n    \"authEventId\": \"<uuid>\",\n    \"tenantType\": \"<string>\",\n    \"tenantName\": \"<string>\",\n    \"createdDateUtc\": \"<dateTime>\",\n    \"updatedDateUtc\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"tenantId\": \"<uuid>\",\n    \"authEventId\": \"<uuid>\",\n    \"tenantType\": \"<string>\",\n    \"tenantName\": \"<string>\",\n    \"createdDateUtc\": \"<dateTime>\",\n    \"updatedDateUtc\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T03:35:50.000Z",
+              "updatedAt": "2026-07-28T03:35:50.000Z",
+              "uid": "35240-eb0297ef-afa2-4a06-99db-bb3dbbdf5eeb"
+            }
+          ],
+          "createdAt": "2026-07-28T03:35:50.000Z",
+          "updatedAt": "2026-07-28T03:35:50.000Z",
+          "uid": "35240-f61317ed-8e93-4e76-b595-2d603cc4949a"
+        }
+      ],
+      "id": "cb908f77-e23c-4ab0-9172-079a15431033",
+      "createdAt": "2026-07-28T03:35:50.000Z",
+      "updatedAt": "2026-07-28T03:35:50.000Z",
+      "uid": "35240-cb908f77-e23c-4ab0-9172-079a15431033"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.xero.com/api.xro/2.0"
+    }
+  ]
+}
