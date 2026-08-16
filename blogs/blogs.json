@@ -5,7 +5,7 @@
       "source": "https://devblog.xero.com/feed",
       "feed_url": "https://devblog.xero.com/feed",
       "title": "",
-      "saved": 0,
+      "saved": 1,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 33,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 34,
+  "fetched": "2026-08-15T12:11:08Z"
 }
