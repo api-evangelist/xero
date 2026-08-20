@@ -26,6 +26,14 @@ tags:
 - Accounting
 - Bank Feeds
 - Finance
+- Financial-Services
+- Invoicing
+- Payroll
+- Small Business
+tags_raw:
+- Accounting
+- Bank Feeds
+- Finance
 - Financial Services
 - Invoicing
 - Payroll
@@ -109,6 +117,8 @@ apis:
   humanURL: https://developer.xero.com/documentation/api/accounting/overview
   baseURL: https://api.xero.com/api.xro/2.0
   tags:
+  - Bank Feeds
+  tags_raw:
   - BankFeeds
   properties:
   - type: OpenAPI
@@ -143,6 +153,8 @@ apis:
   humanURL: https://developer.xero.com/documentation/api/accounting/overview
   baseURL: https://api.xero.com/api.xro/2.0
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -313,6 +325,8 @@ apis:
   humanURL: https://developer.xero.com/documentation/api/accounting/overview
   baseURL: https://api.xero.com/api.xro/2.0
   tags:
+  - Payroll UK
+  tags_raw:
   - PayrollUk
   properties:
   - type: OpenAPI
