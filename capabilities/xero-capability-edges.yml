@@ -1,0 +1,85 @@
+slug: xero
+provider: Xero
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: Accounting
+  spec_file: xero-accounting-api-openapi.yml
+  capability_id: BC-200
+  capability_id_l1: BC-200
+  capability_name: Financial Management
+  confidence: 0.95
+  evidence: GET /Accounts "Retrieves the full chart of accounts"; schemas Invoice, CreditNotes, ExpenseClaims,
+    Report, BankTransfer
+  reason: 'Core double-entry accounting surface: chart of accounts, invoices, credit notes, batch payments,
+    reports. Plainly Financial Management; the 237 operations span GL, AR and AP so no single L2 is named.'
+- tag: Asset
+  spec_file: xero-asset-api-openapi.yml
+  capability_id: BC-200.40
+  capability_id_l1: BC-200
+  capability_name: Fixed Asset Accounting
+  confidence: 0.95
+  evidence: GET /Assets "searches fixed asset"; schemas BookDepreciationSetting, BookDepreciationDetail,
+    AssetType
+  reason: Fixed asset register with depreciation settings and asset types — exactly Fixed Asset Accounting.
+- tag: Finance
+  spec_file: xero-finance-api-openapi.yml
+  capability_id: BC-200.60
+  capability_id_l1: BC-200
+  capability_name: Financial Reporting Management
+  confidence: 0.9
+  evidence: GET /FinancialStatements/BalanceSheet "Get Balance Sheet report"; "Get Profit & Loss report";
+    "Get Trial Balance report"
+  reason: Produces balance sheet, cash flow, P&L and trial balance statements — financial reporting and
+    consolidation output rather than transaction posting.
+- tag: PayrollAu
+  spec_file: xero-payrollau-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.85
+  evidence: GET /Employees "Searches payroll employees"; GET /PayItems "Retrieves pay items"; schemas
+    Payslips, SuperFund, PayrollCalendars, LeaveBalance
+  reason: Payroll employee records, pay items, payslips, superannuation and leave applications — payroll
+    administration and employee record keeping within HR Operations.
+- tag: PayrollNz
+  spec_file: xero-payrollnz-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.85
+  evidence: GET /Employees/{EmployeeID}/Tax "Retrieves tax records for a specific employee"; schemas PaySlips,
+    SalaryAndWages, StatutoryDeductionLines
+  reason: Employee master data, salary and wages, statutory deductions, payslips and leave — payroll administration
+    / HR operations regardless of buyer industry.
+- tag: PayrollUk
+  spec_file: xero-payrolluk-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.85
+  evidence: GET /Employees/{EmployeeID}/Tax getEmployeeTax; schemas Payslips, SalaryAndWages, EmployeeLeave,
+    EmployeeOpeningBalancesObject
+  reason: Operations create and maintain employee records, employment details, tax records, leave and
+    payslips — UK payroll administration, i.e. HR Operations within Human Capital Management. Not an accounting-ledger
+    capability despite the concatenated title.
+- tag: Project
+  spec_file: xero-project-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.75
+  evidence: GET /Projects/{projectId}/Tasks getTasks 'Xero Retrieves all project tasks'; GET /Projects/{projectId}/Time
+    getTimeEntries
+  reason: CRUD over projects, project users, tasks and time entries is project execution/tracking. Mapped
+    at the Project Management L2; some ambiguity because the time/charge-type data also feeds billing.

@@ -402,6 +402,9 @@ apis:
   - type: Documentation
     url: https://developer.xero.com/documentation/api/files/overview
 common:
+- type: CapabilityMap
+  url: capabilities/xero-capability-edges.yml
+  name: Xero Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/xero/overview
 - type: AgenticAccess
