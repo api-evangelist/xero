@@ -129,7 +129,7 @@ apis:
   humanURL: https://developer.xero.com/documentation/api/accounting/overview
   baseURL: https://api.xero.com/api.xro/2.0
   tags:
-  - Bank Feeds
+  - BankFeeds
   tags_raw:
   - BankFeeds
   properties:
@@ -337,7 +337,7 @@ apis:
   humanURL: https://developer.xero.com/documentation/api/accounting/overview
   baseURL: https://api.xero.com/api.xro/2.0
   tags:
-  - Payroll UK
+  - PayrollUk
   tags_raw:
   - PayrollUk
   properties:
