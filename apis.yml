@@ -123,42 +123,6 @@ apis:
     url: https://developer.xero.com/documentation/api/projects/overview
   - type: Documentation
     url: https://developer.xero.com/documentation/api/files/overview
-- aid: xero:xero-bankfeeds-api
-  name: Xero BankFeeds API
-  description: The BankFeeds API from Xero — 5 operation(s) for bankfeeds.
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - Bank Feeds
-  tags_raw:
-  - BankFeeds
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-bankfeeds-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
 - aid: xero:xero-files-api
   name: Xero Files API
   description: Operations available to regular developers
@@ -377,6 +341,40 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/xero-project-api-openapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: GraphQL
+    url: graphql/xero-graphql.md
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+- aid: xero:xero-bank-feeds-api
+  name: Xero Bank Feeds API
+  description: The Bank Feeds API from Xero — 5 operation(s) for bank feeds.
+  humanURL: https://developer.xero.com/documentation/api/accounting/overview
+  baseURL: https://api.xero.com/api.xro/2.0
+  tags:
+  - Bank Feeds
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-bank-feeds-api-openapi.yml
   - type: Documentation
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
