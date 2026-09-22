@@ -399,6 +399,21 @@ apis:
     url: https://developer.xero.com/documentation/api/projects/overview
   - type: Documentation
     url: https://developer.xero.com/documentation/api/files/overview
+- aid: xero:connections
+  name: Xero Connections API
+  description: OAuth 2.0 connections endpoint for listing the Xero tenants authorized under an access
+    token.
+  humanURL: https://developer.xero.com/documentation/guides/oauth2/auth-flow
+  baseURL: https://api.xero.com/connections
+  tags:
+  - Authentication
+  - Tenants
+  tags_raw:
+  - OAuth
+  - Tenants
+  properties:
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/auth-flow
 common:
 - type: Website
   url: https://www.xero.com/
