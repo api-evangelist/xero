@@ -1,15 +1,19 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Xero Accounting Project API
   version: 11.1.0
+  title: Xero Projects Project API
+  description: This is the Xero Projects API
   termsOfService: https://developer.xero.com/xero-developer-platform-terms-conditions/
   contact:
     name: Xero Platform Team
     email: api@xero.com
     url: https://developer.xero.com
+  license:
+    name: MIT
+    url: https://github.com/XeroAPI/Xero-OpenAPI/blob/master/LICENSE
 servers:
-- description: The Xero Accounting API exposes accounting and related functions of the main Xero application and can be used for a variety of purposes such as creating transactions like invoices and credit notes, right through to extracting accounting data via our reports endpoint.
-  url: https://api.xero.com/api.xro/2.0
+- description: Xero API server for projects
+  url: https://api.xero.com/projects.xro/2.0
 tags:
 - name: Project
 paths:
@@ -990,6 +994,174 @@ paths:
           $ref: '#/components/responses/400Error'
 components:
   schemas:
+    Task:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/projects
+      type: object
+      properties:
+        taskId:
+          type: string
+          format: uuid
+          example: 00000000-0000-0000-000-000000000000
+          description: Identifier of the task.
+        name:
+          type: string
+          description: Name of the task.
+        rate:
+          $ref: '#/components/schemas/Amount'
+          type: number
+        chargeType:
+          $ref: '#/components/schemas/ChargeType'
+          type: string
+        estimateMinutes:
+          type: integer
+          description: An estimated time to perform the task
+        projectId:
+          type: string
+          format: uuid
+          example: 00000000-0000-0000-000-000000000000
+          description: Identifier of the project task belongs to.
+        totalMinutes:
+          type: integer
+          description: Total minutes which have been logged against the task. Logged by assigning a time entry to a task
+        totalAmount:
+          $ref: '#/components/schemas/Amount'
+          type: number
+        minutesInvoiced:
+          type: integer
+          description: Minutes on this task which have been invoiced.
+        minutesToBeInvoiced:
+          type: integer
+          description: Minutes on this task which have not been invoiced.
+        fixedMinutes:
+          type: integer
+          description: Minutes logged against this task if its charge type is `FIXED`.
+        nonChargeableMinutes:
+          type: integer
+          description: Minutes logged against this task if its charge type is `NON_CHARGEABLE`.
+        amountToBeInvoiced:
+          $ref: '#/components/schemas/Amount'
+          type: number
+        amountInvoiced:
+          $ref: '#/components/schemas/Amount'
+          type: number
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INVOICED
+          - LOCKED
+          description: Status of the task. When a task of ChargeType is `FIXED` and the rate amount is invoiced the status will be set to `INVOICED` and can't be modified. A task with ChargeType of `TIME` or `NON_CHARGEABLE` cannot have a status of `INVOICED`. A `LOCKED` state indicates that the task is currently changing state (for example being invoiced) and can't be modified.
+    Project:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/projects
+      type: object
+      properties:
+        projectId:
+          type: string
+          format: uuid
+          example: 254553fa-2be8-4991-bd5e-70a97ea12ef8
+          description: Identifier of the project.
+        contactId:
+          externalDocs:
+            url: https://developer.xero.com/documentation/api/contacts
+          type: string
+          format: uuid
+          example: 01234567-89ab-cdef-0123-456789abcdef
+          description: Identifier of the contact this project was created for.
+        name:
+          type: string
+          example: New Kitchen
+          description: Name of the project.
+        currencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
+          type: string
+        minutesLogged:
+          type: integer
+          example: 0
+          description: A total of minutes logged against all tasks on the Project.
+        totalTaskAmount:
+          $ref: '#/components/schemas/Amount'
+        totalExpenseAmount:
+          $ref: '#/components/schemas/Amount'
+        estimateAmount:
+          $ref: '#/components/schemas/Amount'
+        minutesToBeInvoiced:
+          type: integer
+          example: 0
+          description: Minutes which have not been invoiced across all chargeable tasks in the project.
+        taskAmountToBeInvoiced:
+          $ref: '#/components/schemas/Amount'
+        taskAmountInvoiced:
+          $ref: '#/components/schemas/Amount'
+        expenseAmountToBeInvoiced:
+          $ref: '#/components/schemas/Amount'
+        expenseAmountInvoiced:
+          $ref: '#/components/schemas/Amount'
+        projectAmountInvoiced:
+          $ref: '#/components/schemas/Amount'
+        deposit:
+          $ref: '#/components/schemas/Amount'
+        depositApplied:
+          $ref: '#/components/schemas/Amount'
+        creditNoteAmount:
+          $ref: '#/components/schemas/Amount'
+        deadlineUtc:
+          type: string
+          format: date-time
+          example: '2019-12-10T12:59:59Z'
+          description: Deadline for the project. UTC Date Time in ISO-8601 format.
+        totalInvoiced:
+          $ref: '#/components/schemas/Amount'
+        totalToBeInvoiced:
+          $ref: '#/components/schemas/Amount'
+        estimate:
+          $ref: '#/components/schemas/Amount'
+        status:
+          type: string
+          $ref: '#/components/schemas/ProjectStatus'
+      required:
+      - name
+    Amount:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/CurrencyCode'
+          type: string
+        value:
+          type: number
+          format: double
+          x-is-money: true
+          example: 1.0
+    Projects:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/projects
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+    ChargeType:
+      description: Can be `TIME`, `FIXED` or `NON_CHARGEABLE`, defines how the task will be charged. Use `TIME` when you want to charge per hour and `FIXED` to charge as a fixed amount. If the task will not be charged use `NON_CHARGEABLE`.
+      type: string
+      enum:
+      - TIME
+      - FIXED
+      - NON_CHARGEABLE
+    TimeEntries:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/time
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeEntry'
     Pagination:
       properties:
         page:
@@ -1186,218 +1358,24 @@ components:
       - ZMW
       - ZMK
       - ZWD
-    TaskCreateOrUpdate:
+    Error:
       externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects
+        url: https://developer.xero.com/documentation/projects/projects-response-codes
       type: object
       properties:
-        name:
+        message:
           type: string
-          description: Name of the task. Max length 100 characters.
-          maximum: 100
-        rate:
-          $ref: '#/components/schemas/Amount'
-          type: number
-        chargeType:
-          $ref: '#/components/schemas/ChargeType'
-          type: string
-        estimateMinutes:
-          type: integer
-          description: An estimated time to perform the task
-      required:
-      - name
-      - rate
-      - chargeType
-    TimeEntries:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/time
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeEntry'
-    Tasks:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Task'
-    ProjectUsers:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/users
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectUser'
-    Task:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects
-      type: object
-      properties:
-        taskId:
-          type: string
-          format: uuid
-          example: 00000000-0000-0000-000-000000000000
-          description: Identifier of the task.
-        name:
-          type: string
-          description: Name of the task.
-        rate:
-          $ref: '#/components/schemas/Amount'
-          type: number
-        chargeType:
-          $ref: '#/components/schemas/ChargeType'
-          type: string
-        estimateMinutes:
-          type: integer
-          description: An estimated time to perform the task
-        projectId:
-          type: string
-          format: uuid
-          example: 00000000-0000-0000-000-000000000000
-          description: Identifier of the project task belongs to.
-        totalMinutes:
-          type: integer
-          description: Total minutes which have been logged against the task. Logged by assigning a time entry to a task
-        totalAmount:
-          $ref: '#/components/schemas/Amount'
-          type: number
-        minutesInvoiced:
-          type: integer
-          description: Minutes on this task which have been invoiced.
-        minutesToBeInvoiced:
-          type: integer
-          description: Minutes on this task which have not been invoiced.
-        fixedMinutes:
-          type: integer
-          description: Minutes logged against this task if its charge type is `FIXED`.
-        nonChargeableMinutes:
-          type: integer
-          description: Minutes logged against this task if its charge type is `NON_CHARGEABLE`.
-        amountToBeInvoiced:
-          $ref: '#/components/schemas/Amount'
-          type: number
-        amountInvoiced:
-          $ref: '#/components/schemas/Amount'
-          type: number
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - INVOICED
-          - LOCKED
-          description: Status of the task. When a task of ChargeType is `FIXED` and the rate amount is invoiced the status will be set to `INVOICED` and can't be modified. A task with ChargeType of `TIME` or `NON_CHARGEABLE` cannot have a status of `INVOICED`. A `LOCKED` state indicates that the task is currently changing state (for example being invoiced) and can't be modified.
-    ChargeType:
-      description: Can be `TIME`, `FIXED` or `NON_CHARGEABLE`, defines how the task will be charged. Use `TIME` when you want to charge per hour and `FIXED` to charge as a fixed amount. If the task will not be charged use `NON_CHARGEABLE`.
+          description: Exception message
+        modelState:
+          type: object
+          description: Array of Elements of validation Errors
+    ProjectStatus:
+      description: Status for project
+      example: INPROGRESS
       type: string
       enum:
-      - TIME
-      - FIXED
-      - NON_CHARGEABLE
-    Amount:
-      type: object
-      properties:
-        currency:
-          $ref: '#/components/schemas/CurrencyCode'
-          type: string
-        value:
-          type: number
-          format: double
-          x-is-money: true
-          example: 1.0
-    Projects:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
-    Project:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects
-      type: object
-      properties:
-        projectId:
-          type: string
-          format: uuid
-          example: 254553fa-2be8-4991-bd5e-70a97ea12ef8
-          description: Identifier of the project.
-        contactId:
-          externalDocs:
-            url: https://developer.xero.com/documentation/api/contacts
-          type: string
-          format: uuid
-          example: 01234567-89ab-cdef-0123-456789abcdef
-          description: Identifier of the contact this project was created for.
-        name:
-          type: string
-          example: New Kitchen
-          description: Name of the project.
-        currencyCode:
-          $ref: '#/components/schemas/CurrencyCode'
-          type: string
-        minutesLogged:
-          type: integer
-          example: 0
-          description: A total of minutes logged against all tasks on the Project.
-        totalTaskAmount:
-          $ref: '#/components/schemas/Amount'
-        totalExpenseAmount:
-          $ref: '#/components/schemas/Amount'
-        estimateAmount:
-          $ref: '#/components/schemas/Amount'
-        minutesToBeInvoiced:
-          type: integer
-          example: 0
-          description: Minutes which have not been invoiced across all chargeable tasks in the project.
-        taskAmountToBeInvoiced:
-          $ref: '#/components/schemas/Amount'
-        taskAmountInvoiced:
-          $ref: '#/components/schemas/Amount'
-        expenseAmountToBeInvoiced:
-          $ref: '#/components/schemas/Amount'
-        expenseAmountInvoiced:
-          $ref: '#/components/schemas/Amount'
-        projectAmountInvoiced:
-          $ref: '#/components/schemas/Amount'
-        deposit:
-          $ref: '#/components/schemas/Amount'
-        depositApplied:
-          $ref: '#/components/schemas/Amount'
-        creditNoteAmount:
-          $ref: '#/components/schemas/Amount'
-        deadlineUtc:
-          type: string
-          format: date-time
-          example: '2019-12-10T12:59:59Z'
-          description: Deadline for the project. UTC Date Time in ISO-8601 format.
-        totalInvoiced:
-          $ref: '#/components/schemas/Amount'
-        totalToBeInvoiced:
-          $ref: '#/components/schemas/Amount'
-        estimate:
-          $ref: '#/components/schemas/Amount'
-        status:
-          type: string
-          $ref: '#/components/schemas/ProjectStatus'
-      required:
-      - name
+      - INPROGRESS
+      - CLOSED
     TimeEntry:
       externalDocs:
         url: https://developer.xero.com/documentation/projects/time
@@ -1444,6 +1422,80 @@ components:
           - LOCKED
           - INVOICED
           description: Status of the time entry. By default a time entry is created with status of `ACTIVE`. A `LOCKED` state indicates that the time entry is currently changing state (for example being invoiced). Updates are not allowed when in this state. It will have a status of INVOICED once it is invoiced.
+    Tasks:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/projects
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+    TaskCreateOrUpdate:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/projects
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the task. Max length 100 characters.
+          maximum: 100
+        rate:
+          $ref: '#/components/schemas/Amount'
+          type: number
+        chargeType:
+          $ref: '#/components/schemas/ChargeType'
+          type: string
+        estimateMinutes:
+          type: integer
+          description: An estimated time to perform the task
+      required:
+      - name
+      - rate
+      - chargeType
+    ProjectUsers:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/users
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectUser'
+    TimeEntryCreateOrUpdate:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/time
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+          example: 00000000-0000-0000-000-000000000000
+          description: The xero user identifier of the person logging the time.
+        taskId:
+          type: string
+          format: uuid
+          example: 00000000-0000-0000-000-000000000000
+          description: Identifier of the task that time entry is logged against.
+        dateUtc:
+          type: string
+          format: date-time
+          description: Date time entry is logged on. UTC Date Time in ISO-8601 format.
+        duration:
+          type: integer
+          description: Number of minutes to be logged. Duration is between 1 and 59940 inclusively.
+        description:
+          type: string
+          description: An optional description of the time entry, will be set to null if not provided during update.
+      required:
+      - userId
+      - taskId
+      - dateUtc
+      - duration
     ProjectUser:
       externalDocs:
         url: https://developer.xero.com/documentation/projects/users
@@ -1490,55 +1542,22 @@ components:
           description: Deadline for the project. UTC Date Time in ISO-8601 format.
       required:
       - name
-    TimeEntryCreateOrUpdate:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/time
-      type: object
-      properties:
-        userId:
-          type: string
-          format: uuid
-          example: 00000000-0000-0000-000-000000000000
-          description: The xero user identifier of the person logging the time.
-        taskId:
-          type: string
-          format: uuid
-          example: 00000000-0000-0000-000-000000000000
-          description: Identifier of the task that time entry is logged against.
-        dateUtc:
-          type: string
-          format: date-time
-          description: Date time entry is logged on. UTC Date Time in ISO-8601 format.
-        duration:
-          type: integer
-          description: Number of minutes to be logged. Duration is between 1 and 59940 inclusively.
-        description:
-          type: string
-          description: An optional description of the time entry, will be set to null if not provided during update.
-      required:
-      - userId
-      - taskId
-      - dateUtc
-      - duration
-    ProjectStatus:
-      description: Status for project
-      example: INPROGRESS
-      type: string
-      enum:
-      - INPROGRESS
-      - CLOSED
-    Error:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects-response-codes
-      type: object
-      properties:
-        message:
-          type: string
-          description: Exception message
-        modelState:
-          type: object
-          description: Array of Elements of validation Errors
+  responses:
+    400Error:
+      description: A failed request due to validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
+    requiredHeader:
+      in: header
+      name: Xero-Tenant-Id
+      x-snake: xero_tenant_id
+      description: Xero identifier for Tenant
+      schema:
+        type: string
+      required: true
     chargeType:
       in: query
       name: chargeType
@@ -1553,21 +1572,6 @@ components:
       example: KEY_VALUE
       schema:
         type: string
-    requiredHeader:
-      in: header
-      name: Xero-Tenant-Id
-      x-snake: xero_tenant_id
-      description: Xero identifier for Tenant
-      schema:
-        type: string
-      required: true
-  responses:
-    400Error:
-      description: A failed request due to validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2
@@ -1580,16 +1584,5 @@ components:
             email: Grant read-only access to your email
             openid: Grant read-only access to your open id
             profile: your profile information
-            accounting.attachments: Grant read-write access to attachments
-            accounting.attachments.read: Grant read-only access to attachments
-            accounting.budgets.read: Grant read-only access to read budgets
-            accounting.contacts: Grant read-write access to contacts and contact groups
-            accounting.contacts.read: Grant read-only access to contacts and contact groups
-            accounting.journals.read: Grant read-only access to journals
-            accounting.reports.read: Grant read-only access to accounting reports
-            accounting.reports.tenninetynine.read: Grant read-only access to 1099 reports
-            accounting.settings: Grant read-write access to organisation and account settings
-            accounting.settings.read: Grant read-only access to organisation and account settings
-            accounting.transactions: Grant read-write access to bank transactions, credit notes, invoices, repeating invoices
-            accounting.transactions.read: Grant read-only access to invoices
-            paymentservices: Grant read-write access to payment services
+            projects: Grant read-write access to projects
+            projects.read: Grant read-only access to projects

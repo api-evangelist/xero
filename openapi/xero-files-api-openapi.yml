@@ -1,16 +1,16 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Xero Accounting Files API
-  version: 11.1.0
+  title: Xero Files API
+  version: 12.0.2
+  description: These endpoints are specific to Xero Files API
   termsOfService: https://developer.xero.com/xero-developer-platform-terms-conditions/
   contact:
     name: Xero Platform Team
     email: api@xero.com
     url: https://developer.xero.com
-  description: Operations available to regular developers
 servers:
-- description: The Xero Accounting API exposes accounting and related functions of the main Xero application and can be used for a variety of purposes such as creating transactions like invoices and credit notes, right through to extracting accounting data via our reports endpoint.
-  url: https://api.xero.com/api.xro/2.0
+- description: Xero Files API
+  url: https://api.xero.com/files.xro/1.0/
 tags:
 - name: Files
   description: Operations available to regular developers
@@ -275,7 +275,7 @@ paths:
       - Files
       summary: Retrieves a specific file associations
       operationId: getFileAssociations
-      description: "By passing in the appropriate options, \n"
+      description: By passing in the appropriate options,
       parameters:
       - name: FileId
         x-snake: file_id
@@ -449,7 +449,7 @@ paths:
         - files.read
       tags:
       - Files
-      summary: Retrieves a count of associations for a list of objects.
+      summary: Retrieves a count of associations for a list of objects
       operationId: getAssociationsCount
       description: By passing in the appropriate options, you can retrieve the association count for objects
       parameters:
@@ -653,117 +653,6 @@ paths:
               example: '{ "Name": "Inbox", "FileCount": 14, "Email": "xero.inbox.jpf4.6oo29retajkhtfus@xerofiles.com", "IsInbox": true, "Id": "bf924975-7097-46f2-a143-1ecfbab3c8c3" }'
 components:
   schemas:
-    ObjectGroup:
-      description: The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.
-      type: string
-      enum:
-      - Account
-      - BankTransaction
-      - Contact
-      - CreditNote
-      - Invoice
-      - Item
-      - ManualJournal
-      - Overpayment
-      - Payment
-      - Prepayment
-      - Quote
-      - Receipt
-    Folder:
-      required:
-      - name
-      properties:
-        Name:
-          description: The name of the folder
-          type: string
-          example: assets
-        FileCount:
-          description: The number of files in the folder
-          type: integer
-          example: 5
-        Email:
-          description: The email address used to email files to the inbox. Only the inbox will have this element.
-          type: string
-          example: foo@bar.com
-        IsInbox:
-          description: to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.
-          type: boolean
-          example: true
-        Id:
-          description: Xero unique identifier for a folder  Files
-          type: string
-          format: uuid
-          example: 4ff1e5cc-9835-40d5-bb18-09fdb118db9c
-    Association:
-      type: object
-      properties:
-        SendWithObject:
-          description: Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.
-          type: boolean
-          example: true
-        Name:
-          description: The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.
-          type: string
-          example: Test.pdf
-        Size:
-          description: The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.
-          type: integer
-          example: 12357
-        CreatedDateUtc:
-          description: The date the file was created (UTC). Note- The CreatedDateUtc element is only returned when using /Associations/{ObjectId} endpoint.
-          type: string
-          format: date-time
-          example: '2020-12-10T01:22:00.0000000'
-        AssociationDateUtc:
-          description: The date the file was associated with the object (UTC). Note- The AssociationDateUtc element is only returned when using /Associations/{ObjectId} endpoint.
-          type: string
-          format: date-time
-          example: '2020-12-10T01:22:00.0000000'
-        FileId:
-          description: The unique identifier of the file
-          type: string
-          format: uuid
-        ObjectId:
-          description: The identifier of the object that the file is being associated with (e.g. InvoiceID, BankTransactionID, ContactID)
-          type: string
-          format: uuid
-        ObjectGroup:
-          $ref: '#/components/schemas/ObjectGroup'
-        ObjectType:
-          $ref: '#/components/schemas/ObjectType'
-    Files:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-          example: 2
-        Page:
-          type: integer
-          example: 1
-        PerPage:
-          type: integer
-          example: 50
-        Items:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileObject'
-    UploadObject:
-      type: object
-      required:
-      - body
-      - name
-      - filename
-      properties:
-        body:
-          type: string
-          format: byte
-        name:
-          type: string
-          description: exact name of the file you are uploading
-        filename:
-          type: string
-        mimeType:
-          type: string
     FileObject:
       type: object
       required:
@@ -804,6 +693,110 @@ components:
           type: string
           format: uuid
           example: 0f8ccf21-7267-4268-9167-a1e2c40c84c8
+    Association:
+      type: object
+      properties:
+        SendWithObject:
+          description: Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.
+          type: boolean
+          example: true
+        Name:
+          description: The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.
+          type: string
+          example: Test.pdf
+        Size:
+          description: The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.
+          type: integer
+          example: 12357
+        CreatedDateUtc:
+          description: The date the file was created (UTC). Note- The CreatedDateUtc element is only returned when using /Associations/{ObjectId} endpoint.
+          type: string
+          format: date-time
+          example: '2020-12-10T01:22:00.0000000'
+        AssociationDateUtc:
+          description: The date the file was associated with the object (UTC). Note- The AssociationDateUtc element is only returned when using /Associations/{ObjectId} endpoint.
+          type: string
+          format: date-time
+          example: '2020-12-10T01:22:00.0000000'
+        FileId:
+          description: The unique identifier of the file
+          type: string
+          format: uuid
+        ObjectId:
+          description: The identifier of the object that the file is being associated with (e.g. InvoiceID, BankTransactionID, ContactID)
+          type: string
+          format: uuid
+        ObjectGroup:
+          $ref: '#/components/schemas/ObjectGroup'
+        ObjectType:
+          $ref: '#/components/schemas/ObjectType'
+    ObjectGroup:
+      description: The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.
+      type: string
+      enum:
+      - Account
+      - BankTransaction
+      - Contact
+      - CreditNote
+      - Invoice
+      - Item
+      - ManualJournal
+      - Overpayment
+      - Payment
+      - Prepayment
+      - Quote
+      - Receipt
+    User:
+      required:
+      - Id
+      properties:
+        Id:
+          description: Xero identifier
+          type: string
+          format: uuid
+          example: 4ff1e5cc-9835-40d5-bb18-09fdb118db9c
+        Name:
+          description: Key is Name, but returns Email address of user who created the file
+          type: string
+          example: john.smith@mail.com
+        FirstName:
+          description: First name of user
+          type: string
+          example: John
+        LastName:
+          description: Last name of user
+          type: string
+          example: Smith
+        FullName:
+          description: Last name of user
+          type: string
+          example: Smith
+      type: object
+    Folder:
+      required:
+      - name
+      properties:
+        Name:
+          description: The name of the folder
+          type: string
+          example: assets
+        FileCount:
+          description: The number of files in the folder
+          type: integer
+          example: 5
+        Email:
+          description: The email address used to email files to the inbox. Only the inbox will have this element.
+          type: string
+          example: foo@bar.com
+        IsInbox:
+          description: to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.
+          type: boolean
+          example: true
+        Id:
+          description: Xero unique identifier for a folder  Files
+          type: string
+          format: uuid
+          example: 4ff1e5cc-9835-40d5-bb18-09fdb118db9c
     ObjectType:
       description: The Object Type
       type: string
@@ -864,32 +857,39 @@ components:
       - Termliab
       - NonCurrent
       - SalesQuote
-    User:
-      required:
-      - Id
-      properties:
-        Id:
-          description: Xero identifier
-          type: string
-          format: uuid
-          example: 4ff1e5cc-9835-40d5-bb18-09fdb118db9c
-        Name:
-          description: Key is Name, but returns Email address of user who created the file
-          type: string
-          example: john.smith@mail.com
-        FirstName:
-          description: First name of user
-          type: string
-          example: John
-        LastName:
-          description: Last name of user
-          type: string
-          example: Smith
-        FullName:
-          description: Last name of user
-          type: string
-          example: Smith
+    Files:
       type: object
+      properties:
+        TotalCount:
+          type: integer
+          example: 2
+        Page:
+          type: integer
+          example: 1
+        PerPage:
+          type: integer
+          example: 50
+        Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileObject'
+    UploadObject:
+      type: object
+      required:
+      - body
+      - name
+      - filename
+      properties:
+        body:
+          type: string
+          format: byte
+        name:
+          type: string
+          description: exact name of the file you are uploading
+        filename:
+          type: string
+        mimeType:
+          type: string
   parameters:
     requiredHeader:
       in: header
@@ -920,16 +920,5 @@ components:
             email: Grant read-only access to your email
             openid: Grant read-only access to your open id
             profile: your profile information
-            accounting.attachments: Grant read-write access to attachments
-            accounting.attachments.read: Grant read-only access to attachments
-            accounting.budgets.read: Grant read-only access to read budgets
-            accounting.contacts: Grant read-write access to contacts and contact groups
-            accounting.contacts.read: Grant read-only access to contacts and contact groups
-            accounting.journals.read: Grant read-only access to journals
-            accounting.reports.read: Grant read-only access to accounting reports
-            accounting.reports.tenninetynine.read: Grant read-only access to 1099 reports
-            accounting.settings: Grant read-write access to organisation and account settings
-            accounting.settings.read: Grant read-only access to organisation and account settings
-            accounting.transactions: Grant read-write access to bank transactions, credit notes, invoices, repeating invoices
-            accounting.transactions.read: Grant read-only access to invoices
-            paymentservices: Grant read-write access to payment services
+            files: Grant read-write access to files and folders
+            files.read: Grant read-only access to files and folders

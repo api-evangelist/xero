@@ -1,15 +1,19 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Xero Accounting Identity API
   version: 11.1.0
+  title: Xero OAuth 2 Service Identity API
+  description: These endpoints are related to managing authentication tokens and identity for Xero API
   termsOfService: https://developer.xero.com/xero-developer-platform-terms-conditions/
   contact:
     name: Xero Platform Team
     email: api@xero.com
     url: https://developer.xero.com
+  license:
+    name: MIT
+    url: https://github.com/XeroAPI/Xero-OpenAPI/blob/master/LICENSE
 servers:
-- description: The Xero Accounting API exposes accounting and related functions of the main Xero application and can be used for a variety of purposes such as creating transactions like invoices and credit notes, right through to extracting accounting data via our reports endpoint.
-  url: https://api.xero.com/api.xro/2.0
+- description: Xero Identity service API
+  url: https://api.xero.com
 tags:
 - name: Identity
 paths:
@@ -102,6 +106,9 @@ components:
           x-is-datetime: true
           x-php-format: \DateTime
   securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
     OAuth2:
       type: oauth2
       description: For more information
@@ -113,16 +120,3 @@ components:
             email: Grant read-only access to your email
             openid: Grant read-only access to your open id
             profile: your profile information
-            accounting.attachments: Grant read-write access to attachments
-            accounting.attachments.read: Grant read-only access to attachments
-            accounting.budgets.read: Grant read-only access to read budgets
-            accounting.contacts: Grant read-write access to contacts and contact groups
-            accounting.contacts.read: Grant read-only access to contacts and contact groups
-            accounting.journals.read: Grant read-only access to journals
-            accounting.reports.read: Grant read-only access to accounting reports
-            accounting.reports.tenninetynine.read: Grant read-only access to 1099 reports
-            accounting.settings: Grant read-write access to organisation and account settings
-            accounting.settings.read: Grant read-only access to organisation and account settings
-            accounting.transactions: Grant read-write access to bank transactions, credit notes, invoices, repeating invoices
-            accounting.transactions.read: Grant read-only access to invoices
-            paymentservices: Grant read-write access to payment services
