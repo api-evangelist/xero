@@ -38,7 +38,7 @@ tags:
 - Accounting
 - Bank Feeds
 - Finance
-- Financial-Services
+- Financial Services
 - Invoicing
 - Payroll
 - Small Business
@@ -50,6 +50,7 @@ tags_raw:
 - Invoicing
 - Payroll
 - Small Business
+- Financial-Services
 created: '2024-11-07'
 modified: '2026-05-30'
 url: https://raw.githubusercontent.com/api-evangelist/xero/refs/heads/main/apis.yml
@@ -69,8 +70,6 @@ apis:
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
     url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
   - type: Documentation
     url: https://developer.xero.com/documentation/api/assets/overview
   - type: Documentation
@@ -103,8 +102,6 @@ apis:
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
     url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
   - type: Documentation
     url: https://developer.xero.com/documentation/api/assets/overview
   - type: Documentation
@@ -139,8 +136,6 @@ apis:
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
     url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
   - type: Documentation
     url: https://developer.xero.com/documentation/api/assets/overview
   - type: Documentation
@@ -173,8 +168,6 @@ apis:
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
     url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
   - type: Documentation
     url: https://developer.xero.com/documentation/api/assets/overview
   - type: Documentation
@@ -207,8 +200,6 @@ apis:
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
     url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
   - type: Documentation
     url: https://developer.xero.com/documentation/api/assets/overview
   - type: Documentation
@@ -241,8 +232,6 @@ apis:
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
     url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
   - type: Documentation
     url: https://developer.xero.com/documentation/api/assets/overview
   - type: Documentation
@@ -275,8 +264,6 @@ apis:
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
     url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
   - type: Documentation
     url: https://developer.xero.com/documentation/api/assets/overview
   - type: Documentation
@@ -311,8 +298,6 @@ apis:
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
     url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
   - type: Documentation
     url: https://developer.xero.com/documentation/api/assets/overview
   - type: Documentation
@@ -345,8 +330,6 @@ apis:
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
     url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
   - type: Documentation
     url: https://developer.xero.com/documentation/api/assets/overview
   - type: Documentation
@@ -379,8 +362,6 @@ apis:
     url: https://developer.xero.com/documentation/api/accounting/overview
   - type: AsyncAPI
     url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: GraphQL
-    url: graphql/xero-graphql.md
   - type: Documentation
     url: https://developer.xero.com/documentation/api/assets/overview
   - type: Documentation
