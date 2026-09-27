@@ -994,6 +994,143 @@ paths:
           $ref: '#/components/responses/400Error'
 components:
   schemas:
+    Projects:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/projects
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+    ProjectUsers:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/users
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectUser'
+    TimeEntry:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/time
+      type: object
+      properties:
+        timeEntryId:
+          type: string
+          format: uuid
+          example: 00000000-0000-0000-000-000000000000
+          description: Identifier of the time entry.
+        userId:
+          type: string
+          format: uuid
+          example: 00000000-0000-0000-000-000000000000
+          description: The xero user identifier of the person who logged time.
+        projectId:
+          type: string
+          format: uuid
+          example: 00000000-0000-0000-000-000000000000
+          description: Identifier of the project, that the task (which the time entry is logged against) belongs to.
+        taskId:
+          type: string
+          format: uuid
+          example: 00000000-0000-0000-000-000000000000
+          description: Identifier of the task that time entry is logged against.
+        dateUtc:
+          type: string
+          format: date-time
+          description: The date time that time entry is logged on. UTC Date Time in ISO-8601 format.
+        dateEnteredUtc:
+          type: string
+          format: date-time
+          description: The date time that time entry is created. UTC Date Time in ISO-8601 format. By default it is set to server time.
+        duration:
+          type: integer
+          description: The duration of logged minutes.
+        description:
+          type: string
+          description: A description of the time entry.
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - LOCKED
+          - INVOICED
+          description: Status of the time entry. By default a time entry is created with status of `ACTIVE`. A `LOCKED` state indicates that the time entry is currently changing state (for example being invoiced). Updates are not allowed when in this state. It will have a status of INVOICED once it is invoiced.
+    Error:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/projects-response-codes
+      type: object
+      properties:
+        message:
+          type: string
+          description: Exception message
+        modelState:
+          type: object
+          description: Array of Elements of validation Errors
+    Tasks:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/projects
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+    ProjectUser:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/users
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+          example: 254553fa-2be8-4991-bd5e-70a97ea12ef8
+          description: Identifier of the user of the project.
+        name:
+          type: string
+          example: Sidney Allen
+          description: Full name of the user.
+        email:
+          type: string
+          example: sidneyallen@xero.com
+          description: Email address of the user.
+    Amount:
+      type: object
+      properties:
+        currency:
+          $ref: '#/components/schemas/CurrencyCode'
+          type: string
+        value:
+          type: number
+          format: double
+          x-is-money: true
+          example: 1.0
+    Pagination:
+      properties:
+        page:
+          type: integer
+          example: 1
+          description: Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.
+        pageSize:
+          type: integer
+          example: 10
+          description: Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.
+        pageCount:
+          type: integer
+          example: 1
+          description: Number of pages available
+        itemCount:
+          type: integer
+          example: 2
+          description: Number of items returned
     Task:
       externalDocs:
         url: https://developer.xero.com/documentation/projects/projects
@@ -1052,16 +1189,11 @@ components:
           - INVOICED
           - LOCKED
           description: Status of the task. When a task of ChargeType is `FIXED` and the rate amount is invoiced the status will be set to `INVOICED` and can't be modified. A task with ChargeType of `TIME` or `NON_CHARGEABLE` cannot have a status of `INVOICED`. A `LOCKED` state indicates that the task is currently changing state (for example being invoiced) and can't be modified.
-    Project:
+    ProjectCreateOrUpdate:
       externalDocs:
         url: https://developer.xero.com/documentation/projects/projects
       type: object
       properties:
-        projectId:
-          type: string
-          format: uuid
-          example: 254553fa-2be8-4991-bd5e-70a97ea12ef8
-          description: Identifier of the project.
         contactId:
           externalDocs:
             url: https://developer.xero.com/documentation/api/contacts
@@ -1073,77 +1205,18 @@ components:
           type: string
           example: New Kitchen
           description: Name of the project.
-        currencyCode:
-          $ref: '#/components/schemas/CurrencyCode'
-          type: string
-        minutesLogged:
-          type: integer
-          example: 0
-          description: A total of minutes logged against all tasks on the Project.
-        totalTaskAmount:
-          $ref: '#/components/schemas/Amount'
-        totalExpenseAmount:
-          $ref: '#/components/schemas/Amount'
         estimateAmount:
-          $ref: '#/components/schemas/Amount'
-        minutesToBeInvoiced:
-          type: integer
-          example: 0
-          description: Minutes which have not been invoiced across all chargeable tasks in the project.
-        taskAmountToBeInvoiced:
-          $ref: '#/components/schemas/Amount'
-        taskAmountInvoiced:
-          $ref: '#/components/schemas/Amount'
-        expenseAmountToBeInvoiced:
-          $ref: '#/components/schemas/Amount'
-        expenseAmountInvoiced:
-          $ref: '#/components/schemas/Amount'
-        projectAmountInvoiced:
-          $ref: '#/components/schemas/Amount'
-        deposit:
-          $ref: '#/components/schemas/Amount'
-        depositApplied:
-          $ref: '#/components/schemas/Amount'
-        creditNoteAmount:
-          $ref: '#/components/schemas/Amount'
+          type: number
+          format: double
+          x-is-money: true
+          example: 1.0
         deadlineUtc:
           type: string
           format: date-time
           example: '2019-12-10T12:59:59Z'
           description: Deadline for the project. UTC Date Time in ISO-8601 format.
-        totalInvoiced:
-          $ref: '#/components/schemas/Amount'
-        totalToBeInvoiced:
-          $ref: '#/components/schemas/Amount'
-        estimate:
-          $ref: '#/components/schemas/Amount'
-        status:
-          type: string
-          $ref: '#/components/schemas/ProjectStatus'
       required:
       - name
-    Amount:
-      type: object
-      properties:
-        currency:
-          $ref: '#/components/schemas/CurrencyCode'
-          type: string
-        value:
-          type: number
-          format: double
-          x-is-money: true
-          example: 1.0
-    Projects:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
     ChargeType:
       description: Can be `TIME`, `FIXED` or `NON_CHARGEABLE`, defines how the task will be charged. Use `TIME` when you want to charge per hour and `FIXED` to charge as a fixed amount. If the task will not be charged use `NON_CHARGEABLE`.
       type: string
@@ -1151,45 +1224,6 @@ components:
       - TIME
       - FIXED
       - NON_CHARGEABLE
-    TimeEntries:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/time
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeEntry'
-    Pagination:
-      properties:
-        page:
-          type: integer
-          example: 1
-          description: Set to 1 by default. The requested number of the page in paged response - Must be a number greater than 0.
-        pageSize:
-          type: integer
-          example: 10
-          description: Optional, it is set to 50 by default. The number of items to return per page in a paged response - Must be a number between 1 and 500.
-        pageCount:
-          type: integer
-          example: 1
-          description: Number of pages available
-        itemCount:
-          type: integer
-          example: 2
-          description: Number of items returned
-    ProjectPatch:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/ProjectStatus'
-          type: string
-      required:
-      - status
     CurrencyCode:
       description: 3 letter alpha code for the ISO-4217 currency code, e.g. USD, AUD.
       example: AUD
@@ -1358,114 +1392,17 @@ components:
       - ZMW
       - ZMK
       - ZWD
-    Error:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects-response-codes
-      type: object
-      properties:
-        message:
-          type: string
-          description: Exception message
-        modelState:
-          type: object
-          description: Array of Elements of validation Errors
-    ProjectStatus:
-      description: Status for project
-      example: INPROGRESS
-      type: string
-      enum:
-      - INPROGRESS
-      - CLOSED
-    TimeEntry:
+    TimeEntries:
       externalDocs:
         url: https://developer.xero.com/documentation/projects/time
       type: object
       properties:
-        timeEntryId:
-          type: string
-          format: uuid
-          example: 00000000-0000-0000-000-000000000000
-          description: Identifier of the time entry.
-        userId:
-          type: string
-          format: uuid
-          example: 00000000-0000-0000-000-000000000000
-          description: The xero user identifier of the person who logged time.
-        projectId:
-          type: string
-          format: uuid
-          example: 00000000-0000-0000-000-000000000000
-          description: Identifier of the project, that the task (which the time entry is logged against) belongs to.
-        taskId:
-          type: string
-          format: uuid
-          example: 00000000-0000-0000-000-000000000000
-          description: Identifier of the task that time entry is logged against.
-        dateUtc:
-          type: string
-          format: date-time
-          description: The date time that time entry is logged on. UTC Date Time in ISO-8601 format.
-        dateEnteredUtc:
-          type: string
-          format: date-time
-          description: The date time that time entry is created. UTC Date Time in ISO-8601 format. By default it is set to server time.
-        duration:
-          type: integer
-          description: The duration of logged minutes.
-        description:
-          type: string
-          description: A description of the time entry.
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - LOCKED
-          - INVOICED
-          description: Status of the time entry. By default a time entry is created with status of `ACTIVE`. A `LOCKED` state indicates that the time entry is currently changing state (for example being invoiced). Updates are not allowed when in this state. It will have a status of INVOICED once it is invoiced.
-    Tasks:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects
-      type: object
-      properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         items:
           type: array
           items:
-            $ref: '#/components/schemas/Task'
-    TaskCreateOrUpdate:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/projects
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the task. Max length 100 characters.
-          maximum: 100
-        rate:
-          $ref: '#/components/schemas/Amount'
-          type: number
-        chargeType:
-          $ref: '#/components/schemas/ChargeType'
-          type: string
-        estimateMinutes:
-          type: integer
-          description: An estimated time to perform the task
-      required:
-      - name
-      - rate
-      - chargeType
-    ProjectUsers:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/users
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProjectUser'
+            $ref: '#/components/schemas/TimeEntry'
     TimeEntryCreateOrUpdate:
       externalDocs:
         url: https://developer.xero.com/documentation/projects/time
@@ -1496,29 +1433,16 @@ components:
       - taskId
       - dateUtc
       - duration
-    ProjectUser:
-      externalDocs:
-        url: https://developer.xero.com/documentation/projects/users
-      type: object
-      properties:
-        userId:
-          type: string
-          format: uuid
-          example: 254553fa-2be8-4991-bd5e-70a97ea12ef8
-          description: Identifier of the user of the project.
-        name:
-          type: string
-          example: Sidney Allen
-          description: Full name of the user.
-        email:
-          type: string
-          example: sidneyallen@xero.com
-          description: Email address of the user.
-    ProjectCreateOrUpdate:
+    Project:
       externalDocs:
         url: https://developer.xero.com/documentation/projects/projects
       type: object
       properties:
+        projectId:
+          type: string
+          format: uuid
+          example: 254553fa-2be8-4991-bd5e-70a97ea12ef8
+          description: Identifier of the project.
         contactId:
           externalDocs:
             url: https://developer.xero.com/documentation/api/contacts
@@ -1530,26 +1454,103 @@ components:
           type: string
           example: New Kitchen
           description: Name of the project.
+        currencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
+          type: string
+        minutesLogged:
+          type: integer
+          example: 0
+          description: A total of minutes logged against all tasks on the Project.
+        totalTaskAmount:
+          $ref: '#/components/schemas/Amount'
+        totalExpenseAmount:
+          $ref: '#/components/schemas/Amount'
         estimateAmount:
-          type: number
-          format: double
-          x-is-money: true
-          example: 1.0
+          $ref: '#/components/schemas/Amount'
+        minutesToBeInvoiced:
+          type: integer
+          example: 0
+          description: Minutes which have not been invoiced across all chargeable tasks in the project.
+        taskAmountToBeInvoiced:
+          $ref: '#/components/schemas/Amount'
+        taskAmountInvoiced:
+          $ref: '#/components/schemas/Amount'
+        expenseAmountToBeInvoiced:
+          $ref: '#/components/schemas/Amount'
+        expenseAmountInvoiced:
+          $ref: '#/components/schemas/Amount'
+        projectAmountInvoiced:
+          $ref: '#/components/schemas/Amount'
+        deposit:
+          $ref: '#/components/schemas/Amount'
+        depositApplied:
+          $ref: '#/components/schemas/Amount'
+        creditNoteAmount:
+          $ref: '#/components/schemas/Amount'
         deadlineUtc:
           type: string
           format: date-time
           example: '2019-12-10T12:59:59Z'
           description: Deadline for the project. UTC Date Time in ISO-8601 format.
+        totalInvoiced:
+          $ref: '#/components/schemas/Amount'
+        totalToBeInvoiced:
+          $ref: '#/components/schemas/Amount'
+        estimate:
+          $ref: '#/components/schemas/Amount'
+        status:
+          type: string
+          $ref: '#/components/schemas/ProjectStatus'
       required:
       - name
-  responses:
-    400Error:
-      description: A failed request due to validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    TaskCreateOrUpdate:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/projects
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the task. Max length 100 characters.
+          maximum: 100
+        rate:
+          $ref: '#/components/schemas/Amount'
+          type: number
+        chargeType:
+          $ref: '#/components/schemas/ChargeType'
+          type: string
+        estimateMinutes:
+          type: integer
+          description: An estimated time to perform the task
+      required:
+      - name
+      - rate
+      - chargeType
+    ProjectStatus:
+      description: Status for project
+      example: INPROGRESS
+      type: string
+      enum:
+      - INPROGRESS
+      - CLOSED
+    ProjectPatch:
+      externalDocs:
+        url: https://developer.xero.com/documentation/projects/projects
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ProjectStatus'
+          type: string
+      required:
+      - status
   parameters:
+    idempotencyKey:
+      in: header
+      name: Idempotency-Key
+      x-snake: idempotency_key
+      description: This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+      example: KEY_VALUE
+      schema:
+        type: string
     requiredHeader:
       in: header
       name: Xero-Tenant-Id
@@ -1564,14 +1565,13 @@ components:
       x-snake: charge_type
       schema:
         $ref: '#/components/schemas/ChargeType'
-    idempotencyKey:
-      in: header
-      name: Idempotency-Key
-      x-snake: idempotency_key
-      description: This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
-      example: KEY_VALUE
-      schema:
-        type: string
+  responses:
+    400Error:
+      description: A failed request due to validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     OAuth2:
       type: oauth2

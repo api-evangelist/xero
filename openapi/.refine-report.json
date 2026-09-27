@@ -42,7 +42,7 @@
     "xero-payroll-uk-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "xero-projects-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "superseded outputs removed: xero-bank-feeds-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 10 total)"
+    "apis.yml register: written (+1 apis, 11 total)"
   ],
   "skipped": [
     "xero-accounting-api-openapi.yml: previously refined output, superseded by openapi/_original/",

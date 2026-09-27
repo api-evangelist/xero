@@ -489,79 +489,174 @@ paths:
           description: Statement not found
 components:
   schemas:
-    Statements:
-      externalDocs:
-        url: https://developer.xero.com/documentation/bank-feeds-api/statements
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Statement'
-    Error:
-      type: object
-      description: On error, the API consumer will receive an HTTP response with a HTTP Status Code of 4xx or 5xx and a Content-Type of application/problem+json.
-      properties:
-        title:
-          type: string
-          maximum: 255
-          description: Human readable high level error description.
-          example: Invalid Application
-        status:
-          type: integer
-          description: The numeric HTTP Status Code, e.g. 404
-          example: 403
-        detail:
-          type: string
-          maximum: 255
-          description: Human readable detailed error description.
-          example: The application has not been configured to use these API endpoints.
-        type:
-          type: string
-          description: Identifies the type of error.
-          enum:
-          - invalid-request
-          - invalid-application
-          - invalid-feed-connection
-          - duplicate-statement
-          - invalid-end-balance
-          - invalid-start-and-end-date
-          - invalid-start-date
-          - internal-error
-          - feed-already-connected-in-current-organisation
-          - invalid-end-date
-          - statement-not-found
-          - feed-connected-in-different-organisation
-          - feed-already-connected-in-different-organisation
-          - bank-feed-not-found
-          - invalid-country-specified
-          - invalid-organisation-bank-feeds
-          - invalid-organisation-multi-currency
-          - invalid-feed-connection-for-organisation
-          - invalid-user-role
-          - account-not-valid
-          - feed-not-found-or-already-deleted
-          example: invalid-application
-    CreditDebitIndicator:
+    CurrencyCode:
+      description: 3 letter alpha code for the ISO-4217 currency code, e.g. USD, AUD.
+      example: AUD
       type: string
-      description: If the statement balances are credit or debit, the CreditDebitIndicator should be specified from the perspective of the Customer.
       enum:
-      - CREDIT
-      - DEBIT
-    StartBalance:
-      description: The starting balance of the statement
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-          x-is-money: true
-          example: '9.0000'
-          description: decimal(19,4) unsigned Opening/closing balance amount.
-        creditDebitIndicator:
-          $ref: '#/components/schemas/CreditDebitIndicator'
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BRL
+      - BSD
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHF
+      - CLP
+      - CNY
+      - COP
+      - CRC
+      - CUC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - EUR
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GGP
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - IMP
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JEP
+      - JMD
+      - JOD
+      - JPY
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KRW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLL
+      - SOS
+      - SPL
+      - SRD
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TVD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - USD
+      - UYU
+      - UZS
+      - VEF
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XCD
+      - XDR
+      - XOF
+      - XPF
+      - YER
+      - ZAR
+      - ZMW
+      - ZMK
+      - ZWD
     Statement:
       type: object
       properties:
@@ -605,97 +700,6 @@ components:
         statementLineCount:
           type: integer
           example: 1
-    StatementLine:
-      type: object
-      description: the lines details for a statement
-      properties:
-        postedDate:
-          type: string
-          format: date
-          example: '2018-06-10'
-          description: The date that the transaction was processed or cleared as seen in internet banking ISO-8601 YYYY-MM-DD
-        description:
-          type: string
-          example: Description for statement line 2
-          maximum: 2000
-          description: Transaction description
-        amount:
-          type: number
-          format: double
-          x-is-money: true
-          example: '5.00'
-          description: Transaction amount
-        creditDebitIndicator:
-          $ref: '#/components/schemas/CreditDebitIndicator'
-        transactionId:
-          type: string
-          example: transaction-id-2
-          description: Financial institute's internal transaction identifier. If provided this field is factored into duplicate detection.
-        payeeName:
-          type: string
-          example: Payee name for statement line 2
-          description: Typically the merchant or payee name
-          maximum: 255
-        reference:
-          type: string
-          example: Reference for statement line 2
-          description: Optional field to enhance the Description
-          maximum: 255
-        chequeNumber:
-          type: string
-          example: '021'
-          description: The cheque/check number
-          maximum: 20
-        transactionType:
-          type: string
-          example: Refund
-          description: Descriptive transaction type
-          maximum: 30
-    FeedConnections:
-      externalDocs:
-        url: https://developer.xero.com/documentation/bank-feeds-api/feed-connections
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/FeedConnection'
-    StatementLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/StatementLine'
-    EndBalance:
-      description: The StartBalance plus all the Statement Line Amounts should be equal to the EndBalance Amount.
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-          x-is-money: true
-          example: '10.1340'
-        creditDebitIndicator:
-          $ref: '#/components/schemas/CreditDebitIndicator'
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          example: 1
-          description: Page number which specifies the set of records to retrieve. Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?page=2 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned.
-        pageSize:
-          type: integer
-          example: 10
-          description: Page size which specifies how many records per page will be returned (default 50). Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?pageSize=100 to specify page size of 100.
-        pageCount:
-          type: integer
-          example: 1
-          description: Number of pages available
-        itemCount:
-          type: integer
-          example: 2
-          description: Number of items returned
     CountryCode:
       type: string
       example: GB
@@ -941,174 +945,105 @@ components:
       - ZA
       - ZM
       - ZW
-    CurrencyCode:
-      description: 3 letter alpha code for the ISO-4217 currency code, e.g. USD, AUD.
-      example: AUD
-      type: string
-      enum:
-      - AED
-      - AFN
-      - ALL
-      - AMD
-      - ANG
-      - AOA
-      - ARS
-      - AUD
-      - AWG
-      - AZN
-      - BAM
-      - BBD
-      - BDT
-      - BGN
-      - BHD
-      - BIF
-      - BMD
-      - BND
-      - BOB
-      - BRL
-      - BSD
-      - BTN
-      - BWP
-      - BYN
-      - BZD
-      - CAD
-      - CDF
-      - CHF
-      - CLP
-      - CNY
-      - COP
-      - CRC
-      - CUC
-      - CUP
-      - CVE
-      - CZK
-      - DJF
-      - DKK
-      - DOP
-      - DZD
-      - EGP
-      - ERN
-      - ETB
-      - EUR
-      - FJD
-      - FKP
-      - GBP
-      - GEL
-      - GGP
-      - GHS
-      - GIP
-      - GMD
-      - GNF
-      - GTQ
-      - GYD
-      - HKD
-      - HNL
-      - HRK
-      - HTG
-      - HUF
-      - IDR
-      - ILS
-      - IMP
-      - INR
-      - IQD
-      - IRR
-      - ISK
-      - JEP
-      - JMD
-      - JOD
-      - JPY
-      - KES
-      - KGS
-      - KHR
-      - KMF
-      - KPW
-      - KRW
-      - KWD
-      - KYD
-      - KZT
-      - LAK
-      - LBP
-      - LKR
-      - LRD
-      - LSL
-      - LYD
-      - MAD
-      - MDL
-      - MGA
-      - MKD
-      - MMK
-      - MNT
-      - MOP
-      - MRU
-      - MUR
-      - MVR
-      - MWK
-      - MXN
-      - MYR
-      - MZN
-      - NAD
-      - NGN
-      - NIO
-      - NOK
-      - NPR
-      - NZD
-      - OMR
-      - PAB
-      - PEN
-      - PGK
-      - PHP
-      - PKR
-      - PLN
-      - PYG
-      - QAR
-      - RON
-      - RSD
-      - RUB
-      - RWF
-      - SAR
-      - SBD
-      - SCR
-      - SDG
-      - SEK
-      - SGD
-      - SHP
-      - SLL
-      - SOS
-      - SPL
-      - SRD
-      - STN
-      - SVC
-      - SYP
-      - SZL
-      - THB
-      - TJS
-      - TMT
-      - TND
-      - TOP
-      - TRY
-      - TTD
-      - TVD
-      - TWD
-      - TZS
-      - UAH
-      - UGX
-      - USD
-      - UYU
-      - UZS
-      - VEF
-      - VND
-      - VUV
-      - WST
-      - XAF
-      - XCD
-      - XDR
-      - XOF
-      - XPF
-      - YER
-      - ZAR
-      - ZMW
-      - ZMK
-      - ZWD
+    EndBalance:
+      description: The StartBalance plus all the Statement Line Amounts should be equal to the EndBalance Amount.
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+          x-is-money: true
+          example: '10.1340'
+        creditDebitIndicator:
+          $ref: '#/components/schemas/CreditDebitIndicator'
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+          description: Page number which specifies the set of records to retrieve. Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?page=2 to get the second set of the records. When page value is not a number or a negative number, by default, the first set of records is returned.
+        pageSize:
+          type: integer
+          example: 10
+          description: Page size which specifies how many records per page will be returned (default 50). Example - https://api.xero.com/bankfeeds.xro/1.0/Statements?pageSize=100 to specify page size of 100.
+        pageCount:
+          type: integer
+          example: 1
+          description: Number of pages available
+        itemCount:
+          type: integer
+          example: 2
+          description: Number of items returned
+    FeedConnections:
+      externalDocs:
+        url: https://developer.xero.com/documentation/bank-feeds-api/feed-connections
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeedConnection'
+    StatementLine:
+      type: object
+      description: the lines details for a statement
+      properties:
+        postedDate:
+          type: string
+          format: date
+          example: '2018-06-10'
+          description: The date that the transaction was processed or cleared as seen in internet banking ISO-8601 YYYY-MM-DD
+        description:
+          type: string
+          example: Description for statement line 2
+          maximum: 2000
+          description: Transaction description
+        amount:
+          type: number
+          format: double
+          x-is-money: true
+          example: '5.00'
+          description: Transaction amount
+        creditDebitIndicator:
+          $ref: '#/components/schemas/CreditDebitIndicator'
+        transactionId:
+          type: string
+          example: transaction-id-2
+          description: Financial institute's internal transaction identifier. If provided this field is factored into duplicate detection.
+        payeeName:
+          type: string
+          example: Payee name for statement line 2
+          description: Typically the merchant or payee name
+          maximum: 255
+        reference:
+          type: string
+          example: Reference for statement line 2
+          description: Optional field to enhance the Description
+          maximum: 255
+        chequeNumber:
+          type: string
+          example: '021'
+          description: The cheque/check number
+          maximum: 20
+        transactionType:
+          type: string
+          example: Refund
+          description: Descriptive transaction type
+          maximum: 30
+    StartBalance:
+      description: The starting balance of the statement
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+          x-is-money: true
+          example: '9.0000'
+          description: decimal(19,4) unsigned Opening/closing balance amount.
+        creditDebitIndicator:
+          $ref: '#/components/schemas/CreditDebitIndicator'
     FeedConnection:
       externalDocs:
         url: https://developer.xero.com/documentation/bank-feeds-api/feed-connections
@@ -1158,6 +1093,71 @@ components:
           description: the current status of the feed connection
         error:
           $ref: '#/components/schemas/Error'
+    Statements:
+      externalDocs:
+        url: https://developer.xero.com/documentation/bank-feeds-api/statements
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Statement'
+    Error:
+      type: object
+      description: On error, the API consumer will receive an HTTP response with a HTTP Status Code of 4xx or 5xx and a Content-Type of application/problem+json.
+      properties:
+        title:
+          type: string
+          maximum: 255
+          description: Human readable high level error description.
+          example: Invalid Application
+        status:
+          type: integer
+          description: The numeric HTTP Status Code, e.g. 404
+          example: 403
+        detail:
+          type: string
+          maximum: 255
+          description: Human readable detailed error description.
+          example: The application has not been configured to use these API endpoints.
+        type:
+          type: string
+          description: Identifies the type of error.
+          enum:
+          - invalid-request
+          - invalid-application
+          - invalid-feed-connection
+          - duplicate-statement
+          - invalid-end-balance
+          - invalid-start-and-end-date
+          - invalid-start-date
+          - internal-error
+          - feed-already-connected-in-current-organisation
+          - invalid-end-date
+          - statement-not-found
+          - feed-connected-in-different-organisation
+          - feed-already-connected-in-different-organisation
+          - bank-feed-not-found
+          - invalid-country-specified
+          - invalid-organisation-bank-feeds
+          - invalid-organisation-multi-currency
+          - invalid-feed-connection-for-organisation
+          - invalid-user-role
+          - account-not-valid
+          - feed-not-found-or-already-deleted
+          example: invalid-application
+    CreditDebitIndicator:
+      type: string
+      description: If the statement balances are credit or debit, the CreditDebitIndicator should be specified from the perspective of the Customer.
+      enum:
+      - CREDIT
+      - DEBIT
+    StatementLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/StatementLine'
   parameters:
     requiredHeader:
       in: header
