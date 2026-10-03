@@ -3183,7 +3183,7 @@ paths:
             example: '[ { "EmployeeID":"b34e89ff-770d-4099-b7e5-f968767118bc", "StartDate":"/Date(1573171200000+0000)/", "EndDate":"/Date(1573689600000+0000)/", "Status":"APPROVED", "Hours":22.0, "TimesheetID":"a7eb0a79-8511-4ee7-b473-3a25f28abcb9", "TimesheetLines":[ { "EarningsRateID":"ab874dfb-ab09-4c91-954e-43acf6fc23b4", "TrackingItemID":"af5e9ce2-2349-4136-be99-3561b189f473", "NumberOfUnits":[ 2.0, 10.0, 0.0, 0.0, 5.0, 0.0, 5.0 ], "UpdatedDateUTC":"/Date(1573516185127+0000)/" } ] } ]'
 components:
   schemas:
-    ReimbursementType:
+    DeductionType:
       type: object
       properties:
         Name:
@@ -3195,7 +3195,19 @@ components:
           description: See Accounts
           type: string
           example: 720
-        ReimbursementTypeID:
+        ReducesTax:
+          description: Indicates that this is a pre-tax deduction that will reduce the amount of tax you withhold from an employee.
+          type: boolean
+          example: false
+        ReducesSuper:
+          description: Most deductions don’t reduce your superannuation guarantee contribution liability, so typically you will not set any value for this.
+          type: boolean
+          example: false
+        IsExemptFromW1:
+          description: Boolean to determine if the deduction type is reportable or exempt from W1
+          type: boolean
+          example: false
+        DeductionTypeID:
           description: Xero identifier
           type: string
           format: uuid
@@ -3206,50 +3218,180 @@ components:
           readOnly: true
           x-is-msdate-time: true
           example: /Date(1583967733054+0000)/
+        DeductionCategory:
+          type: string
+          enum:
+          - NONE
+          - UNIONFEES
+          - WORKPLACEGIVING
         CurrentRecord:
           description: Is the current record
           type: boolean
           example: true
-    TFNExemptionType:
+    PayrollCalendars:
+      type: object
+      x-objectArrayKey: payroll_calendars
+      properties:
+        PayrollCalendars:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayrollCalendar'
+    AllowanceType:
       type: string
       enum:
-      - NOTQUOTED
-      - PENDING
-      - PENSIONER
-      - UNDER18
-    PaidLeaveEarningsLine:
+      - CAR
+      - TRANSPORT
+      - LAUNDRY
+      - MEALS
+      - TRAVEL
+      - OTHER
+      - TOOLS
+      - TASKS
+      - QUALIFICATIONS
+    WorkCondition:
+      type: string
+      enum:
+      - PROMOTIONAL
+      - THREELESSPERFORMANCESPERWEEK
+      - NONE
+    PayslipObject:
       type: object
-      required:
-      - LeaveTypeID
-      - Amount
+      properties:
+        Payslip:
+          $ref: '#/components/schemas/Payslip'
+    EmployeeStatus:
+      type: string
+      description: Employee Status Types
+      enum:
+      - ACTIVE
+      - TERMINATED
+    ReimbursementLine:
+      type: object
+      properties:
+        ReimbursementTypeID:
+          description: Xero reimbursement type identifier
+          type: string
+          format: uuid
+          example: bd246b96-c637-4767-81cf-851ba8fa93c2
+        Amount:
+          description: Reimbursement type amount
+          type: number
+          format: double
+          x-is-money: true
+          example: 10.0
+        Description:
+          description: Reimbursement lines description (max length 50)
+          type: string
+          example: For the taxi
+          maxLength: 50
+        ExpenseAccount:
+          description: Reimbursement expense account. For posted pay run you should be able to see expense account code.
+          type: string
+          example: 420
+    LeaveLineCalculationType:
+      description: Calculation type for leave line for Opening Balance on Employee
+      type: string
+      enum:
+      - NOCALCULATIONREQUIRED
+      - FIXEDAMOUNTEACHPERIOD
+      - ENTERRATEINPAYTEMPLATE
+      - BASEDONORDINARYEARNINGS
+    EmploymentType:
+      type: string
+      enum:
+      - EMPLOYEE
+      - CONTRACTOR
+    TaxLine:
+      type: object
+      properties:
+        PayslipTaxLineID:
+          description: Xero identifier for payslip tax line ID.
+          type: string
+          format: uuid
+          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
+        Amount:
+          description: The tax line amount
+          type: number
+          format: double
+          x-is-money: true
+          example: 50.0
+        TaxTypeName:
+          description: Name of the tax type.
+          type: string
+          example: Manual Adjustment
+        Description:
+          description: Description of the tax line.
+          type: string
+        ManualTaxType:
+          $ref: '#/components/schemas/ManualTaxType'
+        LiabilityAccount:
+          description: The tax line liability account code. For posted pay run you should be able to see liability account code
+          type: string
+          example: 620
+    APIException:
+      description: The object returned for a bad request
+      type: object
+      properties:
+        ErrorNumber:
+          description: The error number
+          type: number
+          format: integer
+          example: 16
+        Type:
+          description: The type of error
+          type: string
+          example: QueryParseException
+        Message:
+          description: The message describing the error
+          type: string
+          example: No property or field 'hi' exists in type 'Employee' (at index 0)
+    SuperannuationCalculationType:
+      type: string
+      enum:
+      - FIXEDAMOUNT
+      - PERCENTAGEOFEARNINGS
+      - STATUTORY
+    EarningsType:
+      type: string
+      enum:
+      - FIXED
+      - ORDINARYTIMEEARNINGS
+      - OVERTIMEEARNINGS
+      - ALLOWANCE
+      - LUMPSUMD
+      - EMPLOYMENTTERMINATIONPAYMENT
+      - LUMPSUMA
+      - LUMPSUMB
+      - BONUSESANDCOMMISSIONS
+      - LUMPSUME
+      - LUMPSUMW
+      - DIRECTORSFEES
+      - PAIDPARENTALLEAVE
+      - WORKERSCOMPENSATION
+    AllowanceCategory:
+      type: string
+      enum:
+      - NONDEDUCTIBLE
+      - UNIFORM
+      - PRIVATEVEHICLE
+      - HOMEOFFICE
+      - TRANSPORT
+      - GENERAL
+      - OTHER
+    OpeningBalanceLeaveLine:
+      type: object
       properties:
         LeaveTypeID:
           description: Xero leave type identifier
           type: string
           format: uuid
           example: 742998cb-7584-4ecf-aa88-d694f59c50f9
-        Amount:
-          description: Paid leave amount
+        NumberOfUnits:
+          description: Number of units for leave line.
           type: number
           format: double
           x-is-money: true
-          example: 500.0
-        SGCAppliedLeaveLoadingAmount:
-          description: The amount of leave loading applied for the leave type that is subject to Superannuation Guarantee Contributions. *Only applicable for Leave Types with Annual Leave Categories
-          type: number
-          format: double
-          x-is-money: true
-          example: 50.0
-        SGCExemptedLeaveLoadingAmount:
-          description: The amount of leave loading applied for the leave type that is exempt from Superannuation Guarantee Contributions. *Only applicable for Leave Types with Annual Leave Categories
-          type: number
-          format: double
-          x-is-money: true
-          example: 60.0
-        ResetSTPCategorisation:
-          description: Reset the STP categorisations for the leave type. *Only applicable for Leave Types with Annual Leave Categories
-          type: boolean
-          example: true
+          example: 2.5
     Employee:
       type: object
       required:
@@ -3417,203 +3559,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    SettingsObject:
-      type: object
-      properties:
-        Settings:
-          $ref: '#/components/schemas/Settings'
-    WorkCondition:
+    EmploymentBasis:
       type: string
       enum:
-      - PROMOTIONAL
-      - THREELESSPERFORMANCESPERWEEK
-      - NONE
-    SuperFund:
-      type: object
-      required:
-      - Type
-      properties:
-        SuperFundID:
-          description: Xero identifier for a super fund
-          type: string
-          format: uuid
-          example: bfac31bd-ea62-4fc8-a5e7-7965d9504b15
-        Type:
-          $ref: '#/components/schemas/SuperFundType'
-        Name:
-          description: Name of the super fund
-          type: string
-          example: MLC Navigator Retirement Plan - Superannuation Service (including Series 2) (MLC Superannuation Fund)
-        ABN:
-          description: ABN of the self managed super fund
-          type: string
-          example: 40022701955
-        BSB:
-          description: BSB of the self managed super fund
-          type: string
-          example: 234324
-        AccountNumber:
-          description: The account number for the self managed super fund.
-          type: string
-          example: 234234234
-        AccountName:
-          description: The account name for the self managed super fund.
-          type: string
-          example: Money account
-        ElectronicServiceAddress:
-          description: The electronic service address for the self managed super fund.
-          type: string
-          example: 12345678
-        EmployerNumber:
-          description: Some funds assign a unique number to each employer
-          type: string
-          example: 324324
-        SPIN:
-          description: The SPIN of the Regulated SuperFund. This field has been deprecated. It will only be present for legacy superfunds. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN.
-          type: string
-          example: 4545445454
-        USI:
-          description: The USI of the Regulated SuperFund
-          type: string
-          example: 40022701955001
-        UpdatedDateUTC:
-          description: Last modified timestamp
-          type: string
-          readOnly: true
-          x-is-msdate-time: true
-          example: /Date(1583967733054+0000)/
-        ValidationErrors:
-          description: Displays array of validation error messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    LeaveApplications:
-      type: object
-      x-objectArrayKey: leave_applications
-      properties:
-        LeaveApplications:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeaveApplication'
-    TimesheetStatus:
+      - FULLTIME
+      - PARTTIME
+      - CASUAL
+      - LABOURHIRE
+      - SUPERINCOMESTREAM
+      - NONEMPLOYEE
+    RateType:
       type: string
       enum:
-      - DRAFT
-      - PROCESSED
-      - APPROVED
-      - REJECTED
-      - REQUESTED
-    PayRunStatus:
-      type: string
-      enum:
-      - DRAFT
-      - POSTED
-    LeavePeriod:
-      type: object
-      properties:
-        NumberOfUnits:
-          description: The Number of Units for the leave
-          type: number
-          format: double
-          x-is-money: true
-          example: 22.8
-        PayPeriodEndDate:
-          description: The Pay Period End Date (YYYY-MM-DD)
-          type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        PayPeriodStartDate:
-          description: The Pay Period Start Date (YYYY-MM-DD)
-          type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        LeavePeriodStatus:
-          $ref: '#/components/schemas/LeavePeriodStatus'
-    ResidencyStatus:
-      type: string
-      enum:
-      - AUSTRALIANRESIDENT
-      - FOREIGNRESIDENT
-      - WORKINGHOLIDAYMAKER
-    LeaveApplication:
-      type: object
-      properties:
-        LeaveApplicationID:
-          description: The Xero identifier for Payroll Employee
-          type: string
-          format: uuid
-          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
-        EmployeeID:
-          description: The Xero identifier for Payroll Employee
-          type: string
-          format: uuid
-          example: fb4ebd68-6568-41eb-96ab-628a0f54b4b8
-        LeaveTypeID:
-          description: The Xero identifier for Leave Type
-          type: string
-          format: uuid
-          example: 742998cb-7584-4ecf-aa88-d694f59c50f9
-        Title:
-          description: The title of the leave
-          type: string
-          example: Annual Leave
-        StartDate:
-          description: Start date of the leave (YYYY-MM-DD)
-          type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        EndDate:
-          description: End date of the leave (YYYY-MM-DD)
-          type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        Description:
-          description: The Description of the Leave
-          type: string
-          example: My leave
-        PayOutType:
-          $ref: '#/components/schemas/PayOutType'
-        LeavePeriods:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeavePeriod'
-        UpdatedDateUTC:
-          description: Last modified timestamp
-          type: string
-          readOnly: true
-          x-is-msdate-time: true
-          example: /Date(1583967733054+0000)/
-        ValidationErrors:
-          description: Displays array of validation error messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    ManualTaxType:
-      type: string
-      enum:
-      - PAYGMANUAL
-      - ETPOMANUAL
-      - ETPRMANUAL
-      - SCHEDULE5MANUAL
-      - SCHEDULE5STSLMANUAL
-      - SCHEDULE4MANUAL
-    Timesheets:
-      type: object
-      x-objectArrayKey: timesheets
-      properties:
-        Timesheets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Timesheet'
-    TaxScaleType:
-      type: string
-      enum:
-      - REGULAR
-      - ACTORSARTISTSENTERTAINERS
-      - HORTICULTURISTORSHEARER
-      - SENIORORPENSIONER
-      - WORKINGHOLIDAYMAKER
-      - FOREIGN
+      - FIXEDAMOUNT
+      - MULTIPLE
+      - RATEPERUNIT
     Payslip:
       type: object
       properties:
@@ -3709,279 +3669,234 @@ components:
           readOnly: true
           x-is-msdate-time: true
           example: /Date(1583967733054+0000)/
-    Employees:
+    SuperFundProducts:
       type: object
-      x-objectArrayKey: employees
+      x-objectArrayKey: super_fund_products
       properties:
-        Employees:
+        SuperFundProducts:
           type: array
           items:
-            $ref: '#/components/schemas/Employee'
+            $ref: '#/components/schemas/SuperFundProduct'
     DeductionTypeCalculationType:
       type: string
       enum:
       - FIXEDAMOUNT
       - PRETAX
       - POSTTAX
-    CalendarType:
-      type: string
-      enum:
-      - WEEKLY
-      - FORTNIGHTLY
-      - FOURWEEKLY
-      - MONTHLY
-      - TWICEMONTHLY
-      - QUARTERLY
-    Account:
+    EarningsLine:
       type: object
-      properties:
-        AccountID:
-          description: Xero identifier for accounts
-          type: string
-          format: uuid
-          example: c56b19ef-75bf-45e8-98a4-e699a96609f7
-        Type:
-          $ref: '#/components/schemas/AccountType'
-        Code:
-          description: Customer defined account code
-          type: string
-          example: 420
-        Name:
-          description: Name of account
-          type: string
-          example: General expenses
-    PayslipSummary:
-      type: object
-      properties:
-        EmployeeID:
-          description: The Xero identifier for an employee
-          type: string
-          format: uuid
-          example: 4729f087-8eec-49c1-8294-4d11a5a0a37c
-        PayslipID:
-          description: Xero identifier for the payslip
-          type: string
-          format: uuid
-          example: f3c0874d-7cdd-459a-a95c-d90d51decc42
-        FirstName:
-          description: First name of employee
-          type: string
-          example: Karen
-        LastName:
-          description: Last name of employee
-          type: string
-          example: Jones
-        EmployeeGroup:
-          description: Employee group name
-          type: string
-          example: Marketing
-        Wages:
-          description: The Wages for the Payslip
-          type: number
-          format: double
-          x-is-money: true
-          example: 1060.5
-        Deductions:
-          description: The Deductions for the Payslip
-          type: number
-          format: double
-          x-is-money: true
-          example: 0.0
-        Tax:
-          description: The Tax for the Payslip
-          type: number
-          format: double
-          x-is-money: true
-          example: 198.0
-        Super:
-          description: The Super for the Payslip
-          type: number
-          format: double
-          x-is-money: true
-          example: 75.6
-        Reimbursements:
-          description: The Reimbursements for the Payslip
-          type: number
-          format: double
-          x-is-money: true
-          example: 0.0
-        NetPay:
-          description: The NetPay for the Payslip
-          type: number
-          format: double
-          x-is-money: true
-          example: 862.5
-        UpdatedDateUTC:
-          description: Last modified timestamp
-          type: string
-          readOnly: true
-          x-is-msdate-time: true
-          example: /Date(1583967733054+0000)/
-    AllowanceCategory:
-      type: string
-      enum:
-      - NONDEDUCTIBLE
-      - UNIFORM
-      - PRIVATEVEHICLE
-      - HOMEOFFICE
-      - TRANSPORT
-      - GENERAL
-      - OTHER
-    EarningsRateCalculationType:
-      type: string
-      enum:
-      - USEEARNINGSRATE
-      - ENTEREARNINGSRATE
-      - ANNUALSALARY
-    AllowanceType:
-      type: string
-      enum:
-      - CAR
-      - TRANSPORT
-      - LAUNDRY
-      - MEALS
-      - TRAVEL
-      - OTHER
-      - TOOLS
-      - TASKS
-      - QUALIFICATIONS
-    LeaveLine:
-      type: object
-      properties:
-        LeaveTypeID:
-          description: Xero leave type identifier
-          type: string
-          format: uuid
-          example: 742998cb-7584-4ecf-aa88-d694f59c50f9
-        CalculationType:
-          $ref: '#/components/schemas/LeaveLineCalculationType'
-        EntitlementFinalPayPayoutType:
-          $ref: '#/components/schemas/EntitlementFinalPayPayoutType'
-        EmploymentTerminationPaymentType:
-          $ref: '#/components/schemas/EmploymentTerminationPaymentType'
-        IncludeSuperannuationGuaranteeContribution:
-          description: amount of leave line
-          type: boolean
-          example: true
-        IsQualifyingEarnings:
-          description: Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on superannuation settings
-          type: boolean
-          example: true
-        NumberOfUnits:
-          description: Number of units for leave line.
-          type: number
-          format: double
-          x-is-money: true
-          example: 2.5
-        AnnualNumberOfUnits:
-          description: Hours of leave accrued each year
-          type: number
-          format: double
-          x-is-money: true
-          example: 2.5
-        FullTimeNumberOfUnitsPerPeriod:
-          description: Normal ordinary earnings number of units for leave line.
-          type: number
-          format: double
-          x-is-money: true
-          example: 2.5
-    TimesheetLine:
-      type: object
+      required:
+      - EarningsRateID
       properties:
         EarningsRateID:
-          description: The Xero identifier for an Earnings Rate
+          description: Xero unique id for earnings rate
           type: string
           format: uuid
-          example: 966c5c77-2ef0-4320-b6a9-6c27b080ecc5
-        TrackingItemID:
-          description: The Xero identifier for a Tracking Category. The TrackingOptionID must belong to the TrackingCategory selected as TimesheetCategories under Payroll Settings.
-          type: string
-          format: uuid
-          example: ae777a87-5ef3-4fa0-a4f0-d10e1f13073a
+          example: 72e962d1-fcac-4083-8a71-742bb3e7ae14
+        CalculationType:
+          $ref: '#/components/schemas/EarningsRateCalculationType'
+        AnnualSalary:
+          description: Annual salary for earnings line
+          type: number
+          format: double
+          x-is-money: true
+          example: 40000.0
+        NumberOfUnitsPerWeek:
+          description: number of units for earning line
+          type: number
+          format: double
+          x-is-money: true
+          example: 38.0
+        RatePerUnit:
+          description: Rate per unit of the EarningsLine.
+          type: number
+          format: double
+          x-is-money: true
+          example: 38.0
+        NormalNumberOfUnits:
+          description: Normal number of units for EarningsLine. Applicable when RateType is "MULTIPLE"
+          type: number
+          format: double
+          x-is-money: true
+          example: 38.0
+        Amount:
+          description: Earnings rate amount
+          type: number
+          format: double
+          x-is-money: true
+          example: 38.0
         NumberOfUnits:
-          description: The number of units on a timesheet line
-          type: array
-          items:
-            description: Number of units of a Timesheet line
-            type: number
-            format: double
-            example: 3.0
-        UpdatedDateUTC:
-          description: Last modified timestamp
-          type: string
-          readOnly: true
-          x-is-msdate-time: true
-          example: /Date(1583967733054+0000)/
-    DeductionType:
+          description: Earnings rate number of units.
+          type: number
+          format: double
+          x-is-money: true
+          example: 2.5
+        FixedAmount:
+          description: Earnings rate amount. Only applicable if the EarningsRate RateType is Fixed
+          type: number
+          format: double
+          x-is-money: true
+          example: 2.5
+    OpeningBalances:
       type: object
       properties:
-        Name:
-          description: Name of the earnings rate (max length = 100)
+        OpeningBalanceDate:
+          description: Opening Balance Date. (YYYY-MM-DD)
           type: string
-          example: PTO
-          maxLength: 100
-        AccountCode:
-          description: See Accounts
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        Tax:
+          description: Opening Balance tax
           type: string
-          example: 720
-        ReducesTax:
-          description: Indicates that this is a pre-tax deduction that will reduce the amount of tax you withhold from an employee.
-          type: boolean
-          example: false
-        ReducesSuper:
-          description: Most deductions don’t reduce your superannuation guarantee contribution liability, so typically you will not set any value for this.
-          type: boolean
-          example: false
-        IsExemptFromW1:
-          description: Boolean to determine if the deduction type is reportable or exempt from W1
-          type: boolean
-          example: false
-        DeductionTypeID:
-          description: Xero identifier
+          example: 4333d5cd-53a5-4c31-98e5-a8b4e5676b0b
+        EarningsLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/EarningsLine'
+        DeductionLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeductionLine'
+        SuperLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/SuperLine'
+        ReimbursementLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReimbursementLine'
+        LeaveLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpeningBalanceLeaveLine'
+        PaidLeaveEarningsLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaidLeaveEarningsLine'
+    SuperMembership:
+      type: object
+      required:
+      - SuperFundID
+      - EmployeeNumber
+      properties:
+        SuperMembershipID:
+          description: Xero unique identifier for Super membership
           type: string
           format: uuid
-          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
+          example: 4333d5cd-53a5-4c31-98e5-a8b4e5676b0b
+        SuperFundID:
+          description: Xero identifier for super fund
+          type: string
+          format: uuid
+          example: 2187a42b-639a-45cb-9eed-cd4ae488306a
+        EmployeeNumber:
+          description: The membership number assigned to the employee by the super fund.
+          type: string
+          example: 1234
+    SuperFund:
+      type: object
+      required:
+      - Type
+      properties:
+        SuperFundID:
+          description: Xero identifier for a super fund
+          type: string
+          format: uuid
+          example: bfac31bd-ea62-4fc8-a5e7-7965d9504b15
+        Type:
+          $ref: '#/components/schemas/SuperFundType'
+        Name:
+          description: Name of the super fund
+          type: string
+          example: MLC Navigator Retirement Plan - Superannuation Service (including Series 2) (MLC Superannuation Fund)
+        ABN:
+          description: ABN of the self managed super fund
+          type: string
+          example: 40022701955
+        BSB:
+          description: BSB of the self managed super fund
+          type: string
+          example: 234324
+        AccountNumber:
+          description: The account number for the self managed super fund.
+          type: string
+          example: 234234234
+        AccountName:
+          description: The account name for the self managed super fund.
+          type: string
+          example: Money account
+        ElectronicServiceAddress:
+          description: The electronic service address for the self managed super fund.
+          type: string
+          example: 12345678
+        EmployerNumber:
+          description: Some funds assign a unique number to each employer
+          type: string
+          example: 324324
+        SPIN:
+          description: The SPIN of the Regulated SuperFund. This field has been deprecated. It will only be present for legacy superfunds. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN.
+          type: string
+          example: 4545445454
+        USI:
+          description: The USI of the Regulated SuperFund
+          type: string
+          example: 40022701955001
         UpdatedDateUTC:
           description: Last modified timestamp
           type: string
           readOnly: true
           x-is-msdate-time: true
           example: /Date(1583967733054+0000)/
-        DeductionCategory:
-          type: string
-          enum:
-          - NONE
-          - UNIONFEES
-          - WORKPLACEGIVING
-        CurrentRecord:
-          description: Is the current record
+        ValidationErrors:
+          description: Displays array of validation error messages from the API
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Settings:
+      type: object
+      properties:
+        Accounts:
+          description: Payroll Account details for SuperExpense, SuperLiabilty, WagesExpense, PAYGLiability & WagesPayable.
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+        TrackingCategories:
+          description: Tracking categories for Employees and Timesheets
+          type: object
+          properties:
+            EmployeeGroups:
+              description: The tracking category used for employees
+              type: object
+              properties:
+                TrackingCategoryID:
+                  description: The identifier for the tracking category
+                  type: string
+                  format: uuid
+                  example: e0eb6747-7c17-4075-b804-989f8d4e5d39
+                TrackingCategoryName:
+                  description: Name of the tracking category
+                  type: string
+            TimesheetCategories:
+              description: The tracking category used for timesheets
+              type: object
+              properties:
+                TrackingCategoryID:
+                  description: The identifier for the tracking category
+                  type: string
+                  format: uuid
+                  example: e0eb6747-7c17-4075-b804-989f8d4e5d39
+                TrackingCategoryName:
+                  description: Name of the tracking category
+                  type: string
+        DaysInPayrollYear:
+          description: Number of days in the Payroll year
+          type: integer
+          format: int32
+          example: 365
+        EmployeesAreSTP2:
+          description: Indicates if the organisation has been enabled for STP Phase 2 editing of employees.
           type: boolean
           example: true
-    PayItem:
-      type: object
-      properties:
-        EarningsRates:
-          type: array
-          items:
-            $ref: '#/components/schemas/EarningsRate'
-        DeductionTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeductionType'
-        LeaveTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeaveType'
-        ReimbursementTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReimbursementType'
-    PayItems:
-      type: object
-      x-objectArrayKey: pay_items
-      properties:
-        PayItems:
-          $ref: '#/components/schemas/PayItem'
     LeaveType:
       type: object
       properties:
@@ -4037,59 +3952,70 @@ components:
           description: Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on earnings type and superannuation settings
           type: boolean
           example: true
-    Settings:
+    PayrollCalendar:
       type: object
       properties:
-        Accounts:
-          description: Payroll Account details for SuperExpense, SuperLiabilty, WagesExpense, PAYGLiability & WagesPayable.
+        Name:
+          description: Name of the Payroll Calendar
+          type: string
+          example: Fortnightly Calendar
+        CalendarType:
+          $ref: '#/components/schemas/CalendarType'
+        StartDate:
+          description: The start date of the upcoming pay period. The end date will be calculated based upon this date, and the calendar type selected (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        PaymentDate:
+          description: The date on which employees will be paid for the upcoming pay period (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        PayrollCalendarID:
+          description: Xero identifier
+          type: string
+          format: uuid
+          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
+        UpdatedDateUTC:
+          description: Last modified timestamp
+          type: string
+          readOnly: true
+          x-is-msdate-time: true
+          example: /Date(1583967733054+0000)/
+        ReferenceDate:
+          description: Reference Date (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        ValidationErrors:
+          description: Displays array of validation error messages from the API
           type: array
           items:
-            $ref: '#/components/schemas/Account'
-        TrackingCategories:
-          description: Tracking categories for Employees and Timesheets
-          type: object
-          properties:
-            EmployeeGroups:
-              description: The tracking category used for employees
-              type: object
-              properties:
-                TrackingCategoryID:
-                  description: The identifier for the tracking category
-                  type: string
-                  format: uuid
-                  example: e0eb6747-7c17-4075-b804-989f8d4e5d39
-                TrackingCategoryName:
-                  description: Name of the tracking category
-                  type: string
-            TimesheetCategories:
-              description: The tracking category used for timesheets
-              type: object
-              properties:
-                TrackingCategoryID:
-                  description: The identifier for the tracking category
-                  type: string
-                  format: uuid
-                  example: e0eb6747-7c17-4075-b804-989f8d4e5d39
-                TrackingCategoryName:
-                  description: Name of the tracking category
-                  type: string
-        DaysInPayrollYear:
-          description: Number of days in the Payroll year
-          type: integer
-          format: int32
-          example: 365
-        EmployeesAreSTP2:
-          description: Indicates if the organisation has been enabled for STP Phase 2 editing of employees.
-          type: boolean
-          example: true
-    SuperFunds:
+            $ref: '#/components/schemas/ValidationError'
+    SuperFundProduct:
       type: object
-      x-objectArrayKey: super_funds
       properties:
-        SuperFunds:
-          type: array
-          items:
-            $ref: '#/components/schemas/SuperFund'
+        ABN:
+          description: The ABN of the Regulated SuperFund
+          type: string
+          example: 839182848805
+        USI:
+          description: The USI of the Regulated SuperFund
+          type: string
+          example: 839182848805001
+        SPIN:
+          description: The SPIN of the Regulated SuperFund. This field has been deprecated. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN
+          type: string
+          example: NML0117AU
+        ProductName:
+          description: The name of the Regulated SuperFund
+          type: string
+          example: MLC Navigator Retirement Plan - Superannuation Service (including Series 2) (MLC Superannuation Fund)
+    EntitlementFinalPayPayoutType:
+      type: string
+      enum:
+      - NOTPAIDOUT
+      - PAIDOUT
     ValidationError:
       externalDocs:
         url: https://developer.xero.com/documentation/api/http-response-codes
@@ -4098,124 +4024,181 @@ components:
           description: Validation error message
           type: string
       type: object
-    SuperFundType:
-      type: string
-      enum:
-      - REGULATED
-      - SMSF
-    BankAccount:
+    LeaveBalance:
       type: object
       properties:
-        StatementText:
-          description: The text that will appear on your employee's bank statement when they receive payment
+        LeaveName:
+          description: The name of the leave type
           type: string
-          example: Salary
-        AccountName:
-          description: The name of the account
+          example: Annual Leave
+        LeaveTypeID:
+          description: Identifier of the leave type (see PayItems)
           type: string
-          example: James Lebron Savings
-        BSB:
-          description: The BSB number of the account
-          type: string
-          example: 122344
-        AccountNumber:
-          description: The account number
-          type: string
-          example: 345678
-        Remainder:
-          description: If this account is the Remaining bank account
-          type: boolean
-          example: false
-        Amount:
-          description: Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)
+          example: 544d9292-4329-4512-bfff-a9f15236d776
+        NumberOfUnits:
+          description: The balance of the leave available
           type: number
           format: double
           x-is-money: true
-          example: 200.0
-    EmploymentTerminationPaymentType:
+          example: 81.2602
+        TypeOfUnits:
+          description: The type of units as specified by the LeaveType (see PayItems)
+          type: string
+          example: Hours
+    IncomeType:
       type: string
       enum:
-      - O
-      - R
-    EarningsLine:
+      - SALARYANDWAGES
+      - WORKINGHOLIDAYMAKER
+      - NONEMPLOYEE
+      - CLOSELYHELDPAYEES
+      - LABOURHIRE
+    PayRun:
       type: object
       required:
-      - EarningsRateID
+      - PayrollCalendarID
       properties:
-        EarningsRateID:
-          description: Xero unique id for earnings rate
+        PayrollCalendarID:
+          description: Xero identifier for pay run
           type: string
           format: uuid
-          example: 72e962d1-fcac-4083-8a71-742bb3e7ae14
-        CalculationType:
-          $ref: '#/components/schemas/EarningsRateCalculationType'
-        AnnualSalary:
-          description: Annual salary for earnings line
-          type: number
-          format: double
-          x-is-money: true
-          example: 40000.0
-        NumberOfUnitsPerWeek:
-          description: number of units for earning line
-          type: number
-          format: double
-          x-is-money: true
-          example: 38.0
-        RatePerUnit:
-          description: Rate per unit of the EarningsLine.
-          type: number
-          format: double
-          x-is-money: true
-          example: 38.0
-        NormalNumberOfUnits:
-          description: Normal number of units for EarningsLine. Applicable when RateType is "MULTIPLE"
-          type: number
-          format: double
-          x-is-money: true
-          example: 38.0
-        Amount:
-          description: Earnings rate amount
-          type: number
-          format: double
-          x-is-money: true
-          example: 38.0
-        NumberOfUnits:
-          description: Earnings rate number of units.
-          type: number
-          format: double
-          x-is-money: true
-          example: 2.5
-        FixedAmount:
-          description: Earnings rate amount. Only applicable if the EarningsRate RateType is Fixed
-          type: number
-          format: double
-          x-is-money: true
-          example: 2.5
-    PayRuns:
-      type: object
-      x-objectArrayKey: pay_runs
-      properties:
-        PayRuns:
+          example: bfac31bd-ea62-4fc8-a5e7-7965d9504b15
+        PayRunID:
+          description: Xero identifier for pay run
+          type: string
+          format: uuid
+          example: bba1d10f-63b1-4692-b5c5-a99f869523a4
+        PayRunPeriodStartDate:
+          description: Period Start Date for the PayRun (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        PayRunPeriodEndDate:
+          description: Period End Date for the PayRun (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        PayRunStatus:
+          $ref: '#/components/schemas/PayRunStatus'
+        PaymentDate:
+          description: Payment Date for the PayRun (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        PayslipMessage:
+          description: Payslip message for the PayRun
+          type: string
+          example: Thanks for being awesome
+        UpdatedDateUTC:
+          description: Last modified timestamp
+          type: string
+          readOnly: true
+          x-is-msdate-time: true
+          example: /Date(1583967733054+0000)/
+        Payslips:
+          description: The payslips in the payrun
           type: array
           items:
-            $ref: '#/components/schemas/PayRun'
-    LeaveCategoryCode:
-      description: Code used to identify the Leave Category
-      type: string
-      enum:
-      - ANNUALLEAVE
-      - LONGSERVICELEAVE
-      - PERSONALSICKCARERSLEAVE
-      - ROSTEREDDAYOFF
-      - TIMEOFFINLIEU
-      - COMPASSIONATEANDBEREAVEMENTLEAVE
-      - STUDYLEAVE
-      - FAMILYANDDOMESTICVIOLENCELEAVE
-      - SPECIALPAIDLEAVE
-      - COMMUNITYSERVICELEAVE
-      - JURYDUTYLEAVE
-      - DEFENCERESERVELEAVE
-      example: ANNUALLEAVE
+            $ref: '#/components/schemas/PayslipSummary'
+        Wages:
+          description: The total Wages for the Payrun
+          type: number
+          format: double
+          x-is-money: true
+          example: 1060.5
+        Deductions:
+          description: The total Deductions for the Payrun
+          type: number
+          format: double
+          x-is-money: true
+          example: 0.0
+        Tax:
+          description: The total Tax for the Payrun
+          type: number
+          format: double
+          x-is-money: true
+          example: 198.0
+        Super:
+          description: The total Super for the Payrun
+          type: number
+          format: double
+          x-is-money: true
+          example: 75.6
+        Reimbursement:
+          description: The total Reimbursements for the Payrun
+          type: number
+          format: double
+          x-is-money: true
+          example: 0.0
+        NetPay:
+          description: The total NetPay for the Payrun
+          type: number
+          format: double
+          x-is-money: true
+          example: 862.5
+        ValidationErrors:
+          description: Displays array of validation error messages from the API
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    LeaveAccrualLine:
+      type: object
+      properties:
+        LeaveTypeID:
+          description: Xero identifier for the Leave type.
+          type: string
+          format: uuid
+          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
+        NumberOfUnits:
+          description: Leave Accrual number of units
+          type: number
+          format: double
+          x-is-money: true
+          example: 105.5
+        AutoCalculate:
+          description: If you want to auto calculate leave.
+          type: boolean
+          example: true
+    LeaveLine:
+      type: object
+      properties:
+        LeaveTypeID:
+          description: Xero leave type identifier
+          type: string
+          format: uuid
+          example: 742998cb-7584-4ecf-aa88-d694f59c50f9
+        CalculationType:
+          $ref: '#/components/schemas/LeaveLineCalculationType'
+        EntitlementFinalPayPayoutType:
+          $ref: '#/components/schemas/EntitlementFinalPayPayoutType'
+        EmploymentTerminationPaymentType:
+          $ref: '#/components/schemas/EmploymentTerminationPaymentType'
+        IncludeSuperannuationGuaranteeContribution:
+          description: amount of leave line
+          type: boolean
+          example: true
+        IsQualifyingEarnings:
+          description: Optional Boolean to determine if the earnings rate is considered as qualifying earnings for superannuation guarantee calculations. When not specified value is calculated based on superannuation settings
+          type: boolean
+          example: true
+        NumberOfUnits:
+          description: Number of units for leave line.
+          type: number
+          format: double
+          x-is-money: true
+          example: 2.5
+        AnnualNumberOfUnits:
+          description: Hours of leave accrued each year
+          type: number
+          format: double
+          x-is-money: true
+          example: 2.5
+        FullTimeNumberOfUnitsPerPeriod:
+          description: Normal ordinary earnings number of units for leave line.
+          type: number
+          format: double
+          x-is-money: true
+          example: 2.5
     EarningsRate:
       type: object
       properties:
@@ -4302,117 +4285,362 @@ components:
           $ref: '#/components/schemas/AllowanceType'
         AllowanceCategory:
           $ref: '#/components/schemas/AllowanceCategory'
-    APIException:
-      description: The object returned for a bad request
+    ManualTaxType:
+      type: string
+      enum:
+      - PAYGMANUAL
+      - ETPOMANUAL
+      - ETPRMANUAL
+      - SCHEDULE5MANUAL
+      - SCHEDULE5STSLMANUAL
+      - SCHEDULE4MANUAL
+    PayRuns:
       type: object
+      x-objectArrayKey: pay_runs
       properties:
-        ErrorNumber:
-          description: The error number
-          type: number
-          format: integer
-          example: 16
-        Type:
-          description: The type of error
-          type: string
-          example: QueryParseException
-        Message:
-          description: The message describing the error
-          type: string
-          example: No property or field 'hi' exists in type 'Employee' (at index 0)
-    PayrollCalendars:
-      type: object
-      x-objectArrayKey: payroll_calendars
-      properties:
-        PayrollCalendars:
+        PayRuns:
           type: array
           items:
-            $ref: '#/components/schemas/PayrollCalendar'
-    OpeningBalanceLeaveLine:
+            $ref: '#/components/schemas/PayRun'
+    Account:
       type: object
       properties:
-        LeaveTypeID:
-          description: Xero leave type identifier
+        AccountID:
+          description: Xero identifier for accounts
           type: string
           format: uuid
-          example: 742998cb-7584-4ecf-aa88-d694f59c50f9
+          example: c56b19ef-75bf-45e8-98a4-e699a96609f7
+        Type:
+          $ref: '#/components/schemas/AccountType'
+        Code:
+          description: Customer defined account code
+          type: string
+          example: 420
+        Name:
+          description: Name of account
+          type: string
+          example: General expenses
+    TimesheetLine:
+      type: object
+      properties:
+        EarningsRateID:
+          description: The Xero identifier for an Earnings Rate
+          type: string
+          format: uuid
+          example: 966c5c77-2ef0-4320-b6a9-6c27b080ecc5
+        TrackingItemID:
+          description: The Xero identifier for a Tracking Category. The TrackingOptionID must belong to the TrackingCategory selected as TimesheetCategories under Payroll Settings.
+          type: string
+          format: uuid
+          example: ae777a87-5ef3-4fa0-a4f0-d10e1f13073a
         NumberOfUnits:
-          description: Number of units for leave line.
+          description: The number of units on a timesheet line
+          type: array
+          items:
+            description: Number of units of a Timesheet line
+            type: number
+            format: double
+            example: 3.0
+        UpdatedDateUTC:
+          description: Last modified timestamp
+          type: string
+          readOnly: true
+          x-is-msdate-time: true
+          example: /Date(1583967733054+0000)/
+    TimesheetStatus:
+      type: string
+      enum:
+      - DRAFT
+      - PROCESSED
+      - APPROVED
+      - REJECTED
+      - REQUESTED
+    EmploymentTerminationPaymentType:
+      type: string
+      enum:
+      - O
+      - R
+    PayslipLines:
+      type: object
+      properties:
+        EarningsLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/EarningsLine'
+        LeaveEarningsLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaveEarningsLine'
+        TimesheetEarningsLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/EarningsLine'
+        DeductionLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeductionLine'
+        LeaveAccrualLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaveAccrualLine'
+        ReimbursementLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReimbursementLine'
+        SuperannuationLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/SuperannuationLine'
+        TaxLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxLine'
+    LeaveCategoryCode:
+      description: Code used to identify the Leave Category
+      type: string
+      enum:
+      - ANNUALLEAVE
+      - LONGSERVICELEAVE
+      - PERSONALSICKCARERSLEAVE
+      - ROSTEREDDAYOFF
+      - TIMEOFFINLIEU
+      - COMPASSIONATEANDBEREAVEMENTLEAVE
+      - STUDYLEAVE
+      - FAMILYANDDOMESTICVIOLENCELEAVE
+      - SPECIALPAIDLEAVE
+      - COMMUNITYSERVICELEAVE
+      - JURYDUTYLEAVE
+      - DEFENCERESERVELEAVE
+      example: ANNUALLEAVE
+    PayTemplate:
+      type: object
+      properties:
+        EarningsLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/EarningsLine'
+        DeductionLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeductionLine'
+        SuperLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/SuperLine'
+        ReimbursementLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReimbursementLine'
+        LeaveLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaveLine'
+    SeniorMaritalStatus:
+      type: string
+      enum:
+      - MEMBEROFCOUPLE
+      - MEMBEROFILLNESSSEPARATEDCOUPLE
+      - SINGLE
+    DeductionLine:
+      type: object
+      required:
+      - DeductionTypeID
+      properties:
+        DeductionTypeID:
+          description: Xero deduction type identifier
+          type: string
+          format: uuid
+          example: 59cd9d04-4521-4cc3-93ac-7841651ff407
+        CalculationType:
+          $ref: '#/components/schemas/DeductionTypeCalculationType'
+        Amount:
+          description: Deduction type amount
           type: number
           format: double
           x-is-money: true
-          example: 2.5
-    HomeAddress:
-      required:
-      - AddressLine1
+          example: 10.0
+        Percentage:
+          description: The Percentage of the Deduction
+          type: number
+          format: double
+          x-is-money: true
+          example: 10.0
+        NumberOfUnits:
+          description: Deduction number of units
+          type: number
+          format: double
+          x-is-money: true
+          example: 10.0
+    ReimbursementType:
+      type: object
       properties:
-        AddressLine1:
-          description: Address line 1 for employee home address
+        Name:
+          description: Name of the earnings rate (max length = 100)
           type: string
-          example: 123 Main St
-        AddressLine2:
-          description: Address line 2 for employee home address
+          example: PTO
+          maxLength: 100
+        AccountCode:
+          description: See Accounts
           type: string
-          example: Apt 4
-        City:
-          description: Suburb for employee home address
+          example: 720
+        ReimbursementTypeID:
+          description: Xero identifier
           type: string
-          example: St. Kilda
-        Region:
-          $ref: '#/components/schemas/State'
-        PostalCode:
-          description: PostCode for employee home address
+          format: uuid
+          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
+        UpdatedDateUTC:
+          description: Last modified timestamp
           type: string
-          example: 3182
-        Country:
-          description: Country of HomeAddress
-          type: string
-          example: AUSTRALIA
+          readOnly: true
+          x-is-msdate-time: true
+          example: /Date(1583967733054+0000)/
+        CurrentRecord:
+          description: Is the current record
+          type: boolean
+          example: true
+    Timesheets:
       type: object
-    SuperMembership:
+      x-objectArrayKey: timesheets
+      properties:
+        Timesheets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Timesheet'
+    SuperannuationLine:
       type: object
-      required:
-      - SuperFundID
-      - EmployeeNumber
       properties:
         SuperMembershipID:
-          description: Xero unique identifier for Super membership
+          description: Xero identifier for payroll super fund membership ID.
           type: string
           format: uuid
-          example: 4333d5cd-53a5-4c31-98e5-a8b4e5676b0b
-        SuperFundID:
-          description: Xero identifier for super fund
+          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
+        ContributionType:
+          $ref: '#/components/schemas/SuperannuationContributionType'
+        CalculationType:
+          $ref: '#/components/schemas/SuperannuationCalculationType'
+        MinimumMonthlyEarnings:
+          description: Superannuation minimum monthly earnings.
+          type: number
+          format: double
+          x-is-money: true
+          example: 100.5
+        ExpenseAccountCode:
+          description: Superannuation expense account code.
+          type: string
+          example: 450
+        LiabilityAccountCode:
+          description: Superannuation liability account code
+          type: string
+          example: 650
+        PaymentDateForThisPeriod:
+          description: Superannuation payment date for the current period (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        Percentage:
+          description: Superannuation percentage
+          type: number
+          format: double
+          x-is-money: true
+          example: 4.0
+        Amount:
+          description: Superannuation amount
+          type: number
+          format: double
+          x-is-money: true
+          example: 10.5
+    TaxDeclaration:
+      properties:
+        EmployeeID:
+          description: Address line 1 for employee home address
           type: string
           format: uuid
-          example: 2187a42b-639a-45cb-9eed-cd4ae488306a
-        EmployeeNumber:
-          description: The membership number assigned to the employee by the super fund.
+          example: 123 Main St
+        EmploymentBasis:
+          $ref: '#/components/schemas/EmploymentBasis'
+        TFNExemptionType:
+          $ref: '#/components/schemas/TFNExemptionType'
+        TaxFileNumber:
+          description: The tax file number e.g 123123123.
           type: string
-          example: 1234
-    TimesheetLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/TimesheetLine'
-    LeaveLineCalculationType:
-      description: Calculation type for leave line for Opening Balance on Employee
+          example: 123123123
+        ABN:
+          description: 11-digit Australian Business Number e.g 21006819692 or an empty string ("") to unset a previously set value. Only applicable, and mandatory if income type is NONEMPLOYEE.
+          type: string
+          example: 21006819692
+        AustralianResidentForTaxPurposes:
+          description: If the employee is Australian resident for tax purposes. e.g true or false
+          type: boolean
+          example: true
+        ResidencyStatus:
+          $ref: '#/components/schemas/ResidencyStatus'
+        TaxScaleType:
+          $ref: '#/components/schemas/TaxScaleType'
+        WorkCondition:
+          $ref: '#/components/schemas/WorkCondition'
+        SeniorMaritalStatus:
+          $ref: '#/components/schemas/SeniorMaritalStatus'
+        TaxFreeThresholdClaimed:
+          description: If tax free threshold claimed. e.g true or false
+          type: boolean
+          example: false
+        TaxOffsetEstimatedAmount:
+          description: If has tax offset estimated then the tax offset estimated amount. e.g 100
+          type: number
+          format: int
+          example: 100
+        HasHELPDebt:
+          description: If employee has HECS or HELP debt. e.g true or false
+          type: boolean
+          example: false
+        HasSFSSDebt:
+          description: If employee has financial supplement debt. e.g true or false
+          type: boolean
+          example: false
+        HasTradeSupportLoanDebt:
+          description: If employee has trade support loan. e.g true or false
+          type: boolean
+          example: false
+        UpwardVariationTaxWithholdingAmount:
+          description: If the employee has requested that additional tax be withheld each pay run. e.g 50
+          type: number
+          format: int
+          example: 50
+        EligibleToReceiveLeaveLoading:
+          description: If the employee is eligible to receive an additional percentage on top of ordinary earnings when they take leave (typically 17.5%). e.g true or false
+          type: boolean
+          example: false
+        ApprovedWithholdingVariationPercentage:
+          description: If the employee has approved withholding variation. e.g (0 - 100)
+          type: number
+          format: int
+          example: 75
+        HasStudentStartupLoan:
+          description: If the employee is eligible for student startup loan rules
+          type: boolean
+          example: true
+        HasLoanOrStudentDebt:
+          description: 'If the employee has any of the following loans or debts: Higher Education Loan Program (HELP/HECS), VET Student Loan (VSL), Financial Supplement (FS), Student Start-up Loan (SSL), or Trade Support Loan (TSL)'
+          type: boolean
+          example: true
+        UpdatedDateUTC:
+          description: Last modified timestamp
+          type: string
+          readOnly: true
+          x-is-msdate-time: true
+          example: /Date(1583967733054+0000)/
+        IncludeLeaveLoadingInQualifyingEarnings:
+          description: Optional Boolean to determine if leave loading is considered as qualifying earnings for superannuation guarantee calculations
+          type: boolean
+          example: true
+      type: object
+    LeavePeriodStatus:
       type: string
       enum:
-      - NOCALCULATIONREQUIRED
-      - FIXEDAMOUNTEACHPERIOD
-      - ENTERRATEINPAYTEMPLATE
-      - BASEDONORDINARYEARNINGS
-    State:
-      type: string
-      description: State abbreviation for employee home address
-      example: VIC
-      enum:
-      - ACT
-      - NSW
-      - NT
-      - QLD
-      - SA
-      - TAS
-      - VIC
-      - WA
+      - SCHEDULED
+      - PROCESSED
+      - REQUESTED
+      - REJECTED
     CountryOfResidence:
       description: Country of residence as a valid ISO 3166-1 alpha-2 country code e.g. "AU", "NZ", "CA". Only applicable, and mandatory if income type is WORKINGHOLIDAYMAKER.
       type: string
@@ -4668,6 +4896,17 @@ components:
       - CW
       - SX
       - SS
+    PayRunStatus:
+      type: string
+      enum:
+      - DRAFT
+      - POSTED
+    ResidencyStatus:
+      type: string
+      enum:
+      - AUSTRALIANRESIDENT
+      - FOREIGNRESIDENT
+      - WORKINGHOLIDAYMAKER
     SuperannuationContributionType:
       type: string
       enum:
@@ -4675,284 +4914,229 @@ components:
       - SALARYSACRIFICE
       - EMPLOYERADDITIONAL
       - EMPLOYEE
-    RateType:
-      type: string
-      enum:
-      - FIXEDAMOUNT
-      - MULTIPLE
-      - RATEPERUNIT
-    SeniorMaritalStatus:
-      type: string
-      enum:
-      - MEMBEROFCOUPLE
-      - MEMBEROFILLNESSSEPARATEDCOUPLE
-      - SINGLE
-    DeductionLine:
+    LeaveEarningsLine:
       type: object
-      required:
-      - DeductionTypeID
       properties:
-        DeductionTypeID:
-          description: Xero deduction type identifier
+        EarningsRateID:
+          description: Xero identifier
           type: string
           format: uuid
-          example: 59cd9d04-4521-4cc3-93ac-7841651ff407
-        CalculationType:
-          $ref: '#/components/schemas/DeductionTypeCalculationType'
-        Amount:
-          description: Deduction type amount
+          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
+        RatePerUnit:
+          description: Rate per unit of the EarningsLine.
           type: number
           format: double
           x-is-money: true
-          example: 10.0
-        Percentage:
-          description: The Percentage of the Deduction
-          type: number
-          format: double
-          x-is-money: true
-          example: 10.0
+          example: 38.0
         NumberOfUnits:
-          description: Deduction number of units
+          description: Earnings rate number of units.
           type: number
           format: double
           x-is-money: true
-          example: 10.0
-    SuperFundProduct:
-      type: object
-      properties:
-        ABN:
-          description: The ABN of the Regulated SuperFund
-          type: string
-          example: 839182848805
-        USI:
-          description: The USI of the Regulated SuperFund
-          type: string
-          example: 839182848805001
-        SPIN:
-          description: The SPIN of the Regulated SuperFund. This field has been deprecated. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN
-          type: string
-          example: NML0117AU
-        ProductName:
-          description: The name of the Regulated SuperFund
-          type: string
-          example: MLC Navigator Retirement Plan - Superannuation Service (including Series 2) (MLC Superannuation Fund)
-    PayslipLines:
-      type: object
-      properties:
-        EarningsLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/EarningsLine'
-        LeaveEarningsLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeaveEarningsLine'
-        TimesheetEarningsLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/EarningsLine'
-        DeductionLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeductionLine'
-        LeaveAccrualLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeaveAccrualLine'
-        ReimbursementLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReimbursementLine'
-        SuperannuationLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/SuperannuationLine'
-        TaxLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaxLine'
-    PayTemplate:
-      type: object
-      properties:
-        EarningsLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/EarningsLine'
-        DeductionLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeductionLine'
-        SuperLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/SuperLine'
-        ReimbursementLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReimbursementLine'
-        LeaveLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeaveLine'
-    SuperannuationCalculationType:
+          example: 2.5
+        PayOutType:
+          $ref: '#/components/schemas/PayOutType'
+    SuperFundType:
       type: string
       enum:
-      - FIXEDAMOUNT
-      - PERCENTAGEOFEARNINGS
-      - STATUTORY
-    PayRun:
+      - REGULATED
+      - SMSF
+    SuperFunds:
       type: object
-      required:
-      - PayrollCalendarID
+      x-objectArrayKey: super_funds
       properties:
-        PayrollCalendarID:
-          description: Xero identifier for pay run
+        SuperFunds:
+          type: array
+          items:
+            $ref: '#/components/schemas/SuperFund'
+    AccountType:
+      description: See Account Types
+      type: string
+      enum:
+      - BANK
+      - CURRENT
+      - CURRLIAB
+      - DEPRECIATN
+      - DIRECTCOSTS
+      - EQUITY
+      - EXPENSE
+      - FIXED
+      - INVENTORY
+      - LIABILITY
+      - NONCURRENT
+      - OTHERINCOME
+      - OVERHEADS
+      - PREPAYMENT
+      - REVENUE
+      - SALES
+      - TERMLIAB
+      - PAYGLIABILITY
+      - PAYG
+      - SUPERANNUATIONEXPENSE
+      - SUPERANNUATIONLIABILITY
+      - WAGESEXPENSE
+      - WAGESPAYABLELIABILITY
+    Employees:
+      type: object
+      x-objectArrayKey: employees
+      properties:
+        Employees:
+          type: array
+          items:
+            $ref: '#/components/schemas/Employee'
+    EarningsRateCalculationType:
+      type: string
+      enum:
+      - USEEARNINGSRATE
+      - ENTEREARNINGSRATE
+      - ANNUALSALARY
+    PayslipSummary:
+      type: object
+      properties:
+        EmployeeID:
+          description: The Xero identifier for an employee
           type: string
           format: uuid
-          example: bfac31bd-ea62-4fc8-a5e7-7965d9504b15
-        PayRunID:
-          description: Xero identifier for pay run
+          example: 4729f087-8eec-49c1-8294-4d11a5a0a37c
+        PayslipID:
+          description: Xero identifier for the payslip
           type: string
           format: uuid
-          example: bba1d10f-63b1-4692-b5c5-a99f869523a4
-        PayRunPeriodStartDate:
-          description: Period Start Date for the PayRun (YYYY-MM-DD)
+          example: f3c0874d-7cdd-459a-a95c-d90d51decc42
+        FirstName:
+          description: First name of employee
           type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        PayRunPeriodEndDate:
-          description: Period End Date for the PayRun (YYYY-MM-DD)
+          example: Karen
+        LastName:
+          description: Last name of employee
           type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        PayRunStatus:
-          $ref: '#/components/schemas/PayRunStatus'
-        PaymentDate:
-          description: Payment Date for the PayRun (YYYY-MM-DD)
+          example: Jones
+        EmployeeGroup:
+          description: Employee group name
           type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        PayslipMessage:
-          description: Payslip message for the PayRun
-          type: string
-          example: Thanks for being awesome
+          example: Marketing
+        Wages:
+          description: The Wages for the Payslip
+          type: number
+          format: double
+          x-is-money: true
+          example: 1060.5
+        Deductions:
+          description: The Deductions for the Payslip
+          type: number
+          format: double
+          x-is-money: true
+          example: 0.0
+        Tax:
+          description: The Tax for the Payslip
+          type: number
+          format: double
+          x-is-money: true
+          example: 198.0
+        Super:
+          description: The Super for the Payslip
+          type: number
+          format: double
+          x-is-money: true
+          example: 75.6
+        Reimbursements:
+          description: The Reimbursements for the Payslip
+          type: number
+          format: double
+          x-is-money: true
+          example: 0.0
+        NetPay:
+          description: The NetPay for the Payslip
+          type: number
+          format: double
+          x-is-money: true
+          example: 862.5
         UpdatedDateUTC:
           description: Last modified timestamp
           type: string
           readOnly: true
           x-is-msdate-time: true
           example: /Date(1583967733054+0000)/
+    PayItem:
+      type: object
+      properties:
+        EarningsRates:
+          type: array
+          items:
+            $ref: '#/components/schemas/EarningsRate'
+        DeductionTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeductionType'
+        LeaveTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaveType'
+        ReimbursementTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReimbursementType'
+    TimesheetLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/TimesheetLine'
+    TFNExemptionType:
+      type: string
+      enum:
+      - NOTQUOTED
+      - PENDING
+      - PENSIONER
+      - UNDER18
+    HomeAddress:
+      required:
+      - AddressLine1
+      properties:
+        AddressLine1:
+          description: Address line 1 for employee home address
+          type: string
+          example: 123 Main St
+        AddressLine2:
+          description: Address line 2 for employee home address
+          type: string
+          example: Apt 4
+        City:
+          description: Suburb for employee home address
+          type: string
+          example: St. Kilda
+        Region:
+          $ref: '#/components/schemas/State'
+        PostalCode:
+          description: PostCode for employee home address
+          type: string
+          example: 3182
+        Country:
+          description: Country of HomeAddress
+          type: string
+          example: AUSTRALIA
+      type: object
+    CalendarType:
+      type: string
+      enum:
+      - WEEKLY
+      - FORTNIGHTLY
+      - FOURWEEKLY
+      - MONTHLY
+      - TWICEMONTHLY
+      - QUARTERLY
+    PayOutType:
+      description: How the requested leave will be paid out, e.g. cashed out.
+      type: string
+      enum:
+      - DEFAULT
+      - CASHED_OUT
+    Payslips:
+      type: object
+      x-objectArrayKey: payslips
+      properties:
         Payslips:
-          description: The payslips in the payrun
           type: array
           items:
-            $ref: '#/components/schemas/PayslipSummary'
-        Wages:
-          description: The total Wages for the Payrun
-          type: number
-          format: double
-          x-is-money: true
-          example: 1060.5
-        Deductions:
-          description: The total Deductions for the Payrun
-          type: number
-          format: double
-          x-is-money: true
-          example: 0.0
-        Tax:
-          description: The total Tax for the Payrun
-          type: number
-          format: double
-          x-is-money: true
-          example: 198.0
-        Super:
-          description: The total Super for the Payrun
-          type: number
-          format: double
-          x-is-money: true
-          example: 75.6
-        Reimbursement:
-          description: The total Reimbursements for the Payrun
-          type: number
-          format: double
-          x-is-money: true
-          example: 0.0
-        NetPay:
-          description: The total NetPay for the Payrun
-          type: number
-          format: double
-          x-is-money: true
-          example: 862.5
-        ValidationErrors:
-          description: Displays array of validation error messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    TimesheetObject:
-      type: object
-      properties:
-        Timesheet:
-          $ref: '#/components/schemas/Timesheet'
-    EmploymentType:
-      type: string
-      enum:
-      - EMPLOYEE
-      - CONTRACTOR
-    LeaveBalance:
-      type: object
-      properties:
-        LeaveName:
-          description: The name of the leave type
-          type: string
-          example: Annual Leave
-        LeaveTypeID:
-          description: Identifier of the leave type (see PayItems)
-          type: string
-          example: 544d9292-4329-4512-bfff-a9f15236d776
-        NumberOfUnits:
-          description: The balance of the leave available
-          type: number
-          format: double
-          x-is-money: true
-          example: 81.2602
-        TypeOfUnits:
-          description: The type of units as specified by the LeaveType (see PayItems)
-          type: string
-          example: Hours
-    EmploymentBasis:
-      type: string
-      enum:
-      - FULLTIME
-      - PARTTIME
-      - CASUAL
-      - LABOURHIRE
-      - SUPERINCOMESTREAM
-      - NONEMPLOYEE
-    SuperFundProducts:
-      type: object
-      x-objectArrayKey: super_fund_products
-      properties:
-        SuperFundProducts:
-          type: array
-          items:
-            $ref: '#/components/schemas/SuperFundProduct'
-    EarningsType:
-      type: string
-      enum:
-      - FIXED
-      - ORDINARYTIMEEARNINGS
-      - OVERTIMEEARNINGS
-      - ALLOWANCE
-      - LUMPSUMD
-      - EMPLOYMENTTERMINATIONPAYMENT
-      - LUMPSUMA
-      - LUMPSUMB
-      - BONUSESANDCOMMISSIONS
-      - LUMPSUME
-      - LUMPSUMW
-      - DIRECTORSFEES
-      - PAIDPARENTALLEAVE
-      - WORKERSCOMPENSATION
+            $ref: '#/components/schemas/Payslip'
     SuperLine:
       type: object
       properties:
@@ -4991,11 +5175,188 @@ components:
           format: double
           x-is-money: true
           example: 10.0
-    EntitlementFinalPayPayoutType:
+    PayItems:
+      type: object
+      x-objectArrayKey: pay_items
+      properties:
+        PayItems:
+          $ref: '#/components/schemas/PayItem'
+    State:
+      type: string
+      description: State abbreviation for employee home address
+      example: VIC
+      enum:
+      - ACT
+      - NSW
+      - NT
+      - QLD
+      - SA
+      - TAS
+      - VIC
+      - WA
+    BankAccount:
+      type: object
+      properties:
+        StatementText:
+          description: The text that will appear on your employee's bank statement when they receive payment
+          type: string
+          example: Salary
+        AccountName:
+          description: The name of the account
+          type: string
+          example: James Lebron Savings
+        BSB:
+          description: The BSB number of the account
+          type: string
+          example: 122344
+        AccountNumber:
+          description: The account number
+          type: string
+          example: 345678
+        Remainder:
+          description: If this account is the Remaining bank account
+          type: boolean
+          example: false
+        Amount:
+          description: Fixed amounts (for example, if an employee wants to have $100 of their salary transferred to one account, and the remaining amount to another)
+          type: number
+          format: double
+          x-is-money: true
+          example: 200.0
+    LeaveApplication:
+      type: object
+      properties:
+        LeaveApplicationID:
+          description: The Xero identifier for Payroll Employee
+          type: string
+          format: uuid
+          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
+        EmployeeID:
+          description: The Xero identifier for Payroll Employee
+          type: string
+          format: uuid
+          example: fb4ebd68-6568-41eb-96ab-628a0f54b4b8
+        LeaveTypeID:
+          description: The Xero identifier for Leave Type
+          type: string
+          format: uuid
+          example: 742998cb-7584-4ecf-aa88-d694f59c50f9
+        Title:
+          description: The title of the leave
+          type: string
+          example: Annual Leave
+        StartDate:
+          description: Start date of the leave (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        EndDate:
+          description: End date of the leave (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        Description:
+          description: The Description of the Leave
+          type: string
+          example: My leave
+        PayOutType:
+          $ref: '#/components/schemas/PayOutType'
+        LeavePeriods:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeavePeriod'
+        UpdatedDateUTC:
+          description: Last modified timestamp
+          type: string
+          readOnly: true
+          x-is-msdate-time: true
+          example: /Date(1583967733054+0000)/
+        ValidationErrors:
+          description: Displays array of validation error messages from the API
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    PaidLeaveEarningsLine:
+      type: object
+      required:
+      - LeaveTypeID
+      - Amount
+      properties:
+        LeaveTypeID:
+          description: Xero leave type identifier
+          type: string
+          format: uuid
+          example: 742998cb-7584-4ecf-aa88-d694f59c50f9
+        Amount:
+          description: Paid leave amount
+          type: number
+          format: double
+          x-is-money: true
+          example: 500.0
+        SGCAppliedLeaveLoadingAmount:
+          description: The amount of leave loading applied for the leave type that is subject to Superannuation Guarantee Contributions. *Only applicable for Leave Types with Annual Leave Categories
+          type: number
+          format: double
+          x-is-money: true
+          example: 50.0
+        SGCExemptedLeaveLoadingAmount:
+          description: The amount of leave loading applied for the leave type that is exempt from Superannuation Guarantee Contributions. *Only applicable for Leave Types with Annual Leave Categories
+          type: number
+          format: double
+          x-is-money: true
+          example: 60.0
+        ResetSTPCategorisation:
+          description: Reset the STP categorisations for the leave type. *Only applicable for Leave Types with Annual Leave Categories
+          type: boolean
+          example: true
+    LeaveApplications:
+      type: object
+      x-objectArrayKey: leave_applications
+      properties:
+        LeaveApplications:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaveApplication'
+    LeavePeriod:
+      type: object
+      properties:
+        NumberOfUnits:
+          description: The Number of Units for the leave
+          type: number
+          format: double
+          x-is-money: true
+          example: 22.8
+        PayPeriodEndDate:
+          description: The Pay Period End Date (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        PayPeriodStartDate:
+          description: The Pay Period Start Date (YYYY-MM-DD)
+          type: string
+          x-is-msdate: true
+          example: /Date(322560000000+0000)/
+        LeavePeriodStatus:
+          $ref: '#/components/schemas/LeavePeriodStatus'
+    TimesheetObject:
+      type: object
+      properties:
+        Timesheet:
+          $ref: '#/components/schemas/Timesheet'
+    SettingsObject:
+      type: object
+      properties:
+        Settings:
+          $ref: '#/components/schemas/Settings'
+    TaxScaleType:
       type: string
       enum:
-      - NOTPAIDOUT
-      - PAIDOUT
+      - REGULAR
+      - ACTORSARTISTSENTERTAINERS
+      - HORTICULTURISTORSHEARER
+      - SENIORORPENSIONER
+      - WORKINGHOLIDAYMAKER
+      - FOREIGN
     Timesheet:
       type: object
       required:
@@ -5044,376 +5405,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    Payslips:
-      type: object
-      x-objectArrayKey: payslips
-      properties:
-        Payslips:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payslip'
-    OpeningBalances:
-      type: object
-      properties:
-        OpeningBalanceDate:
-          description: Opening Balance Date. (YYYY-MM-DD)
-          type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        Tax:
-          description: Opening Balance tax
-          type: string
-          example: 4333d5cd-53a5-4c31-98e5-a8b4e5676b0b
-        EarningsLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/EarningsLine'
-        DeductionLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeductionLine'
-        SuperLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/SuperLine'
-        ReimbursementLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReimbursementLine'
-        LeaveLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/OpeningBalanceLeaveLine'
-        PaidLeaveEarningsLines:
-          type: array
-          items:
-            $ref: '#/components/schemas/PaidLeaveEarningsLine'
-    PayOutType:
-      description: How the requested leave will be paid out, e.g. cashed out.
-      type: string
-      enum:
-      - DEFAULT
-      - CASHED_OUT
-    TaxLine:
-      type: object
-      properties:
-        PayslipTaxLineID:
-          description: Xero identifier for payslip tax line ID.
-          type: string
-          format: uuid
-          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
-        Amount:
-          description: The tax line amount
-          type: number
-          format: double
-          x-is-money: true
-          example: 50.0
-        TaxTypeName:
-          description: Name of the tax type.
-          type: string
-          example: Manual Adjustment
-        Description:
-          description: Description of the tax line.
-          type: string
-        ManualTaxType:
-          $ref: '#/components/schemas/ManualTaxType'
-        LiabilityAccount:
-          description: The tax line liability account code. For posted pay run you should be able to see liability account code
-          type: string
-          example: 620
-    PayrollCalendar:
-      type: object
-      properties:
-        Name:
-          description: Name of the Payroll Calendar
-          type: string
-          example: Fortnightly Calendar
-        CalendarType:
-          $ref: '#/components/schemas/CalendarType'
-        StartDate:
-          description: The start date of the upcoming pay period. The end date will be calculated based upon this date, and the calendar type selected (YYYY-MM-DD)
-          type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        PaymentDate:
-          description: The date on which employees will be paid for the upcoming pay period (YYYY-MM-DD)
-          type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        PayrollCalendarID:
-          description: Xero identifier
-          type: string
-          format: uuid
-          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
-        UpdatedDateUTC:
-          description: Last modified timestamp
-          type: string
-          readOnly: true
-          x-is-msdate-time: true
-          example: /Date(1583967733054+0000)/
-        ReferenceDate:
-          description: Reference Date (YYYY-MM-DD)
-          type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        ValidationErrors:
-          description: Displays array of validation error messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    AccountType:
-      description: See Account Types
-      type: string
-      enum:
-      - BANK
-      - CURRENT
-      - CURRLIAB
-      - DEPRECIATN
-      - DIRECTCOSTS
-      - EQUITY
-      - EXPENSE
-      - FIXED
-      - INVENTORY
-      - LIABILITY
-      - NONCURRENT
-      - OTHERINCOME
-      - OVERHEADS
-      - PREPAYMENT
-      - REVENUE
-      - SALES
-      - TERMLIAB
-      - PAYGLIABILITY
-      - PAYG
-      - SUPERANNUATIONEXPENSE
-      - SUPERANNUATIONLIABILITY
-      - WAGESEXPENSE
-      - WAGESPAYABLELIABILITY
-    LeaveAccrualLine:
-      type: object
-      properties:
-        LeaveTypeID:
-          description: Xero identifier for the Leave type.
-          type: string
-          format: uuid
-          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
-        NumberOfUnits:
-          description: Leave Accrual number of units
-          type: number
-          format: double
-          x-is-money: true
-          example: 105.5
-        AutoCalculate:
-          description: If you want to auto calculate leave.
-          type: boolean
-          example: true
-    PayslipObject:
-      type: object
-      properties:
-        Payslip:
-          $ref: '#/components/schemas/Payslip'
-    LeavePeriodStatus:
-      type: string
-      enum:
-      - SCHEDULED
-      - PROCESSED
-      - REQUESTED
-      - REJECTED
-    IncomeType:
-      type: string
-      enum:
-      - SALARYANDWAGES
-      - WORKINGHOLIDAYMAKER
-      - NONEMPLOYEE
-      - CLOSELYHELDPAYEES
-      - LABOURHIRE
-    SuperannuationLine:
-      type: object
-      properties:
-        SuperMembershipID:
-          description: Xero identifier for payroll super fund membership ID.
-          type: string
-          format: uuid
-          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
-        ContributionType:
-          $ref: '#/components/schemas/SuperannuationContributionType'
-        CalculationType:
-          $ref: '#/components/schemas/SuperannuationCalculationType'
-        MinimumMonthlyEarnings:
-          description: Superannuation minimum monthly earnings.
-          type: number
-          format: double
-          x-is-money: true
-          example: 100.5
-        ExpenseAccountCode:
-          description: Superannuation expense account code.
-          type: string
-          example: 450
-        LiabilityAccountCode:
-          description: Superannuation liability account code
-          type: string
-          example: 650
-        PaymentDateForThisPeriod:
-          description: Superannuation payment date for the current period (YYYY-MM-DD)
-          type: string
-          x-is-msdate: true
-          example: /Date(322560000000+0000)/
-        Percentage:
-          description: Superannuation percentage
-          type: number
-          format: double
-          x-is-money: true
-          example: 4.0
-        Amount:
-          description: Superannuation amount
-          type: number
-          format: double
-          x-is-money: true
-          example: 10.5
-    TaxDeclaration:
-      properties:
-        EmployeeID:
-          description: Address line 1 for employee home address
-          type: string
-          format: uuid
-          example: 123 Main St
-        EmploymentBasis:
-          $ref: '#/components/schemas/EmploymentBasis'
-        TFNExemptionType:
-          $ref: '#/components/schemas/TFNExemptionType'
-        TaxFileNumber:
-          description: The tax file number e.g 123123123.
-          type: string
-          example: 123123123
-        ABN:
-          description: 11-digit Australian Business Number e.g 21006819692 or an empty string ("") to unset a previously set value. Only applicable, and mandatory if income type is NONEMPLOYEE.
-          type: string
-          example: 21006819692
-        AustralianResidentForTaxPurposes:
-          description: If the employee is Australian resident for tax purposes. e.g true or false
-          type: boolean
-          example: true
-        ResidencyStatus:
-          $ref: '#/components/schemas/ResidencyStatus'
-        TaxScaleType:
-          $ref: '#/components/schemas/TaxScaleType'
-        WorkCondition:
-          $ref: '#/components/schemas/WorkCondition'
-        SeniorMaritalStatus:
-          $ref: '#/components/schemas/SeniorMaritalStatus'
-        TaxFreeThresholdClaimed:
-          description: If tax free threshold claimed. e.g true or false
-          type: boolean
-          example: false
-        TaxOffsetEstimatedAmount:
-          description: If has tax offset estimated then the tax offset estimated amount. e.g 100
-          type: number
-          format: int
-          example: 100
-        HasHELPDebt:
-          description: If employee has HECS or HELP debt. e.g true or false
-          type: boolean
-          example: false
-        HasSFSSDebt:
-          description: If employee has financial supplement debt. e.g true or false
-          type: boolean
-          example: false
-        HasTradeSupportLoanDebt:
-          description: If employee has trade support loan. e.g true or false
-          type: boolean
-          example: false
-        UpwardVariationTaxWithholdingAmount:
-          description: If the employee has requested that additional tax be withheld each pay run. e.g 50
-          type: number
-          format: int
-          example: 50
-        EligibleToReceiveLeaveLoading:
-          description: If the employee is eligible to receive an additional percentage on top of ordinary earnings when they take leave (typically 17.5%). e.g true or false
-          type: boolean
-          example: false
-        ApprovedWithholdingVariationPercentage:
-          description: If the employee has approved withholding variation. e.g (0 - 100)
-          type: number
-          format: int
-          example: 75
-        HasStudentStartupLoan:
-          description: If the employee is eligible for student startup loan rules
-          type: boolean
-          example: true
-        HasLoanOrStudentDebt:
-          description: 'If the employee has any of the following loans or debts: Higher Education Loan Program (HELP/HECS), VET Student Loan (VSL), Financial Supplement (FS), Student Start-up Loan (SSL), or Trade Support Loan (TSL)'
-          type: boolean
-          example: true
-        UpdatedDateUTC:
-          description: Last modified timestamp
-          type: string
-          readOnly: true
-          x-is-msdate-time: true
-          example: /Date(1583967733054+0000)/
-        IncludeLeaveLoadingInQualifyingEarnings:
-          description: Optional Boolean to determine if leave loading is considered as qualifying earnings for superannuation guarantee calculations
-          type: boolean
-          example: true
-      type: object
-    LeaveEarningsLine:
-      type: object
-      properties:
-        EarningsRateID:
-          description: Xero identifier
-          type: string
-          format: uuid
-          example: e0eb6747-7c17-4075-b804-989f8d4e5d39
-        RatePerUnit:
-          description: Rate per unit of the EarningsLine.
-          type: number
-          format: double
-          x-is-money: true
-          example: 38.0
-        NumberOfUnits:
-          description: Earnings rate number of units.
-          type: number
-          format: double
-          x-is-money: true
-          example: 2.5
-        PayOutType:
-          $ref: '#/components/schemas/PayOutType'
-    ReimbursementLine:
-      type: object
-      properties:
-        ReimbursementTypeID:
-          description: Xero reimbursement type identifier
-          type: string
-          format: uuid
-          example: bd246b96-c637-4767-81cf-851ba8fa93c2
-        Amount:
-          description: Reimbursement type amount
-          type: number
-          format: double
-          x-is-money: true
-          example: 10.0
-        Description:
-          description: Reimbursement lines description (max length 50)
-          type: string
-          example: For the taxi
-          maxLength: 50
-        ExpenseAccount:
-          description: Reimbursement expense account. For posted pay run you should be able to see expense account code.
-          type: string
-          example: 420
-    EmployeeStatus:
-      type: string
-      description: Employee Status Types
-      enum:
-      - ACTIVE
-      - TERMINATED
   parameters:
-    idempotencyKey:
-      in: header
-      name: Idempotency-Key
-      x-snake: idempotency_key
-      description: This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
-      example: KEY_VALUE
-      schema:
-        type: string
     requiredHeader:
       in: header
       name: Xero-Tenant-Id
@@ -5422,6 +5414,14 @@ components:
       schema:
         type: string
       required: true
+    idempotencyKey:
+      in: header
+      name: Idempotency-Key
+      x-snake: idempotency_key
+      description: This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+      example: KEY_VALUE
+      schema:
+        type: string
   securitySchemes:
     OAuth2:
       type: oauth2

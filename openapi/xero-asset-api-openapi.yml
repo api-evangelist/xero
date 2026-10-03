@@ -585,182 +585,58 @@ paths:
           description: bad input parameter
 components:
   schemas:
-    BookDepreciationDetail:
+    BookDepreciationSetting:
       properties:
-        currentCapitalGain:
+        depreciationMethod:
+          type: string
+          enum:
+          - NoDepreciation
+          - StraightLine
+          - DiminishingValue100
+          - DiminishingValue150
+          - DiminishingValue200
+          - FullDepreciation
+          example: StraightLine
+          description: The method of depreciation applied to this asset. See Depreciation Methods
+        averagingMethod:
+          type: string
+          enum:
+          - FullMonth
+          - ActualDays
+          example: ActualDays
+          description: The method of averaging applied to this asset. See Averaging Methods
+        depreciationRate:
           type: number
           format: double
           x-is-money: true
-          example: 5.25
-          description: When an asset is disposed, this will be the sell price minus the purchase price if a profit was made.
-        currentGainLoss:
-          type: number
-          format: double
-          x-is-money: true
-          example: 10.5
-          description: When an asset is disposed, this will be the lowest one of sell price or purchase price, minus the current book value.
-        depreciationStartDate:
-          type: string
-          format: date
-          example: 2015-07-01 00:00:00
-          description: YYYY-MM-DD
-        costLimit:
-          type: number
-          format: double
-          x-is-money: true
-          example: 9000.0
-          description: The value of the asset you want to depreciate, if this is less than the cost of the asset.
-        residualValue:
-          type: number
-          format: double
-          x-is-money: true
-          example: 10000.0
-          description: The value of the asset remaining when you've fully depreciated it.
-        priorAccumDepreciationAmount:
-          type: number
-          format: double
-          x-is-money: true
-          example: 0.45
-          description: All depreciation prior to the current financial year.
-        currentAccumDepreciationAmount:
-          type: number
-          format: double
-          x-is-money: true
-          example: 5.0
-          description: All depreciation occurring in the current financial year.
-        businessUseCapitalGain:
-          type: number
-          format: decimal
-          x-is-money: true
-          description: (New Zealand Orgs Only) The portion of capital gain realised from the disposal of a fixed asset that is attributable to its business use.
-        businessUseCurrentGainLoss:
-          type: number
-          format: decimal
-          x-is-money: true
-          description: (New Zealand Orgs Only) Represents the gain or loss from the disposal of the business use portion of a fixed asset. This value records the financial result (profit or loss) related specifically to the asset’s business use.
-        privateUseCapitalGain:
-          type: number
-          format: decimal
-          x-is-money: true
-          description: (New Zealand Orgs Only) The portion of capital gain realised from the disposal of a fixed asset that is attributable to its private (non-business) use.
-        privateUseCurrentGainLoss:
-          type: number
-          format: decimal
-          x-is-money: true
-          description: (New Zealand Orgs Only) Represents the gain or loss from the disposal of the private use portion of a fixed asset. This value records the financial result (profit or loss) related specifically to the asset’s private use.
-        initialDeductionPercentage:
-          type: number
-          format: decimal
-          description: (New Zealand Orgs Only) The Investment Boost deduction percentage.
-    AssetStatusQueryParam:
-      type: string
-      description: See Asset Status Codes.
-      example: DRAFT
-      enum:
-      - DRAFT
-      - REGISTERED
-      - DISPOSED
-    Setting:
-      required:
-      - name
-      properties:
-        assetNumberPrefix:
-          type: string
-          example: FA-
-          description: The prefix used for fixed asset numbers (“FA-” by default)
-        assetNumberSequence:
-          type: string
-          example: '0022'
-          description: The next available sequence number
-        assetStartDate:
-          type: string
-          format: date
-          example: 2015-07-31 00:00:00
-          description: The date depreciation calculations started on registered fixed assets in Xero
-        lastDepreciationDate:
-          type: string
-          format: date
-          example: 2015-07-01 00:00:00
-          description: The last depreciation date
-        defaultGainOnDisposalAccountId:
-          type: string
-          format: uuid
-          example: 346ddb97-739a-4274-b43b-66aa3218d17c
-          description: Default account that gains are posted to
-        defaultLossOnDisposalAccountId:
-          type: string
-          format: uuid
-          example: 1b798541-24e2-4855-9309-c023a0b576f3
-          description: Default account that losses are posted to
-        defaultCapitalGainOnDisposalAccountId:
-          type: string
-          format: uuid
-          example: 6d6a0bdb-e118-45d8-a023-2ad617ec1cb7
-          description: Default account that capital gains are posted to
-        optInForTax:
-          type: boolean
-          description: opt in for tax calculation
-          example: false
-      type: object
-    Pagination:
-      properties:
-        page:
+          example: 0.05
+          description: The rate of depreciation (e.g. 0.05)
+        effectiveLifeYears:
           type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 10
-        pageCount:
-          type: integer
-          example: 1
-        itemCount:
-          type: integer
-          example: 2
-    AssetStatus:
-      type: string
-      description: See Asset Status Codes.
-      example: Draft
-      enum:
-      - Draft
-      - Registered
-      - Disposed
-    AssetType:
-      type: object
-      x-snake: asset_type
-      required:
-      - assetTypeName
-      - bookDepreciationSetting
-      properties:
-        assetTypeId:
+          example: 5
+          description: Effective life of the asset in years (e.g. 5)
+        depreciationCalculationMethod:
+          type: string
+          enum:
+          - Rate
+          - Life
+          - None
+          example: None
+          description: See Depreciation Calculation Methods
+        depreciableObjectId:
           type: string
           format: uuid
-          example: 5da209c5-5e19-4a43-b925-71b776c49ced
-          description: Xero generated unique identifier for asset types
-        assetTypeName:
+          example: 68f17094-af97-4f1b-b36b-013b45b6ad3c
+          description: Unique Xero identifier for the depreciable object
+        depreciableObjectType:
           type: string
-          example: Computer Equipment
-          description: The name of the asset type
-        fixedAssetAccountId:
-          type: string
-          format: uuid
-          example: 24e260f1-bfc4-4766-ad7f-8a8ce01de879
-          description: The asset account for fixed assets of this type
-        depreciationExpenseAccountId:
+          example: Asset
+          description: The type of asset object
+        bookEffectiveDateOfChangeId:
           type: string
           format: uuid
-          example: b23fc79b-d66b-44b0-a240-e138e086fcbc
-          description: The expense account for the depreciation of fixed assets of this type
-        accumulatedDepreciationAccountId:
-          type: string
-          format: uuid
-          example: ca4c6b39-4f4f-43e8-98da-5e1f350a6694
-          description: The account for accumulated depreciation of fixed assets of this type
-        bookDepreciationSetting:
-          $ref: '#/components/schemas/BookDepreciationSetting'
-        locks:
-          type: integer
-          example: 33
-          description: All asset types that have accumulated depreciation for any assets that use them are deemed ‘locked’ and cannot be removed.
+          example: 68f17094-af97-4f1b-b36b-013b45b6ad3c
+          description: Unique Xero identifier for the effective date change
     Asset:
       type: object
       required:
@@ -834,58 +710,107 @@ components:
           type: boolean
           description: Boolean to indicate whether delete is enabled
           example: true
-    BookDepreciationSetting:
+    Pagination:
       properties:
-        depreciationMethod:
-          type: string
-          enum:
-          - NoDepreciation
-          - StraightLine
-          - DiminishingValue100
-          - DiminishingValue150
-          - DiminishingValue200
-          - FullDepreciation
-          example: StraightLine
-          description: The method of depreciation applied to this asset. See Depreciation Methods
-        averagingMethod:
-          type: string
-          enum:
-          - FullMonth
-          - ActualDays
-          example: ActualDays
-          description: The method of averaging applied to this asset. See Averaging Methods
-        depreciationRate:
-          type: number
-          format: double
-          x-is-money: true
-          example: 0.05
-          description: The rate of depreciation (e.g. 0.05)
-        effectiveLifeYears:
+        page:
           type: integer
-          example: 5
-          description: Effective life of the asset in years (e.g. 5)
-        depreciationCalculationMethod:
+          example: 1
+        pageSize:
+          type: integer
+          example: 10
+        pageCount:
+          type: integer
+          example: 1
+        itemCount:
+          type: integer
+          example: 2
+    Setting:
+      required:
+      - name
+      properties:
+        assetNumberPrefix:
           type: string
-          enum:
-          - Rate
-          - Life
-          - None
-          example: None
-          description: See Depreciation Calculation Methods
-        depreciableObjectId:
+          example: FA-
+          description: The prefix used for fixed asset numbers (“FA-” by default)
+        assetNumberSequence:
+          type: string
+          example: '0022'
+          description: The next available sequence number
+        assetStartDate:
+          type: string
+          format: date
+          example: 2015-07-31 00:00:00
+          description: The date depreciation calculations started on registered fixed assets in Xero
+        lastDepreciationDate:
+          type: string
+          format: date
+          example: 2015-07-01 00:00:00
+          description: The last depreciation date
+        defaultGainOnDisposalAccountId:
           type: string
           format: uuid
-          example: 68f17094-af97-4f1b-b36b-013b45b6ad3c
-          description: Unique Xero identifier for the depreciable object
-        depreciableObjectType:
-          type: string
-          example: Asset
-          description: The type of asset object
-        bookEffectiveDateOfChangeId:
+          example: 346ddb97-739a-4274-b43b-66aa3218d17c
+          description: Default account that gains are posted to
+        defaultLossOnDisposalAccountId:
           type: string
           format: uuid
-          example: 68f17094-af97-4f1b-b36b-013b45b6ad3c
-          description: Unique Xero identifier for the effective date change
+          example: 1b798541-24e2-4855-9309-c023a0b576f3
+          description: Default account that losses are posted to
+        defaultCapitalGainOnDisposalAccountId:
+          type: string
+          format: uuid
+          example: 6d6a0bdb-e118-45d8-a023-2ad617ec1cb7
+          description: Default account that capital gains are posted to
+        optInForTax:
+          type: boolean
+          description: opt in for tax calculation
+          example: false
+      type: object
+    AssetStatus:
+      type: string
+      description: See Asset Status Codes.
+      example: Draft
+      enum:
+      - Draft
+      - Registered
+      - Disposed
+    AssetType:
+      type: object
+      x-snake: asset_type
+      required:
+      - assetTypeName
+      - bookDepreciationSetting
+      properties:
+        assetTypeId:
+          type: string
+          format: uuid
+          example: 5da209c5-5e19-4a43-b925-71b776c49ced
+          description: Xero generated unique identifier for asset types
+        assetTypeName:
+          type: string
+          example: Computer Equipment
+          description: The name of the asset type
+        fixedAssetAccountId:
+          type: string
+          format: uuid
+          example: 24e260f1-bfc4-4766-ad7f-8a8ce01de879
+          description: The asset account for fixed assets of this type
+        depreciationExpenseAccountId:
+          type: string
+          format: uuid
+          example: b23fc79b-d66b-44b0-a240-e138e086fcbc
+          description: The expense account for the depreciation of fixed assets of this type
+        accumulatedDepreciationAccountId:
+          type: string
+          format: uuid
+          example: ca4c6b39-4f4f-43e8-98da-5e1f350a6694
+          description: The account for accumulated depreciation of fixed assets of this type
+        bookDepreciationSetting:
+          $ref: '#/components/schemas/BookDepreciationSetting'
+        locks:
+          type: integer
+          example: 33
+          description: All asset types that have accumulated depreciation for any assets that use them are deemed ‘locked’ and cannot be removed.
     Assets:
       type: object
       properties:
@@ -895,6 +820,81 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Asset'
+    AssetStatusQueryParam:
+      type: string
+      description: See Asset Status Codes.
+      example: DRAFT
+      enum:
+      - DRAFT
+      - REGISTERED
+      - DISPOSED
+    BookDepreciationDetail:
+      properties:
+        currentCapitalGain:
+          type: number
+          format: double
+          x-is-money: true
+          example: 5.25
+          description: When an asset is disposed, this will be the sell price minus the purchase price if a profit was made.
+        currentGainLoss:
+          type: number
+          format: double
+          x-is-money: true
+          example: 10.5
+          description: When an asset is disposed, this will be the lowest one of sell price or purchase price, minus the current book value.
+        depreciationStartDate:
+          type: string
+          format: date
+          example: 2015-07-01 00:00:00
+          description: YYYY-MM-DD
+        costLimit:
+          type: number
+          format: double
+          x-is-money: true
+          example: 9000.0
+          description: The value of the asset you want to depreciate, if this is less than the cost of the asset.
+        residualValue:
+          type: number
+          format: double
+          x-is-money: true
+          example: 10000.0
+          description: The value of the asset remaining when you've fully depreciated it.
+        priorAccumDepreciationAmount:
+          type: number
+          format: double
+          x-is-money: true
+          example: 0.45
+          description: All depreciation prior to the current financial year.
+        currentAccumDepreciationAmount:
+          type: number
+          format: double
+          x-is-money: true
+          example: 5.0
+          description: All depreciation occurring in the current financial year.
+        businessUseCapitalGain:
+          type: number
+          format: decimal
+          x-is-money: true
+          description: (New Zealand Orgs Only) The portion of capital gain realised from the disposal of a fixed asset that is attributable to its business use.
+        businessUseCurrentGainLoss:
+          type: number
+          format: decimal
+          x-is-money: true
+          description: (New Zealand Orgs Only) Represents the gain or loss from the disposal of the business use portion of a fixed asset. This value records the financial result (profit or loss) related specifically to the asset’s business use.
+        privateUseCapitalGain:
+          type: number
+          format: decimal
+          x-is-money: true
+          description: (New Zealand Orgs Only) The portion of capital gain realised from the disposal of a fixed asset that is attributable to its private (non-business) use.
+        privateUseCurrentGainLoss:
+          type: number
+          format: decimal
+          x-is-money: true
+          description: (New Zealand Orgs Only) Represents the gain or loss from the disposal of the private use portion of a fixed asset. This value records the financial result (profit or loss) related specifically to the asset’s private use.
+        initialDeductionPercentage:
+          type: number
+          format: decimal
+          description: (New Zealand Orgs Only) The Investment Boost deduction percentage.
   parameters:
     idempotencyKey:
       in: header
