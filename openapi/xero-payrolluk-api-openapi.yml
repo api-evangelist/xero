@@ -5403,30 +5403,736 @@ paths:
                   timesheetTrackingCategoryID: 1d7d2015-10e7-4ecb-8b44-f331c8b63e2d
 components:
   schemas:
-    EarningsTemplates:
+    NICategoryLetter:
+      description: The employee's NI Category letter.
+      type: string
+      example: I
+      enum:
+      - A
+      - B
+      - C
+      - F
+      - H
+      - I
+      - J
+      - L
+      - M
+      - S
+      - V
+      - X
+      - Z
+      - D
+      - E
+      - K
+      - N
+    ReimbursementLine:
+      type: object
+      properties:
+        reimbursementTypeID:
+          description: Xero identifier for payroll reimbursement
+          type: string
+          format: uuid
+        description:
+          description: Reimbursement line description
+          type: string
+        amount:
+          description: Reimbursement amount
+          type: number
+          format: double
+          x-is-money: true
+    TaxLines:
       type: array
       items:
-        $ref: '#/components/schemas/EarningsTemplate'
-    SalaryAndWages:
+        $ref: '#/components/schemas/TaxLine'
+    ContractType:
+      description: The contract type of the employee.
+      type: string
+      example: FullTime
+      enum:
+      - FullTime
+      - PartTime
+      - ZeroHour
+      - Unspecified
+    LeaveAccrualLine:
+      type: object
+      properties:
+        leaveTypeID:
+          description: Xero identifier for the Leave type
+          type: string
+          format: uuid
+        numberOfUnits:
+          description: Leave accrual number of units
+          type: number
+          format: double
+    PayRuns:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         problem:
           $ref: '#/components/schemas/Problem'
-        salaryAndWages:
+        payRuns:
           type: array
           items:
-            $ref: '#/components/schemas/SalaryAndWage'
-    EmployeeLeaveTypeObject:
+            $ref: '#/components/schemas/PayRun'
+    Payslip:
+      type: object
+      properties:
+        paySlipID:
+          description: The Xero identifier for a Payslip
+          type: string
+          format: uuid
+        employeeID:
+          description: The Xero identifier for payroll employee
+          type: string
+          format: uuid
+        payRunID:
+          description: The Xero identifier for the associated payrun
+          type: string
+          format: uuid
+        lastEdited:
+          description: The date payslip was last updated
+          type: string
+          format: date
+          x-is-datetime: true
+        firstName:
+          description: Employee first name
+          type: string
+        lastName:
+          description: Employee last name
+          type: string
+        totalEarnings:
+          description: Total earnings before any deductions. Same as gross earnings for UK.
+          type: number
+          format: double
+        grossEarnings:
+          description: Total earnings before any deductions. Same as total earnings for UK.
+          type: number
+          format: double
+        totalPay:
+          description: The employee net pay
+          type: number
+          format: double
+        totalEmployerTaxes:
+          description: The employer's tax obligation
+          type: number
+          format: double
+        totalEmployeeTaxes:
+          description: The part of an employee's earnings that is deducted for tax purposes
+          type: number
+          format: double
+        totalDeductions:
+          description: Total amount subtracted from an employee's earnings to reach total pay
+          type: number
+          format: double
+        totalReimbursements:
+          description: Total reimbursements are nontaxable payments to an employee used to repay out-of-pocket expenses when the person incurs those expenses through employment
+          type: number
+          format: double
+        totalCourtOrders:
+          description: Total amounts required by law to subtract from the employee's earnings
+          type: number
+          format: double
+        totalBenefits:
+          description: Benefits (also called fringe benefits, perquisites or perks) are various non-earnings compensations provided to employees in addition to their normal earnings or salaries
+          type: number
+          format: double
+        bacsHash:
+          description: BACS Service User Number
+          type: string
+        paymentMethod:
+          description: The payment method code
+          type: string
+          enum:
+          - Cheque
+          - Electronically
+          - Manual
+        earningsLines:
+          $ref: '#/components/schemas/EarningsLines'
+        leaveEarningsLines:
+          $ref: '#/components/schemas/LeaveEarningsLines'
+        timesheetEarningsLines:
+          $ref: '#/components/schemas/TimesheetEarningsLines'
+        deductionLines:
+          $ref: '#/components/schemas/DeductionLines'
+        reimbursementLines:
+          $ref: '#/components/schemas/ReimbursementLines'
+        leaveAccrualLines:
+          $ref: '#/components/schemas/LeaveAccrualLines'
+        benefitLines:
+          $ref: '#/components/schemas/BenefitLines'
+        paymentLines:
+          $ref: '#/components/schemas/PaymentLines'
+        employeeTaxLines:
+          $ref: '#/components/schemas/TaxLines'
+        employerTaxLines:
+          $ref: '#/components/schemas/TaxLines'
+        courtOrderLines:
+          $ref: '#/components/schemas/CourtOrderLines'
+    EmployeeLeaveTypes:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         problem:
           $ref: '#/components/schemas/Problem'
-        leaveType:
-          $ref: '#/components/schemas/EmployeeLeaveType'
+        leaveTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeLeaveType'
+    ReimbursementObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        reimbursement:
+          $ref: '#/components/schemas/Reimbursement'
+    EarningsOrder:
+      type: object
+      required:
+      - name
+      properties:
+        id:
+          description: Xero unique identifier for an earning rate
+          type: string
+          format: uuid
+        name:
+          description: Name of the earning order
+          type: string
+        statutoryDeductionCategory:
+          $ref: '#/components/schemas/StatutoryDeductionCategory'
+        liabilityAccountId:
+          description: Xero identifier for Liability Account
+          type: string
+          format: uuid
+        currentRecord:
+          description: Identifier of a record is active or not.
+          type: boolean
+          default: true
+    EmployeeStatutorySickLeaveObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        statutorySickLeave:
+          $ref: '#/components/schemas/EmployeeStatutorySickLeave'
+    Address:
+      type: object
+      required:
+      - addressLine1
+      - city
+      - postCode
+      properties:
+        addressLine1:
+          description: Address line 1 for employee home address
+          type: string
+          example: 123 Main St
+        addressLine2:
+          description: Address line 2 for employee home address
+          type: string
+          example: Apt 4
+        city:
+          description: Suburb for employee home address
+          type: string
+          example: Fulham
+        postCode:
+          description: PostCode for employee home address
+          type: string
+          example: SW6 6EY
+        countryName:
+          description: Country of HomeAddress
+          type: string
+          example: United Kingdom
+    EmployeeLeaves:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        leave:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeLeave'
+    EmployeeTaxObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        employeeTax:
+          $ref: '#/components/schemas/EmployeeTax'
+    BenefitLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/BenefitLine'
+    Accounts:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+    EarningsRateObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        earningsRate:
+          $ref: '#/components/schemas/EarningsRate'
+    EmployeeStatutoryLeaveSummary:
+      type: object
+      properties:
+        statutoryLeaveID:
+          description: The unique identifier (guid) of a statutory leave.
+          type: string
+          format: uuid
+        employeeID:
+          description: The unique identifier (guid) of the employee
+          type: string
+          format: uuid
+        type:
+          description: The category of statutory leave
+          type: string
+          enum:
+          - Sick
+          - Adoption
+          - Maternity
+          - Paternity
+          - Sharedparental
+          - Bereavement
+          - NeonatalCare
+          - BereavementNire
+        startDate:
+          description: The date when the leave starts
+          type: string
+          format: date
+          x-is-date: true
+        endDate:
+          description: The date when the leave ends
+          type: string
+          format: date
+          x-is-date: true
+        isEntitled:
+          description: Whether the leave was entitled to receive payment
+          type: boolean
+        status:
+          description: The status of the leave
+          type: string
+          enum:
+          - Pending
+          - In-Progress
+          - Completed
+    Deduction:
+      type: object
+      required:
+      - deductionName
+      - liabilityAccountId
+      properties:
+        deductionId:
+          description: The Xero identifier for Deduction
+          type: string
+          format: uuid
+        deductionName:
+          description: Name of the deduction
+          type: string
+        deductionCategory:
+          description: Deduction Category type
+          type: string
+          enum:
+          - CapitalContributions
+          - ChildCareVoucher
+          - MakingGood
+          - PostgraduateLoanDeductions
+          - PrivateUsePayments
+          - SalarySacrifice
+          - StakeholderPension
+          - StakeholderPensionPostTax
+          - StudentLoanDeductions
+          - UkOther
+        liabilityAccountId:
+          description: Xero identifier for Liability Account
+          type: string
+          format: uuid
+        currentRecord:
+          description: Identifier of a record is active or not.
+          type: boolean
+        standardAmount:
+          description: Standard amount of the deduction
+          type: number
+          format: double
+          x-is-money: true
+        reducesSuperLiability:
+          description: Identifier of reduces super liability
+          type: boolean
+        reducesTaxLiability:
+          description: Identifier of reduces tax liability
+          type: boolean
+        calculationType:
+          description: determine the calculation type whether fixed amount or percentage of gross
+          type: string
+          enum:
+          - FixedAmount
+          - PercentageOfGross
+        percentage:
+          description: Percentage of gross
+          type: number
+          format: double
+          x-is-money: true
+        subjectToNIC:
+          description: Identifier of subject To NIC
+          type: boolean
+        subjectToTax:
+          description: Identifier of subject To Tax
+          type: boolean
+        isReducedByBasicRate:
+          description: Identifier of reduced by basic rate applicable or not
+          type: boolean
+        applyToPensionCalculations:
+          description: Identifier for apply to pension calculations
+          type: boolean
+        isCalculatingOnQualifyingEarnings:
+          description: Identifier of calculating on qualifying earnings
+          type: boolean
+        isPension:
+          description: Identifier of applicable for pension or not
+          type: boolean
+    LeavePeriod:
+      type: object
+      properties:
+        periodStartDate:
+          description: The Pay Period Start Date (YYYY-MM-DD)
+          type: string
+          format: date
+          x-is-date: true
+        periodEndDate:
+          description: The Pay Period End Date (YYYY-MM-DD)
+          type: string
+          format: date
+          x-is-date: true
+        numberOfUnits:
+          description: The Number of Units for the leave
+          type: number
+          format: double
+        periodStatus:
+          description: Period Status
+          type: string
+          enum:
+          - Approved
+          - Completed
+    DeductionObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        deduction:
+          $ref: '#/components/schemas/Deduction'
+    CourtOrderLine:
+      type: object
+      properties:
+        courtOrderTypeID:
+          description: Xero identifier for payroll court order type
+          type: string
+          format: uuid
+        amount:
+          description: Amount
+          type: number
+          format: double
+    EmployeeLeaveType:
+      type: object
+      required:
+      - leaveTypeID
+      - scheduleOfAccrual
+      properties:
+        leaveTypeID:
+          description: The Xero identifier for leave type
+          type: string
+          format: uuid
+        scheduleOfAccrual:
+          description: The schedule of accrual
+          type: string
+          enum:
+          - BeginningOfCalendarYear
+          - OnAnniversaryDate
+          - EachPayPeriod
+          - OnHourWorked
+        hoursAccruedAnnually:
+          description: The number of hours accrued for the leave annually. This is 0 when the scheduleOfAccrual chosen is "OnHourWorked"
+          type: number
+          format: double
+        maximumToAccrue:
+          description: The maximum number of hours that can be accrued for the leave
+          type: number
+          format: double
+        openingBalance:
+          description: The initial number of hours assigned when the leave was added to the employee
+          type: number
+          format: double
+        rateAccruedHourly:
+          description: The number of hours added to the leave balance for every hour worked by the employee. This is normally 0, unless the scheduleOfAccrual chosen is "OnHourWorked"
+          type: number
+          format: double
+        scheduleOfAccrualDate:
+          description: The date when an employee becomes entitled to their accrual. Only applicable when scheduleOfAccrual is "OnAnniversaryDate"
+          type: string
+          format: date
+          example: 2024-04-01
+          x-is-date: true
+    Employment:
+      type: object
+      required:
+      - payrollCalendarID
+      - startDate
+      - employeeNumber
+      - niCategories
+      properties:
+        payrollCalendarID:
+          description: Xero unique identifier for the payroll calendar of the employee
+          type: string
+          format: uuid
+        startDate:
+          description: Start date of the employment (YYYY-MM-DD)
+          type: string
+          format: date
+          x-is-date: true
+        employeeNumber:
+          description: The employment number of the employee
+          type: string
+          example: 7
+        niCategory:
+          $ref: '#/components/schemas/NICategoryLetter'
+          deprecated: true
+        niCategories:
+          description: The employee's NI categories
+          type: array
+          items:
+            $ref: '#/components/schemas/NICategory'
+        contracts:
+          description: The employee's contracts
+          type: array
+          items:
+            $ref: '#/components/schemas/Contracts'
+    PayRun:
+      type: object
+      properties:
+        payRunID:
+          description: Xero unique identifier for the pay run
+          type: string
+          format: uuid
+        payrollCalendarID:
+          description: Xero unique identifier for the payroll calendar
+          type: string
+          format: uuid
+        periodStartDate:
+          description: Period start date of the payroll calendar
+          type: string
+          format: date
+          x-is-date: true
+        periodEndDate:
+          description: Period end date of the payroll calendar
+          type: string
+          format: date
+          x-is-date: true
+        paymentDate:
+          description: Payment date of the pay run
+          type: string
+          format: date
+          x-is-date: true
+        totalCost:
+          description: Total cost of the pay run
+          type: number
+          format: double
+        totalPay:
+          description: Total pay of the pay run
+          type: number
+          format: double
+        payRunStatus:
+          description: Pay run status
+          type: string
+          enum:
+          - Draft
+          - Posted
+        payRunType:
+          description: Pay run type
+          type: string
+          enum:
+          - Scheduled
+          - Unscheduled
+          - EarlierYearUpdate
+        calendarType:
+          description: Calendar type of the pay run
+          type: string
+          enum:
+          - Weekly
+          - Fortnightly
+          - FourWeekly
+          - Monthly
+          - Annual
+          - Quarterly
+        postedDateTime:
+          description: Posted date time of the pay run
+          type: string
+          format: date
+          x-is-date: true
+        paySlips:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payslip'
+    TimesheetLine:
+      type: object
+      required:
+      - date
+      - earningsRateID
+      - numberOfUnits
+      properties:
+        timesheetLineID:
+          description: The Xero identifier for a Timesheet Line
+          type: string
+          format: uuid
+        date:
+          description: The Date that this Timesheet Line is for (YYYY-MM-DD)
+          type: string
+          format: date
+          x-is-date: true
+        earningsRateID:
+          description: The Xero identifier for the Earnings Rate that the Timesheet is for
+          type: string
+          format: uuid
+        trackingItemID:
+          description: The Xero identifier for the Tracking Item that the Timesheet is for
+          type: string
+          format: uuid
+        numberOfUnits:
+          description: The Number of Units of the Timesheet Line
+          type: number
+          format: double
+    PaymentLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/PaymentLine'
+    ReimbursementLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/ReimbursementLine'
+    EmployeeLeaveBalances:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        leaveBalances:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmployeeLeaveBalance'
+    EarningsLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/EarningsLine'
+    TimesheetLineObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        timesheetLine:
+          $ref: '#/components/schemas/TimesheetLine'
+    TimesheetEarningsLine:
+      type: object
+      properties:
+        earningsRateID:
+          description: Xero identifier for payroll timesheet earnings rate
+          type: string
+          format: uuid
+        ratePerUnit:
+          description: Rate per unit for timesheet earnings line
+          type: number
+          format: double
+        numberOfUnits:
+          description: Timesheet earnings number of units
+          type: number
+          format: double
+        fixedAmount:
+          description: Timesheet earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed
+          type: number
+          format: double
+        amount:
+          description: The amount of the timesheet earnings line.
+          type: number
+          format: double
+        isLinkedToTimesheet:
+          description: Identifies if the timesheet earnings is taken from the timesheet. False for leave earnings line
+          type: boolean
+    Pagination:
+      properties:
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 10
+        pageCount:
+          type: integer
+          example: 1
+        itemCount:
+          type: integer
+          example: 2
+    Reimbursements:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        reimbursements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reimbursement'
+    LeaveType:
+      type: object
+      required:
+      - name
+      - isPaidLeave
+      - showOnPayslip
+      properties:
+        leaveID:
+          description: Xero unique identifier for the leave
+          type: string
+          format: uuid
+        leaveTypeID:
+          description: Xero unique identifier for the leave type
+          type: string
+          format: uuid
+        name:
+          description: Name of the leave type
+          type: string
+        isPaidLeave:
+          description: Indicate that an employee will be paid when taking this type of leave
+          type: boolean
+        showOnPayslip:
+          description: Indicate that a balance for this leave type to be shown on the employee’s payslips
+          type: boolean
+        updatedDateUTC:
+          description: UTC timestamp of last update to the leave type note
+          type: string
+          format: date-time
+          x-is-datetime: true
+        isActive:
+          description: Shows whether the leave type is active or not
+          type: boolean
+        isStatutoryLeave:
+          description: Shows whether the leave type is a statutory leave type or not
+          type: boolean
     SalaryAndWage:
       type: object
       required:
@@ -5479,197 +6185,351 @@ components:
           enum:
           - Salary
           - Hourly
-    PaymentLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/PaymentLine'
-    DeductionObject:
+    EarningsTemplate:
       type: object
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        deduction:
-          $ref: '#/components/schemas/Deduction'
-    EmployeeLeaveType:
-      type: object
-      required:
-      - leaveTypeID
-      - scheduleOfAccrual
-      properties:
-        leaveTypeID:
-          description: The Xero identifier for leave type
+        payTemplateEarningID:
+          description: The Xero identifier for the earnings template
           type: string
           format: uuid
-        scheduleOfAccrual:
-          description: The schedule of accrual
-          type: string
-          enum:
-          - BeginningOfCalendarYear
-          - OnAnniversaryDate
-          - EachPayPeriod
-          - OnHourWorked
-        hoursAccruedAnnually:
-          description: The number of hours accrued for the leave annually. This is 0 when the scheduleOfAccrual chosen is "OnHourWorked"
-          type: number
-          format: double
-        maximumToAccrue:
-          description: The maximum number of hours that can be accrued for the leave
-          type: number
-          format: double
-        openingBalance:
-          description: The initial number of hours assigned when the leave was added to the employee
-          type: number
-          format: double
-        rateAccruedHourly:
-          description: The number of hours added to the leave balance for every hour worked by the employee. This is normally 0, unless the scheduleOfAccrual chosen is "OnHourWorked"
-          type: number
-          format: double
-        scheduleOfAccrualDate:
-          description: The date when an employee becomes entitled to their accrual. Only applicable when scheduleOfAccrual is "OnAnniversaryDate"
-          type: string
-          format: date
-          example: 2024-04-01
-          x-is-date: true
-    PayslipObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        paySlip:
-          $ref: '#/components/schemas/Payslip'
-    ReimbursementLine:
-      type: object
-      properties:
-        reimbursementTypeID:
-          description: Xero identifier for payroll reimbursement
-          type: string
-          format: uuid
-        description:
-          description: Reimbursement line description
-          type: string
-        amount:
-          description: Reimbursement amount
+        ratePerUnit:
+          description: The rate per unit
           type: number
           format: double
           x-is-money: true
-    EmployeeLeaveObject:
+        numberOfUnits:
+          description: The rate per unit
+          type: number
+          format: double
+          x-is-money: true
+        fixedAmount:
+          description: The fixed amount per period
+          type: number
+          format: double
+          x-is-money: true
+        earningsRateID:
+          description: The corresponding earnings rate identifier
+          type: string
+          format: uuid
+        name:
+          description: The read-only name of the Earning Template.
+          type: string
+    PayRunCalendarObject:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         problem:
           $ref: '#/components/schemas/Problem'
-        leave:
-          $ref: '#/components/schemas/EmployeeLeave'
-    EmployeeLeaveBalance:
+        payRunCalendar:
+          $ref: '#/components/schemas/PayRunCalendar'
+    Benefit:
       type: object
+      required:
+      - name
+      - category
+      - liabilityAccountId
+      - expenseAccountId
+      - calculationType
+      - percentage
       properties:
-        name:
-          description: Name of the leave type.
-          type: string
-          example: Holiday
-        leaveTypeID:
-          description: The Xero identifier for leave type
+        id:
+          description: unique identifier in Xero
           type: string
           format: uuid
-        balance:
-          description: The employees current balance for the corresponding leave type.
+        name:
+          description: Name of the employer pension
+          type: string
+        category:
+          description: Category type of the employer pension
+          type: string
+          enum:
+          - StakeholderPension
+          - Other
+        liabilityAccountId:
+          description: Xero identifier for Liability Account
+          type: string
+          format: uuid
+        expenseAccountId:
+          description: Xero identifier for Expense Account
+          type: string
+          format: uuid
+        standardAmount:
+          description: Standard amount of the employer pension
           type: number
           format: double
-        typeOfUnits:
-          description: The type of the units of the leave.
+          x-is-money: true
+        percentage:
+          description: Percentage of gross of the employer pension
+          type: number
+          format: double
+          x-is-money: true
+        calculationType:
+          description: Calculation Type of the employer pension (FixedAmount or PercentageOfGross).
           type: string
-          example: hours
-    EmployeeStatutoryLeaveSummary:
+          enum:
+          - FixedAmount
+          - PercentageOfGross
+        currentRecord:
+          description: Identifier of a record is active or not.
+          type: boolean
+        subjectToNIC:
+          description: Identifier of subject To NIC
+          type: boolean
+        subjectToPension:
+          description: Identifier of subject To pension
+          type: boolean
+        subjectToTax:
+          description: Identifier of subject To Tax
+          type: boolean
+        isCalculatingOnQualifyingEarnings:
+          description: Identifier of calculating on qualifying earnings
+          type: boolean
+        showBalanceToEmployee:
+          description: display the balance to employee
+          type: boolean
+    LeaveTypeObject:
       type: object
       properties:
-        statutoryLeaveID:
-          description: The unique identifier (guid) of a statutory leave.
-          type: string
-          format: uuid
-        employeeID:
-          description: The unique identifier (guid) of the employee
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        leaveType:
+          $ref: '#/components/schemas/LeaveType'
+    EarningsOrders:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        statutoryDeductions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EarningsOrder'
+    Account:
+      type: object
+      properties:
+        accountID:
+          description: The Xero identifier for Settings.
           type: string
           format: uuid
         type:
-          description: The category of statutory leave
+          description: The assigned AccountType
           type: string
           enum:
-          - Sick
-          - Adoption
-          - Maternity
-          - Paternity
-          - Sharedparental
-          - Bereavement
-          - NeonatalCare
-          - BereavementNire
+          - BANK
+          - EMPLOYERSNIC
+          - NICLIABILITY
+          - PAYEECONTRIBUTION
+          - PAYELIABILITY
+          - WAGESPAYABLE
+          - WAGESEXPENSE
+        code:
+          description: A unique 3 digit number for each Account
+          type: string
+        name:
+          description: Name of the Account.
+          type: string
+    Timesheet:
+      type: object
+      required:
+      - payrollCalendarID
+      - employeeID
+      - startDate
+      - endDate
+      properties:
+        timesheetID:
+          description: The Xero identifier for a Timesheet
+          type: string
+          format: uuid
+        payrollCalendarID:
+          description: The Xero identifier for the Payroll Calendar that the Timesheet applies to
+          type: string
+          format: uuid
+        employeeID:
+          description: The Xero identifier for the Employee that the Timesheet is for
+          type: string
+          format: uuid
         startDate:
-          description: The date when the leave starts
+          description: The Start Date of the Timesheet period (YYYY-MM-DD)
           type: string
           format: date
           x-is-date: true
         endDate:
-          description: The date when the leave ends
+          description: The End Date of the Timesheet period (YYYY-MM-DD)
           type: string
           format: date
           x-is-date: true
-        isEntitled:
-          description: Whether the leave was entitled to receive payment
-          type: boolean
         status:
-          description: The status of the leave
+          description: Status of the timesheet
           type: string
           enum:
-          - Pending
-          - In-Progress
+          - Draft
+          - Approved
           - Completed
-    Contracts:
-      type: object
-      required:
-      - startDate
-      - employmentStatus
-      - contractType
-      properties:
-        startDate:
-          description: The contract start date of the employee. This will be locked once an employee has been paid and cannot be changed (YYYY-MM-DD)
+        totalHours:
+          description: The Total Hours of the Timesheet
+          type: number
+          format: double
+        updatedDateUTC:
+          description: The UTC date time that the Timesheet was last updated
           type: string
-          format: date
-          example: 2024-12-02
-          x-is-date: true
-        employmentStatus:
-          $ref: '#/components/schemas/EmploymentStatus'
-        contractType:
-          $ref: '#/components/schemas/ContractType'
-        publicKey:
-          description: The public key of the contract. Public key is required if the intention is to edit an existing contract. If no key is supplied a new contract will be created
-          type: string
-          format: uuid
-        isFixedTerm:
-          description: describes whether the contract is fixed term (required if trying to create Fixed term contract)
-          type: boolean
-        fixedTermEndDate:
-          description: The fixed term end date of the employee. Not required if isFixedTerm is false or not provided (required if trying to create Fixed term contract)
-          type: string
-          format: date
-          example: 2025-11-01
-          x-is-date: true
-        developmentalRoleDetails:
-          $ref: '#/components/schemas/DevelopmentalRoleDetails'
-    Reimbursements:
+          format: date-time
+          x-is-datetime: true
+        timesheetLines:
+          $ref: '#/components/schemas/TimesheetLines'
+    LeavePeriods:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         problem:
           $ref: '#/components/schemas/Problem'
-        reimbursements:
+        periods:
           type: array
           items:
-            $ref: '#/components/schemas/Reimbursement'
+            $ref: '#/components/schemas/LeavePeriod'
+    EmployeeOpeningBalancesObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        openingBalances:
+          $ref: '#/components/schemas/EmployeeOpeningBalances'
+    Settings:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        settings:
+          $ref: '#/components/schemas/Accounts'
+    Deductions:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        deductions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Deduction'
+    TimesheetEarningsLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/TimesheetEarningsLine'
+    PayRunObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        payRun:
+          $ref: '#/components/schemas/PayRun'
+    StatutoryDeductionCategory:
+      description: Statutory Deduction Category
+      type: string
+      enum:
+      - AdditionalStudentLoan
+      - ChildSupport
+      - CourtFines
+      - Creditor
+      - FederalLevy
+      - InlandRevenueArrears
+      - KiwiSaver
+      - MsdRepayments
+      - NonPriorityOrder
+      - PriorityOrder
+      - TableBased
+      - StudentLoan
+      - VoluntaryStudentLoan
+      - USChildSupport
+    PaymentMethod:
+      type: object
+      required:
+      - paymentMethod
+      properties:
+        paymentMethod:
+          description: The payment method code
+          type: string
+          enum:
+          - Cheque
+          - Electronically
+          - Manual
+        bankAccounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/BankAccount'
+    EarningsLine:
+      type: object
+      properties:
+        earningsLineID:
+          description: Xero identifier for payroll earnings line
+          type: string
+          format: uuid
+        earningsRateID:
+          description: Xero identifier for payroll earnings rate
+          type: string
+          format: uuid
+        displayName:
+          description: name of earnings rate for display in UI
+          type: string
+        ratePerUnit:
+          description: Rate per unit for earnings line
+          type: number
+          format: double
+        numberOfUnits:
+          description: Earnings number of units
+          type: number
+          format: double
+        fixedAmount:
+          description: Earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed
+          type: number
+          format: double
+        amount:
+          description: The amount of the earnings line.
+          type: number
+          format: double
+        isLinkedToTimesheet:
+          description: Identifies if the earnings is taken from the timesheet. False for earnings line
+          type: boolean
+        isAverageDailyPayRate:
+          description: Identifies if the earnings is using an average daily pay rate
+          type: boolean
+    DevelopmentalRoleDetails:
+      type: object
+      required:
+      - startDate
+      - endDate
+      - developmentalRole
+      properties:
+        startDate:
+          description: The start date of the developmental role
+          type: string
+          format: date
+          example: 2024-12-02
+          x-is-date: true
+        endDate:
+          description: The end date of the developmental role
+          type: string
+          format: date
+          example: 2024-12-02
+          x-is-date: true
+        developmentalRole:
+          description: The developmental role type - "Apprentice" is the only supported role currently
+          type: string
+          example: Apprentice
+        publicKey:
+          description: The public key of the developmental role. Public key is required if the intention is to edit an existing developmental role. If no key is supplied a new developmental role will be created
+          type: string
+          format: uuid
     InvalidField:
       type: object
       properties:
@@ -5681,231 +6541,6 @@ components:
           description: The reason the error occurred
           type: string
           example: The Date of Birth is required.
-    TaxLine:
-      type: object
-      properties:
-        taxLineID:
-          description: Xero identifier for payroll tax line
-          type: string
-          format: uuid
-        description:
-          description: Tax line description
-          type: string
-        isEmployerTax:
-          description: Identifies if the amount is paid for by the employee or employer. True if employer pays the tax
-          type: boolean
-        amount:
-          description: The amount of the tax line
-          type: number
-          format: double
-        globalTaxTypeID:
-          description: Tax type ID
-          type: string
-        manualAdjustment:
-          description: Identifies if the tax line is a manual adjustment
-          type: boolean
-    PayRunCalendar:
-      type: object
-      required:
-      - name
-      - calendarType
-      - periodStartDate
-      - paymentDate
-      properties:
-        payrollCalendarID:
-          description: Xero unique identifier for the payroll calendar
-          type: string
-          format: uuid
-        name:
-          description: Name of the calendar
-          type: string
-        calendarType:
-          description: Type of the calendar
-          type: string
-          enum:
-          - Weekly
-          - Fortnightly
-          - FourWeekly
-          - Monthly
-          - Annual
-          - Quarterly
-        periodStartDate:
-          description: Period start date of the calendar
-          type: string
-          format: date
-          x-is-date: true
-        periodEndDate:
-          description: Period end date of the calendar
-          type: string
-          format: date
-          x-is-date: true
-        paymentDate:
-          description: Payment date of the calendar
-          type: string
-          format: date
-          x-is-date: true
-        updatedDateUTC:
-          description: UTC timestamp of the last update to the pay run calendar
-          type: string
-          format: date-time
-          x-is-datetime: true
-    LeaveTypeObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        leaveType:
-          $ref: '#/components/schemas/LeaveType'
-    EmployeePayTemplate:
-      type: object
-      required:
-      - EarningTemplates
-      properties:
-        employeeID:
-          description: Unique identifier for the employee
-          type: string
-          format: uuid
-        earningTemplates:
-          $ref: '#/components/schemas/EarningsTemplates'
-    Accounts:
-      type: object
-      properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-    EmployeeStatutoryLeaveBalanceObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        leaveBalance:
-          $ref: '#/components/schemas/EmployeeStatutoryLeaveBalance'
-    EmployeeTax:
-      type: object
-      properties:
-        starterType:
-          description: The Starter type.
-          type: string
-          example: New Employee with P45
-        starterDeclaration:
-          description: Starter declaration.
-          type: string
-          example: B.) This is currently their only job
-        taxCode:
-          description: The Tax code.
-          type: string
-          example: 1185L
-        w1M1:
-          description: Describes whether the tax settings is W1M1
-          type: boolean
-        previousTaxablePay:
-          description: The previous taxable pay
-          type: number
-          format: double
-          x-is-money: true
-        previousTaxPaid:
-          description: The tax amount previously paid
-          type: number
-          format: double
-          x-is-money: true
-        studentLoanDeduction:
-          description: The employee's student loan deduction type
-          type: string
-          example: Plan Type 2
-        hasPostGraduateLoans:
-          description: Describes whether the employee has post graduate loans
-          type: boolean
-        isDirector:
-          description: Describes whether the employee is director
-          type: boolean
-        directorshipStartDate:
-          description: The directorship start date
-          type: string
-          format: date
-          x-is-date: true
-        nicCalculationMethod:
-          description: NICs calculation method
-          type: string
-          example: Annualized
-    TimesheetLineObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        timesheetLine:
-          $ref: '#/components/schemas/TimesheetLine'
-    TimesheetEarningsLine:
-      type: object
-      properties:
-        earningsRateID:
-          description: Xero identifier for payroll timesheet earnings rate
-          type: string
-          format: uuid
-        ratePerUnit:
-          description: Rate per unit for timesheet earnings line
-          type: number
-          format: double
-        numberOfUnits:
-          description: Timesheet earnings number of units
-          type: number
-          format: double
-        fixedAmount:
-          description: Timesheet earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed
-          type: number
-          format: double
-        amount:
-          description: The amount of the timesheet earnings line.
-          type: number
-          format: double
-        isLinkedToTimesheet:
-          description: Identifies if the timesheet earnings is taken from the timesheet. False for leave earnings line
-          type: boolean
-    EmployeeLeave:
-      type: object
-      required:
-      - leaveTypeID
-      - description
-      - startDate
-      - endDate
-      properties:
-        leaveID:
-          description: The Xero identifier for LeaveType
-          type: string
-          format: uuid
-        leaveTypeID:
-          description: The Xero identifier for LeaveType
-          type: string
-          format: uuid
-        description:
-          description: The description of the leave  (max length = 50)
-          type: string
-        startDate:
-          description: Start date of the leave (YYYY-MM-DD)
-          type: string
-          format: date
-          x-is-date: true
-        endDate:
-          description: End date of the leave (YYYY-MM-DD)
-          type: string
-          format: date
-          x-is-date: true
-        periods:
-          description: The leave period information. The StartDate, EndDate and NumberOfUnits needs to be specified when you do not want to calculate NumberOfUnits automatically. Using incorrect period StartDate and EndDate will result in automatic computation of the NumberOfUnits.
-          type: array
-          items:
-            $ref: '#/components/schemas/LeavePeriod'
-        updatedDateUTC:
-          description: UTC timestamp of last update to the leave type note
-          type: string
-          format: date-time
-          x-is-datetime: true
     Employee:
       type: object
       required:
@@ -6002,46 +6637,334 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Contracts'
-    ContractType:
-      description: The contract type of the employee.
-      type: string
-      example: FullTime
-      enum:
-      - FullTime
-      - PartTime
-      - ZeroHour
-      - Unspecified
-    NICategoryLetter:
-      description: The employee's NI Category letter.
-      type: string
-      example: I
-      enum:
-      - A
-      - B
-      - C
-      - F
-      - H
-      - I
-      - J
-      - L
-      - M
-      - S
-      - V
-      - X
-      - Z
-      - D
-      - E
-      - K
-      - N
-    EarningsRateObject:
+    EmployeeStatutoryLeaveBalance:
+      type: object
+      properties:
+        leaveType:
+          description: The type of statutory leave
+          type: string
+          enum:
+          - Sick
+          - Adoption
+          - Maternity
+          - Paternity
+          - Sharedparental
+          - Bereavement
+          - NeonatalCare
+        balanceRemaining:
+          description: The balance remaining for the corresponding leave type as of specified date.
+          type: number
+          format: double
+        units:
+          description: The units will be "Hours"
+          type: string
+          enum:
+          - Hours
+    EmployeePayTemplateObject:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         problem:
           $ref: '#/components/schemas/Problem'
-        earningsRate:
-          $ref: '#/components/schemas/EarningsRate'
+        payTemplate:
+          $ref: '#/components/schemas/EmployeePayTemplate'
+    EmployeeOpeningBalances:
+      type: object
+      properties:
+        statutoryAdoptionPay:
+          description: The total accumulated statutory adoption pay amount received by the employee for current fiscal year to date
+          type: number
+          format: double
+          x-is-money: true
+        statutoryMaternityPay:
+          description: The total accumulated statutory maternity pay amount received by the employee for current fiscal year to date
+          type: number
+          format: double
+          x-is-money: true
+        statutoryPaternityPay:
+          description: The total accumulated statutory paternity pay amount received by the employee for current fiscal year to date
+          type: number
+          format: double
+          x-is-money: true
+        statutorySharedParentalPay:
+          description: The total accumulated statutory shared parental pay amount received by the employee for current fiscal year to date
+          type: number
+          format: double
+          x-is-money: true
+        statutorySickPay:
+          description: The total accumulated statutory sick pay amount received by the employee for current fiscal year to date
+          type: number
+          format: double
+          x-is-money: true
+        priorEmployeeNumber:
+          description: The unique employee number issued by the employee's former employer
+          type: number
+          format: double
+    EmploymentStatus:
+      description: The employment status of the employee.
+      type: string
+      example: Employee
+      enum:
+      - Employee
+      - Worker
+      - Unspecified
+    PaymentMethodObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        paymentMethod:
+          $ref: '#/components/schemas/PaymentMethod'
+    PaymentLine:
+      type: object
+      properties:
+        paymentLineID:
+          description: Xero identifier for payroll payment line
+          type: string
+          format: uuid
+        amount:
+          description: The amount of the payment line
+          type: number
+          format: double
+        accountNumber:
+          description: The account number
+          type: string
+        sortCode:
+          description: The account sort code
+          type: string
+        accountName:
+          description: The account name
+          type: string
+    SalaryAndWages:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        salaryAndWages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SalaryAndWage'
+    LeaveTypes:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        leaveTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeaveType'
+    SalaryAndWageObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        salaryAndWages:
+          $ref: '#/components/schemas/SalaryAndWage'
+    LeaveAccrualLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/LeaveAccrualLine'
+    TaxLine:
+      type: object
+      properties:
+        taxLineID:
+          description: Xero identifier for payroll tax line
+          type: string
+          format: uuid
+        description:
+          description: Tax line description
+          type: string
+        isEmployerTax:
+          description: Identifies if the amount is paid for by the employee or employer. True if employer pays the tax
+          type: boolean
+        amount:
+          description: The amount of the tax line
+          type: number
+          format: double
+        globalTaxTypeID:
+          description: Tax type ID
+          type: string
+        manualAdjustment:
+          description: Identifies if the tax line is a manual adjustment
+          type: boolean
+    DeductionLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/DeductionLine'
+    PayslipObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        paySlip:
+          $ref: '#/components/schemas/Payslip'
+    EarningsTemplates:
+      type: array
+      items:
+        $ref: '#/components/schemas/EarningsTemplate'
+    CourtOrderLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/CourtOrderLine'
+    Contracts:
+      type: object
+      required:
+      - startDate
+      - employmentStatus
+      - contractType
+      properties:
+        startDate:
+          description: The contract start date of the employee. This will be locked once an employee has been paid and cannot be changed (YYYY-MM-DD)
+          type: string
+          format: date
+          example: 2024-12-02
+          x-is-date: true
+        employmentStatus:
+          $ref: '#/components/schemas/EmploymentStatus'
+        contractType:
+          $ref: '#/components/schemas/ContractType'
+        publicKey:
+          description: The public key of the contract. Public key is required if the intention is to edit an existing contract. If no key is supplied a new contract will be created
+          type: string
+          format: uuid
+        isFixedTerm:
+          description: describes whether the contract is fixed term (required if trying to create Fixed term contract)
+          type: boolean
+        fixedTermEndDate:
+          description: The fixed term end date of the employee. Not required if isFixedTerm is false or not provided (required if trying to create Fixed term contract)
+          type: string
+          format: date
+          example: 2025-11-01
+          x-is-date: true
+        developmentalRoleDetails:
+          $ref: '#/components/schemas/DevelopmentalRoleDetails'
+    EmployeeTax:
+      type: object
+      properties:
+        starterType:
+          description: The Starter type.
+          type: string
+          example: New Employee with P45
+        starterDeclaration:
+          description: Starter declaration.
+          type: string
+          example: B.) This is currently their only job
+        taxCode:
+          description: The Tax code.
+          type: string
+          example: 1185L
+        w1M1:
+          description: Describes whether the tax settings is W1M1
+          type: boolean
+        previousTaxablePay:
+          description: The previous taxable pay
+          type: number
+          format: double
+          x-is-money: true
+        previousTaxPaid:
+          description: The tax amount previously paid
+          type: number
+          format: double
+          x-is-money: true
+        studentLoanDeduction:
+          description: The employee's student loan deduction type
+          type: string
+          example: Plan Type 2
+        hasPostGraduateLoans:
+          description: Describes whether the employee has post graduate loans
+          type: boolean
+        isDirector:
+          description: Describes whether the employee is director
+          type: boolean
+        directorshipStartDate:
+          description: The directorship start date
+          type: string
+          format: date
+          x-is-date: true
+        nicCalculationMethod:
+          description: NICs calculation method
+          type: string
+          example: Annualized
+    EarningsTemplateObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        earningTemplate:
+          $ref: '#/components/schemas/EarningsTemplate'
+    Payslips:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        paySlips:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payslip'
+    BenefitLine:
+      type: object
+      properties:
+        benefitTypeID:
+          description: Xero identifier for payroll benefit type
+          type: string
+          format: uuid
+        displayName:
+          description: Benefit display name
+          type: string
+        amount:
+          description: The amount of the benefit line.
+          type: number
+          format: double
+        fixedAmount:
+          description: Benefit fixed amount
+          type: number
+          format: double
+        percentage:
+          description: Benefit rate percentage
+          type: number
+          format: double
+    EmploymentObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        employment:
+          $ref: '#/components/schemas/Employment'
+    EarningsOrderObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        statutoryDeduction:
+          $ref: '#/components/schemas/EarningsOrder'
+    TimesheetObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        timesheet:
+          $ref: '#/components/schemas/Timesheet'
     EmployeePayTemplates:
       type: object
       properties:
@@ -6051,100 +6974,100 @@ components:
           $ref: '#/components/schemas/Problem'
         earningTemplates:
           $ref: '#/components/schemas/EarningsTemplates'
-    Payslip:
+    EmployeeObject:
       type: object
       properties:
-        paySlipID:
-          description: The Xero identifier for a Payslip
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        employee:
+          $ref: '#/components/schemas/Employee'
+        problem:
+          $ref: '#/components/schemas/Problem'
+    Employees:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        employees:
+          type: array
+          items:
+            $ref: '#/components/schemas/Employee'
+    TrackingCategory:
+      type: object
+      properties:
+        employeeGroupsTrackingCategoryID:
+          description: The Xero identifier for Employee groups tracking category.
           type: string
           format: uuid
-        employeeID:
-          description: The Xero identifier for payroll employee
+        timesheetTrackingCategoryID:
+          description: The Xero identifier for Timesheet tracking category.
           type: string
           format: uuid
-        payRunID:
-          description: The Xero identifier for the associated payrun
+    PayRunCalendars:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        payRunCalendars:
+          type: array
+          items:
+            $ref: '#/components/schemas/PayRunCalendar'
+    BenefitObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        benefit:
+          $ref: '#/components/schemas/Benefit'
+    EmployeeLeave:
+      type: object
+      required:
+      - leaveTypeID
+      - description
+      - startDate
+      - endDate
+      properties:
+        leaveID:
+          description: The Xero identifier for LeaveType
           type: string
           format: uuid
-        lastEdited:
-          description: The date payslip was last updated
+        leaveTypeID:
+          description: The Xero identifier for LeaveType
+          type: string
+          format: uuid
+        description:
+          description: The description of the leave  (max length = 50)
+          type: string
+        startDate:
+          description: Start date of the leave (YYYY-MM-DD)
           type: string
           format: date
+          x-is-date: true
+        endDate:
+          description: End date of the leave (YYYY-MM-DD)
+          type: string
+          format: date
+          x-is-date: true
+        periods:
+          description: The leave period information. The StartDate, EndDate and NumberOfUnits needs to be specified when you do not want to calculate NumberOfUnits automatically. Using incorrect period StartDate and EndDate will result in automatic computation of the NumberOfUnits.
+          type: array
+          items:
+            $ref: '#/components/schemas/LeavePeriod'
+        updatedDateUTC:
+          description: UTC timestamp of last update to the leave type note
+          type: string
+          format: date-time
           x-is-datetime: true
-        firstName:
-          description: Employee first name
-          type: string
-        lastName:
-          description: Employee last name
-          type: string
-        totalEarnings:
-          description: Total earnings before any deductions. Same as gross earnings for UK.
-          type: number
-          format: double
-        grossEarnings:
-          description: Total earnings before any deductions. Same as total earnings for UK.
-          type: number
-          format: double
-        totalPay:
-          description: The employee net pay
-          type: number
-          format: double
-        totalEmployerTaxes:
-          description: The employer's tax obligation
-          type: number
-          format: double
-        totalEmployeeTaxes:
-          description: The part of an employee's earnings that is deducted for tax purposes
-          type: number
-          format: double
-        totalDeductions:
-          description: Total amount subtracted from an employee's earnings to reach total pay
-          type: number
-          format: double
-        totalReimbursements:
-          description: Total reimbursements are nontaxable payments to an employee used to repay out-of-pocket expenses when the person incurs those expenses through employment
-          type: number
-          format: double
-        totalCourtOrders:
-          description: Total amounts required by law to subtract from the employee's earnings
-          type: number
-          format: double
-        totalBenefits:
-          description: Benefits (also called fringe benefits, perquisites or perks) are various non-earnings compensations provided to employees in addition to their normal earnings or salaries
-          type: number
-          format: double
-        bacsHash:
-          description: BACS Service User Number
-          type: string
-        paymentMethod:
-          description: The payment method code
-          type: string
-          enum:
-          - Cheque
-          - Electronically
-          - Manual
-        earningsLines:
-          $ref: '#/components/schemas/EarningsLines'
-        leaveEarningsLines:
-          $ref: '#/components/schemas/LeaveEarningsLines'
-        timesheetEarningsLines:
-          $ref: '#/components/schemas/TimesheetEarningsLines'
-        deductionLines:
-          $ref: '#/components/schemas/DeductionLines'
-        reimbursementLines:
-          $ref: '#/components/schemas/ReimbursementLines'
-        leaveAccrualLines:
-          $ref: '#/components/schemas/LeaveAccrualLines'
-        benefitLines:
-          $ref: '#/components/schemas/BenefitLines'
-        paymentLines:
-          $ref: '#/components/schemas/PaymentLines'
-        employeeTaxLines:
-          $ref: '#/components/schemas/TaxLines'
-        employerTaxLines:
-          $ref: '#/components/schemas/TaxLines'
-        courtOrderLines:
-          $ref: '#/components/schemas/CourtOrderLines'
+    LeaveEarningsLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/LeaveEarningsLine'
     EmployeeStatutorySickLeave:
       type: object
       required:
@@ -6227,314 +7150,140 @@ components:
             - ExceededMaximumEntitlementWeeksOfSsp
             - ExceededMaximumDurationOfPiw
             - SufficientNoticeNotGiven
-    EarningsLine:
-      type: object
-      properties:
-        earningsLineID:
-          description: Xero identifier for payroll earnings line
-          type: string
-          format: uuid
-        earningsRateID:
-          description: Xero identifier for payroll earnings rate
-          type: string
-          format: uuid
-        displayName:
-          description: name of earnings rate for display in UI
-          type: string
-        ratePerUnit:
-          description: Rate per unit for earnings line
-          type: number
-          format: double
-        numberOfUnits:
-          description: Earnings number of units
-          type: number
-          format: double
-        fixedAmount:
-          description: Earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed
-          type: number
-          format: double
-        amount:
-          description: The amount of the earnings line.
-          type: number
-          format: double
-        isLinkedToTimesheet:
-          description: Identifies if the earnings is taken from the timesheet. False for earnings line
-          type: boolean
-        isAverageDailyPayRate:
-          description: Identifies if the earnings is using an average daily pay rate
-          type: boolean
-    BenefitLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/BenefitLine'
-    SalaryAndWageObject:
+    EarningsRates:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         problem:
           $ref: '#/components/schemas/Problem'
-        salaryAndWages:
-          $ref: '#/components/schemas/SalaryAndWage'
-    LeaveType:
+        earningsRates:
+          type: array
+          items:
+            $ref: '#/components/schemas/EarningsRate'
+    EmployeePayTemplate:
       type: object
       required:
-      - name
-      - isPaidLeave
-      - showOnPayslip
+      - EarningTemplates
       properties:
-        leaveID:
-          description: Xero unique identifier for the leave
+        employeeID:
+          description: Unique identifier for the employee
           type: string
           format: uuid
-        leaveTypeID:
-          description: Xero unique identifier for the leave type
-          type: string
-          format: uuid
-        name:
-          description: Name of the leave type
-          type: string
-        isPaidLeave:
-          description: Indicate that an employee will be paid when taking this type of leave
-          type: boolean
-        showOnPayslip:
-          description: Indicate that a balance for this leave type to be shown on the employee’s payslips
-          type: boolean
-        updatedDateUTC:
-          description: UTC timestamp of last update to the leave type note
-          type: string
-          format: date-time
-          x-is-datetime: true
-        isActive:
-          description: Shows whether the leave type is active or not
-          type: boolean
-        isStatutoryLeave:
-          description: Shows whether the leave type is a statutory leave type or not
-          type: boolean
-    Settings:
+        earningTemplates:
+          $ref: '#/components/schemas/EarningsTemplates'
+    Benefits:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         problem:
           $ref: '#/components/schemas/Problem'
-        settings:
-          $ref: '#/components/schemas/Accounts'
-    Address:
+        benefits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Benefit'
+    NICategory:
       type: object
       required:
-      - addressLine1
-      - city
-      - postCode
+      - niCategory
+      - workplacePostcode
       properties:
-        addressLine1:
-          description: Address line 1 for employee home address
+        startDate:
+          description: The start date of the NI category (YYYY-MM-DD)
           type: string
-          example: 123 Main St
-        addressLine2:
-          description: Address line 2 for employee home address
+          format: date
+          example: 2024-12-02
+          x-is-date: true
+        niCategory:
+          $ref: '#/components/schemas/NICategoryLetter'
+        niCategoryID:
+          description: Xero unique identifier for the NI category
+          type: number
+          example: 15
+        dateFirstEmployedAsCivilian:
+          description: The date in which the employee was first employed as a civilian (YYYY-MM-DD)
           type: string
-          example: Apt 4
-        city:
-          description: Suburb for employee home address
+          format: date
+          example: 2024-12-02
+          x-is-date: true
+        workplacePostcode:
+          description: The workplace postcode
           type: string
-          example: Fulham
-        postCode:
-          description: PostCode for employee home address
-          type: string
-          example: SW6 6EY
-        countryName:
-          description: Country of HomeAddress
-          type: string
-          example: United Kingdom
-    EarningsOrders:
+          example: SW1A 1AA
+      oneOf:
+      - required:
+        - workplacePostcode
+        properties:
+          niCategory:
+            enum:
+            - F
+            - I
+            - L
+            - S
+            - N
+            - E
+            - D
+            - K
+      - required:
+        - dateFirstEmployedAsCivilian
+        properties:
+          niCategory:
+            enum:
+            - V
+    Problem:
+      description: The object returned for a bad request
       type: object
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        statutoryDeductions:
+        type:
+          description: The type of error format
+          type: string
+          example: application/problem+json
+        title:
+          description: The type of the error
+          type: string
+          example: BadRequest
+        status:
+          description: The error status code
+          type: string
+          example: 400
+        detail:
+          description: A description of the error
+          type: string
+          example: Validation error occurred.
+        instance:
+          type: string
+        invalidFields:
           type: array
           items:
-            $ref: '#/components/schemas/EarningsOrder'
-    PayRunObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        payRun:
-          $ref: '#/components/schemas/PayRun'
-    LeaveEarningsLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/LeaveEarningsLine'
-    PayRun:
-      type: object
-      properties:
-        payRunID:
-          description: Xero unique identifier for the pay run
-          type: string
-          format: uuid
-        payrollCalendarID:
-          description: Xero unique identifier for the payroll calendar
-          type: string
-          format: uuid
-        periodStartDate:
-          description: Period start date of the payroll calendar
-          type: string
-          format: date
-          x-is-date: true
-        periodEndDate:
-          description: Period end date of the payroll calendar
-          type: string
-          format: date
-          x-is-date: true
-        paymentDate:
-          description: Payment date of the pay run
-          type: string
-          format: date
-          x-is-date: true
-        totalCost:
-          description: Total cost of the pay run
-          type: number
-          format: double
-        totalPay:
-          description: Total pay of the pay run
-          type: number
-          format: double
-        payRunStatus:
-          description: Pay run status
-          type: string
-          enum:
-          - Draft
-          - Posted
-        payRunType:
-          description: Pay run type
-          type: string
-          enum:
-          - Scheduled
-          - Unscheduled
-          - EarlierYearUpdate
-        calendarType:
-          description: Calendar type of the pay run
-          type: string
-          enum:
-          - Weekly
-          - Fortnightly
-          - FourWeekly
-          - Monthly
-          - Annual
-          - Quarterly
-        postedDateTime:
-          description: Posted date time of the pay run
-          type: string
-          format: date
-          x-is-date: true
-        paySlips:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payslip'
-    LeaveAccrualLine:
-      type: object
-      properties:
-        leaveTypeID:
-          description: Xero identifier for the Leave type
-          type: string
-          format: uuid
-        numberOfUnits:
-          description: Leave accrual number of units
-          type: number
-          format: double
-    PayRunCalendars:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        payRunCalendars:
-          type: array
-          items:
-            $ref: '#/components/schemas/PayRunCalendar'
-    Benefit:
+            $ref: '#/components/schemas/InvalidField'
+    BankAccount:
       type: object
       required:
-      - name
-      - category
-      - liabilityAccountId
-      - expenseAccountId
-      - calculationType
-      - percentage
+      - accountName
+      - accountNumber
+      - sortCode
       properties:
-        id:
-          description: unique identifier in Xero
+        accountName:
+          description: Bank account name (max length = 32)
           type: string
-          format: uuid
-        name:
-          description: Name of the employer pension
+        accountNumber:
+          description: Bank account number (digits only; max length = 8)
           type: string
-        category:
-          description: Category type of the employer pension
+        sortCode:
+          description: Bank account sort code (6 digits)
           type: string
-          enum:
-          - StakeholderPension
-          - Other
-        liabilityAccountId:
-          description: Xero identifier for Liability Account
-          type: string
-          format: uuid
-        expenseAccountId:
-          description: Xero identifier for Expense Account
-          type: string
-          format: uuid
-        standardAmount:
-          description: Standard amount of the employer pension
-          type: number
-          format: double
-          x-is-money: true
-        percentage:
-          description: Percentage of gross of the employer pension
-          type: number
-          format: double
-          x-is-money: true
-        calculationType:
-          description: Calculation Type of the employer pension (FixedAmount or PercentageOfGross).
-          type: string
-          enum:
-          - FixedAmount
-          - PercentageOfGross
-        currentRecord:
-          description: Identifier of a record is active or not.
-          type: boolean
-        subjectToNIC:
-          description: Identifier of subject To NIC
-          type: boolean
-        subjectToPension:
-          description: Identifier of subject To pension
-          type: boolean
-        subjectToTax:
-          description: Identifier of subject To Tax
-          type: boolean
-        isCalculatingOnQualifyingEarnings:
-          description: Identifier of calculating on qualifying earnings
-          type: boolean
-        showBalanceToEmployee:
-          description: display the balance to employee
-          type: boolean
-    EmployeeLeaveTypes:
+    Timesheets:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         problem:
           $ref: '#/components/schemas/Problem'
-        leaveTypes:
+        timesheets:
           type: array
           items:
-            $ref: '#/components/schemas/EmployeeLeaveType'
+            $ref: '#/components/schemas/Timesheet'
     TrackingCategories:
       type: object
       properties:
@@ -6544,6 +7293,83 @@ components:
           $ref: '#/components/schemas/Problem'
         trackingCategories:
           $ref: '#/components/schemas/TrackingCategory'
+    EmployeeLeaveBalance:
+      type: object
+      properties:
+        name:
+          description: Name of the leave type.
+          type: string
+          example: Holiday
+        leaveTypeID:
+          description: The Xero identifier for leave type
+          type: string
+          format: uuid
+        balance:
+          description: The employees current balance for the corresponding leave type.
+          type: number
+          format: double
+        typeOfUnits:
+          description: The type of the units of the leave.
+          type: string
+          example: hours
+    EmployeeLeaveObject:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        leave:
+          $ref: '#/components/schemas/EmployeeLeave'
+    TimesheetLines:
+      type: array
+      items:
+        $ref: '#/components/schemas/TimesheetLine'
+    PayRunCalendar:
+      type: object
+      required:
+      - name
+      - calendarType
+      - periodStartDate
+      - paymentDate
+      properties:
+        payrollCalendarID:
+          description: Xero unique identifier for the payroll calendar
+          type: string
+          format: uuid
+        name:
+          description: Name of the calendar
+          type: string
+        calendarType:
+          description: Type of the calendar
+          type: string
+          enum:
+          - Weekly
+          - Fortnightly
+          - FourWeekly
+          - Monthly
+          - Annual
+          - Quarterly
+        periodStartDate:
+          description: Period start date of the calendar
+          type: string
+          format: date
+          x-is-date: true
+        periodEndDate:
+          description: Period end date of the calendar
+          type: string
+          format: date
+          x-is-date: true
+        paymentDate:
+          description: Payment date of the calendar
+          type: string
+          format: date
+          x-is-date: true
+        updatedDateUTC:
+          description: UTC timestamp of the last update to the pay run calendar
+          type: string
+          format: date-time
+          x-is-datetime: true
     EarningsRate:
       type: object
       required:
@@ -6622,286 +7448,35 @@ components:
           type: number
           format: double
           x-is-money: true
-    PayRuns:
+    EmployeeStatutoryLeaveBalanceObject:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         problem:
           $ref: '#/components/schemas/Problem'
-        payRuns:
+        leaveBalance:
+          $ref: '#/components/schemas/EmployeeStatutoryLeaveBalance'
+    EmployeeStatutoryLeavesSummaries:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        problem:
+          $ref: '#/components/schemas/Problem'
+        statutoryLeaves:
           type: array
           items:
-            $ref: '#/components/schemas/PayRun'
-    Deduction:
-      type: object
-      required:
-      - deductionName
-      - liabilityAccountId
-      properties:
-        deductionId:
-          description: The Xero identifier for Deduction
-          type: string
-          format: uuid
-        deductionName:
-          description: Name of the deduction
-          type: string
-        deductionCategory:
-          description: Deduction Category type
-          type: string
-          enum:
-          - CapitalContributions
-          - ChildCareVoucher
-          - MakingGood
-          - PostgraduateLoanDeductions
-          - PrivateUsePayments
-          - SalarySacrifice
-          - StakeholderPension
-          - StakeholderPensionPostTax
-          - StudentLoanDeductions
-          - UkOther
-        liabilityAccountId:
-          description: Xero identifier for Liability Account
-          type: string
-          format: uuid
-        currentRecord:
-          description: Identifier of a record is active or not.
-          type: boolean
-        standardAmount:
-          description: Standard amount of the deduction
-          type: number
-          format: double
-          x-is-money: true
-        reducesSuperLiability:
-          description: Identifier of reduces super liability
-          type: boolean
-        reducesTaxLiability:
-          description: Identifier of reduces tax liability
-          type: boolean
-        calculationType:
-          description: determine the calculation type whether fixed amount or percentage of gross
-          type: string
-          enum:
-          - FixedAmount
-          - PercentageOfGross
-        percentage:
-          description: Percentage of gross
-          type: number
-          format: double
-          x-is-money: true
-        subjectToNIC:
-          description: Identifier of subject To NIC
-          type: boolean
-        subjectToTax:
-          description: Identifier of subject To Tax
-          type: boolean
-        isReducedByBasicRate:
-          description: Identifier of reduced by basic rate applicable or not
-          type: boolean
-        applyToPensionCalculations:
-          description: Identifier for apply to pension calculations
-          type: boolean
-        isCalculatingOnQualifyingEarnings:
-          description: Identifier of calculating on qualifying earnings
-          type: boolean
-        isPension:
-          description: Identifier of applicable for pension or not
-          type: boolean
-    PaymentMethodObject:
+            $ref: '#/components/schemas/EmployeeStatutoryLeaveSummary'
+    EmployeeLeaveTypeObject:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
         problem:
           $ref: '#/components/schemas/Problem'
-        paymentMethod:
-          $ref: '#/components/schemas/PaymentMethod'
-    EmployeeStatutoryLeaveBalance:
-      type: object
-      properties:
         leaveType:
-          description: The type of statutory leave
-          type: string
-          enum:
-          - Sick
-          - Adoption
-          - Maternity
-          - Paternity
-          - Sharedparental
-          - Bereavement
-          - NeonatalCare
-        balanceRemaining:
-          description: The balance remaining for the corresponding leave type as of specified date.
-          type: number
-          format: double
-        units:
-          description: The units will be "Hours"
-          type: string
-          enum:
-          - Hours
-    TimesheetLine:
-      type: object
-      required:
-      - date
-      - earningsRateID
-      - numberOfUnits
-      properties:
-        timesheetLineID:
-          description: The Xero identifier for a Timesheet Line
-          type: string
-          format: uuid
-        date:
-          description: The Date that this Timesheet Line is for (YYYY-MM-DD)
-          type: string
-          format: date
-          x-is-date: true
-        earningsRateID:
-          description: The Xero identifier for the Earnings Rate that the Timesheet is for
-          type: string
-          format: uuid
-        trackingItemID:
-          description: The Xero identifier for the Tracking Item that the Timesheet is for
-          type: string
-          format: uuid
-        numberOfUnits:
-          description: The Number of Units of the Timesheet Line
-          type: number
-          format: double
-    Account:
-      type: object
-      properties:
-        accountID:
-          description: The Xero identifier for Settings.
-          type: string
-          format: uuid
-        type:
-          description: The assigned AccountType
-          type: string
-          enum:
-          - BANK
-          - EMPLOYERSNIC
-          - NICLIABILITY
-          - PAYEECONTRIBUTION
-          - PAYELIABILITY
-          - WAGESPAYABLE
-          - WAGESEXPENSE
-        code:
-          description: A unique 3 digit number for each Account
-          type: string
-        name:
-          description: Name of the Account.
-          type: string
-    EmploymentObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        employment:
-          $ref: '#/components/schemas/Employment'
-    ReimbursementObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        reimbursement:
-          $ref: '#/components/schemas/Reimbursement'
-    NICategory:
-      type: object
-      required:
-      - niCategory
-      - workplacePostcode
-      properties:
-        startDate:
-          description: The start date of the NI category (YYYY-MM-DD)
-          type: string
-          format: date
-          example: 2024-12-02
-          x-is-date: true
-        niCategory:
-          $ref: '#/components/schemas/NICategoryLetter'
-        niCategoryID:
-          description: Xero unique identifier for the NI category
-          type: number
-          example: 15
-        dateFirstEmployedAsCivilian:
-          description: The date in which the employee was first employed as a civilian (YYYY-MM-DD)
-          type: string
-          format: date
-          example: 2024-12-02
-          x-is-date: true
-        workplacePostcode:
-          description: The workplace postcode
-          type: string
-          example: SW1A 1AA
-      oneOf:
-      - required:
-        - workplacePostcode
-        properties:
-          niCategory:
-            enum:
-            - F
-            - I
-            - L
-            - S
-            - N
-            - E
-            - D
-            - K
-      - required:
-        - dateFirstEmployedAsCivilian
-        properties:
-          niCategory:
-            enum:
-            - V
-    CourtOrderLine:
-      type: object
-      properties:
-        courtOrderTypeID:
-          description: Xero identifier for payroll court order type
-          type: string
-          format: uuid
-        amount:
-          description: Amount
-          type: number
-          format: double
-    BenefitObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        benefit:
-          $ref: '#/components/schemas/Benefit'
-    EmployeeLeaves:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        leave:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmployeeLeave'
-    Pagination:
-      properties:
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 10
-        pageCount:
-          type: integer
-          example: 1
-        itemCount:
-          type: integer
-          example: 2
+          $ref: '#/components/schemas/EmployeeLeaveType'
     DeductionLine:
       type: object
       properties:
@@ -6920,123 +7495,6 @@ components:
           description: Deduction rate percentage
           type: number
           format: double
-    EarningsOrder:
-      type: object
-      required:
-      - name
-      properties:
-        id:
-          description: Xero unique identifier for an earning rate
-          type: string
-          format: uuid
-        name:
-          description: Name of the earning order
-          type: string
-        statutoryDeductionCategory:
-          $ref: '#/components/schemas/StatutoryDeductionCategory'
-        liabilityAccountId:
-          description: Xero identifier for Liability Account
-          type: string
-          format: uuid
-        currentRecord:
-          description: Identifier of a record is active or not.
-          type: boolean
-          default: true
-    PayRunCalendarObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        payRunCalendar:
-          $ref: '#/components/schemas/PayRunCalendar'
-    EmployeeObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        employee:
-          $ref: '#/components/schemas/Employee'
-        problem:
-          $ref: '#/components/schemas/Problem'
-    EmployeeStatutoryLeavesSummaries:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        statutoryLeaves:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmployeeStatutoryLeaveSummary'
-    EmployeeStatutorySickLeaveObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        statutorySickLeave:
-          $ref: '#/components/schemas/EmployeeStatutorySickLeave'
-    EmployeePayTemplateObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        payTemplate:
-          $ref: '#/components/schemas/EmployeePayTemplate'
-    TimesheetEarningsLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/TimesheetEarningsLine'
-    BenefitLine:
-      type: object
-      properties:
-        benefitTypeID:
-          description: Xero identifier for payroll benefit type
-          type: string
-          format: uuid
-        displayName:
-          description: Benefit display name
-          type: string
-        amount:
-          description: The amount of the benefit line.
-          type: number
-          format: double
-        fixedAmount:
-          description: Benefit fixed amount
-          type: number
-          format: double
-        percentage:
-          description: Benefit rate percentage
-          type: number
-          format: double
-    Timesheets:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        timesheets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Timesheet'
-    LeavePeriods:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        periods:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeavePeriod'
     Reimbursement:
       type: object
       required:
@@ -7057,75 +7515,6 @@ components:
         currentRecord:
           description: Indicates that whether the reimbursement is active
           type: boolean
-    EarningsLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/EarningsLine'
-    PaymentMethod:
-      type: object
-      required:
-      - paymentMethod
-      properties:
-        paymentMethod:
-          description: The payment method code
-          type: string
-          enum:
-          - Cheque
-          - Electronically
-          - Manual
-        bankAccounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/BankAccount'
-    DevelopmentalRoleDetails:
-      type: object
-      required:
-      - startDate
-      - endDate
-      - developmentalRole
-      properties:
-        startDate:
-          description: The start date of the developmental role
-          type: string
-          format: date
-          example: 2024-12-02
-          x-is-date: true
-        endDate:
-          description: The end date of the developmental role
-          type: string
-          format: date
-          example: 2024-12-02
-          x-is-date: true
-        developmentalRole:
-          description: The developmental role type - "Apprentice" is the only supported role currently
-          type: string
-          example: Apprentice
-        publicKey:
-          description: The public key of the developmental role. Public key is required if the intention is to edit an existing developmental role. If no key is supplied a new developmental role will be created
-          type: string
-          format: uuid
-    LeaveAccrualLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/LeaveAccrualLine'
-    StatutoryDeductionCategory:
-      description: Statutory Deduction Category
-      type: string
-      enum:
-      - AdditionalStudentLoan
-      - ChildSupport
-      - CourtFines
-      - Creditor
-      - FederalLevy
-      - InlandRevenueArrears
-      - KiwiSaver
-      - MsdRepayments
-      - NonPriorityOrder
-      - PriorityOrder
-      - TableBased
-      - StudentLoan
-      - VoluntaryStudentLoan
-      - USChildSupport
     LeaveEarningsLine:
       type: object
       properties:
@@ -7152,404 +7541,7 @@ components:
         isLinkedToTimesheet:
           description: Identifies if the leave earnings is taken from the timesheet. False for leave earnings line
           type: boolean
-    DeductionLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/DeductionLine'
-    Deductions:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        deductions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Deduction'
-    Problem:
-      description: The object returned for a bad request
-      type: object
-      properties:
-        type:
-          description: The type of error format
-          type: string
-          example: application/problem+json
-        title:
-          description: The type of the error
-          type: string
-          example: BadRequest
-        status:
-          description: The error status code
-          type: string
-          example: 400
-        detail:
-          description: A description of the error
-          type: string
-          example: Validation error occurred.
-        instance:
-          type: string
-        invalidFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvalidField'
-    EmploymentStatus:
-      description: The employment status of the employee.
-      type: string
-      example: Employee
-      enum:
-      - Employee
-      - Worker
-      - Unspecified
-    Employees:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        employees:
-          type: array
-          items:
-            $ref: '#/components/schemas/Employee'
-    Employment:
-      type: object
-      required:
-      - payrollCalendarID
-      - startDate
-      - employeeNumber
-      - niCategories
-      properties:
-        payrollCalendarID:
-          description: Xero unique identifier for the payroll calendar of the employee
-          type: string
-          format: uuid
-        startDate:
-          description: Start date of the employment (YYYY-MM-DD)
-          type: string
-          format: date
-          x-is-date: true
-        employeeNumber:
-          description: The employment number of the employee
-          type: string
-          example: 7
-        niCategory:
-          $ref: '#/components/schemas/NICategoryLetter'
-          deprecated: true
-        niCategories:
-          description: The employee's NI categories
-          type: array
-          items:
-            $ref: '#/components/schemas/NICategory'
-        contracts:
-          description: The employee's contracts
-          type: array
-          items:
-            $ref: '#/components/schemas/Contracts'
-    TimesheetLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/TimesheetLine'
-    CourtOrderLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/CourtOrderLine'
-    PaymentLine:
-      type: object
-      properties:
-        paymentLineID:
-          description: Xero identifier for payroll payment line
-          type: string
-          format: uuid
-        amount:
-          description: The amount of the payment line
-          type: number
-          format: double
-        accountNumber:
-          description: The account number
-          type: string
-        sortCode:
-          description: The account sort code
-          type: string
-        accountName:
-          description: The account name
-          type: string
-    EarningsTemplate:
-      type: object
-      properties:
-        payTemplateEarningID:
-          description: The Xero identifier for the earnings template
-          type: string
-          format: uuid
-        ratePerUnit:
-          description: The rate per unit
-          type: number
-          format: double
-          x-is-money: true
-        numberOfUnits:
-          description: The rate per unit
-          type: number
-          format: double
-          x-is-money: true
-        fixedAmount:
-          description: The fixed amount per period
-          type: number
-          format: double
-          x-is-money: true
-        earningsRateID:
-          description: The corresponding earnings rate identifier
-          type: string
-          format: uuid
-        name:
-          description: The read-only name of the Earning Template.
-          type: string
-    EarningsRates:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        earningsRates:
-          type: array
-          items:
-            $ref: '#/components/schemas/EarningsRate'
-    EmployeeOpeningBalances:
-      type: object
-      properties:
-        statutoryAdoptionPay:
-          description: The total accumulated statutory adoption pay amount received by the employee for current fiscal year to date
-          type: number
-          format: double
-          x-is-money: true
-        statutoryMaternityPay:
-          description: The total accumulated statutory maternity pay amount received by the employee for current fiscal year to date
-          type: number
-          format: double
-          x-is-money: true
-        statutoryPaternityPay:
-          description: The total accumulated statutory paternity pay amount received by the employee for current fiscal year to date
-          type: number
-          format: double
-          x-is-money: true
-        statutorySharedParentalPay:
-          description: The total accumulated statutory shared parental pay amount received by the employee for current fiscal year to date
-          type: number
-          format: double
-          x-is-money: true
-        statutorySickPay:
-          description: The total accumulated statutory sick pay amount received by the employee for current fiscal year to date
-          type: number
-          format: double
-          x-is-money: true
-        priorEmployeeNumber:
-          description: The unique employee number issued by the employee's former employer
-          type: number
-          format: double
-    EarningsOrderObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        statutoryDeduction:
-          $ref: '#/components/schemas/EarningsOrder'
-    LeaveTypes:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        leaveTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeaveType'
-    EmployeeLeaveBalances:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        leaveBalances:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmployeeLeaveBalance'
-    Benefits:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        benefits:
-          type: array
-          items:
-            $ref: '#/components/schemas/Benefit'
-    Payslips:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        paySlips:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payslip'
-    EarningsTemplateObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        earningTemplate:
-          $ref: '#/components/schemas/EarningsTemplate'
-    TaxLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/TaxLine'
-    EmployeeOpeningBalancesObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        openingBalances:
-          $ref: '#/components/schemas/EmployeeOpeningBalances'
-    BankAccount:
-      type: object
-      required:
-      - accountName
-      - accountNumber
-      - sortCode
-      properties:
-        accountName:
-          description: Bank account name (max length = 32)
-          type: string
-        accountNumber:
-          description: Bank account number (digits only; max length = 8)
-          type: string
-        sortCode:
-          description: Bank account sort code (6 digits)
-          type: string
-    EmployeeTaxObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        employeeTax:
-          $ref: '#/components/schemas/EmployeeTax'
-    LeavePeriod:
-      type: object
-      properties:
-        periodStartDate:
-          description: The Pay Period Start Date (YYYY-MM-DD)
-          type: string
-          format: date
-          x-is-date: true
-        periodEndDate:
-          description: The Pay Period End Date (YYYY-MM-DD)
-          type: string
-          format: date
-          x-is-date: true
-        numberOfUnits:
-          description: The Number of Units for the leave
-          type: number
-          format: double
-        periodStatus:
-          description: Period Status
-          type: string
-          enum:
-          - Approved
-          - Completed
-    TrackingCategory:
-      type: object
-      properties:
-        employeeGroupsTrackingCategoryID:
-          description: The Xero identifier for Employee groups tracking category.
-          type: string
-          format: uuid
-        timesheetTrackingCategoryID:
-          description: The Xero identifier for Timesheet tracking category.
-          type: string
-          format: uuid
-    TimesheetObject:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        problem:
-          $ref: '#/components/schemas/Problem'
-        timesheet:
-          $ref: '#/components/schemas/Timesheet'
-    ReimbursementLines:
-      type: array
-      items:
-        $ref: '#/components/schemas/ReimbursementLine'
-    Timesheet:
-      type: object
-      required:
-      - payrollCalendarID
-      - employeeID
-      - startDate
-      - endDate
-      properties:
-        timesheetID:
-          description: The Xero identifier for a Timesheet
-          type: string
-          format: uuid
-        payrollCalendarID:
-          description: The Xero identifier for the Payroll Calendar that the Timesheet applies to
-          type: string
-          format: uuid
-        employeeID:
-          description: The Xero identifier for the Employee that the Timesheet is for
-          type: string
-          format: uuid
-        startDate:
-          description: The Start Date of the Timesheet period (YYYY-MM-DD)
-          type: string
-          format: date
-          x-is-date: true
-        endDate:
-          description: The End Date of the Timesheet period (YYYY-MM-DD)
-          type: string
-          format: date
-          x-is-date: true
-        status:
-          description: Status of the timesheet
-          type: string
-          enum:
-          - Draft
-          - Approved
-          - Completed
-        totalHours:
-          description: The Total Hours of the Timesheet
-          type: number
-          format: double
-        updatedDateUTC:
-          description: The UTC date time that the Timesheet was last updated
-          type: string
-          format: date-time
-          x-is-datetime: true
-        timesheetLines:
-          $ref: '#/components/schemas/TimesheetLines'
   parameters:
-    requiredHeader:
-      in: header
-      name: Xero-Tenant-Id
-      x-snake: xero_tenant_id
-      description: Xero identifier for Tenant
-      schema:
-        type: string
-      required: true
     idempotencyKey:
       in: header
       name: Idempotency-Key
@@ -7558,6 +7550,14 @@ components:
       example: KEY_VALUE
       schema:
         type: string
+    requiredHeader:
+      in: header
+      name: Xero-Tenant-Id
+      x-snake: xero_tenant_id
+      description: Xero identifier for Tenant
+      schema:
+        type: string
+      required: true
   securitySchemes:
     OAuth2:
       type: oauth2

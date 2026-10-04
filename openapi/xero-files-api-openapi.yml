@@ -653,31 +653,22 @@ paths:
               example: '{ "Name": "Inbox", "FileCount": 14, "Email": "xero.inbox.jpf4.6oo29retajkhtfus@xerofiles.com", "IsInbox": true, "Id": "bf924975-7097-46f2-a143-1ecfbab3c8c3" }'
 components:
   schemas:
-    Folder:
-      required:
-      - name
-      properties:
-        Name:
-          description: The name of the folder
-          type: string
-          example: assets
-        FileCount:
-          description: The number of files in the folder
-          type: integer
-          example: 5
-        Email:
-          description: The email address used to email files to the inbox. Only the inbox will have this element.
-          type: string
-          example: foo@bar.com
-        IsInbox:
-          description: to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.
-          type: boolean
-          example: true
-        Id:
-          description: Xero unique identifier for a folder  Files
-          type: string
-          format: uuid
-          example: 4ff1e5cc-9835-40d5-bb18-09fdb118db9c
+    ObjectGroup:
+      description: The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.
+      type: string
+      enum:
+      - Account
+      - BankTransaction
+      - Contact
+      - CreditNote
+      - Invoice
+      - Item
+      - ManualJournal
+      - Overpayment
+      - Payment
+      - Prepayment
+      - Quote
+      - Receipt
     ObjectType:
       description: The Object Type
       type: string
@@ -738,38 +729,6 @@ components:
       - Termliab
       - NonCurrent
       - SalesQuote
-    ObjectGroup:
-      description: The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.
-      type: string
-      enum:
-      - Account
-      - BankTransaction
-      - Contact
-      - CreditNote
-      - Invoice
-      - Item
-      - ManualJournal
-      - Overpayment
-      - Payment
-      - Prepayment
-      - Quote
-      - Receipt
-    Files:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-          example: 2
-        Page:
-          type: integer
-          example: 1
-        PerPage:
-          type: integer
-          example: 50
-        Items:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileObject'
     FileObject:
       type: object
       required:
@@ -810,6 +769,64 @@ components:
           type: string
           format: uuid
           example: 0f8ccf21-7267-4268-9167-a1e2c40c84c8
+    UploadObject:
+      type: object
+      required:
+      - body
+      - name
+      - filename
+      properties:
+        body:
+          type: string
+          format: byte
+        name:
+          type: string
+          description: exact name of the file you are uploading
+        filename:
+          type: string
+        mimeType:
+          type: string
+    Folder:
+      required:
+      - name
+      properties:
+        Name:
+          description: The name of the folder
+          type: string
+          example: assets
+        FileCount:
+          description: The number of files in the folder
+          type: integer
+          example: 5
+        Email:
+          description: The email address used to email files to the inbox. Only the inbox will have this element.
+          type: string
+          example: foo@bar.com
+        IsInbox:
+          description: to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.
+          type: boolean
+          example: true
+        Id:
+          description: Xero unique identifier for a folder  Files
+          type: string
+          format: uuid
+          example: 4ff1e5cc-9835-40d5-bb18-09fdb118db9c
+    Files:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          example: 2
+        Page:
+          type: integer
+          example: 1
+        PerPage:
+          type: integer
+          example: 50
+        Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileObject'
     User:
       required:
       - Id
@@ -836,23 +853,6 @@ components:
           type: string
           example: Smith
       type: object
-    UploadObject:
-      type: object
-      required:
-      - body
-      - name
-      - filename
-      properties:
-        body:
-          type: string
-          format: byte
-        name:
-          type: string
-          description: exact name of the file you are uploading
-        filename:
-          type: string
-        mimeType:
-          type: string
     Association:
       type: object
       properties:
