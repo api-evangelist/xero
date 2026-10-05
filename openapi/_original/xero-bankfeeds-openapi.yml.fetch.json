@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_bankfeeds.yaml",
+ "requested_url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_bankfeeds.yaml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 35419,
+ "sha256": "e4bb3b98b2efd37627f1e4d2c850dfd544588cb97214491ceccd78f54dec5366",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}

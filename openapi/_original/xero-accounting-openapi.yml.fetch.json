@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_accounting.yaml",
+ "requested_url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_accounting.yaml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 933096,
+ "sha256": "1afca0717bb0d323210c0f88f3802684c068059f6e5161ee24ddde7ee6294a64",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.975), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
