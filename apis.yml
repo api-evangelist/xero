@@ -396,6 +396,12 @@ apis:
   - type: Documentation
     url: https://developer.xero.com/documentation/api/files/overview
 common:
+- type: Plans
+  url: plans/xero-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/xero-rate-limits.yml
+- type: FinOps
+  url: finops/xero-finops.yml
 - type: Website
   url: https://www.xero.com/
 - type: CapabilityMap
@@ -443,6 +449,8 @@ common:
   url: https://github.com/XeroAPI
 - type: MCPServer
   url: https://github.com/XeroAPI/xero-mcp-server
+- type: SpectralRules
+  url: https://github.com/XeroAPI/Xero-OpenAPI/blob/fd9d44b04bf4934a7509b8e7ece51a9e0e462e4f/.spectral.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
