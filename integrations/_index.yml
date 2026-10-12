@@ -54,7 +54,6 @@
   arazzo: null
 - slug: xero-fathom
   label: Fathom
-  partner: fathom
   partner_name: Fathom
   category: Reporting and forecasting
   type: marketplace
@@ -164,7 +163,6 @@
   arazzo: null
 - slug: xero-xero
   label: Xero
-  partner: xero
   partner_name: Xero
   category: Payments
   type: marketplace
@@ -627,7 +625,6 @@
   arazzo: null
 - slug: xero-bold-commerce
   label: Bold Commerce
-  partner: bold-commerce
   partner_name: Bold Commerce
   category: Ecommerce
   type: marketplace
