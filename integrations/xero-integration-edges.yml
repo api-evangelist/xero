@@ -4,6 +4,7 @@ source:
 - https://n8n.io/integrations/xero/
 - https://composio.dev/toolkits/xero
 checked:
+- https://apps.xero.com/
 - https://composio.dev/toolkits/xero
 - https://monid.ai/tools/xero
 - https://n8n.io/integrations/xero/
@@ -81,5 +82,2355 @@ marketplace_apps:
   - key: XERO_POST_INVOICE_UPDATE
   - key: XERO_UPDATE_CONTACT
   - key: XERO_UPLOAD_ATTACHMENT
-edges: []
+- marketplace: own
+  channel: partner-built
+  app: xero
+  url: https://apps.xero.com/
+  app_count: 462
+  adapter: sweep-accounting-stores.py:store_xero
+  listed: 417
+  platform_built: 5
+  partner_built: 412
+  order: reviewCount
+  status: ok
+edges:
+- partner_name: Amaka
+  app: Amaka
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/amaka
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://amaka.com/
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:in
+  - Bank Transfers:in
+  - Contacts:in
+  - Credit Notes:in
+  - Invoices:in
+  - Payments:in
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Dext
+  app: Dext
+  partner: dext
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/dext
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://dext.com/en/partner/product/ensure-client-data-health
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:exchange
+  - Contacts:exchange
+  - Currencies:exchange
+  - Invoices:exchange
+  - Payments:in
+  - Purchase Orders:exchange
+  - Receipts:in
+  - Reports:out
+  - Tax Rates:exchange
+  - Tracking Categories:out
+  - Users:exchange
+- partner_name: A2X
+  app: A2X
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/a2x
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.a2xaccounting.com/xero
+  data_flow:
+  - Accounts:exchange
+  - Currencies:out
+  - Invoices:in
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: ApprovalMax
+  app: ApprovalMax
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/approvalmax
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://approvalmax.com/integrations/xero
+  data_flow:
+  - Accounts:out
+  - Branding Themes:out
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:out
+  - Invoices:exchange
+  - Items:out
+  - Purchase Orders:exchange
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Fathom
+  app: Fathom
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/fathom
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.fathomhq.com/integrations/xero?utm_source=xero&utm_medium=web&utm_campaign=add-on-marketplace&src=xero
+  data_flow:
+  - Accounts:out
+  - Budgets:out
+  - Journals:out
+  - Reports:out
+  - Tracking Categories:out
+- partner_name: Link My Books
+  app: Link My Books
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/link-my-books
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://linkmybooks.com?fpr=xero
+  data_flow:
+  - Accounts:exchange
+  - Contacts:in
+  - Currencies:exchange
+  - Invoices:exchange
+  - Tax Rates:out
+  - Tracking Categories:exchange
+- partner_name: Ignition
+  app: Ignition
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/ignition
+  category: Accountant tools
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://ignitionapp.com/apps/xero?utm_source=Xero%20Add%20on%20page&utm_medium=button%20on%20site&utm_campaign=Xero%20%2B%20PI
+  data_flow:
+  - Accounts:exchange
+  - Branding Themes:out
+  - Contacts:exchange
+  - Invoices:exchange
+  - Payment Services:in
+  - Payments:in
+  - Tax Rates:out
+  - Tracking Categories:exchange
+  - Users:out
+- partner_name: Expensify
+  app: Expensify
+  partner: expensify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/expensify
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.expensify.com
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:in
+  - Contacts:exchange
+  - Invoices:exchange
+  - Linked Transactions:in
+  - Payments:in
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: joiin
+  app: joiin
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/joiin
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.joiin.co/connect-with-xero/?utm_source=xero&utm_medium=marketplace&utm_campaign=app-store&utm_content=additional-info
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Budgets:out
+  - Contacts:out
+  - Credit Notes:out
+  - Currencies:out
+  - Invoices:out
+  - Tracking Categories:out
+- partner_name: Syft
+  app: Syft
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/syft
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.syftanalytics.com?ref=xero
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Contacts:out
+  - Invoices:out
+  - Journals:out
+  - Tracking Categories:out
+- partner_name: AutoEntry
+  app: AutoEntry
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/autoentry
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.autoentry.com/integrations/xero/?utm_source=Addon&utm_medium=XeroAddOnStore&utm_campaign=XeroAddOn
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:in
+  - Branding Themes:out
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:out
+  - Invoices:exchange
+  - Linked Transactions:in
+  - Payments:in
+  - Purchase Orders:exchange
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Datamolino
+  app: Datamolino
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/datamolino
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.datamolino.com/xero-integration/?utm_source=Xero&utm_medium=Xero_marketplace&utm_campaign=Xero-Datamolino
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:exchange
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Invoices:exchange
+  - Receipts:in
+  - Tax Rates:out
+  - Tracking Categories:out
+  - Users:out
+- partner_name: Unleashed Software
+  app: Unleashed Software
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/unleashed-software
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.unleashedsoftware.com/?utm_source=xero&utm_medium=referral&utm_campaign=appstore
+  data_flow:
+  - Accounts:out
+  - Contacts:exchange
+  - Credit Notes:in
+  - Currencies:out
+  - Invoices:in
+  - Tax Rates:out
+- partner_name: Xero
+  app: Stripe
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: null
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://apps.xero.com/us/app/stripe
+  category: Payments
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.xero.com/au/stripe/
+- partner_name: Chaser
+  app: Chaser
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/chaser
+  category: Debtor management
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.chaserhq.com/integrations/xero
+  data_flow:
+  - Accounts:out
+  - Contacts:exchange
+  - Credit Notes:out
+  - Invoices:exchange
+  - Items:out
+  - Overpayments:out
+  - Payments:exchange
+- partner_name: Annature
+  app: Annature
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/annature
+  category: Documents
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://annature.com.au/
+  data_flow:
+  - Contacts:out
+- partner_name: ServiceM8
+  app: ServiceM8
+  partner: servicem8
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/servicem8
+  category: Invoicing and jobs
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.servicem8.com/introduction
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:in
+  - Bank Transfers:in
+  - Contacts:exchange
+  - Invoices:exchange
+  - Items:exchange
+  - Payments:exchange
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Float Cashflow Forecasting
+  app: Float Cashflow Forecasting
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/float-cashflow-forecasting
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://floatapp.com/xero-cash-flow-forecast?utm_source=xero.com&utm_medium=referral&utm_content=Add-on%20Card&utm_campaign=Xero%20Marketplace
+- partner_name: Spotlight Reporting
+  app: Spotlight Reporting
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/spotlight-reporting
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.spotlightreporting.com/xero
+  data_flow:
+  - Accounts:out
+  - Reports:out
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Mayday
+  app: Mayday
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/mayday
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.getmayday.com/
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Contacts:out
+  - Credit Notes:out
+  - Invoices:exchange
+  - Journals:out
+  - Manual Journals:exchange
+  - Payments:exchange
+  - Receipts:in
+  - Tracking Categories:out
+- partner_name: MMC-Convert
+  app: MMC-Convert
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/mmc-convert
+  category: Convert data to Xero
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.mmcconvert.com
+- partner_name: Cin7
+  app: CIN7 Omni
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/cin7-omni
+  category: Inventory
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.cin7.com/software/integrations/xero-inventory/?pi_campaign_id=91408&utm_campaign=Xero%20Tracking&utm_medium=referral&utm_source=xero
+  data_flow:
+  - Accounts:out
+  - Branding Themes:out
+  - Contacts:in
+  - Credit Notes:in
+  - Invoices:in
+  - Manual Journals:in
+  - Purchase Orders:in
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Parex Technologies
+  app: Parex Bridge
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/parex-bridge
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.parextech.com
+- partner_name: Xero
+  app: Hubdoc
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: null
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://apps.xero.com/us/app/hubdoc
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: http://www.hubdoc.com/xero?utm_source=partner&utm_medium=addonstore&utm_campaign=xero
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:exchange
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:out
+  - Invoices:exchange
+  - Items:out
+  - Linked Transactions:in
+  - Receipts:exchange
+  - Tax Rates:out
+  - Tracking Categories:out
+  - Users:out
+- partner_name: Cin7 Core
+  app: Cin7 Core
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/cin7-core
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://cin7.partnerpage.io/integrations/xero
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:exchange
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:in
+  - Invoices:exchange
+  - Items:exchange
+  - Manual Journals:exchange
+  - Overpayments:out
+  - Payments:exchange
+- partner_name: G-Accon for XERO
+  app: G-Accon for XERO
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/g-accon-for-xero
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://g-accon.com
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:exchange
+  - Bank Transfers:exchange
+  - Branding Themes:exchange
+  - Budgets:exchange
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:exchange
+  - Employees:exchange
+  - Invoices:exchange
+  - Items:exchange
+  - Journals:exchange
+  - Linked Transactions:exchange
+  - Manual Journals:exchange
+  - Overpayments:exchange
+  - PayItems:out
+  - PayRuns:out
+  - Payment Services:in
+  - Payments:exchange
+  - Prepayments:exchange
+  - Purchase Orders:exchange
+  - Quotes:exchange
+  - Receipts:exchange
+  - Reports:exchange
+  - Tax Rates:exchange
+  - Timesheets:exchange
+  - Tracking Categories:exchange
+  - Users:exchange
+- partner_name: EzzyBills
+  app: EzzyBills
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/ezzybills
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.ezzybills.com/scan-invoices-into-xero/
+  data_flow:
+  - Accounts:in
+  - Bank Transactions:in
+  - Contacts:in
+  - Credit Notes:in
+  - Invoices:in
+  - Purchase Orders:in
+  - Receipts:in
+  - Tax Rates:in
+  - Tracking Categories:in
+- partner_name: WorkflowMAX
+  app: WorkflowMAX
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/workflowmax
+  category: Invoicing and jobs
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.workflowmax.com
+  data_flow:
+  - Accounts:out
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:out
+  - Employees:out
+  - Invoices:exchange
+  - Payments:exchange
+  - Receipts:exchange
+  - Tax Rates:exchange
+  - Timesheets:in
+  - Tracking Categories:out
+  - Users:out
+- partner_name: Tradify Limited
+  app: Tradify
+  partner: tradify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/tradify
+  category: Invoicing and jobs
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.tradifyhq.com/xero-and-tradify-addon/?utm_source=Xero&utm_medium=marketplace
+  data_flow:
+  - Accounts:out
+  - Branding Themes:out
+  - Contacts:out
+  - Invoices:exchange
+  - Items:exchange
+  - Payments:in
+  - Tax Rates:out
+- partner_name: MinuteDock
+  app: MinuteDock
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/minutedock
+  category: Invoicing and jobs
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://minutedock.com/xero?ad=xlp
+  data_flow:
+  - Accounts:out
+  - Branding Themes:out
+  - Contacts:exchange
+  - Currencies:out
+  - Invoices:in
+  - Items:out
+  - Tracking Categories:out
+- partner_name: Deputy
+  app: Deputy
+  partner: deputy
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/deputy
+  category: Payroll HR
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://deputy.com
+  data_flow:
+  - Employees:exchange
+  - PayItems:out
+  - Timesheets:in
+- partner_name: Synder
+  app: Synder
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/synder
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://synder.com/
+  data_flow:
+  - Accounts:in
+  - Bank Transfers:in
+  - Contacts:in
+  - Currencies:in
+  - Invoices:in
+  - Items:in
+  - Payments:in
+- partner_name: Lightyear
+  app: Lightyear
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/lightyear
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.lightyear.cloud/partners/software-partners/xero?utm_source=App+Store&utm_medium=Organic&utm_campaign=Xero
+  data_flow:
+  - Accounts:out
+  - Contacts:exchange
+  - Credit Notes:in
+  - Invoices:in
+  - Items:out
+  - Tax Rates:exchange
+  - Tracking Categories:exchange
+- partner_name: Quotient
+  app: Quotient
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/quotient
+  category: Invoicing and jobs
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.quotientapp.com/integrations/xero
+  data_flow:
+  - Accounts:in
+  - Contacts:exchange
+  - Currencies:in
+  - Invoices:in
+  - Items:out
+  - Tax Rates:in
+- partner_name: Calxa
+  app: Calxa
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/calxa
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.calxa.com/product/integration/calxa-and-xero/?utm_source=xero&utm_medium=app-marketplace&utm_term=listing&utm_content=au&utm_campaign=5XeroRef
+  data_flow:
+  - Accounts:exchange
+  - Budgets:out
+  - Credit Notes:out
+  - Invoices:out
+  - Journals:out
+  - Overpayments:out
+  - Payments:out
+  - Prepayments:out
+  - Reports:out
+  - Tax Rates:out
+  - Tracking Categories:exchange
+- partner_name: Flex Financial Reporting
+  app: Flex Financial Reporting
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/flex-financial-reporting
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://flexfinancialreporting.com
+- partner_name: Futrli
+  app: Futrli
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/futrli
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.futrli.com/integrations/xero-integration?utm_source=partner&utm_medium=referral&utm_campaign=ACS_24Q2_NCA_GB_FT00XeroAppStoreReferral&utm_content=Futrli%20Xero%20App%20Strore
+  data_flow:
+  - Accounts:out
+  - Journals:out
+  - Tracking Categories:out
+- partner_name: tofu
+  app: tofu
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/tofu
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.gotofu.com
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:in
+  - Contacts:out
+  - Credit Notes:in
+  - Currencies:out
+  - Invoices:in
+  - Receipts:in
+  - Tax Rates:out
+- partner_name: PayPal
+  app: PayPal
+  partner: paypal
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/paypal
+  category: Payments
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.paypal.com/webapps/mpp/how-paypal-works
+- partner_name: Lightspeed
+  app: Lightspeed Retail POS (X-Series)
+  partner: lightspeed
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/lightspeed-retail-pos-x-series
+  category: Point of sale
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.lightspeedhq.com
+  data_flow:
+  - Accounts:out
+  - Contacts:exchange
+  - Credit Notes:in
+  - Invoices:exchange
+  - Manual Journals:in
+  - Payments:exchange
+  - Tax Rates:out
+- partner_name: Fishbowl Manufacturing and Warehouse
+  app: Fishbowl Manufacturing and Warehouse
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/fishbowl-manufacturing-and-warehouse
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.fishbowlinventory.com
+  data_flow:
+  - Accounts:in
+  - Credit Notes:in
+  - Invoices:in
+  - Journals:in
+  - Payments:in
+  - Tax Rates:in
+- partner_name: Insightly
+  app: Insightly CRM
+  partner: insightly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/insightly-crm
+  category: CRM and marketing
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.insightly.com/why-insightly/?utm_source=xeromktplace&utm_campaign=xero&utm_medium=xeromktplace
+- partner_name: Jibble
+  app: Jibble
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/jibble
+  category: Payroll HR
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.jibble.io/
+  data_flow:
+  - Employees:out
+  - Invoices:in
+  - PayItems:out
+  - Timesheets:in
+- partner_name: Reach Reporting
+  app: Reach Reporting
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/reach-reporting
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://reachreporting.com?utm_medium=referral&utm_source=xero&utm_content=additional_info
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Bank Transfers:out
+  - Branding Themes:out
+  - Budgets:out
+  - Contacts:out
+  - Credit Notes:out
+  - Currencies:out
+  - Employees:out
+  - Invoices:out
+  - Items:out
+  - Journals:out
+  - Linked Transactions:out
+  - Manual Journals:out
+  - Overpayments:out
+  - PayItems:out
+  - PayRuns:out
+  - Payment Services:out
+  - Payments:out
+  - Prepayments:out
+  - Purchase Orders:out
+  - Quotes:out
+  - Receipts:out
+  - Reports:out
+  - Tax Rates:out
+  - Timesheets:out
+  - Tracking Categories:out
+  - Users:out
+- partner_name: dataSights
+  app: dataSights
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/datasights
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://datasights.co
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:exchange
+  - Bank Transfers:exchange
+  - Branding Themes:out
+  - Budgets:out
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:out
+  - Employees:out
+  - Invoices:exchange
+  - Items:exchange
+  - Journals:out
+  - Linked Transactions:out
+  - Manual Journals:exchange
+  - Overpayments:out
+  - PayItems:out
+  - PayRuns:out
+  - Payment Services:out
+  - Payments:exchange
+  - Prepayments:out
+  - Purchase Orders:exchange
+  - Quotes:out
+  - Receipts:out
+  - Reports:out
+  - Tax Rates:out
+  - Timesheets:out
+  - Tracking Categories:exchange
+  - Users:out
+- partner_name: Satago Financial Solutions Limited
+  app: Satago
+  partner: satago
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/satago
+  category: Debtor management
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.satago.com/xero-credit-control-add-on?utm_source=partner&utm_campaign=xero_debtor_tracking_marketplace&utm_medium=link
+- partner_name: Debtor Daddy
+  app: CreditorWatch Collect
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/creditorwatch-collect
+  category: Debtor management
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://go.creditorwatch.com.au/xero-creditorwatch-collect/
+- partner_name: ScaleXP
+  app: ScaleXP
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/scalexp
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.scalexp.com/integrations/xero/?utm_source=app-stores&utm_medium=xero-app-store&utm_campaign=xero
+  data_flow:
+  - Contacts:exchange
+  - Credit Notes:in
+  - Currencies:in
+  - Employees:in
+  - Invoices:exchange
+  - Items:exchange
+  - Journals:exchange
+  - Linked Transactions:in
+  - Manual Journals:in
+  - Overpayments:in
+  - Payment Services:in
+  - Payments:in
+  - Prepayments:in
+  - Purchase Orders:in
+  - Quotes:in
+  - Receipts:in
+  - Reports:in
+  - Tax Rates:in
+  - Timesheets:in
+  - Tracking Categories:out
+- partner_name: Taxomate
+  app: Taxomate
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/taxomate
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://taxomate.com/integrations/amazon/xerotaxomate.com/integrations/amazon/xero
+  data_flow:
+  - Invoices:in
+- partner_name: Clarity HQ
+  app: Clarity HQ
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/clarity-hq
+  category: Accountant tools
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://clarity-hq.com/
+  data_flow:
+  - Accounts:exchange
+- partner_name: Paidnice
+  app: Paidnice
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/paidnice
+  category: Debtor management
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.paidnice.com/
+  data_flow:
+  - Accounts:out
+  - Branding Themes:out
+  - Contacts:out
+  - Credit Notes:exchange
+  - Invoices:exchange
+  - Payments:exchange
+  - Quotes:out
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: BeanBox
+  app: BeanBox
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/beanbox
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.beanbox.app/xero/
+- partner_name: Bold Commerce
+  app: Bold Commerce
+  partner: null
+  partner_match: null
+  partner_candidate: shopify
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/bold-commerce
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://apps.shopify.com/xero-sync?ref=xero&utm_source=partner&utm_medium=xero&utm_campaign=marketplace-xero
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:out
+  - Branding Themes:out
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Invoices:exchange
+  - Items:exchange
+  - Manual Journals:out
+  - Overpayments:out
+  - Payments:exchange
+  - Prepayments:out
+- partner_name: Dext Commerce
+  app: Dext Commerce
+  partner: dext
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/dext-commerce
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://dext.com/uk/accountants-and-bookkeepers/commerce
+  data_flow:
+  - Accounts:exchange
+  - Items:exchange
+  - Payment Services:exchange
+  - Tax Rates:out
+- partner_name: MRPeasy
+  app: MRPeasy
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/mrpeasy
+  category: Inventory
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.mrpeasy.com/xero?utm_source=xero&utm_medium=referral&utm_campaign=Xero%20marketplace
+- partner_name: Re-Leased
+  app: Re-Leased
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/re-leased
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://global-functions.re-leased.com/api/XeroStartSignupFlow
+- partner_name: Content Snare
+  app: Content Snare
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/content-snare
+  category: Documents
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://contentsnare.com
+- partner_name: Projectworks
+  app: Projectworks
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/projectworks
+  category: Invoicing and jobs
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://projectworks.com
+  data_flow:
+  - Credit Notes:in
+  - Currencies:exchange
+  - Invoices:in
+  - Payments:out
+  - Purchase Orders:in
+  - Timesheets:in
+- partner_name: Airsquare
+  app: Airsquare
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/airsquare
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.airsquare.com/integrations/xero
+  data_flow:
+  - Accounts:out
+  - Branding Themes:out
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:out
+  - Invoices:exchange
+  - Items:exchange
+  - Journals:in
+  - Manual Journals:in
+  - Payments:exchange
+  - Purchase Orders:exchange
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Katana
+  app: Katana Cloud Inventory
+  partner: katana
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/katana-cloud-inventory
+  category: Inventory
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://katanamrp.com/?utm_source=xero&utm_medium=listing&utm_campaign=app_stores&utm_content=xero-signup
+  data_flow:
+  - Contacts:exchange
+  - Invoices:in
+  - Items:exchange
+  - Tax Rates:exchange
+- partner_name: Xero
+  app: Shopify
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: null
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://apps.xero.com/us/app/shopify
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.xero.com
+- partner_name: Simpro
+  app: Simpro
+  partner: simpro
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/simpro
+  category: Inventory
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.simprogroup.com/xero
+  data_flow:
+  - Accounts:out
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Invoices:exchange
+  - Manual Journals:in
+  - Payments:exchange
+  - Tax Rates:exchange
+  - Timesheets:in
+  - Tracking Categories:out
+- partner_name: ROLL
+  app: ROLL
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/roll
+  category: Invoicing and jobs
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.rollhq.com/xero?utm_source=xero&utm_medium=referral&utm_campaign=xeromarketplace
+  data_flow:
+  - Contacts:exchange
+  - Invoices:exchange
+  - Items:out
+  - Purchase Orders:out
+  - Receipts:out
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Zestia Ltd.
+  app: Capsule CRM
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/capsule-crm
+  category: CRM and marketing
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://capsulecrm.com/addons/xero/
+  data_flow:
+  - Contacts:exchange
+  - Invoices:out
+  - Quotes:out
+- partner_name: ExpenseOnDemand Limited
+  app: Expense OnDemand
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/expenseondemand
+  category: Accountant tools
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.expenseondemand.com/xero.html
+  data_flow:
+  - Contacts:exchange
+  - Currencies:exchange
+  - Receipts:exchange
+  - Reports:out
+  - Tax Rates:exchange
+  - Tracking Categories:exchange
+- partner_name: Scott's Add-ins
+  app: Scott's Add-ins
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/scotts-add-ins
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://scottsaddins.com
+  data_flow:
+  - Accounts:out
+  - Budgets:out
+  - Contacts:out
+  - Credit Notes:out
+  - Invoices:out
+  - Items:out
+  - Journals:out
+  - Manual Journals:out
+  - PayItems:out
+  - Receipts:out
+  - Reports:out
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Gojee
+  app: Gojee
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/gojee
+  category: Inventory
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.gojeeapp.com.au/
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:in
+  - Branding Themes:out
+  - Contacts:exchange
+  - Credit Notes:out
+  - Employees:out
+  - Invoices:exchange
+  - Journals:in
+  - Manual Journals:in
+  - PayItems:out
+  - Payment Services:in
+  - Payments:exchange
+  - Prepayments:exchange
+  - Purchase Orders:in
+  - Quotes:in
+  - Reports:in
+  - Tax Rates:out
+  - Timesheets:exchange
+- partner_name: SuiteFiles
+  app: SuiteFiles
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/suitefiles
+  category: Documents
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.suitefiles.com/integrations/xero/
+  data_flow:
+  - Contacts:out
+- partner_name: Odatalink
+  app: OdataLink
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/odatalink
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://odatalink.com
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Bank Transfers:out
+  - Branding Themes:out
+  - Budgets:out
+  - Contacts:out
+  - Credit Notes:out
+  - Currencies:out
+  - Employees:out
+  - Invoices:out
+  - Items:out
+  - Journals:out
+  - Linked Transactions:out
+  - Manual Journals:out
+  - Overpayments:out
+  - PayItems:out
+  - PayRuns:out
+  - Payment Services:out
+  - Payments:out
+  - Prepayments:out
+  - Purchase Orders:out
+  - Quotes:out
+  - Receipts:out
+  - Reports:out
+  - Tax Rates:out
+  - Timesheets:out
+  - Tracking Categories:out
+  - Users:out
+- partner_name: Tidy International
+  app: TidyStock
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/tidystock
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://tidyinternational.com/solutions/tidystock/xero
+  data_flow:
+  - Accounts:out
+  - Branding Themes:out
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:out
+  - Invoices:in
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Harvest
+  app: Harvest
+  partner: harvest
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/harvest
+  category: Invoicing and jobs
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://getharvest.com
+- partner_name: Vinyl
+  app: Vinyl
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/vinyl
+  category: Accountant tools
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://usevinyl.com
+  data_flow:
+  - Contacts:out
+- partner_name: Cash Flow Frog
+  app: Cash Flow Frog
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/cash-flow-frog
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://cashflowfrog.com/
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Contacts:out
+  - Invoices:out
+  - Items:out
+  - Purchase Orders:out
+  - Quotes:out
+  - Receipts:out
+- partner_name: fileAI
+  app: fileAI
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/fileai
+  category: Workflow builders
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.file.ai
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:exchange
+  - Bank Transfers:exchange
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:out
+  - Invoices:in
+  - Items:in
+  - Journals:exchange
+  - Manual Journals:exchange
+  - Overpayments:in
+  - Payment Services:in
+  - Payments:in
+  - Prepayments:in
+  - Purchase Orders:in
+  - Receipts:in
+  - Reports:exchange
+  - Tax Rates:in
+  - Timesheets:in
+  - Tracking Categories:exchange
+  - Users:exchange
+- partner_name: SaasAnt Transactions
+  app: SaasAnt Transactions
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/saasant-transactions
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.saasant.com/app-saasant-transactions-xero-automation.html
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:exchange
+  - Bank Transfers:exchange
+  - Branding Themes:out
+  - Contacts:exchange
+  - Credit Notes:exchange
+  - Currencies:out
+  - Employees:exchange
+  - Invoices:exchange
+  - Items:exchange
+  - Journals:exchange
+  - Manual Journals:exchange
+  - Payments:exchange
+  - Purchase Orders:exchange
+  - Quotes:exchange
+  - Receipts:exchange
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: ezyCollect Pty Ltd
+  app: ezyCollect
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/ezycollect
+  category: Debtor management
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://ezycollect.com.au/xero-integration?utm_source=xero&utm_medium=marketplace_listing&utm_campaign=made_by_ezycollect
+  data_flow:
+  - Bank Transactions:in
+  - Contacts:out
+  - Invoices:out
+  - Payments:exchange
+- partner_name: Bespoke Business Software Ltd
+  app: Workhorse Order & Inventory Management
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/workhorse-order--inventory-management
+  category: Inventory
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://goworkhorse.com/
+  data_flow:
+  - Contacts:in
+  - Credit Notes:in
+  - Invoices:in
+  - Items:in
+  - Manual Journals:in
+  - Purchase Orders:in
+  - Tax Rates:in
+- partner_name: Controlc
+  app: Controlc
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/controlc
+  category: Other
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://control-c.com
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Bank Transfers:out
+  - Contacts:out
+  - Credit Notes:out
+  - Currencies:out
+  - Employees:out
+  - Invoices:exchange
+  - Items:out
+  - Journals:out
+  - Manual Journals:out
+  - Overpayments:out
+  - PayRuns:out
+  - Payments:out
+  - Purchase Orders:out
+  - Quotes:out
+  - Receipts:out
+  - Reports:out
+  - Tax Rates:out
+  - Timesheets:out
+  - Tracking Categories:out
+  - Users:out
+- partner_name: Livecosts.com
+  app: Livecosts.com
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/livecostscom
+  category: Invoicing and jobs
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://livecosts.com
+  data_flow:
+  - Accounts:in
+  - Contacts:exchange
+  - Currencies:out
+  - Invoices:exchange
+  - Purchase Orders:out
+  - Tax Rates:exchange
+- partner_name: Viberent
+  app: Viberent
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/viberent
+  category: Inventory
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://viberenthq.com/
+  data_flow:
+  - Accounts:out
+  - Contacts:out
+  - Credit Notes:out
+  - Invoices:out
+  - Items:out
+  - Payments:out
+  - Tax Rates:out
+  - Tracking Categories:out
+  - Users:out
+- partner_name: Karbon
+  app: Karbon
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/karbon
+  category: Accountant tools
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.karbonhq.com
+  data_flow:
+  - Accounts:exchange
+  - Contacts:exchange
+  - Invoices:in
+  - Tax Rates:exchange
+- partner_name: uCollect
+  app: uCollect
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/ucollect
+  category: Payments
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://ucollect.biz/xero
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:in
+  - Contacts:out
+  - Credit Notes:out
+  - Invoices:out
+  - Payments:in
+  - Tax Rates:out
+- partner_name: Business Importer
+  app: Business Importer
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/business-importer
+  category: Other
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://b-importer.com
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:in
+  - Contacts:exchange
+  - Credit Notes:in
+  - Invoices:exchange
+  - Items:in
+  - Journals:in
+  - Manual Journals:in
+  - Payments:in
+  - Purchase Orders:in
+  - Receipts:in
+- partner_name: EMERGE App
+  app: EMERGE App
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/emerge-app
+  category: Documents
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://emergeapp.net/integrations/xero-inventory-management/
+  data_flow:
+  - Accounts:exchange
+  - Contacts:in
+  - Credit Notes:in
+  - Currencies:in
+  - Invoices:in
+  - Items:in
+  - Journals:in
+  - Manual Journals:in
+  - Payments:in
+  - Receipts:exchange
+  - Tax Rates:exchange
+- partner_name: TimeDock
+  app: TimeDock
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/timedock
+  category: Payroll HR
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://timedock.com
+  data_flow:
+  - Employees:out
+  - Timesheets:in
+- partner_name: Acterys
+  app: Acterys
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/acterys
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.acterys.com/xero/
+- partner_name: QuickB2B Pty Limited
+  app: QuickB2B Order Management System
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/quickb2b-order-management-system
+  category: Inventory
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://quickb2b.com
+  data_flow:
+  - Accounts:out
+  - Contacts:exchange
+  - Credit Notes:in
+  - Invoices:exchange
+  - Items:in
+  - Purchase Orders:in
+  - Tax Rates:out
+- partner_name: Qoblex
+  app: Qoblex
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/qoblex
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://qoblex.com?utm_source=xero&utm_medium=referral
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:in
+  - Contacts:exchange
+  - Credit Notes:in
+  - Invoices:in
+  - Items:in
+  - Manual Journals:in
+  - Payments:in
+  - Prepayments:in
+  - Purchase Orders:in
+  - Quotes:in
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: Workshop Software
+  app: Workshop Software
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/workshop-software
+  category: Inventory
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://workshopsoftware.com/Integrations/xero-integration/
+  data_flow:
+  - Accounts:out
+  - Contacts:exchange
+  - Invoices:exchange
+  - Payments:exchange
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: BillBjorn
+  app: BillBjorn
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/billbjorn
+  category: Documents
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.billbjorn.com
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:in
+  - Contacts:exchange
+  - Credit Notes:in
+  - Currencies:out
+  - Invoices:in
+  - Payments:in
+  - Receipts:in
+  - Tax Rates:out
+  - Tracking Categories:out
+- partner_name: HedgeFlows
+  app: HedgeFlows
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/hedgeflows
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://hedgeflows.com
+  data_flow:
+  - Accounts:exchange
+  - Bank Transactions:exchange
+  - Bank Transfers:exchange
+  - Contacts:out
+  - Currencies:exchange
+  - Invoices:exchange
+  - Overpayments:out
+  - Payment Services:out
+  - Payments:exchange
+  - Prepayments:out
+  - Purchase Orders:exchange
+  - Quotes:out
+  - Receipts:exchange
+  - Reports:out
+  - Users:out
+- partner_name: iTrade
+  app: iTrade
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/itrade
+  category: CRM and marketing
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.itrade.net/
+  data_flow:
+  - Contacts:exchange
+  - Credit Notes:in
+  - Invoices:in
+  - Items:exchange
+  - Tax Rates:exchange
+- partner_name: NumerintBackup
+  app: NumerintBackup
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/numerintbackup
+  category: Other
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://numerint.com
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Bank Transfers:out
+  - Branding Themes:out
+  - Contacts:out
+  - Credit Notes:out
+  - Currencies:out
+  - Invoices:out
+  - Items:out
+  - Linked Transactions:out
+  - Manual Journals:out
+  - Overpayments:out
+  - Payments:out
+  - Prepayments:out
+  - Purchase Orders:out
+  - Quotes:out
+  - Receipts:out
+  - Tax Rates:out
+  - Tracking Categories:out
+  - Users:out
+- partner_name: Linnworks Xero connector SyncTools
+  app: Linnworks Xero connector SyncTools
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/linnworks-xero-connector-synctools
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://synctools.io/
+  data_flow:
+  - Accounts:in
+  - Contacts:in
+  - Invoices:in
+  - Items:in
+  - Linked Transactions:in
+  - Payments:in
+  - Purchase Orders:in
+- partner_name: Tidy International
+  app: TidyWork
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/tidywork
+  category: Invoicing and jobs
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.tidyinternational.com/solutions/tidywork-and-xero
+  data_flow:
+  - Accounts:out
+  - Branding Themes:out
+  - Contacts:exchange
+  - Currencies:out
+  - Employees:out
+  - Invoices:exchange
+  - PayItems:out
+  - Tax Rates:out
+  - Timesheets:in
+  - Tracking Categories:out
+- partner_name: Zapier
+  app: Zapier
+  partner: zapier
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/zapier
+  category: Workflow builders
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://zapier.com/zapbook/xero/
+- partner_name: Lightspeed Kounta POS
+  app: Lightspeed Kounta POS
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/lightspeed-kounta-pos
+  category: Point of sale
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.lightspeedhq.com.au/
+  data_flow:
+  - Accounts:exchange
+  - Contacts:in
+  - Purchase Orders:in
+  - Tax Rates:out
+- partner_name: RecHound
+  app: RecHound
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/rechound
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://rechound.com
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Bank Transfers:out
+  - Credit Notes:out
+  - Invoices:out
+  - Journals:out
+  - Manual Journals:out
+  - Payments:out
+  - Receipts:out
+  - Tracking Categories:out
+  - Users:out
+- partner_name: Timely
+  app: Timely
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/timely
+  category: Time tracking
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.gettimely.com/timely-and-xero/
+- partner_name: Infoodle Ltd
+  app: infoodle
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/infoodle
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://infoodle.com/xero
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Contacts:exchange
+  - Invoices:exchange
+  - Journals:in
+  - Manual Journals:in
+  - Payments:in
+  - Tracking Categories:out
 templates: []
