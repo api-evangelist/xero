@@ -1,0 +1,85 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://n8n.io/integrations/xero/
+- https://composio.dev/toolkits/xero
+checked:
+- https://composio.dev/toolkits/xero
+- https://monid.ai/tools/xero
+- https://n8n.io/integrations/xero/
+- https://zapier.com/apps/xero/integrations
+summary: null
+marketplace_apps:
+- marketplace: n8n
+  channel: open-source-node
+  app: xero
+  url: https://n8n.io/integrations/xero/
+  identity: title
+  pair_pages: 17
+  pairs:
+  - xtractly
+  - ybug
+  - ycode
+  - yodiz
+  - yourls
+  - youtube
+  - zabbix
+  - zammad
+  - zendesk
+  - zenrows
+  - zoho-books
+  - zoho-crm
+  - zoho-desk
+  - zonka-feedback
+  - zoom
+  - zscaler-zia
+  - zulip
+- marketplace: composio
+  channel: agent-gateway
+  app: xero
+  url: https://composio.dev/toolkits/xero
+  identity: action-prefix
+  actions:
+  - key: XERO_CREATE_BANK_TRANSACTION
+  - key: XERO_CREATE_CONTACT
+  - key: XERO_CREATE_INVOICE
+  - key: XERO_CREATE_ITEM
+  - key: XERO_CREATE_MANUAL_JOURNAL
+  - key: XERO_CREATE_PAYMENT
+  - key: XERO_CREATE_PURCHASE_ORDER
+  - key: XERO_GET_ACCOUNT
+  - key: XERO_GET_ASSET
+  - key: XERO_GET_BALANCE_SHEET_REPORT
+  - key: XERO_GET_BUDGET
+  - key: XERO_GET_CONNECTIONS
+  - key: XERO_GET_CONTACTS
+  - key: XERO_GET_INVOICE
+  - key: XERO_GET_ITEM
+  - key: XERO_GET_MANUAL_JOURNAL
+  - key: XERO_GET_ORGANISATION
+  - key: XERO_GET_PROFIT_LOSS_REPORT
+  - key: XERO_GET_PROJECT
+  - key: XERO_GET_PURCHASE_ORDER
+  - key: XERO_GET_QUOTES
+  - key: XERO_GET_TRIAL_BALANCE_REPORT
+  - key: XERO_LIST_ACCOUNTS
+  - key: XERO_LIST_ASSETS
+  - key: XERO_LIST_ATTACHMENTS
+  - key: XERO_LIST_BANK_TRANSACTIONS
+  - key: XERO_LIST_CREDIT_NOTES
+  - key: XERO_LIST_FILES
+  - key: XERO_LIST_FOLDERS
+  - key: XERO_LIST_INVOICES
+  - key: XERO_LIST_ITEMS
+  - key: XERO_LIST_JOURNALS
+  - key: XERO_LIST_MANUAL_JOURNALS
+  - key: XERO_LIST_PAYMENTS
+  - key: XERO_LIST_PROJECTS
+  - key: XERO_LIST_PURCHASE_ORDERS
+  - key: XERO_LIST_TAX_RATES
+  - key: XERO_LIST_TRACKING_CATEGORIES
+  - key: XERO_POST_INVOICE_UPDATE
+  - key: XERO_UPDATE_CONTACT
+  - key: XERO_UPLOAD_ATTACHMENT
+edges: []
+templates: []
