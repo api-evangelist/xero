@@ -6,6 +6,7 @@ source:
 checked:
 - https://apps.xero.com/
 - https://composio.dev/toolkits/xero
+- https://hightouch.com/docs/destinations/xero
 - https://monid.ai/tools/xero
 - https://n8n.io/integrations/xero/
 - https://zapier.com/apps/xero/integrations
@@ -2433,4 +2434,22 @@ edges:
   - Manual Journals:in
   - Payments:in
   - Tracking Categories:out
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/xero
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - xero
+      status: released
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
 templates: []
