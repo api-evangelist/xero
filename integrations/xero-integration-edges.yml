@@ -9,6 +9,7 @@ checked:
 - https://hightouch.com/docs/destinations/xero
 - https://monid.ai/tools/xero
 - https://n8n.io/integrations/xero/
+- https://registry.financialdataexchange.org/
 - https://zapier.com/apps/xero/integrations
 summary: null
 marketplace_apps:
@@ -2451,5 +2452,29 @@ edges:
       - xero
       status: released
   detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: FDX (Financial Data Exchange)
+  partner: fdx
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.financialdataexchange.org/
+  contract_reference:
+    register: FDX Registry
+    standard: FDX API
+    spec_file: null
+    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
+    role: data-recipient
+    member_type: MEMBER
+    registered_name: Xero
+    register_id: 107
+    registered_website: https://www.xero.com
+    country: United States
+    fdx_version: null
+    matched_by: domain:xero.com
+    detected_by: sweep-fdx.py
+    detected: '2026-10-14'
+  detected_by: sweep-fdx.py
   first_seen: '2026-10-14'
 templates: []
