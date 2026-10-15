@@ -9,8 +9,11 @@ checked:
 - https://hightouch.com/docs/destinations/xero
 - https://monid.ai/tools/xero
 - https://n8n.io/integrations/xero/
+- https://peppol.org/members/peppol-certified-service-providers/
 - https://registry.financialdataexchange.org/
+- https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees
 - https://www.openbanking.org.uk/regulated-providers/xero/
+- https://www.streamlinedsalestax.org/certified-service-providers/certified-service-providers-list
 - https://zapier.com/apps/xero/integrations
 - stripe/integrations/stripe-integration-edges.yml
 summary: null
@@ -2513,4 +2516,60 @@ edges:
   detected: '2026-10-15'
   detected_by: mirror-platform-listings.py
   category: accounting
+- partner_name: OpenPeppol (certified service providers)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://peppol.org/members/peppol-certified-service-providers/
+  category: Peppol service provider
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
+    spec_file: null
+    standard: Peppol
+    role: peppol-certified-service-provider
+    registered_name: Xero Limited
+    legal_name: Xero Limited
+    matched_domain: xero.com
+    matched_by: domain
+    domain_source: contact email domain
+    peppol_authorities:
+    - MBIE
+    countries:
+    - New Zealand
+    certified_products:
+    - product: Access Point
+      lapsed: false
+    signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and
+      countries are context, never read
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-15'
+  detected_by: sweep-einvoicing-tax.py
+  first_seen: '2026-10-15'
+- partner_name: OpenPeppol (certified service providers)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://peppol.org/members/peppol-certified-service-providers/
+  category: Peppol service provider
+  channel: standard-directory
+  relationship: compatible
+  shape: peppol
+  evidence_kind: conformance-register
+  degree: certified
+  report_only: true
+  contract_reference:
+    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
+    spec_file: null
+    standard: Peppol
+    role: peppol-certified-service-provider
+    registered_name: Xero Limited
+    matched_domain: xero.com
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-15'
+  detected_by: sweep-einvoicing-tax.py
+  first_seen: '2026-10-15'
 templates: []

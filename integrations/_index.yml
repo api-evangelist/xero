@@ -1251,3 +1251,35 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: xero-openpeppol-certified-service-providers
+  label: OpenPeppol (certified service providers)
+  partner_name: OpenPeppol (certified service providers)
+  category: Peppol service provider
+  type: register
+  channel: standard-directory
+  evidence: https://peppol.org/members/peppol-certified-service-providers/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
+    spec_file: null
+    standard: Peppol
+    role: peppol-certified-service-provider
+    registered_name: Xero Limited
+    legal_name: Xero Limited
+    matched_domain: xero.com
+    matched_by: domain
+    domain_source: contact email domain
+    peppol_authorities:
+    - MBIE
+    countries:
+    - New Zealand
+    certified_products:
+    - product: Access Point
+      lapsed: false
+    signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and
+      countries are context, never read
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
