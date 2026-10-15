@@ -1238,3 +1238,16 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: xero-stripe-own
+  label: Stripe (own)
+  partner: stripe
+  partner_name: Stripe (own)
+  category: accounting
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.stripe.com/apps/xero
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
