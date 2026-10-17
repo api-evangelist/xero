@@ -584,7 +584,136 @@ paths:
         '400':
           description: bad input parameter
 components:
+  parameters:
+    idempotencyKey:
+      in: header
+      name: Idempotency-Key
+      x-snake: idempotency_key
+      description: This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
+      example: KEY_VALUE
+      schema:
+        type: string
+    requiredHeader:
+      in: header
+      name: xero-tenant-id
+      x-snake: xero_tenant_id
+      description: Xero identifier for Tenant
+      example: YOUR_XERO_TENANT_ID
+      schema:
+        type: string
+      required: true
   schemas:
+    AssetStatusQueryParam:
+      type: string
+      description: See Asset Status Codes.
+      example: DRAFT
+      enum:
+      - DRAFT
+      - REGISTERED
+      - DISPOSED
+    AssetType:
+      type: object
+      x-snake: asset_type
+      required:
+      - assetTypeName
+      - bookDepreciationSetting
+      properties:
+        assetTypeId:
+          type: string
+          format: uuid
+          example: 5da209c5-5e19-4a43-b925-71b776c49ced
+          description: Xero generated unique identifier for asset types
+        assetTypeName:
+          type: string
+          example: Computer Equipment
+          description: The name of the asset type
+        fixedAssetAccountId:
+          type: string
+          format: uuid
+          example: 24e260f1-bfc4-4766-ad7f-8a8ce01de879
+          description: The asset account for fixed assets of this type
+        depreciationExpenseAccountId:
+          type: string
+          format: uuid
+          example: b23fc79b-d66b-44b0-a240-e138e086fcbc
+          description: The expense account for the depreciation of fixed assets of this type
+        accumulatedDepreciationAccountId:
+          type: string
+          format: uuid
+          example: ca4c6b39-4f4f-43e8-98da-5e1f350a6694
+          description: The account for accumulated depreciation of fixed assets of this type
+        bookDepreciationSetting:
+          $ref: '#/components/schemas/BookDepreciationSetting'
+        locks:
+          type: integer
+          example: 33
+          description: All asset types that have accumulated depreciation for any assets that use them are deemed ‘locked’ and cannot be removed.
+    Pagination:
+      properties:
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 10
+        pageCount:
+          type: integer
+          example: 1
+        itemCount:
+          type: integer
+          example: 2
+    BookDepreciationSetting:
+      properties:
+        depreciationMethod:
+          type: string
+          enum:
+          - NoDepreciation
+          - StraightLine
+          - DiminishingValue100
+          - DiminishingValue150
+          - DiminishingValue200
+          - FullDepreciation
+          example: StraightLine
+          description: The method of depreciation applied to this asset. See Depreciation Methods
+        averagingMethod:
+          type: string
+          enum:
+          - FullMonth
+          - ActualDays
+          example: ActualDays
+          description: The method of averaging applied to this asset. See Averaging Methods
+        depreciationRate:
+          type: number
+          format: double
+          x-is-money: true
+          example: 0.05
+          description: The rate of depreciation (e.g. 0.05)
+        effectiveLifeYears:
+          type: integer
+          example: 5
+          description: Effective life of the asset in years (e.g. 5)
+        depreciationCalculationMethod:
+          type: string
+          enum:
+          - Rate
+          - Life
+          - None
+          example: None
+          description: See Depreciation Calculation Methods
+        depreciableObjectId:
+          type: string
+          format: uuid
+          example: 68f17094-af97-4f1b-b36b-013b45b6ad3c
+          description: Unique Xero identifier for the depreciable object
+        depreciableObjectType:
+          type: string
+          example: Asset
+          description: The type of asset object
+        bookEffectiveDateOfChangeId:
+          type: string
+          format: uuid
+          example: 68f17094-af97-4f1b-b36b-013b45b6ad3c
+          description: Unique Xero identifier for the effective date change
     BookDepreciationDetail:
       properties:
         currentCapitalGain:
@@ -652,116 +781,6 @@ components:
           type: number
           format: decimal
           description: (New Zealand Orgs Only) The Investment Boost deduction percentage.
-    AssetStatusQueryParam:
-      type: string
-      description: See Asset Status Codes.
-      example: DRAFT
-      enum:
-      - DRAFT
-      - REGISTERED
-      - DISPOSED
-    Setting:
-      required:
-      - name
-      properties:
-        assetNumberPrefix:
-          type: string
-          example: FA-
-          description: The prefix used for fixed asset numbers (“FA-” by default)
-        assetNumberSequence:
-          type: string
-          example: '0022'
-          description: The next available sequence number
-        assetStartDate:
-          type: string
-          format: date
-          example: 2015-07-31 00:00:00
-          description: The date depreciation calculations started on registered fixed assets in Xero
-        lastDepreciationDate:
-          type: string
-          format: date
-          example: 2015-07-01 00:00:00
-          description: The last depreciation date
-        defaultGainOnDisposalAccountId:
-          type: string
-          format: uuid
-          example: 346ddb97-739a-4274-b43b-66aa3218d17c
-          description: Default account that gains are posted to
-        defaultLossOnDisposalAccountId:
-          type: string
-          format: uuid
-          example: 1b798541-24e2-4855-9309-c023a0b576f3
-          description: Default account that losses are posted to
-        defaultCapitalGainOnDisposalAccountId:
-          type: string
-          format: uuid
-          example: 6d6a0bdb-e118-45d8-a023-2ad617ec1cb7
-          description: Default account that capital gains are posted to
-        optInForTax:
-          type: boolean
-          description: opt in for tax calculation
-          example: false
-      type: object
-    Assets:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Asset'
-    Pagination:
-      properties:
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 10
-        pageCount:
-          type: integer
-          example: 1
-        itemCount:
-          type: integer
-          example: 2
-    AssetType:
-      type: object
-      x-snake: asset_type
-      required:
-      - assetTypeName
-      - bookDepreciationSetting
-      properties:
-        assetTypeId:
-          type: string
-          format: uuid
-          example: 5da209c5-5e19-4a43-b925-71b776c49ced
-          description: Xero generated unique identifier for asset types
-        assetTypeName:
-          type: string
-          example: Computer Equipment
-          description: The name of the asset type
-        fixedAssetAccountId:
-          type: string
-          format: uuid
-          example: 24e260f1-bfc4-4766-ad7f-8a8ce01de879
-          description: The asset account for fixed assets of this type
-        depreciationExpenseAccountId:
-          type: string
-          format: uuid
-          example: b23fc79b-d66b-44b0-a240-e138e086fcbc
-          description: The expense account for the depreciation of fixed assets of this type
-        accumulatedDepreciationAccountId:
-          type: string
-          format: uuid
-          example: ca4c6b39-4f4f-43e8-98da-5e1f350a6694
-          description: The account for accumulated depreciation of fixed assets of this type
-        bookDepreciationSetting:
-          $ref: '#/components/schemas/BookDepreciationSetting'
-        locks:
-          type: integer
-          example: 33
-          description: All asset types that have accumulated depreciation for any assets that use them are deemed ‘locked’ and cannot be removed.
     Asset:
       type: object
       required:
@@ -835,6 +854,48 @@ components:
           type: boolean
           description: Boolean to indicate whether delete is enabled
           example: true
+    Setting:
+      required:
+      - name
+      properties:
+        assetNumberPrefix:
+          type: string
+          example: FA-
+          description: The prefix used for fixed asset numbers (“FA-” by default)
+        assetNumberSequence:
+          type: string
+          example: '0022'
+          description: The next available sequence number
+        assetStartDate:
+          type: string
+          format: date
+          example: 2015-07-31 00:00:00
+          description: The date depreciation calculations started on registered fixed assets in Xero
+        lastDepreciationDate:
+          type: string
+          format: date
+          example: 2015-07-01 00:00:00
+          description: The last depreciation date
+        defaultGainOnDisposalAccountId:
+          type: string
+          format: uuid
+          example: 346ddb97-739a-4274-b43b-66aa3218d17c
+          description: Default account that gains are posted to
+        defaultLossOnDisposalAccountId:
+          type: string
+          format: uuid
+          example: 1b798541-24e2-4855-9309-c023a0b576f3
+          description: Default account that losses are posted to
+        defaultCapitalGainOnDisposalAccountId:
+          type: string
+          format: uuid
+          example: 6d6a0bdb-e118-45d8-a023-2ad617ec1cb7
+          description: Default account that capital gains are posted to
+        optInForTax:
+          type: boolean
+          description: opt in for tax calculation
+          example: false
+      type: object
     AssetStatus:
       type: string
       description: See Asset Status Codes.
@@ -843,76 +904,15 @@ components:
       - Draft
       - Registered
       - Disposed
-    BookDepreciationSetting:
+    Assets:
+      type: object
       properties:
-        depreciationMethod:
-          type: string
-          enum:
-          - NoDepreciation
-          - StraightLine
-          - DiminishingValue100
-          - DiminishingValue150
-          - DiminishingValue200
-          - FullDepreciation
-          example: StraightLine
-          description: The method of depreciation applied to this asset. See Depreciation Methods
-        averagingMethod:
-          type: string
-          enum:
-          - FullMonth
-          - ActualDays
-          example: ActualDays
-          description: The method of averaging applied to this asset. See Averaging Methods
-        depreciationRate:
-          type: number
-          format: double
-          x-is-money: true
-          example: 0.05
-          description: The rate of depreciation (e.g. 0.05)
-        effectiveLifeYears:
-          type: integer
-          example: 5
-          description: Effective life of the asset in years (e.g. 5)
-        depreciationCalculationMethod:
-          type: string
-          enum:
-          - Rate
-          - Life
-          - None
-          example: None
-          description: See Depreciation Calculation Methods
-        depreciableObjectId:
-          type: string
-          format: uuid
-          example: 68f17094-af97-4f1b-b36b-013b45b6ad3c
-          description: Unique Xero identifier for the depreciable object
-        depreciableObjectType:
-          type: string
-          example: Asset
-          description: The type of asset object
-        bookEffectiveDateOfChangeId:
-          type: string
-          format: uuid
-          example: 68f17094-af97-4f1b-b36b-013b45b6ad3c
-          description: Unique Xero identifier for the effective date change
-  parameters:
-    idempotencyKey:
-      in: header
-      name: Idempotency-Key
-      x-snake: idempotency_key
-      description: This allows you to safely retry requests without the risk of duplicate processing. 128 character max.
-      example: KEY_VALUE
-      schema:
-        type: string
-    requiredHeader:
-      in: header
-      name: xero-tenant-id
-      x-snake: xero_tenant_id
-      description: Xero identifier for Tenant
-      example: YOUR_XERO_TENANT_ID
-      schema:
-        type: string
-      required: true
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
   securitySchemes:
     OAuth2:
       type: oauth2
