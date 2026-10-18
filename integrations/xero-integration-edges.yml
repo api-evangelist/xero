@@ -23,6 +23,7 @@ checked:
 - https://www.streamlinedsalestax.org/certified-service-providers/certified-service-providers-list
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/xero/integrations
+- microsoft-teams/integrations/microsoft-teams-integration-edges.yml
 - stripe/integrations/stripe-integration-edges.yml
 summary: null
 marketplace_apps:
@@ -2744,4 +2745,23 @@ edges:
     builder: 'community (Meltano Hub variant maintainers: airbyte, singer-io)'
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
+- partner_name: Microsoft Teams (own)
+  partner: microsoft-teams
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://appsource.microsoft.com/en-us/product/office/WA200011459
+  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+  apps:
+  - Xero
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Microsoft Teams app
+  publisher_verified:
+  - Microsoft 365 Publisher Attestation
 templates: []
