@@ -1362,7 +1362,7 @@
     - beta
     in_cloud: false
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: xero-fivetran
   label: Fivetran
@@ -1388,7 +1388,7 @@
     - connectors/applications/xero
     vendor_link: https://www.xero.com/us/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: xero-meltano
   label: Meltano
@@ -1420,7 +1420,7 @@
     - bronze
     - silver
     builder: 'community (Meltano Hub variant maintainers: airbyte, singer-io)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: xero-microsoft-teams-own
   label: Microsoft Teams (own)
