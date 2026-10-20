@@ -11,8 +11,10 @@ checked:
 - https://fivetran.com/docs-sitemap.xml
 - https://fivetran.com/docs/connectors/partner-built-program
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
+- https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
 - https://github.com/meltano/hub
 - https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/
+- https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/
 - https://hightouch.com/docs/destinations/xero
 - https://monid.ai/tools/xero
 - https://n8n.io/integrations/xero/
@@ -102,14 +104,253 @@ marketplace_apps:
   channel: partner-built
   app: xero
   url: https://apps.xero.com/
-  app_count: 462
+  app_count: 464
   adapter: sweep-accounting-stores.py:store_xero
-  listed: 417
+  listed: 418
   platform_built: 5
-  partner_built: 412
+  partner_built: 413
   order: reviewCount
   status: ok
 edges:
+- partner_name: UK Open Banking
+  partner: null
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.openbanking.org.uk/regulated-providers/xero/
+  contract_reference:
+    register: UK Open Banking regulated providers (OBL directory)
+    spec_file: null
+    role: Third Party Providers
+    registered_name: Xero (UK) Limited
+    register_id: https://register.fca.org.uk/s/firm?id=0010X000049LESBQA4
+    matched_domain: xero.com
+    api_families: null
+    detected_by: sweep-standard-registers.py
+    detected: '2026-10-14'
+- partner_name: Stripe (own)
+  partner: stripe
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.stripe.com/apps/xero
+  mirror_of: stripe/integrations/stripe-integration-edges.yml
+  apps:
+  - Xero
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  category: accounting
+- partner_name: Microsoft Teams (own)
+  partner: microsoft-teams
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://appsource.microsoft.com/en-us/product/office/WA200011459
+  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+  apps:
+  - Xero
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Microsoft Teams app
+  publisher_verified:
+  - Microsoft 365 Publisher Attestation
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/xero
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - xero
+      status: released
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Airbyte
+  partner: airbyte
+  partner_match: aggregator
+  type: marketplace
+  marketplace: airbyte-registry
+  channel: elt-connector
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://docs.airbyte.com/integrations/sources/xero
+  category: null
+  contract_reference:
+    register: Airbyte connector registry (connectors.airbyte.com cloud_registry.json + oss_registry.json)
+    spec_file: null
+    role: elt-connector:airbyte-community
+    registered_name: Xero
+    matched_domain: xero.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connectors:
+    - airbyte/source-xero
+    support_level:
+    - community
+    release_stage:
+    - beta
+    in_cloud: false
+    builder: unknown (community connector; contributor not in the record)
+  detected_by: sweep-data-integration.py
+  first_seen: '2026-10-18'
+- partner_name: Fivetran
+  partner: fivetran
+  partner_match: aggregator
+  type: marketplace
+  marketplace: fivetran-connectors
+  channel: elt-connector
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://fivetran.com/docs/connectors/applications/xero
+  category: null
+  contract_reference:
+    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
+    spec_file: null
+    role: elt-connector:fivetran
+    registered_name: Xero
+    matched_domain: xero.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connector_paths:
+    - connectors/applications/xero
+    vendor_link: https://www.xero.com/us/
+    builder: Fivetran
+  detected_by: sweep-data-integration.py
+  first_seen: '2026-10-18'
+- partner_name: Meltano
+  partner: meltano
+  partner_match: aggregator
+  type: marketplace
+  marketplace: meltano-hub
+  channel: elt-connector
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://hub.meltano.com/extractors/tap-xero--airbyte
+  category: null
+  contract_reference:
+    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
+    spec_file: null
+    role: elt-connector:meltano-hub
+    registered_name: Xero
+    matched_domain: xero.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    plugins:
+    - tap-xero--airbyte
+    - tap-xero--singer-io
+    maintenance_status:
+    - beta
+    - unknown
+    quality:
+    - bronze
+    - silver
+    builder: 'community (Meltano Hub variant maintainers: airbyte, singer-io)'
+  detected_by: sweep-data-integration.py
+  first_seen: '2026-10-18'
+- partner_name: OpenPeppol (certified service providers)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://peppol.org/members/peppol-certified-service-providers/
+  category: Peppol service provider
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
+    spec_file: null
+    standard: Peppol
+    role: peppol-certified-service-provider
+    registered_name: Xero Limited
+    legal_name: Xero Limited
+    matched_domain: xero.com
+    matched_by: domain
+    domain_source: contact email domain
+    peppol_authorities:
+    - MBIE
+    countries:
+    - New Zealand
+    certified_products:
+    - product: Access Point
+      lapsed: false
+    signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and
+      countries are context, never read
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-19'
+  detected_by: sweep-einvoicing-tax.py
+  first_seen: '2026-10-15'
+- partner_name: OpenPeppol (certified service providers)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://peppol.org/members/peppol-certified-service-providers/
+  category: Peppol service provider
+  channel: standard-directory
+  relationship: compatible
+  shape: peppol
+  evidence_kind: conformance-register
+  degree: certified
+  report_only: true
+  contract_reference:
+    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
+    spec_file: null
+    standard: Peppol
+    role: peppol-certified-service-provider
+    registered_name: Xero Limited
+    matched_domain: xero.com
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-19'
+  detected_by: sweep-einvoicing-tax.py
+  first_seen: '2026-10-15'
+- partner_name: FDX (Financial Data Exchange)
+  partner: fdx
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.financialdataexchange.org/
+  contract_reference:
+    register: FDX Registry
+    standard: FDX API
+    spec_file: null
+    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
+    role: data-recipient
+    member_type: MEMBER
+    registered_name: Xero
+    register_id: 107
+    registered_website: https://www.xero.com
+    country: United States
+    fdx_version: null
+    matched_by: domain:xero.com
+    detected_by: sweep-fdx.py
+    detected: '2026-10-19'
+  detected_by: sweep-fdx.py
+  first_seen: '2026-10-19'
 - partner_name: Amaka
   app: Amaka
   partner: null
@@ -903,6 +1144,30 @@ edges:
   - Invoices:in
   - Items:out
   - Tax Rates:in
+- partner_name: tofu
+  app: tofu
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/tofu
+  category: Bills and expenses
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.gotofu.com
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:in
+  - Contacts:out
+  - Credit Notes:in
+  - Currencies:out
+  - Invoices:in
+  - Receipts:in
+  - Tax Rates:out
 - partner_name: Calxa
   app: Calxa
   partner: null
@@ -944,7 +1209,7 @@ edges:
   category: Reporting and forecasting
   detected_by: sweep-accounting-stores.py
   detected: '2026-10-12'
-  partner_url: https://flexfinancialreporting.com
+  partner_url: https://flexfinancialreporting.com/?utm_source=xero-app-store
 - partner_name: Futrli
   app: Futrli
   partner: null
@@ -964,30 +1229,6 @@ edges:
   - Accounts:out
   - Journals:out
   - Tracking Categories:out
-- partner_name: tofu
-  app: tofu
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  relationship: platform-app
-  direction: partner-built
-  evidence: https://apps.xero.com/us/app/tofu
-  category: Bills and expenses
-  detected_by: sweep-accounting-stores.py
-  detected: '2026-10-12'
-  partner_url: https://www.gotofu.com
-  data_flow:
-  - Accounts:out
-  - Bank Transactions:in
-  - Contacts:out
-  - Credit Notes:in
-  - Currencies:out
-  - Invoices:in
-  - Receipts:in
-  - Tax Rates:out
 - partner_name: PayPal
   app: PayPal
   partner: paypal
@@ -1289,10 +1530,13 @@ edges:
   data_flow:
   - Accounts:out
   - Branding Themes:out
-  - Contacts:out
+  - Contacts:exchange
   - Credit Notes:exchange
   - Invoices:exchange
+  - Overpayments:out
   - Payments:exchange
+  - Prepayments:out
+  - Purchase Orders:out
   - Quotes:out
   - Tax Rates:out
   - Tracking Categories:out
@@ -1388,6 +1632,21 @@ edges:
   detected_by: sweep-accounting-stores.py
   detected: '2026-10-12'
   partner_url: https://global-functions.re-leased.com/api/XeroStartSignupFlow
+- partner_name: Xero
+  app: Shopify
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: null
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://apps.xero.com/us/app/shopify
+  category: Ecommerce
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://www.xero.com
 - partner_name: Content Snare
   app: Content Snare
   partner: null
@@ -1474,21 +1733,6 @@ edges:
   - Invoices:in
   - Items:exchange
   - Tax Rates:exchange
-- partner_name: Xero
-  app: Shopify
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: own
-  channel: null
-  relationship: platform-app
-  direction: provider-built
-  evidence: https://apps.xero.com/us/app/shopify
-  category: Ecommerce
-  detected_by: sweep-accounting-stores.py
-  detected: '2026-10-12'
-  partner_url: https://www.xero.com
 - partner_name: Simpro
   app: Simpro
   partner: simpro
@@ -1541,7 +1785,7 @@ edges:
   app: Capsule CRM
   partner: null
   partner_match: null
-  partner_candidate: null
+  partner_candidate: capsule-crm
   type: marketplace
   marketplace: own
   channel: partner-built
@@ -1983,8 +2227,8 @@ edges:
   - Users:out
 - partner_name: Karbon
   app: Karbon
-  partner: null
-  partner_match: null
+  partner: karbonhq
+  partner_match: domain
   partner_candidate: null
   type: marketplace
   marketplace: own
@@ -1994,7 +2238,7 @@ edges:
   evidence: https://apps.xero.com/us/app/karbon
   category: Accountant tools
   detected_by: sweep-accounting-stores.py
-  detected: '2026-10-12'
+  detected: '2026-10-19'
   partner_url: https://www.karbonhq.com
   data_flow:
   - Accounts:exchange
@@ -2322,6 +2566,33 @@ edges:
   - Linked Transactions:in
   - Payments:in
   - Purchase Orders:in
+- partner_name: RecHound
+  app: RecHound
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/us/app/rechound
+  category: Reporting and forecasting
+  detected_by: sweep-accounting-stores.py
+  detected: '2026-10-12'
+  partner_url: https://rechound.com
+  data_flow:
+  - Accounts:out
+  - Bank Transactions:out
+  - Bank Transfers:out
+  - Credit Notes:out
+  - Invoices:out
+  - Journals:out
+  - Manual Journals:out
+  - Payments:out
+  - Receipts:out
+  - Tracking Categories:out
+  - Users:out
 - partner_name: Tidy International
   app: TidyWork
   partner: null
@@ -2383,33 +2654,6 @@ edges:
   - Contacts:in
   - Purchase Orders:in
   - Tax Rates:out
-- partner_name: RecHound
-  app: RecHound
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  relationship: platform-app
-  direction: partner-built
-  evidence: https://apps.xero.com/us/app/rechound
-  category: Reporting and forecasting
-  detected_by: sweep-accounting-stores.py
-  detected: '2026-10-12'
-  partner_url: https://rechound.com
-  data_flow:
-  - Accounts:out
-  - Bank Transactions:out
-  - Bank Transfers:out
-  - Credit Notes:out
-  - Invoices:out
-  - Journals:out
-  - Manual Journals:out
-  - Payments:out
-  - Receipts:out
-  - Tracking Categories:out
-  - Users:out
 - partner_name: Timely
   app: Timely
   partner: null
@@ -2449,138 +2693,6 @@ edges:
   - Manual Journals:in
   - Payments:in
   - Tracking Categories:out
-- partner_name: Hightouch
-  partner: hightouch
-  partner_match: aggregator
-  marketplace: coverage
-  channel: partner-built
-  direction: partner-built
-  type: coverage
-  relationship: connector-coverage
-  evidence: https://hightouch.com/docs/destinations/xero
-  coverage_role:
-  - destination
-  cdp_signals:
-    destination:
-      catalog_entries:
-      - xero
-      status: released
-  detected_by: sweep-cdp.py
-  first_seen: '2026-10-14'
-- partner_name: UK Open Banking
-  partner: null
-  type: contract
-  channel: regulator-register
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://www.openbanking.org.uk/regulated-providers/xero/
-  contract_reference:
-    register: UK Open Banking regulated providers (OBL directory)
-    spec_file: null
-    role: Third Party Providers
-    registered_name: Xero (UK) Limited
-    register_id: https://register.fca.org.uk/s/firm?id=0010X000049LESBQA4
-    matched_domain: xero.com
-    api_families: null
-    detected_by: sweep-standard-registers.py
-    detected: '2026-10-14'
-- partner_name: FDX (Financial Data Exchange)
-  partner: fdx
-  type: contract
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://registry.financialdataexchange.org/
-  contract_reference:
-    register: FDX Registry
-    standard: FDX API
-    spec_file: null
-    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
-    role: data-recipient
-    member_type: MEMBER
-    registered_name: Xero
-    register_id: 107
-    registered_website: https://www.xero.com
-    country: United States
-    fdx_version: null
-    matched_by: domain:xero.com
-    detected_by: sweep-fdx.py
-    detected: '2026-10-14'
-  detected_by: sweep-fdx.py
-  first_seen: '2026-10-14'
-- partner_name: Stripe (own)
-  partner: stripe
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.stripe.com/apps/xero
-  mirror_of: stripe/integrations/stripe-integration-edges.yml
-  apps:
-  - Xero
-  listing_count: 1
-  detected: '2026-10-15'
-  detected_by: mirror-platform-listings.py
-  category: accounting
-- partner_name: OpenPeppol (certified service providers)
-  partner: null
-  partner_match: register
-  type: register
-  direction: partner-built
-  evidence: https://peppol.org/members/peppol-certified-service-providers/
-  category: Peppol service provider
-  channel: standard-directory
-  relationship: standard-participant
-  contract_reference:
-    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
-    spec_file: null
-    standard: Peppol
-    role: peppol-certified-service-provider
-    registered_name: Xero Limited
-    legal_name: Xero Limited
-    matched_domain: xero.com
-    matched_by: domain
-    domain_source: contact email domain
-    peppol_authorities:
-    - MBIE
-    countries:
-    - New Zealand
-    certified_products:
-    - product: Access Point
-      lapsed: false
-    signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and
-      countries are context, never read
-    detected_by: sweep-einvoicing-tax.py
-    detected: '2026-10-15'
-  detected_by: sweep-einvoicing-tax.py
-  first_seen: '2026-10-15'
-- partner_name: OpenPeppol (certified service providers)
-  partner: null
-  partner_match: register
-  type: register
-  direction: partner-built
-  evidence: https://peppol.org/members/peppol-certified-service-providers/
-  category: Peppol service provider
-  channel: standard-directory
-  relationship: compatible
-  shape: peppol
-  evidence_kind: conformance-register
-  degree: certified
-  report_only: true
-  contract_reference:
-    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
-    spec_file: null
-    standard: Peppol
-    role: peppol-certified-service-provider
-    registered_name: Xero Limited
-    matched_domain: xero.com
-    detected_by: sweep-einvoicing-tax.py
-    detected: '2026-10-15'
-  detected_by: sweep-einvoicing-tax.py
-  first_seen: '2026-10-15'
 - partner_name: Zapier
   partner: zapier
   partner_match: aggregator
@@ -2614,7 +2726,7 @@ edges:
   channel: open-source-node
   relationship: ipaas-bridge
   direction: third-party
-  evidence: https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/Xero
+  evidence: https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/Xero
   category: null
   contract_reference:
     register: n8n built-in nodes (n8n-io/n8n packages/nodes-base)
@@ -2639,7 +2751,7 @@ edges:
   channel: open-source-node
   relationship: ipaas-bridge
   direction: third-party
-  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/xero_accounting_api
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/xero_accounting_api
   category: null
   contract_reference:
     register: Pipedream components (PipedreamHQ/pipedream components/)
@@ -2657,111 +2769,4 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
-- partner_name: Airbyte
-  partner: airbyte
-  partner_match: aggregator
-  type: marketplace
-  marketplace: airbyte-registry
-  channel: elt-connector
-  relationship: ipaas-bridge
-  direction: third-party
-  evidence: https://docs.airbyte.com/integrations/sources/xero
-  category: null
-  contract_reference:
-    register: Airbyte connector registry (connectors.airbyte.com cloud_registry.json + oss_registry.json)
-    spec_file: null
-    role: elt-connector:airbyte-community
-    registered_name: Xero
-    matched_domain: xero.com
-    matched_by: domain
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    connectors:
-    - airbyte/source-xero
-    support_level:
-    - community
-    release_stage:
-    - beta
-    in_cloud: false
-    builder: unknown (community connector; contributor not in the record)
-  detected_by: sweep-data-integration.py
-  first_seen: '2026-10-18'
-- partner_name: Fivetran
-  partner: fivetran
-  partner_match: aggregator
-  type: marketplace
-  marketplace: fivetran-connectors
-  channel: elt-connector
-  relationship: ipaas-bridge
-  direction: third-party
-  evidence: https://fivetran.com/docs/connectors/applications/xero
-  category: null
-  contract_reference:
-    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
-    spec_file: null
-    role: elt-connector:fivetran
-    registered_name: Xero
-    matched_domain: xero.com
-    matched_by: domain
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    connector_paths:
-    - connectors/applications/xero
-    vendor_link: https://www.xero.com/us/
-    builder: Fivetran
-  detected_by: sweep-data-integration.py
-  first_seen: '2026-10-18'
-- partner_name: Meltano
-  partner: meltano
-  partner_match: aggregator
-  type: marketplace
-  marketplace: meltano-hub
-  channel: elt-connector
-  relationship: ipaas-bridge
-  direction: third-party
-  evidence: https://hub.meltano.com/extractors/tap-xero--airbyte
-  category: null
-  contract_reference:
-    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
-    spec_file: null
-    role: elt-connector:meltano-hub
-    registered_name: Xero
-    matched_domain: xero.com
-    matched_by: domain
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    plugins:
-    - tap-xero--airbyte
-    - tap-xero--singer-io
-    maintenance_status:
-    - beta
-    - unknown
-    quality:
-    - bronze
-    - silver
-    builder: 'community (Meltano Hub variant maintainers: airbyte, singer-io)'
-  detected_by: sweep-data-integration.py
-  first_seen: '2026-10-18'
-- partner_name: Microsoft Teams (own)
-  partner: microsoft-teams
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://appsource.microsoft.com/en-us/product/office/WA200011459
-  mirror_of: microsoft-teams/integrations/microsoft-teams-integration-edges.yml
-  apps:
-  - Xero
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Microsoft Teams app
-  publisher_verified:
-  - Microsoft 365 Publisher Attestation
 templates: []
