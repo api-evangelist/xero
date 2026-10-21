@@ -1,8 +1,9 @@
-generated: '2026-10-12'
+generated: '2026-10-20'
 method: searched
 source:
 - https://n8n.io/integrations/xero/
 - https://composio.dev/toolkits/xero
+- https://apps.xero.com/
 checked:
 - https://apps.xero.com/
 - https://composio.dev/toolkits/xero
@@ -27,32 +28,33 @@ checked:
 - https://zapier.com/apps/xero/integrations
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
 - stripe/integrations/stripe-integration-edges.yml
+- https://docs.stripe.com/stripe-apps
+- https://docs.stripe.com/stripe-apps/review-requirements
+- https://marketplace.stripe.com/
+- https://marketplace.stripe.com/appm/apps
+- https://stripe.com/partners/directory
+- https://stripe.com/partners/verified-partners
+- https://stripe.partners/sitemap.xml
 summary: null
 marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: xero
+  url: https://apps.xero.com/
+  app_count: 464
+  adapter: sweep-accounting-stores.py:store_xero
+  listed: 418
+  platform_built: 5
+  partner_built: 413
+  order: reviewCount
+  status: ok
 - marketplace: n8n
   channel: open-source-node
   app: xero
   url: https://n8n.io/integrations/xero/
   identity: title
-  pair_pages: 17
-  pairs:
-  - xtractly
-  - ybug
-  - ycode
-  - yodiz
-  - yourls
-  - youtube
-  - zabbix
-  - zammad
-  - zendesk
-  - zenrows
-  - zoho-books
-  - zoho-crm
-  - zoho-desk
-  - zonka-feedback
-  - zoom
-  - zscaler-zia
-  - zulip
+  pair_pages: 0
+  pairs: []
 - marketplace: composio
   channel: agent-gateway
   app: xero
@@ -61,21 +63,26 @@ marketplace_apps:
   actions:
   - key: XERO_CREATE_BANK_TRANSACTION
   - key: XERO_CREATE_CONTACT
+  - key: XERO_CREATE_CREDIT_NOTE
   - key: XERO_CREATE_INVOICE
   - key: XERO_CREATE_ITEM
   - key: XERO_CREATE_MANUAL_JOURNAL
   - key: XERO_CREATE_PAYMENT
   - key: XERO_CREATE_PURCHASE_ORDER
+  - key: XERO_CREATE_QUOTE
   - key: XERO_GET_ACCOUNT
   - key: XERO_GET_ASSET
   - key: XERO_GET_BALANCE_SHEET_REPORT
+  - key: XERO_GET_BANK_TRANSACTION
   - key: XERO_GET_BUDGET
   - key: XERO_GET_CONNECTIONS
   - key: XERO_GET_CONTACTS
+  - key: XERO_GET_CREDIT_NOTE
   - key: XERO_GET_INVOICE
   - key: XERO_GET_ITEM
   - key: XERO_GET_MANUAL_JOURNAL
   - key: XERO_GET_ORGANISATION
+  - key: XERO_GET_PAYMENT
   - key: XERO_GET_PROFIT_LOSS_REPORT
   - key: XERO_GET_PROJECT
   - key: XERO_GET_PURCHASE_ORDER
@@ -95,22 +102,18 @@ marketplace_apps:
   - key: XERO_LIST_PAYMENTS
   - key: XERO_LIST_PROJECTS
   - key: XERO_LIST_PURCHASE_ORDERS
+  - key: XERO_LIST_QUOTES
   - key: XERO_LIST_TAX_RATES
   - key: XERO_LIST_TRACKING_CATEGORIES
   - key: XERO_POST_INVOICE_UPDATE
+  - key: XERO_UPDATE_BANK_TRANSACTION
   - key: XERO_UPDATE_CONTACT
+  - key: XERO_UPDATE_CREDIT_NOTE
+  - key: XERO_UPDATE_MANUAL_JOURNAL
+  - key: XERO_UPDATE_PURCHASE_ORDER
+  - key: XERO_UPDATE_QUOTE
   - key: XERO_UPLOAD_ATTACHMENT
-- marketplace: own
-  channel: partner-built
-  app: xero
-  url: https://apps.xero.com/
-  app_count: 464
-  adapter: sweep-accounting-stores.py:store_xero
-  listed: 418
-  platform_built: 5
-  partner_built: 413
-  order: reviewCount
-  status: ok
+  - key: XERO_VALIDATE_CREDENTIAL
 edges:
 - partner_name: UK Open Banking
   partner: null
@@ -2769,4 +2772,44 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Stripe Partner Ecosystem
+  partner: stripe
+  partner_match: register
+  type: register
+  direction: partner-built
+  channel: standard-directory
+  relationship: standard-participant
+  evidence: https://stripe.partners/directory/xero-invoicing
+  category: Stripe ecosystem partner
+  contract_reference:
+    register: Stripe Partner Ecosystem directory (stripe.com/partners/directory -> stripe.partners, PartnerPage
+      SSR __NUXT_DATA__)
+    standard: Stripe Partner Ecosystem
+    spec_file: null
+    role: stripe-verified-partner
+    registered_name: Xero
+    register_id: xero-invoicing
+    partner_tier:
+    - Premier SaaS Platform Partner
+    matched_domain: xero.com
+    matched_by: domain
+    identity_source: the directory's own website field for the partner (no lookup)
+    signal_note: 'certified_products = ONE entry per verified product type (Premier Apps / SaaS Platform / Payments
+      Partner: Stripe verified the product integration; no dates printed, lapsed null = unknown); Premier Services
+      Partner is a services tier (partner_tier only); Certified Professional Developers certify PEOPLE (context);
+      callouts / products never counted'
+    context:
+      callouts:
+      - Accounting
+      location: Level 3, 260 Burwood Road, Hawthorn, Melbourne, Victoria
+    detected_by: sweep-stripe-app-marketplace.py
+    detected: '2026-10-21'
+    certified_products:
+    - product: Xero
+      product_type: SaaS platform with embedded Stripe (verified platform integration)
+      certifier: Stripe (Verified Partner program)
+      verification: Premier SaaS Platform Partner
+      lapsed: null
+  detected_by: sweep-stripe-app-marketplace.py
+  first_seen: '2026-10-21'
 templates: []
