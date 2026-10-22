@@ -1,0 +1,644 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-pay-slip-schema.json",
+  "title": "PaySlip",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-payrollnz-api-openapi.yml#/components/schemas/PaySlip",
+  "type": "object",
+  "properties": {
+    "paySlipID": {
+      "description": "The Xero identifier for a PaySlip",
+      "type": "string",
+      "format": "uuid"
+    },
+    "employeeID": {
+      "description": "The Xero identifier for payroll employee",
+      "type": "string",
+      "format": "uuid"
+    },
+    "payRunID": {
+      "description": "The Xero identifier for the associated payrun",
+      "type": "string",
+      "format": "uuid"
+    },
+    "lastEdited": {
+      "description": "The date payslip was last updated",
+      "type": "string",
+      "format": "date",
+      "x-is-datetime": true
+    },
+    "firstName": {
+      "description": "Employee first name",
+      "type": "string"
+    },
+    "lastName": {
+      "description": "Employee last name",
+      "type": "string"
+    },
+    "totalEarnings": {
+      "description": "Total earnings before any deductions. Same as gross earnings for NZ.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "grossEarnings": {
+      "description": "Total earnings before any deductions. Same as total earnings for NZ.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalPay": {
+      "description": "The employee net pay",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalEmployerTaxes": {
+      "description": "The employer's tax obligation",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalEmployeeTaxes": {
+      "description": "The part of an employee's earnings that is deducted for tax purposes",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalDeductions": {
+      "description": "Total amount subtracted from an employee's earnings to reach total pay",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalReimbursements": {
+      "description": "Total reimbursements are nontaxable payments to an employee used to repay out-of-pocket expenses when the person incurs those expenses through employment",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalStatutoryDeductions": {
+      "description": "Total amounts required by law to subtract from the employee's earnings",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalSuperannuation": {
+      "description": "Benefits (also called fringe benefits, perquisites or perks) are various non-earnings compensations provided to employees in addition to their normal earnings or salaries",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "bacsHash": {
+      "description": "BACS Service User Number",
+      "type": "string"
+    },
+    "paymentMethod": {
+      "description": "The payment method code",
+      "type": "string",
+      "enum": [
+        "Cheque",
+        "Electronically",
+        "Manual"
+      ]
+    },
+    "earningsLines": {
+      "$ref": "#/$defs/EarningsLines"
+    },
+    "leaveEarningsLines": {
+      "$ref": "#/$defs/LeaveEarningsLines"
+    },
+    "timesheetEarningsLines": {
+      "$ref": "#/$defs/TimesheetEarningsLines"
+    },
+    "deductionLines": {
+      "$ref": "#/$defs/DeductionLines"
+    },
+    "reimbursementLines": {
+      "$ref": "#/$defs/ReimbursementLines"
+    },
+    "leaveAccrualLines": {
+      "$ref": "#/$defs/LeaveAccrualLines"
+    },
+    "superannuationLines": {
+      "$ref": "#/$defs/SuperannuationLines"
+    },
+    "paymentLines": {
+      "$ref": "#/$defs/PaymentLines"
+    },
+    "employeeTaxLines": {
+      "$ref": "#/$defs/TaxLines"
+    },
+    "employerTaxLines": {
+      "$ref": "#/$defs/TaxLines"
+    },
+    "statutoryDeductionLines": {
+      "$ref": "#/$defs/StatutoryDeductionLines"
+    },
+    "taxSettings": {
+      "$ref": "#/$defs/TaxSettings"
+    },
+    "grossEarningsHistory": {
+      "$ref": "#/$defs/GrossEarningsHistory"
+    }
+  },
+  "$defs": {
+    "DeductionLine": {
+      "type": "object",
+      "properties": {
+        "deductionTypeID": {
+          "description": "Xero identifier for payroll deduction",
+          "type": "string",
+          "format": "uuid"
+        },
+        "displayName": {
+          "description": "name of earnings rate for display in UI",
+          "type": "string"
+        },
+        "amount": {
+          "description": "The amount of the deduction line",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "subjectToTax": {
+          "description": "Identifies if the deduction is subject to tax",
+          "type": "boolean"
+        },
+        "percentage": {
+          "description": "Deduction rate percentage",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        }
+      }
+    },
+    "DeductionLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DeductionLine"
+      }
+    },
+    "EarningsLine": {
+      "type": "object",
+      "properties": {
+        "earningsLineID": {
+          "description": "Xero identifier for payroll earnings line",
+          "type": "string",
+          "format": "uuid"
+        },
+        "earningsRateID": {
+          "description": "Xero identifier for payroll earnings rate",
+          "type": "string",
+          "format": "uuid"
+        },
+        "displayName": {
+          "description": "name of earnings rate for display in UI",
+          "type": "string"
+        },
+        "ratePerUnit": {
+          "description": "Rate per unit for earnings line",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "numberOfUnits": {
+          "description": "Earnings number of units",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "fixedAmount": {
+          "description": "Earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "amount": {
+          "description": "The amount of the earnings line.",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "isLinkedToTimesheet": {
+          "description": "Identifies if the earnings is taken from the timesheet. False for earnings line",
+          "type": "boolean"
+        },
+        "isAverageDailyPayRate": {
+          "description": "Identifies if the earnings is using an average daily pay rate",
+          "type": "boolean"
+        },
+        "isSystemGenerated": {
+          "description": "Flag to identify whether the earnings line is system generated or not.",
+          "type": "boolean"
+        }
+      }
+    },
+    "EarningsLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EarningsLine"
+      }
+    },
+    "GrossEarningsHistory": {
+      "type": "object",
+      "properties": {
+        "daysPaid": {
+          "description": "Number of days the employee worked in the pay period (0 - 365)",
+          "type": "integer",
+          "format": "int32"
+        },
+        "unpaidWeeks": {
+          "description": "Number of full weeks the employee didn't work in the pay period (0 - 52)",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "LeaveAccrualLine": {
+      "type": "object",
+      "properties": {
+        "leaveTypeID": {
+          "description": "Xero identifier for the Leave type",
+          "type": "string",
+          "format": "uuid"
+        },
+        "numberOfUnits": {
+          "description": "Leave accrual number of units",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        }
+      }
+    },
+    "LeaveAccrualLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LeaveAccrualLine"
+      }
+    },
+    "LeaveEarningsLine": {
+      "type": "object",
+      "properties": {
+        "earningsLineID": {
+          "description": "Xero identifier for payroll earnings line",
+          "type": "string",
+          "format": "uuid"
+        },
+        "earningsRateID": {
+          "description": "Xero identifier for payroll leave earnings rate",
+          "type": "string",
+          "format": "uuid"
+        },
+        "displayName": {
+          "description": "name of earnings rate for display in UI",
+          "type": "string"
+        },
+        "ratePerUnit": {
+          "description": "Rate per unit for leave earnings line",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "numberOfUnits": {
+          "description": "Leave earnings number of units",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "fixedAmount": {
+          "description": "Leave earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "amount": {
+          "description": "The amount of the earnings line.",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "isLinkedToTimesheet": {
+          "description": "Identifies if the leave earnings is taken from the timesheet. False for leave earnings line",
+          "type": "boolean"
+        },
+        "isAverageDailyPayRate": {
+          "description": "Identifies if the earnings is using an average daily pay rate",
+          "type": "boolean"
+        },
+        "isSystemGenerated": {
+          "description": "Flag to identify whether the earnings line is system generated or not.",
+          "type": "boolean"
+        }
+      }
+    },
+    "LeaveEarningsLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LeaveEarningsLine"
+      }
+    },
+    "PaymentLine": {
+      "type": "object",
+      "properties": {
+        "paymentLineID": {
+          "description": "Xero identifier for payroll payment line",
+          "type": "string",
+          "format": "uuid"
+        },
+        "amount": {
+          "description": "The amount of the payment line",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "accountNumber": {
+          "description": "The account number",
+          "type": "string"
+        },
+        "sortCode": {
+          "description": "The account sort code",
+          "type": "string"
+        },
+        "accountName": {
+          "description": "The account name",
+          "type": "string"
+        }
+      }
+    },
+    "PaymentLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PaymentLine"
+      }
+    },
+    "ReimbursementLine": {
+      "type": "object",
+      "properties": {
+        "reimbursementTypeID": {
+          "description": "Xero identifier for payroll reimbursement",
+          "type": "string",
+          "format": "uuid"
+        },
+        "description": {
+          "description": "Reimbursement line description",
+          "type": "string"
+        },
+        "amount": {
+          "description": "Reimbursement amount",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "ratePerUnit": {
+          "description": "Rate per unit for leave earnings line",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "numberOfUnits": {
+          "description": "Leave earnings number of units",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        }
+      }
+    },
+    "ReimbursementLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ReimbursementLine"
+      }
+    },
+    "StatutoryDeductionLine": {
+      "type": "object",
+      "properties": {
+        "statutoryDeductionTypeID": {
+          "description": "Xero identifier for payroll statutory deduction type",
+          "type": "string",
+          "format": "uuid"
+        },
+        "amount": {
+          "description": "The amount of the statutory deduction line",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "fixedAmount": {
+          "description": "Fixed Amount",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "manualAdjustment": {
+          "description": "Identifies if the tax line is a manual adjustment",
+          "type": "boolean"
+        }
+      }
+    },
+    "StatutoryDeductionLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/StatutoryDeductionLine"
+      }
+    },
+    "SuperannuationLine": {
+      "type": "object",
+      "properties": {
+        "superannuationTypeID": {
+          "description": "Xero identifier for payroll superannuation type",
+          "type": "string",
+          "format": "uuid"
+        },
+        "displayName": {
+          "description": "Benefit display name",
+          "type": "string"
+        },
+        "amount": {
+          "description": "The amount of the superannuation line",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "fixedAmount": {
+          "description": "Superannuation fixed amount",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "percentage": {
+          "description": "Superannuation rate percentage",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "manualAdjustment": {
+          "description": "manual adjustment made",
+          "type": "boolean"
+        }
+      }
+    },
+    "SuperannuationLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SuperannuationLine"
+      }
+    },
+    "TaxCode": {
+      "description": "Tax codes used for employee tax",
+      "type": "string",
+      "enum": [
+        "ND",
+        "M",
+        "ME",
+        "MSL",
+        "MESL",
+        "SB",
+        "S",
+        "SH",
+        "ST",
+        "SBSL",
+        "SSL",
+        "SHSL",
+        "STSL",
+        "WT",
+        "CAE",
+        "EDW",
+        "NSW",
+        "STC",
+        "STCSL"
+      ]
+    },
+    "TaxLine": {
+      "type": "object",
+      "properties": {
+        "taxLineID": {
+          "description": "Xero identifier for payroll tax line",
+          "type": "string",
+          "format": "uuid"
+        },
+        "description": {
+          "description": "Tax line description",
+          "type": "string"
+        },
+        "amount": {
+          "description": "The amount of the tax line",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "globalTaxTypeID": {
+          "description": "Tax type ID",
+          "type": "string"
+        },
+        "manualAdjustment": {
+          "description": "Identifies if the tax line is a manual adjustment",
+          "type": "boolean"
+        }
+      }
+    },
+    "TaxLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TaxLine"
+      }
+    },
+    "TaxSettings": {
+      "type": "object",
+      "properties": {
+        "periodUnits": {
+          "description": "The number of units for the period type",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "periodType": {
+          "description": "The type of period (\"weeks\" or \"months\")",
+          "type": "string",
+          "enum": [
+            "weeks",
+            "months"
+          ]
+        },
+        "taxCode": {
+          "$ref": "#/$defs/TaxCode"
+        },
+        "specialTaxRate": {
+          "description": "Tax rate for STC and WT",
+          "type": "string"
+        },
+        "lumpSumTaxCode": {
+          "description": "Tax code for a lump sum amount",
+          "type": "string"
+        },
+        "lumpSumAmount": {
+          "description": "The total of the lump sum amount",
+          "type": "string"
+        }
+      }
+    },
+    "TimesheetEarningsLine": {
+      "type": "object",
+      "properties": {
+        "earningsLineID": {
+          "description": "Xero identifier for payroll earnings line",
+          "type": "string",
+          "format": "uuid"
+        },
+        "earningsRateID": {
+          "description": "Xero identifier for payroll leave earnings rate",
+          "type": "string",
+          "format": "uuid"
+        },
+        "displayName": {
+          "description": "name of earnings rate for display in UI",
+          "type": "string"
+        },
+        "ratePerUnit": {
+          "description": "Rate per unit for leave earnings line",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "numberOfUnits": {
+          "description": "Leave earnings number of units",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "fixedAmount": {
+          "description": "Leave earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "amount": {
+          "description": "The amount of the earnings line.",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "isLinkedToTimesheet": {
+          "description": "Identifies if the leave earnings is taken from the timesheet. False for leave earnings line",
+          "type": "boolean"
+        },
+        "isAverageDailyPayRate": {
+          "description": "Identifies if the earnings is using an average daily pay rate",
+          "type": "boolean"
+        },
+        "isSystemGenerated": {
+          "description": "Flag to identify whether the earnings line is system generated or not.",
+          "type": "boolean"
+        }
+      }
+    },
+    "TimesheetEarningsLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TimesheetEarningsLine"
+      }
+    }
+  }
+}

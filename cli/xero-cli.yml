@@ -1,0 +1,93 @@
+generated: '2026-10-20'
+method: searched
+source: https://github.com/XeroAPI/xero-command-line
+name: Xero command line (xero-command-line)
+binary: xero
+package: '@xeroapi/xero-command-line'
+version: 0.0.8
+announcement: https://devblog.xero.com/the-agentic-frontier-orchestrating-finance-with-the-xero-cli-52ae3306af6c
+install:
+- method: npm
+  command: npm install -g @xeroapi/xero-command-line
+- method: source
+  command: npm install (from a clone of the repo)
+auth: Profiles hold a Xero app Client ID; `xero login` runs a PKCE OAuth 2.0 flow. `--scope` narrows the requested scopes. Tokens stored encrypted (OS keyring or XERO_TOKEN_PASSPHRASE).
+commands:
+- group: profile
+  commands:
+  - xero profile add
+  - xero profile list
+  - xero profile set-default
+  - xero profile remove
+- group: auth
+  commands:
+  - xero login
+  - xero login --scope
+- group: org
+  commands:
+  - xero org details
+- group: contacts
+  commands:
+  - xero contacts list
+  - xero contacts create
+  - xero contacts update
+- group: contact-groups
+  commands:
+  - xero contact-groups list
+- group: accounts
+  commands:
+  - xero accounts list
+- group: invoices
+  commands:
+  - xero invoices list
+  - xero invoices create
+  - xero invoices update
+  - xero invoices pdf
+  - xero invoices online-url
+- group: quotes
+  commands:
+  - xero quotes list
+  - xero quotes create
+  - xero quotes update
+- group: credit-notes
+  commands:
+  - xero credit-notes list
+  - xero credit-notes create
+  - xero credit-notes update
+- group: manual-journals
+  commands:
+  - xero manual-journals list
+  - xero manual-journals create
+  - xero manual-journals update
+- group: bank-transactions
+  commands:
+  - xero bank-transactions list
+  - xero bank-transactions create
+  - xero bank-transactions update
+- group: payments
+  commands:
+  - xero payments list
+  - xero payments create
+- group: items
+  commands:
+  - xero items list
+  - xero items create
+  - xero items update
+- group: currencies
+  commands:
+  - xero currencies list
+- group: tax-rates
+  commands:
+  - xero tax-rates list
+- group: tracking
+  commands:
+  - xero tracking categories
+  - xero tracking options
+- group: reports
+  commands:
+  - xero reports aged-payables
+  - xero reports aged-receivables
+  - xero reports balance-sheet
+  - xero reports profit-and-loss
+  - xero reports trial-balance
+global_flags_note: Supports --json output; env vars XERO_PROFILE and XERO_CLIENT_ID.

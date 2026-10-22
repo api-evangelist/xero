@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-account-balances-response-schema.json",
+  "title": "AccountBalancesResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-account-data-api-openapi.yml#/components/schemas/AccountBalancesResponse",
+  "type": "object",
+  "required": [
+    "accountBalances"
+  ],
+  "properties": {
+    "accountBalances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AccountBalance"
+      }
+    }
+  },
+  "$defs": {
+    "Account": {
+      "type": "object",
+      "required": [
+        "name",
+        "class",
+        "type",
+        "status",
+        "systemAccountCode"
+      ],
+      "properties": {
+        "code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "class": {
+          "type": "string",
+          "enum": [
+            "ASSET",
+            "LIABILITY",
+            "EQUITY",
+            "REVENUE",
+            "EXPENSE"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "description": "Account type (e.g. `BANK`, `CURRENT`). Reported as `INVENTORY` for inventory\nasset accounts, regardless of the account's underlying type.\n"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "ARCHIVED",
+            "DELETED"
+          ]
+        },
+        "systemAccountCode": {
+          "type": "string",
+          "description": "System account code, or `NONE` if the account has no system account code."
+        }
+      }
+    },
+    "AccountBalance": {
+      "type": "object",
+      "required": [
+        "accountId",
+        "date",
+        "balance",
+        "signedBalance",
+        "account"
+      ],
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The account this balance is for."
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "The date this balance applies to (YYYY-MM-DD)."
+        },
+        "balance": {
+          "$ref": "#/$defs/LedgerDecimal"
+        },
+        "signedBalance": {
+          "type": "number",
+          "format": "double",
+          "description": "Balance as a signed number (positive for debit, negative for credit)."
+        },
+        "account": {
+          "$ref": "#/$defs/Account"
+        }
+      }
+    },
+    "LedgerDecimal": {
+      "type": "object",
+      "required": [
+        "value",
+        "type"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "format": "double",
+          "description": "Amount value (always positive)."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "DEBIT",
+            "CREDIT"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-employee-leave-setup-schema.json",
+  "title": "EmployeeLeaveSetup",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-payrollnz-api-openapi.yml#/components/schemas/EmployeeLeaveSetup",
+  "type": "object",
+  "properties": {
+    "includeHolidayPay": {
+      "description": "Identifier if holiday pay will be included in each payslip",
+      "type": "boolean"
+    },
+    "holidayPayOpeningBalance": {
+      "description": "Initial holiday pay balance. A percentage — usually 8% — of gross earnings since their last work anniversary.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "annualLeaveOpeningBalance": {
+      "description": "Initial annual leave balance. The balance at their last anniversary, less any leave taken since then and excluding accrued annual leave.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "negativeAnnualLeaveBalancePaidAmount": {
+      "description": "The dollar value of annual leave opening balance if negative.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "SickLeaveToAccrueAnnually": {
+      "description": "Number of units accrued annually for sick leave. The type of units is determined by the property \"TypeOfUnitsToAccrue\" on the \"Sick Leave\" leave type",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "SickLeaveMaximumToAccrue": {
+      "description": "Maximum number of units accrued annually for sick leave. The type of units is determined by the property \"TypeOfUnitsToAccrue\" on the \"Sick Leave\" leave type",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "sickLeaveOpeningBalance": {
+      "description": "Initial sick leave balance. This will be positive unless they've taken sick leave in advance",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "SickLeaveScheduleOfAccrual": {
+      "description": "Set Schedule of Accrual Type for Sick Leave",
+      "type": "string"
+    },
+    "SickLeaveAnniversaryDate": {
+      "description": "If Sick Leave Schedule of Accrual is \"OnAnniversaryDate\", this is the date when entitled to Sick Leave. When null the Employee's start date is used as the anniversary date",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "AnnualLeaveAnniversaryDate": {
+      "description": "The first date the employee will accrue Annual Leave. When null the Employee's start date is used as the anniversary date",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    }
+  }
+}

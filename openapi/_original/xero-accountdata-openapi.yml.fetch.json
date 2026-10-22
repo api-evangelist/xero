@@ -1,0 +1,11 @@
+{
+ "url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-accountdata.yaml",
+ "requested_url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-accountdata.yaml",
+ "status": 200,
+ "bytes": 54826,
+ "sha256": "e19e447a18d213e68d5d90bb8b0bce606e79b712aac073ded94e407659acfebf",
+ "fetched_at": "2026-10-20",
+ "fetched_by": "contract module (curl)",
+ "match": "verbatim",
+ "note": "Published by Xero in its own GitHub org XeroAPI/Xero-OpenAPI; info.contact api@xero.com, servers[] api.xero.com, terms developer.xero.com."
+}

@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-cash-validation-response-schema.json",
+  "title": "CashValidationResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-finance-api-openapi.yml#/components/schemas/CashValidationResponse",
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "string",
+      "description": "The Xero identifier for an account",
+      "format": "uuid"
+    },
+    "statementBalance": {
+      "$ref": "#/$defs/StatementBalanceResponse"
+    },
+    "statementBalanceDate": {
+      "type": "string",
+      "description": "UTC Date when the last bank statement item was entered into Xero. This date is represented in ISO 8601 format.",
+      "format": "date"
+    },
+    "bankStatement": {
+      "$ref": "#/$defs/BankStatementResponse"
+    },
+    "cashAccount": {
+      "$ref": "#/$defs/CashAccountResponse"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "BankStatementResponse": {
+      "type": "object",
+      "properties": {
+        "statementLines": {
+          "$ref": "#/$defs/StatementLinesResponse"
+        },
+        "currentStatement": {
+          "$ref": "#/$defs/CurrentStatementResponse"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CashAccountResponse": {
+      "type": "object",
+      "properties": {
+        "unreconciledAmountPos": {
+          "type": "number",
+          "description": "Total value of transactions in the journals which are not reconciled to bank statement lines, and have a positive (debit) value.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "unreconciledAmountNeg": {
+          "type": "number",
+          "description": "Total value of transactions in the journals which are not reconciled to bank statement lines, and have a negative (credit) value.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "startingBalance": {
+          "type": "number",
+          "description": "Starting (or historic) balance from the journals (manually keyed in by users on account creation - unverified).",
+          "format": "double",
+          "x-is-money": true
+        },
+        "accountBalance": {
+          "type": "number",
+          "description": "Current cash at bank accounting value from the journals.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "balanceCurrency": {
+          "type": "string",
+          "description": "Currency which the cashAccount transactions relate to."
+        }
+      },
+      "additionalProperties": false
+    },
+    "CurrentStatementResponse": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "description": "Looking at the most recent bank statement, this field indicates the first date which transactions on this statement pertain to. This date is represented in ISO 8601 format.",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "Looking at the most recent bank statement, this field indicates the last date which transactions on this statement pertain to. This date is represented in ISO 8601 format.",
+          "format": "date"
+        },
+        "startBalance": {
+          "type": "number",
+          "description": "Looking at the most recent bank statement, this field indicates the balance before the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).",
+          "format": "double",
+          "x-is-money": true
+        },
+        "endBalance": {
+          "type": "number",
+          "description": "Looking at the most recent bank statement, this field indicates the balance after the transactions on the statement are applied (note, this is not always populated by the bank in every single instance (~10%)).",
+          "format": "double",
+          "x-is-money": true
+        },
+        "importedDateTimeUtc": {
+          "type": "string",
+          "description": "Looking at the most recent bank statement, this field indicates when the document was imported into Xero.  This date is represented in ISO 8601 format.",
+          "format": "date-time"
+        },
+        "importSourceType": {
+          "type": "string",
+          "description": "Looking at the most recent bank statement, this field indicates the source of the data (direct bank feed, file upload, or manual keying)."
+        }
+      },
+      "additionalProperties": false
+    },
+    "DataSourceResponse": {
+      "type": "object",
+      "properties": {
+        "directBankFeed": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "fileUpload": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "manual": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "directBankFeedPos": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.  This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "fileUploadPos": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "manualPos": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data. Only positive transactions are included.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "directBankFeedNeg": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was a direct bank feed in to Xero via an API integration.   This could be from a bank or aggregator.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "fileUploadNeg": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was a file manually uploaded in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "manualNeg": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was manually input in to Xero.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "otherPos": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.  Only positive transactions are included.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "otherNeg": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.  Only negative transactions are included.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "other": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the source of the data was unknown.   This gives an indication on the certainty of correctness of the data.",
+          "format": "double",
+          "x-is-money": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "StatementBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Total closing balance of the account. This includes both reconciled and unreconciled bank statement lines. The closing balance will always be represented as a positive number, with it’s debit/credit status defined in the statementBalanceDebitCredit field.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "type": {
+          "type": "string",
+          "description": "The DEBIT or CREDIT status of the account. Cash accounts in credit have a negative balance."
+        }
+      },
+      "additionalProperties": false
+    },
+    "StatementLinesResponse": {
+      "type": "object",
+      "properties": {
+        "unreconciledAmountPos": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is positive.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "unreconciledAmountNeg": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where both the reconciled flag is set to FALSE, and the amount is negative.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "unreconciledLines": {
+          "type": "integer",
+          "description": "Count of all statement lines where the reconciled flag is set to FALSE.",
+          "format": "int32"
+        },
+        "avgDaysUnreconciledPos": {
+          "type": "number",
+          "description": "Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is positive. Provides an indication of the age of unreconciled transactions.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "avgDaysUnreconciledNeg": {
+          "type": "number",
+          "description": "Sum-product of age of statement line in days multiplied by transaction amount, divided by the sum of transaction amount - in for those statement lines in which the reconciled flag is set to FALSE, and the amount is negative. Provides an indication of the age of unreconciled transactions.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "earliestUnreconciledTransaction": {
+          "type": "string",
+          "description": "UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.",
+          "format": "date"
+        },
+        "latestUnreconciledTransaction": {
+          "type": "string",
+          "description": "UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to FALSE.  This date is represented in ISO 8601 format.",
+          "format": "date"
+        },
+        "deletedAmount": {
+          "type": "number",
+          "description": "Sum of the amounts of all deleted statement lines.  Transactions may be deleted due to duplication or otherwise.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines.  This is used as a metric of comparison to the unreconciled figures above.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "dataSource": {
+          "$ref": "#/$defs/DataSourceResponse"
+        },
+        "earliestReconciledTransaction": {
+          "type": "string",
+          "description": "UTC Date which is the earliest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.",
+          "format": "date"
+        },
+        "latestReconciledTransaction": {
+          "type": "string",
+          "description": "UTC Date which is the latest transaction date of a statement line for which the reconciled flag is set to TRUE.  This date is represented in ISO 8601 format.",
+          "format": "date"
+        },
+        "reconciledAmountPos": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is positive.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "reconciledAmountNeg": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where both the reconciled flag is set to TRUE, and the amount is negative.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "reconciledLines": {
+          "type": "integer",
+          "description": "Count of all statement lines where the reconciled flag is set to TRUE",
+          "format": "int32"
+        },
+        "totalAmountPos": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the amount is positive",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalAmountNeg": {
+          "type": "number",
+          "description": "Sum of the amounts of all statement lines where the amount is negative.",
+          "format": "double",
+          "x-is-money": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

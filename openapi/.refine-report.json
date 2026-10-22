@@ -1,9 +1,12 @@
 {
   "provider": "xero",
   "sources": [
+    "_original/xero-accountdata-openapi.yml",
     "_original/xero-accounting-openapi.yml",
+    "_original/xero-app-store-openapi.yml",
     "_original/xero-assets-openapi.yml",
     "_original/xero-bankfeeds-openapi.yml",
+    "_original/xero-bankfeeds-v2-openapi.yml",
     "_original/xero-files-openapi.yml",
     "_original/xero-finance-openapi.yml",
     "_original/xero-identity-openapi.yml",
@@ -13,9 +16,12 @@
     "_original/xero-projects-openapi.yml"
   ],
   "outputs": [
+    "xero-accountdata-api-openapi.yml",
     "xero-accounting-api-openapi.yml",
+    "xero-appstore-api-openapi.yml",
     "xero-asset-api-openapi.yml",
     "xero-bankfeeds-api-openapi.yml",
+    "xero-feedconnections-api-openapi.yml",
     "xero-files-api-openapi.yml",
     "xero-finance-api-openapi.yml",
     "xero-identity-api-openapi.yml",
@@ -25,15 +31,22 @@
     "xero-project-api-openapi.yml"
   ],
   "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
+    "deleted 6 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (10 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (13 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "xero-accountdata-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "xero-accountdata-openapi.yml: declared missing tag: AccountData",
     "xero-accounting-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "xero-app-store-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "xero-app-store-openapi.yml: declared missing tag: AppStore",
     "xero-assets-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "xero-bankfeeds-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "xero-bankfeeds-v2-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "xero-bankfeeds-v2-openapi.yml: declared missing tag: FeedConnections",
     "xero-files-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "xero-finance-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "xero-identity-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
@@ -41,17 +54,22 @@
     "xero-payroll-nz-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "xero-payroll-uk-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "xero-projects-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "superseded outputs removed: xero-bank-feeds-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 11 total)"
+    "superseded outputs removed: xero-account-data-api-openapi.yml, xero-app-store-api-openapi.yml, xero-bank-feeds-api-openapi.yml, xero-bank-feeds-v2-api-openapi.yml, xero-payrollau-v2-api-openapi.yml \u2026",
+    "apis.yml register: written (+4 apis, 14 total)"
   ],
   "skipped": [
+    "_original/xero-payroll-au-v2-openapi.yml: archived document superseded by a larger archived document",
+    "xero-account-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "xero-accounting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "xero-app-store-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "xero-asset-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "xero-bank-feeds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "xero-bank-feeds-v2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "xero-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "xero-finance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "xero-identity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "xero-payrollau-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "xero-payrollau-v2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "xero-payrollnz-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "xero-payrolluk-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "xero-project-api-openapi.yml: previously refined output, superseded by openapi/_original/"

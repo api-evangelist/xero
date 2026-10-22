@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-timesheet-line-schema.json",
+  "title": "TimesheetLine",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-payrollau-v2-api-openapi.yml#/components/schemas/TimesheetLine",
+  "type": "object",
+  "required": [
+    "date",
+    "earningsRateID",
+    "numberOfUnits"
+  ],
+  "properties": {
+    "timesheetLineID": {
+      "description": "The Xero identifier for a Timesheet Line",
+      "type": "string",
+      "format": "uuid"
+    },
+    "date": {
+      "description": "The Date that this Timesheet Line is for (YYYY-MM-DD)",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "earningsRateID": {
+      "description": "The Xero identifier for the Earnings Rate that the Timesheet is for",
+      "type": "string",
+      "format": "uuid"
+    },
+    "trackingItemID": {
+      "description": "The Xero identifier for the Tracking Item that the Timesheet is for",
+      "type": "string",
+      "format": "uuid"
+    },
+    "numberOfUnits": {
+      "description": "The Number of Units of the Timesheet Line",
+      "type": "number",
+      "format": "double"
+    }
+  }
+}

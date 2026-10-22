@@ -1,0 +1,60 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for Xero Files API
+  version: 1.0.0
+extends: openapi/xero-files-api-openapi.yml
+x-generated: '2026-10-20'
+x-method: generated
+x-source: openapi/xero-files-api-openapi.yml
+x-rationale: 'Records our enhancements without mutating the spec: Idempotency-Key support marked per operation (from
+  the spec''s own parameters) and, where applicable, the official Xero MCP tools that call each operation (from
+  mcp/xero-tool-crosswalk.yml).'
+actions:
+- target: $.info
+  description: API Evangelist provenance and agent-surface pointers.
+  update:
+    x-apievangelist-profiled: '2026-10-20'
+    x-llms-txt: llms/xero-llms.txt
+    x-authentication: authentication/xero-authentication.yml
+- target: $.paths['/Files/{FileId}/Associations'].post
+  description: 'createFileAssociation: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Folders'].post
+  description: 'createFolder: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Files/{FileId}'].put
+  description: 'updateFile: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Folders/{FolderId}'].put
+  description: 'updateFolder: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Files'].post
+  description: 'uploadFile: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Files/{FolderId}'].post
+  description: 'uploadFileToFolder: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey

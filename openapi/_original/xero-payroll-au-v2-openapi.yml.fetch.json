@@ -1,0 +1,11 @@
+{
+ "url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-payroll-au-v2.yaml",
+ "requested_url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-payroll-au-v2.yaml",
+ "status": 200,
+ "bytes": 31761,
+ "sha256": "679e6269ee3f5091ee28786ed31616f25bf26ab75db4577943cb44e09ae6f421",
+ "fetched_at": "2026-10-20",
+ "fetched_by": "contract module (curl)",
+ "match": "verbatim",
+ "note": "Published by Xero in its own GitHub org XeroAPI/Xero-OpenAPI; info.contact api@xero.com, servers[] api.xero.com, terms developer.xero.com."
+}

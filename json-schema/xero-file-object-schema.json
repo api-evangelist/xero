@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-file-object-schema.json",
+  "title": "FileObject",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-files-api-openapi.yml#/components/schemas/FileObject",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "manufacturer",
+    "releaseDate"
+  ],
+  "properties": {
+    "Name": {
+      "description": "File Name",
+      "type": "string"
+    },
+    "MimeType": {
+      "description": "MimeType of the file (image/png, image/jpeg, application/pdf, etc..)",
+      "type": "string"
+    },
+    "Size": {
+      "description": "Numeric value in bytes",
+      "type": "integer"
+    },
+    "CreatedDateUtc": {
+      "description": "Created date in UTC",
+      "type": "string"
+    },
+    "UpdatedDateUtc": {
+      "description": "Updated date in UTC",
+      "type": "string"
+    },
+    "User": {
+      "$ref": "#/$defs/User"
+    },
+    "Id": {
+      "description": "File object's UUID",
+      "type": "string",
+      "format": "uuid"
+    },
+    "FolderId": {
+      "description": "Folder relation object's UUID",
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "$defs": {
+    "User": {
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "Id": {
+          "description": "Xero identifier",
+          "type": "string",
+          "format": "uuid"
+        },
+        "Name": {
+          "description": "Key is Name, but returns Email address of user who created the file",
+          "type": "string"
+        },
+        "FirstName": {
+          "description": "First name of user",
+          "type": "string"
+        },
+        "LastName": {
+          "description": "Last name of user",
+          "type": "string"
+        },
+        "FullName": {
+          "description": "Last name of user",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

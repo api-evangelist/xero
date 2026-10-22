@@ -653,183 +653,6 @@ paths:
               example: '{ "Name": "Inbox", "FileCount": 14, "Email": "xero.inbox.jpf4.6oo29retajkhtfus@xerofiles.com", "IsInbox": true, "Id": "bf924975-7097-46f2-a143-1ecfbab3c8c3" }'
 components:
   schemas:
-    UploadObject:
-      type: object
-      required:
-      - body
-      - name
-      - filename
-      properties:
-        body:
-          type: string
-          format: byte
-        name:
-          type: string
-          description: exact name of the file you are uploading
-        filename:
-          type: string
-        mimeType:
-          type: string
-    Folder:
-      required:
-      - name
-      properties:
-        Name:
-          description: The name of the folder
-          type: string
-          example: assets
-        FileCount:
-          description: The number of files in the folder
-          type: integer
-          example: 5
-        Email:
-          description: The email address used to email files to the inbox. Only the inbox will have this element.
-          type: string
-          example: foo@bar.com
-        IsInbox:
-          description: to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.
-          type: boolean
-          example: true
-        Id:
-          description: Xero unique identifier for a folder  Files
-          type: string
-          format: uuid
-          example: 4ff1e5cc-9835-40d5-bb18-09fdb118db9c
-    ObjectGroup:
-      description: The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.
-      type: string
-      enum:
-      - Account
-      - BankTransaction
-      - Contact
-      - CreditNote
-      - Invoice
-      - Item
-      - ManualJournal
-      - Overpayment
-      - Payment
-      - Prepayment
-      - Quote
-      - Receipt
-    FileObject:
-      type: object
-      required:
-      - id
-      - name
-      - manufacturer
-      - releaseDate
-      properties:
-        Name:
-          description: File Name
-          type: string
-          example: File2.jpg
-        MimeType:
-          description: MimeType of the file (image/png, image/jpeg, application/pdf, etc..)
-          type: string
-          example: image/jpeg
-        Size:
-          description: Numeric value in bytes
-          type: integer
-          example: 3615
-        CreatedDateUtc:
-          description: Created date in UTC
-          type: string
-          example: 2020-12-03 19:04:58.697000
-        UpdatedDateUtc:
-          description: Updated date in UTC
-          type: string
-          example: 2020-12-03 19:04:58.697000
-        User:
-          $ref: '#/components/schemas/User'
-        Id:
-          description: File object's UUID
-          type: string
-          format: uuid
-          example: d290f1ee-6c54-4b01-90e6-d701748f0851
-        FolderId:
-          description: Folder relation object's UUID
-          type: string
-          format: uuid
-          example: 0f8ccf21-7267-4268-9167-a1e2c40c84c8
-    User:
-      required:
-      - Id
-      properties:
-        Id:
-          description: Xero identifier
-          type: string
-          format: uuid
-          example: 4ff1e5cc-9835-40d5-bb18-09fdb118db9c
-        Name:
-          description: Key is Name, but returns Email address of user who created the file
-          type: string
-          example: john.smith@mail.com
-        FirstName:
-          description: First name of user
-          type: string
-          example: John
-        LastName:
-          description: Last name of user
-          type: string
-          example: Smith
-        FullName:
-          description: Last name of user
-          type: string
-          example: Smith
-      type: object
-    Files:
-      type: object
-      properties:
-        TotalCount:
-          type: integer
-          example: 2
-        Page:
-          type: integer
-          example: 1
-        PerPage:
-          type: integer
-          example: 50
-        Items:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileObject'
-    Association:
-      type: object
-      properties:
-        SendWithObject:
-          description: Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.
-          type: boolean
-          example: true
-        Name:
-          description: The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.
-          type: string
-          example: Test.pdf
-        Size:
-          description: The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.
-          type: integer
-          example: 12357
-        CreatedDateUtc:
-          description: The date the file was created (UTC). Note- The CreatedDateUtc element is only returned when using /Associations/{ObjectId} endpoint.
-          type: string
-          format: date-time
-          example: '2020-12-10T01:22:00.0000000'
-        AssociationDateUtc:
-          description: The date the file was associated with the object (UTC). Note- The AssociationDateUtc element is only returned when using /Associations/{ObjectId} endpoint.
-          type: string
-          format: date-time
-          example: '2020-12-10T01:22:00.0000000'
-        FileId:
-          description: The unique identifier of the file
-          type: string
-          format: uuid
-        ObjectId:
-          description: The identifier of the object that the file is being associated with (e.g. InvoiceID, BankTransactionID, ContactID)
-          type: string
-          format: uuid
-        ObjectGroup:
-          $ref: '#/components/schemas/ObjectGroup'
-        ObjectType:
-          $ref: '#/components/schemas/ObjectType'
     ObjectType:
       description: The Object Type
       type: string
@@ -890,6 +713,183 @@ components:
       - Termliab
       - NonCurrent
       - SalesQuote
+    UploadObject:
+      type: object
+      required:
+      - body
+      - name
+      - filename
+      properties:
+        body:
+          type: string
+          format: byte
+        name:
+          type: string
+          description: exact name of the file you are uploading
+        filename:
+          type: string
+        mimeType:
+          type: string
+    User:
+      required:
+      - Id
+      properties:
+        Id:
+          description: Xero identifier
+          type: string
+          format: uuid
+          example: 4ff1e5cc-9835-40d5-bb18-09fdb118db9c
+        Name:
+          description: Key is Name, but returns Email address of user who created the file
+          type: string
+          example: john.smith@mail.com
+        FirstName:
+          description: First name of user
+          type: string
+          example: John
+        LastName:
+          description: Last name of user
+          type: string
+          example: Smith
+        FullName:
+          description: Last name of user
+          type: string
+          example: Smith
+      type: object
+    FileObject:
+      type: object
+      required:
+      - id
+      - name
+      - manufacturer
+      - releaseDate
+      properties:
+        Name:
+          description: File Name
+          type: string
+          example: File2.jpg
+        MimeType:
+          description: MimeType of the file (image/png, image/jpeg, application/pdf, etc..)
+          type: string
+          example: image/jpeg
+        Size:
+          description: Numeric value in bytes
+          type: integer
+          example: 3615
+        CreatedDateUtc:
+          description: Created date in UTC
+          type: string
+          example: 2020-12-03 19:04:58.697000
+        UpdatedDateUtc:
+          description: Updated date in UTC
+          type: string
+          example: 2020-12-03 19:04:58.697000
+        User:
+          $ref: '#/components/schemas/User'
+        Id:
+          description: File object's UUID
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        FolderId:
+          description: Folder relation object's UUID
+          type: string
+          format: uuid
+          example: 0f8ccf21-7267-4268-9167-a1e2c40c84c8
+    Files:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          example: 2
+        Page:
+          type: integer
+          example: 1
+        PerPage:
+          type: integer
+          example: 50
+        Items:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileObject'
+    Association:
+      type: object
+      properties:
+        SendWithObject:
+          description: Boolean flag to determines whether the file is sent with the document it is attached to on client facing communications. Note- The SendWithObject element is only returned when using /Associations/{ObjectId} endpoint.
+          type: boolean
+          example: true
+        Name:
+          description: The name of the associated file. Note- The Name element is only returned when using /Associations/{ObjectId} endpoint.
+          type: string
+          example: Test.pdf
+        Size:
+          description: The size of the associated file in bytes. Note- The Size element is only returned when using /Associations/{ObjectId} endpoint.
+          type: integer
+          example: 12357
+        CreatedDateUtc:
+          description: The date the file was created (UTC). Note- The CreatedDateUtc element is only returned when using /Associations/{ObjectId} endpoint.
+          type: string
+          format: date-time
+          example: '2020-12-10T01:22:00.0000000'
+        AssociationDateUtc:
+          description: The date the file was associated with the object (UTC). Note- The AssociationDateUtc element is only returned when using /Associations/{ObjectId} endpoint.
+          type: string
+          format: date-time
+          example: '2020-12-10T01:22:00.0000000'
+        FileId:
+          description: The unique identifier of the file
+          type: string
+          format: uuid
+        ObjectId:
+          description: The identifier of the object that the file is being associated with (e.g. InvoiceID, BankTransactionID, ContactID)
+          type: string
+          format: uuid
+        ObjectGroup:
+          $ref: '#/components/schemas/ObjectGroup'
+        ObjectType:
+          $ref: '#/components/schemas/ObjectType'
+    ObjectGroup:
+      description: The Object Group that the object is in. These roughly correlate to the endpoints that can be used to retrieve the object via the core accounting API.
+      type: string
+      enum:
+      - Account
+      - BankTransaction
+      - Contact
+      - CreditNote
+      - Invoice
+      - Item
+      - ManualJournal
+      - Overpayment
+      - Payment
+      - Prepayment
+      - Quote
+      - Receipt
+    Folder:
+      required:
+      - name
+      properties:
+        Name:
+          description: The name of the folder
+          type: string
+          example: assets
+        FileCount:
+          description: The number of files in the folder
+          type: integer
+          example: 5
+        Email:
+          description: The email address used to email files to the inbox. Only the inbox will have this element.
+          type: string
+          example: foo@bar.com
+        IsInbox:
+          description: to indicate if the folder is the Inbox. The Inbox cannot be renamed or deleted.
+          type: boolean
+          example: true
+        Id:
+          description: Xero unique identifier for a folder  Files
+          type: string
+          format: uuid
+          example: 4ff1e5cc-9835-40d5-bb18-09fdb118db9c
   parameters:
     idempotencyKey:
       in: header

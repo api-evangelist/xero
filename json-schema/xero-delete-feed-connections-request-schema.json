@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-delete-feed-connections-request-schema.json",
+  "title": "DeleteFeedConnectionsRequest",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-bank-feeds-v2-api-openapi.yml#/components/schemas/DeleteFeedConnectionsRequest",
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "properties": {
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "description": "Between 1 and 50 Feed Connections to terminate. No element may be null, and no identifier\nmay appear twice.\n",
+      "items": {
+        "$ref": "#/$defs/FeedConnectionToDelete"
+      }
+    }
+  },
+  "$defs": {
+    "FeedConnectionToDelete": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The Feed Connection to terminate. Required; an all-zeros GUID is treated as though the\nfield were absent. `accountToken`, `accountType` and `country`, which V1 accepted here,\nare not supported.\n"
+        }
+      }
+    }
+  }
+}

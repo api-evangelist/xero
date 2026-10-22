@@ -1,0 +1,11 @@
+{
+ "url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-webhooks.yaml",
+ "requested_url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-webhooks.yaml",
+ "status": 200,
+ "bytes": 19389,
+ "sha256": "4a0fe60e0e4351bbdc416e4d38fd75232fb2c91ea30a44c9b99c832a9157d698",
+ "fetched_at": "2026-10-20",
+ "fetched_by": "contract module (curl)",
+ "match": "verbatim",
+ "note": "Published by Xero in its own GitHub org XeroAPI/Xero-OpenAPI; info.contact api@xero.com, servers[] api.xero.com, terms developer.xero.com."
+}

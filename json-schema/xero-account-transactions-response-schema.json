@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-account-transactions-response-schema.json",
+  "title": "AccountTransactionsResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-account-data-api-openapi.yml#/components/schemas/AccountTransactionsResponse",
+  "type": "object",
+  "required": [
+    "currencyCode",
+    "maxJournalNumber",
+    "lines"
+  ],
+  "properties": {
+    "currencyCode": {
+      "type": "string",
+      "description": "Organisation's base currency code (ISO 4217)."
+    },
+    "maxJournalNumber": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Maximum journal number included in this result set. Captured at the first\nrequest and held constant across all pages for consistency.\n"
+    },
+    "lines": {
+      "type": "array",
+      "description": "Transaction lines for this page (max 200).",
+      "items": {
+        "$ref": "#/$defs/AccountTransactionLine"
+      }
+    },
+    "pagination": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Pagination metadata. `null` on the last page, including when there are no results.",
+      "properties": {
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nextToken": {
+          "type": "string",
+          "description": "Opaque continuation token for the next page. Send it as the `token` query parameter to retrieve the next page."
+        }
+      },
+      "required": [
+        "pageSize",
+        "nextToken"
+      ]
+    }
+  },
+  "$defs": {
+    "AccountTransactionLine": {
+      "type": "object",
+      "required": [
+        "journalNumber",
+        "journalDate",
+        "account",
+        "netAmount",
+        "description",
+        "source",
+        "taxRate"
+      ],
+      "properties": {
+        "journalNumber": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unique journal number for this transaction."
+        },
+        "journalDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Accounting date of the transaction (YYYY-MM-DD)."
+        },
+        "description": {
+          "type": "string",
+          "description": "Line description, falling back to the journal narration. Empty if neither is set."
+        },
+        "account": {
+          "$ref": "#/$defs/TransactionAccount"
+        },
+        "netAmount": {
+          "$ref": "#/$defs/LedgerDecimal"
+        },
+        "signedNetAmount": {
+          "type": "number",
+          "format": "double",
+          "description": "Net amount as a signed number (positive for debit, negative for credit)."
+        },
+        "taxAmount": {
+          "$ref": "#/$defs/LedgerDecimal"
+        },
+        "signedTaxAmount": {
+          "type": "number",
+          "format": "double",
+          "description": "Tax amount as a signed number (positive for debit, negative for credit)."
+        },
+        "source": {
+          "$ref": "#/$defs/LineSource"
+        },
+        "taxRate": {
+          "$ref": "#/$defs/LineTaxRate"
+        },
+        "trackingCategories": {
+          "type": "object",
+          "description": "Present only when `include=trackingCategories` was requested, and omitted otherwise. Keys are\ntracking category IDs (UUIDs); values describe the selected tracking option. The object is empty\nwhen the line has no tracking.\n",
+          "additionalProperties": {
+            "$ref": "#/$defs/TrackingItemDetails"
+          }
+        }
+      }
+    },
+    "LedgerDecimal": {
+      "type": "object",
+      "required": [
+        "value",
+        "type"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "format": "double",
+          "description": "Amount value (always positive)."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "DEBIT",
+            "CREDIT"
+          ]
+        }
+      }
+    },
+    "LineSource": {
+      "type": "object",
+      "description": "The originating document/event for this transaction line. Always present; its fields are null when the source is unknown.",
+      "properties": {
+        "documentId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "documentType": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "eventType": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contactId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "contactName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "LineTaxRate": {
+      "type": "object",
+      "description": "The tax rate applied to this transaction line. Always present; its fields are null when no tax rate applies.",
+      "properties": {
+        "code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "percentage": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        }
+      }
+    },
+    "TrackingItemDetails": {
+      "type": "object",
+      "required": [
+        "categoryName",
+        "optionId",
+        "optionName"
+      ],
+      "properties": {
+        "categoryName": {
+          "type": "string"
+        },
+        "optionId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "optionName": {
+          "type": "string"
+        }
+      }
+    },
+    "TransactionAccount": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "class",
+        "type",
+        "status",
+        "systemAccountCode"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "class": {
+          "type": "string",
+          "enum": [
+            "ASSET",
+            "LIABILITY",
+            "EQUITY",
+            "REVENUE",
+            "EXPENSE"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "description": "Account type (e.g. `BANK`, `CURRENT`). Reported as `INVENTORY` for inventory\nasset accounts, regardless of the account's underlying type.\n"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "ARCHIVED",
+            "DELETED"
+          ]
+        },
+        "systemAccountCode": {
+          "type": "string",
+          "description": "System account code, or `NONE` if the account has no system account code."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-payroll-calendar-schema.json",
+  "title": "PayrollCalendar",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-payrollau-api-openapi.yml#/components/schemas/PayrollCalendar",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "description": "Name of the Payroll Calendar",
+      "type": "string"
+    },
+    "CalendarType": {
+      "$ref": "#/$defs/CalendarType"
+    },
+    "StartDate": {
+      "description": "The start date of the upcoming pay period. The end date will be calculated based upon this date, and the calendar type selected (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "PaymentDate": {
+      "description": "The date on which employees will be paid for the upcoming pay period (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "PayrollCalendarID": {
+      "description": "Xero identifier",
+      "type": "string",
+      "format": "uuid"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true
+    },
+    "ReferenceDate": {
+      "description": "Reference Date (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ValidationError"
+      }
+    }
+  },
+  "$defs": {
+    "CalendarType": {
+      "type": "string",
+      "enum": [
+        "WEEKLY",
+        "FORTNIGHTLY",
+        "FOURWEEKLY",
+        "MONTHLY",
+        "TWICEMONTHLY",
+        "QUARTERLY"
+      ]
+    },
+    "ValidationError": {
+      "properties": {
+        "Message": {
+          "description": "Validation error message",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

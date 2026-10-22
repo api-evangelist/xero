@@ -1,0 +1,47 @@
+name: Xero agent skills
+generated: '2026-10-20'
+method: generated
+source: Generated from the Xero Accounting and Payroll NZ OpenAPI specs under openapi/. No provider-published skills
+  or AGENTS.md were found in github.com/XeroAPI/xero-mcp-server. Every operationId was checked against the spec.
+skills:
+- file: xero-invoice-a-customer-and-record-payment.md
+  name: xero-invoice-a-customer-and-record-payment
+  api: openapi/xero-accounting-api-openapi.yml
+  operations:
+  - getContacts
+  - createContacts
+  - createInvoices
+  - emailInvoice
+  - getInvoice
+  - createPayment
+- file: xero-month-end-financial-reports.md
+  name: xero-month-end-financial-reports
+  api: openapi/xero-accounting-api-openapi.yml
+  operations:
+  - getOrganisations
+  - getReportProfitAndLoss
+  - getReportBalanceSheet
+  - getReportTrialBalance
+  - getReportAgedReceivablesByContact
+  - getContacts
+- file: xero-record-and-correct-bank-transactions.md
+  name: xero-record-and-correct-bank-transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  operations:
+  - getAccounts
+  - createBankTransactions
+  - getBankTransactions
+  - getBankTransaction
+  - updateBankTransaction
+- file: xero-nz-payroll-timesheet.md
+  name: xero-nz-payroll-timesheet
+  api: openapi/xero-payrollnz-api-openapi.yml
+  operations:
+  - getEmployees
+  - getPayRunCalendars
+  - getEarningsRates
+  - createTimesheet
+  - createTimesheetLine
+  - getTimesheet
+  - approveTimesheet
+  - revertTimesheet

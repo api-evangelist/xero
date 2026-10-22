@@ -1,0 +1,95 @@
+generated: '2026-10-20'
+method: searched
+source:
+- https://developer.xero.com/documentation/guides/idempotent-requests/idempotency/
+- https://developer.xero.com/documentation/api/accounting/requests-and-responses/
+- https://developer.xero.com/documentation/guides/oauth2/limits/
+- https://developer.xero.com/documentation/api/accounting/responsecodes/
+base_url: https://api.xero.com/api.xro/2.0 (Accounting); other APIs have their own paths (payroll.xro, assets.xro, projects.xro, files.xro ...)
+authentication:
+  style: OAuth 2.0 bearer token plus the xero-tenant-id header selecting the organisation
+  see: authentication/xero-authentication.yml
+idempotency:
+  coverage: full
+  header: Idempotency-Key
+  methods:
+  - POST
+  - PUT
+  - PATCH
+  text: Xero will only process idempotency for requests that mutate data, I.e. POST, PUT and PATCH. The idempotency key header will be ignored for all other HTTP methods as they are idempotent by nature
+  retention: keys are stored for 6 minutes from the time of the first call, after which they expire
+  max_key_length: 128
+  conflict: '400 "Idempotency Key: KEY_VALUE is used with a different request."'
+  scope_of_reuse: Key re-use is procesed per app
+  rate_limits: duplicate requests will count towards rate limits
+  failure_mode: 500 returned while the idempotency subsystem is unavailable
+  note: DELETE (29 operations in the specs) is excluded by design as naturally idempotent; all 197 POST/PUT/PATCH operations accept the header.
+  docs: https://developer.xero.com/documentation/guides/idempotent-requests/idempotency/
+pagination:
+  style: page-number
+  params:
+  - page
+  - pageSize
+  page_size:
+    default: 100
+    max: 1000
+    min: 1
+  response_fields:
+  - pagination.page
+  - pagination.pageSize
+  - pagination.pageCount
+  - pagination.itemCount
+  endpoints: Invoices, Contacts, CreditNotes, BankTransactions, ManualJournals, Payments, PurchaseOrders, Prepayments and Overpayments
+  docs: https://developer.xero.com/documentation/api/accounting/requests-and-responses/
+filtering:
+  where: where= query parameter (keep to simple == operations)
+  order: order= parameter
+  incremental: If-Modified-Since header (UTC timestamp, accurate to the second)
+  explicit_filters: Invoices and Contacts accept comma-separated ID/status lists
+formats:
+  default: 'XML on the Accounting API; JSON via Accept: application/json (strictly honoured since 2026-09-03 per changelog); PDF for invoices, quotes, credit notes via Accept: application/pdf'
+  dates: Microsoft .NET JSON date format "/Date(ms+offset)/" with *String companions
+batching:
+  summarizeErrors: summarizeErrors=false returns HTTP 200 with per-element validation errors
+  recommended_batch: about 50 nodes per request; 10MB max request
+versioning:
+  see: lifecycle/xero-lifecycle.yml
+error_envelope:
+  shape: ApiException {ErrorNumber, Type, Message, Elements[].ValidationErrors[]}
+  see: errors/xero-problem-types.yml
+rate_limits:
+  signaling: X-DayLimit-Remaining, X-MinLimit-Remaining, X-AppMinLimit-Remaining; 429 with X-Rate-Limit-Problem and Retry-After
+  see: rate-limits/xero-rate-limits.yml
+webhooks:
+  signature: see asyncapi/xero-webhooks-asyncapi.yml
+  docs: https://developer.xero.com/documentation/guides/webhooks/overview/
+reversibility:
+  grade: documented
+  note: Reversal paths are documented as status transitions; the docs state no time window (none asserted here).
+  surfaces:
+  - surface: invoices
+    reversal: 'Delete draft sales invoices or purchase bills; Void approved sales invoices or purchase bills (POST with "Status": "VOIDED")'
+    operationId: updateInvoice
+    window: null
+    docs: https://developer.xero.com/documentation/api/accounting/invoices/
+  - surface: credit notes
+    reversal: Allows you to delete draft credit notes; Allows you to void approved credit notes
+    operationId: updateCreditNote
+    window: null
+    docs: https://developer.xero.com/documentation/api/accounting/creditnotes/
+  - surface: payments
+    reversal: 'Use this method to delete (reverse) payments to invoices, credit notes, prepayments & overpayments (POST "Status": "DELETED"); Payments cannot be modified, only created and deleted'
+    operationId: deletePayment
+    window: null
+    docs: https://developer.xero.com/documentation/api/accounting/payments/
+  - surface: batch payments
+    reversal: delete batch payment
+    operationId: deleteBatchPayment
+    window: null
+  - surface: payroll timesheets (AU v2, NZ, UK)
+    reversal: Revert timesheet to draft
+    operationId: revertTimesheet
+    window: null
+dry_run:
+  supported: false
+  note: No dry-run mode documented; use the Demo Company (sandbox/xero-sandbox.yml).

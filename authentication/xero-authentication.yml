@@ -1,15 +1,15 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/xero-accounting-openapi.yml, openapi/xero-assets-openapi.yml, openapi/xero-bankfeeds-openapi.yml,
-  openapi/xero-files-openapi.yml, openapi/xero-finance-openapi.yml, openapi/xero-identity-openapi.yml,
-  openapi/xero-payroll-au-openapi.yml, openapi/xero-payroll-nz-openapi.yml, openapi/xero-payroll-uk-openapi.yml,
-  openapi/xero-projects-openapi.yml
+generated: '2026-10-20'
+method: searched
+source: openapi/xero-account-data-api-openapi.yml, openapi/xero-accounting-api-openapi.yml, openapi/xero-app-store-api-openapi.yml, openapi/xero-asset-api-openapi.yml, openapi/xero-bank-feeds-api-openapi.yml,
+  openapi/xero-bank-feeds-v2-api-openapi.yml, openapi/xero-files-api-openapi.yml, openapi/xero-finance-api-openapi.yml, openapi/xero-identity-api-openapi.yml, openapi/xero-payrollau-api-openapi.yml, openapi/xero-payrollau-v2-api-openapi.yml,
+  openapi/xero-payrollnz-api-openapi.yml ...
 summary:
   types:
   - http
   - oauth2
   oauth2_flows:
   - authorizationCode
+  - clientCredentials
 schemes:
 - name: OAuth2
   type: oauth2
@@ -17,21 +17,43 @@ schemes:
   - flow: authorizationCode
     authorizationUrl: https://login.xero.com/identity/connect/authorize
     tokenUrl: https://identity.xero.com/connect/token
-    scopes: 16
+    scopes: 3
+  description: For more information visit https://developer.xero.com/documentation/oauth2/overview
+  sources:
+  - openapi/xero-account-data-api-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  - openapi/xero-asset-api-openapi.yml
+  - openapi/xero-bank-feeds-api-openapi.yml
+  - openapi/xero-bank-feeds-v2-api-openapi.yml
+  - openapi/xero-files-api-openapi.yml
+  - openapi/xero-finance-api-openapi.yml
+  - openapi/xero-identity-api-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollau-v2-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  - openapi/xero-project-api-openapi.yml
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://identity.xero.com/connect/token
+    scopes: 1
   description: For more information
   sources:
-  - openapi/xero-accounting-openapi.yml
-  - openapi/xero-assets-openapi.yml
-  - openapi/xero-bankfeeds-openapi.yml
-  - openapi/xero-files-openapi.yml
-  - openapi/xero-finance-openapi.yml
-  - openapi/xero-identity-openapi.yml
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
-  - openapi/xero-projects-openapi.yml
+  - openapi/xero-app-store-api-openapi.yml
 - name: BasicAuth
   type: http
   scheme: basic
   sources:
-  - openapi/xero-identity-openapi.yml
+  - openapi/xero-identity-api-openapi.yml
+docs: https://developer.xero.com/documentation/guides/oauth2/overview/
+documented_flows:
+- flow: authorization code (web apps)
+  docs: https://developer.xero.com/documentation/guides/oauth2/auth-flow/
+- flow: PKCE (mobile/desktop/CLI)
+  docs: https://developer.xero.com/documentation/guides/oauth2/pkce-flow/
+- flow: client credentials (Custom Connections)
+  docs: https://developer.xero.com/documentation/guides/oauth2/custom-connections/
+tenant_header: xero-tenant-id (from the Connections endpoint after authorisation)
+refresh: offline_access scope required for a refresh token

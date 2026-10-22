@@ -1,13 +1,14 @@
 aid: xero
+
 name: Xero
-description: Xero is a cloud-based accounting software platform that helps small and
-  medium-sized businesses manage their finances. Xero provides a comprehensive developer
-  platform with OAuth 2.0 APIs for accounting, payroll, assets, projects, files, bank
-  feeds, and identity management. The Xero API enables third-party integrations to
-  build custom accounting apps, automations, and business tools. Xero supports SDKs
-  for .NET, Java, Node.js, PHP, Ruby, Python, and provides an MCP server for AI-assisted
-  accounting workflows.
+
+description: Xero is a cloud-based accounting software platform that helps small and medium-sized businesses manage their finances. Xero provides
+  a comprehensive developer platform with OAuth 2.0 APIs for accounting, payroll, assets, projects, files, bank feeds, and identity management.
+  The Xero API enables third-party integrations to build custom accounting apps, automations, and business tools. Xero supports SDKs for .NET,
+  Java, Node.js, PHP, Ruby, Python, and provides an MCP server for AI-assisted accounting workflows.
+
 kind: contract
+
 deliveryModel:
   model: saas
   open_source: false
@@ -20,6 +21,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -33,7 +35,9 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/xero.png
+
 tags:
 - Accounting
 - Bank Feeds
@@ -42,6 +46,7 @@ tags:
 - Invoicing
 - Payroll
 - Small Business
+
 tags_raw:
 - Accounting
 - Bank Feeds
@@ -51,351 +56,76 @@ tags_raw:
 - Payroll
 - Small Business
 - Financial-Services
+
 created: '2024-11-07'
-modified: '2026-05-30'
+
+modified: '2026-10-20'
+
 url: https://raw.githubusercontent.com/api-evangelist/xero/refs/heads/main/apis.yml
+
 specificationVersion: '0.23'
-apis:
-- aid: xero:xero-accounting-api
-  name: Xero Accounting API
-  description: The Accounting API from Xero — 140 operation(s) for accounting.
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - Accounting
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-accounting-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
-- aid: xero:xero-asset-api
-  name: Xero Asset API
-  description: The Asset API from Xero — 4 operation(s) for asset.
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - Asset
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-asset-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
-- aid: xero:xero-files-api
-  name: Xero Files API
-  description: Operations available to regular developers
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - File
-  tags_raw:
-  - Files
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-files-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
-- aid: xero:xero-finance-api
-  name: Xero Finance API
-  description: The Finance API from Xero — 8 operation(s) for finance.
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - Finance
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-finance-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
-- aid: xero:xero-identity-api
-  name: Xero Identity API
-  description: The Identity API from Xero — 2 operation(s) for identity.
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - Identity
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-identity-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
-- aid: xero:xero-payrollau-api
-  name: Xero PayrollAu API
-  description: Operations available to regular developers
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - PayrollAu
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-payrollau-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
-- aid: xero:xero-payrollnz-api
-  name: Xero PayrollNz API
-  description: The PayrollNz API from Xero — 46 operation(s) for payrollnz.
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - PayrollNz
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-payrollnz-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
-- aid: xero:xero-payrolluk-api
-  name: Xero PayrollUk API
-  description: The PayrollUk API from Xero — 47 operation(s) for payrolluk.
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - Payroll UK
-  tags_raw:
-  - PayrollUk
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-payrolluk-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
-- aid: xero:xero-project-api
-  name: Xero Project API
-  description: The Project API from Xero — 7 operation(s) for project.
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - Project
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-project-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
-- aid: xero:connections
-  name: Xero Connections API
-  description: >-
-    OAuth 2.0 connections endpoint for listing the Xero tenants authorized under an access token.
-  humanURL: https://developer.xero.com/documentation/guides/oauth2/auth-flow
-  baseURL: https://api.xero.com/connections
-  tags:
-  - Authentication
-  - Tenants
-  tags_raw:
-  - OAuth
-  - Tenants
-  properties:
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/auth-flow
-- aid: xero:xero-bank-feeds-api
-  name: Xero Bank Feeds API
-  description: The Bank Feeds API from Xero — 5 operation(s) for bank feeds.
-  humanURL: https://developer.xero.com/documentation/api/accounting/overview
-  baseURL: https://api.xero.com/api.xro/2.0
-  tags:
-  - Bank Feeds
-  properties:
-  - type: OpenAPI
-    url: openapi/xero-bank-feeds-api-openapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/accounting/overview
-  - type: AsyncAPI
-    url: asyncapi/xero-webhooks-asyncapi.yml
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/assets/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/bank-feeds/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/finance/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/guides/oauth2/overview/
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-au/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-nz/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/payroll-uk/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/projects/overview
-  - type: Documentation
-    url: https://developer.xero.com/documentation/api/files/overview
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
 common:
+- type: Spectral
+  url: rules/xero-xero-openapi-spectral-rules.yml
+- type: Spectral
+  url: rules/xero-rules.yml
+- type: Spectral
+  url: rules/xero-jsonschema-spectral-rules.yml
+- type: Spectral
+  url: rules/xero-asyncapi-spectral-rules.yml
+- type: JSONLD
+  url: json-ld/xero-context.jsonld
+- type: Vocabulary
+  url: vocabulary/xero-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Webhooks
+  url: asyncapi/xero-webhooks-asyncapi.yml
+- type: DataModel
+  url: data-model/xero-data-model.yml
+- type: CLI
+  url: cli/xero-cli.yml
+- type: ChangeLog
+  url: changelog/xero-changelog.yml
+- type: Idempotency
+  url: conventions/xero-conventions.yml
+- type: Conventions
+  url: conventions/xero-conventions.yml
+- type: Sandbox
+  url: sandbox/xero-sandbox.yml
+- type: Deprecation
+  url: https://developer.xero.com/documentation/guides/oauth2/scopes/
+- type: Lifecycle
+  url: lifecycle/xero-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/xero-problem-types.yml
+- type: Conformance
+  url: conformance/xero-conformance.yml
+- type: Overlay
+  url: overlays/xero-account-data-api-overlay.yaml
+- type: LLMsTxt
+  url: llms/xero-llms.txt
+- type: ToolCrosswalk
+  url: mcp/xero-tool-crosswalk.yml
+- type: SecurityTxt
+  url: well-known/xero-status-security.txt
+- type: WellKnown
+  url: well-known/xero-well-known.yml
+- type: Hosts
+  url: hosts/xero-hosts.yml
+- type: IntegrationEdges
+  url: integrations/xero-integration-edges.yml
+- type: Vendors
+  url: vendors/xero-vendors.yml
+- type: Packages
+  url: packages/xero-packages.yml
+- type: SignUp
+  url: https://www.xero.com/signup/
 - type: Plans
   url: plans/xero-plans-pricing.yml
 - type: RateLimits
@@ -451,6 +181,753 @@ common:
   url: https://github.com/XeroAPI/xero-mcp-server
 - type: SpectralRules
   url: https://github.com/XeroAPI/Xero-OpenAPI/blob/fd9d44b04bf4934a7509b8e7ece51a9e0e462e4f/.spectral.yaml
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+- type: APIReference
+  url: https://developer.xero.com/documentation/api/accounting/overview
+- type: Pricing
+  url: https://developer.xero.com/pricing
+- type: ProductPricing
+  url: https://www.xero.com/us/pricing-plans/
+- type: Support
+  url: https://central.xero.com/
+- type: Security
+  url: https://www.xero.com/security/
+- type: CompanyBlog
+  url: https://blog.xero.com/
+- type: FeatureRequests
+  url: https://productideas.xero.com/
+- type: Newsroom
+  url: https://www.xero.com/media/
+- type: Leadership
+  url: https://www.xero.com/about/team/
+
+apis:
+- aid: xero:xero-accounting-api
+  name: Xero Accounting API
+  description: The Accounting API from Xero — 140 operation(s) for accounting.
+  humanURL: https://developer.xero.com/documentation/api/accounting/overview
+  baseURL: https://api.xero.com/api.xro/2.0
+  tags:
+  - Accounting
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-accounting-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_accounting.yaml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-payment-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-linked-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-allocation-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-tracking-category-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-tracking-option-schema.json
+- aid: xero:xero-asset-api
+  name: Xero Asset API
+  description: The Asset API from Xero — 4 operation(s) for asset.
+  humanURL: https://developer.xero.com/documentation/api/assets/overview
+  baseURL: https://api.xero.com/assets.xro/1.0
+  tags:
+  - Asset
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-asset-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_assets.yaml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-asset-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-setting-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-asset-type-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-assets-schema.json
+- aid: xero:xero-files-api
+  name: Xero Files API
+  description: Operations available to regular developers
+  humanURL: https://developer.xero.com/documentation/api/files/overview
+  baseURL: https://api.xero.com/files.xro/1.0
+  tags:
+  - File
+  tags_raw:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-files-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_files.yaml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-association-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-file-object-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-folder-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-upload-object-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-files-schema.json
+- aid: xero:xero-finance-api
+  name: Xero Finance API
+  description: The Finance API from Xero — 8 operation(s) for finance.
+  humanURL: https://developer.xero.com/documentation/api/finance/overview
+  baseURL: https://api.xero.com/finance.xro/1.0
+  tags:
+  - Finance
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-finance-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-finance.yaml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-income-by-contact-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-cash-validation-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-bank-statement-accounting-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-profit-and-loss-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-cashflow-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-trial-balance-response-schema.json
+- aid: xero:xero-identity-api
+  name: Xero Identity API
+  description: The Identity API from Xero — 2 operation(s) for identity.
+  humanURL: https://developer.xero.com/documentation/guides/oauth2/overview/
+  baseURL: https://api.xero.com
+  tags:
+  - Identity
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-identity-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-identity.yaml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-connection-schema.json
+- aid: xero:xero-payrollau-api
+  name: Xero PayrollAu API
+  description: Operations available to regular developers
+  humanURL: https://developer.xero.com/documentation/api/payrollau/overview
+  baseURL: https://api.xero.com/payroll.xro/1.0
+  tags:
+  - PayrollAu
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-payrollau-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-payroll-au.yaml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-pay-run-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-super-fund-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-leave-application-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-payroll-calendar-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-schema.json
+- aid: xero:xero-payrollnz-api
+  name: Xero PayrollNz API
+  description: The PayrollNz API from Xero — 46 operation(s) for payrollnz.
+  humanURL: https://developer.xero.com/documentation/api/payrollnz/overview
+  baseURL: https://api.xero.com/payroll.xro/2.0
+  tags:
+  - PayrollNz
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-payrollnz-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-payroll-nz.yaml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-pay-slip-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-employee-tax-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-employee-leave-setup-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-employee-leave-type-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-earnings-rate-schema.json
+- aid: xero:xero-payrolluk-api
+  name: Xero PayrollUk API
+  description: The PayrollUk API from Xero — 47 operation(s) for payrolluk.
+  humanURL: https://developer.xero.com/documentation/api/payrolluk/overview
+  baseURL: https://api.xero.com/payroll.xro/2.0
+  tags:
+  - Payroll UK
+  tags_raw:
+  - PayrollUk
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-payrolluk-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-payroll-uk.yaml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-employee-statutory-sick-leave-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-earnings-rate-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-deduction-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-benefit-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-salary-and-wage-schema.json
+- aid: xero:xero-project-api
+  name: Xero Project API
+  description: The Project API from Xero — 7 operation(s) for project.
+  humanURL: https://developer.xero.com/documentation/api/projects/overview
+  baseURL: https://api.xero.com/projects.xro/2.0
+  tags:
+  - Project
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-project-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-projects.yaml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-project-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-task-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-time-entry-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-time-entry-create-or-update-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-project-create-or-update-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-task-create-or-update-schema.json
+- aid: xero:connections
+  name: Xero Connections API
+  description: >-
+    OAuth 2.0 connections endpoint for listing the Xero tenants authorized under an access token.
+  humanURL: https://developer.xero.com/documentation/guides/oauth2/auth-flow
+  baseURL: https://api.xero.com/connections
+  tags:
+  - Authentication
+  - Tenants
+  tags_raw:
+  - OAuth
+  - Tenants
+  properties:
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/auth-flow
+- aid: xero:xero-accountdata-api
+  name: Xero Account Data API
+  description: The AccountData API from Xero — 3 operation(s) for accountdata.
+  humanURL: https://developer.xero.com/documentation/api/accounting/overview
+  baseURL: https://api.xero.com/api.xro/2.0
+  tags:
+  - AccountData
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-accountdata-api-openapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-feed-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-statement-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-feed-connections-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-statements-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-transactions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-movements-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-balances-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-delete-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-existing-account-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-new-account-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-bulk-feed-connection-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-paged-feed-connections-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-line-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheets-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-line-object-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-object-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-subscription-schema.json
+- aid: xero:xero-feedconnections-api
+  name: Xero Feed Connections API
+  description: The FeedConnections API from Xero — 5 operation(s) for feedconnections.
+  humanURL: https://developer.xero.com/documentation/api/accounting/overview
+  baseURL: https://api.xero.com/api.xro/2.0
+  tags:
+  - FeedConnections
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-feedconnections-api-openapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-feed-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-statement-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-feed-connections-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-statements-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-transactions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-movements-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-balances-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-delete-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-existing-account-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-new-account-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-bulk-feed-connection-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-paged-feed-connections-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-line-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheets-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-line-object-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-object-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-subscription-schema.json
+- aid: xero:xero-app-store-api
+  name: Xero App Store API
+  description: The App Store API from Xero — 4 operation(s) for app store.
+  humanURL: https://developer.xero.com/documentation/api/accounting/overview
+  baseURL: https://api.xero.com/api.xro/2.0
+  tags:
+  - App Store
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-app-store-api-openapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-feed-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-statement-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-feed-connections-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-statements-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-transactions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-movements-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-balances-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-delete-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-existing-account-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-new-account-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-bulk-feed-connection-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-paged-feed-connections-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-line-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheets-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-line-object-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-object-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-subscription-schema.json
+- aid: xero:xero-bank-feeds-api
+  name: Xero Bank Feeds API
+  description: The Bank Feeds API from Xero — 5 operation(s) for bank feeds.
+  humanURL: https://developer.xero.com/documentation/api/accounting/overview
+  baseURL: https://api.xero.com/api.xro/2.0
+  tags:
+  - Bank Feeds
+  properties:
+  - type: OpenAPI
+    url: openapi/xero-bank-feeds-api-openapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/accounting/overview
+  - type: AsyncAPI
+    url: asyncapi/xero-webhooks-asyncapi.yml
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/assets/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/bank-feeds/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/finance/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/guides/oauth2/overview/
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-au/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-nz/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/payroll-uk/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/projects/overview
+  - type: Documentation
+    url: https://developer.xero.com/documentation/api/files/overview
+  - type: JSONSchema
+    url: json-schema/xero-feed-connection-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-statement-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-feed-connections-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-statements-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-transactions-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-movements-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-account-balances-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-delete-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-existing-account-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-new-account-feed-connections-request-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-bulk-feed-connection-response-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-paged-feed-connections-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-line-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheets-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-line-object-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-timesheet-object-schema.json
+  - type: JSONSchema
+    url: json-schema/xero-subscription-schema.json
+x-coverage:
+  state: covered
+  reason: enriched
+  detail: Identity pass 2026-10-20 - Website www.xero.com verified 200; per-API humanURL/baseURL corrected from OpenAPI servers and developer
+    docs; new pointers taken from site_links and probed.
+  evidence:
+  - url: https://www.xero.com/
+    status: 200
+  - url: https://developer.xero.com/
+    status: 200
+  - url: https://developer.xero.com/pricing
+    status: 200
+  - url: https://central.xero.com/
+    status: 200
+  - url: https://www.xero.com/security/
+    status: 200
+  - url: https://blog.xero.com/
+    status: 200
+  - url: https://productideas.xero.com/
+    status: 200
+  - url: https://devblog.xero.com/
+    status: 403
+    note: Cloudflare challenge to curl; renders in a browser as the Xero Developer Medium publication, so kept as live
+  - url: https://developer.xero.com/documentation/api/payroll-au/overview
+    status: 200
+    note: 16-byte "Not Authorized." body (soft-dead); humanURLs now use /api/payrollau/overview etc., which return 200
+x-enrichment:
+  date: '2026-10-20'
+  status: enriched
+  artifacts_added: 103
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

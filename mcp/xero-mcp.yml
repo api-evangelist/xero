@@ -1,21 +1,190 @@
-generated: '2026-09-11'
+generated: '2026-10-20'
 method: probed
 source: https://github.com/XeroAPI/xero-mcp-server
-status: gated
+status: active
+name: Xero MCP Server
+description: Xero ships an official open-source MCP server (npm @xeroapi/xero-mcp-server, stdio) and runs a remote
+  MCP endpoint in beta at mcp.xero.com.
 server:
   name: xero
-  transport: http
+  transport: stdio + streamable-http (beta remote)
   url: https://mcp.xero.com/mcp
 deployment:
-  mode: remote
+  mode: both
   endpoint: https://mcp.xero.com/mcp
+  install: npx -y @xeroapi/xero-mcp-server@latest
+  package: https://www.npmjs.com/package/@xeroapi/xero-mcp-server
+  auth: oauth
   verified: probed
-  probe: gated
-  checked: '2026-09-11'
-  source: ptr_only reconciliation 2026-09-11 (apis.yml pointed here, no manifest existed)
-  probe_why: auth is path-specific (nonsense control differs)
-tools_note: No tool list captured. This manifest records a PROBED, reachable endpoint only; anonymous
-  tools/list was auth-gated or the server requires an initialize handshake this reachability probe does
-  not perform. Run signals/audit_mcp_authorship.py --probe to enumerate tools and settle platform-vs-provider
-  authorship. Do NOT derive a tool list from the OpenAPI and store it here -- that is a candidate manifest,
-  and it belongs under an X-MCPServerCandidate pointer.
+  checked: '2026-10-20'
+  probe: 'GET https://mcp.xero.com/mcp -> 405 (2026-10-20); 2026-09-11 reachability probe recorded it as auth-gated.
+    No initialize/tools/list was sent: Xero''s own pages did not document the endpoint URL.'
+  remote_status: beta
+  remote_evidence:
+  - https://www.xero.com/legal/terms/xero-developer-remote-mcp-beta-testing/ (HTTP 200, Xero Developer Remote MCP
+    Beta Testing terms)
+  - https://mcpservers.org/remote-mcp-servers/xero (third-party directory naming https://mcp.xero.com/mcp, streamable
+    HTTP, OAuth)
+  local_auth: Custom Connection client credentials (XERO_CLIENT_ID / XERO_CLIENT_SECRET, optional XERO_SCOPES) or
+    XERO_CLIENT_BEARER_TOKEN
+  package_version: 0.0.17
+  package_published: '2026-05-26'
+tools_source: https://raw.githubusercontent.com/XeroAPI/xero-mcp-server/HEAD/README.md
+tools_note: Tools below are the ones Xero documents for the LOCAL stdio package (README "Available MCP Commands"),
+  cross-checked against src/handlers. They were not returned by a live tools/list. The remote beta server's tool
+  set was not observed.
+tools:
+- name: list-accounts
+  description: Retrieve a list of accounts
+  documented: true
+- name: list-contacts
+  description: Retrieve a list of contacts from Xero
+  documented: true
+- name: list-credit-notes
+  description: Retrieve a list of credit notes
+  documented: true
+- name: list-invoices
+  description: Retrieve a list of invoices
+  documented: true
+- name: list-items
+  description: Retrieve a list of items
+  documented: true
+- name: list-manual-journals
+  description: Retrieve a list of manual journals
+  documented: true
+- name: list-organisation-details
+  description: Retrieve details about an organisation
+  documented: true
+- name: list-profit-and-loss
+  description: Retrieve a profit and loss report
+  documented: true
+- name: list-quotes
+  description: Retrieve a list of quotes
+  documented: true
+- name: list-tax-rates
+  description: Retrieve a list of tax rates
+  documented: true
+- name: list-payments
+  description: Retrieve a list of payments
+  documented: true
+- name: list-trial-balance
+  description: Retrieve a trial balance report
+  documented: true
+- name: list-bank-transactions
+  description: Retrieve a list of bank account transactions
+  documented: true
+- name: list-payroll-employees
+  description: Retrieve a list of Payroll Employees
+  documented: true
+- name: list-report-balance-sheet
+  description: Retrieve a balance sheet report
+  documented: true
+- name: list-payroll-employee-leave
+  description: Retrieve a Payroll Employee's leave records
+  documented: true
+- name: list-payroll-employee-leave-balances
+  description: Retrieve a Payroll Employee's leave balances
+  documented: true
+- name: list-payroll-employee-leave-types
+  description: Retrieve a list of Payroll leave types
+  documented: true
+- name: list-payroll-leave-periods
+  description: Retrieve a list of a Payroll Employee's leave periods
+  documented: true
+- name: list-payroll-leave-types
+  description: Retrieve a list of all available leave types in Xero Payroll
+  documented: true
+- name: list-timesheets
+  description: Retrieve a list of Payroll Timesheets
+  documented: true
+- name: list-aged-receivables-by-contact
+  description: Retrieves aged receivables for a contact
+  documented: true
+- name: list-aged-payables-by-contact
+  description: Retrieves aged payables for a contact
+  documented: true
+- name: list-contact-groups
+  description: Retrieve a list of contact groups
+  documented: true
+- name: list-tracking-categories
+  description: Retrieve a list of tracking categories
+  documented: true
+- name: create-bank-transaction
+  description: Create a new bank transaction
+  documented: true
+- name: create-contact
+  description: Create a new contact
+  documented: true
+- name: create-credit-note
+  description: Create a new credit note
+  documented: true
+- name: create-invoice
+  description: Create a new invoice
+  documented: true
+- name: create-item
+  description: Create a new item
+  documented: true
+- name: create-manual-journal
+  description: Create a new manual journal
+  documented: true
+- name: create-payment
+  description: Create a new payment
+  documented: true
+- name: create-quote
+  description: Create a new quote
+  documented: true
+- name: create-payroll-timesheet
+  description: Create a new Payroll Timesheet
+  documented: true
+- name: create-tracking-category
+  description: Create a new tracking category
+  documented: true
+- name: create-tracking-option
+  description: Create a new tracking option
+  documented: true
+- name: update-bank-transaction
+  description: Update an existing bank transaction
+  documented: true
+- name: update-contact
+  description: Update an existing contact
+  documented: true
+- name: update-invoice
+  description: Update an existing draft invoice
+  documented: true
+- name: update-item
+  description: Update an existing item
+  documented: true
+- name: update-manual-journal
+  description: Update an existing manual journal
+  documented: true
+- name: update-quote
+  description: Update an existing draft quote
+  documented: true
+- name: update-credit-note
+  description: Update an existing draft credit note
+  documented: true
+- name: update-tracking-category
+  description: Update an existing tracking category
+  documented: true
+- name: update-tracking-options
+  description: Update tracking options
+  documented: true
+- name: update-payroll-timesheet-line
+  description: Update a line on an existing Payroll Timesheet
+  documented: true
+- name: approve-payroll-timesheet
+  description: Approve a Payroll Timesheet
+  documented: true
+- name: revert-payroll-timesheet
+  description: Revert an approved Payroll Timesheet
+  documented: true
+- name: add-payroll-timesheet-line
+  description: Add new line on an existing Payroll Timesheet
+  documented: true
+- name: delete-payroll-timesheet
+  description: Delete an existing Payroll Timesheet
+  documented: true
+- name: get-payroll-timesheet
+  description: Retrieve an existing Payroll Timesheet
+  documented: true
+crosswalk: mcp/xero-tool-crosswalk.yml

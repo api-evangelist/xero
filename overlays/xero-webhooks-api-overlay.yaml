@@ -1,0 +1,18 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for Xero Webhooks API
+  version: 1.0.0
+extends: openapi/xero-webhooks-api-openapi.yml
+x-generated: '2026-10-20'
+x-method: generated
+x-source: openapi/xero-webhooks-api-openapi.yml
+x-rationale: 'Records our enhancements without mutating the spec: Idempotency-Key support marked per operation (from
+  the spec''s own parameters) and, where applicable, the official Xero MCP tools that call each operation (from
+  mcp/xero-tool-crosswalk.yml).'
+actions:
+- target: $.info
+  description: API Evangelist provenance and agent-surface pointers.
+  update:
+    x-apievangelist-profiled: '2026-10-20'
+    x-llms-txt: llms/xero-llms.txt
+    x-authentication: authentication/xero-authentication.yml

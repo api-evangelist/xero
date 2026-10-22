@@ -1,0 +1,11 @@
+{
+ "url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_bankfeeds_v2.yaml",
+ "requested_url": "https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_bankfeeds_v2.yaml",
+ "status": 200,
+ "bytes": 39952,
+ "sha256": "de93854759717f2fcbae7264d74992c0fc484c8986189242890c5d32a7022f7e",
+ "fetched_at": "2026-10-20",
+ "fetched_by": "contract module (curl)",
+ "match": "verbatim",
+ "note": "Published by Xero in its own GitHub org XeroAPI/Xero-OpenAPI; info.contact api@xero.com, servers[] api.xero.com, terms developer.xero.com."
+}

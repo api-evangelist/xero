@@ -1,48 +1,56 @@
-specification: API Commons Rate Limits
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
-provider: Xero
-providerId: xero
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
-tags:
-  - Rate Limiting
-  - Accounting
-  - Finance
-  - Small Business
-description: Xero publishes per-app, per-tenant rate limits on the developer portal at
-  developer.xero.com (minute / daily / concurrent ceilings, plus Retry-After / X-Rate-Limit-Problem
-  headers). The canonical rate-limit page was unreachable (timeouts) during this reconciliation,
-  so specific numeric ceilings have not been refreshed here.
-sources:
-  - https://developer.xero.com/documentation/guides/oauth2/limits/
-  - https://developer.xero.com/faq/api/api-rate-limits/
-notes: WebFetch against developer.xero.com timed out during this reconciliation. Refresh once
-  the developer portal is reachable; values published there are authoritative and supersede
-  this artifact.
+name: Xero rate limits
+generated: '2026-10-20'
+method: searched
+source: https://developer.xero.com/documentation/guides/oauth2/limits/
+also:
+- https://developer.xero.com/pricing
+note: The limits page renders in JavaScript; quotes were copied from the rendered page (fetched 2026-10-20). Limits are per tenant (organisation/practice) per app unless stated. Requests are counted against
+  a fixed window which will reset at different times for each tenant.
+headers:
+  remaining:
+  - X-DayLimit-Remaining
+  - X-MinLimit-Remaining
+  - X-AppMinLimit-Remaining
+  exhausted:
+  - X-Rate-Limit-Problem
+  - Retry-After
+  status_on_exhaustion: 429
+limit_count: 7
 limits:
-  - name: Per-tenant ceilings (numbers in canonical Xero developer docs)
-    scope: tenant
-    metric: varies
-    limit: see https://developer.xero.com/documentation/guides/oauth2/limits/
-    notes: Xero documents per-minute, per-day, and concurrent ceilings per app per tenant on
-      the developer portal. Higher limits are available via Xero's app review for production
-      partners.
-policies:
-  - name: Per-app + per-tenant scoping
-    description: Rate limits are scoped to the combination of OAuth client (app) and
-      organisation (tenant); each tenant authorisation has its own counter.
-  - name: Backoff
-    description: Xero returns 429 with Retry-After when limits are exceeded. Clients should
-      honour Retry-After and apply exponential backoff with jitter.
-  - name: App review for higher limits
-    description: Production partners can request elevated limits via Xero's App Partner program
-      after passing the app review process.
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
+- name: Concurrent limit
+  limit_text: 'Concurrent Limit: 5 calls in progress at one time'
+  max: 5
+  scope: per tenant
+  kind: concurrency
+- name: Minute limit
+  limit_text: 'Minute Limit: 60 calls per minute'
+  max: 60
+  window: 1 minute
+  scope: per tenant
+- name: Daily limit (Starter)
+  limit_text: 'Daily Limit: 1,000 calls per day for starter, 5,000 calls per day for higher tiers'
+  max: 1000
+  window: 1 day
+  scope: per tenant
+  plan: Starter
+- name: Daily limit (Core and above)
+  limit_text: 'Daily Limit: 1,000 calls per day for starter, 5,000 calls per day for higher tiers'
+  max: 5000
+  window: 1 day
+  scope: per tenant
+  plan: Core, Plus, Advanced, Enterprise
+- name: App minute limit
+  limit_text: 'App Minute Limit: 10,000 calls per minute'
+  max: 10000
+  window: 1 minute
+  scope: per app across all tenants
+- name: Uncertified app connections
+  limit_text: each organisation or practice is limited to connecting a maximum of five uncertified apps
+  max: 5
+  scope: per organisation
+- name: Request size
+  limit_text: The maximum request size limit for all APIs is 10MB
+  scope: per request
+other:
+- Rapid Sync lifts the standard API limits for the first 30 minutes of a new organisation connection (certified apps; developer.xero.com/pricing).
+- 'Changelog 2026-10-15: POST Invoices/{InvoiceID}/Email will return 429 when an organisation reaches its daily limit for sending invoice emails.'

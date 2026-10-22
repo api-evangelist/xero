@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-income-by-contact-response-schema.json",
+  "title": "IncomeByContactResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-finance-api-openapi.yml#/components/schemas/IncomeByContactResponse",
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "type": "string",
+      "description": "Start date of the report",
+      "format": "date"
+    },
+    "endDate": {
+      "type": "string",
+      "description": "End date of the report",
+      "format": "date"
+    },
+    "total": {
+      "type": "number",
+      "description": "Total value",
+      "format": "double",
+      "x-is-money": true
+    },
+    "totalDetail": {
+      "$ref": "#/$defs/TotalDetail"
+    },
+    "totalOther": {
+      "$ref": "#/$defs/TotalOther"
+    },
+    "contacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ContactDetail"
+      }
+    },
+    "manualJournals": {
+      "$ref": "#/$defs/ManualJournalTotal"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ContactDetail": {
+      "type": "object",
+      "properties": {
+        "contactId": {
+          "type": "string",
+          "description": "ID of the contact associated with the transactions.\n\nTransactions with no contact will be grouped under the special ID: 86793108-198C-46D8-90A3-43C1D12686CE.\n\nTransactions that are receive or spend bank transfers will be grouped under the special ID: 207322B3-6A58-4BE7-80F1-430123914AD6",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the contact associated with the transactions.\n\nIf no contact is associated with the transactions this will appear as “None Provided”,\n\nFor receive or spend bank transfer transactions, this will appear as “Bank Transfer”."
+        },
+        "total": {
+          "type": "number",
+          "description": "Total value for the contact",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalDetail": {
+          "$ref": "#/$defs/ContactTotalDetail"
+        },
+        "totalOther": {
+          "$ref": "#/$defs/ContactTotalOther"
+        },
+        "accountCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of account codes involved in transactions."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContactTotalDetail": {
+      "type": "object",
+      "properties": {
+        "totalPaid": {
+          "type": "number",
+          "description": "Total paid invoice and cash value for the contact within the period.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalOutstanding": {
+          "type": "number",
+          "description": "Total outstanding invoice value for the contact within the period.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalCreditedUnApplied": {
+          "type": "number",
+          "description": "Total unapplied credited value for the contact within the period.",
+          "format": "double",
+          "x-is-money": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContactTotalOther": {
+      "type": "object",
+      "properties": {
+        "totalOutstandingAged": {
+          "type": "number",
+          "description": "Total outstanding invoice value for the contact within the period where the invoices are more than 90 days old",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalVoided": {
+          "type": "number",
+          "description": "Total voided value for the contact.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalCredited": {
+          "type": "number",
+          "description": "Total credited value for the contact.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "transactionCount": {
+          "type": "integer",
+          "description": "Number of transactions for the contact.",
+          "format": "int32"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ManualJournalTotal": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "number",
+          "description": "Total value of manual journals.",
+          "format": "double",
+          "x-is-money": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "TotalDetail": {
+      "type": "object",
+      "properties": {
+        "totalPaid": {
+          "type": "number",
+          "description": "Total paid invoice and cash value within the period.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalOutstanding": {
+          "type": "number",
+          "description": "Total outstanding invoice value within the period.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalCreditedUnApplied": {
+          "type": "number",
+          "description": "Total unapplied credited value within the period.",
+          "format": "double",
+          "x-is-money": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "TotalOther": {
+      "type": "object",
+      "properties": {
+        "totalOutstandingAged": {
+          "type": "number",
+          "description": "Total outstanding invoice value within the period where the invoices are more than 90 days old",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalVoided": {
+          "type": "number",
+          "description": "Total voided value.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "totalCredited": {
+          "type": "number",
+          "description": "Total credited value.",
+          "format": "double",
+          "x-is-money": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

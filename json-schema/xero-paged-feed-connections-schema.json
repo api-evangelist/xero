@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-paged-feed-connections-schema.json",
+  "title": "PagedFeedConnections",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-bank-feeds-v2-api-openapi.yml#/components/schemas/PagedFeedConnections",
+  "type": "object",
+  "properties": {
+    "pagination": {
+      "$ref": "#/$defs/Pagination"
+    },
+    "items": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "$ref": "#/$defs/FeedConnection"
+      }
+    }
+  },
+  "$defs": {
+    "AccountType": {
+      "type": "string",
+      "description": "The high-level type of the account. `BANK` covers every account type other than a credit card.\n",
+      "enum": [
+        "BANK",
+        "CREDITCARD"
+      ]
+    },
+    "FeedConnection": {
+      "type": "object",
+      "description": "A Feed Connection as Xero holds it.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Xero's identifier for the Feed Connection."
+        },
+        "accountToken": {
+          "type": "string",
+          "description": "The financial institute's identifier for the account."
+        },
+        "accountType": {
+          "$ref": "#/$defs/AccountType"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The account number the feed is connected to."
+        },
+        "accountName": {
+          "type": "string",
+          "description": "The name of the Xero Bank Account."
+        },
+        "accountId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Xero's identifier for the Xero Bank Account."
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO-4217 currency code."
+        },
+        "country": {
+          "type": "string",
+          "description": "ISO-3166 alpha-2 country code."
+        }
+      }
+    },
+    "Pagination": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The page returned, echoing the request."
+        },
+        "pageCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "How many pages the collection spans in total."
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The page size used, echoing the request."
+        },
+        "itemCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "How many Feed Connections are on this page. This is not the size of the whole collection,\nwhich is not returned.\n"
+        }
+      }
+    }
+  }
+}

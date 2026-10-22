@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-pay-run-schema.json",
+  "title": "PayRun",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-payrollau-api-openapi.yml#/components/schemas/PayRun",
+  "type": "object",
+  "required": [
+    "PayrollCalendarID"
+  ],
+  "properties": {
+    "PayrollCalendarID": {
+      "description": "Xero identifier for pay run",
+      "type": "string",
+      "format": "uuid"
+    },
+    "PayRunID": {
+      "description": "Xero identifier for pay run",
+      "type": "string",
+      "format": "uuid"
+    },
+    "PayRunPeriodStartDate": {
+      "description": "Period Start Date for the PayRun (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "PayRunPeriodEndDate": {
+      "description": "Period End Date for the PayRun (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "PayRunStatus": {
+      "$ref": "#/$defs/PayRunStatus"
+    },
+    "PaymentDate": {
+      "description": "Payment Date for the PayRun (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "PayslipMessage": {
+      "description": "Payslip message for the PayRun",
+      "type": "string"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true
+    },
+    "Payslips": {
+      "description": "The payslips in the payrun",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PayslipSummary"
+      }
+    },
+    "Wages": {
+      "description": "The total Wages for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Deductions": {
+      "description": "The total Deductions for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Tax": {
+      "description": "The total Tax for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Super": {
+      "description": "The total Super for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "Reimbursement": {
+      "description": "The total Reimbursements for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "NetPay": {
+      "description": "The total NetPay for the Payrun",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ValidationError"
+      }
+    }
+  },
+  "$defs": {
+    "PayRunStatus": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "POSTED"
+      ]
+    },
+    "PayslipSummary": {
+      "type": "object",
+      "properties": {
+        "EmployeeID": {
+          "description": "The Xero identifier for an employee",
+          "type": "string",
+          "format": "uuid"
+        },
+        "PayslipID": {
+          "description": "Xero identifier for the payslip",
+          "type": "string",
+          "format": "uuid"
+        },
+        "FirstName": {
+          "description": "First name of employee",
+          "type": "string"
+        },
+        "LastName": {
+          "description": "Last name of employee",
+          "type": "string"
+        },
+        "EmployeeGroup": {
+          "description": "Employee group name",
+          "type": "string"
+        },
+        "Wages": {
+          "description": "The Wages for the Payslip",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "Deductions": {
+          "description": "The Deductions for the Payslip",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "Tax": {
+          "description": "The Tax for the Payslip",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "Super": {
+          "description": "The Super for the Payslip",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "Reimbursements": {
+          "description": "The Reimbursements for the Payslip",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "NetPay": {
+          "description": "The NetPay for the Payslip",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "UpdatedDateUTC": {
+          "description": "Last modified timestamp",
+          "type": "string",
+          "readOnly": true,
+          "x-is-msdate-time": true
+        }
+      }
+    },
+    "ValidationError": {
+      "properties": {
+        "Message": {
+          "description": "Validation error message",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

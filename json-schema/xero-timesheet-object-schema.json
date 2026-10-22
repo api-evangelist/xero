@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-timesheet-object-schema.json",
+  "title": "TimesheetObject",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-payrollau-v2-api-openapi.yml#/components/schemas/TimesheetObject",
+  "type": "object",
+  "properties": {
+    "pagination": {
+      "$ref": "#/$defs/Pagination"
+    },
+    "problem": {
+      "$ref": "#/$defs/Problem"
+    },
+    "timesheet": {
+      "$ref": "#/$defs/Timesheet"
+    }
+  },
+  "$defs": {
+    "InvalidField": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the field that caused the error",
+          "type": "string"
+        },
+        "reason": {
+          "description": "The reason the error occurred",
+          "type": "string"
+        }
+      }
+    },
+    "Pagination": {
+      "properties": {
+        "page": {
+          "type": "integer"
+        },
+        "pageSize": {
+          "type": "integer"
+        },
+        "pageCount": {
+          "type": "integer"
+        },
+        "itemCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "Problem": {
+      "description": "The object returned for a bad request",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of error format",
+          "type": "string"
+        },
+        "title": {
+          "description": "The type of the error",
+          "type": "string"
+        },
+        "status": {
+          "description": "The error status code",
+          "type": "string"
+        },
+        "detail": {
+          "description": "A description of the error",
+          "type": "string"
+        },
+        "instance": {
+          "type": "string"
+        },
+        "invalidFields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/InvalidField"
+          }
+        }
+      }
+    },
+    "Timesheet": {
+      "type": "object",
+      "required": [
+        "payrollCalendarID",
+        "employeeID",
+        "startDate",
+        "endDate"
+      ],
+      "properties": {
+        "timesheetID": {
+          "description": "The Xero identifier for a Timesheet",
+          "type": "string",
+          "format": "uuid"
+        },
+        "payrollCalendarID": {
+          "description": "The Xero identifier for the Payroll Calendar that the Timesheet applies to",
+          "type": "string",
+          "format": "uuid"
+        },
+        "employeeID": {
+          "description": "The Xero identifier for the Employee that the Timesheet is for",
+          "type": "string",
+          "format": "uuid"
+        },
+        "startDate": {
+          "description": "The Start Date of the Timesheet period (YYYY-MM-DD)",
+          "type": "string",
+          "format": "date",
+          "x-is-date": true
+        },
+        "endDate": {
+          "description": "The End Date of the Timesheet period (YYYY-MM-DD)",
+          "type": "string",
+          "format": "date",
+          "x-is-date": true
+        },
+        "status": {
+          "description": "Status of the timesheet",
+          "type": "string",
+          "enum": [
+            "Draft",
+            "Approved",
+            "Completed"
+          ]
+        },
+        "totalHours": {
+          "description": "The Total Hours of the Timesheet",
+          "type": "number",
+          "format": "double"
+        },
+        "updatedDateUTC": {
+          "description": "The UTC date time that the Timesheet was last updated",
+          "type": "string",
+          "format": "date-time",
+          "x-is-datetime": true
+        },
+        "timesheetLines": {
+          "$ref": "#/$defs/TimesheetLines"
+        }
+      }
+    },
+    "TimesheetLine": {
+      "type": "object",
+      "required": [
+        "date",
+        "earningsRateID",
+        "numberOfUnits"
+      ],
+      "properties": {
+        "timesheetLineID": {
+          "description": "The Xero identifier for a Timesheet Line",
+          "type": "string",
+          "format": "uuid"
+        },
+        "date": {
+          "description": "The Date that this Timesheet Line is for (YYYY-MM-DD)",
+          "type": "string",
+          "format": "date",
+          "x-is-date": true
+        },
+        "earningsRateID": {
+          "description": "The Xero identifier for the Earnings Rate that the Timesheet is for",
+          "type": "string",
+          "format": "uuid"
+        },
+        "trackingItemID": {
+          "description": "The Xero identifier for the Tracking Item that the Timesheet is for",
+          "type": "string",
+          "format": "uuid"
+        },
+        "numberOfUnits": {
+          "description": "The Number of Units of the Timesheet Line",
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "TimesheetLines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TimesheetLine"
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+generated: '2026-10-20'
+method: searched
+source: https://developer.xero.com/changelog
+scheme: dated (no API version numbers; Accounting API path is /api.xro/2.0)
+last_updated: '2026-10-15'
+also:
+- https://developer.xero.com/documentation/api/accounting/releasenotes
+note: Breaking flags reflect entries the changelog labels upcoming/breaking, deprecations, removals or new mandatory validation.
+entries:
+- version: null
+  date: '2026-10-15'
+  breaking: false
+  highlights:
+  - Developer Remote MCP Launch
+- version: null
+  date: '2026-10-15'
+  breaking: true
+  highlights:
+  - 'Upcoming: POST Invoices/{InvoiceID}/Email returns 429 for daily rate limit instead of 500'
+- version: null
+  date: '2026-10-08'
+  breaking: true
+  highlights:
+  - Contact matching required for Accounting API allocations
+- version: null
+  date: '2026-09-10'
+  breaking: true
+  highlights:
+  - Qualifying Earnings properties on Earnings Rates and Pay Items becoming mandatory
+- version: null
+  date: '2026-09-03'
+  breaking: true
+  highlights:
+  - 'JSON and XML response: API now strictly honors Accept and Content-Type headers'
+- version: null
+  date: '2026-09-03'
+  breaking: false
+  highlights:
+  - Overpayments webhook launched
+- version: null
+  date: '2026-08-14'
+  breaking: false
+  highlights:
+  - Prepayments webhook launched
+- version: null
+  date: '2026-08-10'
+  breaking: false
+  highlights:
+  - Backorders supported - Invoice
+- version: null
+  date: '2026-08-10'
+  breaking: true
+  highlights:
+  - Xero Practice Manager endpoint retirement (Leads, Suppliers, Purchase Orders)
+- version: null
+  date: '2026-08-06'
+  breaking: true
+  highlights:
+  - 'Upcoming: KiwiSaverStatus required on NZ Payroll employee tax endpoint'
+- version: null
+  date: '2026-08-06'
+  breaking: true
+  highlights:
+  - Broad scopes deprecation
+- version: null
+  date: '2026-07-16'
+  breaking: false
+  highlights:
+  - Reference and InvoiceNumber fields for Prepayments
+- version: null
+  date: '2026-07-16'
+  breaking: false
+  highlights:
+  - UpdatedDateUTCString addition - Accounting API
+- version: null
+  date: '2026-06-22'
+  breaking: false
+  highlights:
+  - Extending Payments to support creation of Amount-based FX Payments
+- version: null
+  date: '2026-06-15'
+  breaking: true
+  highlights:
+  - Profit & Loss Reports – New 1,000 Tracking Column Limit
+- version: null
+  date: '2026-05-05'
+  breaking: true
+  highlights:
+  - Removed the Employees endpoint documentation
+- version: null
+  date: '2026-05-04'
+  breaking: true
+  highlights:
+  - Decommissioned Accounting Activities API
+- version: null
+  date: '2026-04-07'
+  breaking: false
+  highlights:
+  - Added CurrencyRate validation warnings
+- version: null
+  date: '2026-03-19'
+  breaking: false
+  highlights:
+  - Enabled edits to partially and fully paid AP invoices
+- version: null
+  date: '2026-03-04'
+  breaking: false
+  highlights:
+  - Introduced webhook events for Credit Notes
+- version: null
+  date: '2026-03-04'
+  breaking: false
+  highlights:
+  - New granular scope for the Accounting API

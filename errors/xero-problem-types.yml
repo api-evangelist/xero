@@ -1,0 +1,63 @@
+generated: '2026-10-20'
+method: searched
+source: https://developer.xero.com/documentation/api/accounting/responsecodes/
+format: custom (ApiException, not RFC 9457)
+envelope:
+  fields:
+  - ErrorNumber
+  - Type
+  - Message
+  - Elements[].ValidationErrors[].Message
+  example_type: ValidationException
+  note: With summarizeErrors=false a batch returns HTTP 200 and per-element errors.
+problems:
+- status: 400
+  title: Bad Request
+  type: null
+  description: A validation exception has occurred.
+  remediation: Read the ApiException ValidationErrors messages and fix the request.
+- status: 401
+  title: Unauthorized
+  type: null
+  description: Invalid authorization credentials.
+  remediation: Refresh the token or let the customer reauthorize; customers may disconnect the app at any time.
+- status: 403
+  title: Not Permitted
+  type: null
+  description: User doesn't have permission to access the resource.
+  remediation: Check scopes and user roles.
+- status: 404
+  title: Not Found
+  type: null
+  description: The resource you have specified cannot be found
+  remediation: null
+- status: 412
+  title: Precondition Failed
+  type: null
+  description: One or more conditions given in the request header fields were invalid. This code will also be returned if you're using TLS1.0
+  remediation: Fix headers; use TLS 1.2+.
+- status: 429
+  title: Rate Limit Exceeded
+  type: null
+  description: The API rate limit for your organisation/application pairing has been exceeded.
+  remediation: Read X-Rate-Limit-Problem and wait for Retry-After seconds.
+- status: 500
+  title: Internal Error
+  type: null
+  description: An unhandled error with the Xero API.
+  remediation: Contact the Xero API team if problems persist
+- status: 501
+  title: Not Implemented
+  type: null
+  description: The method you have called has not been implemented (e.g. POST Organisation
+  remediation: null
+- status: 503
+  title: Not Available
+  type: null
+  description: API is currently unavailable – typically due to a scheduled outage – try again soon.
+  remediation: Retry later.
+- status: 503
+  title: Organisation offline
+  type: null
+  description: The organisation temporarily cannot be connected to.
+  remediation: A retry interval of 5mins or so is recommended.

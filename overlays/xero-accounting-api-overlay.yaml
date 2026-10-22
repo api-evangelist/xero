@@ -1,0 +1,876 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for Xero Accounting API
+  version: 1.0.0
+extends: openapi/xero-accounting-api-openapi.yml
+x-generated: '2026-10-20'
+x-method: generated
+x-source: openapi/xero-accounting-api-openapi.yml
+x-rationale: 'Records our enhancements without mutating the spec: Idempotency-Key support marked per operation (from
+  the spec''s own parameters) and, where applicable, the official Xero MCP tools that call each operation (from
+  mcp/xero-tool-crosswalk.yml).'
+actions:
+- target: $.info
+  description: API Evangelist provenance and agent-surface pointers.
+  update:
+    x-apievangelist-profiled: '2026-10-20'
+    x-mcp-server: mcp/xero-mcp.yml
+    x-llms-txt: llms/xero-llms.txt
+    x-authentication: authentication/xero-authentication.yml
+- target: $.paths['/Accounts'].put
+  description: 'createAccount: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Accounts/{AccountID}/Attachments/{FileName}'].put
+  description: 'createAccountAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BankTransactions/{BankTransactionID}/Attachments/{FileName}'].put
+  description: 'createBankTransactionAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BankTransactions/{BankTransactionID}/History'].put
+  description: 'createBankTransactionHistoryRecord: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BankTransactions'].put
+  description: 'createBankTransactions: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-bank-transaction
+- target: $.paths['/BankTransfers'].put
+  description: 'createBankTransfer: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BankTransfers/{BankTransferID}/Attachments/{FileName}'].put
+  description: 'createBankTransferAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BankTransfers/{BankTransferID}/History'].put
+  description: 'createBankTransferHistoryRecord: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BatchPayments'].put
+  description: 'createBatchPayment: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BatchPayments/{BatchPaymentID}/History'].put
+  description: 'createBatchPaymentHistoryRecord: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BrandingThemes/{BrandingThemeID}/PaymentServices'].post
+  description: 'createBrandingThemePaymentServices: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Contacts/{ContactID}/Attachments/{FileName}'].put
+  description: 'createContactAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ContactGroups'].put
+  description: 'createContactGroup: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ContactGroups/{ContactGroupID}/Contacts'].put
+  description: 'createContactGroupContacts: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Contacts/{ContactID}/History'].put
+  description: 'createContactHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Contacts'].put
+  description: 'createContacts: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-contact
+- target: $.paths['/CreditNotes/{CreditNoteID}/Allocations'].put
+  description: 'createCreditNoteAllocation: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/CreditNotes/{CreditNoteID}/Attachments/{FileName}'].put
+  description: 'createCreditNoteAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/CreditNotes/{CreditNoteID}/History'].put
+  description: 'createCreditNoteHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/CreditNotes'].put
+  description: 'createCreditNotes: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-credit-note
+- target: $.paths['/Currencies'].put
+  description: 'createCurrency: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees'].put
+  description: 'createEmployees: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ExpenseClaims/{ExpenseClaimID}/History'].put
+  description: 'createExpenseClaimHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ExpenseClaims'].put
+  description: 'createExpenseClaims: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Invoices/{InvoiceID}/Attachments/{FileName}'].put
+  description: 'createInvoiceAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Invoices/{InvoiceID}/History'].put
+  description: 'createInvoiceHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Invoices'].put
+  description: 'createInvoices: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-invoice
+- target: $.paths['/Items/{ItemID}/History'].put
+  description: 'createItemHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Items'].put
+  description: 'createItems: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-item
+- target: $.paths['/LinkedTransactions'].put
+  description: 'createLinkedTransaction: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ManualJournals/{ManualJournalID}/Attachments/{FileName}'].put
+  description: 'createManualJournalAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ManualJournals/{ManualJournalID}/History'].put
+  description: 'createManualJournalHistoryRecord: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ManualJournals'].put
+  description: 'createManualJournals: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-manual-journal
+- target: $.paths['/Overpayments/{OverpaymentID}/Allocations'].put
+  description: 'createOverpaymentAllocations: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Overpayments/{OverpaymentID}/History'].put
+  description: 'createOverpaymentHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Payments'].post
+  description: 'createPayment: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-payment
+- target: $.paths['/Payments/{PaymentID}/History'].put
+  description: 'createPaymentHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/PaymentServices'].put
+  description: 'createPaymentService: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Payments'].put
+  description: 'createPayments: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Prepayments/{PrepaymentID}/Allocations'].put
+  description: 'createPrepaymentAllocations: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Prepayments/{PrepaymentID}/History'].put
+  description: 'createPrepaymentHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}'].put
+  description: 'createPurchaseOrderAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/PurchaseOrders/{PurchaseOrderID}/History'].put
+  description: 'createPurchaseOrderHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/PurchaseOrders'].put
+  description: 'createPurchaseOrders: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Quotes/{QuoteID}/Attachments/{FileName}'].put
+  description: 'createQuoteAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Quotes/{QuoteID}/History'].put
+  description: 'createQuoteHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Quotes'].put
+  description: 'createQuotes: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-quote
+- target: $.paths['/Receipts'].put
+  description: 'createReceipt: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Receipts/{ReceiptID}/Attachments/{FileName}'].put
+  description: 'createReceiptAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Receipts/{ReceiptID}/History'].put
+  description: 'createReceiptHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}'].put
+  description: 'createRepeatingInvoiceAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/RepeatingInvoices/{RepeatingInvoiceID}/History'].put
+  description: 'createRepeatingInvoiceHistory: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/RepeatingInvoices'].put
+  description: 'createRepeatingInvoices: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/TaxRates'].put
+  description: 'createTaxRates: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/TrackingCategories'].put
+  description: 'createTrackingCategory: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-tracking-category
+- target: $.paths['/TrackingCategories/{TrackingCategoryID}/Options'].put
+  description: 'createTrackingOptions: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-tracking-option
+- target: $.paths['/BatchPayments'].post
+  description: 'deleteBatchPayment: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BatchPayments/{BatchPaymentID}'].post
+  description: 'deleteBatchPaymentByUrlParam: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Payments/{PaymentID}'].post
+  description: 'deletePayment: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Invoices/{InvoiceID}/Email'].post
+  description: 'emailInvoice: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Accounts'].get
+  description: 'getAccounts: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-accounts
+- target: $.paths['/BankTransactions/{BankTransactionID}'].get
+  description: 'getBankTransaction: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - update-bank-transaction
+- target: $.paths['/BankTransactions'].get
+  description: 'getBankTransactions: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-bank-transactions
+- target: $.paths['/ContactGroups/{ContactGroupID}'].get
+  description: 'getContactGroup: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-contact-groups
+- target: $.paths['/ContactGroups'].get
+  description: 'getContactGroups: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-contact-groups
+- target: $.paths['/Contacts'].get
+  description: 'getContacts: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-contacts
+- target: $.paths['/CreditNotes/{CreditNoteID}'].get
+  description: 'getCreditNote: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - update-credit-note
+- target: $.paths['/CreditNotes'].get
+  description: 'getCreditNotes: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-credit-notes
+- target: $.paths['/Invoices/{InvoiceID}'].get
+  description: 'getInvoice: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - update-invoice
+- target: $.paths['/Invoices'].get
+  description: 'getInvoices: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-invoices
+- target: $.paths['/Items'].get
+  description: 'getItems: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-items
+- target: $.paths['/ManualJournals/{ManualJournalID}'].get
+  description: 'getManualJournal: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-manual-journals
+- target: $.paths['/ManualJournals'].get
+  description: 'getManualJournals: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-manual-journals
+- target: $.paths['/Organisation'].get
+  description: 'getOrganisations: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-organisation-details
+- target: $.paths['/Payments'].get
+  description: 'getPayments: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-payments
+- target: $.paths['/Quotes/{QuoteID}'].get
+  description: 'getQuote: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - update-quote
+- target: $.paths['/Quotes'].get
+  description: 'getQuotes: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-quotes
+- target: $.paths['/Reports/AgedPayablesByContact'].get
+  description: 'getReportAgedPayablesByContact: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-aged-payables-by-contact
+- target: $.paths['/Reports/AgedReceivablesByContact'].get
+  description: 'getReportAgedReceivablesByContact: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-aged-receivables-by-contact
+- target: $.paths['/Reports/BalanceSheet'].get
+  description: 'getReportBalanceSheet: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-report-balance-sheet
+- target: $.paths['/Reports/ProfitAndLoss'].get
+  description: 'getReportProfitAndLoss: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-profit-and-loss
+- target: $.paths['/Reports/TrialBalance'].get
+  description: 'getReportTrialBalance: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-trial-balance
+- target: $.paths['/TaxRates'].get
+  description: 'getTaxRates: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-tax-rates
+- target: $.paths['/TrackingCategories'].get
+  description: 'getTrackingCategories: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-tracking-categories
+- target: $.paths['/TrackingCategories/{TrackingCategoryID}'].get
+  description: 'getTrackingCategory: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - update-tracking-category
+    - update-tracking-options
+- target: $.paths['/Setup'].post
+  description: 'postSetup: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Accounts/{AccountID}'].post
+  description: 'updateAccount: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Accounts/{AccountID}/Attachments/{FileName}'].post
+  description: 'updateAccountAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BankTransactions/{BankTransactionID}'].post
+  description: 'updateBankTransaction: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - update-bank-transaction
+- target: $.paths['/BankTransactions/{BankTransactionID}/Attachments/{FileName}'].post
+  description: 'updateBankTransactionAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BankTransfers/{BankTransferID}/Attachments/{FileName}'].post
+  description: 'updateBankTransferAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Contacts/{ContactID}'].post
+  description: 'updateContact: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - update-contact
+- target: $.paths['/Contacts/{ContactID}/Attachments/{FileName}'].post
+  description: 'updateContactAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ContactGroups/{ContactGroupID}'].post
+  description: 'updateContactGroup: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/CreditNotes/{CreditNoteID}'].post
+  description: 'updateCreditNote: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - update-credit-note
+- target: $.paths['/CreditNotes/{CreditNoteID}/Attachments/{FileName}'].post
+  description: 'updateCreditNoteAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ExpenseClaims/{ExpenseClaimID}'].post
+  description: 'updateExpenseClaim: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Invoices/{InvoiceID}'].post
+  description: 'updateInvoice: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - update-invoice
+- target: $.paths['/Invoices/{InvoiceID}/Attachments/{FileName}'].post
+  description: 'updateInvoiceAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Items/{ItemID}'].post
+  description: 'updateItem: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - update-item
+- target: $.paths['/LinkedTransactions/{LinkedTransactionID}'].post
+  description: 'updateLinkedTransaction: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ManualJournals/{ManualJournalID}'].post
+  description: 'updateManualJournal: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - update-manual-journal
+- target: $.paths['/ManualJournals/{ManualJournalID}/Attachments/{FileName}'].post
+  description: 'updateManualJournalAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/BankTransactions'].post
+  description: 'updateOrCreateBankTransactions: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Contacts'].post
+  description: 'updateOrCreateContacts: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/CreditNotes'].post
+  description: 'updateOrCreateCreditNotes: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees'].post
+  description: 'updateOrCreateEmployees: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Invoices'].post
+  description: 'updateOrCreateInvoices: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Items'].post
+  description: 'updateOrCreateItems: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/ManualJournals'].post
+  description: 'updateOrCreateManualJournals: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/PurchaseOrders'].post
+  description: 'updateOrCreatePurchaseOrders: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Quotes'].post
+  description: 'updateOrCreateQuotes: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/RepeatingInvoices'].post
+  description: 'updateOrCreateRepeatingInvoices: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/PurchaseOrders/{PurchaseOrderID}'].post
+  description: 'updatePurchaseOrder: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/PurchaseOrders/{PurchaseOrderID}/Attachments/{FileName}'].post
+  description: 'updatePurchaseOrderAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Quotes/{QuoteID}'].post
+  description: 'updateQuote: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - update-quote
+- target: $.paths['/Quotes/{QuoteID}/Attachments/{FileName}'].post
+  description: 'updateQuoteAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Receipts/{ReceiptID}'].post
+  description: 'updateReceipt: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Receipts/{ReceiptID}/Attachments/{FileName}'].post
+  description: 'updateReceiptAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/RepeatingInvoices/{RepeatingInvoiceID}'].post
+  description: 'updateRepeatingInvoice: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/RepeatingInvoices/{RepeatingInvoiceID}/Attachments/{FileName}'].post
+  description: 'updateRepeatingInvoiceAttachmentByFileName: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/TaxRates'].post
+  description: 'updateTaxRate: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/TrackingCategories/{TrackingCategoryID}'].post
+  description: 'updateTrackingCategory: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - update-tracking-category
+- target: $.paths['/TrackingCategories/{TrackingCategoryID}/Options/{TrackingOptionID}'].post
+  description: 'updateTrackingOptions: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - update-tracking-options

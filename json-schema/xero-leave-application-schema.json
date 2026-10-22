@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-leave-application-schema.json",
+  "title": "LeaveApplication",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-payrollau-api-openapi.yml#/components/schemas/LeaveApplication",
+  "type": "object",
+  "properties": {
+    "LeaveApplicationID": {
+      "description": "The Xero identifier for Payroll Employee",
+      "type": "string",
+      "format": "uuid"
+    },
+    "EmployeeID": {
+      "description": "The Xero identifier for Payroll Employee",
+      "type": "string",
+      "format": "uuid"
+    },
+    "LeaveTypeID": {
+      "description": "The Xero identifier for Leave Type",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Title": {
+      "description": "The title of the leave",
+      "type": "string"
+    },
+    "StartDate": {
+      "description": "Start date of the leave (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "EndDate": {
+      "description": "End date of the leave (YYYY-MM-DD)",
+      "type": "string",
+      "x-is-msdate": true
+    },
+    "Description": {
+      "description": "The Description of the Leave",
+      "type": "string"
+    },
+    "PayOutType": {
+      "$ref": "#/$defs/PayOutType"
+    },
+    "LeavePeriods": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LeavePeriod"
+      }
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ValidationError"
+      }
+    }
+  },
+  "$defs": {
+    "LeavePeriod": {
+      "type": "object",
+      "properties": {
+        "NumberOfUnits": {
+          "description": "The Number of Units for the leave",
+          "type": "number",
+          "format": "double",
+          "x-is-money": true
+        },
+        "PayPeriodEndDate": {
+          "description": "The Pay Period End Date (YYYY-MM-DD)",
+          "type": "string",
+          "x-is-msdate": true
+        },
+        "PayPeriodStartDate": {
+          "description": "The Pay Period Start Date (YYYY-MM-DD)",
+          "type": "string",
+          "x-is-msdate": true
+        },
+        "LeavePeriodStatus": {
+          "$ref": "#/$defs/LeavePeriodStatus"
+        }
+      }
+    },
+    "LeavePeriodStatus": {
+      "type": "string",
+      "enum": [
+        "SCHEDULED",
+        "PROCESSED",
+        "REQUESTED",
+        "REJECTED"
+      ]
+    },
+    "PayOutType": {
+      "description": "How the requested leave will be paid out, e.g. cashed out.",
+      "type": "string",
+      "enum": [
+        "DEFAULT",
+        "CASHED_OUT"
+      ]
+    },
+    "ValidationError": {
+      "properties": {
+        "Message": {
+          "description": "Validation error message",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

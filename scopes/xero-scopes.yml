@@ -1,336 +1,564 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/xero-accounting-openapi.yml, openapi/xero-assets-openapi.yml, openapi/xero-bankfeeds-openapi.yml,
-  openapi/xero-files-openapi.yml, openapi/xero-finance-openapi.yml, openapi/xero-identity-openapi.yml,
-  openapi/xero-payroll-au-openapi.yml, openapi/xero-payroll-nz-openapi.yml, openapi/xero-payroll-uk-openapi.yml,
-  openapi/xero-projects-openapi.yml
+generated: '2026-10-20'
+method: searched
+source: openapi/xero-account-data-api-openapi.yml, openapi/xero-accounting-api-openapi.yml, openapi/xero-app-store-api-openapi.yml, openapi/xero-asset-api-openapi.yml, openapi/xero-bank-feeds-api-openapi.yml,
+  openapi/xero-bank-feeds-v2-api-openapi.yml, openapi/xero-files-api-openapi.yml, openapi/xero-finance-api-openapi.yml, openapi/xero-identity-api-openapi.yml, openapi/xero-payrollau-api-openapi.yml, openapi/xero-payrollau-v2-api-openapi.yml,
+  openapi/xero-payrollnz-api-openapi.yml, openapi/xero-payrolluk-api-openapi.yml, openapi/xero-project-api-openapi.yml
 schemes:
 - name: OAuth2
-  source: openapi/xero-accounting-openapi.yml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://login.xero.com/identity/connect/authorize
-    tokenUrl: https://identity.xero.com/connect/token
-  description: For more information
-- name: OAuth2
-  source: openapi/xero-assets-openapi.yml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://login.xero.com/identity/connect/authorize
-    tokenUrl: https://identity.xero.com/connect/token
-  description: For more information
-- name: OAuth2
-  source: openapi/xero-bankfeeds-openapi.yml
+  source: openapi/xero-account-data-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://login.xero.com/identity/connect/authorize
     tokenUrl: https://identity.xero.com/connect/token
   description: For more information visit https://developer.xero.com/documentation/oauth2/overview
 - name: OAuth2
-  source: openapi/xero-files-openapi.yml
+  source: openapi/xero-accounting-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://login.xero.com/identity/connect/authorize
     tokenUrl: https://identity.xero.com/connect/token
   description: For more information
 - name: OAuth2
-  source: openapi/xero-finance-openapi.yml
+  source: openapi/xero-app-store-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://identity.xero.com/connect/token
+  description: For more information
+- name: OAuth2
+  source: openapi/xero-asset-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://login.xero.com/identity/connect/authorize
     tokenUrl: https://identity.xero.com/connect/token
   description: For more information
 - name: OAuth2
-  source: openapi/xero-identity-openapi.yml
+  source: openapi/xero-bank-feeds-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.xero.com/identity/connect/authorize
+    tokenUrl: https://identity.xero.com/connect/token
+  description: For more information visit https://developer.xero.com/documentation/oauth2/overview
+- name: OAuth2
+  source: openapi/xero-bank-feeds-v2-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.xero.com/identity/connect/authorize
+    tokenUrl: https://identity.xero.com/connect/token
+  description: For more information visit https://developer.xero.com/documentation/oauth2/overview
+- name: OAuth2
+  source: openapi/xero-files-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://login.xero.com/identity/connect/authorize
     tokenUrl: https://identity.xero.com/connect/token
   description: For more information
 - name: OAuth2
-  source: openapi/xero-payroll-au-openapi.yml
+  source: openapi/xero-finance-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.xero.com/identity/connect/authorize
+    tokenUrl: https://identity.xero.com/connect/token
+  description: For more information
+- name: OAuth2
+  source: openapi/xero-identity-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.xero.com/identity/connect/authorize
+    tokenUrl: https://identity.xero.com/connect/token
+  description: For more information
+- name: OAuth2
+  source: openapi/xero-payrollau-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://login.xero.com/identity/connect/authorize
     tokenUrl: https://identity.xero.com/connect/token
   description: For more information visit https://developer.xero.com/documentation/oauth2/overview
 - name: OAuth2
-  source: openapi/xero-payroll-nz-openapi.yml
+  source: openapi/xero-payrollau-v2-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://login.xero.com/identity/connect/authorize
     tokenUrl: https://identity.xero.com/connect/token
   description: For more information visit https://developer.xero.com/documentation/oauth2/overview
 - name: OAuth2
-  source: openapi/xero-payroll-uk-openapi.yml
+  source: openapi/xero-payrollnz-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://login.xero.com/identity/connect/authorize
     tokenUrl: https://identity.xero.com/connect/token
   description: For more information visit https://developer.xero.com/documentation/oauth2/overview
 - name: OAuth2
-  source: openapi/xero-projects-openapi.yml
+  source: openapi/xero-payrolluk-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.xero.com/identity/connect/authorize
+    tokenUrl: https://identity.xero.com/connect/token
+  description: For more information visit https://developer.xero.com/documentation/oauth2/overview
+- name: OAuth2
+  source: openapi/xero-project-api-openapi.yml
   flows:
   - flow: authorizationCode
     authorizationUrl: https://login.xero.com/identity/connect/authorize
     tokenUrl: https://identity.xero.com/connect/token
   description: For more information
 scopes:
+- scope: accountdata.balances.read
+  description: Read general ledger account balances
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/xero-account-data-api-openapi.yml
+- scope: accountdata.movements.read
+  description: Read general ledger account movements
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/xero-account-data-api-openapi.yml
+- scope: accountdata.transactions.read
+  description: Read general ledger account transactions
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/xero-account-data-api-openapi.yml
 - scope: accounting.attachments
   description: Grant read-write access to attachments
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View and manage your attachments Accounts, BankTransactions, BankTransfers, Contacts, CreditNotes, Invoices, LinkedTransactions, ManualJournals, PurchaseOrders, Receipts, RepeatingInvoices
 - scope: accounting.attachments.read
   description: Grant read-only access to attachments
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View your attachments As above but GET only
 - scope: accounting.budgets.read
   description: Grant read-only access to read budgets
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View your budgets Budgets
 - scope: accounting.contacts
   description: Grant read-write access to contacts and contact groups
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View and manage your contacts Contacts, ContactGroups
 - scope: accounting.contacts.read
   description: Grant read-only access to contacts and contact groups
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View your contacts As above but GET only
 - scope: accounting.journals.read
   description: Grant read-only access to journals
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View your general ledger Journals
 - scope: accounting.reports.read
   description: Grant read-only access to accounting reports
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View your reports AgedPayablesByContact, AgedReceivablesByContact, BalanceSheet, BankSummary, BASReport, BudgetSummary, ExecutiveSummary, GSTReport, ProfitAndLoss, TrialBalance
+  status: deprecated
 - scope: accounting.reports.tenninetynine.read
   description: Grant read-only access to 1099 reports
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View your 1099 reports 1099Report
 - scope: accounting.settings
   description: Grant read-write access to organisation and account settings
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View and manage your organisation settings Accounts, BrandingThemes, Currencies, Items, InvoiceReminders, Organisation, TaxRates, TrackingCategories, Users
 - scope: accounting.settings.read
   description: Grant read-only access to organisation and account settings
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View your organisation settings As above but GET only
 - scope: accounting.transactions
-  description: Grant read-write access to bank transactions, credit notes, invoices, repeating
-    invoices
+  description: Grant read-write access to bank transactions, credit notes, invoices, repeating invoices
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View and manage your business transactions BankTransactions, BankTransfers, BatchPayments, CreditNotes, ExpenseClaims, Invoices, LinkedTransactions, ManualJournals, Overpayments, Quotes
+  status: deprecated
 - scope: accounting.transactions.read
   description: Grant read-only access to invoices
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View your business transactions As above but GET only
+  status: deprecated
 - scope: assets
   description: Grant read-write access to fixed assets
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-assets-openapi.yml
+  - openapi/xero-asset-api-openapi.yml
+  docs_description: View and manage your fixed assets Assets, Asset Types, Settings
 - scope: assets.read
   description: Grant read-only access to fixed assets
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-assets-openapi.yml
+  - openapi/xero-asset-api-openapi.yml
+  docs_description: View your fixed assets As above but GET only
 - scope: bankfeeds
   description: Grant read-write access to bankfeeds
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-bankfeeds-openapi.yml
+  - openapi/xero-bank-feeds-api-openapi.yml
+  docs_description: Legacy scope for existing 1.0 integrations. Feed Connections 1.0, Statements API
+- scope: bankfeedsv2
+  description: Grant read-write access to Bank Feeds Feed Connections 2.0
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/xero-bank-feeds-v2-api-openapi.yml
+  docs_description: View and manage Feed Connections 2.0 and Statements 1.0. Use this scope for new integrations. Feed Connections 2.0, Statements API
 - scope: email
   description: Grant read-only access to your email
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
-  - openapi/xero-assets-openapi.yml
-  - openapi/xero-bankfeeds-openapi.yml
-  - openapi/xero-files-openapi.yml
-  - openapi/xero-finance-openapi.yml
-  - openapi/xero-identity-openapi.yml
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-projects-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  - openapi/xero-asset-api-openapi.yml
+  - openapi/xero-bank-feeds-api-openapi.yml
+  - openapi/xero-bank-feeds-v2-api-openapi.yml
+  - openapi/xero-files-api-openapi.yml
+  - openapi/xero-finance-api-openapi.yml
+  - openapi/xero-identity-api-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-project-api-openapi.yml
+  docs_description: email address
 - scope: files
   description: Grant read-write access to files and folders
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-files-openapi.yml
+  - openapi/xero-files-api-openapi.yml
+  docs_description: View and manage your file library Files, Folders, Associations
 - scope: files.read
   description: Grant read-only access to files and folders
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-files-openapi.yml
+  - openapi/xero-files-api-openapi.yml
+  docs_description: View your file library As above but GET only
 - scope: finance.bankstatementsplus.read
   description: Grant read-only access to bank statements accounting data
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-finance-openapi.yml
+  - openapi/xero-finance-api-openapi.yml
+  docs_description: View your Bank statement and reconciled transactions Bank Statements Plus
 - scope: finance.cashvalidation.read
   description: Grant read-only access to bank statement and reconcilation data
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-finance-openapi.yml
+  - openapi/xero-finance-api-openapi.yml
+  docs_description: View your Bank statement and reconciliation data Cash Validation
 - scope: finance.statements.read
   description: Grant read-only access to finacial statements
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-finance-openapi.yml
+  - openapi/xero-finance-api-openapi.yml
+  docs_description: View your financial statements Financial Statements
+- scope: marketplace.billing
+  description: Grant read-only access to fixed assets
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/xero-app-store-api-openapi.yml
+  docs_description: View and manage Xero App Store data Access to Xero App Store endpoints
 - scope: openid
   description: Grant read-only access to your open id
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
-  - openapi/xero-assets-openapi.yml
-  - openapi/xero-bankfeeds-openapi.yml
-  - openapi/xero-files-openapi.yml
-  - openapi/xero-finance-openapi.yml
-  - openapi/xero-identity-openapi.yml
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-projects-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  - openapi/xero-asset-api-openapi.yml
+  - openapi/xero-bank-feeds-api-openapi.yml
+  - openapi/xero-bank-feeds-v2-api-openapi.yml
+  - openapi/xero-files-api-openapi.yml
+  - openapi/xero-finance-api-openapi.yml
+  - openapi/xero-identity-api-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-project-api-openapi.yml
+  docs_description: your application intends to use the user’s identity
 - scope: paymentservices
   description: Grant read-write access to payment services
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  docs_description: View and manage your payment services PaymentServices
 - scope: payroll.employees
   description: Grant read-write access to payroll employees
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  docs_description: View and manage your employees Employees, LeaveApplications
 - scope: payroll.employees.read
   description: Grant read-only access to payroll employees
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  docs_description: View your employees As above but GET only
 - scope: payroll.payruns
   description: Grant read-write access to payroll payruns
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  docs_description: View and manage your pay runs Payruns
 - scope: payroll.payruns.read
   description: Grant read-only access to payroll payruns
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  docs_description: View your pay runs As above but GET only
 - scope: payroll.payslip
   description: Grant read-write access to payroll payslips
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  docs_description: View and manage your payslips Payslips
 - scope: payroll.payslip.read
   description: Grant read-only access to payroll payslips
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  docs_description: View your payslips As above but GET only
 - scope: payroll.settings
   description: Grant read-write access to payroll settings
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  docs_description: View and manage your payroll settings Settings, PayrollCalendars, PayItems, SuperFunds, SuperFundProducts
 - scope: payroll.settings.read
   description: Grant read-only access to payroll settings
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  docs_description: View your payroll settings As above but GET only
 - scope: payroll.timesheets
   description: Grant read-write access to payroll timesheets
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollau-v2-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  docs_description: View and manage your timesheets Timesheets
 - scope: payroll.timesheets.read
   description: Grant read-only access to payroll timesheets
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-payroll-nz-openapi.yml
-  - openapi/xero-payroll-uk-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-payrollau-v2-api-openapi.yml
+  - openapi/xero-payrollnz-api-openapi.yml
+  - openapi/xero-payrolluk-api-openapi.yml
+  docs_description: View your timesheets As above but GET only
 - scope: profile
   description: your profile information
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-accounting-openapi.yml
-  - openapi/xero-assets-openapi.yml
-  - openapi/xero-bankfeeds-openapi.yml
-  - openapi/xero-files-openapi.yml
-  - openapi/xero-finance-openapi.yml
-  - openapi/xero-identity-openapi.yml
-  - openapi/xero-payroll-au-openapi.yml
-  - openapi/xero-projects-openapi.yml
+  - openapi/xero-accounting-api-openapi.yml
+  - openapi/xero-asset-api-openapi.yml
+  - openapi/xero-bank-feeds-api-openapi.yml
+  - openapi/xero-bank-feeds-v2-api-openapi.yml
+  - openapi/xero-files-api-openapi.yml
+  - openapi/xero-finance-api-openapi.yml
+  - openapi/xero-identity-api-openapi.yml
+  - openapi/xero-payrollau-api-openapi.yml
+  - openapi/xero-project-api-openapi.yml
+  docs_description: first name, last name, full name and xero user id
 - scope: projects
   description: Grant read-write access to projects
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-projects-openapi.yml
+  - openapi/xero-project-api-openapi.yml
+  docs_description: View and manage your projects Projects, Tasks, Time
 - scope: projects.read
   description: Grant read-only access to projects
   flows:
   - authorizationCode
   sources:
-  - openapi/xero-projects-openapi.yml
+  - openapi/xero-project-api-openapi.yml
+  docs_description: View your projects As above but GET only
+- scope: accounting.invoices
+  sources:
+  - docs
+  docs_description: View and manage invoices CreditNotes, Invoices, LinkedTransactions, Quotes, PurchaseOrders, RepeatingInvoices, Items
+  status: new
+- scope: accounting.invoices.read
+  sources:
+  - docs
+  docs_description: View invoices As above but GET only
+  status: new
+- scope: accounting.payments
+  sources:
+  - docs
+  docs_description: View and manage payments BatchPayments, Overpayments, Payments, Prepayments
+  status: new
+- scope: accounting.payments.read
+  sources:
+  - docs
+  docs_description: View payments As above but GET only
+  status: new
+- scope: accounting.banktransactions
+  sources:
+  - docs
+  docs_description: View and manage bank transactions BankTransactions, BankTransfers
+  status: new
+- scope: accounting.banktransactions.read
+  sources:
+  - docs
+  docs_description: View bank transactions As above but GET only
+  status: new
+- scope: accounting.manualjournals
+  sources:
+  - docs
+  docs_description: View and manage manual journals ManualJournals
+  status: new
+- scope: accounting.manualjournals.read
+  sources:
+  - docs
+  docs_description: View manual journals As above but GET only
+  status: new
+- scope: accounting.reports.aged.read
+  sources:
+  - docs
+  docs_description: View aged reports AgedPayablesByContact, AgedReceivablesByContact
+  status: new
+- scope: accounting.reports.balancesheet.read
+  sources:
+  - docs
+  docs_description: View balance sheets BalanceSheet
+  status: new
+- scope: accounting.reports.banksummary.read
+  sources:
+  - docs
+  docs_description: View bank summary BankSummary
+  status: new
+- scope: accounting.reports.budgetsummary.read
+  sources:
+  - docs
+  docs_description: View budget summary BudgetSummary
+  status: new
+- scope: accounting.reports.executivesummary.read
+  sources:
+  - docs
+  docs_description: View executive summary ExecutiveSummary
+  status: new
+- scope: accounting.reports.profitandloss.read
+  sources:
+  - docs
+  docs_description: View profit and loss ProfitAndLoss
+  status: new
+- scope: accounting.reports.trialbalance.read
+  sources:
+  - docs
+  docs_description: View trial balance TrialBalance
+  status: new
+- scope: accounting.reports.taxreports.read
+  sources:
+  - docs
+  docs_description: View GST or BAS reports GSTReport, BASReport
+  status: new
+- scope: practicemanager.job
+  sources:
+  - docs
+  docs_description: View and manage your Practice Manager job data Access to job endpoints
+- scope: practicemanager.job.read
+  sources:
+  - docs
+  docs_description: View your Practice Manager job data As above but GET only
+- scope: practicemanager.client
+  sources:
+  - docs
+  docs_description: View and manage your Practice Manager client data Access to client endpoints and client group endpoints
+- scope: practicemanager.client.read
+  sources:
+  - docs
+  docs_description: View your Practice Manager client data As above but GET only
+- scope: practicemanager.staff
+  sources:
+  - docs
+  docs_description: View and manage your Practice Manager staff data Access to staff endpoints
+- scope: practicemanager.staff.read
+  sources:
+  - docs
+  docs_description: View your Practice Manager staff data As above but GET only
+- scope: practicemanager.time
+  sources:
+  - docs
+  docs_description: View and manage your Practice Manager time data Access to time endpoints
+- scope: practicemanager.time.read
+  sources:
+  - docs
+  docs_description: View your Practice Manager time data As above but GET only
+- scope: einvoicing
+  sources:
+  - docs
+  docs_description: View and manage registration information eInvoicing
+- scope: app.connections
+  sources:
+  - docs
+  docs_description: View your connection data Access to Connections endpoint
+- scope: offline_access
+  sources:
+  - docs
+  docs_description: To get a refresh token, you must request the offline_access scope.
+docs: https://developer.xero.com/documentation/guides/oauth2/scopes/
+note: Broad scopes (accounting.transactions[.read], accounting.reports.read) are deprecated in favour of granular scopes; "Broad scopes will remain available until September 2027." Docs scopes merged with
+  the spec-derived baseline.

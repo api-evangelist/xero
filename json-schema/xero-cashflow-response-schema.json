@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-cashflow-response-schema.json",
+  "title": "CashflowResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-finance-api-openapi.yml#/components/schemas/CashflowResponse",
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "type": "string",
+      "description": "Start date of the report",
+      "format": "date"
+    },
+    "endDate": {
+      "type": "string",
+      "description": "End date of the report",
+      "format": "date"
+    },
+    "cashBalance": {
+      "$ref": "#/$defs/CashBalance"
+    },
+    "cashflowActivities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CashflowActivity"
+      },
+      "description": "Break down of cash and cash equivalents for the period"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "CashBalance": {
+      "type": "object",
+      "properties": {
+        "openingCashBalance": {
+          "type": "number",
+          "description": "Opening balance of cash and cash equivalents",
+          "format": "double",
+          "x-is-money": true
+        },
+        "closingCashBalance": {
+          "type": "number",
+          "description": "Closing balance of cash and cash equivalents",
+          "format": "double",
+          "x-is-money": true
+        },
+        "netCashMovement": {
+          "type": "number",
+          "description": "Net movement of cash and cash equivalents for the period",
+          "format": "double",
+          "x-is-money": true,
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "CashflowAccount": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "description": "ID of the account",
+          "format": "uuid"
+        },
+        "accountType": {
+          "type": "string",
+          "description": "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>"
+        },
+        "accountClass": {
+          "type": "string",
+          "description": "The class of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountClassTypes'>Account Class Types</a>"
+        },
+        "code": {
+          "type": "string",
+          "description": "Account code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Account name"
+        },
+        "reportingCode": {
+          "type": "string",
+          "description": "Reporting code used for cash flow classification"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total amount for the account",
+          "format": "double",
+          "x-is-money": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "CashflowActivity": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the cashflow activity type. It will be either Operating Activities, Investing Activities or Financing Activities"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total value of the activity type",
+          "format": "double",
+          "x-is-money": true
+        },
+        "cashflowTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CashflowType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "CashflowType": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the activity"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total value of the activity",
+          "format": "double",
+          "x-is-money": true
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CashflowAccount"
+          },
+          "description": "List of the accounts in this activity"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

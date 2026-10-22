@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-super-fund-schema.json",
+  "title": "SuperFund",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-payrollau-api-openapi.yml#/components/schemas/SuperFund",
+  "type": "object",
+  "required": [
+    "Type"
+  ],
+  "properties": {
+    "SuperFundID": {
+      "description": "Xero identifier for a super fund",
+      "type": "string",
+      "format": "uuid"
+    },
+    "Type": {
+      "$ref": "#/$defs/SuperFundType"
+    },
+    "Name": {
+      "description": "Name of the super fund",
+      "type": "string"
+    },
+    "ABN": {
+      "description": "ABN of the self managed super fund",
+      "type": "string"
+    },
+    "BSB": {
+      "description": "BSB of the self managed super fund",
+      "type": "string"
+    },
+    "AccountNumber": {
+      "description": "The account number for the self managed super fund.",
+      "type": "string"
+    },
+    "AccountName": {
+      "description": "The account name for the self managed super fund.",
+      "type": "string"
+    },
+    "ElectronicServiceAddress": {
+      "description": "The electronic service address for the self managed super fund.",
+      "type": "string"
+    },
+    "EmployerNumber": {
+      "description": "Some funds assign a unique number to each employer",
+      "type": "string"
+    },
+    "SPIN": {
+      "description": "The SPIN of the Regulated SuperFund. This field has been deprecated. It will only be present for legacy superfunds. New superfunds will not have a SPIN value. The USI field should be used instead of SPIN.",
+      "type": "string"
+    },
+    "USI": {
+      "description": "The USI of the Regulated SuperFund",
+      "type": "string"
+    },
+    "UpdatedDateUTC": {
+      "description": "Last modified timestamp",
+      "type": "string",
+      "readOnly": true,
+      "x-is-msdate-time": true
+    },
+    "ValidationErrors": {
+      "description": "Displays array of validation error messages from the API",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ValidationError"
+      }
+    }
+  },
+  "$defs": {
+    "SuperFundType": {
+      "type": "string",
+      "enum": [
+        "REGULATED",
+        "SMSF"
+      ]
+    },
+    "ValidationError": {
+      "properties": {
+        "Message": {
+          "description": "Validation error message",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

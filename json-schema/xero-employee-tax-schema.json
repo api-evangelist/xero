@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-employee-tax-schema.json",
+  "title": "EmployeeTax",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-payrollnz-api-openapi.yml#/components/schemas/EmployeeTax",
+  "type": "object",
+  "properties": {
+    "irdNumber": {
+      "description": "The IRD Number.",
+      "type": "string"
+    },
+    "taxCode": {
+      "$ref": "#/$defs/TaxCode"
+    },
+    "specialTaxRatePercentage": {
+      "description": "Special tax rate percentage.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "hasSpecialStudentLoanRate": {
+      "description": "Does the employee has a special student loan rate?",
+      "type": "boolean"
+    },
+    "specialStudentLoanRatePercentage": {
+      "description": "The employee student loan rate percentage.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "isEligibleForKiwiSaver": {
+      "description": "The employee eligibility for KiwiSaver.",
+      "type": "boolean"
+    },
+    "esctRatePercentage": {
+      "description": "Employer superannuation contribution tax rate.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "kiwiSaverContributions": {
+      "description": "Contribution Option which can be 'MakeContributions' 'OptOut', 'OnAContributionsHoliday', 'OnASavingsSuspension', 'NotCurrentlyAKiwiSaverMember' for employees without a KiwiSaver membership",
+      "type": "string",
+      "enum": [
+        "MakeContributions",
+        "OptOut",
+        "OnAContributionsHoliday",
+        "OnASavingsSuspension",
+        "NotCurrentlyAKiwiSaverMember"
+      ]
+    },
+    "kiwiSaverEmployeeContributionRatePercentage": {
+      "description": "Employee Contribution percentage.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "kiwiSaverEmployerContributionRatePercentage": {
+      "description": "Employer Contribution percentage.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "kiwiSaverEmployerSalarySacrificeContributionRatePercentage": {
+      "description": "Employer Contribution through Salary Sacrifice percentage.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "kiwiSaverOptOutDate": {
+      "description": "Opt Out Date.",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "kiwiSaverContributionHolidayEndDate": {
+      "description": "Contribution holiday expiry date or end date.",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    },
+    "hasStudentLoanBalance": {
+      "description": "Does the employee have a remaining student loan balance? Set a remaining balance if you have received a letter from IR.",
+      "type": "boolean"
+    },
+    "studentLoanBalance": {
+      "description": "The employee's student loan balance shown on the letter from IR.",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "studentLoanAsAt": {
+      "description": "The date of the letter from IR.",
+      "type": "string",
+      "format": "date",
+      "x-is-date": true
+    }
+  },
+  "$defs": {
+    "TaxCode": {
+      "description": "Tax codes used for employee tax",
+      "type": "string",
+      "enum": [
+        "ND",
+        "M",
+        "ME",
+        "MSL",
+        "MESL",
+        "SB",
+        "S",
+        "SH",
+        "ST",
+        "SBSL",
+        "SSL",
+        "SHSL",
+        "STSL",
+        "WT",
+        "CAE",
+        "EDW",
+        "NSW",
+        "STC",
+        "STCSL"
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+generated: '2026-10-20'
+method: searched
+source: https://developer.xero.com/changelog
+versioning:
+  scheme: URL path major version per API (e.g. https://api.xero.com/api.xro/2.0/); no dated API versions. Changes are announced on the developer changelog with "Upcoming Changes" carrying target dates.
+  docs: https://developer.xero.com/changelog
+deprecation:
+  policy: 'Deprecations and breaking changes are published on the changelog with target dates. Examples: broad Accounting scopes "will remain available until September 2027"; Classic Expenses API deprecation;
+    Practice Manager 3.0 deprecated in favour of 3.1.'
+  docs: https://developer.xero.com/documentation/guides/oauth2/scopes/
+  sunset_headers: not documented
+deprecated_operations:
+- spec: openapi/xero-accounting-api-openapi.yml
+  operationId: getEmployees
+- spec: openapi/xero-accounting-api-openapi.yml
+  operationId: createEmployees
+- spec: openapi/xero-accounting-api-openapi.yml
+  operationId: updateOrCreateEmployees
+- spec: openapi/xero-accounting-api-openapi.yml
+  operationId: getEmployee
+status_page: https://status.developer.xero.com/
+uptime: https://status.developer.xero.com/uptime
+sla: none published in developer docs

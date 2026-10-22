@@ -1,0 +1,1545 @@
+{
+  "@context": {
+    "@vocab": "https://xero.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xero": "https://xero.com/schema#",
+    "AccountBalancesResponse": "xero:AccountBalancesResponse",
+    "accountBalances": {
+      "@id": "xero:accountBalances",
+      "@container": "@list"
+    },
+    "AccountBalance": "xero:AccountBalance",
+    "accountId": {
+      "@id": "xero:accountId",
+      "@type": "xsd:string"
+    },
+    "date": {
+      "@id": "xero:date",
+      "@type": "xsd:date"
+    },
+    "balance": {
+      "@id": "xero:balance",
+      "@type": "@id"
+    },
+    "signedBalance": {
+      "@id": "xero:signedBalance",
+      "@type": "xsd:decimal"
+    },
+    "account": {
+      "@id": "xero:account",
+      "@type": "@id"
+    },
+    "Account": "xero:Account",
+    "code": {
+      "@id": "xero:code",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "xero:name",
+      "@type": "xsd:string"
+    },
+    "class": {
+      "@id": "xero:class",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "xero:type",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "xero:status",
+      "@type": "xsd:string"
+    },
+    "systemAccountCode": {
+      "@id": "xero:systemAccountCode",
+      "@type": "xsd:string"
+    },
+    "LedgerDecimal": "xero:LedgerDecimal",
+    "value": {
+      "@id": "xero:value",
+      "@type": "xsd:decimal"
+    },
+    "ProblemDetails": "xero:ProblemDetails",
+    "title": {
+      "@id": "xero:title",
+      "@type": "xsd:string"
+    },
+    "detail": {
+      "@id": "xero:detail",
+      "@type": "xsd:string"
+    },
+    "instance": {
+      "@id": "xero:instance",
+      "@type": "xsd:string"
+    },
+    "AccountMovementsResponse": "xero:AccountMovementsResponse",
+    "accountMovements": {
+      "@id": "xero:accountMovements",
+      "@container": "@list"
+    },
+    "AccountMovement": "xero:AccountMovement",
+    "dateRange": {
+      "@id": "xero:dateRange",
+      "@type": "@id"
+    },
+    "debits": {
+      "@id": "xero:debits",
+      "@type": "xsd:decimal"
+    },
+    "credits": {
+      "@id": "xero:credits",
+      "@type": "xsd:decimal"
+    },
+    "movement": {
+      "@id": "xero:movement",
+      "@type": "@id"
+    },
+    "signedMovement": {
+      "@id": "xero:signedMovement",
+      "@type": "xsd:decimal"
+    },
+    "taxDebits": {
+      "@id": "xero:taxDebits",
+      "@type": "xsd:decimal"
+    },
+    "taxCredits": {
+      "@id": "xero:taxCredits",
+      "@type": "xsd:decimal"
+    },
+    "signedTaxMovement": {
+      "@id": "xero:signedTaxMovement",
+      "@type": "xsd:decimal"
+    },
+    "AccountingDateRange": "xero:AccountingDateRange",
+    "startDate": {
+      "@id": "xero:startDate",
+      "@type": "xsd:date"
+    },
+    "endDate": {
+      "@id": "xero:endDate",
+      "@type": "xsd:date"
+    },
+    "AccountTransactionsResponse": "xero:AccountTransactionsResponse",
+    "currencyCode": {
+      "@id": "xero:currencyCode",
+      "@type": "xsd:string"
+    },
+    "maxJournalNumber": {
+      "@id": "xero:maxJournalNumber",
+      "@type": "xsd:integer"
+    },
+    "lines": {
+      "@id": "xero:lines",
+      "@container": "@list"
+    },
+    "pagination": {
+      "@id": "xero:pagination"
+    },
+    "AccountTransactionLine": "xero:AccountTransactionLine",
+    "journalNumber": {
+      "@id": "xero:journalNumber",
+      "@type": "xsd:integer"
+    },
+    "journalDate": {
+      "@id": "xero:journalDate",
+      "@type": "xsd:date"
+    },
+    "description": {
+      "@id": "xero:description",
+      "@type": "xsd:string"
+    },
+    "netAmount": {
+      "@id": "xero:netAmount",
+      "@type": "@id"
+    },
+    "signedNetAmount": {
+      "@id": "xero:signedNetAmount",
+      "@type": "xsd:decimal"
+    },
+    "taxAmount": {
+      "@id": "xero:taxAmount",
+      "@type": "@id"
+    },
+    "signedTaxAmount": {
+      "@id": "xero:signedTaxAmount",
+      "@type": "xsd:decimal"
+    },
+    "source": {
+      "@id": "xero:source",
+      "@type": "@id"
+    },
+    "taxRate": {
+      "@id": "xero:taxRate",
+      "@type": "@id"
+    },
+    "trackingCategories": {
+      "@id": "xero:trackingCategories"
+    },
+    "LineSource": "xero:LineSource",
+    "documentId": {
+      "@id": "xero:documentId",
+      "@type": "xsd:string"
+    },
+    "documentType": {
+      "@id": "xero:documentType",
+      "@type": "xsd:string"
+    },
+    "eventType": {
+      "@id": "xero:eventType",
+      "@type": "xsd:string"
+    },
+    "contactId": {
+      "@id": "xero:contactId",
+      "@type": "xsd:string"
+    },
+    "contactName": {
+      "@id": "xero:contactName",
+      "@type": "xsd:string"
+    },
+    "reference": {
+      "@id": "xero:reference",
+      "@type": "xsd:string"
+    },
+    "LineTaxRate": "xero:LineTaxRate",
+    "percentage": {
+      "@id": "xero:percentage",
+      "@type": "xsd:decimal"
+    },
+    "TrackingItemDetails": "xero:TrackingItemDetails",
+    "categoryName": {
+      "@id": "xero:categoryName",
+      "@type": "xsd:string"
+    },
+    "optionId": {
+      "@id": "xero:optionId",
+      "@type": "xsd:string"
+    },
+    "optionName": {
+      "@id": "xero:optionName",
+      "@type": "xsd:string"
+    },
+    "TransactionAccount": "xero:TransactionAccount",
+    "id": {
+      "@id": "xero:id",
+      "@type": "xsd:string"
+    },
+    "FieldProblem": "xero:FieldProblem",
+    "fieldName": {
+      "@id": "xero:fieldName",
+      "@type": "xsd:string"
+    },
+    "ValidationProblem": "xero:ValidationProblem",
+    "fieldValidationErrors": {
+      "@id": "xero:fieldValidationErrors",
+      "@container": "@list"
+    },
+    "GatewayProblem": "xero:GatewayProblem",
+    "Type": {
+      "@id": "xero:Type",
+      "@type": "xsd:string"
+    },
+    "Title": {
+      "@id": "xero:Title",
+      "@type": "xsd:string"
+    },
+    "Status": {
+      "@id": "xero:Status",
+      "@type": "xsd:integer"
+    },
+    "Detail": {
+      "@id": "xero:Detail",
+      "@type": "xsd:string"
+    },
+    "Instance": {
+      "@id": "xero:Instance",
+      "@type": "xsd:string"
+    },
+    "Extensions": {
+      "@id": "xero:Extensions"
+    },
+    "Invoices": "xero:Invoices",
+    "Warnings": {
+      "@id": "xero:Warnings",
+      "@container": "@list"
+    },
+    "TrackingCategories": "xero:TrackingCategories",
+    "ExternalLink": "xero:ExternalLink",
+    "LinkType": {
+      "@id": "xero:LinkType",
+      "@type": "xsd:string"
+    },
+    "Url": {
+      "@id": "xero:Url",
+      "@type": "xsd:string"
+    },
+    "Description": {
+      "@id": "xero:Description",
+      "@type": "xsd:string"
+    },
+    "TaxBreakdownComponent": "xero:TaxBreakdownComponent",
+    "TaxComponentId": {
+      "@id": "xero:TaxComponentId",
+      "@type": "xsd:string"
+    },
+    "Name": {
+      "@id": "xero:Name",
+      "@type": "xsd:string"
+    },
+    "TaxPercentage": {
+      "@id": "xero:TaxPercentage",
+      "@type": "xsd:decimal"
+    },
+    "TaxAmount": {
+      "@id": "xero:TaxAmount",
+      "@type": "xsd:decimal"
+    },
+    "TaxableAmount": {
+      "@id": "xero:TaxableAmount",
+      "@type": "xsd:decimal"
+    },
+    "NonTaxableAmount": {
+      "@id": "xero:NonTaxableAmount",
+      "@type": "xsd:decimal"
+    },
+    "ExemptAmount": {
+      "@id": "xero:ExemptAmount",
+      "@type": "xsd:decimal"
+    },
+    "StateAssignedNo": {
+      "@id": "xero:StateAssignedNo",
+      "@type": "xsd:string"
+    },
+    "JurisdictionRegion": {
+      "@id": "xero:JurisdictionRegion",
+      "@type": "xsd:string"
+    },
+    "TaxComponent": "xero:TaxComponent",
+    "Rate": {
+      "@id": "xero:Rate",
+      "@type": "xsd:decimal"
+    },
+    "IsCompound": {
+      "@id": "xero:IsCompound",
+      "@type": "xsd:boolean"
+    },
+    "IsNonRecoverable": {
+      "@id": "xero:IsNonRecoverable",
+      "@type": "xsd:boolean"
+    },
+    "SalesTrackingCategory": "xero:SalesTrackingCategory",
+    "TrackingCategoryName": {
+      "@id": "xero:TrackingCategoryName",
+      "@type": "xsd:string"
+    },
+    "TrackingOptionName": {
+      "@id": "xero:TrackingOptionName",
+      "@type": "xsd:string"
+    },
+    "PaymentServices": "xero:PaymentServices",
+    "ContactPerson": "xero:ContactPerson",
+    "FirstName": {
+      "@id": "xero:FirstName",
+      "@type": "xsd:string"
+    },
+    "LastName": {
+      "@id": "xero:LastName",
+      "@type": "xsd:string"
+    },
+    "EmailAddress": {
+      "@id": "xero:EmailAddress",
+      "@type": "xsd:string"
+    },
+    "IncludeInEmails": {
+      "@id": "xero:IncludeInEmails",
+      "@type": "xsd:boolean"
+    },
+    "ReportWithRows": "xero:ReportWithRows",
+    "Reports": {
+      "@id": "xero:Reports",
+      "@container": "@list"
+    },
+    "Employee": "xero:Employee",
+    "EmployeeID": {
+      "@id": "xero:EmployeeID",
+      "@type": "xsd:string"
+    },
+    "UpdatedDateUTC": {
+      "@id": "xero:UpdatedDateUTC",
+      "@type": "xsd:string"
+    },
+    "StatusAttributeString": {
+      "@id": "xero:StatusAttributeString",
+      "@type": "xsd:string"
+    },
+    "ValidationErrors": {
+      "@id": "xero:ValidationErrors",
+      "@container": "@list"
+    },
+    "CreditNotes": "xero:CreditNotes",
+    "Element": "xero:Element",
+    "BatchPaymentID": {
+      "@id": "xero:BatchPaymentID",
+      "@type": "xsd:string"
+    },
+    "BankTransactionID": {
+      "@id": "xero:BankTransactionID",
+      "@type": "xsd:string"
+    },
+    "CreditNoteID": {
+      "@id": "xero:CreditNoteID",
+      "@type": "xsd:string"
+    },
+    "ContactID": {
+      "@id": "xero:ContactID",
+      "@type": "xsd:string"
+    },
+    "InvoiceID": {
+      "@id": "xero:InvoiceID",
+      "@type": "xsd:string"
+    },
+    "ItemID": {
+      "@id": "xero:ItemID",
+      "@type": "xsd:string"
+    },
+    "PurchaseOrderID": {
+      "@id": "xero:PurchaseOrderID",
+      "@type": "xsd:string"
+    },
+    "Overpayments": "xero:Overpayments",
+    "Receipts": "xero:Receipts",
+    "Currency": "xero:Currency",
+    "Code": {
+      "@id": "xero:Code",
+      "@type": "@id"
+    },
+    "QuoteLineAmountTypes": "xero:QuoteLineAmountTypes",
+    "BatchPaymentDelete": "xero:BatchPaymentDelete",
+    "TaxRates": "xero:TaxRates",
+    "TenNinetyNineContact": "xero:TenNinetyNineContact",
+    "Box1": {
+      "@id": "xero:Box1",
+      "@type": "xsd:decimal"
+    },
+    "Box2": {
+      "@id": "xero:Box2",
+      "@type": "xsd:decimal"
+    },
+    "Box3": {
+      "@id": "xero:Box3",
+      "@type": "xsd:decimal"
+    },
+    "Box4": {
+      "@id": "xero:Box4",
+      "@type": "xsd:decimal"
+    },
+    "Box5": {
+      "@id": "xero:Box5",
+      "@type": "xsd:decimal"
+    },
+    "Box6": {
+      "@id": "xero:Box6",
+      "@type": "xsd:decimal"
+    },
+    "Box7": {
+      "@id": "xero:Box7",
+      "@type": "xsd:decimal"
+    },
+    "Box8": {
+      "@id": "xero:Box8",
+      "@type": "xsd:decimal"
+    },
+    "Box9": {
+      "@id": "xero:Box9",
+      "@type": "xsd:decimal"
+    },
+    "Box10": {
+      "@id": "xero:Box10",
+      "@type": "xsd:decimal"
+    },
+    "Box11": {
+      "@id": "xero:Box11",
+      "@type": "xsd:decimal"
+    },
+    "Box13": {
+      "@id": "xero:Box13",
+      "@type": "xsd:decimal"
+    },
+    "Box14": {
+      "@id": "xero:Box14",
+      "@type": "xsd:decimal"
+    },
+    "FederalTaxIDType": {
+      "@id": "xero:FederalTaxIDType",
+      "@type": "xsd:string"
+    },
+    "City": {
+      "@id": "xero:City",
+      "@type": "xsd:string"
+    },
+    "Zip": {
+      "@id": "xero:Zip",
+      "@type": "xsd:string"
+    },
+    "State": {
+      "@id": "xero:State",
+      "@type": "xsd:string"
+    },
+    "Email": {
+      "@id": "xero:Email",
+      "@type": "xsd:string"
+    },
+    "StreetAddress": {
+      "@id": "xero:StreetAddress",
+      "@type": "xsd:string"
+    },
+    "TaxID": {
+      "@id": "xero:TaxID",
+      "@type": "xsd:string"
+    },
+    "ContactId": {
+      "@id": "xero:ContactId",
+      "@type": "xsd:string"
+    },
+    "LegalName": {
+      "@id": "xero:LegalName",
+      "@type": "xsd:string"
+    },
+    "BusinessName": {
+      "@id": "xero:BusinessName",
+      "@type": "xsd:string"
+    },
+    "FederalTaxClassification": {
+      "@id": "xero:FederalTaxClassification",
+      "@type": "xsd:string"
+    },
+    "JournalLine": "xero:JournalLine",
+    "JournalLineID": {
+      "@id": "xero:JournalLineID",
+      "@type": "xsd:string"
+    },
+    "AccountID": {
+      "@id": "xero:AccountID",
+      "@type": "xsd:string"
+    },
+    "AccountCode": {
+      "@id": "xero:AccountCode",
+      "@type": "xsd:string"
+    },
+    "AccountType": {
+      "@id": "xero:AccountType",
+      "@type": "@id"
+    },
+    "AccountName": {
+      "@id": "xero:AccountName",
+      "@type": "xsd:string"
+    },
+    "NetAmount": {
+      "@id": "xero:NetAmount",
+      "@type": "xsd:decimal"
+    },
+    "GrossAmount": {
+      "@id": "xero:GrossAmount",
+      "@type": "xsd:decimal"
+    },
+    "TaxType": {
+      "@id": "xero:TaxType",
+      "@type": "xsd:string"
+    },
+    "TaxName": {
+      "@id": "xero:TaxName",
+      "@type": "xsd:string"
+    },
+    "ReportWithRow": "xero:ReportWithRow",
+    "ReportID": {
+      "@id": "xero:ReportID",
+      "@type": "xsd:string"
+    },
+    "ReportName": {
+      "@id": "xero:ReportName",
+      "@type": "xsd:string"
+    },
+    "ReportTitle": {
+      "@id": "xero:ReportTitle",
+      "@type": "xsd:string"
+    },
+    "ReportType": {
+      "@id": "xero:ReportType",
+      "@type": "xsd:string"
+    },
+    "ReportTitles": {
+      "@id": "xero:ReportTitles",
+      "@container": "@list"
+    },
+    "ReportDate": {
+      "@id": "xero:ReportDate",
+      "@type": "xsd:string"
+    },
+    "Rows": {
+      "@id": "xero:Rows",
+      "@container": "@list"
+    },
+    "Fields": {
+      "@id": "xero:Fields",
+      "@container": "@list"
+    },
+    "Address": "xero:Address",
+    "AddressType": {
+      "@id": "xero:AddressType",
+      "@type": "xsd:string"
+    },
+    "AddressLine1": {
+      "@id": "xero:AddressLine1",
+      "@type": "xsd:string"
+    },
+    "AddressLine2": {
+      "@id": "xero:AddressLine2",
+      "@type": "xsd:string"
+    },
+    "AddressLine3": {
+      "@id": "xero:AddressLine3",
+      "@type": "xsd:string"
+    },
+    "AddressLine4": {
+      "@id": "xero:AddressLine4",
+      "@type": "xsd:string"
+    },
+    "Region": {
+      "@id": "xero:Region",
+      "@type": "xsd:string"
+    },
+    "PostalCode": {
+      "@id": "xero:PostalCode",
+      "@type": "xsd:string"
+    },
+    "Country": {
+      "@id": "xero:Country",
+      "@type": "xsd:string"
+    },
+    "AttentionTo": {
+      "@id": "xero:AttentionTo",
+      "@type": "xsd:string"
+    },
+    "ReportAttribute": "xero:ReportAttribute",
+    "Id": {
+      "@id": "xero:Id",
+      "@type": "xsd:string"
+    },
+    "Value": {
+      "@id": "xero:Value",
+      "@type": "xsd:string"
+    },
+    "ReportCell": "xero:ReportCell",
+    "Attributes": {
+      "@id": "xero:Attributes",
+      "@container": "@list"
+    },
+    "BudgetLine": "xero:BudgetLine",
+    "BudgetBalances": {
+      "@id": "xero:BudgetBalances",
+      "@container": "@list"
+    },
+    "Items": "xero:Items",
+    "PaymentTerm": "xero:PaymentTerm",
+    "Bills": {
+      "@id": "xero:Bills",
+      "@type": "@id"
+    },
+    "Sales": {
+      "@id": "xero:Sales",
+      "@type": "@id"
+    },
+    "ManualJournals": "xero:ManualJournals",
+    "TrackingCategory": "xero:TrackingCategory",
+    "TrackingCategoryID": {
+      "@id": "xero:TrackingCategoryID",
+      "@type": "xsd:string"
+    },
+    "TrackingOptionID": {
+      "@id": "xero:TrackingOptionID",
+      "@type": "xsd:string"
+    },
+    "Option": {
+      "@id": "xero:Option",
+      "@type": "xsd:string"
+    },
+    "Options": {
+      "@id": "xero:Options",
+      "@container": "@list"
+    },
+    "Actions": "xero:Actions",
+    "LinkedTransaction": "xero:LinkedTransaction",
+    "SourceTransactionID": {
+      "@id": "xero:SourceTransactionID",
+      "@type": "xsd:string"
+    },
+    "SourceLineItemID": {
+      "@id": "xero:SourceLineItemID",
+      "@type": "xsd:string"
+    },
+    "TargetTransactionID": {
+      "@id": "xero:TargetTransactionID",
+      "@type": "xsd:string"
+    },
+    "TargetLineItemID": {
+      "@id": "xero:TargetLineItemID",
+      "@type": "xsd:string"
+    },
+    "LinkedTransactionID": {
+      "@id": "xero:LinkedTransactionID",
+      "@type": "xsd:string"
+    },
+    "SourceTransactionTypeCode": {
+      "@id": "xero:SourceTransactionTypeCode",
+      "@type": "xsd:string"
+    },
+    "Purchase": "xero:Purchase",
+    "UnitPrice": {
+      "@id": "xero:UnitPrice",
+      "@type": "xsd:decimal"
+    },
+    "COGSAccountCode": {
+      "@id": "xero:COGSAccountCode",
+      "@type": "xsd:string"
+    },
+    "AccountsReceivable": "xero:AccountsReceivable",
+    "Outstanding": {
+      "@id": "xero:Outstanding",
+      "@type": "xsd:decimal"
+    },
+    "Overdue": {
+      "@id": "xero:Overdue",
+      "@type": "xsd:decimal"
+    },
+    "CISSettings": "xero:CISSettings",
+    "Organisation": "xero:Organisation",
+    "OrganisationID": {
+      "@id": "xero:OrganisationID",
+      "@type": "xsd:string"
+    },
+    "APIKey": {
+      "@id": "xero:APIKey",
+      "@type": "xsd:string"
+    },
+    "PaysTax": {
+      "@id": "xero:PaysTax",
+      "@type": "xsd:boolean"
+    },
+    "Version": {
+      "@id": "xero:Version",
+      "@type": "xsd:string"
+    },
+    "OrganisationType": {
+      "@id": "xero:OrganisationType",
+      "@type": "xsd:string"
+    },
+    "BaseCurrency": {
+      "@id": "xero:BaseCurrency",
+      "@type": "@id"
+    },
+    "CountryCode": {
+      "@id": "xero:CountryCode",
+      "@type": "@id"
+    },
+    "IsDemoCompany": {
+      "@id": "xero:IsDemoCompany",
+      "@type": "xsd:boolean"
+    },
+    "OrganisationStatus": {
+      "@id": "xero:OrganisationStatus",
+      "@type": "xsd:string"
+    },
+    "RegistrationNumber": {
+      "@id": "xero:RegistrationNumber",
+      "@type": "xsd:string"
+    },
+    "EmployerIdentificationNumber": {
+      "@id": "xero:EmployerIdentificationNumber",
+      "@type": "xsd:string"
+    },
+    "TaxNumber": {
+      "@id": "xero:TaxNumber",
+      "@type": "xsd:string"
+    },
+    "FinancialYearEndDay": {
+      "@id": "xero:FinancialYearEndDay",
+      "@type": "xsd:integer"
+    },
+    "FinancialYearEndMonth": {
+      "@id": "xero:FinancialYearEndMonth",
+      "@type": "xsd:integer"
+    },
+    "SalesTaxBasis": {
+      "@id": "xero:SalesTaxBasis",
+      "@type": "xsd:string"
+    },
+    "SalesTaxPeriod": {
+      "@id": "xero:SalesTaxPeriod",
+      "@type": "xsd:string"
+    },
+    "DefaultSalesTax": {
+      "@id": "xero:DefaultSalesTax",
+      "@type": "xsd:string"
+    },
+    "DefaultPurchasesTax": {
+      "@id": "xero:DefaultPurchasesTax",
+      "@type": "xsd:string"
+    },
+    "PeriodLockDate": {
+      "@id": "xero:PeriodLockDate",
+      "@type": "xsd:string"
+    },
+    "EndOfYearLockDate": {
+      "@id": "xero:EndOfYearLockDate",
+      "@type": "xsd:string"
+    },
+    "CreatedDateUTC": {
+      "@id": "xero:CreatedDateUTC",
+      "@type": "xsd:string"
+    },
+    "Timezone": {
+      "@id": "xero:Timezone",
+      "@type": "@id"
+    },
+    "OrganisationEntityType": {
+      "@id": "xero:OrganisationEntityType",
+      "@type": "xsd:string"
+    },
+    "ShortCode": {
+      "@id": "xero:ShortCode",
+      "@type": "xsd:string"
+    },
+    "Class": {
+      "@id": "xero:Class",
+      "@type": "xsd:string"
+    },
+    "Edition": {
+      "@id": "xero:Edition",
+      "@type": "xsd:string"
+    },
+    "LineOfBusiness": {
+      "@id": "xero:LineOfBusiness",
+      "@type": "xsd:string"
+    },
+    "Addresses": {
+      "@id": "xero:Addresses",
+      "@container": "@list"
+    },
+    "Phones": {
+      "@id": "xero:Phones",
+      "@container": "@list"
+    },
+    "ExternalLinks": {
+      "@id": "xero:ExternalLinks",
+      "@container": "@list"
+    },
+    "PaymentTerms": {
+      "@id": "xero:PaymentTerms",
+      "@type": "@id"
+    },
+    "HistoryRecords": "xero:HistoryRecords",
+    "TrackingOptions": "xero:TrackingOptions",
+    "RepeatingInvoices": "xero:RepeatingInvoices",
+    "BalanceDetails": "xero:BalanceDetails",
+    "Balance": {
+      "@id": "xero:Balance",
+      "@type": "xsd:decimal"
+    },
+    "CurrencyCode": {
+      "@id": "xero:CurrencyCode",
+      "@type": "xsd:string"
+    },
+    "CurrencyRate": {
+      "@id": "xero:CurrencyRate",
+      "@type": "xsd:decimal"
+    },
+    "Allocation": "xero:Allocation",
+    "AllocationID": {
+      "@id": "xero:AllocationID",
+      "@type": "xsd:string"
+    },
+    "Invoice": {
+      "@id": "xero:Invoice",
+      "@type": "@id"
+    },
+    "Overpayment": {
+      "@id": "xero:Overpayment",
+      "@type": "@id"
+    },
+    "Prepayment": {
+      "@id": "xero:Prepayment",
+      "@type": "@id"
+    },
+    "CreditNote": {
+      "@id": "xero:CreditNote",
+      "@type": "@id"
+    },
+    "Amount": {
+      "@id": "xero:Amount",
+      "@type": "xsd:decimal"
+    },
+    "Date": {
+      "@id": "xero:Date",
+      "@type": "xsd:string"
+    },
+    "IsDeleted": {
+      "@id": "xero:IsDeleted",
+      "@type": "xsd:boolean"
+    },
+    "Quotes": "xero:Quotes",
+    "ImportSummaryAccounts": "xero:ImportSummaryAccounts",
+    "Total": {
+      "@id": "xero:Total",
+      "@type": "xsd:integer"
+    },
+    "New": {
+      "@id": "xero:New",
+      "@type": "xsd:integer"
+    },
+    "Updated": {
+      "@id": "xero:Updated",
+      "@type": "xsd:integer"
+    },
+    "Deleted": {
+      "@id": "xero:Deleted",
+      "@type": "xsd:integer"
+    },
+    "Locked": {
+      "@id": "xero:Locked",
+      "@type": "xsd:integer"
+    },
+    "System": {
+      "@id": "xero:System",
+      "@type": "xsd:integer"
+    },
+    "Errored": {
+      "@id": "xero:Errored",
+      "@type": "xsd:integer"
+    },
+    "Present": {
+      "@id": "xero:Present",
+      "@type": "xsd:boolean"
+    },
+    "NewOrUpdated": {
+      "@id": "xero:NewOrUpdated",
+      "@type": "xsd:integer"
+    },
+    "CISOrgSettings": "xero:CISOrgSettings",
+    "BatchPayment": "xero:BatchPayment",
+    "Reference": {
+      "@id": "xero:Reference",
+      "@type": "xsd:string"
+    },
+    "Particulars": {
+      "@id": "xero:Particulars",
+      "@type": "xsd:string"
+    },
+    "Details": {
+      "@id": "xero:Details",
+      "@type": "xsd:string"
+    },
+    "Narrative": {
+      "@id": "xero:Narrative",
+      "@type": "xsd:string"
+    },
+    "DateString": {
+      "@id": "xero:DateString",
+      "@type": "xsd:string"
+    },
+    "Payments": {
+      "@id": "xero:Payments",
+      "@container": "@list"
+    },
+    "TotalAmount": {
+      "@id": "xero:TotalAmount",
+      "@type": "xsd:decimal"
+    },
+    "IsReconciled": {
+      "@id": "xero:IsReconciled",
+      "@type": "xsd:boolean"
+    },
+    "Prepayments": "xero:Prepayments",
+    "ImportSummary": "xero:ImportSummary",
+    "Accounts": {
+      "@id": "xero:Accounts",
+      "@type": "@id"
+    },
+    "Journal": "xero:Journal",
+    "JournalID": {
+      "@id": "xero:JournalID",
+      "@type": "xsd:string"
+    },
+    "JournalDate": {
+      "@id": "xero:JournalDate",
+      "@type": "xsd:string"
+    },
+    "JournalNumber": {
+      "@id": "xero:JournalNumber",
+      "@type": "xsd:integer"
+    },
+    "SourceID": {
+      "@id": "xero:SourceID",
+      "@type": "xsd:string"
+    },
+    "SourceType": {
+      "@id": "xero:SourceType",
+      "@type": "xsd:string"
+    },
+    "JournalLines": {
+      "@id": "xero:JournalLines",
+      "@container": "@list"
+    },
+    "Attachment": "xero:Attachment",
+    "AttachmentID": {
+      "@id": "xero:AttachmentID",
+      "@type": "xsd:string"
+    },
+    "FileName": {
+      "@id": "xero:FileName",
+      "@type": "xsd:string"
+    },
+    "MimeType": {
+      "@id": "xero:MimeType",
+      "@type": "xsd:string"
+    },
+    "ContentLength": {
+      "@id": "xero:ContentLength",
+      "@type": "xsd:integer"
+    },
+    "IncludeOnline": {
+      "@id": "xero:IncludeOnline",
+      "@type": "xsd:boolean"
+    },
+    "LinkedTransactions": "xero:LinkedTransactions",
+    "BankTransaction": "xero:BankTransaction",
+    "Contact": {
+      "@id": "xero:Contact",
+      "@type": "@id"
+    },
+    "LineItems": {
+      "@id": "xero:LineItems",
+      "@container": "@list"
+    },
+    "BankAccount": {
+      "@id": "xero:BankAccount",
+      "@type": "@id"
+    },
+    "LineAmountTypes": {
+      "@id": "xero:LineAmountTypes",
+      "@type": "@id"
+    },
+    "SubTotal": {
+      "@id": "xero:SubTotal",
+      "@type": "xsd:decimal"
+    },
+    "TotalTax": {
+      "@id": "xero:TotalTax",
+      "@type": "xsd:decimal"
+    },
+    "PrepaymentID": {
+      "@id": "xero:PrepaymentID",
+      "@type": "xsd:string"
+    },
+    "OverpaymentID": {
+      "@id": "xero:OverpaymentID",
+      "@type": "xsd:string"
+    },
+    "HasAttachments": {
+      "@id": "xero:HasAttachments",
+      "@type": "xsd:boolean"
+    },
+    "RequestEmpty": "xero:RequestEmpty",
+    "PurchaseOrders": "xero:PurchaseOrders",
+    "ImportSummaryOrganisation": "xero:ImportSummaryOrganisation",
+    "Currencies": "xero:Currencies",
+    "Item": "xero:Item",
+    "InventoryAssetAccountCode": {
+      "@id": "xero:InventoryAssetAccountCode",
+      "@type": "xsd:string"
+    },
+    "IsSold": {
+      "@id": "xero:IsSold",
+      "@type": "xsd:boolean"
+    },
+    "IsPurchased": {
+      "@id": "xero:IsPurchased",
+      "@type": "xsd:boolean"
+    },
+    "PurchaseDescription": {
+      "@id": "xero:PurchaseDescription",
+      "@type": "xsd:string"
+    },
+    "PurchaseDetails": {
+      "@id": "xero:PurchaseDetails",
+      "@type": "@id"
+    },
+    "SalesDetails": {
+      "@id": "xero:SalesDetails",
+      "@type": "@id"
+    },
+    "IsTrackedAsInventory": {
+      "@id": "xero:IsTrackedAsInventory",
+      "@type": "xsd:boolean"
+    },
+    "TotalCostPool": {
+      "@id": "xero:TotalCostPool",
+      "@type": "xsd:decimal"
+    },
+    "QuantityOnHand": {
+      "@id": "xero:QuantityOnHand",
+      "@type": "xsd:decimal"
+    },
+    "TrackingOption": "xero:TrackingOption",
+    "Report": "xero:Report",
+    "Contacts": {
+      "@id": "xero:Contacts",
+      "@container": "@list"
+    },
+    "BankTransfer": "xero:BankTransfer",
+    "FromBankAccount": {
+      "@id": "xero:FromBankAccount",
+      "@type": "@id"
+    },
+    "ToBankAccount": {
+      "@id": "xero:ToBankAccount",
+      "@type": "@id"
+    },
+    "BankTransferID": {
+      "@id": "xero:BankTransferID",
+      "@type": "xsd:string"
+    },
+    "FromBankTransactionID": {
+      "@id": "xero:FromBankTransactionID",
+      "@type": "xsd:string"
+    },
+    "ToBankTransactionID": {
+      "@id": "xero:ToBankTransactionID",
+      "@type": "xsd:string"
+    },
+    "FromIsReconciled": {
+      "@id": "xero:FromIsReconciled",
+      "@type": "xsd:boolean"
+    },
+    "ToIsReconciled": {
+      "@id": "xero:ToIsReconciled",
+      "@type": "xsd:boolean"
+    },
+    "Organisations": "xero:Organisations",
+    "ManualJournalLine": "xero:ManualJournalLine",
+    "LineAmount": {
+      "@id": "xero:LineAmount",
+      "@type": "xsd:decimal"
+    },
+    "Tracking": {
+      "@id": "xero:Tracking",
+      "@container": "@list"
+    },
+    "IsBlank": {
+      "@id": "xero:IsBlank",
+      "@type": "xsd:boolean"
+    },
+    "Payment": "xero:Payment",
+    "InvoiceNumber": {
+      "@id": "xero:InvoiceNumber",
+      "@type": "xsd:string"
+    },
+    "CreditNoteNumber": {
+      "@id": "xero:CreditNoteNumber",
+      "@type": "xsd:string"
+    },
+    "BankAmount": {
+      "@id": "xero:BankAmount",
+      "@type": "xsd:decimal"
+    },
+    "PaymentType": {
+      "@id": "xero:PaymentType",
+      "@type": "xsd:string"
+    },
+    "PaymentID": {
+      "@id": "xero:PaymentID",
+      "@type": "xsd:string"
+    },
+    "BankAccountNumber": {
+      "@id": "xero:BankAccountNumber",
+      "@type": "xsd:string"
+    },
+    "HasAccount": {
+      "@id": "xero:HasAccount",
+      "@type": "xsd:boolean"
+    },
+    "HasValidationErrors": {
+      "@id": "xero:HasValidationErrors",
+      "@type": "xsd:boolean"
+    },
+    "BudgetBalance": "xero:BudgetBalance",
+    "Period": {
+      "@id": "xero:Period",
+      "@type": "xsd:string"
+    },
+    "UnitAmount": {
+      "@id": "xero:UnitAmount",
+      "@type": "xsd:decimal"
+    },
+    "Notes": {
+      "@id": "xero:Notes",
+      "@type": "xsd:string"
+    },
+    "AccountsPayable": "xero:AccountsPayable",
+    "Phone": "xero:Phone",
+    "PhoneType": {
+      "@id": "xero:PhoneType",
+      "@type": "xsd:string"
+    },
+    "PhoneNumber": {
+      "@id": "xero:PhoneNumber",
+      "@type": "xsd:string"
+    },
+    "PhoneAreaCode": {
+      "@id": "xero:PhoneAreaCode",
+      "@type": "xsd:string"
+    },
+    "PhoneCountryCode": {
+      "@id": "xero:PhoneCountryCode",
+      "@type": "xsd:string"
+    },
+    "BrandingThemes": "xero:BrandingThemes",
+    "LineItem": "xero:LineItem",
+    "LineItemID": {
+      "@id": "xero:LineItemID",
+      "@type": "xsd:string"
+    },
+    "Quantity": {
+      "@id": "xero:Quantity",
+      "@type": "xsd:decimal"
+    },
+    "ItemCode": {
+      "@id": "xero:ItemCode",
+      "@type": "xsd:string"
+    },
+    "DiscountRate": {
+      "@id": "xero:DiscountRate",
+      "@type": "xsd:decimal"
+    },
+    "DiscountAmount": {
+      "@id": "xero:DiscountAmount",
+      "@type": "xsd:decimal"
+    },
+    "RepeatingInvoiceID": {
+      "@id": "xero:RepeatingInvoiceID",
+      "@type": "xsd:string"
+    },
+    "Taxability": {
+      "@id": "xero:Taxability",
+      "@type": "xsd:string"
+    },
+    "SalesTaxCodeId": {
+      "@id": "xero:SalesTaxCodeId",
+      "@type": "xsd:decimal"
+    },
+    "TaxBreakdown": {
+      "@id": "xero:TaxBreakdown",
+      "@container": "@list"
+    },
+    "Quote": "xero:Quote",
+    "QuoteID": {
+      "@id": "xero:QuoteID",
+      "@type": "xsd:string"
+    },
+    "QuoteNumber": {
+      "@id": "xero:QuoteNumber",
+      "@type": "xsd:string"
+    },
+    "Terms": {
+      "@id": "xero:Terms",
+      "@type": "xsd:string"
+    },
+    "ExpiryDate": {
+      "@id": "xero:ExpiryDate",
+      "@type": "xsd:string"
+    },
+    "ExpiryDateString": {
+      "@id": "xero:ExpiryDateString",
+      "@type": "xsd:string"
+    },
+    "TotalDiscount": {
+      "@id": "xero:TotalDiscount",
+      "@type": "xsd:decimal"
+    },
+    "Summary": {
+      "@id": "xero:Summary",
+      "@type": "xsd:string"
+    },
+    "BrandingThemeID": {
+      "@id": "xero:BrandingThemeID",
+      "@type": "xsd:string"
+    },
+    "ReportRows": "xero:ReportRows",
+    "RowType": {
+      "@id": "xero:RowType",
+      "@type": "@id"
+    },
+    "Cells": {
+      "@id": "xero:Cells",
+      "@container": "@list"
+    },
+    "Attachments": "xero:Attachments",
+    "QuoteStatusCodes": "xero:QuoteStatusCodes",
+    "TaxRate": "xero:TaxRate",
+    "TaxComponents": {
+      "@id": "xero:TaxComponents",
+      "@container": "@list"
+    },
+    "ReportTaxType": {
+      "@id": "xero:ReportTaxType",
+      "@type": "xsd:string"
+    },
+    "CanApplyToAssets": {
+      "@id": "xero:CanApplyToAssets",
+      "@type": "xsd:boolean"
+    },
+    "CanApplyToEquity": {
+      "@id": "xero:CanApplyToEquity",
+      "@type": "xsd:boolean"
+    },
+    "CanApplyToExpenses": {
+      "@id": "xero:CanApplyToExpenses",
+      "@type": "xsd:boolean"
+    },
+    "CanApplyToLiabilities": {
+      "@id": "xero:CanApplyToLiabilities",
+      "@type": "xsd:boolean"
+    },
+    "CanApplyToRevenue": {
+      "@id": "xero:CanApplyToRevenue",
+      "@type": "xsd:boolean"
+    },
+    "DisplayTaxRate": {
+      "@id": "xero:DisplayTaxRate",
+      "@type": "xsd:decimal"
+    },
+    "EffectiveRate": {
+      "@id": "xero:EffectiveRate",
+      "@type": "xsd:decimal"
+    },
+    "CISOrgSetting": "xero:CISOrgSetting",
+    "CISContractorEnabled": {
+      "@id": "xero:CISContractorEnabled",
+      "@type": "xsd:boolean"
+    },
+    "CISSubContractorEnabled": {
+      "@id": "xero:CISSubContractorEnabled",
+      "@type": "xsd:boolean"
+    },
+    "ConversionBalances": "xero:ConversionBalances",
+    "OnlineInvoices": "xero:OnlineInvoices",
+    "Schedule": "xero:Schedule",
+    "Unit": {
+      "@id": "xero:Unit",
+      "@type": "xsd:string"
+    },
+    "DueDate": {
+      "@id": "xero:DueDate",
+      "@type": "xsd:integer"
+    },
+    "DueDateType": {
+      "@id": "xero:DueDateType",
+      "@type": "xsd:string"
+    },
+    "StartDate": {
+      "@id": "xero:StartDate",
+      "@type": "xsd:string"
+    },
+    "NextScheduledDate": {
+      "@id": "xero:NextScheduledDate",
+      "@type": "xsd:string"
+    },
+    "EndDate": {
+      "@id": "xero:EndDate",
+      "@type": "xsd:string"
+    },
+    "ReportFields": "xero:ReportFields",
+    "FieldID": {
+      "@id": "xero:FieldID",
+      "@type": "xsd:string"
+    },
+    "ExpenseClaim": "xero:ExpenseClaim",
+    "ExpenseClaimID": {
+      "@id": "xero:ExpenseClaimID",
+      "@type": "xsd:string"
+    },
+    "User": {
+      "@id": "xero:User",
+      "@type": "@id"
+    },
+    "AmountDue": {
+      "@id": "xero:AmountDue",
+      "@type": "xsd:decimal"
+    },
+    "AmountPaid": {
+      "@id": "xero:AmountPaid",
+      "@type": "xsd:decimal"
+    },
+    "PaymentDueDate": {
+      "@id": "xero:PaymentDueDate",
+      "@type": "xsd:string"
+    },
+    "ReportingDate": {
+      "@id": "xero:ReportingDate",
+      "@type": "xsd:string"
+    },
+    "ReceiptID": {
+      "@id": "xero:ReceiptID",
+      "@type": "xsd:string"
+    },
+    "Allocations": "xero:Allocations",
+    "TimeZone": "xero:TimeZone",
+    "Budgets": "xero:Budgets",
+    "AddressForOrganisation": "xero:AddressForOrganisation",
+    "Action": "xero:Action",
+    "BankTransfers": "xero:BankTransfers",
+    "LineItemItem": "xero:LineItemItem",
+    "ContactGroups": "xero:ContactGroups",
+    "RepeatingInvoice": "xero:RepeatingInvoice",
+    "ID": {
+      "@id": "xero:ID",
+      "@type": "xsd:string"
+    },
+    "ApprovedForSending": {
+      "@id": "xero:ApprovedForSending",
+      "@type": "xsd:boolean"
+    },
+    "SendCopy": {
+      "@id": "xero:SendCopy",
+      "@type": "xsd:boolean"
+    },
+    "MarkAsSent": {
+      "@id": "xero:MarkAsSent",
+      "@type": "xsd:boolean"
+    },
+    "IncludePDF": {
+      "@id": "xero:IncludePDF",
+      "@type": "xsd:boolean"
+    },
+    "PaymentDelete": "xero:PaymentDelete",
+    "BankTransactions": "xero:BankTransactions",
+    "ManualJournal": "xero:ManualJournal",
+    "Narration": {
+      "@id": "xero:Narration",
+      "@type": "xsd:string"
+    },
+    "ShowOnCashBasisReports": {
+      "@id": "xero:ShowOnCashBasisReports",
+      "@type": "xsd:boolean"
+    },
+    "ManualJournalID": {
+      "@id": "xero:ManualJournalID",
+      "@type": "xsd:string"
+    },
+    "Budget": "xero:Budget",
+    "BudgetID": {
+      "@id": "xero:BudgetID",
+      "@type": "xsd:string"
+    },
+    "BudgetLines": {
+      "@id": "xero:BudgetLines",
+      "@container": "@list"
+    },
+    "CISSetting": "xero:CISSetting",
+    "CISEnabled": {
+      "@id": "xero:CISEnabled",
+      "@type": "xsd:boolean"
+    },
+    "HistoryRecord": "xero:HistoryRecord",
+    "Changes": {
+      "@id": "xero:Changes",
+      "@type": "xsd:string"
+    },
+    "DateUTC": {
+      "@id": "xero:DateUTC",
+      "@type": "xsd:string"
+    },
+    "ContactGroup": "xero:ContactGroup",
+    "ContactGroupID": {
+      "@id": "xero:ContactGroupID",
+      "@type": "xsd:string"
+    },
+    "InvoiceReminder": "xero:InvoiceReminder",
+    "Enabled": {
+      "@id": "xero:Enabled",
+      "@type": "xsd:boolean"
+    },
+    "PurchaseOrder": "xero:PurchaseOrder",
+    "DeliveryDate": {
+      "@id": "xero:DeliveryDate",
+      "@type": "xsd:string"
+    },
+    "PurchaseOrderNumber": {
+      "@id": "xero:PurchaseOrderNumber",
+      "@type": "xsd:string"
+    },
+    "SentToContact": {
+      "@id": "xero:SentToContact",
+      "@type": "xsd:boolean"
+    },
+    "DeliveryAddress": {
+      "@id": "xero:DeliveryAddress",
+      "@type": "xsd:string"
+    },
+    "Telephone": {
+      "@id": "xero:Telephone",
+      "@type": "xsd:string"
+    },
+    "DeliveryInstructions": {
+      "@id": "xero:DeliveryInstructions",
+      "@type": "xsd:string"
+    },
+    "ExpectedArrivalDate": {
+      "@id": "xero:ExpectedArrivalDate",
+      "@type": "xsd:string"
+    },
+    "ExpenseClaims": "xero:ExpenseClaims",
+    "Users": "xero:Users",
+    "BrandingTheme": "xero:BrandingTheme",
+    "LogoUrl": {
+      "@id": "xero:LogoUrl",
+      "@type": "xsd:string"
+    },
+    "SortOrder": {
+      "@id": "xero:SortOrder",
+      "@type": "xsd:integer"
+    },
+    "BatchPaymentDeleteByUrlParam": "xero:BatchPaymentDeleteByUrlParam",
+    "Employees": "xero:Employees",
+    "InvoiceAddress": "xero:InvoiceAddress",
+    "InvoiceAddressType": {
+      "@id": "xero:InvoiceAddressType",
+      "@type": "xsd:string"
+    },
+    "ValidationError": "xero:ValidationError",
+    "Message": {
+      "@id": "xero:Message",
+      "@type": "xsd:string"
+    },
+    "Error": "xero:Error",
+    "ErrorNumber": {
+      "@id": "xero:ErrorNumber",
+      "@type": "xsd:integer"
+    },
+    "Elements": {
+      "@id": "xero:Elements",
+      "@container": "@list"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Xero API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Xero's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-20) from openapi/xero-account-data-api-openapi.yml, openapi/xero-accounting-api-openapi.yml, openapi/xero-app-store-api-openapi.yml.",
+  "dcterms:created": "2026-10-20",
+  "dcterms:source": [
+    "openapi/xero-account-data-api-openapi.yml",
+    "openapi/xero-accounting-api-openapi.yml",
+    "openapi/xero-app-store-api-openapi.yml",
+    "openapi/xero-asset-api-openapi.yml",
+    "openapi/xero-bank-feeds-api-openapi.yml"
+  ]
+}

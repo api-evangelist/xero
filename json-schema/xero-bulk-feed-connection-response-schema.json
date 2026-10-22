@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-bulk-feed-connection-response-schema.json",
+  "title": "BulkFeedConnectionResponse",
+  "description": "One result per request item, in request order.",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-bank-feeds-v2-api-openapi.yml#/components/schemas/BulkFeedConnectionResponse",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "$ref": "#/$defs/BulkFeedConnectionResult"
+      }
+    }
+  },
+  "$defs": {
+    "BulkFeedConnectionResult": {
+      "type": "object",
+      "description": "The outcome for a single request item.\n\nRead `status` rather than inferring the outcome from the presence of `error`. On a\ntermination an item can carry both `SUCCESS` and an `error`, when the identifier named\nnothing to terminate.\n\nRead `statusCode` per item as well, rather than deriving it from the envelope: it is the\nnumber the envelope itself is computed from. A `statusCode` of `204` is an idempotent\nno-op, not a failure; one of `500` on a `partial-failure-*` type is not a server fault to\nretry blindly.\n",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "On a create, Xero's identifier for the new Feed Connection; absent when the item was\nrejected, since nothing was created.\n\nOn a termination, the identifier supplied in the request, echoed back; absent only when\nthe item carried no usable identifier.\n"
+        },
+        "accountToken": {
+          "type": "string",
+          "description": "The `accountToken` supplied in the request, echoed back, including on a rejected item.\nNot returned on a termination.\n"
+        },
+        "status": {
+          "type": "string",
+          "description": "`SUCCESS` means the item reached the state the request asked for — on a create the\nconnection exists, on a termination it is gone, including the idempotent case where it\nwas already gone. `REJECTED` means it was refused and nothing was written, and `error`\nsays why. `PARTIAL_FAILURE` means the item did not complete **and** something was\nwritten that survives; `error.detail` names what, and the item needs attention that\nneither of the other two values implies.\n\nA client deserialising this into a closed set of `SUCCESS` and `REJECTED` will fail on\n`PARTIAL_FAILURE`. That is intended rather than an oversight: binding it silently to\neither of the other two would hide surviving state from the partner who has to act on\nit.\n",
+          "enum": [
+            "SUCCESS",
+            "REJECTED",
+            "PARTIAL_FAILURE"
+          ]
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The numeric status this item carries in its own right: `201` on a created connection,\n`204` on a terminated or already-absent one, a 4xx on a rejection, `500` on a partial\nfailure. The response envelope is computed from every item's own `statusCode` — every\nitem 2xx is `200`, every item 4xx is `400`, anything else is `207` — so a partner can\nsize up one item without interpreting `status` and `error` together. Never `202` and\nnever `207`: those are envelope-only, and an item-level `207` would be numerically\ninside 2xx, letting an all-partial-failure batch compute to a reassuring `200`.\n"
+        },
+        "error": {
+          "$ref": "#/$defs/Problem"
+        }
+      }
+    },
+    "Problem": {
+      "type": "object",
+      "description": "An error. Served as `application/problem+json` when it describes the request as a whole, and\ncarried inside the `error` property of an item result when it describes one item.\n",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Identifies the error.",
+          "enum": [
+            "invalid-request",
+            "invalid-application",
+            "suspended-or-terminated-application",
+            "invalid-organisation-bank-feeds",
+            "invalid-organisation-multi-currency",
+            "invalid-feed-connection-for-organisation",
+            "invalid-user-role",
+            "invalid-account-token",
+            "missing-identifying-fields",
+            "invalid-country-specified",
+            "account-not-valid",
+            "feed-already-connected-in-current-organisation",
+            "account-name-already-exists",
+            "bank-feed-not-found",
+            "feed-not-found-or-already-deleted",
+            "partial-failure-account-created-but-not-connected",
+            "partial-failure-migration-can-be-reattempted",
+            "partial-failure-delete-can-be-reattempted",
+            "partial-failure-connection-created-but-not-recorded",
+            "too-many-requests",
+            "internal-error"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "A short human-readable summary of the error."
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The HTTP status this error corresponds to. Inside an item result this is the status of\nthat item, which need not be the status of the response as a whole.\n"
+        },
+        "detail": {
+          "type": "string",
+          "description": "A human-readable explanation specific to this occurrence."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,868 @@
+generated: '2026-10-20'
+method: derived
+source: https://github.com/XeroAPI/xero-mcp-server (README.md tool list; src/handlers/*.handler.ts read 2026-10-20)
+purpose: Bind every tool published by Xero's official MCP server (@xeroapi/xero-mcp-server) to the Xero OpenAPI
+  operation its handler actually calls, so each tool inherits that operation's parameters and requestBody as its
+  real inputSchema.
+surfaces:
+  rest_openapi: openapi/
+  graphql: null
+  mcp_local:
+    package: https://www.npmjs.com/package/@xeroapi/xero-mcp-server
+    install: npx -y @xeroapi/xero-mcp-server@latest
+    tools_source: README.md + handler source (this crosswalk covers these tools)
+  mcp_remote:
+    url: https://mcp.xero.com/mcp
+    gated: true
+    note: Remote MCP is a Xero beta (beta-tester terms at https://www.xero.com/legal/terms/xero-developer-remote-mcp-beta-testing/).
+      GET returned 405 on 2026-10-20; tools/list was not obtained (OAuth-gated). Its tool set is NOT known to match
+      the local package, so no row here claims it.
+crosswalk:
+- tool: list-accounts
+  category: settings
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getAccounts
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Accounts
+  note: Handler calls xeroClient.accountingApi.getAccounts.
+- tool: list-contacts
+  category: contacts
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getContacts
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Contacts
+  note: Handler calls xeroClient.accountingApi.getContacts.
+- tool: list-credit-notes
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getCreditNotes
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /CreditNotes
+  note: Handler calls xeroClient.accountingApi.getCreditNotes.
+- tool: list-invoices
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getInvoices
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Invoices
+  note: Handler calls xeroClient.accountingApi.getInvoices.
+- tool: list-items
+  category: settings
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getItems
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Items
+  note: Handler calls xeroClient.accountingApi.getItems.
+- tool: list-manual-journals
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getManualJournal
+  - getManualJournals
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /ManualJournals/{ManualJournalID}
+  - GET /ManualJournals
+  note: Handler calls xeroClient.accountingApi.getManualJournal, getManualJournals.
+- tool: list-organisation-details
+  category: organisation
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getOrganisations
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Organisation
+  note: Handler calls xeroClient.accountingApi.getOrganisations.
+- tool: list-profit-and-loss
+  category: reports
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getReportProfitAndLoss
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Reports/ProfitAndLoss
+  note: Handler calls xeroClient.accountingApi.getReportProfitAndLoss.
+- tool: list-quotes
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getQuotes
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Quotes
+  note: Handler calls xeroClient.accountingApi.getQuotes.
+- tool: list-tax-rates
+  category: settings
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getTaxRates
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /TaxRates
+  note: Handler calls xeroClient.accountingApi.getTaxRates.
+- tool: list-payments
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getPayments
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Payments
+  note: Handler calls xeroClient.accountingApi.getPayments.
+- tool: list-trial-balance
+  category: reports
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getReportTrialBalance
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Reports/TrialBalance
+  note: Handler calls xeroClient.accountingApi.getReportTrialBalance.
+- tool: list-bank-transactions
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getBankTransactions
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /BankTransactions
+  note: Handler calls xeroClient.accountingApi.getBankTransactions.
+- tool: list-payroll-employees
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - getEmployees
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Employees
+  note: Handler calls xeroClient.payrollNZApi.getEmployees.
+- tool: list-report-balance-sheet
+  category: reports
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getReportBalanceSheet
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Reports/BalanceSheet
+  note: Handler calls xeroClient.accountingApi.getReportBalanceSheet.
+- tool: list-payroll-employee-leave
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - getEmployeeLeaves
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Employees/{EmployeeID}/Leave
+  note: Handler calls xeroClient.payrollNZApi.getEmployeeLeaves.
+- tool: list-payroll-employee-leave-balances
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - getEmployeeLeaveBalances
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Employees/{EmployeeID}/LeaveBalances
+  note: Handler calls xeroClient.payrollNZApi.getEmployeeLeaveBalances.
+- tool: list-payroll-employee-leave-types
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - getEmployeeLeaveTypes
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Employees/{EmployeeID}/LeaveTypes
+  note: Handler calls xeroClient.payrollNZApi.getEmployeeLeaveTypes.
+- tool: list-payroll-leave-periods
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - getEmployeeLeavePeriods
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Employees/{EmployeeID}/LeavePeriods
+  note: Handler calls xeroClient.payrollNZApi.getEmployeeLeavePeriods.
+- tool: list-payroll-leave-types
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - getLeaveTypes
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /LeaveTypes
+  note: Handler calls xeroClient.payrollNZApi.getLeaveTypes.
+- tool: list-timesheets
+  category: transactions
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - getTimesheets
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Timesheets
+  note: Handler calls xeroClient.payrollNZApi.getTimesheets.
+- tool: list-aged-receivables-by-contact
+  category: reports
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getReportAgedReceivablesByContact
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Reports/AgedReceivablesByContact
+  note: Handler calls xeroClient.accountingApi.getReportAgedReceivablesByContact.
+- tool: list-aged-payables-by-contact
+  category: reports
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getReportAgedPayablesByContact
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Reports/AgedPayablesByContact
+  note: Handler calls xeroClient.accountingApi.getReportAgedPayablesByContact.
+- tool: list-contact-groups
+  category: contacts
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getContactGroup
+  - getContactGroups
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /ContactGroups/{ContactGroupID}
+  - GET /ContactGroups
+  note: Handler calls xeroClient.accountingApi.getContactGroup, getContactGroups.
+- tool: list-tracking-categories
+  category: settings
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getTrackingCategories
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /TrackingCategories
+  note: Handler calls xeroClient.accountingApi.getTrackingCategories.
+- tool: create-bank-transaction
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - createBankTransactions
+  binding: rest
+  confidence: high
+  endpoints:
+  - PUT /BankTransactions
+  note: Handler calls xeroClient.accountingApi.createBankTransactions.
+- tool: create-contact
+  category: contacts
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - createContacts
+  binding: rest
+  confidence: high
+  endpoints:
+  - PUT /Contacts
+  note: Handler calls xeroClient.accountingApi.createContacts.
+- tool: create-credit-note
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - createCreditNotes
+  binding: rest
+  confidence: high
+  endpoints:
+  - PUT /CreditNotes
+  note: Handler calls xeroClient.accountingApi.createCreditNotes.
+- tool: create-invoice
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - createInvoices
+  binding: rest
+  confidence: high
+  endpoints:
+  - PUT /Invoices
+  note: Handler calls xeroClient.accountingApi.createInvoices.
+- tool: create-item
+  category: settings
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - createItems
+  binding: rest
+  confidence: high
+  endpoints:
+  - PUT /Items
+  note: Handler calls xeroClient.accountingApi.createItems.
+- tool: create-manual-journal
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - createManualJournals
+  binding: rest
+  confidence: high
+  endpoints:
+  - PUT /ManualJournals
+  note: Handler calls xeroClient.accountingApi.createManualJournals.
+- tool: create-payment
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - createPayment
+  binding: rest
+  confidence: high
+  endpoints:
+  - POST /Payments
+  note: Handler calls xeroClient.accountingApi.createPayment.
+- tool: create-quote
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - createQuotes
+  binding: rest
+  confidence: high
+  endpoints:
+  - PUT /Quotes
+  note: Handler calls xeroClient.accountingApi.createQuotes.
+- tool: create-payroll-timesheet
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - createTimesheet
+  binding: rest
+  confidence: high
+  endpoints:
+  - POST /Timesheets
+  note: Handler calls xeroClient.payrollNZApi.createTimesheet.
+- tool: create-tracking-category
+  category: settings
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - createTrackingCategory
+  binding: rest
+  confidence: high
+  endpoints:
+  - PUT /TrackingCategories
+  note: Handler calls xeroClient.accountingApi.createTrackingCategory.
+- tool: create-tracking-option
+  category: settings
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - createTrackingOptions
+  binding: rest
+  confidence: high
+  endpoints:
+  - PUT /TrackingCategories/{TrackingCategoryID}/Options
+  note: Handler calls xeroClient.accountingApi.createTrackingOptions.
+- tool: update-bank-transaction
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getBankTransaction
+  - updateBankTransaction
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /BankTransactions/{BankTransactionID}
+  - POST /BankTransactions/{BankTransactionID}
+  note: 'Handler calls xeroClient.accountingApi.getBankTransaction, updateBankTransaction. Read-then-write: fetches
+    the record first to check it is editable.'
+- tool: update-contact
+  category: contacts
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - updateContact
+  binding: rest
+  confidence: high
+  endpoints:
+  - POST /Contacts/{ContactID}
+  note: Handler calls xeroClient.accountingApi.updateContact.
+- tool: update-invoice
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getInvoice
+  - updateInvoice
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Invoices/{InvoiceID}
+  - POST /Invoices/{InvoiceID}
+  note: 'Handler calls xeroClient.accountingApi.getInvoice, updateInvoice. Read-then-write: fetches the record first
+    to check it is editable.'
+- tool: update-item
+  category: settings
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - updateItem
+  binding: rest
+  confidence: high
+  endpoints:
+  - POST /Items/{ItemID}
+  note: Handler calls xeroClient.accountingApi.updateItem.
+- tool: update-manual-journal
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - updateManualJournal
+  binding: rest
+  confidence: high
+  endpoints:
+  - POST /ManualJournals/{ManualJournalID}
+  note: Handler calls xeroClient.accountingApi.updateManualJournal.
+- tool: update-quote
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getQuote
+  - updateQuote
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Quotes/{QuoteID}
+  - POST /Quotes/{QuoteID}
+  note: 'Handler calls xeroClient.accountingApi.getQuote, updateQuote. Read-then-write: fetches the record first
+    to check it is editable.'
+- tool: update-credit-note
+  category: transactions
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getCreditNote
+  - updateCreditNote
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /CreditNotes/{CreditNoteID}
+  - POST /CreditNotes/{CreditNoteID}
+  note: 'Handler calls xeroClient.accountingApi.getCreditNote, updateCreditNote. Read-then-write: fetches the record
+    first to check it is editable.'
+- tool: update-tracking-category
+  category: settings
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getTrackingCategory
+  - updateTrackingCategory
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /TrackingCategories/{TrackingCategoryID}
+  - POST /TrackingCategories/{TrackingCategoryID}
+  note: 'Handler calls xeroClient.accountingApi.getTrackingCategory, updateTrackingCategory. Read-then-write: fetches
+    the record first to check it is editable.'
+- tool: update-tracking-options
+  category: settings
+  api: openapi/xero-accounting-api-openapi.yml
+  rest:
+  - getTrackingCategory
+  - updateTrackingOptions
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /TrackingCategories/{TrackingCategoryID}
+  - POST /TrackingCategories/{TrackingCategoryID}/Options/{TrackingOptionID}
+  note: 'Handler calls xeroClient.accountingApi.getTrackingCategory, updateTrackingOptions. Read-then-write: fetches
+    the record first to check it is editable.'
+- tool: update-payroll-timesheet-line
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - updateTimesheetLine
+  binding: rest
+  confidence: high
+  endpoints:
+  - PUT /Timesheets/{TimesheetID}/Lines/{TimesheetLineID}
+  note: Handler calls xeroClient.payrollNZApi.updateTimesheetLine.
+- tool: approve-payroll-timesheet
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - approveTimesheet
+  binding: rest
+  confidence: high
+  endpoints:
+  - POST /Timesheets/{TimesheetID}/Approve
+  note: Handler calls xeroClient.payrollNZApi.approveTimesheet.
+- tool: revert-payroll-timesheet
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - revertTimesheet
+  binding: rest
+  confidence: high
+  endpoints:
+  - POST /Timesheets/{TimesheetID}/RevertToDraft
+  note: Handler calls xeroClient.payrollNZApi.revertTimesheet.
+- tool: add-payroll-timesheet-line
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - createTimesheetLine
+  binding: rest
+  confidence: high
+  endpoints:
+  - POST /Timesheets/{TimesheetID}/Lines
+  note: Handler calls xeroClient.payrollNZApi.createTimesheetLine.
+- tool: delete-payroll-timesheet
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - deleteTimesheet
+  binding: rest
+  confidence: high
+  endpoints:
+  - DELETE /Timesheets/{TimesheetID}
+  note: Handler calls xeroClient.payrollNZApi.deleteTimesheet.
+- tool: get-payroll-timesheet
+  category: payroll
+  api: openapi/xero-payrollnz-api-openapi.yml
+  rest:
+  - getTimesheet
+  binding: rest
+  confidence: high
+  endpoints:
+  - GET /Timesheets/{TimesheetID}
+  note: Handler calls xeroClient.payrollNZApi.getTimesheet.
+mcp_only: []
+rest_only:
+- api: openapi/xero-accounting-api-openapi.yml
+  operations:
+  - createAccount
+  - createAccountAttachmentByFileName
+  - createBankTransactionAttachmentByFileName
+  - createBankTransactionHistoryRecord
+  - createBankTransfer
+  - createBankTransferAttachmentByFileName
+  - createBankTransferHistoryRecord
+  - createBatchPayment
+  - createBatchPaymentHistoryRecord
+  - createBrandingThemePaymentServices
+  - createContactAttachmentByFileName
+  - createContactGroup
+  - createContactGroupContacts
+  - createContactHistory
+  - createCreditNoteAllocation
+  - createCreditNoteAttachmentByFileName
+  - createCreditNoteHistory
+  - createCurrency
+  - createEmployees
+  - createExpenseClaimHistory
+  - createExpenseClaims
+  - createInvoiceAttachmentByFileName
+  - createInvoiceHistory
+  - createItemHistory
+  - createLinkedTransaction
+  - createManualJournalAttachmentByFileName
+  - createManualJournalHistoryRecord
+  - createOverpaymentAllocations
+  - createOverpaymentHistory
+  - createPaymentHistory
+  - createPaymentService
+  - createPayments
+  - createPrepaymentAllocations
+  - createPrepaymentHistory
+  - createPurchaseOrderAttachmentByFileName
+  - createPurchaseOrderHistory
+  - createPurchaseOrders
+  - createQuoteAttachmentByFileName
+  - createQuoteHistory
+  - createReceipt
+  - createReceiptAttachmentByFileName
+  - createReceiptHistory
+  - createRepeatingInvoiceAttachmentByFileName
+  - createRepeatingInvoiceHistory
+  - createRepeatingInvoices
+  - createTaxRates
+  - deleteAccount
+  - deleteBatchPayment
+  - deleteBatchPaymentByUrlParam
+  - deleteContactGroupContact
+  - deleteContactGroupContacts
+  - deleteCreditNoteAllocations
+  - deleteItem
+  - deleteLinkedTransaction
+  - deleteOverpaymentAllocations
+  - deletePayment
+  - deletePrepaymentAllocations
+  - deleteTrackingCategory
+  - deleteTrackingOptions
+  - emailInvoice
+  - getAccount
+  - getAccountAttachmentByFileName
+  - getAccountAttachmentById
+  - getAccountAttachments
+  - getBankTransactionAttachmentByFileName
+  - getBankTransactionAttachmentById
+  - getBankTransactionAttachments
+  - getBankTransactionsHistory
+  - getBankTransfer
+  - getBankTransferAttachmentByFileName
+  - getBankTransferAttachmentById
+  - getBankTransferAttachments
+  - getBankTransferHistory
+  - getBankTransfers
+  - getBatchPayment
+  - getBatchPaymentHistory
+  - getBatchPayments
+  - getBrandingTheme
+  - getBrandingThemePaymentServices
+  - getBrandingThemes
+  - getBudget
+  - getBudgets
+  - getContact
+  - getContactAttachmentByFileName
+  - getContactAttachmentById
+  - getContactAttachments
+  - getContactByContactNumber
+  - getContactCISSettings
+  - getContactHistory
+  - getCreditNoteAsPdf
+  - getCreditNoteAttachmentByFileName
+  - getCreditNoteAttachmentById
+  - getCreditNoteAttachments
+  - getCreditNoteHistory
+  - getCurrencies
+  - getEmployee
+  - getEmployees
+  - getExpenseClaim
+  - getExpenseClaimHistory
+  - getExpenseClaims
+  - getInvoiceAsPdf
+  - getInvoiceAttachmentByFileName
+  - getInvoiceAttachmentById
+  - getInvoiceAttachments
+  - getInvoiceHistory
+  - getInvoiceReminders
+  - getItem
+  - getItemHistory
+  - getJournal
+  - getJournalByNumber
+  - getJournals
+  - getLinkedTransaction
+  - getLinkedTransactions
+  - getManualJournalAttachmentByFileName
+  - getManualJournalAttachmentById
+  - getManualJournalAttachments
+  - getManualJournalsHistory
+  - getOnlineInvoice
+  - getOrganisationActions
+  - getOrganisationCISSettings
+  - getOverpayment
+  - getOverpaymentHistory
+  - getOverpayments
+  - getPayment
+  - getPaymentHistory
+  - getPaymentServices
+  - getPrepayment
+  - getPrepaymentHistory
+  - getPrepayments
+  - getPurchaseOrder
+  - getPurchaseOrderAsPdf
+  - getPurchaseOrderAttachmentByFileName
+  - getPurchaseOrderAttachmentById
+  - getPurchaseOrderAttachments
+  - getPurchaseOrderByNumber
+  - getPurchaseOrderHistory
+  - getPurchaseOrders
+  - getQuoteAsPdf
+  - getQuoteAttachmentByFileName
+  - getQuoteAttachmentById
+  - getQuoteAttachments
+  - getQuoteHistory
+  - getReceipt
+  - getReceiptAttachmentByFileName
+  - getReceiptAttachmentById
+  - getReceiptAttachments
+  - getReceiptHistory
+  - getReceipts
+  - getRepeatingInvoice
+  - getRepeatingInvoiceAttachmentByFileName
+  - getRepeatingInvoiceAttachmentById
+  - getRepeatingInvoiceAttachments
+  - getRepeatingInvoiceHistory
+  - getRepeatingInvoices
+  - getReportBankSummary
+  - getReportBudgetSummary
+  - getReportExecutiveSummary
+  - getReportFromId
+  - getReportTenNinetyNine
+  - getReportsList
+  - getTaxRateByTaxType
+  - getUser
+  - getUsers
+  - postSetup
+  - updateAccount
+  - updateAccountAttachmentByFileName
+  - updateBankTransactionAttachmentByFileName
+  - updateBankTransferAttachmentByFileName
+  - updateContactAttachmentByFileName
+  - updateContactGroup
+  - updateCreditNoteAttachmentByFileName
+  - updateExpenseClaim
+  - updateInvoiceAttachmentByFileName
+  - updateLinkedTransaction
+  - updateManualJournalAttachmentByFileName
+  - updateOrCreateBankTransactions
+  - updateOrCreateContacts
+  - updateOrCreateCreditNotes
+  - updateOrCreateEmployees
+  - updateOrCreateInvoices
+  - updateOrCreateItems
+  - updateOrCreateManualJournals
+  - updateOrCreatePurchaseOrders
+  - updateOrCreateQuotes
+  - updateOrCreateRepeatingInvoices
+  - updatePurchaseOrder
+  - updatePurchaseOrderAttachmentByFileName
+  - updateQuoteAttachmentByFileName
+  - updateReceipt
+  - updateReceiptAttachmentByFileName
+  - updateRepeatingInvoice
+  - updateRepeatingInvoiceAttachmentByFileName
+  - updateTaxRate
+- api: openapi/xero-payrollnz-api-openapi.yml
+  operations:
+  - createDeduction
+  - createEarningsRate
+  - createEmployee
+  - createEmployeeEarningsTemplate
+  - createEmployeeLeave
+  - createEmployeeLeaveSetup
+  - createEmployeeLeaveType
+  - createEmployeeOpeningBalances
+  - createEmployeePaymentMethod
+  - createEmployeeSalaryAndWage
+  - createEmployeeWorkingPattern
+  - createEmployment
+  - createLeaveType
+  - createMultipleEmployeeEarningsTemplate
+  - createPayRun
+  - createPayRunCalendar
+  - createReimbursement
+  - createSuperannuation
+  - deleteEmployeeEarningsTemplate
+  - deleteEmployeeLeave
+  - deleteEmployeeSalaryAndWage
+  - deleteEmployeeWorkingPattern
+  - deleteTimesheetLine
+  - getDeduction
+  - getDeductions
+  - getEarningsRate
+  - getEarningsRates
+  - getEmployee
+  - getEmployeeOpeningBalances
+  - getEmployeePayTemplates
+  - getEmployeePaymentMethod
+  - getEmployeeSalaryAndWage
+  - getEmployeeSalaryAndWages
+  - getEmployeeTax
+  - getEmployeeWorkingPattern
+  - getEmployeeWorkingPatterns
+  - getLeaveType
+  - getPayRun
+  - getPayRunCalendar
+  - getPayRunCalendars
+  - getPayRuns
+  - getPaySlip
+  - getPaySlips
+  - getReimbursement
+  - getReimbursements
+  - getSettings
+  - getStatutoryDeduction
+  - getStatutoryDeductions
+  - getSuperannuation
+  - getSuperannuations
+  - getTrackingCategories
+  - updateEmployee
+  - updateEmployeeEarningsTemplate
+  - updateEmployeeLeave
+  - updateEmployeeSalaryAndWage
+  - updateEmployeeTax
+  - updatePaySlipLineItems
+- api: openapi/xero-account-data-api-openapi.yml
+  operations: all
+  count: 3
+  note: No MCP tool touches this API.
+- api: openapi/xero-app-store-api-openapi.yml
+  operations: all
+  count: 4
+  note: No MCP tool touches this API.
+- api: openapi/xero-asset-api-openapi.yml
+  operations: all
+  count: 6
+  note: No MCP tool touches this API.
+- api: openapi/xero-bank-feeds-api-openapi.yml
+  operations: all
+  count: 7
+  note: No MCP tool touches this API.
+- api: openapi/xero-bank-feeds-v2-api-openapi.yml
+  operations: all
+  count: 5
+  note: No MCP tool touches this API.
+- api: openapi/xero-files-api-openapi.yml
+  operations: all
+  count: 18
+  note: No MCP tool touches this API.
+- api: openapi/xero-finance-api-openapi.yml
+  operations: all
+  count: 8
+  note: No MCP tool touches this API.
+- api: openapi/xero-identity-api-openapi.yml
+  operations: all
+  count: 2
+  note: No MCP tool touches this API.
+- api: openapi/xero-payrollau-api-openapi.yml
+  operations: all
+  count: 32
+  note: No MCP tool touches this API.
+- api: openapi/xero-payrollau-v2-api-openapi.yml
+  operations: all
+  count: 9
+  note: No MCP tool touches this API.
+- api: openapi/xero-payrolluk-api-openapi.yml
+  operations: all
+  count: 69
+  note: No MCP tool touches this API.
+- api: openapi/xero-project-api-openapi.yml
+  operations: all
+  count: 16
+  note: No MCP tool touches this API.
+- api: openapi/xero-webhooks-api-openapi.yml
+  operations: all
+  count: 0
+  note: No MCP tool touches this API.
+coverage:
+  mcp_tools_named: 51
+  mcp_bound_to_rest: 51
+  mcp_only: 0
+  rest_operations_bound: 58
+  rest_operations_in_bound_specs: 308
+  note: All tools use the Accounting API or the Payroll NZ API (the server calls payrollNZApi, so payroll tools
+    do not cover AU/UK payroll).

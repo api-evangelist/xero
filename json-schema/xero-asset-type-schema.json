@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-asset-type-schema.json",
+  "title": "AssetType",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-asset-api-openapi.yml#/components/schemas/AssetType",
+  "type": "object",
+  "x-snake": "asset_type",
+  "required": [
+    "assetTypeName",
+    "bookDepreciationSetting"
+  ],
+  "properties": {
+    "assetTypeId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Xero generated unique identifier for asset types"
+    },
+    "assetTypeName": {
+      "type": "string",
+      "description": "The name of the asset type"
+    },
+    "fixedAssetAccountId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The asset account for fixed assets of this type"
+    },
+    "depreciationExpenseAccountId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The expense account for the depreciation of fixed assets of this type"
+    },
+    "accumulatedDepreciationAccountId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The account for accumulated depreciation of fixed assets of this type"
+    },
+    "bookDepreciationSetting": {
+      "$ref": "#/$defs/BookDepreciationSetting"
+    },
+    "locks": {
+      "type": "integer",
+      "description": "All asset types that have accumulated depreciation for any assets that use them are deemed ‘locked’ and cannot be removed."
+    }
+  },
+  "$defs": {
+    "BookDepreciationSetting": {
+      "properties": {
+        "depreciationMethod": {
+          "type": "string",
+          "enum": [
+            "NoDepreciation",
+            "StraightLine",
+            "DiminishingValue100",
+            "DiminishingValue150",
+            "DiminishingValue200",
+            "FullDepreciation"
+          ],
+          "description": "The method of depreciation applied to this asset. See Depreciation Methods"
+        },
+        "averagingMethod": {
+          "type": "string",
+          "enum": [
+            "FullMonth",
+            "ActualDays"
+          ],
+          "description": "The method of averaging applied to this asset. See Averaging Methods"
+        },
+        "depreciationRate": {
+          "type": "number",
+          "format": "double",
+          "x-is-money": true,
+          "description": "The rate of depreciation (e.g. 0.05)"
+        },
+        "effectiveLifeYears": {
+          "type": "integer",
+          "description": "Effective life of the asset in years (e.g. 5)"
+        },
+        "depreciationCalculationMethod": {
+          "type": "string",
+          "enum": [
+            "Rate",
+            "Life",
+            "None"
+          ],
+          "description": "See Depreciation Calculation Methods"
+        },
+        "depreciableObjectId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique Xero identifier for the depreciable object"
+        },
+        "depreciableObjectType": {
+          "type": "string",
+          "description": "The type of asset object"
+        },
+        "bookEffectiveDateOfChangeId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique Xero identifier for the effective date change"
+        }
+      }
+    }
+  }
+}

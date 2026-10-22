@@ -1,0 +1,33 @@
+generated: '2026-10-20'
+method: searched
+source:
+- https://developer.xero.com/documentation/guides/oauth2/overview/
+- https://developer.xero.com/documentation/guides/oauth2/scopes/
+- https://developer.xero.com/documentation/guides/idempotent-requests/idempotency/
+standards:
+- id: oauth2
+  conforms: true
+  evidence: OAuth 2.0 code flow, PKCE flow, client credentials (custom connections) documented under developer.xero.com/documentation/guides/oauth2/;
+    authorize https://login.xero.com/identity/connect/authorize, token https://identity.xero.com/connect/token
+- id: oidc
+  conforms: true
+  evidence: 'Scopes page: "OpenID Connect — Use OpenID scopes to retrieve details about the user’s identity. These are required for single sign
+    on." (openid, profile, email)'
+- id: idempotency
+  conforms: true
+  evidence: https://developer.xero.com/documentation/guides/idempotent-requests/idempotency/ — Idempotency-Key header on POST, PUT and PATCH
+- id: rfc9457
+  conforms: false
+  evidence: Errors use a custom ApiException envelope (ErrorNumber, Type, Message) per developer.xero.com/documentation/api/accounting/responsecodes/
+- id: pagination
+  conforms: true
+  evidence: page / pageSize parameters with a pagination response object (https://developer.xero.com/documentation/api/accounting/requests-and-responses/)
+- id: openapi-3.0
+  conforms: true
+  evidence: the document declares 3.0.0
+- id: openapi-3.2
+  conforms: true
+  evidence: the document declares 3.2.0
+- id: ratelimit-headers
+  conforms: true
+  evidence: responses declare Retry-After, X-Rate-Limit-Problem

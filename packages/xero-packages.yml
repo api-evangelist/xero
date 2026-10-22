@@ -1,0 +1,81 @@
+generated: '2026-10-20'
+method: searched
+source: https://developer.xero.com/documentation/sdks-and-tools/libraries/overview/
+note: SDK list read from the Xero SDKs page; versions/dates read from each registry metadata endpoint on 2026-10-20.
+packages:
+- name: xero-node
+  registry: npm
+  url: https://www.npmjs.com/package/xero-node
+  language: JavaScript/TypeScript
+  official: true
+  version: 20.0.0
+  published: '2026-09-18'
+  repository: https://github.com/XeroAPI/xero-node
+  ownership_audit: metadata names xero.com
+- name: xero-python
+  registry: pypi
+  url: https://pypi.org/project/xero-python/
+  language: Python
+  official: true
+  version: 15.2.0
+  published: '2026-09-04'
+  repository: https://github.com/XeroAPI/xero-python
+  ownership_audit: metadata names xero.com
+- name: xero-ruby
+  registry: rubygems
+  url: https://rubygems.org/gems/xero-ruby
+  language: Ruby
+  official: true
+  version: 18.2.0
+  published: '2026-09-04'
+  repository: https://github.com/XeroAPI/xero-ruby
+  ownership_audit: metadata names xero.com
+- name: xeroapi/xero-php-oauth2
+  registry: packagist
+  url: https://packagist.org/packages/xeroapi/xero-php-oauth2
+  language: PHP
+  official: false
+  version: 16.2.0
+  published: '2026-09-04'
+  repository: https://github.com/XeroAPI/xero-php-oauth2
+  ownership_audit: 'registry metadata names neither the provider''s domain nor its GitHub org: official downgraded (harvest-packages.py --audit)'
+- name: Xero.NetStandard.OAuth2
+  registry: nuget
+  url: https://www.nuget.org/packages/Xero.NetStandard.OAuth2
+  language: C#
+  official: false
+  version: 18.2.0
+  published: '2026-09-04'
+  repository: https://github.com/XeroAPI/Xero-NetStandard
+  ownership_audit: 'registry metadata names neither the provider''s domain nor its GitHub org: official downgraded (harvest-packages.py --audit)'
+- name: com.github.xeroapi:xero-java
+  registry: maven
+  url: https://central.sonatype.com/artifact/com.github.xeroapi/xero-java
+  language: Java
+  official: true
+  version: 12.0.0
+  published: '2025-06-28'
+  repository: https://github.com/XeroAPI/Xero-Java
+  note: published date from search.maven.org timestamp 1751115420076; lags the other SDKs (Sept 2026) by over a year.
+- name: '@xeroapi/xero-command-line'
+  registry: npm
+  url: https://www.npmjs.com/package/@xeroapi/xero-command-line
+  language: JavaScript
+  official: true
+  version: 0.0.8
+  published: '2026-09-17'
+  repository: https://github.com/XeroAPI/xero-command-line
+  kind: cli
+  note: The 2026-03-30 devblog says "npm install -g xero-command-line"; that unscoped name returns 404 on npm, the repo README uses the scoped
+    name.
+  ownership_audit: metadata names xero.com
+- name: '@xeroapi/xero-mcp-server'
+  registry: npm
+  url: https://www.npmjs.com/package/@xeroapi/xero-mcp-server
+  language: JavaScript
+  official: true
+  version: 0.0.17
+  published: '2026-05-26'
+  repository: https://github.com/XeroAPI/xero-mcp-server
+  kind: mcp-server
+  ownership_audit: metadata names xero.com

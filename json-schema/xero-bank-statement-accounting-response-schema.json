@@ -1,0 +1,404 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-bank-statement-accounting-response-schema.json",
+  "title": "BankStatementAccountingResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-finance-api-openapi.yml#/components/schemas/BankStatementAccountingResponse",
+  "type": "object",
+  "properties": {
+    "bankAccountId": {
+      "type": "string",
+      "description": "Xero Identifier of bank account",
+      "format": "uuid"
+    },
+    "bankAccountName": {
+      "type": "string",
+      "description": "Name of bank account"
+    },
+    "bankAccountCurrencyCode": {
+      "type": "string",
+      "description": "Currency code of the bank account"
+    },
+    "statements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/StatementResponse"
+      },
+      "description": "List of bank statements and linked accounting data for the requested period"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "BankTransactionResponse": {
+      "type": "object",
+      "properties": {
+        "bankTransactionId": {
+          "type": "string",
+          "description": "Xero Identifier of transaction",
+          "format": "uuid"
+        },
+        "batchPaymentId": {
+          "type": "string",
+          "description": "Xero Identifier of batch payment. Present if the transaction is part of a batch.",
+          "format": "uuid"
+        },
+        "contact": {
+          "$ref": "#/$defs/ContactResponse"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date of transaction - YYYY-MM-DD",
+          "format": "date"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Amount of transaction",
+          "format": "double",
+          "x-is-money": true
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LineItemResponse"
+          },
+          "description": "The LineItems element can contain any number of individual LineItem sub-elements. Not included in summary mode"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContactResponse": {
+      "type": "object",
+      "properties": {
+        "contactId": {
+          "type": "string",
+          "description": "Xero Identifier of contact",
+          "format": "uuid"
+        },
+        "contactName": {
+          "type": "string",
+          "description": "Full name of contact/organisation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CreditNoteResponse": {
+      "type": "object",
+      "properties": {
+        "creditNoteId": {
+          "type": "string",
+          "description": "Xero Identifier of credit note",
+          "format": "uuid"
+        },
+        "contact": {
+          "$ref": "#/$defs/ContactResponse"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total of Invoice tax inclusive (i.e. SubTotal + TotalTax); Not included in summary mode",
+          "format": "double",
+          "x-is-money": true
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LineItemResponse"
+          },
+          "description": "Not included in summary mode"
+        }
+      },
+      "additionalProperties": false
+    },
+    "InvoiceResponse": {
+      "type": "object",
+      "properties": {
+        "invoiceId": {
+          "type": "string",
+          "description": "Xero Identifier of invoice",
+          "format": "uuid"
+        },
+        "contact": {
+          "$ref": "#/$defs/ContactResponse"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total of Invoice tax inclusive (i.e. SubTotal + TotalTax); Not included in summary mode",
+          "format": "double",
+          "x-is-money": true
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LineItemResponse"
+          },
+          "description": "Not included in summary mode"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LineItemResponse": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "description": "Xero Identifier of account",
+          "format": "uuid"
+        },
+        "reportingCode": {
+          "type": "string",
+          "description": "Shown if set"
+        },
+        "lineAmount": {
+          "type": "number",
+          "description": "Amount of line item",
+          "format": "double",
+          "x-is-money": true
+        },
+        "accountType": {
+          "type": "string",
+          "description": "Account type"
+        }
+      },
+      "additionalProperties": false
+    },
+    "OverpaymentResponse": {
+      "type": "object",
+      "properties": {
+        "overpaymentId": {
+          "type": "string",
+          "description": "Xero Identifier of overpayment",
+          "format": "uuid"
+        },
+        "contact": {
+          "$ref": "#/$defs/ContactResponse"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total of Invoice tax inclusive (i.e. SubTotal + TotalTax); Not included in summary mode",
+          "format": "double",
+          "x-is-money": true
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LineItemResponse"
+          },
+          "description": "Not included in summary mode"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PaymentResponse": {
+      "type": "object",
+      "properties": {
+        "paymentId": {
+          "type": "string",
+          "description": "Xero Identifier of payment",
+          "format": "uuid"
+        },
+        "batchPaymentId": {
+          "type": "string",
+          "description": "Xero Identifier of batch payment. Present if the payment was created as part of a batch.",
+          "format": "uuid"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date the payment is being made (YYYY-MM-DD) e.g. 2009-09-06",
+          "format": "date"
+        },
+        "amount": {
+          "type": "number",
+          "description": "The amount of the payment",
+          "format": "double",
+          "x-is-money": true
+        },
+        "bankAmount": {
+          "type": "number",
+          "description": "The bank amount of the payment",
+          "format": "double",
+          "x-is-money": true
+        },
+        "currencyRate": {
+          "type": "number",
+          "description": "Exchange rate when payment is received. Only used for non base currency invoices and credit notes e.g. 0.7500",
+          "format": "double"
+        },
+        "invoice": {
+          "$ref": "#/$defs/InvoiceResponse"
+        },
+        "creditNote": {
+          "$ref": "#/$defs/CreditNoteResponse"
+        },
+        "prepayment": {
+          "$ref": "#/$defs/PrepaymentResponse"
+        },
+        "overpayment": {
+          "$ref": "#/$defs/OverpaymentResponse"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PrepaymentResponse": {
+      "type": "object",
+      "properties": {
+        "prepaymentId": {
+          "type": "string",
+          "description": "Xero Identifier of prepayment",
+          "format": "uuid"
+        },
+        "contact": {
+          "$ref": "#/$defs/ContactResponse"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total of Invoice tax inclusive (i.e. SubTotal + TotalTax); Not included in summary mode",
+          "format": "double",
+          "x-is-money": true
+        },
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LineItemResponse"
+          },
+          "description": "Not included in summary mode"
+        }
+      },
+      "additionalProperties": false
+    },
+    "StatementLineResponse": {
+      "type": "object",
+      "properties": {
+        "statementLineId": {
+          "type": "string",
+          "description": "Xero Identifier of statement line",
+          "format": "uuid"
+        },
+        "postedDate": {
+          "type": "string",
+          "description": "Date of when statement line was posted",
+          "format": "date"
+        },
+        "payee": {
+          "type": "string",
+          "description": "Payee description of statement line"
+        },
+        "reference": {
+          "type": "string",
+          "description": "Reference description of statement line"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Notes description of statement line"
+        },
+        "chequeNo": {
+          "type": "string",
+          "description": "Cheque number of statement line"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Amount of statement line",
+          "format": "double",
+          "x-is-money": true
+        },
+        "transactionDate": {
+          "type": "string",
+          "description": "Transaction date of statement line",
+          "format": "date"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of statement line"
+        },
+        "isReconciled": {
+          "type": "boolean",
+          "description": "Boolean to show if statement line is reconciled"
+        },
+        "isDuplicate": {
+          "type": "boolean",
+          "description": "Boolean to show if statement line is duplicate"
+        },
+        "isDeleted": {
+          "type": "boolean",
+          "description": "Boolean to show if statement line is deleted"
+        },
+        "payments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PaymentResponse"
+          },
+          "description": "List of payments associated with reconciled statement lines"
+        },
+        "bankTransactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BankTransactionResponse"
+          },
+          "description": "List of bank transactions associated with reconciled statement lines"
+        }
+      },
+      "additionalProperties": false
+    },
+    "StatementResponse": {
+      "type": "object",
+      "properties": {
+        "statementId": {
+          "type": "string",
+          "description": "Xero Identifier of statement",
+          "format": "uuid"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "Start date of statement",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "End date of statement",
+          "format": "date"
+        },
+        "importedDateTimeUtc": {
+          "type": "string",
+          "description": "Utc date time of when the statement was imported in Xero",
+          "format": "date-time"
+        },
+        "importSource": {
+          "type": "string",
+          "description": "Identifies where the statement data in Xero was sourced, 1) direct bank feed, automatically loaded from the bank (eg STMTIMPORTSRC/CBAFEED); 2) indirect bank feed, automatically loaded from a 3rd party provider (eg STMTIMPORTSRC/YODLEE); 3) manually uploaded bank feed (eg STMTIMPORTSRC/CSV) or 4) manually entered statement data (STMTIMPORTSRC/MANUAL)."
+        },
+        "startBalance": {
+          "type": "number",
+          "description": "Opening balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied. Where not supplied, the value will be 0.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "endBalance": {
+          "type": "number",
+          "description": "Closing balance sourced from imported bank statements (if supplied). Note, for manually uploaded statements, this balance is also manual and usually not supplied. Where not supplied, the value will be 0.",
+          "format": "double",
+          "x-is-money": true
+        },
+        "indicativeStartBalance": {
+          "type": "number",
+          "description": "Opening statement balance calculated in Xero (= bank account conversion balance plus sum of imported bank statement lines). Note: If indicative statement balance doesn't match imported statement balance for the same date, either the conversion (opening at inception) balance in Xero is wrong or there's an error in the bank statement lines in Xero. Ref: https://central.xero.com/s/article/Compare-the-statement-balance-in-Xero-to-your-actual-bank-balance?userregion=true\n",
+          "format": "double",
+          "x-is-money": true
+        },
+        "indicativeEndBalance": {
+          "type": "number",
+          "description": "Closing statement balance calculated in Xero (= bank account conversion balance plus sum of imported bank statement lines). Note: If indicative statement balance doesn't match imported statement balance for the same date, either the conversion (opening at inception) balance in Xero is wrong or there's an error in the bank statement lines in Xero. Ref: https://central.xero.com/s/article/Compare-the-statement-balance-in-Xero-to-your-actual-bank-balance?userregion=true \n",
+          "format": "double",
+          "x-is-money": true
+        },
+        "statementLines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/StatementLineResponse"
+          },
+          "description": "List of statement lines"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

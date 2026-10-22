@@ -1,0 +1,26 @@
+generated: '2026-10-20'
+method: searched
+source: https://developer.xero.com/documentation/development-accounts/
+docs: https://developer.xero.com/documentation/development-accounts/
+description: 'No separate sandbox host or test keys: development uses the free Xero Demo Company (recommended) or a 30-day trial organisation, connected through the same OAuth 2.0 flow as production.'
+environments:
+- name: Demo company
+  facts:
+  - can raise an unlimited number of invoices
+  - data will be automatically reset 28 days after creation
+  - comes pre-populated with dummy data
+  - can not invite other users to access your demo company
+  - can be reset at anytime
+  - can switch country
+  - has access to payroll (if payroll is available in the current country)
+  note: When the demo company resets (after 28 days) you will need to reconnect your app to the demo company.
+- name: Xero trial organisation
+  facts:
+  - is limited to 30 days before billing information is required
+  - does not come pre-populated with any data
+  - can not be reset
+test_keys: none — same api.xero.com host and OAuth credentials as live
+tools:
+- API Explorer (can connect to the demo company)
+- Postman collections
+plan_note: Starter plan includes "AI toolkit (Remote MCP server) Demo org only" (developer.xero.com/pricing).

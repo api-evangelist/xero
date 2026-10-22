@@ -1,0 +1,277 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for Xero Payroll Nz API
+  version: 1.0.0
+extends: openapi/xero-payrollnz-api-openapi.yml
+x-generated: '2026-10-20'
+x-method: generated
+x-source: openapi/xero-payrollnz-api-openapi.yml
+x-rationale: 'Records our enhancements without mutating the spec: Idempotency-Key support marked per operation (from
+  the spec''s own parameters) and, where applicable, the official Xero MCP tools that call each operation (from
+  mcp/xero-tool-crosswalk.yml).'
+actions:
+- target: $.info
+  description: API Evangelist provenance and agent-surface pointers.
+  update:
+    x-apievangelist-profiled: '2026-10-20'
+    x-mcp-server: mcp/xero-mcp.yml
+    x-llms-txt: llms/xero-llms.txt
+    x-authentication: authentication/xero-authentication.yml
+- target: $.paths['/Timesheets/{TimesheetID}/Approve'].post
+  description: 'approveTimesheet: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - approve-payroll-timesheet
+- target: $.paths['/Deductions'].post
+  description: 'createDeduction: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/EarningsRates'].post
+  description: 'createEarningsRate: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees'].post
+  description: 'createEmployee: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/PayTemplates/Earnings'].post
+  description: 'createEmployeeEarningsTemplate: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/Leave'].post
+  description: 'createEmployeeLeave: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/LeaveSetup'].post
+  description: 'createEmployeeLeaveSetup: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/LeaveTypes'].post
+  description: 'createEmployeeLeaveType: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/OpeningBalances'].post
+  description: 'createEmployeeOpeningBalances: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/PaymentMethods'].post
+  description: 'createEmployeePaymentMethod: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/SalaryAndWages'].post
+  description: 'createEmployeeSalaryAndWage: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/Working-Patterns'].post
+  description: 'createEmployeeWorkingPattern: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/Employment'].post
+  description: 'createEmployment: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/LeaveTypes'].post
+  description: 'createLeaveType: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/PayTemplateEarnings'].post
+  description: 'createMultipleEmployeeEarningsTemplate: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/PayRuns'].post
+  description: 'createPayRun: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/PayRunCalendars'].post
+  description: 'createPayRunCalendar: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Reimbursements'].post
+  description: 'createReimbursement: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Superannuations'].post
+  description: 'createSuperannuation: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Timesheets'].post
+  description: 'createTimesheet: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - create-payroll-timesheet
+- target: $.paths['/Timesheets/{TimesheetID}/Lines'].post
+  description: 'createTimesheetLine: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - add-payroll-timesheet-line
+- target: $.paths['/Timesheets/{TimesheetID}'].delete
+  description: 'deleteTimesheet: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - delete-payroll-timesheet
+- target: $.paths['/Employees/{EmployeeID}/LeaveBalances'].get
+  description: 'getEmployeeLeaveBalances: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-payroll-employee-leave-balances
+- target: $.paths['/Employees/{EmployeeID}/LeavePeriods'].get
+  description: 'getEmployeeLeavePeriods: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-payroll-leave-periods
+- target: $.paths['/Employees/{EmployeeID}/LeaveTypes'].get
+  description: 'getEmployeeLeaveTypes: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-payroll-employee-leave-types
+- target: $.paths['/Employees/{EmployeeID}/Leave'].get
+  description: 'getEmployeeLeaves: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-payroll-employee-leave
+- target: $.paths['/Employees'].get
+  description: 'getEmployees: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-payroll-employees
+- target: $.paths['/LeaveTypes'].get
+  description: 'getLeaveTypes: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-payroll-leave-types
+- target: $.paths['/Timesheets/{TimesheetID}'].get
+  description: 'getTimesheet: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - get-payroll-timesheet
+- target: $.paths['/Timesheets'].get
+  description: 'getTimesheets: x-mcp-tools'
+  update:
+    x-mcp-tools:
+    - list-timesheets
+- target: $.paths['/Timesheets/{TimesheetID}/RevertToDraft'].post
+  description: 'revertTimesheet: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - revert-payroll-timesheet
+- target: $.paths['/Employees/{EmployeeID}'].put
+  description: 'updateEmployee: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/PayTemplates/Earnings/{PayTemplateEarningID}'].put
+  description: 'updateEmployeeEarningsTemplate: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/Leave/{LeaveID}'].put
+  description: 'updateEmployeeLeave: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/SalaryAndWages/{SalaryAndWagesID}'].put
+  description: 'updateEmployeeSalaryAndWage: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Employees/{EmployeeID}/Tax'].post
+  description: 'updateEmployeeTax: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/PaySlips/{PaySlipID}'].put
+  description: 'updatePaySlipLineItems: x-idempotency'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+- target: $.paths['/Timesheets/{TimesheetID}/Lines/{TimesheetLineID}'].put
+  description: 'updateTimesheetLine: x-idempotency, x-mcp-tools'
+  update:
+    x-idempotency:
+      header: Idempotency-Key
+      max_length: 128
+      source: components.parameters.idempotencyKey
+    x-mcp-tools:
+    - update-payroll-timesheet-line

@@ -1,77 +1,89 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Xero
-providerId: xero
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
-reconciled: false
-tags:
-  - Accounting
-  - Finance
-  - Small Business
-  - Payroll
-  - Invoicing
-description: Xero is a tiered SMB accounting SaaS sold as monthly subscriptions per organisation
-  (region-specific tiers in US, UK, AU, NZ, etc.). API access is included with the underlying
-  organisation subscription rather than priced separately. Pricing pages are public but were
-  unreachable from this reconciliation environment (timeouts / 503), so plan tier names and
-  per-month prices have not been refreshed in this artifact.
-sources:
-  - https://www.xero.com/us/pricing-plans/
-  - https://developer.xero.com/
-notes: WebFetch attempts against xero.com pricing pages timed out / returned 503 during
-  reconciliation. Trimmed to a single Contact / See Pricing Page plan rather than copy invented
-  tier prices. Refresh once xero.com pages are reachable.
+name: Xero pricing
+generated: '2026-10-20'
+method: searched
+source: https://developer.xero.com/pricing
+audience: developer-api
+pricing_basis: tiered-subscription
+published: true
+delivery:
+  delivery: managed
+summary: App pricing is a flat monthly fee based on plan and includes a set allotment of data consumption via the Xero APIs. Additional data consumption is available at additional cost.
+note: Prices shown in AUD as served by the page; Pricing is tax exclusive. Egress allotment excludes the organisation endpoint. Measured per app. This page prices the Xero Developer Platform (API access
+  for app partners), not Xero accounting subscriptions (xero.com/pricing-plans).
+plan_count: 5
 plans:
-  - id: xero-see-pricing-page
-    name: See Xero Pricing Page
-    type: subscription
-    description: Xero is sold as monthly per-organisation subscriptions in tiers that vary by
-      region (e.g. US Early / Growing / Established; AU Starter / Standard / Premium / Ultimate;
-      analogous tiers in UK, NZ, CA, etc.). API access is bundled with the organisation
-      subscription. Refer to xero.com/{region}/pricing-plans/ for current monthly prices.
-    entries:
-      - label: Per organisation / month
-        name: per_org_month
-        type: subscription
-        metric: organisation
-        limit: -1
-        timeFrame: month
-        geo: regional
-        unit: 1
-        price: see https://www.xero.com/us/pricing-plans/
-        userMultiplied: false
-    elements:
-      - name: Xero Accounting API
-      - name: Xero Assets API
-      - name: Xero Bank Feeds API
-      - name: Xero Finance API
-      - name: Xero Identity API
-      - name: Xero Payroll Australia API
-      - name: Xero Payroll New Zealand API
-      - name: Xero Payroll United Kingdom API
-      - name: Xero Projects API
-      - name: Xero Files API
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
-x-canonical:
-  generated: '2026-10-08'
-  vocabulary: all/0-working/economics/plans-canonical.yml
-  models:
-  - subscription
-  units: []
-  plans:
-  - name: See Xero Pricing Page
-    access: other
-    model: subscription
-    model_how: stated
-    units:
-    - other
-    periods:
-    - month
+- name: Starter
+  description: Xero Developer Starter partner plan
+  price_text: No charge
+  price: 0
+  currency: AUD
+  billing_period: month
+  features:
+  - Rate Limits 1000 per day per org
+  - AI toolkit (Remote MCP server) Demo org only
+  - 'Payment Method: Not Applicable'
+  limits:
+  - 'Connections (maximum): 5'
+  - 'Monthly Xero API usage (Egress GBs): n/a'
+  - 'Monthly Xero API usage (Ingress GBs): Unlimited'
+  overage_text: n/a
+- name: Core
+  description: Xero Developer Core partner plan
+  price_text: $35 AUD
+  price: 35
+  currency: AUD
+  billing_period: month
+  features:
+  - Rate Limits 5000 per day per org
+  - 'Prerequisite: Payment Method required'
+  limits:
+  - 'Connections (maximum): 50'
+  - 'Monthly Xero API usage (Egress GBs): 10 GBs'
+  - 'Monthly Xero API usage (Ingress GBs): Unlimited'
+  overage_text: $2.40 AUD
+- name: Plus
+  description: Xero Developer Plus partner plan
+  price_text: $245 AUD
+  price: 245
+  currency: AUD
+  billing_period: month
+  features:
+  - Rate Limits 5000 per day per org
+  - 'Prerequisite: App Certification'
+  - Xero App Store listing optional
+  limits:
+  - 'Connections (maximum): 1000'
+  - 'Monthly Xero API usage (Egress GBs): 50 GBs'
+  - 'Monthly Xero API usage (Ingress GBs): Unlimited'
+  overage_text: $2.40 AUD
+- name: Advanced
+  description: Xero Developer Advanced partner plan
+  price_text: $1445 AUD
+  price: 1445
+  currency: AUD
+  billing_period: month
+  features:
+  - Rate Limits 5000 per day per org
+  - 'Prerequisites: App Certification, Security Assessment (initial and annual)'
+  - 'Premium features: Journal endpoint, XPM API, Bulk connections (require security assessment and use case approval)'
+  - Priority support
+  limits:
+  - 'Connections (maximum): 10,000'
+  - 'Monthly Xero API usage (Egress GBs): 250 GBs'
+  - 'Monthly Xero API usage (Ingress GBs): Unlimited'
+  overage_text: $2.40 AUD
+- name: Enterprise
+  description: Xero Developer Enterprise partner plan
+  price_text: Price on Application
+  price: Contact sales
+  currency: AUD
+  billing_period: month
+  features:
+  - Rate Limits 5000 per day per org
+  - Xero App Store listing required
+  - Priority Support
+  limits:
+  - 'Connections (maximum): No limit'
+  - 'Monthly Xero API usage (Egress GBs): Volume on Application'
+  - 'Monthly Xero API usage (Ingress GBs): Unlimited'
+  overage_text: Price on Application

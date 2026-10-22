@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-trial-balance-response-schema.json",
+  "title": "TrialBalanceResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-finance-api-openapi.yml#/components/schemas/TrialBalanceResponse",
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date of the report"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date",
+      "description": "End date of the report"
+    },
+    "accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TrialBalanceAccount"
+      },
+      "description": "Refer to the accounts section below"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "TrialBalanceAccount": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "description": "ID of the account",
+          "format": "uuid"
+        },
+        "accountType": {
+          "type": "string",
+          "description": "The type of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountTypes'>Account Types</a>"
+        },
+        "accountCode": {
+          "type": "string",
+          "description": "Customer defined alpha numeric account code e.g 200 or SALES"
+        },
+        "accountClass": {
+          "type": "string",
+          "description": "The class of the account. See <a href='https://developer.xero.com/documentation/api/types#AccountClassTypes'>Account Class Types</a>"
+        },
+        "status": {
+          "type": "string",
+          "description": "Accounts with a status of ACTIVE can be updated to ARCHIVED. See <a href='https://developer.xero.com/documentation/api/types#AccountStatusCodes'>Account Status Codes</a>"
+        },
+        "reportingCode": {
+          "type": "string",
+          "description": "Reporting code (Shown if set)"
+        },
+        "accountName": {
+          "type": "string",
+          "description": "Name of the account"
+        },
+        "balance": {
+          "$ref": "#/$defs/TrialBalanceEntry"
+        },
+        "signedBalance": {
+          "type": "number",
+          "description": "Value of balance. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative",
+          "format": "double",
+          "x-is-money": true
+        },
+        "accountMovement": {
+          "$ref": "#/$defs/TrialBalanceMovement"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TrialBalanceEntry": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Net movement or net balance in the account",
+          "format": "double",
+          "x-is-money": true
+        },
+        "entryType": {
+          "type": "string",
+          "description": "Sign (Debit/Credit) of the movement of balance in the account"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TrialBalanceMovement": {
+      "type": "object",
+      "properties": {
+        "debits": {
+          "type": "number",
+          "description": "Debit amount",
+          "format": "double",
+          "x-is-money": true
+        },
+        "credits": {
+          "type": "number",
+          "description": "Credit amount",
+          "format": "double",
+          "x-is-money": true
+        },
+        "movement": {
+          "$ref": "#/$defs/TrialBalanceEntry"
+        },
+        "signedMovement": {
+          "type": "number",
+          "description": "Value of movement. Expense and Asset accounts code debits as positive. Revenue, Liability, and Equity accounts code debits as negative",
+          "format": "double",
+          "x-is-money": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

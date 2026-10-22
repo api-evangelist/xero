@@ -1,0 +1,106 @@
+generated: '2026-10-20'
+method: searched
+source:
+- https://www.xero.com/us/legal/privacy/
+- https://developer.xero.com/xero-developer-platform-terms-conditions
+pages_read:
+- url: https://www.xero.com/us/legal/privacy/
+  http_status: 200
+  fetched: '2026-10-20'
+  title: Privacy Notice | Xero US
+  last_updated: 11 February 2025
+- url: https://developer.xero.com/xero-developer-platform-terms-conditions
+  http_status: 200
+  fetched: '2026-10-20'
+  title: Developer Platform Terms and Conditions — Xero Developer
+  last_updated: 4 December 2025
+signals:
+  data_subject_request:
+    url: https://www.xero.com/us/legal/privacy/
+    section: 11. Your rights
+    rights_named: [access, correction, copy, restriction, deletion, objection, no wholly automated decisions / human review, marketing opt-out]
+    channel: "the 'How to contact us' section of the privacy notice"
+    escalation: local data protection authority
+    evidence:
+    - source: https://www.xero.com/us/legal/privacy/
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "You also have rights to: Know whether and what personal data we hold about you, and to correct it if it’s inaccurate or out-of-date. Request a copy of your personal data, or ask us to restrict processing your personal data or delete it. Object to our continued processing of your personal data."
+    - source: https://www.xero.com/us/legal/privacy/
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "You can exercise these rights at any time by making a request using the details in the ‘How to contact us’ section."
+    note: >-
+      Names data subject rights and the channel for exercising them. No response timeframe is stated for
+      rights requests; complaints get a reply "within a reasonable time frame".
+  data_retention:
+    url: https://www.xero.com/us/legal/privacy/
+    section: 8. Personal data retention
+    evidence:
+    - source: https://www.xero.com/us/legal/privacy/
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "We'll retain your personal data for as long as we've a relationship with you and for a period of time afterwards where we have an ongoing business or legal need to keep it. For example, to comply with legal, tax, or accounting requirements. After that, we'll make sure it’s deleted or anonymised."
+    note: Retention is described as relationship-plus-legal-need, ending in deletion or anonymisation; no fixed periods are published.
+  data_residency:
+    url: https://www.xero.com/us/legal/privacy/
+    section: 10. International transfers
+    evidence:
+    - source: https://www.xero.com/us/legal/privacy/
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "When we share personal data, it may be transferred to and processed in countries other than the country you live in—such as Australia, New Zealand and the United States—due to the location of our teams and data hosting locations."
+    - source: https://www.xero.com/us/legal/privacy/
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "Rest assured, when we transfer personal data to another country, we put safeguards in place to protect your personal data."
+    note: >-
+      This is a cross-border transfer disclosure, not a residency commitment: data may be processed in AU,
+      NZ and US. The page does not offer customers a choice of region. The EEA/UK section names Xero (UK)
+      Limited and Xero (NZ) Limited as controllers and Xero Denmark A/S as the EU representative.
+  ai_transparency:
+    url: https://developer.xero.com/xero-developer-platform-terms-conditions
+    evidence:
+    - source: https://developer.xero.com/xero-developer-platform-terms-conditions
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "You must not use API Data sourced from the Xero developer platform to train or fine tune any artificial intelligence models including machine learning tools, large language models or predictive analytics tools ( AI Models )."
+    - source: https://www.xero.com/us/legal/privacy/
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "For example, to sign you up to our services, manage your trial or subscription, facilitate purchases of services, and provide, maintain and deliver our services (including using AI/ML) in accordance with our terms of use."
+    - source: https://www.xero.com/us/legal/privacy/
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "Not be subject to wholly automated decisions that have legal or significant effects upon you, and to challenge the decision and request a human review."
+    note: >-
+      Three AI-related statements: the developer terms ban using API Data to train or fine-tune AI models;
+      the privacy notice says Xero uses AI/ML to deliver its services; and users have a right to human review
+      of wholly automated decisions. None of these is a model or system transparency statement.
+  incident_notification:
+    url: https://developer.xero.com/xero-developer-platform-terms-conditions
+    section: 15. Security
+    direction: developer-to-Xero (an obligation on app developers, not a commitment from Xero)
+    evidence:
+    - source: https://developer.xero.com/xero-developer-platform-terms-conditions
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "If you spot a security issue that affects your app, such as any unauthorised access to user data, you must immediately (in any event within 24 hours of discovery) let us know the details at api@support.xero.com (including a description of the incident as well as your action plan to contain and mitigate it) and use your best efforts to resolve it."
+    - source: https://developer.xero.com/xero-developer-platform-terms-conditions
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "While we may help you with security issues where we reasonably believe we can, it’s your responsibility to investigate what went wrong and to notify affected users and any regulatory authorities who need to know about it."
+    note: >-
+      Developers must report incidents to Xero within 24 hours and must notify affected users and regulators
+      themselves. Neither page reviewed states a timeframe for Xero notifying anyone of its own incidents.
+  support_lifetime:
+    url: https://developer.xero.com/xero-developer-platform-terms-conditions
+    section: 27. Modifications
+    evidence:
+    - source: https://developer.xero.com/xero-developer-platform-terms-conditions
+      http_status: 200
+      fetched: '2026-10-20'
+      quote: "We frequently release new updates, modifications and enhancements to the developer platform, and in some cases discontinue features. Where this occurs, we’ll typically notify our developer community at the same time and won’t always notify each platform user directly - so keep an eye out for changes."
+    note: >-
+      No minimum support or deprecation period is promised. Changes may be announced to the community
+      "at the same time" as they take effect, and Xero disclaims liability for compatibility issues.

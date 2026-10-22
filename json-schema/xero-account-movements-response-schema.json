@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-account-movements-response-schema.json",
+  "title": "AccountMovementsResponse",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-account-data-api-openapi.yml#/components/schemas/AccountMovementsResponse",
+  "type": "object",
+  "required": [
+    "accountMovements"
+  ],
+  "properties": {
+    "accountMovements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/AccountMovement"
+      }
+    }
+  },
+  "$defs": {
+    "Account": {
+      "type": "object",
+      "required": [
+        "name",
+        "class",
+        "type",
+        "status",
+        "systemAccountCode"
+      ],
+      "properties": {
+        "code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "class": {
+          "type": "string",
+          "enum": [
+            "ASSET",
+            "LIABILITY",
+            "EQUITY",
+            "REVENUE",
+            "EXPENSE"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "description": "Account type (e.g. `BANK`, `CURRENT`). Reported as `INVENTORY` for inventory\nasset accounts, regardless of the account's underlying type.\n"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "ARCHIVED",
+            "DELETED"
+          ]
+        },
+        "systemAccountCode": {
+          "type": "string",
+          "description": "System account code, or `NONE` if the account has no system account code."
+        }
+      }
+    },
+    "AccountMovement": {
+      "type": "object",
+      "required": [
+        "accountId",
+        "dateRange",
+        "debits",
+        "credits",
+        "movement",
+        "signedMovement",
+        "account"
+      ],
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The account this movement is for."
+        },
+        "dateRange": {
+          "$ref": "#/$defs/AccountingDateRange"
+        },
+        "debits": {
+          "type": "number",
+          "format": "double",
+          "description": "Total debits posted to this account within the date range."
+        },
+        "credits": {
+          "type": "number",
+          "format": "double",
+          "description": "Total credits posted to this account within the date range."
+        },
+        "movement": {
+          "$ref": "#/$defs/LedgerDecimal"
+        },
+        "signedMovement": {
+          "type": "number",
+          "format": "double",
+          "description": "Movement as a signed number (positive for debit, negative for credit)."
+        },
+        "taxDebits": {
+          "type": "number",
+          "format": "double",
+          "description": "Total tax debits within the date range. Omitted from the response when tax values are not available."
+        },
+        "taxCredits": {
+          "type": "number",
+          "format": "double",
+          "description": "Total tax credits within the date range. Omitted from the response when tax values are not available."
+        },
+        "signedTaxMovement": {
+          "type": "number",
+          "format": "double",
+          "description": "Tax movement as a signed number (positive for debit, negative for credit). Omitted from the response when tax values are not available."
+        },
+        "account": {
+          "$ref": "#/$defs/Account"
+        }
+      }
+    },
+    "AccountingDateRange": {
+      "type": "object",
+      "required": [
+        "startDate",
+        "endDate"
+      ],
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "LedgerDecimal": {
+      "type": "object",
+      "required": [
+        "value",
+        "type"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "format": "double",
+          "description": "Amount value (always positive)."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "DEBIT",
+            "CREDIT"
+          ]
+        }
+      }
+    }
+  }
+}

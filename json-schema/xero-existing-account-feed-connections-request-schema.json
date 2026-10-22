@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-existing-account-feed-connections-request-schema.json",
+  "title": "ExistingAccountFeedConnectionsRequest",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-bank-feeds-v2-api-openapi.yml#/components/schemas/ExistingAccountFeedConnectionsRequest",
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "properties": {
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "description": "Between 1 and 50 Feed Connections to create. No element may be null.",
+      "items": {
+        "$ref": "#/$defs/ExistingAccountFeedConnection"
+      }
+    }
+  },
+  "$defs": {
+    "AccountType": {
+      "type": "string",
+      "description": "The high-level type of the account. `BANK` covers every account type other than a credit card.\n",
+      "enum": [
+        "BANK",
+        "CREDITCARD"
+      ]
+    },
+    "ExistingAccountFeedConnection": {
+      "type": "object",
+      "required": [
+        "accountId",
+        "accountToken",
+        "accountType",
+        "currency"
+      ],
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The Xero Bank Account to connect the feed to. Required. An all-zeros GUID is treated as\nthough the field were absent.\n"
+        },
+        "accountToken": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "The financial institute's identifier for the account. Must be unique within your\nfinancial institute. Some financial institutes additionally constrain its format.\n"
+        },
+        "accountType": {
+          "$ref": "#/$defs/AccountType"
+        },
+        "currency": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3,
+          "description": "ISO-4217 currency code. Must match the currency of the Xero Bank Account named by\n`accountId`, and must be a currency the Organisation holds.\n"
+        },
+        "country": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2,
+          "description": "ISO-3166 alpha-2 country code. Required only when the Application supports multiple\nregions. Talk to your Partner Manager to confirm whether this applies to you.\n"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "Ignored. Taken from the Xero Bank Account named by `accountId`."
+        },
+        "accountName": {
+          "type": "string",
+          "description": "Ignored. Taken from the Xero Bank Account named by `accountId`."
+        }
+      }
+    }
+  }
+}

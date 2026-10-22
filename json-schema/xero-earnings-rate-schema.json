@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/xero/main/json-schema/xero-earnings-rate-schema.json",
+  "title": "EarningsRate",
+  "x-generated": "2026-10-20",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/xero-payrollnz-api-openapi.yml#/components/schemas/EarningsRate",
+  "type": "object",
+  "required": [
+    "name",
+    "earningsType",
+    "rateType",
+    "typeOfUnits",
+    "expenseAccountID"
+  ],
+  "properties": {
+    "earningsRateID": {
+      "description": "Xero unique identifier for an earning rate",
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "description": "Name of the earning rate",
+      "type": "string"
+    },
+    "earningsType": {
+      "description": "Indicates how an employee will be paid when taking this type of earning",
+      "type": "string",
+      "enum": [
+        "Allowance",
+        "Backpay",
+        "Bonus",
+        "Commission",
+        "DiscretionaryPayments",
+        "HolidayPay",
+        "LumpSum",
+        "OtherEarnings",
+        "OtherGrossEarnings",
+        "OvertimeEarnings",
+        "RegularEarnings",
+        "SalarySacrificeForKiwiSaver",
+        "Tips(Direct)",
+        "Tips(Non-Direct)",
+        "WithholdingIncome"
+      ]
+    },
+    "rateType": {
+      "description": "Indicates the type of the earning rate",
+      "type": "string",
+      "enum": [
+        "RatePerUnit",
+        "MultipleOfOrdinaryEarningsRate",
+        "FixedAmount"
+      ]
+    },
+    "typeOfUnits": {
+      "description": "The type of units used to record earnings",
+      "type": "string"
+    },
+    "currentRecord": {
+      "description": "Indicates whether an earning type is active",
+      "type": "boolean"
+    },
+    "expenseAccountID": {
+      "description": "The account that will be used for the earnings rate",
+      "type": "string",
+      "format": "uuid"
+    },
+    "ratePerUnit": {
+      "description": "Default rate per unit (optional). Only applicable if RateType is RatePerUnit",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "multipleOfOrdinaryEarningsRate": {
+      "description": "This is the multiplier used to calculate the rate per unit, based on the employee’s ordinary earnings rate. For example, for time and a half enter 1.5. Only applicable if RateType is MultipleOfOrdinaryEarningsRate",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    },
+    "fixedAmount": {
+      "description": "Optional Fixed Rate Amount. Applicable for FixedAmount Rate",
+      "type": "number",
+      "format": "double",
+      "x-is-money": true
+    }
+  }
+}
