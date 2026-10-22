@@ -1544,3 +1544,80 @@
     detected: '2026-10-22'
   status: not-a-workflow
   arazzo: null
+- slug: xero-apis-guru-openapi-directory
+  label: APIs.guru OpenAPI Directory
+  partner: apis-guru
+  partner_name: APIs.guru OpenAPI Directory
+  category: API definition directory listing (OpenAPI)
+  type: register
+  channel: standard-directory
+  evidence: https://apis.guru/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: APIs.guru OpenAPI Directory
+    spec_file: null
+    standard: APIs.guru OpenAPI Directory
+    role: listed-in-directory
+    directory_provider: xero.com
+    matched_domain: xero.com
+    matched_by: domain
+    apis_listed: 6
+    version_count: 6
+    first_added: '2021-02-25'
+    last_updated: '2021-02-25'
+    origin_publisher_hosted: false
+    origin_hosts:
+    - raw.githubusercontent.com
+    categories:
+    - financial
+    own_openapi_files: 13
+    listings:
+    - key: xero.com:xero-identity
+      title: Xero OAuth 2 Identity Service API
+      preferred: 2.9.4
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/xero.com/xero-identity/2.9.4/openapi.json
+      origin_url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-identity.yaml
+      openapi_version: 3.0.0
+    - key: xero.com:xero-payroll-au
+      title: Xero Payroll AU API
+      preferred: 2.9.4
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/xero.com/xero-payroll-au/2.9.4/openapi.json
+      origin_url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-payroll-au.yaml
+      openapi_version: 3.0.0
+    - key: xero.com:xero_accounting
+      title: Xero Accounting API
+      preferred: 2.9.4
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/xero.com/xero_accounting/2.9.4/openapi.json
+      origin_url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_accounting.yaml
+      openapi_version: 3.0.0
+    - key: xero.com:xero_assets
+      title: Xero Assets API
+      preferred: 2.9.4
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/xero.com/xero_assets/2.9.4/openapi.json
+      origin_url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_assets.yaml
+      openapi_version: 3.0.0
+    - key: xero.com:xero_bankfeeds
+      title: Xero Bank Feeds API
+      preferred: 2.9.4
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/xero.com/xero_bankfeeds/2.9.4/openapi.json
+      origin_url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_bankfeeds.yaml
+      openapi_version: 3.0.0
+    - key: xero.com:xero_files
+      title: Xero Files API
+      preferred: 2.9.4
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/xero.com/xero_files/2.9.4/openapi.json
+      origin_url: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_files.yaml
+      openapi_version: 3.0.0
+    signal_note: 'participation only: a community directory listing (APIs.guru collects definitions; the provider
+      did not file them). Signals: version_count, apis_listed, origin_publisher_hosted.'
+    detected_by: sweep-openapi-directory-apis-guru.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
