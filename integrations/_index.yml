@@ -1661,3 +1661,502 @@
     detected: '2026-10-22'
   status: not-a-workflow
   arazzo: null
+- slug: xero-accelo
+  label: Accelo
+  partner: accelo
+  partner_name: Accelo
+  category: Invoicing and jobs
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/accelo
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-agicap
+  label: Agicap
+  partner: agicap
+  partner_name: Agicap
+  category: Reporting and forecasting
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/agicap
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-airwallex
+  label: Airwallex
+  partner: airwallex
+  partner_name: Airwallex
+  category: Bills and expenses
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/airwallex
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-anrok
+  label: Anrok
+  partner: anrok
+  partner_name: Anrok
+  category: Tax and compliance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/anrok
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-beds24-channel-manager-pms
+  label: Beds24 Channel Manager & PMS
+  partner: beds24
+  partner_name: Beds24 Channel Manager & PMS
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/beds24-channel-manager-pms
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-booqable
+  label: Booqable
+  partner: booqable
+  partner_name: Booqable
+  category: Ecommerce
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/booqable
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-causal
+  label: Causal
+  partner: causal
+  partner_name: Causal
+  category: Accountant tools
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/causal
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-cdata-connector
+  label: CData Connector
+  partner_name: CData Connector
+  category: Reporting and forecasting
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/cdata-connector
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-chargebee
+  label: Chargebee
+  partner: chargebee
+  partner_name: Chargebee
+  category: Payments
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/chargebee
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-constant-contact
+  label: Constant Contact
+  partner_name: Constant Contact
+  category: CRM and marketing
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/constant-contact
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-cryptio
+  label: Cryptio
+  partner: cryptio
+  partner_name: Cryptio
+  category: Tax and compliance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/cryptio
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-deel
+  label: Deel
+  partner: deel-com
+  partner_name: Deel
+  category: Payroll HR
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/deel
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-floqast
+  label: FloQast
+  partner: floqast
+  partner_name: FloQast
+  category: Accountant tools
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/floqast
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-aleph
+  label: Aleph
+  partner: getaleph
+  partner_name: Aleph
+  category: Reporting and forecasting
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/aleph
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-greenly
+  label: Greenly
+  partner: greenly-earth
+  partner_name: Greenly
+  category: Reporting and forecasting
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/greenly
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-headquarters
+  label: Headquarters
+  partner_name: Headquarters
+  category: Reporting and forecasting
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/headquarters
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-hubspot
+  label: HubSpot
+  partner: hubspot
+  partner_name: HubSpot
+  category: CRM and marketing
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/data-sync-by-hubspot
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-integrately
+  label: Integrately
+  partner: integrately
+  partner_name: Integrately
+  category: Workflow builders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/integrately
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-jobadder
+  label: JobAdder
+  partner: jobadder
+  partner_name: JobAdder
+  category: Invoicing and jobs
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/jobadder
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-landlord-studio
+  label: Landlord Studio
+  partner: landlordstudio
+  partner_name: Landlord Studio
+  category: Bills and expenses
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/landlord-studio
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-make
+  label: Make
+  partner_name: Make
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/make
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-marketman
+  label: MarketMan
+  partner: marketman
+  partner_name: MarketMan
+  category: Inventory
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/marketman
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-numeric
+  label: Numeric
+  partner: numeric
+  partner_name: Numeric
+  category: Reporting and forecasting
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/numeric
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-oysterhr
+  label: OysterHR
+  partner: oyster-hr
+  partner_name: OysterHR
+  category: Payroll HR
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/oysterhr
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-pabbly-connect
+  label: Pabbly Connect
+  partner_name: Pabbly Connect
+  category: Workflow builders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/pabbly-connect
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-quaderno
+  label: Quaderno
+  partner: quaderno
+  partner_name: Quaderno
+  category: Tax and compliance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/quaderno
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-remote
+  label: Remote
+  partner: remote-com
+  partner_name: Remote
+  category: Payroll HR
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/remote
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-rippling
+  label: Rippling
+  partner: rippling
+  partner_name: Rippling
+  category: Payroll HR
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/rippling
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-runway-financial-inc
+  label: Runway Financial, Inc.
+  partner: runway-financial
+  partner_name: Runway Financial, Inc.
+  category: Reporting and forecasting
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/runway-financial-inc
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-semble
+  label: Semble
+  partner: semble
+  partner_name: Semble
+  category: CRM and marketing
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/semble
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-signwell
+  label: SignWell
+  partner_name: SignWell
+  category: Documents
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/signwell
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-silverfin
+  label: Silverfin
+  partner: silverfin
+  partner_name: Silverfin
+  category: Tax and compliance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/silverfin
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-skyvia
+  label: Skyvia
+  partner_name: Skyvia
+  category: Reporting and forecasting
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/skyvia
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-standard-metrics
+  label: Standard Metrics
+  partner: standard-metrics
+  partner_name: Standard Metrics
+  category: Reporting and forecasting
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/standard-metrics
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-trelica
+  label: Trelica
+  partner_name: Trelica
+  category: Bills and expenses
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/trelica
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-uber
+  label: Uber
+  partner: uber
+  partner_name: Uber
+  category: Bills and expenses
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/uber
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-veryfi-inc
+  label: Veryfi, Inc.
+  partner: veryfi
+  partner_name: Veryfi, Inc.
+  category: Bills and expenses
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/veryfi-receipts-expenses-and-projects
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-vtiger-crm
+  label: Vtiger CRM
+  partner: vtiger
+  partner_name: Vtiger CRM
+  category: CRM and marketing
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/vtiger-crm
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: xero-zenoti
+  label: Zenoti
+  partner: zenoti
+  partner_name: Zenoti
+  category: Point of sale
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.xero.com/nz/app/zenoti
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

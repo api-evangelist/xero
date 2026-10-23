@@ -48,6 +48,9 @@ checked:
 - https://hex.pm/api
 - https://packagist.org/packages
 - https://pub.dev/api
+- https://apps.xero.com/nz/development-partners
+- https://apps.xero.com/sitemap.xml
+- https://developer.xero.com/documentation/xero-app-store/app-partner-guides/grow-your-app-with-xero
 summary: null
 marketplace_apps:
 - marketplace: own
@@ -3010,4 +3013,1562 @@ edges:
     detected: '2026-10-22'
   detected_by: sweep-php-dart-elixir-package-registries.py
   first_seen: '2026-10-22'
+- partner_name: Accelo
+  app: Accelo
+  apps:
+  - Accelo
+  listing_count: 1
+  partner: accelo
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/accelo
+  category: Invoicing and jobs
+  partner_url: https://www.accelo.com/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Professional services
+  listed_date: '2013-03-08'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Agicap
+  app: Agicap
+  apps:
+  - Agicap
+  listing_count: 1
+  partner: agicap
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/agicap
+  category: Reporting and forecasting
+  partner_url: https://agicap.com/en/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Construction and trades
+  - Manufacturing
+  - Professional services
+  listed_date: null
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Airwallex
+  app: Airwallex
+  apps:
+  - Airwallex
+  listing_count: 1
+  partner: airwallex
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/airwallex
+  category: Bills and expenses
+  partner_url: https://www.airwallex.com/au
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - nz
+  - sg
+  - uk
+  - us
+  xero_industries:
+  - Accounting
+  - Professional services
+  listed_date: '2022-04-14'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Anrok
+  app: Anrok
+  apps:
+  - Anrok
+  listing_count: 1
+  partner: anrok
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/anrok
+  category: Tax and compliance
+  partner_url: https://www.anrok.com/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Professional services
+  listed_date: '2025-06-25'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Beds24 Channel Manager & PMS
+  app: Beds24 Channel Manager & PMS
+  apps:
+  - Beds24 Channel Manager & PMS
+  listing_count: 1
+  partner: beds24
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/beds24-channel-manager-pms
+  category: Other
+  partner_url: https://beds24.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Hospitality
+  - Property and realty
+  - Tourism
+  listed_date: '2023-05-16'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Booqable
+  app: Booqable
+  apps:
+  - Booqable
+  listing_count: 1
+  partner: booqable
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/booqable
+  category: Ecommerce
+  partner_url: https://booqable.com/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Tourism
+  listed_date: '2026-05-01'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Causal
+  app: Causal
+  apps:
+  - Causal
+  listing_count: 1
+  partner: causal
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/causal
+  category: Accountant tools
+  partner_url: https://www.causal.app/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  listed_date: '2020-11-04'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: CData Connector
+  app: CData Connector
+  apps:
+  - CData Connector
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/cdata-connector
+  category: Reporting and forecasting
+  partner_url: https://www.cdata.com/xero/drivers
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Health
+  - Manufacturing
+  listed_date: '2024-05-08'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+  partner_held:
+    candidate: cdata
+    why: 'market-fit gate: partner''s own tags carry no accounting / finance / payroll / inventory / invoicing /
+      commerce / practice-ops term'
+- partner_name: Chargebee
+  app: Chargebee
+  apps:
+  - Chargebee
+  listing_count: 1
+  partner: chargebee
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/chargebee
+  category: Payments
+  partner_url: https://www.chargebee.com/integrations/xero/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries: []
+  listed_date: '2016-06-01'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Constant Contact
+  app: Constant Contact
+  apps:
+  - Constant Contact
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/constant-contact
+  category: CRM and marketing
+  partner_url: https://www.constantcontact.com/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Franchise
+  - Professional services
+  - Property and realty
+  listed_date: '2025-05-13'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+  partner_held:
+    candidate: constant-contact
+    why: 'market-fit gate: partner''s own tags carry no accounting / finance / payroll / inventory / invoicing /
+      commerce / practice-ops term'
+- partner_name: Cryptio
+  app: 'Cryptio '
+  apps:
+  - 'Cryptio '
+  listing_count: 1
+  partner: cryptio
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/cryptio
+  category: Tax and compliance
+  partner_url: https://cryptio.co
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Professional services
+  listed_date: '2021-12-27'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Deel
+  app: Deel
+  apps:
+  - Deel
+  listing_count: 1
+  partner: deel-com
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/deel
+  category: Payroll HR
+  partner_url: https://www.deel.com/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Professional services
+  listed_date: '2021-02-11'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: FloQast
+  app: FloQast
+  apps:
+  - FloQast
+  listing_count: 1
+  partner: floqast
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/floqast
+  category: Accountant tools
+  partner_url: https://floqast.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Professional services
+  - Property and realty
+  listed_date: '2024-12-10'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Aleph
+  app: Aleph
+  apps:
+  - Aleph
+  listing_count: 1
+  partner: getaleph
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/aleph
+  category: Reporting and forecasting
+  partner_url: https://getaleph.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  listed_date: null
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Greenly
+  app: Greenly
+  apps:
+  - Greenly
+  listing_count: 1
+  partner: greenly-earth
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/greenly
+  category: Reporting and forecasting
+  partner_url: https://greenly.earth/en-us?home2
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Manufacturing
+  - Retail
+  listed_date: '2023-08-07'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Headquarters
+  app: Headquarters
+  apps:
+  - Headquarters
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/headquarters
+  category: Reporting and forecasting
+  partner_url: https://hq.xyz
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Professional services
+  listed_date: '2024-05-08'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+  partner_held:
+    candidate: hq-headquarters
+    why: 'market-fit gate: partner''s own tags carry no accounting / finance / payroll / inventory / invoicing /
+      commerce / practice-ops term'
+- partner_name: HubSpot
+  app: Data sync by HubSpot
+  apps:
+  - Data sync by HubSpot
+  listing_count: 1
+  partner: hubspot
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/data-sync-by-hubspot
+  category: CRM and marketing
+  partner_url: https://www.hubspot.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Professional services
+  - Property and realty
+  listed_date: '2017-12-04'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+- partner_name: Integrately
+  app: Integrately
+  apps:
+  - Integrately
+  listing_count: 1
+  partner: integrately
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/integrately
+  category: Workflow builders
+  partner_url: https://integrately.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Professional services
+  listed_date: '2021-11-26'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: JobAdder
+  app: JobAdder
+  apps:
+  - JobAdder
+  listing_count: 1
+  partner: jobadder
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/jobadder
+  category: Invoicing and jobs
+  partner_url: https://jobadder.com/marketplace/xero
+  regions:
+  - au
+  - global
+  - nz
+  - uk
+  - us
+  xero_industries:
+  - Professional services
+  listed_date: '2015-01-08'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Landlord Studio
+  app: Landlord Studio
+  apps:
+  - Landlord Studio
+  listing_count: 1
+  partner: landlordstudio
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/landlord-studio
+  category: Bills and expenses
+  partner_url: https://www.landlordstudio.com/?utm_source=xero&utm_medium=marketplace
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Property and realty
+  listed_date: '2022-05-11'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Make
+  app: Make
+  apps:
+  - Make
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/make
+  category: Other
+  partner_url: https://www.make.com/en/register?promo=xero-partner-program
+  regions:
+  - au
+  - ca
+  - global
+  - ie
+  - nz
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Professional services
+  - Retail
+  listed_date: '2018-03-07'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+  partner_held:
+    candidate: make
+    why: 'market-fit gate: partner''s own tags carry no accounting / finance / payroll / inventory / invoicing /
+      commerce / practice-ops term'
+- partner_name: MarketMan
+  app: MarketMan
+  apps:
+  - MarketMan
+  listing_count: 1
+  partner: marketman
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/marketman
+  category: Inventory
+  partner_url: https://marketman.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Hospitality
+  listed_date: '2020-04-03'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+- partner_name: Numeric
+  app: Numeric
+  apps:
+  - Numeric
+  listing_count: 1
+  partner: numeric
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/numeric
+  category: Reporting and forecasting
+  partner_url: https://numeric.io
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Professional services
+  listed_date: '2022-06-09'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: OysterHR
+  app: OysterHR
+  apps:
+  - OysterHR
+  listing_count: 1
+  partner: oyster-hr
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/oysterhr
+  category: Payroll HR
+  partner_url: https://www.oysterhr.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Education
+  - Professional services
+  listed_date: '2023-01-11'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Pabbly Connect
+  app: Pabbly Connect
+  apps:
+  - Pabbly Connect
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/pabbly-connect
+  category: Workflow builders
+  partner_url: https://www.pabbly.com/connect/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Professional services
+  listed_date: '2022-09-21'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+  partner_held:
+    candidate: pabbly-connect
+    why: 'market-fit gate: partner''s own tags carry no accounting / finance / payroll / inventory / invoicing /
+      commerce / practice-ops term'
+- partner_name: Quaderno
+  app: Quaderno
+  apps:
+  - Quaderno
+  listing_count: 1
+  partner: quaderno
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/quaderno
+  category: Tax and compliance
+  partner_url: https://quaderno.io/integrations/xero/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Retail
+  listed_date: '2019-03-07'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Remote
+  app: Remote
+  apps:
+  - Remote
+  listing_count: 1
+  partner: remote-com
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/remote
+  category: Payroll HR
+  partner_url: https://remote.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Education
+  - Health
+  - Professional services
+  listed_date: '2024-05-09'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Rippling
+  app: Rippling
+  apps:
+  - Rippling
+  listing_count: 1
+  partner: rippling
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/rippling
+  category: Payroll HR
+  partner_url: https://www.rippling.com/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Manufacturing
+  - Professional services
+  - Retail
+  listed_date: '2019-02-12'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Runway Financial, Inc.
+  app: Runway Financial, Inc.
+  apps:
+  - Runway Financial, Inc.
+  listing_count: 1
+  partner: runway-financial
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/runway-financial-inc
+  category: Reporting and forecasting
+  partner_url: https://runway.cfo.ai
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  listed_date: '2024-07-09'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Semble
+  app: Semble
+  apps:
+  - Semble
+  listing_count: 1
+  partner: semble
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/semble
+  category: CRM and marketing
+  partner_url: https://semble.io
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Health
+  listed_date: '2020-01-21'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: SignWell
+  app: SignWell
+  apps:
+  - SignWell
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/signwell
+  category: Documents
+  partner_url: https://www.signwell.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Professional services
+  - Property and realty
+  listed_date: '2026-06-18'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+  partner_held:
+    candidate: signwell
+    why: 'market-fit gate: partner''s own tags carry no accounting / finance / payroll / inventory / invoicing /
+      commerce / practice-ops term'
+- partner_name: Silverfin
+  app: Silverfin
+  apps:
+  - Silverfin
+  listing_count: 1
+  partner: silverfin
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/silverfin
+  category: Tax and compliance
+  partner_url: https://www.silverfin.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  listed_date: '2019-11-08'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Skyvia
+  app: Skyvia
+  apps:
+  - Skyvia
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/skyvia
+  category: Reporting and forecasting
+  partner_url: https://skyvia.com/connectors/xero?utm_source=xero_marketplace&utm_medium=referral&utm_campaign=marketplace
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Education
+  - Health
+  listed_date: '2023-09-19'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+  partner_held:
+    candidate: skyvia
+    why: 'market-fit gate: partner''s own tags carry no accounting / finance / payroll / inventory / invoicing /
+      commerce / practice-ops term'
+- partner_name: Standard Metrics
+  app: Standard Metrics
+  apps:
+  - Standard Metrics
+  listing_count: 1
+  partner: standard-metrics
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/standard-metrics
+  category: Reporting and forecasting
+  partner_url: https://standardmetrics.io/for-companies-2/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Professional services
+  listed_date: '2022-10-18'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Trelica
+  app: Trelica
+  apps:
+  - Trelica
+  listing_count: 1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/trelica
+  category: Bills and expenses
+  partner_url: https://trelica.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Health
+  - Professional services
+  - Property and realty
+  listed_date: '2025-02-10'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+  partner_held:
+    candidate: trelica
+    why: 'market-fit gate: partner''s own tags carry no accounting / finance / payroll / inventory / invoicing /
+      commerce / practice-ops term'
+- partner_name: Uber
+  app: Uber
+  apps:
+  - Uber
+  listing_count: 1
+  partner: uber
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/uber
+  category: Bills and expenses
+  partner_url: https://business.uber.com
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  listed_date: '2026-09-17'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Veryfi, Inc.
+  app: Veryfi - Receipts, Expenses & Projects
+  apps:
+  - Veryfi - Receipts, Expenses & Projects
+  listing_count: 1
+  partner: veryfi
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/veryfi-receipts-expenses-and-projects
+  category: Bills and expenses
+  partner_url: https://www.veryfi.com/xero
+  regions:
+  - au
+  - ca
+  - global
+  - ie
+  - nz
+  - uk
+  - us
+  xero_industries:
+  - Accounting
+  - Construction and trades
+  - Manufacturing
+  listed_date: '2014-10-06'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Vtiger CRM
+  app: Vtiger CRM
+  apps:
+  - Vtiger CRM
+  listing_count: 1
+  partner: vtiger
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/vtiger-crm
+  category: CRM and marketing
+  partner_url: https://www.vtiger.com/integrations/vtiger-xero-integration/
+  regions:
+  - au
+  - ca
+  - global
+  - hk
+  - id
+  - ie
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  - za
+  xero_industries:
+  - Accounting
+  - Manufacturing
+  - Professional services
+  listed_date: '2018-11-27'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
+- partner_name: Zenoti
+  app: Zenoti
+  apps:
+  - Zenoti
+  listing_count: 1
+  partner: zenoti
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://apps.xero.com/nz/app/zenoti
+  category: Point of sale
+  partner_url: https://zenoti.com
+  regions:
+  - au
+  - ca
+  - global
+  - my
+  - nz
+  - ph
+  - sg
+  - uk
+  - us
+  xero_industries:
+  - Retail
+  listed_date: '2023-08-31'
+  signal_note: Xero App Store listing (developer website + supportedRegions from the listing page's own public JSON);
+    every listed app passed Xero's certification checkpoints, but no per-app badge or tier is published; regions,
+    listing count and app names are context, never counted
+  detected_by: sweep-xero-app-store.py
+  detected: '2026-10-23'
+  features:
+  - Sign Up with Xero
 templates: []
