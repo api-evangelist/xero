@@ -5444,3 +5444,9 @@ components:
             payroll.settings.read: Grant read-only access to payroll settings
             payroll.timesheets: Grant read-write access to payroll timesheets
             payroll.timesheets.read: Grant read-only access to payroll timesheets
+x-provenance:
+  method: harvested
+  publisher: Xero
+  source: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero-payroll-au.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

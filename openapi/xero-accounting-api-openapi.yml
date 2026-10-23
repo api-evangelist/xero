@@ -25379,3 +25379,9 @@ components:
             accounting.transactions: Grant read-write access to bank transactions, credit notes, invoices, repeating invoices
             accounting.transactions.read: Grant read-only access to invoices
             paymentservices: Grant read-write access to payment services
+x-provenance:
+  method: harvested
+  publisher: Xero
+  source: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_accounting.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

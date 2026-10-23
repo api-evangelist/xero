@@ -927,3 +927,9 @@ components:
             profile: your profile information
             assets: Grant read-write access to fixed assets
             assets.read: Grant read-only access to fixed assets
+x-provenance:
+  method: harvested
+  publisher: Xero
+  source: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_assets.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

@@ -1187,3 +1187,9 @@ components:
             openid: Grant read-only access to your open id
             profile: your profile information
             bankfeeds: Grant read-write access to bankfeeds
+x-provenance:
+  method: harvested
+  publisher: Xero
+  source: https://raw.githubusercontent.com/XeroAPI/Xero-OpenAPI/master/xero_bankfeeds.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
