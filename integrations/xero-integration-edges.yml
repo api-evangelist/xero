@@ -51,6 +51,9 @@ checked:
 - https://apps.xero.com/nz/development-partners
 - https://apps.xero.com/sitemap.xml
 - https://developer.xero.com/documentation/xero-app-store/app-partner-guides/grow-your-app-with-xero
+- https://ifttt.com/explore/services
+- https://ifttt.com/sitemap_services.xml
+- https://ifttt.com/xero
 summary: null
 marketplace_apps:
 - marketplace: own
@@ -4571,4 +4574,29 @@ edges:
   detected: '2026-10-23'
   features:
   - Sign Up with Xero
+- partner_name: IFTTT
+  partner: ifttt
+  partner_match: aggregator
+  type: marketplace
+  marketplace: ifttt-services
+  channel: ipaas-listing
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://ifttt.com/xero
+  category: null
+  contract_reference:
+    register: IFTTT service directory (ifttt.com/explore/services; ifttt.com/<service>)
+    spec_file: null
+    role: ipaas-connector:ifttt
+    registered_name: Xero
+    matched_domain: xero.com
+    matched_by: domain
+    app_slug: xero
+    ifttt_category: Finance & payments
+    builder: unknown (the service page does not say who built it)
+    detected_by: sweep-ifttt-services.py
+    detected: '2026-10-23'
+    signal_note: one edge per (provider, platform); triggers, actions and applet counts are context, never read
+  detected_by: sweep-ifttt-services.py
+  first_seen: '2026-10-23'
 templates: []
